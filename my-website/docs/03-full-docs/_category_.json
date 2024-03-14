@@ -1,0 +1,10 @@
+{
+    "label": "Complete Documentation",
+    "collapsible": true,
+    "collapsed": false,
+    "className": "red",
+    "link": {
+      "type": "generated-index",
+      "title": "Full Docs"
+    }
+  }

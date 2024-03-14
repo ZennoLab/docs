@@ -1,0 +1,10 @@
+{
+    "label": "Recording",
+    "collapsible": true,
+    "collapsed": false,
+    "className": "red",
+    "link": {
+      "type": "generated-index",
+      "title": "Recording"
+    }
+  }

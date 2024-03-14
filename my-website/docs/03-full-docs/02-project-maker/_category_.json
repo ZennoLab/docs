@@ -1,0 +1,10 @@
+{
+    "label": "Project Maker",
+    "collapsible": true,
+    "collapsed": false,
+    "className": "red",
+    "link": {
+      "type": "generated-index",
+      "title": "Project Maker"
+    }
+  }
