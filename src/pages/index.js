@@ -30,13 +30,6 @@ function HomepageHeader() {
             ZennoDroid Enterprise Tutorial - 5min ⏱️
           </Link>
         </div>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/get-started/full-docs">
-            Full Documentation
-          </Link>
-        </div>
       </div>
     </header>
   );
