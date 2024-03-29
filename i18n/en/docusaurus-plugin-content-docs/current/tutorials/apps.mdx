@@ -4,6 +4,64 @@ title: Apps
 description: How to automate apps
 ---
 
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+);
+
 ## How to automate apps
 
-Learn how to install and automate Android Apps
+Learn how to install and automate Android Apps. 
+
+In **ZennoDroid** you can configure automation of any actions in a mobile apps.   
+We will look at two examples: 
+- Installing Youtube on a Memu 9 emulator using **ZennoDroid Pro**.   
+- Using already installed Youtube on a real phone in **ZennoDroid Enterprise**.  
+
+All information from the text will be duplicated in the video guides for clarity.
+
+### Installing the application and performing first actions.
+
+> Here we will take a detailed look at how to install Youtube using the Memu 9  
+> and put a thumbs up on the first video.
+>
+> *Summary*:  
+> *Open the app market → search by name → install Youtube and open it →*  
+> *find the first video on the page and play it → thumbs up*.
+
+#### The detailed algorithm:  
+
+1. To quickly search for an emulated device, click on the **«Installed applications»** button.  
+2. Add a search string to the **Action Builder** and type «youtube» in the **Value** field.  
+> *The **«Test»** button allows you to quickly run the current action and make sure it works.*  
+> *If everything is fine, click **«Add to project»**.*  
+3. Change the action type from **«Set»** to **«Rise»**, thus accessing the **«Touch»** event,  
+which is responsible for clicking on the screen.  
+> *For the **«Open»** action, we add an additional element waiting property and setting the value  
+to **30 seconds**. During this time, the script will try to open the application before it returns an error.*  
+4. In the application, we examine the first video and find the element responsible for playing it  
+(can be determined by matching the video names). Add it to the project and delete all characters except the word **«Play»** from the **«Value»** field. Next to **«Search»** select the value **«0»** and choose **«Rise»**. In the future, this will allow us to include exactly the first video every time, regardless of its title.  
+5. Next, let's examine the element responsible for the **Thumbs Up**. Repeat the actions similar to the previous point, but leave only **«You\liked»** in the **«Value»** field.  
+
+##### Video guide:  
+
+<VideoSample source={require("@site/static/video/Youtube_memu9.mp4").default}/>
+
+### Updating the app on a real phone.  
+
+> Now we will look at how to perform the actions on a real phone, without an emulator. We will update the pre-installed Youtube and put a thumbs up on the first video.  
+>
+> The principle of operation is similar to the previous example, but with minor differences.
+
+#### The detailed algorithm:
+
+1. Open the app market and find Youtube.  
+2. Add an **«Update»** button to the action builder and change the action to **«Rise»**.  
+3. Launch the application after the update is complete.  
+4. Find the first video and create an action that allows you to select it every time, regardless of the name. 
+5. Press the thumbs up button.  
+
+##### Video guide: 
+
+<VideoSample source={require("@site/static/video/youtube_realphone.mp4").default}/>
