@@ -1,8 +1,8 @@
 {
-    "label": "Tutorials",
+    "label": "Руководства",
     "position": 2,
     "link": {
       "type": "generated-index",
-      "title": "Tutorials"
+      "title": "Руководства"
     }
   }
