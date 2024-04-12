@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 title: Настройки устройства
 description: Как настроить устройство через ProjectMaker
 ---
@@ -37,8 +37,36 @@ export const VideoSample = ({source}) => (
 
 ### 2. Как настроить идентификаторы устройства.  
 
-С помощью данной функции можно изменить такие параметры как IMEI, Android ID (идентификатор устройства), IMSI, Sim Serial (серийный номер SIM карты).  
+С помощью данной функции можно изменить такие параметры как [IMEI](https://ru.wikipedia.org/wiki/IMEI), Android ID (идентификатор устройства), [IMSI](https://ru.wikipedia.org/wiki/IMSI), Sim Serial (серийный номер SIM карты).  
 
 ### 3. Как добавить сотового оператора?  
 
-Все данные для этого действия можно найти [**на этом сайте**](https://www.mcc-mnc.com/) 
+Все данные для этого действия можно найти [**на этом сайте**](https://www.mcc-mnc.com/)  
+
+#### Доступные настройки:  
+- ***Страна***. Две буквы из колонки ISO.  
+- ***Код оператора***. Совокупность значений из колонок MCC и MNC (например, 25002 для Мегафона).  
+- ***Название оператора***. Колонка Network (Baykal Westcom, BeeLine/VimpelCom, MTS).  
+- ***Номер телефона***. Без знака "+" в начале, 79*** и так далее.  
+
+### 4. Как указать модель устройства?  
+
+#### Доступные настройки:  
+- ***Производитель***. Чье устройство эмулируем (Samsung, Huawei, Xiaomi, Google, Meizu и т.д.).  
+- ***Модель***. Какую модель используем. Можно найти в build.prop (подскажем как ниже).  
+- ***ro.product.brand***. Если в этом поле значение не указано, то дублируем его из Производитель.  
+- ***ro.product.board***. Для современных телефонов неактуально, можно оставить пустым.  
+- ***ro.hardware*** и ***ro.build.fingerprint***. Возьмем из build.prop.  
+
+#### Как найти данные в build.prop:  
+Для этого необходимо сделать запрос в поисковую систему следующего вида:  
+***build.prop phone_model*** *(например, build.prop Samsung s10)*.  
+Переходим по одному из результатов и в тексте сообщения находим интересующие нас данные:  
+*ro.product.brand=samsung  
+ro.hardware.chipname=exynos9820  
+ro.product.board = нет  
+ro.product.model или ro.product.system.model*  
+
+> ***Как узнать параметры своего телефона?***  
+> Для этого нужно в терминале (например, [Terminal Emulator for Android](https://apkpure.com/terminal-emulator-for-android/jackpal.androidterm#google_vignette)) выполнить команду *getprop*.
+  
