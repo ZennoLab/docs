@@ -8,16 +8,20 @@ export const VideoSample = ({source}) => (
   <video controls playsInline muted preload="auto" className='docsVideo'>
     <source src={source} type="video/mp4" />
 </video>
-);  
+);
 
-> ***Краткое содержание**:*  
-> **1.** *Установка LSPosed Framework*   
-> **2.** *Установка модуля ZennoDroid*  
-> **3.** *Полезные ссылки*  
+<details>
+<summary>**Краткое содержание**</summary>
+<!--All you need is a blank line-->
+
+    + Установка **LSPosed Framework**.
+    + Установка **модуля ZennoDroid**.  
+    + Полезные ссылки.
+</details>
 
 ### Описание. 
 Модуль ZennoDroid необходим для подмены основных параметров устройства: IMEI, Android ID, сотового оператора, модели, WiFi, Bluetooth и других.  
-> *Поддерживаются телефоны с Android 8.1-14. Для функционирования модуля необходимы **Root права**.*  
+> *<mark>Поддерживаются телефоны с Android 8.1-14. Для функционирования модуля необходимы **Root права** </mark>.*  
 ### 1. Установка LSPosed Framework.    
 Для установки модуля необходим телефон с [**Magisk**](https://github.com/topjohnwu/Magisk) и активным [**LSPosed Framework**](https://github.com/LSPosed/LSPosed).  
 
@@ -27,8 +31,9 @@ export const VideoSample = ({source}) => (
 [**Последнюю версию LSPosed**](https://github.com/LSPosed/LSPosed/releases/tag/v1.9.2) нужно скачать на телефон в папку **sdcard/Download/** и установить с помощью стандартного меню.  
 
 ![Из хранилища](./assets/LSPosed/LSPosed_pic3.png) ![LSposed](./assets/LSPosed/LSPosed_pic4.png)  
-> ***Важно!** По умолчанию модуль LSPosed Framework не имеет иконки и открывается нажатием на уведомление в верхней шторке.*  
-![Шторка](./assets/LSPosed/LSPosed_pic5.png)
+> ***Важно!** <mark> По умолчанию модуль LSPosed Framework не имеет иконки </mark> и открывается нажатием на уведомление.*  
+> 
+> ![Шторка](./assets/LSPosed/LSPosed_pic5.png)
 ### 2. Установка модуля ZennoDroid.  
 Модуль ZennoDroid устанавливается автоматически при первой попытке изменить параметры устройства.  
 При первом запуске на экране устройства возникнет запрос прав суперпользователя.  
