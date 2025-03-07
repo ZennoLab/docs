@@ -20,7 +20,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/category/начало-работы">
-            ZennoDroid Pro Tutorial - 5min ⏱️
+            Приступим к знакомству 📲
           </Link>
         </div>
       </div>

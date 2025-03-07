@@ -35,3 +35,97 @@
   max-width: 700px;
   max-height: 512px;
 }
+
+.menu__link {
+  /* padding-left: 30px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.menu__link--active {
+  font-weight: bold;
+  /* color: #08d43b; */ 
+}
+
+[data-theme='dark'] .menu__link--active {
+  color: #4fddbf;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(1) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/install.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(2) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/get_started.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(3) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/project.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(4) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/editor.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(5) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/data.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(6) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/android.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(7) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/settings.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(8) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/tool.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(9) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/execution.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-link-level-1:nth-child(1n) .menu__link::before {
+  content: '';
+  background: url('/img/disclaimer.svg');
+  width: 50px;
+  height: 24px;
+  margin-right: 12px;
+}
