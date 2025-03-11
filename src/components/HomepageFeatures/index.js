@@ -4,29 +4,29 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'No-Code',
+    title: 'Без знания кода',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Automate anything on Android with an intuitive no-code interface.
+        Выполняйте любые действия в Android с помощью интуитивно понятного интерфейса без необходимости писать код.
       </>
     ),
   },
   {
-    title: 'Emulators',
+    title: 'Поддержка эмуляции',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Emulate multiple Android devices in parallel on a single machine.
+        Эмулируйте несколько Android-устройств параллельно на одном компьютере.
       </>
     ),
   },
   {
-    title: 'Real Devices',
+    title: 'Работа с реальными устройства',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Automate physical Android phones for increased anonymity.
+        Автоматизируйте физические смартфоны на Android для повышения анонимности.
       </>
     ),
   },

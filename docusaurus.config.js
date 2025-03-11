@@ -8,8 +8,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'ZennoDroid Docs',
-  tagline: 'The Easiest Way to Automate Android Apps Without Coding',
+  title: 'Документация ZennoDroid',
+  tagline: 'Простейший способ автоматизировать приложения для Android без знания кода',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -71,9 +71,9 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Docs',
+            label: 'Документация',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: 'Блог', position: 'left'},
           {type: 'localeDropdown', position: 'right'},
           {
             href: 'https://zennolab.com/en/products/zennodroid/',
@@ -86,19 +86,35 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Избранные статьи',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/category/начало-работы',
+                label: 'Основные понятия',
+                to: '/docs/get-started/BasicTerms',
+              },
+              {
+                label: 'Подключение реального устройства (ZDE)',
+                to: '/docs/get-started/Connection',
+              },
+              {
+                label: 'Интерфейс ProjectMaker',
+                to: '/docs/category/интерфейс',
+              },
+              {
+                label: 'Логические операции',
+                to: '/docs/category/логика-в-zd',
+              },
+              {
+                label: 'Нюансы работы с Android',
+                to: '/docs/category/android',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Больше',
             items: [
               {
-                label: 'Blog',
+                label: 'Блог',
                 to: '/blog',
               },
               {
@@ -106,7 +122,7 @@ const config = {
                 href: 'https://zennolab.com/en/products/zennodroid/',
               },
               {
-                label: 'Other ZennoLab Products',
+                label: 'Другие продукты ZennoLab',
                 href: 'https://zennolab.com',
               },
             ],

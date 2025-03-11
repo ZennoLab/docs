@@ -32,8 +32,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`ZennoDroid Documentation`}
-      description="The Easiest Way to Automate Android Apps Without Coding">
+      title={`Документация ZennoDroid`}
+      description="Самый простой способ автоматизировать приложения для Android без знаний кода">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
