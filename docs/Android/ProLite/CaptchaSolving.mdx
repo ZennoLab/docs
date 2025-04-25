@@ -1,0 +1,226 @@
+---
+sidebar_position: 13
+title: Распознать капчу 
+description: Решение капч разными способами.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+Этот экшен используется как для [**автоматического решения каптч через сервисы**](https://capmonster.cloud), так и для **ввода вручную**.  
+
+**Капча** — это автоматически генерируемый тест для проверки, является ли пользователь человеком или компьютером (ботом). Простые их варианты часто представляет собой искаженную надпись из букв и/или цифр. Они могут быть написаны в различных цветовых сочетаниях с применением шума, искривлений, наложения дополнительных линий или произвольных фигур.  
+
+| ![Примеры текстовых капч](../assets/CaptchaSolving/CaptchaSolving_pic1.png)    | 
+| :--------: | 
+| **Примеры текстовых капч.**  |  
+
+Встречаются и другие виды капч, где надо не просто ввести символы с картинки, а произвести какое-то действие. Например, вас просят найти автобусы, пальмы, мотоциклы и другие предметы; решить пазл; расставить предметы в определённом порядке или рассортировать их.  
+
+#### Дополнительные примеры капч:  
+
+| ![ReCaptcha](../assets/CaptchaSolving/CaptchaSolving_pic2.png)    | ![HCaptcha](../assets/CaptchaSolving/CaptchaSolving_pic3.png) |
+| :--------: | :-------: |
+| [**ReCaptcha**](https://developers.google.com/recaptcha)  | [**HCaptcha**](https://www.hcaptcha.com/)    |  
+
+| ![FunCaptcha](../assets/CaptchaSolving/CaptchaSolving_pic4.gif)    | ![CloudFlare](../assets/CaptchaSolving/CaptchaSolving_pic5.png) |
+| :--------: | :-------: |
+| [**FunCaptcha**](https://www.arkoselabs.com/arkose-matchkey/)  | [**CloudFlare**](https://www.cloudflare.com/)    |
+_______________________________________________  
+## Как добавить в проект?  
+Есть два способа:  
+### Через окно эмулятора/устройства.  
+**ПКМ по капче в окне → «Это капча!»**  
+
+![Через окно эмулятора](../assets/CaptchaSolving/CaptchaSolving_pic6.png)  
+
+### Через контекстное меню.  
+**Добавить действие → Android → Распознать капчу**.  
+
+![Через контекстное меню](../assets/CaptchaSolving/CaptchaSolving_pic7.png)  
+
+:::tip **Минус второго способа.**
+Вам придётся предварительно скачать изображение на компьютер, а затем указать путь к нему в экшене.
+:::  
+_______________________________________________ 
+## Работа с окном.  
+### Вкладка «Основное».  
+Внешний вид окна отличается в зависимости от способа открытия:  
+
+| ![Вкладка «Основное»](../assets/CaptchaSolving/CaptchaSolving_pic12.png) | ![Вкладка «Основное»](../assets/CaptchaSolving/CaptchaSolving_pic8.png) |
+| :--------: | :-------: |
+| **При открытии через окно эмулятора/устройства** | **Через контекстное меню** |   
+
+#### Модуль распознавания.  
+Из выпадающего списка выбираем сервис, в который мы будем отправлять капчу на распознавание. **Рекомендуем выбирать CapMonster Cloud**, он самый надёжный и стабильный.   
+
+![Модуль распознавания](../assets/CaptchaSolving/CaptchaSolving_pic9.png)
+
+:::info `MonkeyEnter.dll`
+Этот модуль используется для ручного разгадывания капч. Никакой из сервисов автоматического распознавания использоваться не будет.
+:::  
+
+#### Поиск элемента.  
+Существует два способа поиска элементов на странице:  
+- **Классический**.  
+Поиск по параметрам HTML элемента: тэг, атрибут и его значение. 
+- **xPath**.  
+Поиск с помощью [**XPath выражений**](../../Tools/JSON_Tester). С помощью него можно реализовать более универсальный и устойчивый к изменениям вёрстки способ поиска данных.
+
+#### Распознать из файла.  
+Указываем путь к картинке с капчей, которую хотим разгадать. Можно написать переменную.  
+
+#### Положить в переменную.  
+Добавляем переменную, куда сохраним полученный ответ на задание. 
+
+#### Настройки. 
+При клике по кнопке с шестерёнкой вы попадёте в настройки программы, где будет возможность скорректировать данные для модулей распознавания.  
+_______________________________________________ 
+### Вкладка «Дополнительно».  
+| ![Вкладка «Дополнительно»](../assets/CaptchaSolving/CaptchaSolving_pic13.png) | ![Вкладка «Дополнительно»](../assets/CaptchaSolving/CaptchaSolving_pic10.png) |
+| :--------: | :-------: |
+| **При открытии через окно эмулятора/устройства** | **Через контекстное меню** |  
+
+#### Ожидание.  
+- **Подождать перед выполнением**.  
+Указываем диапазон *ОТ* и *ДО* в секундах, в пределах которого случайным образом будет выбираться время паузы перед началом работы.  
+- **Ждать элемент не более**.  
+Если капча не найдётся за указанное здесь время в секундах, то экшен завершится с ошибкой (выход по красной ветке).  
+  
+#### Параметры модуля.  
+В этом поле можно указать дополнительные параметры или условия, необходимые для разгадывания капчи. Такие как:  
+- *Чувствительность к регистру*;  
+- *Распознавание кириллицы*;  
+- *Математическая значение*;  
+- *Несколько слов*.  
+
+:::info **Формат записи дополнительных параметров**.
+`название_параметра=значение_параметра`.  
+Несколько значений разделяются символом `&`.
+:::  
+
+**Примеры записи для CapMonster Cloud API:**  
+- `CapMonsterModule = ZennoLab.vk` (выбор одного из текстовых модулей);  
+- `CaseSensitive = true` (чувствительность к регистру);  
+- `Numeric = false` (капча состоит не только из цифр);  
+- `Math = true` (в задании присутствует математическая операция).  
+
+#### Масштаб.  
+С помощью этой настройки можно уменьшить или увеличить размер отправляемой картинки с капчей.  
+
+#### Склеивать каптчи.  
+Некоторые капчи состоят из нескольких картинок, поэтому может понадобиться объединить их для быстрого и корректного решения.  
+
+Установите флаг на **Склеивать каптчи** для первого элемента. Затем по каждому следующему элементу кликайте **ПКМ → Приклеить к каптче** из контекстного меню.  
+
+![Склеивать каптчи](../assets/CaptchaSolving/CaptchaSolving_pic11.png)  
+
+При каждом клике будет создаваться новый экшен. У последнего нужно обязательно поставить чекбокс **Последняя капча**.  
+
+#### Асинхронное распознавание.  
+![Асинхронное распознавание](../assets/CaptchaSolving/CaptchaSolving_pic14.png)  
+
+Эта настройка позволяет не ждать ответа от сервиса, а продолжать выполнение шаблона.  
+
+При этом создаётся экшен **Ожидание распознавания капчи**. Настроек у него нет, доступна лишь одна кнопка **В начало распознавания**, после клика на которую вас перенаправит на основной экшен решения капчи. Это особенно удобно, если на холсте эти экшены находятся далеко друг от друга. В основном же экшене есть обратная кнопка **В конец распознавания**.  
+
+![В начало распознавания](../assets/CaptchaSolving/CaptchaSolving_pic15.png)  
+
+**Процесс работы:**  
+1. Шаблон доходит до основного экшена **Распознать капчу**.  
+2. Отправка капчи на сервис.  
+3. Продолжение работы шаблона вплоть до экшена **Ожидание капчи**.  
+4. Ждёт ответа от сервиса.  
+5. После получения результата его можно поместить в переменную.
+
+#### Положить URL для жалобы.  
+Данная опция нужна, чтобы пожаловаться сервису на некорректное распознавание конкретной капчи. По условиям некоторых солверов вы можете потребовать возврат денег за неуспешно пройденную капчу.  
+
+В поле вы указываете название переменной, в которой будет храниться URL-сервиса, на который нужно отправлять жалобы.  
+
+:::warning **Рекомендуем ответственно использовать эту возможность.**
+Если будете часто жаловаться и запрашивать возврат средств, то сервис может вас заблокировать.  
+
+Сначала постарайтесь разобраться в причинах частых ошибок и устранить их.
+:::  
+_______________________________________________ 
+### Сохранение.  
+![Сохранение](../assets/CaptchaSolving/CaptchaSolving_pic16.png)  
+
+В этом разделе вы можете сохранить картинку с капчей и ответ на неё в указанный каталог.  
+
+#### Доступные параметры:  
+- **Каталог**. Указываем директорию, в которую будем загружать картинки. Можно использовать [**переменные**](../../Data/WorkWithVariables).  
+- **Ответы**. Выбираем из двух вариантов, куда будут сохраняться ответы на капчи:  
+    - *В названии файла*.  
+    Удобно, но не всегда получается использовать, потому что Windows не поддерживает символы, встречающиеся в некоторых заданиях.  
+    ![Windows не поддерживает символы](../assets/CaptchaSolving/CaptchaSolving_pic17.png)  
+    - *В файл*.  
+    Картинка с капчей будет сохраняться с именем `captcha(X).png`, где **X** — это порядковый номер капчи.  
+    Также будет создан текстовый файл `captcha(X).txt` с ответом на эту капчу.  
+- **Игнорировать ответ “sorry”**. При возникновении некоторых ошибок экшен возвращает **`sorry`** вместо ответа на капчу. Если включить эту опцию, то программа не будет сохранять капчи с таким ответом.  
+
+:::tip **Сохранение капч с ответами может быть полезно**.
+При [создании собственного модуля](https://capmonster.cloud/UserModules) в **CapMonster Cloud**.
+:::  
+_______________________________________________ 
+## Примеры использования.  
+### Типичный случай.  
+1. Кликаем ПКМ по изображению капчи и выбираем из контекстного меню **Это капча!**  
+1.2. *Сразу после добавления этого экшена откроется **окно ручного распознавания**, его можно закрыть.*  
+2. Выбираем необходимый модуль распознавания.  
+2.1. *Не забудьте указать API ключ в [**настройках**](../../Settings/Captcha) и убедиться, что на балансе сервиса есть деньги.*  
+3. Теперь кликаем ПКМ по полю, куда нужно ввести ответ на капчу и выбираем пункт **Поле для результата распознавания капчи**.  
+3.1. *Также можно вручную найте поле с помощью [**Конструктора действий**](../../pm/Interface/ActionBuilder) и ввести ответ через экшен [**Установка значения**](./SetValue).*  
+
+### Когда нужно склеить.  
+Для данного примера мы будем использовать тестовую страницу с таким исходным кодом:  
+```html  
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CAPTCHA Test</title>
+</head>
+<body>
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACp0lEQVRYR+2XzWsTURDA54WkybbS9qAWLAY9mCoVxFTwD/CgePOgJz0JIlgP0oM3vXgSP6mH6sGL3pSAB/EgVUOhCJIliSWtH02qxMQ2SbObTbIfbt5zNmBrm232I4KXzLKwMPPe/HbmvXnzCPxnITb927Uzm46187HlxGF//zghnosMWIgQ4rMJ2mrGQAZgMzqjlxOq9HmzgSmA4Xw/t23yys7dsC/AgZd4gASHwXvyGDQ+JIAVis1vMzH0NJZYU6mUwkuxCPdWsileEUZtAYwFBuemgiOjB7i+Nft1gDgClNoAxBEg2cJ2ajEJ2Wp91zzU838rzSMQGNCmQ4d9PvzzfyH5XyqczaSqJbm8/SuAagkwxg2yaCi8wfeCUoOIUHDMo2AK+LqkV3R9nFfFh/ZSYALwTirDtXya9zBy3wlFg7J6Q9PeJ0HOmo0zTYFZBAyA6/n085gsnnYCYGXbBehGwFEEcBcUgJGU1cJa17M6IfBGlMXJzfv/j41tAEHXYUnDsu5AZKwBL7AMz1aFx7winu9oGzrwu8FUpg048SWuxBSxFxUtJ6PtCLgFWMYyfCYzV8T6saOjCHzTFJipCo44jBRMV1ZZTtMmeFW42xFAsxLm0p9wkohdCox3jRL6Ni5Ls1uNsZ2CbinuRqAbgWZHlEvPEyDP7G5Dw44BpbgdM6pSieAhUnXdki2pMkQdFiLDWdM7niFRqbxYU+jRBZBKlk1pODCgvgod6ukjXic/29b29vJ3PJgKV3lZvGkJgPeCjzeCew8e4frBD3gpwce9MOzDKTxZ/QlPV/J3YmplwhIAb0aX9nC9D84NDcGw30BwL8bxl9c0mMr9YDlVOx5XxdeWAIaBAQEecgFX0QgQ0uMagTGKY9P43sKe4JGtRejamYuBvwERl60wi4JyjQAAAABJRU5ErkJggg==" id="1">
+	<img src="data:image/png;base64,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" id="2">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAChklEQVRYR2NkGGDAOMD2M1DPASoq7JwsfMv+MzL4MPxnePb////8nzfPbyLkQao5gF3DaAqfgX22ZHwdw8+ndxgeTyn8/u39W2WGh9ef43MEVRzApmkUyC4stVa+bA4jMycP2L7ni1oYPp3enfDjxtmFNHUAm7qOHgsb72HZ/El8HPKacLteb5jG8HbvytKfN8720MwBrKoGBixsbDuAwS7Oa+iAYs/rDdMZ3u9dUfqdVg7gUDOMY+TgnKqUUM3DomuP4UmaOYBV3dCEmZGxk0NG1Sk4v5ah3VWTIffCT4Ybn//RNgRYNXSNmRlYW1gFxdxlvYCeN/NmmGfGzTDxzi+Gs+//MjAyoqZnqoYAu6ZRNiuv0ERhz0TmhGA/hgJ1boaoU98Znv34z/Dr5SOGZ/PrGYRcohj4TFyREiEV0wCnhvEbxcaVwqxCEgyqPIwMH34zMLz68Y/h4/GtDK/XT/727+f3ZxJRFSr8Fl40coCm8XullvUCLHxCYAt+vX7C8Gr1BIZv10+d+fuXIY6JmaFUIroikWYO4FA3buJQ0Kjlt/Rm+H7vMsOXc/ve/f39u/nnzXOTge75y6FhNI+mDgBawsihaRjL8J/R5v+/fxd+/vuyhOHOnU+w8KaHA/DWKaMOGA2B0RAYDYHREBicIbB+KsP7fato1yZErhw4NI3mSkSUJfFb+cCFXy3vZHh3fFv2z+tnp9GsVQyvDdWNm0Uc/GqEfTMYGNi4GBi+vWd4MrOK4eP9K45/blw4QHMHsGkY67Lx8J6TDk5n4RCTZvhy5xrDs41zb3+/dhrUUfhLcweALGDTMAxmYmBsB7ZOFRj+/z/z7y9D8q/b567TrW9IyCJc8gD2DJUwgibfBwAAAABJRU5ErkJggg==" id="3">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAELklEQVRYR8WXe2xTVRzHf7eP+4COdXVsbHVt1831AbJ1VSYkoxiN/xEDQ2KiMQEExCyIOiSgGCTEGmROE1j2YHEIgzjDY/iMbMKUuBFcW2BztXOMdY/KHp1rKPf2tr3Hu5ote8A6Q6+cv27uOed+P+d3fq+LwUMe2EPWh5gBEDrTNhEmeh8BUvCHauKCoUK283prtAPGBGBMnEhWlyq3WkGqWAR32n4Fz7H9ffRwKAv6W+7OBvHAAJKMnBWEXH5JVVQhxRNTJ7T6q/bCqKOxgHXazggH8KhRQcZRduUWq0q2ZMUUncFzpTDScKqIdtqLhQLAKH1uXeKzL65OW/s6+MNTZQbPl8FI/clddLvtoCAAhN709rz0JYeOlpWDNyyGw53BqRYQEoDKXPqUKP6RRvU7lfjOZWlQfpMFn3cIpPKFExDCWUD1eAI5H7fn77CqX3rOAiV/BsF7sRZ8Td+CZs8x4QEog/lcyjPrn79gLYLPu1movdIGPSWFYXyhUiw4AGHIfZNSGz/5oqICwiIJ7LV5wX1wM2KGevdRKdoPBAWQZmUvw2XyXwo/rcY35ajg5as0dFXtA1/LT6VIHC6lkjNbhQPQ5MhJUmxLffVAusVigYEAgtb6Ohj4sthB08PL8XnxGYICEPrcM4pV69YkFWyPOFmgvxO6i7fd4Vi/OeC85sKN2YsFA+Dz/HZKY/hMteMIYBIpcAEa3Ie28hBdrzAu+/ExIMEApDrTE/j8BZdVOyuJ8Tz/V81HMNr8XTXjtG0YjzlhALTmeBIHW+qm/dq4HEtEy3f1R/AcP9DOeENPwu3rfkEB+Hs/rVhZsDbphTciOuyAG7o/3kKHGDqPdbbcmJx3Y24BUmfaSKr0Vaq3SiP3jkJBcBe/BkxvRyPC4KvpxQVDSEmkaHfPDMNTdYjjvsYAOek/HE38Pm7G3ntVKlJv7lQXlWlJtSEyPeZ4Q98c5R+mlbxJm6VJaZBgKZh443fZwH/tZ+CCAQj0dgDT4/qNYbz5cOsWM1nzng0JaTCzWSUNUkwsma2Szn0OIeir2AO+1svrWKf99FwAmvkmI296kzF3xZkrPSc+BN+VHzbw0VMdHUBvsogo2feKVespQqWL+AFE6V8lCxRApGonvh0aHYaApwtQOMRfgQu8F0747nppA/TY+6MCjC0g9NlZGBJtRJhoMYZxxKynR5gMT1YvT38vkpciY/A836jU13Tw4B2IQy6EguWs64ZzTk74X00d8zCMCUAd3xM2CNgTTobEM01GSqlu07zLXwH2b2ANnj0MIxdrhWtKp1hJY1wkS0z2ZOyuAohL5NMmDbdrrPC349Jmpt3BJ5D7jwf+MRn/NJ87mpOeXpOXkLsSmIE+6K09wvp93sfg5u/u/wdAtzQdRJJKQJDPC3ZzHOxiXbaz0fwpZhaIJnS/+X8AFD8VP30FZWcAAAAASUVORK5CYII=" id="4">
+</body>
+</html>  
+``` 
+Здесь каждый символ — это отдельный HTML элемент.  
+
+1. Кликаем по первой картинке **ПКМ → Это капча!**  
+2. В настройках экшена включаем опцию **Склеивать капчи**.  
+3. Теперь ПКМ по каждой оставшейся картинке → **Приклеить к капче**.  
+4. В итоге получится 4 экшена:  
+![4 экшена](../assets/CaptchaSolving/CaptchaSolving_pic18.png)  
+5. После запуска первые три экшена будут собирать картинки и приклеивать друг к другу, а только последний экшен соберёт заключительную часть и отправит на сервис для распознавания.  
+:::tip **Если в результате ответа на капчу нужно выдать математическое действие.**.
+То в **Параметры модуля** не забудьте добавить `Math = true`.
+
+![математическое действие](../assets/CaptchaSolving/CaptchaSolving_pic19.png)
+::: 
+_______________________________________________ 
+## Полезные советы.  
+### Капча из простого текста.  
+Иногда на слабозащищенных ресурсах встречаются капчи, которые не нарисованы графическим текстом на картинке, а написаны обычным текстом (просто буквы как, например, в блокноте).  
+
+Такую капчу нужно не отсылать на сервис, а просто спарсить прямо из текста страницы. Сделать это можно через экшен [**Обработка текста**](../../Data/Text). Выбираете текст страницы, включив опцию **парсить результат**, и в параметры вписываете [**регулярное выражение**](../../Tools/RegEx_Tester) для парсинга страницы.  
+
+### Математические капчи.  
+Ещё встречаются такие же простые текстовые капчи, как в прошлом примере, но с математическими выражениями (сложение, вычетание, умножение или деление).  
+
+Их содержание можно превратить в изображение и отправить на сервис для распознавание, а можно использовать [**JavaScript**](../../Project%20Editor/CustomCode/JS) из раздела **Свой код**.  
+
+В поле кода вставляем ссылку на переменную с математическим выражением, а в качестве результата получаем ответ на него.  
+
+### Flash каптча.
+Её также можно просто превратить в обычную картинку и отправить на сервис. Найдите этот flash в [**Древе элементов**](../../pm/Interface/ElementTree) и через ПКМ откройте контекстное меню. Там нужно выбрать пункт **Это капча!**
+_______________________________________________  
+## Полезные ссылки.   
+- [**Всё о распознавании капч**](https://blog.capmonster.cloud/ru).  
+- [**POST-запрос**](../../Project%20Editor/HTTP%20and%20FTP/POST).   
+- [**Обработка изображений**](../../Data/Images).
+ 

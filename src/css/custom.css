@@ -52,15 +52,15 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(1) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/install.svg');
-  width: 24px;
-  height: 24px;
+  background: url('/img/zennodroid.svg');
+  width: 22px;
+  height: 22px;
   margin-right: 12px;
 }
 
 .theme-doc-sidebar-item-category-level-1:nth-child(2) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/get_started.svg');
+  background: url('/img/install.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -68,7 +68,7 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(3) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/project.svg');
+  background: url('/img/prolite.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -76,7 +76,7 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(4) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/editor.svg');
+  background: url('/img/enterprise.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -84,7 +84,7 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(5) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/data.svg');
+  background: url('/img/get_started.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -92,7 +92,7 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(6) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/android.svg');
+  background: url('/img/project.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -100,7 +100,7 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(7) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/settings.svg');
+  background: url('/img/editor.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -108,7 +108,7 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(8) > .menu__list-item-collapsible .menu__link::before {
   content: '';
-  background: url('/img/tool.svg');
+  background: url('/img/android.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -116,7 +116,39 @@
 
 .theme-doc-sidebar-item-category-level-1:nth-child(9) > .menu__list-item-collapsible .menu__link::before {
   content: '';
+  background: url('/img/data.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(10) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/settings.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(11) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/tool.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(12) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
   background: url('/img/execution.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(13) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/api.svg');
   width: 24px;
   height: 24px;
   margin-right: 12px;
@@ -158,7 +190,7 @@
 }
 
 .admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
-  display: none !important;
+  display: none;
 }
 
 .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
@@ -166,12 +198,12 @@
 }
 
 code {
-  color: #8264FF;
-  border-color: #D2D2FF;
+  color: #05b595;
+  border-color: #c9beb3;
 }
 
 [data-theme='dark'] code {
-  color: #B4A0FF;
+  color: #79fcc6;
   border-color: #3C3764;
   background: #3C3764;
 }
@@ -197,13 +229,13 @@ details {
 
 
 details div[class^='collapsibleContent'] {
-  border-top: 1px solid #7D6EFF;
-  color: #7D6EFF;
+  border-top: 1px solid #06c79a;
+  color: #06c79a;
 }
 
 details div[class^='collapsibleContent'] a {
-  color: #7D6EFF;
-  text-decoration-color: #7D6EFF;
+  color: #06c79a;
+  text-decoration-color: #06c79a;
 }
 
 summary {
@@ -231,7 +263,7 @@ img[alt=small-size] { width: 200px; }
   display: inline-block;
   height: 40px;
   line-height: 40px;
-  background: #7D6EFF;
+  background: #06c79a;
   font-size: 16px;
   color: white;
   font-weight: 500;
@@ -260,11 +292,11 @@ img[alt=small-size] { width: 200px; }
 }
 
 .lk-link:hover {
-  background: #8778FF;
+  background: #67f5a9;
 }
 
 .lk-link:active {
-  background: #7864FF;
+  background: #06c79a;
 }
 
 .alert--info, .alert--warning, .alert--success, .alert--secondary  {
@@ -316,13 +348,11 @@ div[class*='codeBlockContainer'] {
   box-shadow: none !important
 }
 
-
-
+/**
 span[class^='admonitionIcon'] {
   display: none !important;
 }
-
-
+**/
 
 table thead tr {
   border-width: 1px;
@@ -369,12 +399,12 @@ a[class*='cardContainer'] {
 }
 
 .filled-tabs li.tabs__item--active {
-  background: #7D6EFF;
+  background: #06c79a;
   color: white
 }
 
 .filled-tabs li{
-  border-bottom: 2px solid #7D6EFF;
+  border-bottom: 2px solid #06c79a;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -457,7 +487,7 @@ a[class*='cardContainer'] {
   width: 48px;
   height: 48px;
   border: 5px solid #FFF;
-  border-bottom-color: #7D6EFF;
+  border-bottom-color: #06c79a;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
