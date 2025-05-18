@@ -131,8 +131,8 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} ZennoDroid by ZennoLab`,
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        theme: prismThemes.oneLight,
+        darkTheme: prismThemes.shadesOfPurple,
         additionalLanguages: [
           'json',
           'java',

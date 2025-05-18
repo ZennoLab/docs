@@ -1,0 +1,150 @@
+---
+sidebar_position: 2
+title: Action API
+description: Управление устройствами.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+**`IDroidActionAPI Action`**  
+
+Данный интерфейс предоставляет доступ к управлению устройствами. Это включает в себя: выбор, запуск и остановку устройства. Его можно использовать для работы как с виртуальными, так и с реальными телефонами.  
+
+Повторяет логику работы кубика **Действия с устройством** для версий [**Lite/Pro**](../Android/ProLite/action) и [**Enterprise**](../Android/Enterprise/action).  
+_______________________________________________
+## Методы.  
+### Выбор устройства по индексу.
+```csharp
+void SelectByIndex(int index)  
+```
+*Параметры:*
+```csharp
+int index // Передаем индекс устройства, которое хотим выбрать.
+```  
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+action.SelectByIndex(0);
+```
+_______________________________________________
+### Выбор устройства по имени ADB.
+```csharp
+void SelectByName(string name)  
+```
+*Параметры:*
+```csharp
+string name // Передаем имя ADB устройства, которое хотим выбрать.
+```  
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+action.SelectByName("adbName");
+```
+_______________________________________________
+### Выбор устройства по его названию.
+```csharp
+void SelectByTitle(string title)  
+```
+*Параметры:*   
+```csharp
+string title // Передаем название устройства, которое хотим выбрать.
+```  
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+action.SelectByTitle("titleName");
+```
+_______________________________________________
+### Выбор случайного устройства из доступных.
+```csharp
+void SelectRandom()  
+``` 
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+action.SelectRandom();
+```
+_______________________________________________
+### Выбор случайного устройства по маске.
+```csharp
+void SelectRandom(string mask)  
+``` 
+*Параметры:*   
+```csharp
+string mask // Передаем значение нашей маски.  
+```  
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+action.SelectRandom("Samsung");
+```
+Допустим, что среди устройств у нас есть:  
+- *Pixel_7_Android14;*  
+- *Samsung_S23_Android14;*  
+- *Xiaomi_RedmiNote12_Android13;*  
+- *Samsung_A51_Android12;*  
+- *Google_Nexus5X_Android8;*  
+
+Тогда под маску `"Samsung"` попадут **Samsung_S23_Android14** и **Samsung_A51_Android12**. Так что после фильтрации метод случайно выберет одно из этих устройств.
+_______________________________________________
+### Запускаем устройство, которое ранее выбрали.
+```csharp
+void Start()  
+```
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+action.SelectByTitle("Name"); // Выбираем устройство.
+action.Start(); // Запускаем.
+```  
+_______________________________________________
+### Запускаем выбранное устройство с применением данных из нашего профиля.
+```csharp
+void Start(bool applyProfile)  
+```  
+Данные устройства (разрешение экрана, CPU и т.д.) будут браться из профиля ZennoDroid (вкладка **Текущий профиль**).  
+
+*Параметры:*   
+```csharp
+bool applyProfile 
+// Передаем True, если хотим использовать данные из профиля ZennoDroid.
+```  
+
+*Перегрузка:*   
+```csharp
+string captureScreenMethod // Передаем тип захвата изображения.  
+
+// Варианты: "h264", "mjpeg" или "off".
+```
+
+#### Пример.  
+```csharp
+//#1
+var action = instance.DroidInstance.Action;
+action.SelectByTitle("Name"); // Выбираем устройство.
+action.Start(true); // Запускаем с данными из профиля ZD
+
+//#2
+var action = instance.DroidInstance.Action;
+action.SelectByTitle("Name"); // Выбираем устройство.
+action.Start(true, "mjpeg"); // Запускаем c captureScreenMethod
+```
+_______________________________________________
+### Останавливаем выбранное запущенное устройство.
+```csharp
+void Stop()  
+```
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+action.SelectByTitle("Name");
+action.Stop();
+``` 

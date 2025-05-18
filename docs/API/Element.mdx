@@ -1,0 +1,121 @@
+---
+sidebar_position: 6
+title: Element API
+description: Выполнение различных операций с найденными элементами.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+**`IAndroidElementAPI`**  
+
+Интерфейс предоставляет доступ к управлению элементами пользовательского интерфейса в Android приложениях. Он используется для выполнения различных операций с элементами, найденными с помощью методов интерфейса [IAppiumDriverAPI](./AppiumDriver).  
+
+### Свойства.  
+- **Значение свойства id элемента**.
+```csharp
+string Id { get; }
+```  
+
+- **Значение свойства text элемента**.
+```csharp
+string Text { get; }
+```  
+
+#### Примеры:  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+var id = de.Id; // Получить значение свойства Id
+var text = de.Text; // Получить значение свойства text
+```
+_______________________________________________  
+## Методы.
+### Получает свойства элемента.
+```csharp
+string GetAttribute(string name)
+```   
+
+*Параметры:*   
+```csharp
+string name // Имя свойства, значение которого хотим получить.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+var bounds = de.GetAttribute("bounds"); // Получить значение свойства bounds
+var text = de.GetAttribute("text"); // Получить значение свойства text
+```
+_______________________________________________ 
+### Кликает на найденный элемент.
+```csharp
+void Click()
+```   
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.Click(); // Кликнуть по элементу
+```
+_______________________________________________ 
+### Очищает значение элемента (например, текст, если он введён).
+```csharp
+void Clear()
+```   
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.Clear(); // Очисть значение поля элемента
+```
+_______________________________________________ 
+### Вводит текст в поле элемента.
+```csharp
+void SendText(string text)
+```   
+
+*Параметры:*   
+```csharp
+string text  // Значение, которое хотим ввести.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.SendText("Привет мир!"); // Вставить текст в поле элемента
+```
+_______________________________________________ 
+### Вводит спецсимволов.
+```csharp
+void SendKeys(string text)
+```   
+
+*Параметры:*   
+```csharp
+string text  // Спецсимволы, которые хотим ввести.
+``` 

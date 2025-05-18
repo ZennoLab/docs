@@ -1,0 +1,491 @@
+---
+sidebar_position: 3
+title: App API
+description: Управление приложениями на устройстве.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+**`IDroidAppAPI App`**  
+
+Предоставляет доступ к управлению приложениями на устройстве. С помощью этого интерфейса можно устанавливать, удалять, открывать и закрывать приложения, а также выполнять другие действия с приложениями.  
+
+Данным методам часто требуется передача параметра *`packageName`* — имени приложения, что помогает идентифицировать и управлять нужным приложением. Для поиска нужного имени можно использовать инструмент [**Установленные приложения**](../Tools/Installed_App).  
+
+Повторяет логику работы кубика **Действия с приложением** для версий [**Lite/Pro**](../Android/ProLite/App) и [**Enterprise**](../Android/Enterprise/App).  
+_______________________________________________  
+## Свойства.  
+- **Имя открытого приложения**.
+```csharp
+string Top { get; }
+```  
+
+- **Уникальный идентификатор текущего процесса Android**.
+```csharp
+uint TopPid { get; }
+```  
+
+#### Примеры:  
+```csharp
+var app = instance.DroidInstance.App;
+
+string top = app.Top;
+uint TopPid = app.TopPid;
+```
+_______________________________________________  
+## Методы.  
+### Открывает приложение.
+```csharp
+void Open(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+```  
+
+*Перегрузка:*   
+```csharp
+string activityName  // Активити приложения, для запуска.  
+```
+
+#### Пример.  
+```csharp
+//#1
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+app.Open(packageName); // Открыть приложение
+
+//#2
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var activity = ".MainActivity"; // Активити хрома.(Не рабочий пример!)
+app.Open(packageName, activity); // Открыть приложение
+```
+_______________________________________________
+### Открывает приложение с нужным URL.
+```csharp
+void OpenUrl(string url, string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string url  // URL для запуска.
+string packageName // Имя приложения, для работы метода.
+```  
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var url = "http://ya.ru";
+app.OpenUrl(url, packageName); // Открыть Chrome и зайти на сайт ya.ru
+```
+_______________________________________________
+### Закрывает выбранное приложение.
+```csharp
+void Close(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+```  
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+app.Close(packageName); // Закрыть приложение
+```
+_______________________________________________
+### Закрывает все приложения.
+```csharp
+void CloseAll()  
+```   
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.CloseAll(); // Закрыть все приложения
+```
+_______________________________________________
+### Очищает данные приложения.
+```csharp
+void Clean(string packageName)  
+```   
+Получаем чистое приложение, как после установки.  
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+app.Clean(packageName); // Очистить данные приложения
+```
+_______________________________________________
+### Очищает кэш приложения.
+```csharp
+void CleanCache(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+app.CleanCache(packageName); // Очистить кэш приложения
+```
+_______________________________________________
+### Устанавливает приложение через APK.
+```csharp
+void InstallApk(string path)  
+```   
+
+*Параметры:*   
+```csharp
+string path // Путь к APK файлу.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var pathApk = @"\chrome.apk"; // Путь приложения
+app.InstallApk(pathApk); // Установить приложение
+```
+_______________________________________________
+### Проверяет, установлено ли приложение.
+```csharp
+bool IsInstalled(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var isApk = app.IsInstalled(packageName); // Проверка установлено ли приложение
+
+if (!isApk) // Если нет, то установим
+{
+    var pathApk = @"\chrome.apk"; // Путь приложения
+    app.InstallApk(pathApk); // Установить приложение
+}
+```
+_______________________________________________
+### Удаляет приложение.
+```csharp
+void Delete(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+app.Delete(packageName); // Удалить приложение
+```
+_______________________________________________
+### Получает UID приложения.
+```csharp
+string Uid(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var uid = app.Uid(packageName); // Получить uid приложения
+```
+_______________________________________________
+### Получает директорию хранения данных приложения.
+```csharp
+string DataDir(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var directory = app.DataDir(packageName); // Получить директорию хранения данных приложения.
+```
+_______________________________________________
+### Получает массив всех приложений на устройстве.
+```csharp
+string[] GetListPackages()  
+```   
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListPackages(); // Получить массив всех установленных приложений
+```
+_______________________________________________
+### Получает массив всех системных приложений на устройстве.
+```csharp
+string[] GetListSystemPackages()  
+```   
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListSystemPackages(); // Получить массив всех системных приложений
+```
+_______________________________________________
+### Получает массив всех пользовательских приложений на устройстве.
+```csharp
+string[] GetListUserPackages()  
+```   
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListUserPackages(); // Получить массив всех пользовательских приложений
+```
+_______________________________________________
+### Получает все уведомления (в формате JSON). 
+```csharp
+string GetAllNotifications()  
+```   
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var json = app.GetAllNotifications(); // Получить все уведомления
+project.Json.FromString(json); // Обработать Json
+```
+_______________________________________________
+### Получает уведомления только выбранного приложения (в формате JSON).
+```csharp
+string GetAppNotifications(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var json = app.GetAppNotifications(packageName); // Получить все уведомления
+project.Json.FromString(json); // Обработать Json
+```
+_______________________________________________
+### Очищает все полученные уведомления. 
+```csharp
+void ClearAllNotifications()  
+```   
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.ClearAllNotifications(); // Очистить все уведомления
+```
+_______________________________________________
+### Очищает уведомления только выбранного приложения.
+```csharp
+void ClearAppNotifications(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+app.ClearAppNotifications(packageName); // Очистить уведомления приложения
+```
+_______________________________________________
+### Делает резервную копию данных выбранного приложения.
+```csharp
+void BackupAppData(string packageName, string pathToBackup)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+string pathToBackup // Путь для сохранения копии.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var pathSave = @"/dir/bakups/name_bakup"; // Путь куда сохранить бэкап
+app.BackupAppData(packageName, pathSave); // Сделать бэкап
+```
+_______________________________________________
+### Восстанавливает данные приложения из резервной копии.
+```csharp
+void RestoreAppData(string packageName, string pathToBackup)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+string pathToBackup // Путь к резервной копии.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var pathLoad = @"/dir/bakups/name_bakup"; // Путь хранения бэкапа
+app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
+```
+_______________________________________________
+### Получает куки приложения.
+```csharp
+string GetCookie(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var cookies = app.GetCookie(packageName); // Получить куки приложения
+```
+_______________________________________________
+### Получает путь, по которому хранятся куки приложения.
+```csharp
+string GetCookiePath(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var pathCookie = app.GetCookiePath(packageName); // Получить путь хранения куки
+```
+_______________________________________________
+### Получает путь, по которому хранятся куки приложения.
+```csharp
+string GetCookiePath(string packageName)  
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var pathCookie = app.GetCookiePath(packageName); // Получить путь хранения куки
+```
+_______________________________________________
+### Удалить аккаунт.
+```csharp
+bool RemoveAccount(string name, string type)  
+```   
+
+*Параметры:*   
+```csharp
+string name // Имя аккаунта.
+string type // Тип аккаунта.
+``` 
+
+:::tip **Часто аккаунт хранится не в самом приложении, а в менеджере аккаунтов.**
+Например, у приложений Яндекс Go, Яндекс Почта и Яндекс Музыка общая система авторизации. Поэтому при удалении одного из приложений у двух других всё равно останется доступ к аккаунту.  
+
+В таких случаях нужно достать аккаунты из приложения и принудительно их.
+:::
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var pathCookie = app.GetCookiePath(packageName); // Получить путь хранения куки
+```
+_______________________________________________
+### Получает все аккаунты приложения (в формате JSON).
+```csharp
+string GetAccounts(string packageName) 
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+``` 
+
+*Перегрузка:*   
+```csharp
+string type  // Тип аккаунта.  
+```
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // Имя приложения
+var json = app.GetAccounts(packageName); // Получить аккаунты приложения
+```
+_______________________________________________
