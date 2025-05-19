@@ -53,3 +53,95 @@ proxy.SetProxy("https://login:pass@100.20.30.40:8080");
 proxy.SetProxy("login:pass@100.20.30.40:8080");
 ```
 _______________________________________________ 
+### Получить прокси проекта.
+```csharp
+string GetProxy()
+```    
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+var projectProxy = proxy.GetProxy(); // Получить прокси проекта
+```
+_______________________________________________ 
+### Очистить прокси.
+```csharp
+void ClearProxy()
+```    
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.ClearProxy(); // Очистить прокси проекта
+```
+_______________________________________________ 
+### Установить свой DNS сервер.
+```csharp
+void SetDnsServers(string dnsServers)
+```    
+
+*Параметры:*   
+```csharp
+string dnsServers // Значение DNS.
+``` 
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.SetDnsServers("1.1.1.1,8.8.4.4"); // Установить DNS сервер
+```
+_______________________________________________ 
+### Установить локальный адрес.
+```csharp
+void SetLocalAddress(string address)
+```    
+
+*Параметры:*   
+```csharp
+string address // Локальный адрес.
+``` 
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.SetLocalAddress("192.168.20.0"); // Установить Локальный адрес
+```
+_______________________________________________ 
+### Включить частный DNS.
+```csharp
+void EnablePrivateDns(string address)
+```    
+
+*Параметры:*   
+```csharp
+string address // Частный DNS.
+``` 
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.EnablePrivateDns("dns.google"); // Включить частный DNS
+```
+_______________________________________________ 
+### Отключить частный DNS.
+```csharp
+void DisablePrivateDns()
+```    
+
+*Параметры:*   
+```csharp
+string address // Частный DNS.
+``` 
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.DisablePrivateDns(); // Отключить частный DNS
+```
+_______________________________________________ 
