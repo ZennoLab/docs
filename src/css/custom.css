@@ -157,7 +157,7 @@
 .theme-doc-sidebar-item-link-level-1:nth-child(1n) .menu__link::before {
   content: '';
   background: url('/img/disclaimer.svg');
-  width: 50px;
+  width: 24px;
   height: 24px;
   margin-right: 12px;
 }
