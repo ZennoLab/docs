@@ -38,11 +38,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/zennodroid-docs:${{ steps.meta.outputs.image_tag }} .
+          docker build -t ghcr.io/zennolab/zennodroid-docs:${{ steps.meta.outputs.image_tag }} .
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/zennodroid-docs:${{ steps.meta.outputs.image_tag }}
+          docker push ghcr.io/zennolab/zennodroid-docs:${{ steps.meta.outputs.image_tag }}
 
   deploy-on-server:
     needs: build-and-push
@@ -57,7 +57,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             IMAGE_TAG=${{ needs.build-and-push.outputs.image_tag }}
-            IMAGE=ghcr.io/${{ github.repository_owner }}/zennodroid-docs:$IMAGE_TAG
+            IMAGE=ghcr.io/zennolab/zennodroid-docs:$IMAGE_TAG
             PROJECT_PATH=~/zennodroid-docs
 
             mkdir -p $PROJECT_PATH
@@ -83,7 +83,7 @@ jobs:
             # Удалить все образы, кроме текущего
             CURRENT_ID=$(docker inspect --format='{{.Image}}' zennodroid-docs)
             docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' \
-              | grep '^ghcr.io/${{ github.repository_owner }}/zennodroid-docs:' \
+              | grep '^ghcr.io/zennolab/zennodroid-docs:' \
               | grep -v $CURRENT_ID \
               | awk '{print $2}' \
               | xargs -r docker rmi
