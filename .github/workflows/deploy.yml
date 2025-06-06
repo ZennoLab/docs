@@ -63,7 +63,7 @@ jobs:
             mkdir -p $PROJECT_PATH
             cd $PROJECT_PATH
 
-            #echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
             # Сгенерировать docker-compose.yml с новым образом
             cat > docker-compose.yml <<EOF
