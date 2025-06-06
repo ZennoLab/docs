@@ -1,0 +1,89 @@
+﻿name: Build and Deploy Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    outputs:
+      image_tag: ${{ steps.meta.outputs.image_tag }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build static site
+        run: yarn build
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Define image tag
+        id: meta
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::7}
+          echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/zennodroid-docs:${{ steps.meta.outputs.image_tag }} .
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/zennodroid-docs:${{ steps.meta.outputs.image_tag }}
+
+  deploy-on-server:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to remote server via SSH and docker-compose
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            IMAGE_TAG=${{ needs.build-and-push.outputs.image_tag }}
+            IMAGE=ghcr.io/${{ github.repository_owner }}/zennodroid-docs:$IMAGE_TAG
+            PROJECT_PATH=~/zennodroid-docs
+
+            mkdir -p $PROJECT_PATH
+            cd $PROJECT_PATH
+
+            #echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            # Сгенерировать docker-compose.yml с новым образом
+            cat > docker-compose.yml <<EOF
+            version: '3.8'
+            services:
+              docs:
+                image: $IMAGE
+                container_name: zennodroid-docs
+                ports:
+                  - "8080:80"
+                restart: always
+            EOF
+
+            docker-compose pull
+            docker-compose up -d
+
+            # Удалить все образы, кроме текущего
+            CURRENT_ID=$(docker inspect --format='{{.Image}}' zennodroid-docs)
+            docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' \
+              | grep '^ghcr.io/${{ github.repository_owner }}/zennodroid-docs:' \
+              | grep -v $CURRENT_ID \
+              | awk '{print $2}' \
+              | xargs -r docker rmi
