@@ -37,7 +37,10 @@ jobs:
 
       - name: Deploy with rsync
         run: |
-          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY" ./build/ $USER@$HOST:/var/www/zennodroid-docs
+          echo "$PRIVATE_KEY" > key.pem
+          chmod 600 key.pem
+          rsync -avz --delete -e "ssh -i key.pem -o StrictHostKeyChecking=no" ./build/ $USER@$HOST:/var/www/zennodroid-docs
+          rm key.pem
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           USER: ${{ secrets.SERVER_USER }}
