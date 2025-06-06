@@ -78,4 +78,6 @@ jobs:
             EOF
 
             docker-compose pull
-            docker-compose up -d
+            docker-compose stop docs
+            docker-compose rm -f docs
+            docker-compose up -d docs
