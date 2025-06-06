@@ -6,11 +6,8 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    outputs:
-      image_tag: ${{ steps.meta.outputs.image_tag }}
 
     steps:
       - name: Checkout code
@@ -27,57 +24,28 @@ jobs:
       - name: Build static site
         run: yarn build
 
-      - name: Log in to GHCR
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Define image tag
-        id: meta
-        run: |
-          IMAGE_TAG=${GITHUB_SHA::7}
-          echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
-
-      - name: Build Docker image
-        run: |
-          docker build -t ghcr.io/zennolab/zennodroid-docs:${{ steps.meta.outputs.image_tag }} .
-
-      - name: Push Docker image
-        run: |
-          docker push ghcr.io/zennolab/zennodroid-docs:${{ steps.meta.outputs.image_tag }}
-
-  deploy-on-server:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Deploy to remote server via SSH and docker-compose
+      - name: Copy static files to server via rsync
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            IMAGE_TAG=${{ needs.build-and-push.outputs.image_tag }}
-            IMAGE=ghcr.io/zennolab/zennodroid-docs:$IMAGE_TAG
-            PROJECT_PATH=~/zennodroid-docs
+          script: mkdir -p /var/www/zennodroid-docs
 
-            mkdir -p $PROJECT_PATH
-            cd $PROJECT_PATH
+      - name: Upload build directory via rsync
+        uses: burnett01/rsync-deployments@v2.0.0
+        with:
+          switches: -avz --delete
+          path: build/
+          remote_path: /var/www/zennodroid-docs
+          remote_host: ${{ secrets.SERVER_HOST }}
+          remote_user: ${{ secrets.SERVER_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-            echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-            # Сгенерировать docker-compose.yml с новым образом
-            cat > docker-compose.yml <<EOF
-            version: '3.8'
-            services:
-              docs:
-                image: $IMAGE
-                container_name: zennodroid-docs
-                ports:
-                  - "8080:80"
-                restart: always
-            EOF
-
-            docker-compose pull
-            docker-compose stop docs
-            docker-compose rm -f docs
-            docker-compose up -d docs
+      - name: Reload Angie
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: sudo systemctl reload angie
