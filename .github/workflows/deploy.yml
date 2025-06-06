@@ -79,11 +79,3 @@ jobs:
 
             docker-compose pull
             docker-compose up -d
-
-            # Удалить все образы, кроме текущего
-            CURRENT_ID=$(docker inspect --format='{{.Image}}' zennodroid-docs)
-            docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' \
-              | grep '^ghcr.io/zennolab/zennodroid-docs:' \
-              | grep -v $CURRENT_ID \
-              | awk '{print $2}' \
-              | xargs -r docker rmi
