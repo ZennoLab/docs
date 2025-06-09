@@ -16,13 +16,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20.18.1'
+
+      - name: Install Russian locale
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y locales
+          sudo locale-gen ru_RU.UTF-8
+          sudo update-locale LANG=ru_RU.UTF-8
 
       - name: Install dependencies
-        run: |
-          export LANG=ru_RU.UTF-8
-          export LC_ALL=ru_RU.UTF-8
-          yarn install
+        run: yarn install
 
       - name: Build static site
         run: |
