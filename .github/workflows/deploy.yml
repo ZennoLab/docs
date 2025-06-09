@@ -19,10 +19,16 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          export LANG=ru_RU.UTF-8
+          export LC_ALL=ru_RU.UTF-8
+          yarn install
 
       - name: Build static site
-        run: yarn build
+        run: |
+          export LANG=ru_RU.UTF-8
+          export LC_ALL=ru_RU.UTF-8
+          yarn build
 
       - name: Upload static files via rsync
         uses: appleboy/ssh-action@v0.1.10
