@@ -41,7 +41,12 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-        },
+          /*routeBasePath: '/',
+          showLastUpdateTime: true,
+            return locale === 'ru'
+              ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/${versionDocsDirPath}/${docPath}`
+              : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;*/
+          },
         blog: {
           showReadingTime: true,
         },
@@ -68,12 +73,16 @@ const config = {
         },
         items: [
           {
+            type: 'search',
+            position: 'left', 
+          },
+          {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
-            position: 'left',
+            position: 'right',
             label: 'Документация',
           },
-          {to: '/blog', label: 'Блог', position: 'left'},
+          {to: '/blog', label: 'Блог', position: 'right'},
           {type: 'localeDropdown', position: 'right'},
           {
             href: 'https://zennolab.com/en/products/zennodroid/',
@@ -81,6 +90,14 @@ const config = {
             position: 'right',
           },
         ],
+      },
+      algolia: {
+        appId: '2BMNH9NBSS',
+        apiKey: 'a9d097920f0ecd9668a0e40e61329caa',
+        indexName: 'zennodroid-pages',
+        // Опциональные настройки
+        contextualSearch: true,
+        searchPagePath: false,
       },
       footer: {
         style: 'dark',

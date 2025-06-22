@@ -483,6 +483,21 @@ a[class*='cardContainer'] {
   background: #1C202D;
 }
 
+/* Для светлой темы */
+[data-theme='light'] .DocSearch {
+  --docsearch-primary-color: #28a83e;
+  --docsearch-text-color: #1c1e21;
+  --docsearch-modal-background: #ffffff;
+}
+
+/* Для темной темы */  
+[data-theme='dark'] .DocSearch {
+  --docsearch-primary-color: #07e594;
+  --docsearch-text-color: #f1f3f4;
+  --docsearch-modal-background: #1b1b1d;
+  --docsearch-container-background: rgba(47, 55, 69, 0.7);
+}
+
 .loader {
   width: 48px;
   height: 48px;
