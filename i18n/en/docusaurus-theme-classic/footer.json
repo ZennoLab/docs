@@ -1,0 +1,46 @@
+{
+  "link.title.Избранные статьи": {
+    "message": "Featured Articles",
+    "description": "The title of the footer links column with title=Избранные статьи in the footer"
+  },
+  "link.title.Больше": {
+    "message": "More",
+    "description": "The title of the footer links column with title=Больше in the footer"
+  },
+  "link.item.label.Основные понятия": {
+    "message": "Basic Terms",
+    "description": "The label of footer link with label=Основные понятия linking to /docs/get-started/BasicTerms"
+  },
+  "link.item.label.Подключение реального устройства (ZDE)": {
+    "message": "Real Device Connection (ZDE)",
+    "description": "The label of footer link with label=Подключение реального устройства (ZDE) linking to /docs/get-started/Connection"
+  },
+  "link.item.label.Интерфейс ProjectMaker": {
+    "message": "ProjectMaker Interface",
+    "description": "The label of footer link with label=Интерфейс ProjectMaker linking to /docs/category/интерфейс"
+  },
+  "link.item.label.Логические операции": {
+    "message": "Logical Operations",
+    "description": "The label of footer link with label=Логические операции linking to /docs/category/логика-в-zd"
+  },
+  "link.item.label.Нюансы работы с Android": {
+    "message": "Android Specifics",
+    "description": "The label of footer link with label=Нюансы работы с Android linking to /docs/category/android"
+  },
+  "link.item.label.Блог": {
+    "message": "Blog",
+    "description": "The label of footer link with label=Блог linking to /blog"
+  },
+  "link.item.label.Другие продукты ZennoLab": {
+    "message": "Other ZennoLab Products",
+    "description": "The label of footer link with label=Другие продукты ZennoLab linking to https://zennolab.com"
+  },
+  "copyright": {
+    "message": "Copyright © 2024 ZennoDroid by ZennoLab",
+    "description": "The footer copyright"
+  },
+  "link.item.label.ZennoDroid": {
+    "message": "ZennoDroid",
+    "description": "The label of footer link with label=ZennoDroid linking to https://zennolab.com/en/products/zennodroid/"
+  }
+}

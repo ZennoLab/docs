@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "ZennoDroid Docs",
+    "description": "The title in the navbar"
+  },
+  "item.label.Документация": {
+    "message": "Documentation",
+    "description": "Navbar item with label Документация"
+  },
+  "item.label.Блог": {
+    "message": "Blog",
+    "description": "Navbar item with label Блог"
+  },
+  "logo.alt": {
+    "message": "My Site Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.ZennoDroid": {
+    "message": "ZennoDroid",
+    "description": "Navbar item with label ZennoDroid"
+  }
+}

@@ -53,7 +53,7 @@ ZennoPoster позволяет автоматизировать работу с 
 
 Здесь необходимо указать путь к файлу, из которого будут считаны данные.
 
-Можно использовать макросы [переменных](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922").
+Можно использовать макросы [переменных](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922).
 
 #### Удалить файл после чтение
 
@@ -71,7 +71,7 @@ ZennoPoster позволяет автоматизировать работу с 
 
 Текст, который будет записан в файл.
 
-Можно использовать макросы [переменных](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922").
+Можно использовать макросы [переменных](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922).
 
 #### Дописать в файл
 
@@ -81,7 +81,7 @@ ZennoPoster позволяет автоматизировать работу с 
 
 В конец Вашего текста после внесения оного в файл будет добавлен перенос строки - \r\n . Необходимо для более корректной записи нескольких строк данных в файл.
 
-При работе в многопоточном режиме рекомендуется использовать [Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") и записывать строки в файл с использованием экшена [Операции над списком](/wiki/spaces/RU/pages/534085798 "/wiki/spaces/RU/pages/534085798")
+При работе в многопоточном режиме рекомендуется использовать [Список](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053375) и записывать строки в файл с использованием экшена [Операции над списком](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085798)
 
 * * *
 
@@ -130,17 +130,17 @@ ZennoPoster позволяет автоматизировать работу с 
 
 ![image-20200804-151938](./assets/Files/Files_pic6.png)
 
-Далее, создаем экшен **“Random”** для генерации имени файла, подробнее про Random здесь: [Произвольные числа и строки (Random/Рандом)](/wiki/spaces/RU/pages/534315050 "/wiki/spaces/RU/pages/534315050") 
+Далее, создаем экшен **"Random"** для генерации имени файла, подробнее про Random здесь: [Произвольные числа и строки (Random/Рандом)](/wiki/spaces/RU/pages/534315050 "/wiki/spaces/RU/pages/534315050") 
 
 ![image-20200804-152317](./assets/Files/Files_pic7.png)
 
-Далее, создаем экшен **“Файлы”** и указываем опцию **“Переместить”**. 
+Далее, создаем экшен **"Файлы"** и указываем опцию **"Переместить"**. 
 
 ![image-20200804-152355](./assets/Files/Files_pic8.png)
 
-В качестве “Пути к файлу” указываем: ``\{ -Variable.PicPath- \\}``;
+В качестве "Пути к файлу" указываем: ``\{ -Variable.PicPath- \\}``;
 
-В качестве “Нового пути” ```\{ -Project.Directory- \\}``Полицейский\`\{ -Variable.name_file- \\}`.jpg`
+В качестве "Нового пути" ```\{ -Project.Directory- \\}```Полицейский\`\{ -Variable.name_file- \\}`.jpg`
 
 ```\{ -Project.Directory- \\}``` - макрос, при указании которого будет использована директория, где находится проект (подробнее об этом и других макросах можно прочитать [здесь](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872#%D0%9E%D0%BA%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872#%D0%9E%D0%BA%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5")).
 
@@ -148,14 +148,14 @@ ZennoPoster позволяет автоматизировать работу с 
 
 При работе с изображениями следует указывать то же расширение файла, что и было при загрузке.
 
-Для получения расширения файла, можете воспользоваться экшеном [Обработка текста](/wiki/spaces/RU/pages/488865793 "/wiki/spaces/RU/pages/488865793") и регулярными выражениями, подробнее: [Тестер регулярных выражений](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111") 
+Для получения расширения файла, можете воспользоваться экшеном [Обработка текста](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793) и регулярными выражениями, подробнее: [Тестер регулярных выражений](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111) 
 
 * * *
 
 ## Полезные ссылки
 
-- [Директории](/wiki/spaces/RU/pages/534052965 "/wiki/spaces/RU/pages/534052965")
-- [Тестер регулярных выражений](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
-- [Обработка текста](/wiki/spaces/RU/pages/488865793 "/wiki/spaces/RU/pages/488865793")
-- [Работа с переменными](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922")
-- [Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")
+- [Директории](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052965)
+- [Тестер регулярных выражений](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111)
+- [Обработка текста](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793)
+- [Работа с переменными](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922)
+- [Список](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053375)
