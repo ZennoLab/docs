@@ -1,0 +1,473 @@
+---
+sidebar_position: 3
+title: App API
+description: Manage apps on your device.
+---
+:::info Please read the [*Terms of Use for materials on this resource*](../Disclaimer).
+:::
+_______________________________________________  
+## Description  
+**`IDroidAppAPI App`**  
+
+Gives you access to manage apps on your device. With this interface you can install, uninstall, open, and close apps, as well as perform other app-related actions.  
+
+Most methods often need a *`packageName`* parameter — this is the app’s name, which helps to identify and manage the right app. To find an app’s package name, you can use the [**Installed Apps**](../Tools/Installed_App) tool.
+
+This follows the same logic as the **App Actions** block for the [**Lite/Pro**](../Android/ProLite/App) and [**Enterprise**](../Android/Enterprise/App) versions.
+_______________________________________________  
+## Properties  
+- **Name of the current open app**.
+```csharp
+string Top { get; }
+```  
+
+- **Unique ID of the active Android process**.
+```csharp
+uint TopPid { get; }
+```  
+
+#### Examples:  
+```csharp
+var app = instance.DroidInstance.App;
+
+string top = app.Top;
+uint TopPid = app.TopPid;
+```
+_______________________________________________  
+## Methods  
+### Open an app
+```csharp
+void Open(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+```  
+
+*Overload:*   
+```csharp
+string activityName  // Activity to launch for the app.
+```
+
+#### Example  
+```csharp
+//#1
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+app.Open(packageName); // Open the app
+
+//#2
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var activity = ".MainActivity"; // Chrome’s main activity (not a working example!)
+app.Open(packageName, activity); // Open app with specific activity
+```
+_______________________________________________
+### Open an app with a specific URL
+```csharp
+void OpenUrl(string url, string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string url  // URL to open.
+string packageName // App name for this method to work.
+```  
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var url = "http://ya.ru";
+app.OpenUrl(url, packageName); // Open Chrome and go to ya.ru
+```
+_______________________________________________
+### Close a specific app
+```csharp
+void Close(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+```  
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+app.Close(packageName); // Close the app
+```
+_______________________________________________
+### Close all apps
+```csharp
+void CloseAll()  
+```   
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.CloseAll(); // Close all apps
+```
+_______________________________________________
+### Clear app data
+```csharp
+void Clean(string packageName)  
+```   
+This makes the app as fresh as after installation.
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+app.Clean(packageName); // Clear app data
+```
+_______________________________________________
+### Clear app cache
+```csharp
+void CleanCache(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+app.CleanCache(packageName); // Clear app cache
+```
+_______________________________________________
+### Install an app using an APK
+```csharp
+void InstallApk(string path)  
+```   
+
+*Parameters:*   
+```csharp
+string path // Path to the APK file.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var pathApk = @"\chrome.apk"; // APK file path
+app.InstallApk(pathApk); // Install the app
+```
+_______________________________________________
+### Check if an app is installed
+```csharp
+bool IsInstalled(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var isApk = app.IsInstalled(packageName); // Check if app is installed
+
+if (!isApk) // If not, install it
+{
+    var pathApk = @"\chrome.apk"; // APK file path
+    app.InstallApk(pathApk); // Install the app
+}
+```
+_______________________________________________
+### Uninstall an app
+```csharp
+void Delete(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+app.Delete(packageName); // Uninstall the app
+```
+_______________________________________________
+### Get app’s UID
+```csharp
+string Uid(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var uid = app.Uid(packageName); // Get app UID
+```
+_______________________________________________
+### Get app data directory
+```csharp
+string DataDir(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var directory = app.DataDir(packageName); // Get app data directory
+```
+_______________________________________________
+### Get a list of all apps on the device
+```csharp
+string[] GetListPackages()  
+```   
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListPackages(); // Get list of all installed apps
+```
+_______________________________________________
+### Get a list of all system apps on the device
+```csharp
+string[] GetListSystemPackages()  
+```   
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListSystemPackages(); // Get list of all system apps
+```
+_______________________________________________
+### Get a list of all user-installed apps on the device
+```csharp
+string[] GetListUserPackages()  
+```   
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListUserPackages(); // Get list of all user-installed apps
+```
+_______________________________________________
+### Get all notifications (in JSON format)
+```csharp
+string GetAllNotifications()  
+```   
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var json = app.GetAllNotifications(); // Get all notifications
+project.Json.FromString(json); // Process JSON
+```
+_______________________________________________
+### Get notifications only for the selected app (in JSON format)
+```csharp
+string GetAppNotifications(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var json = app.GetAppNotifications(packageName); // Get all notifications for the app
+project.Json.FromString(json); // Process JSON
+```
+_______________________________________________
+### Clear all received notifications 
+```csharp
+void ClearAllNotifications()  
+```   
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.ClearAllNotifications(); // Clear all notifications
+```
+_______________________________________________
+### Clear notifications only for the selected app
+```csharp
+void ClearAppNotifications(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+app.ClearAppNotifications(packageName); // Clear notifications for the app
+```
+_______________________________________________
+### Back up the data of a selected app
+```csharp
+void BackupAppData(string packageName, string pathToBackup)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+string pathToBackup // Path to save the backup.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var pathSave = @"/dir/bakups/name_bakup"; // Where to save the backup
+app.BackupAppData(packageName, pathSave); // Make a backup
+```
+_______________________________________________
+### Restore app data from a backup
+```csharp
+void RestoreAppData(string packageName, string pathToBackup)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+string pathToBackup // Path to the backup.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var pathLoad = @"/dir/bakups/name_bakup"; // Backup storage path
+app.RestoreAppData(packageName, pathLoad); // Load the backup
+```
+_______________________________________________
+### Get app cookies
+```csharp
+string GetCookie(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var cookies = app.GetCookie(packageName); // Get app cookies
+```
+_______________________________________________
+### Get the path where app cookies are stored
+```csharp
+string GetCookiePath(string packageName)  
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
+```
+_______________________________________________
+### Delete an account
+```csharp
+bool RemoveAccount(string name, string type)  
+```   
+
+*Parameters:*   
+```csharp
+string name // Account name.
+string type // Account type.
+``` 
+
+:::tip **Often, an account is stored not in the app itself, but in the account manager.**
+For example, Yandex Go, Yandex Mail, and Yandex Music apps use a shared auth system. So, if you delete one of these apps, the other two can still access the account.
+
+In these cases, you need to get the accounts from the app and force remove them.
+:::
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
+```
+_______________________________________________
+### Get all app accounts (in JSON format)
+```csharp
+string GetAccounts(string packageName) 
+```   
+
+*Parameters:*   
+```csharp
+string packageName // App name for this method to work.
+``` 
+
+*Overload:*   
+```csharp
+string type  // Account type.
+```
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.google.chrome"; // App name
+var json = app.GetAccounts(packageName); // Get app accounts
+```
+_______________________________________________

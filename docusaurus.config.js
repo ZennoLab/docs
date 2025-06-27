@@ -8,8 +8,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Документация ZennoDroid',
-  tagline: 'Простейший способ автоматизировать приложения для Android без знания кода',
+  title: 'Документация ZennoLab',
+  tagline: 'Простейший способ автоматизировать работу без знания кода',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -41,6 +41,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          path: 'docs/ZennoDroid',
+          routeBasePath: 'zennodroid',
           /*routeBasePath: '/',
           showLastUpdateTime: true,
             return locale === 'ru'
@@ -60,15 +62,27 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'zennoposter',
+        path: 'docs/ZennoPoster',
+        routeBasePath: 'zennoposter',
+        sidebarPath: './sidebars-zennoposter.js',
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'ZennoDroid Docs',
+        title: 'ZennoLab Docs',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'ZennoLab Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -80,13 +94,21 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'right',
-            label: 'Документация',
+            label: 'ZennoDroid',
+            docsPluginId: 'default',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennoposterSidebar',
+            position: 'right',
+            label: 'ZennoPoster',
+            docsPluginId: 'zennoposter',
           },
           {to: '/blog', label: 'Блог', position: 'right'},
           {type: 'localeDropdown', position: 'right'},
           {
-            href: 'https://zennolab.com/en/products/zennodroid/',
-            label: 'ZennoDroid',
+            href: 'https://zennolab.com',
+            label: 'ZennoLab',
             position: 'right',
           },
         ],
@@ -103,27 +125,28 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Избранные статьи',
+            title: 'ZennoDroid',
             items: [
               {
                 label: 'Основные понятия',
-                to: '/docs/get-started/BasicTerms',
+                to: '/zennodroid/get-started/BasicTerms',
               },
               {
                 label: 'Подключение реального устройства (ZDE)',
-                to: '/docs/get-started/Connection',
+                to: '/zennodroid/get-started/Connection',
               },
               {
                 label: 'Интерфейс ProjectMaker',
-                to: '/docs/category/интерфейс',
+                to: '/zennodroid/category/интерфейс',
               },
+            ],
+          },
+          {
+            title: 'ZennoPoster',
+            items: [
               {
-                label: 'Логические операции',
-                to: '/docs/category/логика-в-zd',
-              },
-              {
-                label: 'Нюансы работы с Android',
-                to: '/docs/category/android',
+                label: 'Основы',
+                to: '/zennoposter/basics/getting-started',
               },
             ],
           },
@@ -135,17 +158,13 @@ const config = {
                 to: '/blog',
               },
               {
-                label: 'ZennoDroid',
-                href: 'https://zennolab.com/en/products/zennodroid/',
-              },
-              {
-                label: 'Другие продукты ZennoLab',
+                label: 'ZennoLab',
                 href: 'https://zennolab.com',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} ZennoDroid by ZennoLab`,
+        copyright: `Copyright © ${new Date().getFullYear()} ZennoLab`,
       },
       prism: {
         theme: prismThemes.oneLight,
