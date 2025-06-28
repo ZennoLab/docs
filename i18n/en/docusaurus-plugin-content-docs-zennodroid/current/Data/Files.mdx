@@ -1,93 +1,92 @@
 ---
 sidebar_position: 2
-title: Файлы
-description: Автоматизация работы с файлами.
+title: Files
+description: Automating file management.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info Please read the [*Resource Use Policy*](../Disclaimer).
 :::
 _______________________________________________  
-## Описание.  
-В ZennoDroid вы можете автоматизировать работу с файлами. Например:  
-- *вставлять заготовленный текст из файла при постинге на форумах, социальных сетях и мессенджерах;*  
-- *добавлять описание для объявлений на маркетплейсах и прочих сайтах;*  
-- *отправлять массовые комментарии и сообщения;*  
-- *записывать в файл данные при парсинге;*  
-- *вести подробное логирование с записью в файл;*  
-- *удаление и перемещение ненужных файлов.*  
+## Description  
+In ZennoDroid, you can automate working with files. For example:
+- insert pre-written text from a file when posting on forums, social networks, and messengers;
+- add descriptions for ads on marketplaces and other websites;
+- send mass comments and messages;
+- save data to a file while parsing;
+- keep detailed logs by writing them to a file;
+- delete or move unnecessary files.
 _______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Данные → Файлы**.  
+## How to Add to Your Project  
+Using the context menu: **Add Action → Data → Files**.
 
-![Добавить в проект](./assets/Files/Files_pic1.png) 
+![Add to project](./assets/Files/Files_pic1.png) 
 _______________________________________________ 
-## Доступные действия.  
-![Доступные действия](./assets/Files/Files_pic2.png)  
+## Available Actions  
+![Available actions](./assets/Files/Files_pic2.png)  
 _______________________________________________  
-### Взять текст.  
-![Взять текст](./assets/Files/Files_pic3.png)  
+### Get Text  
+![Get text](./assets/Files/Files_pic3.png)  
 
-Позволяет скопировать текст из файла и записать его в переменную.  
+Lets you copy text from a file and save it to a variable.
 
-Доступна опция удаления файла после выполнения экшена.  
+You can also choose to delete the file after the action is done.
 _______________________________________________ 
-### Записать текст.  
-![Записать текст](./assets/Files/Files_pic4.png)  
+### Write Text  
+![Write text](./assets/Files/Files_pic4.png)  
 
-Это действие записывает указанный текст из поля в выбранный файл.  
+This action writes the specified field text to the chosen file.
 
-#### Дописать в файл.  
-Если поставить здесь галочку, то новый текст будет **дописан** в файл. Тогда как без нее, мы **полностью перезапишем** текст в файле.  
+#### Append to File  
+If this box is checked, the new text will be **added** to the file. If not, the file will be **completely overwritten**.
 
-#### Записать перенос строки в конец.  
-Эта опция добавляет в конец текста перенос строки с помощью `\r\n`. Это позволяет корректно записывать несколько строк данных в файл.  
+#### Write Line Break at the End  
+This adds a line break (`\r\n`) to the end of the text. It helps to properly save multiple lines of data to a file.
 _______________________________________________ 
-### Переместить.  
-Перемещение файла в указанную директорию. Нужно указать текущий полный путь к существующему файлу, а затем новые путь и имя для него после переноса.  
+### Move  
+Moves a file to the specified directory. You need to provide the current full path to the file, and then the new path and name after moving.
 
-![Переместить](./assets/Files/Files_pic5.png)  
+![Move](./assets/Files/Files_pic5.png)  
 
-Этим действием также можно просто переименовать файл.  
+You can also use this action to simply rename a file.
 _______________________________________________ 
-### Проверить существование.  
-Позволяет узнать, существует ли файл по указанному пути.  
-- **Результат**. Если файл существует, то экшен выйдет по зеленому пути, если отсутствует, то по красному.  
-- **Таймаут ожидания**. Указываем время в секундах, которое экщен будет ждать появления файла.  
+### Check Existence  
+Lets you check if a file exists at a given path.
+- **Result:** If the file exists, the action will follow the green route; if not, it’ll follow the red route.
+- **Timeout:** Enter the number of seconds to wait for the file to appear.
 _______________________________________________ 
-### Скопировать.  
-Работает, как и **Переместить**, но без удаления исходного файла.  
+### Copy  
+Works just like **Move**, but the original file remains unchanged.
 _______________________________________________ 
-### Удалить.  
-Этим действием вы можете удалить файл по указанному пути.  
+### Delete  
+Lets you delete a file at the specified path.
 _______________________________________________ 
-## Пример использования.  
-**Скачаем картинку с сайта vk.com, переименуем ее и переместим в нужную папку.**  
+## Example  
+**Let’s download an image from vk.com, rename it, and move it to the needed folder.**
 
-Представим, что мы уже получили [**прямую ссылку на картинку**](https://sun9-40.userapi.com/impf/c848528/v848528810/1bd139/xdhmnuXGxLg.jpg?size=1200x800&quality=96&sign=d821afb870ed03538e551524acb1af31&type=album). Теперь, используя ***Get-запрос***, скачаем ее на устройство. В качестве переменной указываем `PicPath`. В ней появится прямой путь к файлу после выполнения экшена.  
+Say, you’ve already got the [**direct link to the picture**](https://sun9-40.userapi.com/impf/c848528/v848528810/1bd139/xdhmnuXGxLg.jpg?size=1200x800&quality=96&sign=d821afb870ed03538e551524acb1af31&type=album). Now, using a ***GET request***, you’ll download it to your device. Use the variable `PicPath`—after the action runs, it’ll contain the direct file path.
 
-![Get-запрос](./assets/Files/Files_pic6.png)  
+![GET request](./assets/Files/Files_pic6.png)  
 
-После этого добавляем экшен [**Random**](./Random) для генерации имени файла.  
+Next, add the [**Random**](./Random) action to generate the file name.
 
 ![Random](./assets/Files/Files_pic7.png)  
 
-Далее создаем экшен **Файлы** с опцией *Переместить*.  
+Then, create a **Files** action with the *Move* option.
 
-![Файлы](./assets/Files/Files_pic8.png)  
+![Files](./assets/Files/Files_pic8.png)  
 
-**Путь к файлу:** `{-Variable.PicPath-}`   
-**Новый путь:** `{-Project.Directory-}Деревенский_Котик\{-Variable.name_file-}.jpg`  
+**File path:** `{-Variable.PicPath-}`  
+**New path:** `{-Project.Directory-}Village_Kitten\{-Variable.name_file-}.jpg`  
 
-:::tip **`{-Project.Directory-}`.**  
-Это макрос для указания директории, в которой находится проект.
+:::tip **`{-Project.Directory-}`**
+This is a macro to specify the directory where your project is located.
 :::  
 
-После выполнения этого действия файл переместится в нужную папку, а вы сможете приступить к загрузке следующей картинки.  
+After this action, the file will be moved to the right folder, and you can move on to uploading the next image.
 
-:::warning **Расширение файла.**  
-При работе с изображениями следует указывать то же расширение файла, что и было при загрузке.
+:::warning **File extension**
+When working with images, make sure to use the same file extension as when you downloaded it.
 :::
 _______________________________________________  
-## Полезные ссылки.   
-- [**Обработка переменных**](./WorkWithVariables).  
-- [**Окно лога**](../pm/Interface/Log_window).   
-
+## Useful Links  
+- [**Working with variables**](./WorkWithVariables)  
+- [**Log window**](../pm/Interface/Log_window)

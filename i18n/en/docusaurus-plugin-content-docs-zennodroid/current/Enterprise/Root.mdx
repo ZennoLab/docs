@@ -1,132 +1,133 @@
 ---
 sidebar_position: 2
-title: Установка Root-прав
-description: Как получить расширенный доступ к телефону
+title: Root Access Installation
+description: How to get advanced access to your phone
 ---
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of use for this resource*](../Disclaimer).**
 :::
 _______________________________________________
-## Что такое Root-права и зачем они нужны?  
-![Что такое Root-права](./assets/Root/Root_pic5.jpg) 
+## What is Root Access and Why Do You Need It?
+![What is Root](./assets/Root/Root_pic5.jpg)
 
-Простыми словами — это права суперпользователя, с которыми приложения могут использовать команду `su` и обходить стандартные ограничения Android, получать доступ к системным файлам и папкам, внедряться в память других процессов и так далее.  
+To put it simply, root access gives you superuser rights, letting apps use the `su` command to bypass Android’s normal restrictions, access system files and folders, inject themselves into other processes’ memory, and more.
 
-Зачастую, в схеме root имеются 2 части — **сервер**, который выполняет основную программную работу, и **клиент**, который необходим для взаимодействия пользователя с первым, позволяя гибко настраивать систему выдачи этих самых прав.  
+Usually, the root setup has two parts — a **server** that does the behind-the-scenes work, and a **client** that lets you interact with the server, giving you flexible control over root permissions.
 
-Но, как говорится, с великой силой приходит великая ответственность. При неумелом использовании Root-права могут нанести вред системе и вовсе превратить смартфон в «кирпич». 
+But as the saying goes, with great power comes great responsibility. If you use root carelessly, you can damage your system or even turn your phone into a “brick.”
 
-#### Когда не нужно получать Root?
-- Ваш телефон на гарантии. 
-- Вы не можете сформулировать, зачем они вам нужны.  
-- Вы работаете на телефоне с информацией содержащую банковскую/государственную/иную тайну.  
-- У вас нет возможности сделать полный backup всех разделов системы, равно как и нет возможности восстановить устройство в случае утраты работоспособности из-за root-прав.  
+#### When Should You NOT Root Your Phone?
+- If your phone is still under warranty.
+- If you don’t have a clear reason for needing root.
+- If you use your phone for sensitive data like banking, government, or confidential info.
+- If you can’t make a full backup of your system partitions, or you wouldn’t be able to recover your device if something goes wrong during rooting.
 _________________
-## ADB и как с ним работать?  
-Это инструмент, который позволяет вам управлять устройством Android с компьютера, чтобы вы могли устанавливать и удалять приложения, передавать файлы, смотреть логи.  
+## ADB and How to Use It
+ADB is a tool that lets you control your Android device from your computer. You can install and uninstall apps, transfer files, and view logs.
 
-1. Прежде всего, нам нужно установить Android SDK на свой компьютер [**с официального сайт**](https://developer.android.com/tools/releases/platform-tools).  
+1. First, install the Android SDK tools on your computer from the [**official website**](https://developer.android.com/tools/releases/platform-tools).
 
-![Android SDK](./assets/Root/Root_pic1.png)  
+![Android SDK](./assets/Root/Root_pic1.png)
 
-2. Затем включаем на телефоне режим разработчика: **"Настройки → Система → О телефоне → нажимаем на Номер сборки несколько раз подряд**. Теперь в подразделе «**Система**» появится новый пункт «**Для разработчиков**». Находим «**Отладка по USB** (USB Debugging)» и включаем ее. 
+2. Then, enable developer mode on your phone: **Settings → System → About phone → tap Build Number several times in a row**. Now you'll see a new “**Developer options**” section under “System”. Find **USB Debugging** and turn it on.
 
-![Номер сборки](./assets/Root/Root_pic3.jpg)
+![Build Number](./assets/Root/Root_pic3.jpg)
 
-3. Теперь открываем папку, в которую мы установили ADB  (обычно это будет папка ***platform-tools*** в каталоге Android SDK). Зажимаем ***Shift*** и кликаем правой кнопкой мыши по свободному месту окна, выбираем параметр «**Открыть окно PowerShell**». Подключите смартфон к компьютеру. Измените режим USB на режим «**передачи файлов (MTP)**». В окне командной строки введите команду `adb devices`.  
+3. Open the folder where you installed ADB (usually the ***platform-tools*** folder in your Android SDK directory). Hold ***Shift*** and right-click on an empty area, then choose “**Open PowerShell window here**”. Plug your phone into your computer, and set the USB mode to “**File Transfer (MTP)**”. In the command window, type `adb devices`.
 
-![ADB](./assets/Root/Root_pic4.jpg)  
+![ADB](./assets/Root/Root_pic4.jpg)
 
-На экране телефона вы увидите всплывающее окошко — нажимайте ***разрешить доступ для отладки по USB***. Наконец, повторно введите команду `adb devices`. Если все прошло успешно, вы должны увидеть серийный номер вашего устройства в командной строке. Теперь вы можете запускать любую команду ADB на своем устройстве.  
-#### Полезные команды.
-- `adb install <путь к файлу APK>`. Эта команда устанавливает приложение APK на ваше устройство.  
-- `adb uninstall <пакет приложения>`. Удаляет приложение с вашего устройства.  
-- `adb shell`. Позволяет войти в оболочку (командную строку) вашего устройства Android прямо с компьютера.  
-- `adb reboot`. Перезагружает устройство.  
-- `adb pull <удаленный путь> <локальный путь>`. Копирует файлы с устройства на компьютер.  
-- `adb push <локальный путь> <удаленный путь>`. Копирует файлы с компьютера на устройство.  
-- `adb reboot recovery`. Загружает устройство в режим Recovery.
+A pop-up will show on your phone — tap ***Allow USB debugging***. Then run `adb devices` again. If everything’s working, you'll see your device’s serial number in the command window. Now you can run any ADB command on your device.
+#### Useful Commands:
+- `adb install <path to APK file>` — Installs an APK on your device.
+- `adb uninstall <app package>` — Uninstalls an app from your device.
+- `adb shell` — Opens a terminal (command line) on your Android device from your computer.
+- `adb reboot` — Restarts your device.
+- `adb pull <remote path> <local path>` — Copies files from your device to your computer.
+- `adb push <local path> <remote path>` — Copies files from your computer to your device.
+- `adb reboot recovery` — Boots your device into Recovery mode.
 _________________
-## Разблокировка загрузчика.  
-Что за загрузчик и зачем его разблокировать? **Загрузчик** или **Bootloader**  – это относительно небольшой кусочек программного кода, который занимается запуском установленной системы. Сам по себе он — незаменимая часть устройства, но в его функции также входит реализация технологии **Verified Boot**. Эта технология призвана ограничить установку ОС до авторизованных производителем (путем проверки подписи файла). Наша цель — отключить механизм **Verified Boot**.  
+## Unlocking the Bootloader
+What’s a bootloader and why unlock it? The **bootloader** is a small chunk of code that loads the OS. It’s essential, but it also enforces **Verified Boot** — this tech prevents installing unauthorized OS variants by checking file signatures. Our goal is to disable Verified Boot.
 
-Увы, универсальной инструкции для всех телефонов не существует. Более того – какие-то устройства вообще не имеют способа разблокировки загрузчика, а некоторые наоборот не блокируются производителем изначально. Проверить факт блокировки загрузчика можно с помощью ***adb*** в режиме **fastboot** - `fastboot oem device-info` (что это и как пользоваться этим инструментом разберем ниже). При ответе `true` – загрузчик заблокирован, иначе – нет.  
+Unfortunately, there’s no universal guide for all phones. On some devices, you can’t unlock the bootloader at all; others ship unlocked by default. To check if yours is locked, use ***adb*** in **fastboot** mode: `fastboot oem device-info`. (We'll explain fastboot below.) If it says `true` for locked, then the bootloader is locked; if not, it’s unlocked.
 
-![Разблокировка загрузчика.](./assets/Root/Root_pic6.jpg)
+![Unlocking the Bootloader](./assets/Root/Root_pic6.jpg)
 
-Если по результатам проверки вы обнаружили, что загрузчик заблокирован, вам придется искать инструкцию в интернете конкретно под ваш телефон. Мы рекомендуем воспользоваться сайтом производителя, форумом [**4PDA**](https://4pda.to/forum) или поисковиком в браузере (Google, DuckDuckGo и прочие).   
+If yours is locked, search online for instructions specific to your phone. Check your phone manufacturer's website, the [**4PDA**](https://4pda.to/forum) forum, or use Google, DuckDuckGo, etc.
 _________________
-### Установка стороннего Recovery.
-Раздел **Recovery** – аналог **BIOS** на компьютере, также именуется как «*Режим восстановления*». Этакая *подсистема*, которая призвана помочь в восстановлении работоспособности устройства. Заменить установленный производителем **recovery** необходимо потому, что он не даст вам ничего установить.  
-#### Какие бывают Recovery?  
-Существует 2 основных проекта стороннего **Recovery** – [***TWRP***](https://twrp.me/) и [***CWM***](https://www.clockworkmod.com/), а также все, что на них основано. Если на официальных сайтах этих проектов вы не нашли своего устройства, с высокой вероятностью вы найдете его на **4PDA** в теме своего аппарата.  
-:::tip **Мы рекомендуем использовать именно TWRP-recovery.**
-Он сильно превосходит в функциональности и удобстве **CWM**.
+### Installing Custom Recovery
+The **Recovery** partition is like the **BIOS** on a computer, also called “*Recovery Mode*”. It’s a subsystem that helps restore your device if things go wrong. You need to replace the stock recovery because it usually blocks you from installing anything.
+
+#### What Recovery Options are There?
+There are two main custom recovery projects — [***TWRP***](https://twrp.me/) and [***CWM***](https://www.clockworkmod.com/) — plus various forks of both. If your device isn’t listed on their official sites, try searching your device’s thread on **4PDA**.
+
+:::tip **We recommend using TWRP-recovery.**
+It’s much more capable and user-friendly than CWM.
 :::
-  
+
 ![TWRP-recovery](./assets/Root/Root_pic7.png)
 _________________
-После скачивания Recovery вы должны получить файл образа раздела android с расширением *.img*. Чтобы прошить новый раздел Recovery, необходимо перевести телефон в особый режим загрузчика – ***fastboot***. На большинстве устройств это делается с помощью зажатия **кнопки Питания + Громкость вниз** при включении телефона. Успешным входом в этот режим будет считаться черный экран с белой строкой ***fastboot mode***. После этого необходимо подключить устройство к компьютеру при помощи USB-кабеля.  
+Once you’ve downloaded your Recovery, you’ll have a partition image file with a *.img* extension. To flash the new Recovery, you need to boot your phone into a special mode — ***fastboot***. On most devices, hold **Power + Volume Down** while turning on the phone. If you see a black screen with a white “***fastboot mode***” line, you’ve done it right. Connect your device to your computer via USB.
 
 ![fastboot mode](./assets/Root/Root_pic8.jpg)
 
-Для  прошивки раздела Recovery нам понадобится единственная ADB-команда:  
-`fastboot flash partition PathToFile`.  
-- `fastboot` — путь к файлу fastboot.exe, поставляется вместе с ADB; 
-- `partition` — доступный для прошивки раздел Android. Мы шьем recovery;  
-- `PathToFile`— путь к .img-образу recovery, который вы скачали;    
-В итоге команда может выглядеть примерно так: `C:\adb\fastboot flash recovery C:\recovery.img`  
-:::tip **Интересно.**
-*Некоторые recovery поставляются с автоматическими установщиками и ADB — вам нужно лишь запустить bat-файл.*  
-:::   
+To flash the Recovery partition, you need only one ADB command:
+`fastboot flash partition PathToFile`.
+- `fastboot` — the path to fastboot.exe (included with ADB)
+- `partition` — the Android partition you want to flash (here it’s recovery)
+- `PathToFile` — the path to your downloaded recovery .img file
+For example: `C:\adb\fastboot flash recovery C:\recovery.img`
+:::tip **By the way**
+*Some recoveries come with an auto-installer and ADB — just run the .bat file.*
+:::
 
-После того, как в консоли появилось сообщение об успешном окончании процесса, можно пробовать запустить только что установленный Recovery. Через ADB-командну `adb reboot recovery` или нажатием **кнопки Питания + Громкость вверх** при включении телефона.  
+After you see a “success” message in the console, you can try booting into the new Recovery, either by the ADB command `adb reboot recovery` or by pressing **Power + Volume Up** while turning on the phone.
 _________________
-## Получение Root-прав.
-### Установка Magisk.
+## Getting Root Access
+### Installing Magisk
 ![Magisk](./assets/Root/Root_pic9.png)
 
-Первым делом нам необходимо, как обычно, сделать полный бекап разделов системы на внешний носитель  
-(например, sd-карту), чтобы при возникновении проблем, вернуть все как было.  
+First of all, make a full backup of your system partitions onto external storage (like an SD card). That way, if anything goes wrong, you can restore everything.
 
-Далее скачиваем [**Magisk**](https://github.com/topjohnwu/Magisk/releases). Это OpenSource-проект, который дает возможность внесистемного внесения изменений с помощью подключаемых модулей. Это означает, что с выключением Magisk-модуля, отменяются все изменения в системе, которые вносил этот модуль. В корне файловой системы создается *зеркало* раздела data (так и называется — ***data_mirror***), и необходимые изменения вносятся в систему посредством создания символических ссылок на этот раздел.  
+Then download [**Magisk**](https://github.com/topjohnwu/Magisk/releases). This is an open-source project that lets you modify your system “systemlessly,” using modules. That means if you disable a Magisk module, any changes it made disappear. Magisk creates a *mirror* of the data partition (called ***data_mirror***), and changes are made by linking to that.
 
-Если ваш Recovery позволяет устанавливать **APK** как **zip-архивы**, то скачанный файл в исходном виде копируем на внешнюю память устройства. Так как внутренняя память зачастую шифруется, и вы в итоге не сможете достать этот файл. Если же ваш Recovery не умеет открывать APK-файлы, то Magisk.apk необходимо переименовать в **Magisk.zip** и таким же образом скопировать на устройство.
+If your Recovery lets you flash **APK** files as **zip archives**, just copy the downloaded file onto your device’s external storage. (Your internal storage is often encrypted, so you may not be able to access the file otherwise.) If your Recovery can’t open APKs, rename Magisk.apk to **Magisk.zip** and copy it over.
 
 ![boot.img](./assets/Root/Root_pic10.png)
 
-Теперь необходимо загрузиться в Recovery и сделать отдельно резервную копию раздела ***boot.img***. Если вдруг какой-то модуль выведет систему из строя, и у вас не будет возможности загрузиться в систему, то станет сложно отключить этот самый модуль или даже весь Magisk. Но имея на руках **boot** исходной системы (без Magisk), мы сможем восстановить конкретно этот раздел, а также работоспособность всей системы.  
+Now boot into Recovery and make a separate backup of the ***boot.img*** partition. If some module breaks your system and you can’t boot, you won’t be able to disable the bad module or even Magisk itself. But as long as you have your original **boot** partition (without Magisk), you can restore just that and get your phone working again.
 
-После создания бекапов прошиваем установочный файл Magisk, как любой другой архив через Recovery (просто открываем его). После прошивки и загрузки системы в меню приложений появится приложение **Magisk**, которое при первом запуске обновится и сразу будет работать.  
+Once you have your backups, flash the Magisk installer zip just like any other archive through Recovery. After flashing and rebooting, you’ll find the **Magisk** app in your menu. When you open it for the first time, it’ll update itself and be ready to go.
 _________________
-### Настройка Magisk.  
+### Setting Up Magisk
 <details>
-<summary>С устройства переходим в настройки Magisk и активируем два пункта: **Zygisk** и **DenyList**.</summary>
+<summary>On your device, open Magisk settings and turn on both: **Zygisk** and **DenyList**.</summary>
 <!--All you need is a blank line-->
 
-![Настройки Magisk](./assets/Root/Root_pic11.png)
-</details>  
+![Magisk Settings](./assets/Root/Root_pic11.png)
+</details>
 
-Для корректной работы этих функций нужно также установить два модуля из Github: [**Universal SafetyNet**](https://github.com/kdrag0n/safetynet-fix) и [**Shamiko**](https://github.com/LSPosed/LSPosed.github.io/releases). Теперь переходим в **Настройки DenyList** и ставим галочки рядом с приложениями, от которых мы хотим скрыть Root (например, банковские приложения).  
-:::info **Если для каких-то приложений это не сработало.**
-Тогда открываем список компонентов приложения и ставим галочки напротив каждого из них. 
+For these functions to work right, also install these two Github modules: [**Universal SafetyNet**](https://github.com/kdrag0n/safetynet-fix) and [**Shamiko**](https://github.com/LSPosed/LSPosed.github.io/releases). Now, go to **DenyList settings** and check the apps you want to hide root from (like banking apps).
+:::info **If this doesn’t work for some apps**
+Open the app’s component list and check every one of them.
 :::
 
-Также в настройках Magisk нажимаем на **Скрыть приложение Magisk**, поскольку его наличие можно вычислить элементарно по списку установленных приложений  (так, например, делает MirPay). Вводим любое подменное название и нажимаем *Ок*. После проделанных действий перезагружаем телефон. Загрузка может быть слегка дольше, чем обычно.  
+While you’re in Magisk settings, tap **Hide Magisk app** (some apps, like MirPay, can detect it easily in your app list). Enter any new name and tap *OK*. After all this, reboot your phone. Booting up might take a bit longer than usual.
 
-![Скрыть приложение Magisk](./assets/Root/Root_pic12.png)
+![Hide Magisk App](./assets/Root/Root_pic12.png)
 
-:::warning **Скрытие root для приложения необходимо делать до первого запуска целевого приложения!**
+:::warning **Make sure to hide root from any app BEFORE you open that app for the first time!**
 :::
 _________________
-## Полезные модули для Magisk.  
-- ***Busybox***. Дает доступ приложениям к встроенному busybox от Magisk. Это компактная исполняемая программа, которая содержит набор утилит командной строки (например, ls, cp, mv, rm, и т. д.). Она объединяет множество стандартных утилит в единый исполняемый файл, что делает ее полезной для систем с ограниченными ресурсами.  
-- ***No Storage Restricts***. Убирает ограничения в выборе папок в файловом менеджере.  
-- ***LuckyPatcher***. Нужен для переноса приложений в системный раздел.  
-- ***Move Certificates***. Перенос пользовательских сертификатов в систему.  
-- ***NFC Screen Off***. Включает работу NFC при выключенном экране.  
+## Useful Magisk Modules
+- ***Busybox*** — Gives apps access to Magisk’s built-in busybox. It’s a compact program bundling several command-line utilities (like ls, cp, mv, rm, etc.) into a single executable, handy on resource-limited systems.
+- ***No Storage Restricts*** — Removes folder selection limits in file managers.
+- ***LuckyPatcher*** — Lets you move apps to the system partition.
+- ***Move Certificates*** — Moves user certificates into the system partition.
+- ***NFC Screen Off*** — Lets NFC work even when the screen is off.
 ________________
-## Полезные ссылки.  
-- [**Что такое Root?**](https://journal.tinkoff.ru/android-root/) 
-- [**Busybox и его участие в загрузке.**](https://www.reddit.com/r/linux/comments/1p4tb9/what_is_busybox_and_what_is_it_used_for_in_the/)   
-- [**Подробная инструкция по установке Magisk**](https://topjohnwu.github.io/Magisk/install.html).
+## Useful Links
+- [**What’s Root Access?**](https://journal.tinkoff.ru/android-root/)
+- [**Busybox and its role in booting**](https://www.reddit.com/r/linux/comments/1p4tb9/what_is_busybox_and_what_is_it_used_for_in_the/)
+- [**Detailed Magisk installation guide**](https://topjohnwu.github.io/Magisk/install.html).

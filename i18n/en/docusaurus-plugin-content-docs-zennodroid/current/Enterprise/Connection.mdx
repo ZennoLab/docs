@@ -1,10 +1,10 @@
 ---
 sidebar_position: 4
-title: Подключение реального устройства
-description: Как подключать устройства к ZennoDroid.
+title: Connecting a Real Device
+description: How to connect devices to ZennoDroid.
 ---
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of Use for Materials on this Site*](../Disclaimer).**
 :::
 _______________________________________________
 export const VideoSample = ({source}) => (
@@ -13,98 +13,97 @@ export const VideoSample = ({source}) => (
 </video>
 );   
 
-Для подключения смартфона к ZennoDroid требуется выполнить ряд простых действий.  
+To connect your smartphone to ZennoDroid, you’ll need to follow a few simple steps.
 
-К сожалению, написать универсальную документацию по подключению невозможно, так как процесс настройки может отличаться в зависимости от производителя телефона, версии Android и UI оболочки.
+Unfortunately, there’s no way to make one universal guide, since the setup process can vary depending on your phone’s manufacturer, Android version, and UI.
 
-Данная статья написана на основе тестирования несколько типов устройств. Если у Вас что-то не получается, то напишите нам в службу поддержки.   
+This article is based on tests with several types of devices. If you run into trouble, just write to our support team.
 _______________________________________________
-## Включаем режим разработчика.   
-### 1. Открываем настройки устройства.  
-### 2. Нажимаем на раздел **«О телефоне»**/**«Сведения о телефоне»**.  
-![Сведения о телефоне](./assets/devices_pic1.png)    
+## Turn on Developer Mode
+### 1. Open your device settings.
+### 2. Find and open **“About phone”**/**“Phone information”**.
+![Phone information](./assets/devices_pic1.png)
 
-### 3. Переходим к графе **«Номер сборки»**.   
-Если не находите такой пункт, то нажмите на **«Сведения о ПО»**, после этого откроется нужный раздел.
+### 3. Find the **“Build number”** line.
+If you don’t see it, tap **“Software information”**—the right section will appear.
 
-![Сведения о ПО](./assets/devices_pic2.png)
+![Software information](./assets/devices_pic2.png)
 
-### 4. Нажмите несколько раз на опцию **«Номер сборки»**.  
-В результате ваших действий на экране устройства появится всплывающая надпись:   
-**`Режим разработчика включен`**.  
+### 4. Tap **“Build number”** several times.
+You’ll get a pop-up message on your device saying:
+**`Developer mode is on`**
 
-![Номер сборки](./assets/devices_pic3.png) ![Вы стали разработчиком](./assets/devices_pic4.png)  
-  
-### 5. Параметры разработчика. 
-Теперь вы увидите, что в меню настроек телефона появился новый пункт **«Параметры разработчика»**. 
+![Build number](./assets/devices_pic3.png) ![You’re a developer now](./assets/devices_pic4.png)
 
-![Параметры разработчика](./assets/devices_pic5.png)  
+### 5. Developer options.
+Now you’ll see a new menu item in your phone’s settings: **“Developer options”**.
+
+![Developer options](./assets/devices_pic5.png)
 _______________________________________________
-## Запускаем отладку по USB   
-### 1. Для разработчиков.  
-Переходим в тот самый пункт, который у нас только что появился: **«Параметры разработчика»** или **«Для разработчиков»**. Название может отличаться на разных девайсах.  
+## Turn on USB Debugging
+### 1. For Developers.
+Find the menu you just unlocked: **“Developer options”** or **“For developers”**. The name may be different, depending on your device.
 
-### 2. Отладка по USB.  
-Находим параметр **«Отладка по USB»**, включаем его и подтверждаем.  
+### 2. USB Debugging.
+Find **“USB debugging”**, turn it on, and confirm.
 <details>
-<summary>*Если у вас также присутствуют настройки **«Установка через USB»** и **«Отладка по USB (Настройки безопасности)»**, то их нужно включить для корректной работы.*</summary>  
+<summary>*If you also see settings for **“Install via USB”** and **“USB debugging (Security Settings)”**, turn these on too for proper operation.*</summary>
 
-![Отладка по USB](./assets/devices_pic6.png) ![Установка через USB](./assets/devices_pic7.png)
-</details>   
-:::info **Как еще можно?**
-*На устройствах с Root эти настройки можно включить c помощью действия*  
-***«Консольная команда ADB shell»:***   
-`su -c setprop persist.security.adbinstall 1`    
+![USB Debugging](./assets/devices_pic6.png) ![Install via USB](./assets/devices_pic7.png)
+</details>
+:::info **Any other way?**
+*If your device is rooted, you can turn on these settings using the action*
+***“ADB Shell Console Command”:***
+`su -c setprop persist.security.adbinstall 1`
 `su -c setprop persist.security.adbinput 1`
-::: 
-_______________________________________________
-## Подключаем устройство к ZennoDroid  
-### 1. Подключаем смартфон к компьютеру.  
-Теперь, когда на смартфоне включен режим отладки, подключаем его по USB к компьютеру, на котором установлен ZennoDroid.  
-### 2. Разрешаем отладку.  
-На телефоне выпрыгнет вопрос такого типа: *«Разрешаете ли Вы отладку с этого компьютера?»*. Ставим галочку и жмем *Разрешить*.  
-
-![Разрешаете ли Вы отладку с этого компьютера?](./assets/devices_pic8.png)  
-
-### 3. Запускаем [**ProjectMaker for ZennoDroid**](../category/project-maker). 
-Открываем в нем [**Настройки → Android**](../Settings/Settings_for_Enterprise), чтобы убедиться, что подключенное устройство доступно для выбора.    
-
-![Настройка эмуляции](./assets/devices_pic9.png)  
-:::info **Если в выпадающем меню пусто, нажмите Обновить.**
-В случае, когда ничего не поменялось, напишите нам в [**Службу поддержки**](https://helpdesk.zennolab.com/ru).
 :::
-### 4. Создаём проект или открываем уже существующий.  
-Жмём кнопку *«Запустить устройство»* в окне **Устройство**. Либо запускаем его через действия *«Выбрать»* и *«Запустить»*.  
+_______________________________________________
+## Connect Your Device to ZennoDroid
+### 1. Connect your phone to your computer.
+After turning on USB debugging, plug your phone into the computer where you have ZennoDroid installed.
+### 2. Allow debugging.
+Your phone will ask something like: *“Allow USB debugging from this computer?”* Check the box and tap *Allow*.
 
-![Запустить устройство](./assets/devices_pic10.png) ![Действия](./assets/devices_pic11.png)  
-:::tip **Также будет установлено несколько приложений в фоновом режиме:** 
-- ***com.genymobile.gnirehtet** для использования прокси;*  
-- ***com.android.adbkeyboard** внешняя клавиатура;*  
-- ***io.appium.settings** для фиктивной эмуляции геопозиции;*  
-- ***io.appium.uiautomator2.server** для корректной работы с деревом элементов;*
+![Allow debugging?](./assets/devices_pic8.png)
+
+### 3. Start [**ProjectMaker for ZennoDroid**](../category/project-maker).
+Go to [**Settings → Android**](../Settings/Settings_for_Enterprise) to make sure your connected device is available for selection.
+
+![Emulator setup](./assets/devices_pic9.png)
+:::info **If there’s nothing in the dropdown menu, hit Refresh.**
+If nothing changes, please contact [**Support**](https://helpdesk.zennolab.com/ru).
 :::
->  
+### 4. Create a project or open an existing one.
+Click *“Start device”* in the **Device** window. Or use *“Select”* and *“Start”* actions.
 
-### 5. Появилось окно о запросе установки неизвестного приложения, что делать?  
+![Start device](./assets/devices_pic10.png) ![Actions](./assets/devices_pic11.png)
+:::tip **A few apps will also be installed in the background:**
+- ***com.genymobile.gnirehtet** for using proxies*
+- ***com.android.adbkeyboard** external keyboard*
+- ***io.appium.settings** for GPS spoofing*
+- ***io.appium.uiautomator2.server** for proper element tree operation*
+:::
+>
 
-На некоторых телефонах не удаётся произвести фоновую установку вышеописанных приложений. В таком случае может появиться окно о разрешении установки. Подтвердите установку каждого из них для корректной работы ZennoDroid.
+### 5. You see a prompt to install an unknown app—what do you do?
 
-![Что делать?](./assets/devices_pic12.png)  
+On some phones, background installation of these apps isn’t possible. If a prompt pops up asking for permission to install, just allow it for each app so ZennoDroid works right.
+
+![What to do?](./assets/devices_pic12.png)
 _______________________________________________
-## Запускаем устройство:     
+## Starting the Device:
 
-### 1. Выбрать устройство.  
-После подключения устройства нужно добавить в проект действия:  
-**«Выбрать устройство»** и **«Запуск/Перезапуск устройства»**.
+### 1. Select your device.
+After connecting, you need to add actions to your project:
+**“Select device”** and **“Start/Restart device”**.
 
-![Запустить устройство](./assets/start_pic1.png)  
+![Start device](./assets/start_pic1.png)
 
-### 2. Выполнить запись проекта.     
+### 2. Record the project.
 
-![Запись](./assets/start_pic2.png)  
+![Recording](./assets/start_pic2.png)
 _______________________________________________
-## Полезные ссылки.  
-- [**Действия с устройством**](../Android/Enterprise/action).  
-- [**Установка Root-прав**](../Enterprise/Root).  
-- [**Настройки Android**](../Settings/Settings_for_Enterprise).
-
+## Useful links:
+- [**Device Actions**](../Android/Enterprise/action)
+- [**Root Access Setup**](../Enterprise/Root)
+- [**Android Settings**](../Settings/Settings_for_Enterprise)

@@ -1,99 +1,99 @@
 ---
 sidebar_position: 6
 title: Random
-description: Генерация случайных чисел.
+description: Generating random numbers.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please check out the [*Terms of Use for Materials on This Site*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.  
-Этот экшен используется для генерации случайных данных: строк, чисел и авторизационных логинов.  
+## Description  
+This action is for generating random data: strings, numbers, and authorization logins.
 
-### Его можно применить:  
-- для выбора случайного элемента на странице;  
-- для генерации пароля;  
-- для генерации даты рождения;  
-- для генерации почтового индекса;  
-- для генерации логинов.  
+### You can use it to:  
+- Pick a random item on a page  
+- Generate a password  
+- Generate a date of birth  
+- Generate a postal code  
+- Generate logins  
 _______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Данные → Random**.  
+## How do you add it to your project?  
+With the context menu: **Add Action → Data → Random**
 
-![Добавить в проект](./assets/Random/Random_pic4.png)    
+![Add to project](./assets/Random/Random_pic4.png)    
 _______________________________________________  
 
-## Генерация логина.  
-![Генерация логина](./assets/Random/Random_pic1.png)  
+## Generating a login  
+![Generating a login](./assets/Random/Random_pic1.png)  
 
-Логин генерируется на основе заданной формулы. Доступно три предустановленных формата:  
-- `[Eng|4][RndNum|1970|1990]`;  
-- `[Jap|4][RndNum|1970|1990]`;  
-- `[Lat|4][RndNum|1970|1990]`;  
+Logins are generated based on a specified formula. There are three preset formats available:  
+- `[Eng|4][RndNum|1970|1990]`  
+- `[Jap|4][RndNum|1970|1990]`  
+- `[Lat|4][RndNum|1970|1990]`  
 
-Между собой они отличаются только языком: `Eng` - английский, `Jap` - японский, `Lat` - латынь.  
+The only difference here is the language: `Eng` for English, `Jap` for Japanese, `Lat` for Latin.
 
-`[Eng|4]` означает, что будет сгенерирован никнейм длиной в 4 английских слога. Есть вероятность, что слоги будут сочетаться также, как и в реальных словах.  
+`[Eng|4]` means a nickname will be generated that’s four English syllables long. There’s a chance the syllables will be combined like they are in actual words.
 
-Давайте поэкспериментируем с формулой и создадим более сложную конструкцию:  
+Let’s experiment with the formula and make a more complex setup:
 
 `[RndSym|[RndNum|0|4]|0123456789][Lat|3][RndSym|[RndNum|0|2]|-][Jap|1][RndText|2|D]`  
 
-- `[RndSym|[RndNum|0|4]|0123456789]` — в начале нашего ника будет от 0 до 3 (4 не включается) случайных цифр;  
-- `[Lat|3]` — далее в логине идут три слога на латыни;  
-- `[RndSym|[RndNum|0|2]|-]` — есть вероятность генерация дефиса;  
-- `[Jap|1]` — следом будет добавлен один японский слог;  
-- `[RndText|2|D]` — завершат ник случайные 2 буквы или цифры.  
+- `[RndSym|[RndNum|0|4]|0123456789]` — at the start, your nickname will get from 0 up to 3 (4 not included) random digits  
+- `[Lat|3]` — then, 3 Latin syllables go into the login  
+- `[RndSym|[RndNum|0|2]|-]` — a hyphen may appear  
+- `[Jap|1]` — followed by one Japanese syllable  
+- `[RndText|2|D]` — and the nickname ends with 2 random letters or digits  
 
 <details>
-<summary>*Пример того, какие будут сгенерированы ники.*</summary>  
+<summary>*Some examples of generated nicks*</summary>  
 
 - 053bomenca-iem  
 - 7lialeme-nozr  
 - 46atbemig-poex  
 - simpvido-se8f  
-- 3afosuxhif6    
-- frigulimdeif    
-- misssefu-yucn    
-- 5grasacin-maew    
-- trodalcelfu88   
-- 6nasercia-risc   
+- 3afosuxhif6  
+- frigulimdeif  
+- misssefu-yucn  
+- 5grasacin-maew  
+- trodalcelfu88  
+- 6nasercia-risc  
 </details>  
 _______________________________________________ 
-## Генерация текста.  
-:::info **Используются только символы английского алфавита.**
+## Generating text  
+:::info **Only English alphabet symbols are used.**
 :::
-![Генерация текста](./assets/Random/Random_pic2.png)  
+![Generating text](./assets/Random/Random_pic2.png)  
 
-### Длина.  
-Здесь мы задаем минимальную и максимальную длину итоговой строки. Верхняя граница указывается **не включительно**, то есть при генерации строки случайной длины от 3 до 10 символов мы сможем получить максимум 9 символов.  
+### Length  
+Here you set the minimum and maximum length for the final string. The upper limit is **not inclusive**—so, if you ask for a random string of 3 to 10 characters, you’ll get at most 9.
 
-### Дополнительные параметры.    
-- **Заглавные**.  
-- **Строчные**.  
-- **Цифры**.  
+### Extra settings  
+- **Uppercase**  
+- **Lowercase**  
+- **Numbers**  
 
-Отмечаем те пункты, которые хотим использовать в итоговой строке.  
+Tick the boxes for what you want in the final string.
 
-### Свои символы.  
-Если включаем эту опцию, то в специальное поле справа нужно ввести символы, которые будут содержаться в генерируемой строке. Прочие символы использоваться не будут.  
+### Custom characters  
+If you turn on this option, enter into the special field at the right any characters you want to be in the generated string. No other characters will be used.
 
-### Обязательное использование всех перечисленных параметров.  
-Когда отмечен данный чекбокс, итоговая строка будет содержать как минимум один символ каждого прошлого пункта *(Заглавные, Строчные, Цифры, Свои символы)*.  
+### Required use of all selected character sets  
+When you check this box, the final string will contain at least one character from each category you ticked earlier *(Uppercase, Lowercase, Numbers, Custom characters)*  
 _______________________________________________ 
 <details>
-<summary>*Примеры ответов, которые можно получить, включив все опции и выставив длину от 5 до 9.*</summary>  
+<summary>*Examples of possible answers when all options are enabled and length is set from 5 to 9*</summary>  
 
-- w6ZxAw    
-- 0M5oke7    
-- ZlE3SY    
-- Tos6KRZ    
-- l5a640Pk     
+- w6ZxAw  
+- 0M5oke7  
+- ZlE3SY  
+- Tos6KRZ  
+- l5a640Pk  
 </details>   
 _______________________________________________ 
-## Генерация числа. 
-![Генерация числа](./assets/Random/Random_pic3.png)  
+## Generating a number 
+![Generating a number](./assets/Random/Random_pic3.png)  
 
-- **От**. Нижняя граница генерируемого числа.  
-- **До**. Максимальное значение, **НЕ ВКЛЮЧИТЕЛЬНО**.  
+- **From**: the lower boundary for the generated number  
+- **To**: the maximum value, **NOT INCLUSIVE**  
 
-*Пример:* при генерации числа от **3** до **6** может быть сгенерировано только одно из этих чисел: **3**, **4**, **5**.
+*For example*: If you generate a number from **3** to **6**, you can only get one of these: **3**, **4**, or **5**.

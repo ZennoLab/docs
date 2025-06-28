@@ -1,106 +1,105 @@
 ---
 sidebar_position: 5
-title: Работа с BlueStacks 
-description: Как работать с эмулятором BlueStacks в ZennoDroid Enterprise.
+title: Working with BlueStacks
+description: How to use the BlueStacks emulator in ZennoDroid Enterprise.
 ---
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
-:::
-_______________________________________________
-## Что такое BlueStacks?  
-Это эмулятор Android, который создает виртуальную среду, аналогичную смартфону или планшету на базе Android. Доступен для использования на Windows и macOS.  
+Please make sure to review the [Material Usage Policy on this resource](../Disclaimer).
 
-:::warning **Доступен для использования только в версии Enterprise.**  
-Официальной поддержки нет, поэтому может работать нестабильно. 
-:::
+________________________________________________
+## What is BlueStacks?
+It's an Android emulator that creates a virtual environment similar to an Android smartphone or tablet. You can use it on Windows and macOS.
 
-### В чём отличие от Memu?  
-Основное отличие заключается в производительности. [**BlueStacks**](https://www.bluestacks.com/features.html) требует больше системных ресурсов, так как использует технологию виртуализации. При этом является более стабильным и оптимизированным для тяжелых задач. Для его нормального использования вам понадобится мощный компьютер.  
+Available **only in the Enterprise version**.  
+There's no official support, so it might work unstably.
 
-Также у него более удобный интерфейс и частое обновление для поддержки новых приложений.  
-_______________________________________________
-## Подключение к ZennoDroid.  
-**1.** Скачиваем эмулятор с официального сайта: [**BlueStacks**](https://www.bluestacks.com/features.html).  
-**2.** После установки открываем именно ярлык под названием *BlueStacks Multi-Instance*. 
+### How is it different from Memu?
+The main difference is performance. [BlueStacks](https://www.bluestacks.com/features.html) needs more system resources since it uses virtualization technology. At the same time, it's more stable and optimized for demanding tasks. To use it comfortably, you'll need a powerful computer.
 
-![BlueStacks Multi-Instance](./assets/BlueStacks/BlueStacks_pic1.png)  
+It also has a more user-friendly interface and gets updated often to support the latest apps.
 
-**3.** Новые виртуальные машины можно добавить с помощью кнопок: Окно → Новое.  
+________________________________________________
+## Connecting to ZennoDroid
+1. Download the emulator from the official site: [BlueStacks](https://www.bluestacks.com/features.html)
+2. After installation, open the shortcut named *BlueStacks Multi-Instance*.
 
-:::tip **Не используйте в работе первую добавленную ВМ.**  
-Так как могут возникать ошибки, чинятся которые только полной переустановкой BlueStacks. Это специфика самого эмулятора.  
+![BlueStacks Multi-Instance](./assets/BlueStacks/BlueStacks_pic1.png)
 
-Поэтому рекомендуем создать один и более дополнительных и использовать именно их.
-:::  
+3. You can add new virtual machines by clicking: Window → New.
 
-**4.** Скачайте [**данный архив**](./assets/BlueStacks_5_Root_ver.2.zip) и распакуйте его.  
-**5.** Запустите Project Maker для ZDE и откройте проект из архива, который называется *Bluestacks5RootMagisk_v2*.  
-**6.** Заходим во входные настройки проекта:  
+Tip: **Don't use the first added VM for work.**  
+It can cause errors that can only be fixed by fully reinstalling BlueStacks. That's just how the emulator works.  
+So, it's best to create one or more additional VMs and use those instead.
 
-![входные настройки проекта](./assets/BlueStacks/BlueStacks_pic2.png)   
+4. Download [this archive](./assets/BlueStacks_5_Root_ver.2.zip) and extract it.
+5. Open Project Maker for ZDE and load the project from the archive called *Bluestacks5RootMagisk_v2*.
+6. Go to the project's input settings:
 
-**7.** И нажимаем кнопку **Демонстрация**:  
+![project input settings](./assets/BlueStacks/BlueStacks_pic2.png)
 
-![Демонстрация](./assets/BlueStacks/BlueStacks_pic3.png)   
+7. Click the **Demonstration** button:
 
-**8.** В поле **Index** указываем индекс виртуальной машины, которую планируем использовать. Это цифра, которую эмулятор автоматически подставляет к названию при создании ВМ, нумерация с **0**.  
-**9.** Сохраняем параметры и запускаем проект для выполнения.  
-**10.** Дожидаемся успешного завершения проекта. После этого эмулятор будет виден в программе, и его можно будет использовать для работы.  
+![Demonstration](./assets/BlueStacks/BlueStacks_pic3.png)
 
-:::info **Если проект падает на каком-либо кубике, то запустите его ещё раз.**  
-В том случае, когда после нескольких перезапусков шаблон так и не срабатывает, напишите нам [**в поддержку**](https://helpdesk.zennolab.com/ru/conversation/new).
-:::  
-_______________________________________________
-## Работа с эмулятором.  
-В приложенном проекте мы добавили кубики со своим C# кодом, которые вы можете использовать в работе.  
-Они специально названы так, чтобы вам было легко определить их назначение:  
+8. In the **Index** field, enter the index of the virtual machine you plan to use. This is the number that the emulator automatically adds to the name when creating a VM, starting from **0**.
+9. Save your settings and start the project to run it.
+10. Wait until the project finishes successfully. After that, the emulator will be visible in the program and ready for you to use.
 
-#### Запуск эмулятора. 
-Кубик запускает уже созданный эмулятор.  
+If the project fails at any step, try running it again.  
+If, after several tries, the template still doesn't work, contact our [Support](https://helpdesk.zennolab.com/ru/conversation/new).
 
-#### Подключение к эмулятору.  
-Подключается к запущенному эмулятору.  
+________________________________________________
+## Working with the emulator
+The included project features custom C# code blocks you can use in your work.  
+They have clear names so you know exactly what each one does:
 
-#### Остановка эмулятора.  
-Останавливает запущенный эмулятор.  
+#### Start Emulator
+This block starts an emulator you've already created.
 
-#### Создание эмулятора.  
-Cоздаёт эмулятор с настройками по умолчанию.  
+#### Connect to Emulator
+Connects to a running emulator.
 
-#### Создание эмулятора с параметрами.  
-Создаёт эмулятор с заданными параметрами. В настройках кубика зелёным текстом мы описали, какие значения можно изменять. Среди них: режим рендеринга, профиль устройства, его имя, доступные ресурсы ОЗУ и CPU, графический движок и разрядность системы.  
+#### Stop Emulator
+Stops a running emulator.
 
-#### Удаление эмулятора.  
-Удаляет эмулятор, указанный в коде. Значение прописывается в `DeleteByName("Rvc64_2")`, где `2` — это индекс эмулятора, который мы хотим удалить.  
+#### Create Emulator
+Creates an emulator using default settings.
 
-#### Запуск менеджера. 
-Запускает менеджер окон BlueStacks.  
+#### Create Emulator with Settings
+Creates an emulator with your chosen settings. In the block's settings (marked green), you'll see which values you can adjust: rendering mode, device profile, name, available RAM and CPU, graphics engine, and system bitness.
 
-#### Разблокировка системного диска.  
-Даёт вам возможность записывать файлы на системный диск эмулятора. По умолчанию хранилище находится в режиме **Только чтение**, записать на него ничего нельзя
+#### Delete Emulator
+Removes the emulator you specify in the code. You write the value as `DeleteByName("Rvc64_2")`, where `2` is the index of the emulator you want to delete.
 
-#### Восстановление системного диска.   
-Восстанавливает системный диск эмулятора до изначального состояния.
+#### Start Manager
+Opens the BlueStacks window manager.
 
-#### Патч системы для установки Magisk.  
-Этот кубик подготавливает систему для последующей установки Magisk на устройство.
+#### Unlock System Disk
+Lets you write files to the emulator's system disk. By default, it's set to **Read Only**, so you can't write anything there.
 
-#### Установка Magisk.  
-Устанавливает Magisk (приложение-менеджер), позволяющий управлять правами *root*.
+#### Restore System Disk
+Returns the emulator's system disk to its original state.
 
-#### Запись Magisk в системный раздел.  
-Выполняет скрипт установки Magisk в системный раздел (бинарные файлы, скрипты и прочие необходимые файлы).
+#### System Patch for Magisk Installation
+Preps the system so you can later install Magisk on the device.
 
-#### Включение Zygisk.  
-Включает модуль утилиты Magisk, которая позволяет установить и запустить LSPosed.  
+#### Install Magisk
+Installs the Magisk manager app, which lets you control root access.
 
-LSPosed нужен для:  
-- скрытия факта наличия Root-прав от других приложений,  
-- подмены параметров устройства,  
-- обхода ограничения приложений,  
-- и многого другого.  
-_______________________________________________
-## Полезные ссылки.  
-- [**Установка Root-прав**](./Root).  
-- [**Настройка LSPosed**](./LSPosed).  
-- [**C# код**](../Project%20Editor/CustomCode/С).
+#### Write Magisk to System Partition
+Runs a script to install Magisk into the system partition (binaries, scripts, and all necessary files).
+
+#### Enable Zygisk
+Turns on a Magisk utility module that allows you to install and run LSPosed.
+
+LSPosed lets you:
+- Hide root access from other apps
+- Spoof device parameters
+- Bypass app restrictions
+- And much more
+
+________________________________________________
+## Useful links
+- [Root Setup](./Root)
+- [LSPosed Setup](./LSPosed)
+- [C# Code](../Project%20Editor/CustomCode/С)

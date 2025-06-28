@@ -1,157 +1,150 @@
 ---
 sidebar_position: 4
-title: Директории
-description: Работа с директориями.
+title: Directories
+description: Working with directories.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info Please read the [*Guidelines for Using Materials on This Resource*](../Disclaimer).
 :::
 _______________________________________________  
-## Описание.  
-Данный экшен предназначен для работы с директориями. Вот что он может делать с ними:  
-- *создавать*,  
-- *копировать*,  
-- *перемещать*,  
-- *удалять*,  
-- *получать из них один или несколько файлов. Например:*  
-    - *файлы статей для постинга на канал или в блог*,  
-    - *картинка для автарки при регистрации в приложениях или на сайтах*.  
-- *проверять, существует ли директория*.  
+## Description  
+This action is designed for working with directories. Here’s what you can do with it:
+- *create*,
+- *copy*,
+- *move*,
+- *delete*,
+- *retrieve one or more files from a directory. For example:*
+    - *article files for posting on a channel or blog*,
+    - *a picture for an avatar when registering on apps or websites*.
+- *check if a directory exists*.
 
-При парсинге можно создавать для каждого товара свою директорию, а затем сохранять туда картинки, описание и другую информацию.  
-_______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Данные → Директории**.  
-
-![Добавить в проект](./assets/Directories/Directories_pic1.png)  
+When parsing, you can create a separate directory for each product, then save images, descriptions, and other info there.
 _______________________________________________
-## Как работать с экшеном?  
-Для работы с директориями предусмотрены следующие действия, которые выбираются в окне свойств:  
+## How to add it to your project  
+Use the context menu: **Add action → Data → Directories**.
 
-![Как работать с экшеном](./assets/Directories/Directories_pic2.png)  
+![Add to project](./assets/Directories/Directories_pic1.png)
 _______________________________________________
-### Копировать.  
-Данное действие копирует директорию со всем содержимым и вставляет по новому пути.  
+## How to use the action  
+You can pick the needed action in the properties window when working with directories:
 
-![Копировать](./assets/Directories/Directories_pic3.png)  
-
-#### Путь к директории.  
-Здесь указываем путь к исходной папке.  
-
-#### Новый путь.  
-А тут то место, куда хотим переместить директорию.  
-
-:::warning **Обратите внимание.**  
-Если по новому пути уже существует такая же директория, то ничего не будет скопировано. Экшен при этом завершится успехом (зеленая ветка).
-:::  
+![How to use the action](./assets/Directories/Directories_pic2.png)
 _______________________________________________
-### Переместить.  
-Действие аналогичное прошлому. С той лишь разницей, что оно "забирает" директорию, не сохраняя копию по прежнему пути.  
+### Copy  
+This action copies the entire directory along with everything inside it to a new location.
+
+![Copy](./assets/Directories/Directories_pic3.png)
+
+#### Directory path  
+Here’s where you enter the path to the original folder.
+
+#### New path  
+And here’s where you enter the destination for the directory.
+
+:::warning Please note  
+If a directory with the same name already exists in the new location, nothing will be copied. The action will still finish successfully (green branch).
+:::
 _______________________________________________
-### Получить список директорий.  
-С помощью этого экшена можно получить список всех директорий по указанному пути.  
-
-![Получить список директорий](./assets/Directories/Directories_pic4.png)  
-
-#### Путь к директории.  
-Указываем путь к папке.  
-
-#### Искать в поддиректориях.  
-После включения этой опции поиск будет производиться во всех поддиректориях, не зависимо от их количества.  
-
-Если же не ставить галочку, то возвратятся только папки из верхнего уровня вложенности.  
-
-#### Фильтр по маске.  
-В этом поле можно указать маску для поиска. Их может быть несколько, разделенных символом `|`.    
-
-#### Положить в список.  
-Результат работы можно сохранить в список.  
+### Move  
+Works pretty much like the previous one, except it “takes” the directory away from its old locations, meaning it doesn’t keep a copy there.
 _______________________________________________
-### Получить список файлов.  
-Действие аналогичное прошлому. Но в этом случае мы ищем не директории, а отдельные файлы.  
+### Get list of directories  
+With this action, you can get a list of all directories in the given path.
+
+![Get list of directories](./assets/Directories/Directories_pic4.png)
+
+#### Directory path  
+Enter the folder path here.
+
+#### Search in subdirectories  
+If you turn this option on, the search will look through all subdirectories, no matter how deep.
+
+If you leave it unchecked, you’ll just get the top-level directories.
+
+#### Mask filter  
+In this field, you can enter a search mask. You can set several, using `|` to separate them.
+
+#### Save to list  
+You can save the result to a list.
 _______________________________________________
-### Проверить существование директории.  
-Это действие позволяет узнать, существует ли директория по указанному пути. В случае успешного поиска выход пойдет по зеленой ветке, но если папка не будет найдена, то по красной.  
-
-#### Путь к директории.  
-Указываем путь к папке, существование которой нужно проверить.  
-
-#### Таймаут ожидания.  
-Время в секундах, которое экшен будет ждать обнаружения папки.  
+### Get list of files  
+Works the same as the previous action, except this time you’re looking for individual files, not directories.
 _______________________________________________
-### Путь к файлу.  
-Этот экшен получает путь к одному из файлов в выбранной директории.  
+### Check if directory exists  
+This action lets you check if a directory exists at the specified path. If found, the process goes down the green branch; if not, it goes down the red one.
 
-![Путь к файлу](./assets/Directories/Directories_pic5.png)  
+#### Directory path  
+Enter the path to the folder you want to check.
 
-#### Путь к директории.  
-Пишем путь к папке, в которой будем искать файл.  
-
-#### Файл.  
-- **По номеру**. Указываем конкретный номер файла (нумерация с нуля).  
-- **Случайный**. Будет получен случайный файл из доступных.  
-
-#### Сортировка по алфавиту.  
-Если поставить здесь галочку, то файл будет браться из списка, отсортированного в алфавитном порядке.  
-
-#### Искать в поддиректориях.  
-После включения этой опции поиск файла будет производиться во всех поддиректориях, не зависимо от их количества.  
-
-Если же не ставить галочку, то файл возьмется из основной папки, по которой мы выполняем поиск.  
-
-#### Маска.  
-В этом поле можно указать маску поиска. Их может быть несколько, разделенных символом `|`.  
-
-#### Положить в переменную.  
-Полученный файл можно привязать к переменной.  
+#### Timeout  
+Amount of time (in seconds) this action will wait while searching for the directory.
 _______________________________________________
-### Создать.  
-С помощью этого экшена можно создать новую директорию по указанному пути.  
+### Get file path  
+This action gets the path to a file in the chosen directory.
 
-:::warning **Обратите внимание.**  
-Если по этому пути уже существует такая директория, то она не будет перезаписана. Экшен при этом завершится успехом (зеленая ветка).
-:::  
+![Get file path](./assets/Directories/Directories_pic5.png)
+
+#### Directory path  
+Type in the path to the folder where you’ll search for a file.
+
+#### File  
+- **By number**: Specify an exact file number (count starts at zero).
+- **Random**: A random file will be chosen from what’s available.
+
+#### Sort alphabetically  
+Check this if you want the file chosen from a list sorted alphabetically.
+
+#### Search in subdirectories  
+If this is enabled, the file search will go through all subdirectories, no matter how deep.
+
+If not checked, the file will be picked only from the root of the directory you’re searching in.
+
+#### Mask  
+You can specify a search mask here. You can use several, separated by `|`.
+
+#### Save to variable  
+You can assign the found file to a variable.
 _______________________________________________
-### Удалить.  
-Это действие удаляет выбранную папку со всем ее содержимым. Если попытаться удалить несуществующую директорию, то экшен все равно выйдет по зеленой ветке.  
+### Create  
+This action lets you create a new directory at the specified path.
 
-:::warning **Удалённые таким образом папки не попадают в Корзину, а удаляются безвозвратно!**  
-:::  
+:::warning Please note  
+If a directory already exists at this path, it won’t be overwritten. The action will still finish successfully (green branch).
+:::
 _______________________________________________
-## Пример использования.  
-При регистрации на различных ресурсах часто требуется загрузить аватарку. Представим, что у нас есть папка с подготовленными картинками в расширениях *jpg*, *jpeg*, *png*, *tiff*. Нам нужно выбрать только одну из них.  
+### Delete  
+This action deletes the chosen folder along with everything inside it. If you try to delete a folder that doesn’t exist, the action will still finish successfully (green branch).
 
-Ресурс, на котором мы создаем аккаунт, требует от нас файл именно в формате *PNG*. Поэтому при поиске мы воспользуемся маской `*.png`. А саму картинку выберем случайно.  
-
-![Пример использования](./assets/Directories/Directories_pic6.png)  
-
-После запуска данного экшена в переменной `avatar` сохранится абсолютный путь к файлу.  
-
-:::tip **Системная переменная `{-Project.Directory-}`.**  
-В ней хранится полный путь к папке с файлом проекта. 
-:::  
+:::warning Folders deleted this way don't go to the Recycle Bin—they are gone for good!
+:::
 _______________________________________________
-## Поиск по маске.  
-Для задания маски можно использовать специальные символы:  
-- `?`. Может обозначать один любой символ кроме точки.  
-- `*`. Означает любое количество любых символов, включая точку.  
-- `|`. Используется для одновременного добавления нескольких масок.  
+## Example of use  
+When registering on different sites, you often have to upload an avatar. Imagine you’ve got a folder with ready-made images in *jpg*, *jpeg*, *png*, and *tiff* formats. You need to pick just one.
 
-### Примеры.  
-| Написание             | Пояснение | 
+The site where you’re making an account specifically requires a *PNG* file. So, when searching, you’ll use the mask `*.png` and pick a random image.
+
+![Example of use](./assets/Directories/Directories_pic6.png)
+
+After running this action, the absolute path to the file will be saved in the `avatar` variable.
+
+:::tip System variable `{-Project.Directory-}`  
+This holds the full path to the project’s folder.
+:::
+_______________________________________________
+## Mask search  
+You can use special symbols in search masks:
+- `?` stands for any single character except the dot.
+- `*` means any number of any characters (including dots).
+- `|` lets you set several masks at once.
+
+### Examples
+| Mask             | What it does | 
 | :---------------- | :------: | 
-| `*.*`        |   Любые файлы с любым расширением.   | 
-| `*.jpg`           |   Файлы с расширением **.jpg** (`image.jpg`, `аватарка.jpg`, `1.jpg`).  | 
-| `*.p*`    |  Файлы, у которых расширение начинается на **p.** (`document.pdf`, `презентация.ppt`, `документ.project`, `1.p`).   | 
-| `кар*.*` |  Файлы с любым расширением, но имя которых начинается на **кар.** (`карета.jpg`, `картинка.ico`, `картошка.html`).   |  
-| `*mat?.html` |  **.html** файлы, имя которых начинается с любой последовательности символов. Затем идёт часть **mat**, после которой **1 любой символ**. (`automate.html`, `tomato.html`, `mate.html`).   |  
-| `doc?????.xls` |  **.xls** файлы, начинающиеся на **doc**, после чего идёт **5 любых символов** (кроме точки). (`document.xls`, `doc-1208.xls`, `doctrine.xls`).   |  
-| `???.??` |  Файл с **3 символами в имени** и **2 в расширении**. (`abc.ps`, `job.ai`, `123.45`)   |  
-| `?????` |  Файл с **5 символами** в имени и **без расширения**. (`house`, `image`, `tasks`) |  
-| `*.xlsx` или `*.docx` |  Любой **xlsx** и/или **docx** документ. (`invoice.docx`, `resume.docx`, `project.xlsx`, `default.xlsx`)   |  
- 
-
-
-
-
-
-
+| `*.*`        |   Any files with any extension.   | 
+| `*.jpg`           |   Files with the **.jpg** extension (`image.jpg`, `avatar.jpg`, `1.jpg`).  | 
+| `*.p*`    |  Files with extensions starting with **p** (`document.pdf`, `presentation.ppt`, `document.project`, `1.p`).   | 
+| `car*.*` |  Files with any extension, but names starting with **car** (`carriage.jpg`, `cartoon.ico`, `carrots.html`).   |  
+| `*mat?.html` |  **.html** files whose names start with any characters, then **mat**, then **any 1 character** (`automate.html`, `tomato.html`, `mate.html`).   |  
+| `doc?????.xls` |  **.xls** files starting with **doc** and then **5 any characters** (except the dot) (`document.xls`, `doc-1208.xls`, `doctrine.xls`).   |  
+| `???.??` |  Files with **3 characters in the name** and **2 in the extension** (`abc.ps`, `job.ai`, `123.45`)   |  
+| `?????` |  Files with **5 characters in the name** and **no extension** (`house`, `image`, `tasks`) |  
+| `*.xlsx` or `*.docx` |  Any **xlsx** and/or **docx** document (`invoice.docx`, `resume.docx`, `project.xlsx`, `default.xlsx`)   |

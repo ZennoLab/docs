@@ -1,47 +1,47 @@
 ---
 sidebar_position: 6
-title: Установка BusyBox
-description: Как установить модуль BusyBox на телефон.
+title: Installing BusyBox
+description: How to install the BusyBox module on your phone.
 ---
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please check out the [*Terms of Use for materials on this site*](../Disclaimer).**
 :::
 _______________________________________________
-## Описание.
-BusyBox представляет собой набор UNIX-утилит командной строки. Используется в функциях:
-- [Сохранения и восстановления данных приложения](../Android/Enterprise/App#сохранить-данные-приложения);
-- [Установки прокси в режиме Clash](../Android/Enterprise/setting#clash) *(необходима версия BusyBox не ниже 1.36.1)*;  
+## Description.
+BusyBox is a collection of UNIX command line utilities. It’s used for:
+- [Saving and restoring app data](../Android/Enterprise/App#сохранить-данные-приложения)
+- [Setting up a proxy in Clash mode](../Android/Enterprise/setting#clash) *(BusyBox version 1.36.1 or newer required)*
 _______________________________________________  
-## Установка вручную.
-Для установки модуля вам понадобится смартфон с [**Magisk**](https://github.com/topjohnwu/Magisk).
+## Manual installation.
+To install the module, you’ll need a smartphone with [**Magisk**](https://github.com/topjohnwu/Magisk).
 
-Скачать модуль [Busybox for Android NDK 1.36.1](https://www.dropbox.com/scl/fi/079hbifq0keal5gmu9d1i/UPDATE-Busybox.Installer.v1.36.1-ALL-signed.zip?rlkey=r76ihn7ez64lo0a2j6zq8zoph&st=h8da6r8y&dl=0) нужно в папку телефона `sdcard/Download/` и установить с помощью стандартного меню.  
+Download the [Busybox for Android NDK 1.36.1](https://www.dropbox.com/scl/fi/079hbifq0keal5gmu9d1i/UPDATE-Busybox.Installer.v1.36.1-ALL-signed.zip?rlkey=r76ihn7ez64lo0a2j6zq8zoph&st=h8da6r8y&dl=0) module to your phone’s `sdcard/Download/` folder and install it using the standard menu.
 
-### **1. Открываем Magisk → раздел *Модули* → Установить из хранилища.**
-![Установить из хранилища](./assets/BusyBox/BusyBox_pic1.png)
-
-
-### **2. Находим установщик среди скачанных файлов.**
-![Находим установщик](./assets/BusyBox/BusyBox_pic2.png)
+### **1. Open Magisk → Modules → Install from storage.**
+![Install from storage](./assets/BusyBox/BusyBox_pic1.png)
 
 
-### **3. Подтверждаем установку.**
-![Подтверждаем установку](./assets/BusyBox/BusyBox_pic3.png)  
+### **2. Find the installer among your downloaded files.**
+![Find the installer](./assets/BusyBox/BusyBox_pic2.png)
 
-### **4. В логе появится надпись `Done!` если установка пройдёт успешно.**
-![надпись Done!](./assets/BusyBox/BusyBox_pic4.png)
 
-:::warning **После установки необходимо перезагрузить устройство.**
+### **3. Confirm the installation.**
+![Confirm installation](./assets/BusyBox/BusyBox_pic3.png)
+
+### **4. If the installation is successful, you’ll see `Done!` in the log.**
+![Done! in log](./assets/BusyBox/BusyBox_pic4.png)
+
+:::warning **After installation, you need to reboot your device.**
 :::
 _______________________________________________ 
-## Автоматическая установка (ZennoDroid 2.4.2+).
-Мы подготовили [**Шаблон для установки Busybox 1.36.1**](https://www.dropbox.com/scl/fi/079hbifq0keal5gmu9d1i/UPDATE-Busybox.Installer.v1.36.1-ALL-signed.zip?rlkey=r76ihn7ez64lo0a2j6zq8zoph&e=1&st=h8da6r8y&dl=0), чтобы вам было легче развернуть BusyBox на большом количестве устройств. Он проверяет текущую версию, и если она ниже 1.36.1, то автоматически устанавливает актуальный модуль для Magisk.  
+## Automatic installation (ZennoDroid 2.4.2+).
+We’ve prepared a [**template for installing Busybox 1.36.1**](https://www.dropbox.com/scl/fi/079hbifq0keal5gmu9d1i/UPDATE-Busybox.Installer.v1.36.1-ALL-signed.zip?rlkey=r76ihn7ez64lo0a2j6zq8zoph&e=1&st=h8da6r8y&dl=0) to make it easier for you to install BusyBox on a large number of devices. It checks your current version, and if it's lower than 1.36.1, it’ll automatically install the current module for Magisk.
 
-:::info **После установки телефон автоматически перезагрузится.**
-:::  
+:::info **After installation, your phone will automatically reboot.**
+:::
 
-Затем нужно снова подключиться к устройству и запустить шаблон.  
+After that, just connect to the device again and run the template.
 
-| ![Сообщение в логе](./assets/BusyBox/BusyBox_pic5.png)    | 
+| ![Log message](./assets/BusyBox/BusyBox_pic5.png)    | 
 | :--------: | 
-| **Сообщение в логе `OK: Busybox ver. 1.36.1` говорит о том, что BusyBox установлен и работает правильно.**  |
+| **The log message `OK: Busybox ver. 1.36.1` means BusyBox is installed and working correctly.**  |

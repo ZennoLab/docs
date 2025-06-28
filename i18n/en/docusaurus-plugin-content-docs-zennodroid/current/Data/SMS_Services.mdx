@@ -1,100 +1,99 @@
 ---
 sidebar_position: 3
-title: Сервисы для обработки SMS
-description: Получение SMS на выделенный номер.
+title: SMS Handling Services
+description: Receiving SMS messages to a dedicated number.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please make sure to read the [*Terms and Conditions for using materials on this site*](../Disclaimer).**
 :::
-  
 
-Данный экшен используется для работы с SMS. Он позволяет получать номер из выбранного сервиса и использовать его в работе. Это может пригодится, например, для регистрации на сайтах, требующих SMS-подтверждения.  
-_______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Данные → SMS-сервисы**.  
-
-![Добавить в проект](./assets/SMS_Services/SMS_Services_pic1.png)  
+This action is used for SMS tasks. It lets you get a number from the selected service and use it as you need. For example, it’s handy for registering on websites that require SMS confirmation.
 _______________________________________________
-## Как пользоваться экшеном?  
-:::info **Для начала работы потребуется подключить API-ключ одного из СМС-сервисов в настройках программы.**  
-![подключить API-ключ](./assets/SMS_Services/SMS_Services_pic2.png)
-:::   
+## How to add it to your project?
+Right-click and pick: **Add Action → Data → SMS Services**.
+
+![Add to project](./assets/SMS_Services/SMS_Services_pic1.png)
 _______________________________________________
-### SMS-сервис.  
-![SMS-сервис](./assets/SMS_Services/SMS_Services_pic3.png)  
-
-Выбор одного из SMS-сервисов для работы.    
+## How to use the action?
+:::info **You'll need to connect an API key from one of the SMS services in the program settings to get started.**
+![Connect API key](./assets/SMS_Services/SMS_Services_pic2.png)
+:::
 _______________________________________________
-### Действие — Получить номер.  
-![Получить номер](./assets/SMS_Services/SMS_Services_pic4.png)  
+### SMS Service
+![SMS Service](./assets/SMS_Services/SMS_Services_pic3.png)
 
-#### Сервис.  
-Сайт или приложение, для которого надо получить номер. Это значение можно уточнить в документации выбранного сервиса активации.
-
-#### Оператор (страна).  
-В этом поле указываем код страны, номер которой нужно получить.  
-
-Коды стран отличаются от сервиса к сервису, поэтому их также уточняем в документации.  
-
-#### Выполнить переадресацию.  
-Отмечаем, нужно ли выполнять переадресацию. Ее возможность тоже зависит от конкретного сервиса.  
-
-#### Положить ID активации в переменную.  
-В указанную здесь переменную сохранится ID активации. Он понадобится в дальнейшем, когда проект будет ожидать получения СМС.  
+Choose one of the available SMS services to work with.
 _______________________________________________
-### Действие — Изменить статус.  
-Уведомление сервиса об изменении статуса номера.  
+### Action — Get Number
+![Get Number](./assets/SMS_Services/SMS_Services_pic4.png)
 
-![Изменить статус](./assets/SMS_Services/SMS_Services_pic5.png)  
+#### Service
+Pick the site or app you need the number for. You can find out exactly how to enter this in the chosen activation service’s documentation.
 
-#### ID активации.  
-Тут указываем ID активации, который был получен в действии **Получить номер**. Можно использовать макрос переменной.  
+#### Operator (Country)
+Here you set the country code for the number you want.
 
-#### Статус:  
-- **SMS отправлено**. Сообщение было успешно отправлено на указанный номер.  
-- **Повторный запрос кода**. При необходимости отправить СМС еще раз.  
-- **Отмена запроса**. Используется, когда номер больше не нужен. В некоторых случаях сервисы возвращают использованные деньги.  
-- **Номер уже использовался**. Нужен для уведомления сервиса о том, что номер не подходит по причине его занятости.  
-- **Завершение**. Сообщает сервису, что задача, для которой брался номер, успешно выполнена.  
+Country codes are different for each service, so you’ll need to check the documentation.
 
-#### Переадресация.  
-Здесь пишем номер, на который будет происходить переадресация.  
+#### Forwarding
+Tick this if you want the number to be forwarded. But note, not every service supports forwarding.
+
+#### Save Activation ID in Variable
+Whatever variable you specify here will store the activation ID. You’ll need this later when your project is waiting for an SMS.
 _______________________________________________
-### Действие — Получить статус.  
-С помощью этого действия можно узнать состояние номера.  
+### Action — Change Status
+Notify the service that the status of the number has changed.
 
-Программа ожидает получение СМС в течение 3 минут. Если за это время оно не было получено, то в итоговую переменную попадет значение `Wait`. А это действие придется повторить заново. Учитывайте, что некоторые сервисы имеют долгое время отклика на СМС (до 15 минут).  
+![Change Status](./assets/SMS_Services/SMS_Services_pic5.png)
 
-![Получить статус](./assets/SMS_Services/SMS_Services_pic6.png) 
+#### Activation ID
+Here, enter the activation ID you got from **Get Number**. You can use a variable macro.
 
-#### ID активации.  
-Тут указываем ID активации, который был получен в действии **Получить номер**. Можно использовать макрос переменной.  
+#### Status:
+- **SMS Sent**: The message was successfully sent to the specified number.
+- **Resend Code**: Use if you need to send another SMS.
+- **Cancel Request**: Use if you no longer need the number. Some services might refund your money.
+- **Number Already Used**: Lets the service know the number isn’t suitable because it’s already in use.
+- **Complete**: Tells the service the task for this number is done.
+
+#### Forwarding
+Write the number you want the messages forwarded to, if needed.
 _______________________________________________
-### Дополнительные параметры.  
-У некоторых сервисов также есть дополнительные параметры, которые не входят в общие настройки экшена. Их можно задать в специальном поле, используя вот такой формат: `параметр=значение`.  
+### Action — Get Status
+Use this to check the status of your number.
 
-Можно передавать сразу несколько параметров. Друг от друга они должны отделяться символом `&`. Вот так: `&параметр1=значение1&параметр2=значение2&параметрN=значениеN`.  
+The program will wait up to 3 minutes for the SMS to arrive. If it hasn’t arrived by then, the result variable will be set to `Wait`. You’ll have to try the action again. Some services can take up to 15 minutes to deliver the SMS, so take that into account.
 
-У каждого сервиса свои названия параметров, поэтому их нужно узнавать в документации выбранного сервиса.  
+![Get Status](./assets/SMS_Services/SMS_Services_pic6.png)
+
+#### Activation ID
+Enter the activation ID from **Get Number**. You can use a variable macro.
 _______________________________________________
-### Положить в переменную.  
-Как и в прочих экшенах, это поле служит для указания перменной, в которую будет сохранен результат работы.  
-_______________________________________________
-## Алгоритм работы.  
-**1.** Заказать номер и получить его.  
-**2.** Отправить на полученный номер SMS сообщение.  
-**3.** Уведомить сервис, что сообщение отправлено.  
-**4.** Ожидать получения сообщения.    
-**5.** Завершить сессию.  
+### Extra Parameters
+Some services have additional parameters that aren’t part of the standard action settings. You can enter them in a special field like this: `parameter=value`.
 
-| ![Алгоритм работы](./assets/SMS_Services/SMS_Services_pic7.png)  |
+You can send several parameters at once. Separate them with `&`, like this: `&parameter1=value1&parameter2=value2&parameterN=valueN`.
+
+Each service has its own parameter names, so check their documentation.
+_______________________________________________
+### Save to Variable
+Just like other actions, this field lets you set which variable will get the result.
+_______________________________________________
+## How it works — Step by Step
+**1.** Request a number and get it.
+**2.** Send an SMS to that number.
+**3.** Let the service know the message has been sent.
+**4.** Wait for the message to arrive.
+**5.** End the session.
+
+| ![How it works](./assets/SMS_Services/SMS_Services_pic7.png)  |
 |:--:|
-| *Примерная схема работы с SMS-сервисом* |  
+| *Basic SMS service flow* |
 
-:::warning **Не используйте в своих проектах бесконечные циклы.**  
-Это приведет к зависанию шаблона и потере денег. Например, если проект не сможет выйти из цикла на получение номера, то он будет постоянно запрашивать номера, пока не кончатся деньги. 
-::: 
-_______________________________________________  
-## Полезные ссылки.   
-- [**Установить значение**](../Android/ProLite/SetValue).  
-- [**Выполнить событие**](../Android/ProLite/RunEvent). 
-- [**Оператор Switch**](../Project%20Editor/Logic/Switch).
+:::warning **Don’t use endless loops in your projects.**
+They’ll cause your template to hang and waste your money. For example, if your project gets stuck trying to get a number, it’ll keep buying new ones until you run out of funds.
+:::
+_______________________________________________
+## Useful links
+- [**Set Value**](../Android/ProLite/SetValue)
+- [**Trigger Event**](../Android/ProLite/RunEvent)
+- [**Switch Operator**](../Project%20Editor/Logic/Switch)

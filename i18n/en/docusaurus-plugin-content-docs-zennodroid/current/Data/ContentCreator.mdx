@@ -1,123 +1,125 @@
 ---
 sidebar_position: 11
-title: Создание контента
-description: Написание уникального текста.
+title: Content Creation
+description: Writing unique text.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of Use for materials on this website*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.  
-**ZennoDroid** позволяет подключить и использовать сервисы для создания уникального текста: [**WordAI**](https://wordai.com/) и [**ArticleForge**](https://www.articleforge.com/).  
+## Description  
+**ZennoDroid** lets you connect and use services like [**WordAI**](https://wordai.com/) and [**ArticleForge**](https://www.articleforge.com/) for unique text creation.
 
-Эти сервисы используют искусственный интеллект для понимания текста. Они способны сделать автоматический рерайтинг, читабельность которого сравнима с текстом, написанным человеком.  
+These services use AI to understand text. They’re able to automatically rewrite content, and the result is nearly as readable as text written by a real person.
 
-Но у них есть большой минус — **сервисы не поддерживают русский язык**. Поэтому их использование актуально только для тех, кто работает в англоязычном сегменте интернета.  
+But there’s a big downside — **these services don’t support Russian**. So, they’re only relevant for those working with the English-language web.
 _______________________________________________ 
-## Как добавить в проект?    
-Через контекстное меню: **Добавить действие → Данные → Создание контента**.  
+## How to add it to your project  
+Using the context menu: **Add Action → Data → Content Creation**.
 
-![Добавить в проект](./assets/ContentCreator/ContentCreator_pic1.png)  
+![Add to project](./assets/ContentCreator/ContentCreator_pic1.png)  
 
-:::info **Не забудьте авторизоваться в сервисах через *Настройки программы*.**  
-![авторизоваться в сервисах](./assets/ContentCreator/ContentCreator_pic2.png)
+:::info **Don’t forget to log in to the services through *Program Settings*.**  
+![Log in to the services](./assets/ContentCreator/ContentCreator_pic2.png)
 :::
 _______________________________________________  
-## [WordAi](https://wordai.com/).  
-Сервис переписывает уже готовый текст в его новую форму.  
+## [WordAi](https://wordai.com/)  
+This service rewrites existing text into a new form.
 
 ![WordAi](./assets/ContentCreator/ContentCreator_pic3.png)  
-### Вкладка «Основное». 
-#### Текст.  
-В это поле мы вводим текст, который хотим переписать (на английском).  
+### The "Main" Tab
+#### Text  
+Here, you enter the text you want to have rewritten (in English).
 
-| Количество вариантов    | Число слов текста |
+| Number of Variants | Number of Words |
 | :--------: | ------- |
-| От **1** до **4** включительно  | Не более **5000** слов    |
-| **5** или более  | Не более **1000** слов    |  
+| From **1** to **4** inclusive | No more than **5000** words |
+| **5** or more | No more than **1000** words |
 
-#### Уникальность. 
-Определяет степень свободы, которую вы даёте искусственному интеллекту для создания нового текста.  
-- **Консервативно**. Текст перепишется с минимальными изменениями.  
-- **Обычно**. Нейросеть будет работать в стандартном режиме, допуская некоторые отклонения от исходного текста.  
-- **Авантюрно**. Допускается много вольности при составлении текста. Это значительно повышает уникальность, но также увеличивает вероятность частого выхода из контекста.  
+#### Uniqueness  
+Sets how much freedom you give the AI to create new text.
+- **Conservative:** The rewrite will have minimal changes.
+- **Normal:** The AI works in standard mode, making occasional tweaks.
+- **Adventurous:** Allows lots of creative freedom. Uniqueness goes up, but there’s a higher chance it’ll lose context.
 
-#### Защитные слова.  
-Эта функция позволяет добавлять слова и фразы, которые вы не хотите изменять при переписывании контента. Например, можно запретить изменение цитат, заголовков и URL. 
+#### Protected Words  
+This function lets you list words and phrases that shouldn't be changed when rewriting. For example, you can prevent quotes, headings, and URLs from being touched.
 
-#### Пользовательские синонимы.  
-Данная опция включает определённые слова и фразы, которые вы хотите заменить другими словами и фразами. WordAi будет автоматически заменять их при переписывании контента.  
+#### Custom Synonyms  
+This option lets you provide specific words and phrases you want swapped out for something else. WordAi will automatically replace them during rewriting.
 
-:::warning **Включение двух верхних функций снизит уникальность и может повлиять на общую читабельность текстов.**
-:::  
-
-В ZennoDroid вы просто ставите галочку, которая отвечает за Включение/Отключение этих функций. Сами же слова и фразы задаются непосредственно в личном кабинете WordAI.  
-_______________________________________________
-### Вкладка «Дополнительно».  
-![Вкладка «Дополнительно»](./assets/ContentCreator/ContentCreator_pic4.png)  
-#### Вернуть JSON.  
-После переписывания текста вы получите результат работы в формате JSON.  
-
-#### Получить список переписываний.  
-Дополнительно в итоговый JSON будут включены все изменения, которые внесла нейросеть в исходный текст.  
-
-#### Количество вариантов.  
-Указываем число вариантов для нашего текста, которые мы хотим получить от сервиса. Сколько раз он попытается его переделать.  
-_______________________________________________
-## [ArticleForge](https://www.articleforge.com/).  
-Каждая статья пишется полностью с нуля, поэтому вы никогда не получите дублированный или плагиатный контент.   
-### Вкладка «Основное».  
-![Вкладка «Основное»](./assets/ContentCreator/ContentCreator_pic6.png) 
-#### Ключевое слово.  
-Представьте, что работаете с внештатным автором. Вы даёте ключевое слово, а он на его основе формирует уникальную статью менее, чем за минуту.  
-
-:::warning **Ссылки, запятые, скобки и одиночные символы — не поддерживаются.**
+:::warning **If you turn on both options above, uniqueness decreases and readability might suffer.**
 :::
-#### Дополнительные ключевые слова (построчно).  
-Тут мы задаём дополнительные ключевые слова, по одному в каждой строке. Они имеют меньший приоритет по сравнению с основным словом.  
 
-:::info **Система имеет ограничение в 5 дополнительных слов.**  
-Если запишите больше, то использоваться всё равно будут только первые пять.
-:::
-#### Длина.  
-Задаём длину итогового текста, от 50 до 750 слов.  
-#### Добавлять заголовки.  
-Разные части текста будут по смыслу разделены заголовками.  
+In ZennoDroid, it’s just a checkbox to turn these features on or off. The actual words/phrases are set directly in your WordAi profile.
 _______________________________________________
-### Вкладка «Дополнительно».  
-![Вкладка «Дополнительно»](./assets/ContentCreator/ContentCreator_pic5.png)  
-#### Замена ключевых слов на ссылку. 
-Пишем в таблицу ключевые слова и ссылки, на которые мы хотим их заменить. 
-#### Вероятность изображений.  
-Указываем вероятность, с которой нейросеть добавит в текст тематическую картинку. Где `0.1` — это 10%, а `1` — 100%.  
-#### Вероятность видео.  
-А тут уже задаём вероятность появления в тексте видео, `0.03` — это 3%, а `0.75` — 75%, и так далее.
-#### Аккаунт связан с WordAi.  
-В личном кабинете WordAi можно настроить интеграцию с ArticleForge, указав свой Email и API-ключ.  
+### The "Advanced" Tab  
+![“Advanced” Tab](./assets/ContentCreator/ContentCreator_pic4.png)
+#### Return JSON  
+After rewriting, you’ll get the result in JSON format.
 
-![Аккаунт связан с WordAi](./assets/ContentCreator/ContentCreator_pic7.png)
-#### Качество.  
-Задаём то, насколько качественно будет переписан наш текст в WordAi.  
-- **Обычный**. Перепишет текст, сохраняя исходный вид, не внося сильных изменений.    
-- **Уникальный**. Делает получившийся материал более уникальным, добавляя новые детали.   
-- **Более уникальный**. Может давно сильно изменить текст, заменяя начальные предложения. Есть риск того, что содержание станет менее понятным.  
-- **Читаемый**. Упрощает восприятие текста, делая его более понятным, но при этом убирает некоторые детали.   
-- **Более читаемый**. Сильно упрощённый вариант текста. Подходит для случаев, когда нужно как можно меньше "воды", оставляя при этом самое главное.
+#### Get Rewrite List  
+The final JSON will also include all the changes the AI made to your original text.
 
-#### Уникальность.  
-Определяет степень свободы, которую вы даёте искусственному интеллекту для создания нового текста.  
-- **Консервативно**. Текст перепишется с минимальными изменениями.  
-- **Обычно**. Нейросеть будет работать в стандартном режиме, допуская некоторые отклонения от исходного текста.  
-- **Авантюрно**. Допускается много вольности при составлении текста. Это значительно повышает уникальность, но также увеличивает вероятность частого выхода из контекста.  
+#### Number of Variants  
+Set how many different versions you want to get from the service — the number of times it’ll attempt the rewrite.
+_______________________________________________
+## [ArticleForge](https://www.articleforge.com/)  
+Every article is written from scratch, so you never get duplicate or plagiarized content.
+### The "Main" Tab  
+![Main Tab](./assets/ContentCreator/ContentCreator_pic6.png)
+#### Keyword  
+Think of it like working with a freelance writer. You give a keyword, and they create a unique article based on it in under a minute.
 
-#### Переписывать в WordAi.  
-Написанный на основе ключевых слов текст в ArticleForge можно отправлять в WordAi на доработку. Он будет переписан на основе параметров, которые вы задали выше (качество и уникальность).  
+:::warning **Links, commas, brackets, and single characters are not supported.**
+:::
+#### Extra Keywords (one per line)  
+Here, you specify extra keywords, one per line. These have lower priority than the main keyword.
 
-![Переписывать в WordAi](./assets/ContentCreator/ContentCreator_pic8.png)
-#### Количество переписываний.  
-Указываем число вариантов для нашего текста, которые мы хотим получить от сервиса. Сколько раз он попытается его переделать.  
+:::info **There’s a limit of 5 extra keywords.**
+If you add more, only the first five are used.
+:::
+#### Length  
+Set the desired length of the finished article, from 50 to 750 words.
+#### Add Headings  
+Different sections of the text will be split with relevant headings.
+_______________________________________________
+### The "Advanced" Tab  
+![Advanced Tab](./assets/ContentCreator/ContentCreator_pic5.png)
+#### Replace Keywords with Links  
+You can enter a table of keywords and the corresponding links you want them swapped for.
+#### Image Probability  
+Set the chance that the AI will add a relevant image to the text. For example, `0.1` means 10%, `1` means 100%.
 
-| Количество переписываний    | Число слов текста |
+#### Video Probability  
+Same thing here, but for videos: `0.03` means 3%, `0.75` is 75%, etc.
+
+#### Account Linked with WordAi  
+In your WordAi profile, you can link it with ArticleForge by entering your email and API key.
+
+![Account linked with WordAi](./assets/ContentCreator/ContentCreator_pic7.png)
+#### Quality  
+Choose how well you want your text rewritten in WordAi.
+- **Regular:** Rewrites the text while staying close to the original.
+- **Unique:** Makes the output more unique, adding new details.
+- **More Unique:** Can change the text a lot, even replacing whole sentences — but it may become less clear.
+- **Readable:** Makes the text easier to read and understand, but removes some details.
+- **Most Readable:** Really simplifies the text, good when you want to remove fluff and only keep the core info.
+
+#### Uniqueness  
+Sets how much freedom the AI gets when making new text.
+- **Conservative:** Minimal changes.
+- **Normal:** Standard mode, some deviation from the original.
+- **Adventurous:** Lots of room for creativity and uniqueness, but may lose context more often.
+
+#### Rewrite in WordAi  
+The article generated in ArticleForge from your keywords can be sent to WordAi for further tweaking, based on the quality and uniqueness settings you chose above.
+
+![Rewrite in WordAi](./assets/ContentCreator/ContentCreator_pic8.png)
+#### Number of Rewrites  
+Specify how many different versions of your text you want from the service — how many times it’ll try to rewrite it.
+
+| Number of Rewrites | Number of Words |
 | :--------: | ------- |
-| От **1** до **4** включительно  | Не более **5000** слов    |
-| **5** или более  | Не более **1000** слов    |   
+| From **1** to **4** inclusive | No more than **5000** words |
+| **5** or more | No more than **1000** words |
 _______________________________________________

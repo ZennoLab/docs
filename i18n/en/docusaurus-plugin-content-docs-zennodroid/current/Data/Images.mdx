@@ -1,131 +1,131 @@
 ---
 sidebar_position: 9
-title: Обработка изображений
-description: Редактирование и сохранение изображений.
+title: Image Processing
+description: Editing and saving images.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info Please review the [*Rules for using materials on this resource*](../Disclaimer).
 :::
 _______________________________________________  
-## Описание.  
-Экшен используется для редактирование и сохранения изображений. Вот что можно делать с помощью него:  
-- визуально обрабатывать картинки;  
-- изменять или удалять метаданные изображения;  
-- сохранять скриншот приложения.    
+## Overview  
+This action is used for editing and saving images. Here’s what you can do with it:  
+- visually process images;  
+- edit or remove image metadata;  
+- save screenshots from the app.  
 _______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Данные → Обработка изображений**.  
+## How to add it to your project  
+Right-click the context menu: **Add action → Data → Image Processing**.  
 
-![Добавить в проект](./assets/Images/Images_pic1.png)  
+![Add to project](./assets/Images/Images_pic1.png)  
 _______________________________________________   
-## Источник изображения.  
-![Добавить в проект](./assets/Images/Images_pic2.png)  
+## Image Source  
+![Add to project](./assets/Images/Images_pic2.png)  
 
-### Скриншот инстанса.  
-Выполняет скриншот активного окна эмулятора/устройства.  
+### Instance Screenshot  
+Takes a screenshot of the currently active emulator/device window.
 
-### Файл.  
-Обрабатывает выбранный файл, к которому указываем путь. Допустим использования макросов.  
+### File  
+Processes the selected file you set the path for. You can use macros here.
 
-### URL.  
-Работа будет производиться с картинкой, ссылку к которой мы укажем.  
+### URL  
+The action will work with an image from the link you provide.
 
-:::warning **Скачивание картинки произойдет с вашего реального IP.**
-Даже если в проекте установлены прокси!
-:::  
+:::warning **The image will be downloaded using your actual IP.**
+Even if proxies are set up in your project!
+:::
 _______________________________________________
-## Обработка.  
-### Без обработки.  
-Изображение не будет как-либо изменяться. Эта опция полезна при сохранении скриншота или картинки из интернета.  
+## Processing  
+### No processing  
+The image won’t be modified in any way. This option is useful for saving screenshots or pictures from the internet as they are.  
 _______________________________________________
-### Изменение размеров.  
-Позволяет  изменить размер изображения. Доступные параметры:  
-- **Ширина и Высота**. Задаем цифровые значения для этих параметров.  
-- **Размеры**. Определяет тип двух верхних значений: *В процентах* от оригинального размера или же напрямую *Пиксели*.  
-- **Сохранять соотношение сторон**. В случае выбора этой опции **Ширина** и **Высота** будут принудительно привязаны к оригинальному соотношению сторон. Так что вы не сможете изменять их независимо.  
-- **Не увеличивать изображение**. Если указанные **Ширина** и **Высота** стали больше, чем оригинальные значения, то изменение размера не будет применено.  
+### Resize  
+Lets you change the size of your image. Available options:  
+- **Width and Height**: Enter values for these parameters.  
+- **Dimensions**: Sets whether the numbers above are *Percentages* of the original size or actual *Pixels*.  
+- **Keep aspect ratio**: If you pick this, **Width** and **Height** will always stay in the original proportion, so you can't set them independently.  
+- **Do not enlarge image**: If the **Width** and **Height** you set are bigger than the original, resizing won’t be applied.  
 _______________________________________________
-### Обрезка.  
-С помощью этого действия можно обрезать изображение. Доступные опции: 
-- **Область**. Выбираем то, что будем обрезать.  
-    - *Видимая*. Актуально только для **Скриншот инстанса**. Обрезает скриншот экрана по границам открытого окна. Это позволяет получить только видимую часть приложения.  
-    - *Заданная*. Обрезает изображение по заданным параметрам, которые задаются ниже.  
-- **Слева / Сверху / Ширина / Высота**. Указываем значения в пикселях или процентах (выбираются ниже).   
-- **Размеры**. Определяет тип верхних значений: *В процентах* от оригинального размера или же напрямую *Пиксели*.  
+### Crop  
+This lets you crop the image. Options:  
+- **Area**: Choose what to crop.  
+    - *Visible*: Only for **Instance Screenshot**. Crops the screenshot to the app’s open window. You get only the visible part.  
+    - *Custom*: Crop the image based on the parameters set below.  
+- **Left / Top / Width / Height**: Choose values in pixels or percent (pick below).   
+- **Dimensions**: Sets the above type as either *Percent* of the original or *Pixels*.  
 _______________________________________________
-### Поворот.  
-Поворачивает изображение на указанное количество градусов.  
+### Rotate  
+Rotates the image by the specified number of degrees.  
 _______________________________________________
-### Водяной знак.  
-Накладывает текст или изображение на обрабатываемый файл.  
+### Watermark  
+Adds text or an image to the file.
 
-**Тип наложения:**  
-- *Горизонтально*.  
-- *По диагонали*.  
+**Overlay type:**  
+- *Horizontal*  
+- *Diagonal*  
 
-#### Подробнее про Горизонтальный тип наложения.  
-![Добавить в проект](./assets/Images/Images_pic3.png)  
+#### More on the Horizontal overlay type  
+![Add to project](./assets/Images/Images_pic3.png)  
 
-- **Расположение**.  
-Выбираем расположение для текста/изображения:  
-    - *В центре*;  
-    - *Правый верх*;  
-    - *Правый низ*;  
-    - *Левый верх*;  
-    - *Левый низ*;  
-- **Отступ**.  
-Указываем отступ слева или сверху в пикселях относительно **Расположения**, которое мы задали выше.  
-- **Знак**.  
-    - **Изображение**. Указываем путь к файлу.  
-    - **Текст**. Пишем необходимый текст и выбираем для него шрифт.  
-    :::tip **Визуальный конструктор текста.**
-    Открывается нажатием специальной кнопки справа от поля **Шрифт**.  
-    ![Добавить в проект](./assets/Images/Images_pic4.png)
+- **Placement**  
+Set where the text/image should appear:  
+    - *Center*  
+    - *Top right*  
+    - *Bottom right*  
+    - *Top left*  
+    - *Bottom left*  
+- **Offset**  
+Set the left/top offset in pixels in relation to the **Placement** you chose above.  
+- **Mark**  
+    - **Image**: Provide the file path.  
+    - **Text**: Write your text and select the font.  
+    :::tip **Visual text builder**
+    Open it by clicking the button to the right of the **Font** box.  
+    ![Add to project](./assets/Images/Images_pic4.png)
     :::  
-- **Прозрачность**.  
-Процентное количество прозрачности наложенного текста или изображения. Чем выше значение, тем прозрачнее.  
+- **Transparency**  
+The transparency level as a percentage for the overlay. The higher the value, the more see-through it is.  
 
-#### Пример.  
-![Добавить в проект](./assets/Images/Images_pic7.png)  
+#### Example  
+![Add to project](./assets/Images/Images_pic7.png)  
 
-С такими настройками, как на верхнем скриншоте, мы получим такой водный знак:  
+With settings like in the screenshot above, the watermark will look like this:  
 
-![Добавить в проект](./assets/Images/Images_pic8.png)
+![Add to project](./assets/Images/Images_pic8.png)
 _______________________________________________
-### Зеркальное отражение.  
-Позволяет отзеркалить изображение. Доступные типы отражения:  
-- **Горизонтальный**;   
-- **Вертикальный**;  
-- **Горизонтальный и Вертикальный**.  
+### Mirror  
+Lets you mirror the image. Mirror types available:  
+- **Horizontal**  
+- **Vertical**  
+- **Horizontal and Vertical**  
 _______________________________________________
-### Очистить Exif.  
-Это действие может очистить все метаданные изображения.  
+### Clear Exif  
+This action can remove all metadata from the image.  
 _______________________________________________
-## Сохранить.  
-Раздел для настройки вывода изображения.  
+## Save  
+Set up how the processed image will be saved.
 
-### Качество.  
-Определяем его в процентах, где 1% — это очень пережатое, а 100% — оригинальное.  
+### Quality  
+Set the quality as a percentage: 1% is extremely compressed, 100% is original quality.
 
-### Путь к файлу.  
-Указываем путь на компьютере, куда мы хотим сохранить картинку. Необходимо также в конце добавить формат файла. Допустимо использования ***переменных***.  
+### File path  
+Set the path on your computer to save the image. Make sure to add the file format at the end. You can use ***variables***.  
 _______________________________________________
-## Редактирование метаданных (EXIF).  
-В этом блоке вы можете изменять различные метаданные.  
+## Edit metadata (EXIF)  
+In this section, you can change various image metadata.
 
-![Добавить в проект](./assets/Images/Images_pic5.png)  
+![Add to project](./assets/Images/Images_pic5.png)  
 
-:::info **Не работает с режимом *Очистить Exif*.**
-:::  
+:::info **Doesn’t work with *Clear Exif* mode.**
+:::
 _______________________________________________
-## Пример использования.  
-Допустим, мы написали шаблон, но на каком-то этапе работы он завершается ошибкой. Чтобы попытаться понять причину, мы можем сделать скриншот в момент ошибки и визуально оценить ситуацию.  
+## Usage Example  
+Let’s say you made a template, but at some stage, it fails with an error. To help figure out why, you can take a screenshot at the moment of the error and take a look at what’s going on.
 
-Создаем экшен [**Random**](./Random) и генерируем случайно число или имя для *потока*. Кладем это в переменную `{-Variable.thread-}`.  
+Create an action [**Random**](./Random) and generate a random number or name for the *thread*. Save this to a variable `{-Variable.thread-}`.
 
-Теперь добавляем действие [**BadEnd**](../Project%20Editor/Logic/BadEnd) и проводим от него ветку в **Обработку изображений**. Укажем настройки, как на этом скриншоте:  
+Now add a [**BadEnd**](../Project%20Editor/Logic/BadEnd) action and link it to **Image Processing**. Set the options like you see in this screenshot:
 
-![Добавить в проект](./assets/Images/Images_pic6.png)  
+![Add to project](./assets/Images/Images_pic6.png)  
 
-**Путь к файлу:** `{-Project.Directory-}{-Variable.thread-}\App_screenshot.jpg`.  
+**File path:** `{-Project.Directory-}{-Variable.thread-}\App_screenshot.jpg`.
 
-Сюда также можно добавить сохранение кода страницы `{-Page.Dom-}` через экшен [**Записать в файл**](../Android/ProLite/Files). Это позволит выявить ошибки, возникающие в ходе работы с браузером.
+You can also save the page code `{-Page.Dom-}` using the [**Write to file**](../Android/ProLite/Files) action. This helps troubleshoot bugs that come up while working with the browser.
