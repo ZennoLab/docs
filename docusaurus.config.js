@@ -40,6 +40,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          id: 'zennodroid',
           sidebarPath: './sidebars.js',
           path: 'docs/ZennoDroid',
           routeBasePath: 'zennodroid',
@@ -95,7 +96,7 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'right',
             label: 'ZennoDroid',
-            docsPluginId: 'default',
+            docsPluginId: 'zennodroid',
           },
           {
             type: 'docSidebar',
