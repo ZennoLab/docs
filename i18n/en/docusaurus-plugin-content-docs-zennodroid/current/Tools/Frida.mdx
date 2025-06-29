@@ -1,10 +1,10 @@
 ---
 sidebar_position: 8
-title: Сервер Frida
-description: Установка и запуск сервера Frida
+title: Frida Server
+description: Installing and Running the Frida Server
 ---
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please make sure to read [*the Terms of Use for materials on this resource*](../Disclaimer).**
 :::
 _______________________________________________
 export const VideoSample = ({source}) => (
@@ -13,188 +13,183 @@ export const VideoSample = ({source}) => (
 </video>
 );  
 
-## Что такое Frida?  
-[**Frida**](https://frida.re/) — это набор инструментов для динамического кода. Позволяет легко внедрять собственный код в другие приложения.  
-Frida умеет работать с приложениями, написанными для всех популярных ОС, включая Windows, Linux, macOS, iOS и даже QNX.  
-Мы же будем использовать ее для модификации приложений под Android.  
-:::info **Для работы Frida на реальном устройстве необходим Root.**
+## What is Frida?  
+[**Frida**](https://frida.re/) is a toolkit for dynamic code instrumentation. It lets you easily inject your own code into other apps.  
+Frida works with apps made for all popular OS’s, including Windows, Linux, macOS, iOS, and even QNX.  
+Here, we’ll be using it to modify Android apps.  
+:::info **Note: Frida needs Root access to work on a real device.**
 ::: 
 _________________
 
-## Как открыть Frida Toolkit?  
-![Как открыть](./assets/Frida/Frida_pic1.png)   
+## How do you open the Frida Toolkit?  
+![How to open](./assets/Frida/Frida_pic1.png)   
 
-В левом верхнем углу приложения на панели находим ***Инструменты → в самом низу Frida toolkit***.  
+In the app’s top left panel, find ***Tools → Frida toolkit*** at the very bottom.  
 
-![Окно](./assets/Frida/Frida_pic2.png) 
-:::info **Перед началом работы необходимо запустить устройство или эмулятор.**
+![Window](./assets/Frida/Frida_pic2.png) 
+:::info **You need to start your device or emulator before you begin.**
 :::  
 _________________
-## Описание доступных окон.  
-![Окна](./assets/Frida/Frida_pic3.png)   
-### Устройства (1):  
-Список всех устройств, подключенных через ADB. Он автоматически обновляется при подключении/отключении новых устройств или эмуляторов.  
-В версии ZennoDroid Enterprise можно переключаться между разными устройствами, при этом в остальных версиях работа возможна только с запущенным в основном окне эмулятором.  
-#### Доступные кнопки:  
-- **Обновить**. Принудительно обновляет список устройств.  
-- **Запустить frida**. Запускает сервер Frida на устройстве. После нажатия необходимо дождаться уведомления в информационном окне «*Сервер запущен*». При первом запуске происходит автоматическая установка сервера на устройство, что занимает некоторое время (~5-10 сек).  
-- **Остановить frida**. Останавливает сервер, но не удаляет его, поэтому последующие запуски будут происходить значительно быстрее, чем в первый раз.  
+## Description of Available Windows  
+![Windows](./assets/Frida/Frida_pic3.png)   
+### Devices (1):  
+A list of all devices connected via ADB. It automatically updates when you connect or disconnect devices or emulators.  
+In ZennoDroid Enterprise, you can switch between different devices. In other versions, you can only work with the emulator running in the main window.  
+#### Available buttons:  
+- **Refresh**: Force updates the list of devices.  
+- **Start frida**: Launches the Frida server on the device. After pressing it, wait for the info window to say “*Server started*”. The first time you run it, the server will install to the device, which takes a few seconds (about 5-10 sec).  
+- **Stop frida**: Stops the server but doesn’t uninstall it, so starting it again after will be much faster than the first run.  
 _________________  
-### Приложения (2):  
-Здесь выводится список всех установленных приложений, для которых есть возможность запуска. Приложения, которые нельзя запустить (без стартовых activity), не отображаются в списке.  
-#### Категории:  
--  **Id**. Тут можно посмотреть уникальный идентификатор приложения (package name).  
-- **Название**. Понятное название приложения, которое обычно отображается на иконке.  
-#### Доступные кнопки:  
-- **Обновить**. Нажав на нее, можно обновить список приложений. Ее необходимо использовать после установки или удаления приложений.  
-- **Активное**. После нажатия в таблице будет выбрано приложение, которое в данный момент отображается на экране устройства.  
-- **Запустить**. Эта кнопка запускает выбранное приложение и автоматически подключается к его процессу. Если приложение уже было запущено, оно будет остановлено, а затем запущено заново.  
-- **Возобновить**. Снимает с паузы приложение, которое ранее было приостановлено.  
+### Apps (2):  
+Shows a list of all installed apps you can launch. Apps that can’t be launched (no launcher activity) aren’t shown.  
+#### Columns:  
+-  **Id**: You can see the app’s unique identifier (package name).  
+- **Name**: The app’s display name, usually shown on its icon.  
+#### Available buttons:  
+- **Refresh**: Updates the app list. Use this after installing or uninstalling apps.  
+- **Active**: After clicking, selects the app currently showing on your device’s screen.  
+- **Start**: Launches the selected app and automatically connects to its process. If the app was already running, it’s killed and relaunched.  
+- **Resume**: Unpauses an app you previously paused.  
 _________________  
-### Процессы (3):  
-Здесь можно посмотреть все запущенные процессы на устройстве.  
-#### Категории:  
-- **Pid**. Идентификатор процесса (Process id).  
-- **Название**. Имя процесса. Так как к одному приложению могут относиться несколько процессов,  
-то их названия обычно содержат уточнения. Например, **com.android.settings** дает нам понять,  
-что речь идет о **Настройках**.  
-#### Доступные кнопки:  
-- **Обновить**. Нажав на нее, можно обновить список текущих процессов. Необходимо использовать после запуска или остановки приложений.  
-- **Самый верхний**. В таблице будет выбран основной процесс приложения, которое отображается на экране устройства.  
-- **Подключить**. Подключается к выбранному процессу. После этого становятся доступными операции создания и загрузки скрипта.  
-- **Отключиться**. Отключается от процесса. Если приложение завершило работу, то отключение от процесса произойдет автоматически.  
+### Processes (3):  
+Here you’ll see all running processes on the device.  
+#### Columns:  
+- **Pid**: The process ID.  
+- **Name**: The process name. Since one app can have several processes, the name usually gives you more details. For example, **com.android.settings** tells you it’s the **Settings** app.  
+#### Available buttons:  
+- **Refresh**: Updates the list of running processes. Use this after launching or stopping apps.  
+- **Topmost**: Selects the main process of the app currently visible on your device.  
+- **Connect**: Connects to the selected process. Once you connect, you can load or create scripts.  
+- **Disconnect**: Disconnects from the process. If the app has closed, you’ll be automatically disconnected.  
 _________________  
-### Скрипт (4):  
-Окно работы со скриптом. Поддерживаются макросы.  
-#### Доступные кнопки:  
-- **Выбрать**. Открывает форму загрузки файлов. Файл скрипта должен иметь расширение *.js*  
-- **Сохранить**. Сохранение содержимого окна в файл с расширением *.js*  
-- **Создать**. Компиляция скрипта. Если скрипт содержит ошибки, то в окно информации будет выдано соответствующее уведомление. Ошибки на данном этапе обычно связаны с неправильным синтаксисом.  
-(*Действие становится активным после подключения к процессу приложения.*)  
-- **Загрузить**. Непосредственная загрузка скрипта. Если скрипт содержит ошибки, то в окно информации будет выдано соответствующее уведомление. Ошибки на данном этапе обычно связаны непосредственно с выполнением скрипта, например, из-за отсутствия в коде приложения нужного класса.  
-(*Действие становится активным только после успешного выполнения кнопки **Создать**.*)  
- - **Выгрузить**. Выгружает скрипт. Он также выгружается автоматически при завершении процесса приложения.  
+### Script (4):  
+The script management window. Supports macros.  
+#### Available buttons:  
+- **Select**: Opens a file selection dialog. The script file should have a *.js* extension  
+- **Save**: Saves the window content to a *.js* file  
+- **Create**: Compiles the script. If there are errors (usually syntax-related), you’ll get a message in the info window.  
+(*This action becomes available after you’ve connected to an app process.*)  
+- **Load**: Loads the script. If there are errors (often due to missing classes in the app code), you’ll get a message in the info window.  
+(*You can only load after a successful **Create** press.*)  
+ - **Unload**: Unloads the script. Scripts are also unloaded automatically when the app process closes.  
  _________________  
- ### Информация (5):  
- В это окно выводится различная служебная информация и сообщения, возникающие в процессе выполнения скрипта, а также ошибки и т.д.  
- #### Горячие клавиши:  
- - **(Ctrl + C)**. Скопировать выделенные сообщения.  
- - **(Del)**. Удалить выделенные сообщения.  
- - **(Ctrl + Del)**. Удалить все сообщения.  
+ ### Info (5):  
+ This window shows service info, messages during scripts, errors, etc.  
+ #### Hotkeys:  
+ - **(Ctrl + C)**: Copy highlighted messages.  
+ - **(Del)**: Delete highlighted messages.  
+ - **(Ctrl + Del)**: Delete all messages.  
  _________________  
 
- ## Как проверить, что сервер Frida запустился и работает?  
- 1. Нажать кнопку **«Запустить frida»** и дождаться уведомления в информационном окне: *«Сервер запущен»*.  
- 2. На панели *Процессы* нажать **«Самый верхний»**. После этого будет выбран активный процесс.  
- 3. Нажать **«Подключиться»**.  
- 4. На панели *Скрипт* ввести код: `console.log('Hello, World!');`  
- 5. Нажать **«Создать»**, а потом **«Загрузить»**.  
- 6. Если все прошло успешно, то в информационном окне появится сообщение: `["type":"log","level":"info","payload":"Hello, World!"]`  
- 7. После этого можно нажать **«Выгрузить»**. Сервер Frida работает!  
+ ## How to check if the Frida server is up and running  
+ 1. Hit **“Start frida”** and wait for a “*Server started*” notification in the info window.  
+ 2. On the *Processes* panel, press **“Topmost”**. This will select the active process.  
+ 3. Click **“Connect”**.  
+ 4. On the *Script* panel, enter this code: `console.log('Hello, World!');`  
+ 5. Hit **“Create”**, then **“Load”**.  
+ 6. If everything worked, you’ll see the message: `["type":"log","level":"info","payload":"Hello, World!"]` in the info window.  
+ 7. You can then click **“Unload”**. Frida server is working!  
  _________________
 
- ## Стандартные сценарии.  
- ### Приложение будет перезапущено даже если уже запущено.  
- 1. На панели *Приложения* выбрать нужное (по названию или с помощью кнопки **«Активное»**).  
- 2. Нажать кнопку **«Запустить»**. Приложение запустится *(или перезапустится если уже было запущено)*, а затем встанет на паузу. Произойдет автоматическое подключение к его процессу.  
- 3. На панели *Скрипт* нажать **«Выбрать»** и в появившейся форме открыть нужный скрипт (файл  
- с расширением .js).  
- 4. Нажить кнопку **«Возобновить»**. Приложение продолжит работу.  
- ### Подключаемся к процессу запущенного приложения.  
- 1. На панели *Процессы* нажать **«Самый верхний»**, будет выбран активный процесс.  
- 2. Нажать **«Подключиться»**.  
- 3. На панели *Скрипт* нажать **«Выбрать»** и в появившейся форме открыть нужный скрипт (файл  
- с расширением .js).  
- 4. Нажать **«Создать»**, а потом **«Загрузить»**.  
+ ## Typical scenarios  
+ ### The app will be restarted even if it’s already running  
+ 1. On the *Apps* panel, select the one you need (by name or using the **“Active”** button).  
+ 2. Press **“Start”**. The app will start (or restart if it was open), then pause. It’ll auto-connect to its process.  
+ 3. On the *Script* panel, click **“Select”** and open your desired script (*.js* file) in the dialog.  
+ 4. Press **“Resume”**. The app will keep running.  
+ ### Connect to a running app process  
+ 1. On the *Processes* panel, hit **“Topmost”** to select the active process.  
+ 2. Click **“Connect”**.  
+ 3. On the *Script* panel, press **“Select”** and open your script (*.js* file).  
+ 4. Press **“Create”**, then **“Load”**.  
  _________________  
 
- ## Перехват трафика с помощью Frida и Burp Suite.  
+ ## Intercepting traffic with Frida and Burp Suite  
 
 <VideoSample source={require("@site/static/video/Перехват трафика, Frida и Burp.mp4").default}/>  
 _________________
- ### 1. Скачать и установить.  
+ ### 1. Download and install  
  <details>
-<summary>1. Выбрать **Burp Suite Community Edition** и нажать **«Download»**</summary>  
+<summary>1. Choose **Burp Suite Community Edition** and click **“Download”**</summary>  
 
 ![Download](./assets/Frida/Frida_pic4.png)
 </details>  
 
  <details>
-<summary>2. Создаем временный **(Temporary)** проект.</summary>  
+<summary>2. Create a **Temporary** project.</summary>  
 
  ![Next](./assets/Frida/Frida_pic5.png) 
 </details>   
 
  <details>
-<summary>3. Используем **настройки по умолчанию (Use Burp defaults)** для проекта.</summary>  
+<summary>3. Use **Burp defaults** for the project.</summary>  
 
  ![StartBurp](./assets/Frida/Frida_pic6.png) 
 </details> 
 
- ### 2. Настроить Burp Suite на обработку трафика с локальной сети компьютера.  
+ ### 2. Set up Burp Suite to process traffic from your computer’s local network  
 <details>
-<summary>1. Заходим в **настройки (Settings)**</summary>  
+<summary>1. Go to **Settings**</summary>  
 
  ![Find out](./assets/Frida/Frida_pic7.png)
 </details>  
 
 <details>
-<summary>2. Выбираем **Tools → Proxy** и нажимаем **«Import / Export CA certificate»**. </summary>  
+<summary>2. Select **Tools → Proxy** and click **“Import / Export CA certificate”**. </summary>  
 
  ![Import](./assets/Frida/Frida_pic8.png)
 </details>  
 
 <details>
-<summary>3. Затем выбираем ***Certificate and private key from PKCS#12 keystore*** → выбрать файл **zenno.pfx** (*пароль **123***).</summary>  
+<summary>3. Then pick ***Certificate and private key from PKCS#12 keystore*** → select the **zenno.pfx** file (*password: **123***).</summary>  
 
 ![private kay](./assets/Frida/Frida_pic9.png)  
 _________________  
 ![private kay](./assets/Frida/Frida_pic10.png) 
 </details>
     
- ### 3. Выбрать необходимое устройство и запустить в Project Maker.  
+ ### 3. Choose your device and launch in Project Maker  
  ![projmaker](./assets/Frida/Frida_pic11.png)  
-:::info **Важно.**
-*В версии ZennoDroid Enterprise необходимо, чтобы в настройках Android было включено использование интернет-подключения компьютера или использование Proxifier.*
+:::info **Important**
+*In ZennoDroid Enterprise, make sure Android is set to use computer’s internet connection or set up Proxifier.*
 ::: 
 _________________  
-### 4. Перенаправить трафик с устройства в Burp Suite.  
+### 4. Forward the device’s traffic to Burp Suite  
 ![suite](./assets/Frida/Frida_pic12.png)  
 
-Нужно выполнить экшен *Перенаправить трафик в Burp*. Для проверки, что все работает правильно, можно с помощью экшена открыть в браузере страницу **http://proxifier.com** (важно чтобы страница была **http://**,  
-а не http**s**://).  Запрос к сайту должен отобразиться в Burp Suite (на вкладке *Proxy - Http history* или *Target Site map*).  
+Run the *Forward traffic to Burp* action. To confirm it’s working, use the action to open **http://proxifier.com** in your browser (make sure it’s **http://**, not http**s**://).  
+You should see the request in Burp Suite (on the *Proxy - Http history* or *Target Site map* tab).  
 _________________ 
-### 5. Установить сертификат на устройство.  
-Сначала нужно выполнить экшен *Установить сертификат*. После этого сертификат Zenno появится в списке **Надежных сертификатов (Trusted credentials)**  
+### 5. Install the certificate on the device  
+First, run the *Install certificate* action. After that, the Zenno certificate will appear in the **Trusted credentials** list.  
 
-![Надежные сертификаты](./assets/Frida/Frida_pic13.png)  
+![Trusted certificates](./assets/Frida/Frida_pic13.png)  
 
 <details>
-<summary>При использовании эмулятора LDPlayer необходимо **включить Root** и разрешить доступ через ADB.</summary>  
+<summary>If you’re using LDPlayer emulator, you need to **enable Root** and allow ADB access.</summary>  
 
- ![Рут](./assets/Frida/Frida_pic14.png)
+ ![Root](./assets/Frida/Frida_pic14.png)
 </details>
 
-### 6. Выполнить скрипт в Frida для снятия ssl-pinning  
-1. Запустить **Frida** на панели инструментов.  
-2. Нажать кнопку **«Запустить frida»**.  
-3. На панели *Приложения* выбрать нужное.  
-4. Нажать кнопку **«Запустить»**.  
-5. На панели *Скрипт* нажать **«Выбрать»** и в появившейся форме открыть скрипт `[*sslUnpin.js*]`.  
-6. Нажать **«Создать»**, а потом **«Загрузить»**.  
-7. Нажать кнопку **«Возобновить»**.  
+### 6. Run the Frida script to bypass SSL pinning  
+1. Start **Frida** from the toolbar.  
+2. Hit **“Start frida”**.  
+3. On the *Apps* panel, pick the app you need.  
+4. Click **“Start”**.  
+5. On the *Script* panel, click **“Select”** and open the `[*sslUnpin.js*]` script.  
+6. Click **“Create”**, then **“Load”**.  
+7. Press **“Resume”**.  
 
-![скрипт](./assets/Frida/Frida_pic15.png)  
+![script](./assets/Frida/Frida_pic15.png)  
 
-Запросы приложения должны отобразиться в окне Burp Suite. В информационном окне будет написано: `[*"type":"log","level":"info","payload":"Bypassing SSL Pinning"*]`.     
+The app’s requests should show up in Burp Suite. In the info window, you’ll see: `[*"type":"log","level":"info","payload":"Bypassing SSL Pinning"*]`.     
 _________________
-### 7. Завершение анализа трафика  
-1. Нажать кнопку **«Выгрузить»** на панели *Скрипт*.  
-2. Нажать кнопку **«Отключиться»** на панели *Процессы*.  
-3. Выполнить экшен *Отключить перенаправление трафика в Burp*.  
+### 7. Wrap up the traffic analysis  
+1. Click **“Unload”** in the *Script* panel.  
+2. Click **“Disconnect”** in the *Processes* panel.  
+3. Run the *Disable traffic forwarding to Burp* action.  
 _________________
-## Полезные ссылки.  
-- Официальный источник [**скриптов для Frida**](https://codeshare.frida.re/).  
-- [**Шаблон и все необходимые файлы**](https://www.dropbox.com/scl/fi/2d61v0e0rnsiwz8rww06x/Frida-Burp.zip?rlkey=asbr6w5eqlarbbfjoq4lc34e8&dl=0) (пароль на zenno.pfx - 123).  
-- [**Подключение реального устройства к ZennoDroid**](../Enterprise/Connection).
- 
+## Useful links  
+- Official [**Frida scripts source**](https://codeshare.frida.re/)  
+- [**Template and all required files**](https://www.dropbox.com/scl/fi/2d61v0e0rnsiwz8rww06x/Frida-Burp.zip?rlkey=asbr6w5eqlarbbfjoq4lc34e8&dl=0) (zenno.pfx password is 123)  
+- [**Connecting a real device to ZennoDroid**](../Enterprise/Connection)

@@ -1,147 +1,147 @@
 ---
 sidebar_position: 5
-title: Обработка e-mail
-description: Работа с почтовыми аккаунтами не используя окно браузера.
+title: Email Processing
+description: How to work with email accounts without using a browser window.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of Use for materials on this site*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание. 
-Позволяет работать с почтовыми аккаунтами, не используя при этом окно браузера. С помощью этого инструмента можно найти нужное письмо и информацию о нём. Подходит для массовой обработки входящих писем.  
+## Description  
+Lets you work with email accounts without having to use a browser window. With this tool, you can find the email you need and get info about it. It's good for handling lots of incoming emails at once.  
 
-### Для чего используется?  
-- **Быстрый доступ к почтовому ящику**.  
-- **Получение данных из писем**.  
-- **Активация учётных записей на сайтах**.  
-- **Удаление ненужных писем из ящика**.  
-- **Удаление скачанных писем**.  
+### What is it used for?  
+- **Quick access to your inbox**  
+- **Extracting data from emails**  
+- **Activating accounts on websites**  
+- **Deleting unnecessary emails from your inbox**  
+- **Deleting downloaded emails**  
 _______________________________________________
-## Как настроить?  
-:::info **Перед настройкой утилиты убедитесь, что в вашей учетной записи активирована опция работы через IMAP.**
+## How to set it up  
+:::info **Before setting up the tool, make sure your account has IMAP access enabled.**
 :::
 
-### Вход в почтовый ящик.  
-![Вход в почтовый ящик](./assets/Email_Processing/Email_Processing_pic1.png)  
+### Logging in to your mailbox  
+![Logging in to your mailbox](./assets/Email_Processing/Email_Processing_pic1.png)  
 
-**1.** Указываем логин и пароль от учётной записи. Для хранения этих данных можно использовать переменные.  
-**2.** Если установить здесь галочку, то ZennoDroid сам подберёт необходимые параметры для соединения с почтовым сервером.  
-:::warning **Работает не со всеми сервисами.** 
+**1.** Enter your account username and password. You can use variables to store these details.  
+**2.** If you tick this box, ZennoDroid will try to figure out the necessary server settings for you.  
+:::warning **This doesn't work with every service.** 
 :::  
-**3.** Нажав на эту кнопку, можно настроить сторонние прокси, если в этом есть необходимость.  
-**4.** Указываем данные для IMAP соединения, если ZennoDroid не смог определить их самостоятельно. Нужные значения можно получить на сайте почтового сервиса.  
-**5.** Заполнив все поля, нажимаем на кнопку **Войти в почту** для перехода к следующему шагу.  
-:::info **При возникновении ошибки на данном этапе в левом нижнем углу появится комментарий.**  
-![появится комментарий](./assets/Email_Processing/Email_Processing_pic2.png)  
+**3.** Use this button to set up third-party proxies if needed.  
+**4.** Enter your IMAP connection details if ZennoDroid can't detect them by itself. You can get these values from your email service's website.  
+**5.** Once everything’s filled in, hit **Log in to mail** to move on to the next step.  
+:::info **If an error pops up at this stage, you’ll see a comment in the bottom left corner.**  
+![error comment appears](./assets/Email_Processing/Email_Processing_pic2.png)  
 
-Исправьте ошибку, следуя рекомендациям.
+Fix the error by following the suggestions.
 :::  
 _______________________________________________
-## Поиск нужного письма.  
-![Поиск нужного письма](./assets/Email_Processing/Email_Processing_pic3.png)  
+## Finding the right email  
+![Finding the right email](./assets/Email_Processing/Email_Processing_pic3.png)  
 
-### Доступные настройки.  
-#### Интервалы загрузки писем.  
-Иногда письма от сервисов приходят с задержкой, поэтому важно указать временной промежуток в секундах, которое программа будет ждать загрузки.  
+### Available settings  
+#### Email download intervals  
+Sometimes emails from services arrive with a delay, so it's important to set a wait time in seconds for the program to pause for new emails.
 
-Через `;` указывается количество попыток. Например, на скриншоте первая попытка через 15, вторая через 30, третья через 60 секунд.  
+Separate attempts with `;`. For example, in the screenshot: first try after 15 seconds, then 30, then 60.
 
-#### Из каталога загружать не более.  
-Указываем количество писем, которое хотим загрузить.  
+#### Max emails from folder  
+Set how many emails you want to download.
 
-#### Удалять скачанные.  
-Если включить данную опцию, то после скачивания все загруженные письма удалятся из ящика.  
+#### Delete downloaded emails  
+If you turn this on, all downloaded emails will be deleted from the inbox after downloading.
 
-#### Обновить список.  
-Позволяет получить актуальный список папок в почте.  
+#### Refresh list  
+This lets you get the latest list of folders in your mailbox.
 
-#### Каталоги Imap.  
-Здесь чекбоксами можно отметить конкретные папки, в которых будет происходить поиск. Например: *Входящие*, *Спам*, *Исходящие*, *Черновики* и подобные.  
+#### IMAP folders  
+Tick the boxes for the folders you want to search in. For example: *Inbox*, *Spam*, *Sent*, *Drafts*, etc.
 
-Если же оставить поле пустым, то скачиваться будут только письма из папок *INBOX* и *Спам*.  
+If you leave the field blank, only emails from *INBOX* and *Spam* will be downloaded.
 
-### Скачать письма.  
-После нажатия на эту кнопку ZennoDroid скачает с почты все письма, которые соответствуют заданным параметрам.  
+### Download emails  
+Clicking this button will make ZennoDroid download all emails matching your set criteria.
 
-![Скачать письма](./assets/Email_Processing/Email_Processing_pic4.png)  
+![Download emails](./assets/Email_Processing/Email_Processing_pic4.png)  
 
-#### 1. Список скачанных писем.  
-В этом поле отображаются все скачанные письма с указанием их *Темы*, а также *Имени* и *Почты* отправителя.  
+#### 1. List of downloaded emails  
+Shows all downloaded emails with their *Subject*, plus the *Sender’s name* and *Email address*.
 
-#### 2. Варианты отображения содержимого письма.  
-Тут выбираем, в каком виде хотим видеть содержимое письма:  
-- *в исходном HTML-коде*,  
-- *только текст*,  
-- *скрыть заголовки (отображать или скрыть служебные заголовки)*.  
+#### 2. Email content display options  
+Choose how you want to see the email content:  
+- *in original HTML code*,  
+- *text only*,  
+- *hide headers (show or hide service headers)*.  
 
-#### 3. Тело письма.  
-Здесь вы можете увидеть само содержимое выбранного письма.  
+#### 3. Email body  
+This is where you can read the actual content of the selected email.
 
-#### 4. Критерий поиска письма.  
-Тут нужно указать критерий для поиска одного единственного письма. Удобнее всего прописать сюда [**регулярное выражение**](./RegEx_Tester).  
+#### 4. Email search criteria  
+Set your search criteria here if you're looking for a specific email. It's easiest to use a [**regular expression**](./RegEx_Tester) here.
 
-Если критерий указан верно, то в **Списке скачанных писем** *зелёным цветом* выделится нужное письмо.  
+If the criteria match, the email you need will be marked *green* in the **List of downloaded emails**.
 
-#### 5. Удалять найденное письмо.  
-При включении данной опции найдённое письмо будет удалено из ящика после обработки.  
+#### 5. Delete found email  
+If this is turned on, the found email will be deleted from your inbox after processing.
 _______________________________________________
-## Поиск элемента в выбранном письме.  
-### Список регулярных выражений и найденных элементов.  
-![Список регулярных выражений](./assets/Email_Processing/Email_Processing_pic5.png)  
+## Finding an element in a selected email  
+### List of regular expressions and found elements  
+![List of regular expressions](./assets/Email_Processing/Email_Processing_pic5.png)  
 
-#### Название регулярного выражения.  
-Тут отобразится имя выражения.  
-#### Результат.  
-Та информация, которая была найдена этим выражением.  
-#### № совпадения.  
-Часто для одного регулярного выражения находится сразу несколько результатов. Поэтому тут отображается порядковый номер найденного элемента (нумерация с нуля).
+#### Name of the regular expression  
+Displays the expression’s name.  
+#### Result  
+Shows the data found by this expression.  
+#### Match number  
+A single regular expression can often return several results, so this shows the index number of the found item (starting from zero).
 
-:::warning **Мы не рекомендуем делать привязку в проектах к номеру совпадения.**  
-Так как структура письма может меняться, а вместе с ней и порядок ссылок. 
+:::warning **We recommend not tying your projects to a specific match number.**  
+Since the email structure can change, and the order of the links might as well. 
 :::  
 
-Старайтесь подбирать регулярное выражение таким образом, чтоб в результате его работы оставалось только одно совпадение.  
+Try to make your regular expression so that it finds just one match as a result.
 
-#### Сохранить в переменную.  
-В этой колонке можно выбрать существующую или создать новую переменную, в которую сохранится результат работы выражения.  
+#### Save to variable  
+In this column, you can pick an existing variable or create a new one to save the regex result.
 
-#### Кнопки для копирования перменной в буфер обмена.  
-С помощью специальных кнопок в правой части панели можно скопировать макрос любой переменной.  
+#### Buttons for copying variables to clipboard  
+Use the special buttons on the right to copy a variable's macro to your clipboard.
 
-:::tip **Можно сохранять результат работы сразу нескольких регулярных выражений.**  
-Например, за одно действие из письма можно достать активационный код, ссылку на сайт, номер телефона, а также имя и фамилию отправителя. Достаточно заранее для каждого из элементов составить регулярное выражение, а затем добавить переменные, в которые будет сохранён результат.   
+:::tip **You can save the results from several regular expressions at once.**  
+For example, in one go, you could pull an activation code, website link, phone number, and the sender’s first and last name from an email. Just make a separate regular expression for each one in advance, and then add the variables where the results will be saved.   
 :::  
 
-### Редактирование регулярных выражений.  
-![Редактирование регулярных выражений](./assets/Email_Processing/Email_Processing_pic6.png)  
+### Editing regular expressions  
+![Editing regular expressions](./assets/Email_Processing/Email_Processing_pic6.png)  
 
-Если не подходит ни одно из предустановленных регулярных выражений, то можно создать своё.  
+If none of the preset regular expressions work, you can create your own.
 
-#### ![Создание с нуля](./assets/Email_Processing/Email_Processing_pic7.png) Создание с нуля.  
-После нажатия по этой кнопке откроется окно с [**Конструктором регулярных выражений**](./RegEx_Tester), а в текстовое поле уже будет вставлено содержимое письма. Вам остаётся только создать выражение и назвать его (чтобы не путать с другими), а затем нажать кнопку **ОК**. После этого наше регулярное выражение появится в общем списке.  
+#### ![Create from scratch](./assets/Email_Processing/Email_Processing_pic7.png) Creating from scratch  
+Click this button to open the [**RegEx Builder**](./RegEx_Tester), and the email content will already be in the text field. All you need to do is write your expression and give it a name (to tell it apart from others), then click **OK**. It will appear in the overall list.
 
-#### ![Удаление](./assets/Email_Processing/Email_Processing_pic8.png) Удаление.  
-При нажатии по данной кнопке будет удалено выделенное в общем списке выражение.  
-:::warning **Удалить можно только созданные пользователем выражения.**   
+#### ![Delete](./assets/Email_Processing/Email_Processing_pic8.png) Deleting  
+Click this to remove a user-created expression from the list.
+:::warning **You can only delete expressions you’ve created yourself.**   
 :::  
 
-#### ![Редактирование](./assets/Email_Processing/Email_Processing_pic9.png) Редактирование.  
-С помощью этого действия можно отредактировать выделенное выражение.  
+#### ![Edit](./assets/Email_Processing/Email_Processing_pic9.png) Editing  
+With this, you can edit the selected expression.
 
-После редактирования предустановленного выражения будет создано новое, так как вшитые параметры изменять нельзя. Новое выражение отобразится в общем списке.  
+If you edit a preset expression, it will create a new one, since built-in parameters can't be changed. The new expression will appear in the overall list.
 
-Однако при изменении пользовательского выражения новое значение запишется прямо в него, без создания отдельного выражения.  
+But if you change a user-created expression, the value gets updated right in place, no new expression is created.
 _______________________________________________
-## Завершение.  
-Проделав все действия по поиску нужной информации, нажимаем **Закончить**.  
+## Finishing up  
+Once you’ve found the info you need, click **Finish**.
 
-ZennoDroid предложит добавить экшен [**Принять почту**](../Project%20Editor/RecieveEmails) в проект для дальнейшего использования.  
+ZennoDroid will suggest adding an action [**Receive mail**](../Project%20Editor/RecieveEmails) to the project so you can use it later.
 
-![Завершение](./assets/Email_Processing/Email_Processing_pic10.png)
+![Finishing up](./assets/Email_Processing/Email_Processing_pic10.png)
 
-:::warning **Когда в почте присутствуют два одинаковых письма, экшен выберет для обработки самое новое.**   
+:::warning **If there are two identical emails in your mailbox, the action will pick the newest one for processing.**   
 ::: 
 _______________________________________________  
-## Полезные ссылки.   
-- [**Принять почту**](../Project%20Editor/RecieveEmails).  
-- [**Отправить почту**](../Project%20Editor/SendEmails).   
-- [**Настройки почтовых сервисов**](../Settings/Mailbox).
+## Useful links  
+- [**Receive mail**](../Project%20Editor/RecieveEmails)  
+- [**Send mail**](../Project%20Editor/SendEmails)  
+- [**Email service settings**](../Settings/Mailbox)

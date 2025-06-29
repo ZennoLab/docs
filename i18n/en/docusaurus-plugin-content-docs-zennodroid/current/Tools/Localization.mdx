@@ -1,117 +1,117 @@
 ---
 sidebar_position: 10
-title: Локализация проектов
-description: Перевод шаблонов на другие языки.
+title: Project Localization
+description: Translating templates into other languages.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please take a look at the [*Rules for using materials on this site*](../Disclaimer).**
 :::
 _______________________________________________ 
-## Описание.  
-Функция локализации позволяет адаптировать ваши проекты для использования иностранной аудиторией. Происходит это через замену текстовых полей с информацией проекта на заданные в специальном файле переводы.   
+## Overview  
+The localization feature lets you adapt your projects for foreign audiences. It works by replacing the project's text fields with translations provided in a special file.   
 
-### Что такое файл перевода?
-Он представляет из себя таблицу в формате `.csv` с запятой в качестве разделителя. Его можно открыть любым текстовым редактором.  
+### What is a translation file?
+It's a table in `.csv` format with a comma as the separator. You can open it with any text editor.  
 
-Файл перевода можно добавить в проект как статический блок [**Таблица**](../Project%20Editor/Lists%20and%20Google%20Sheets/Tables) или [**Google Таблица**](../Project%20Editor/Lists%20and%20Google%20Sheets/Google_Sheet), выполнив предварительный импорт в документы Google.  
+You can add the translation file to your project as a static [**Table**](../Project%20Editor/Lists%20and%20Google%20Sheets/Tables) block or a [**Google Sheet**](../Project%20Editor/Lists%20and%20Google%20Sheets/Google_Sheet) after importing it to Google Docs.  
 
-:::tip **Альтернативный вариант перевода проекта.**
-Выполнить автоматический **перевод текста таблицы** можно также через экшен **Обработка текста → [Перевод текста](../Data/Text#перевод)**.
+:::tip **Alternative way to translate your project**
+You can also do an automatic **table text translation** using the **Text Processing → [Text Translation](../Data/Text#translation)** action.
 :::
 
-### Как его создать?  
-Создать таблицу можно с помощью верхнего меню ProjectMaker → Файл → Создать файл перевода:  
+### How do you create it?  
+To make a table, use the top menu in ProjectMaker: File → Create translation file:  
 
-![Как его создать?](./assets/Localization/Localization_pic1.png)  
+![How do you create it?](./assets/Localization/Localization_pic1.png)  
 
-После нажатия на эту кнопку **будет выполнен сбор и запись** в файл следующих текстовых полей проекта:  
-- **Записи в заметках**;  
-- **Сообщения из экшена «Ожидание действий пользователя»**;  
-- **Содержание оповещений**;  
-- **Комментарии к экшенам**;  
-- **Комментарии для групп действий**.  
-:::info **Локализованные оповещения и сообщения.**
-Они также будут переведены в ходе выполнения проекта ZennoDroid.
+Once you click this button, **the following project text fields will be collected and saved into the file:**  
+- **Entries in notes**  
+- **Messages from the "Wait for user actions" action**  
+- **Notification content**  
+- **Comments for actions**  
+- **Comments for action groups**
+:::info **Localized notifications and messages**
+These will also be translated during ZennoDroid project execution.
 :::
 
-| Так выглядит проект    | А это его таблица переводов |
+| This is your project    | This is its translation table |
 | -------- | ------- |
-| ![Так выглядит проект](./assets/Localization/Localization_pic2.png)  | ![А это его таблица переводов](./assets/Localization/Localization_pic3.png)    |  
+| ![This is your project](./assets/Localization/Localization_pic2.png)  | ![This is its translation table](./assets/Localization/Localization_pic3.png)    |  
 
-:::tip **Текущие значения проекта будут записаны в столбец.**
-Который соответствует актуальной локализации программы.
+:::tip **Current project values will be written into the column.**
+The column matches your program’s current language.
 :::  
 _______________________________________________ 
-## Изменение таблицы.
-### Структура таблицы.  
-Сама таблица состоит из пяти столбцов:  
+## Editing the Table
+### Table Structure  
+The table has five columns:  
 
-| Имя столбца    | Описание |
+| Column Name    | Description |
 | :--------: | :------- |
-| **ID**  | **ID элемента**, который переводим. Используется для применения перевода.    |
-| **Status** | **Статус перевода**. Позволяет контролировать актуальность данных конкретного элемента.     |
-| **RU**    | Текст **русской** локализации элемента.    |
-| **EN**    | Текст **английской** локализации элемента.    |
-| **CN**    | Текст **китайской** локализации элемента.    |  
+| **ID**  | **Element ID** you’re translating. This is used to apply the translation.    |
+| **Status** | **Translation status.** Lets you keep track of whether each entry is up-to-date.     |
+| **RU**    | The element’s **Russian** localization text.    |
+| **EN**    | The element’s **English** localization text.    |
+| **CN**    | The element’s **Chinese** localization text.    |  
 
-Для свободного редактирования доступны только столбцы с текстом сторонних локализаций проекта, а также столбец статуса элемента.  
+You can freely edit just the text columns for other localizations and the status column.  
 
-:::tip **Изменения файла применяются моментально без необходимости перезагрузки проекта или программы.**
+:::tip **Any changes to the file are applied right away — no need to reload the project or program.**
 ::: 
 
-#### Возможные статусы:  
-- **Need update**. Устанавливается:    
-    - По умолчанию для всех элементов.  
-    - При отсутствии текстов сторонних локализаций;  
-    - При первом обновлении файла после изменения текста в проекте;  
+#### Possible statuses:  
+- **Need update**. Set when:    
+    - By default, for all items  
+    - The element has no translated text in other languages  
+    - The text in the project was changed and the file hasn’t been updated yet  
 - **Ok**.  
-Используется при наличии хотя бы одного текста сторонней локализации;  
+Used when there’s at least one translated text for an element  
 - **Not found**.  
-Ставится при отсутствии в проекте элемента с заданным id.  
+Set when a file contains an ID that doesn’t exist in the project  
 
-#### Примечания.  
-- Если изменить столбец **ID**, то элемент не будет найден в проекте и получит статус **Not found**, как и при его удалении. Поэтому **менять этот параметр не рекомендуется**.
-- При изменении **текущей локализации** в таблице, а не в самом проекте, файл станет неактуальным, и элемент не будет считаться переведённым. Затем при попытке просмотра перевода для другой локализации **будет предложено обновить файл**.  
+#### Notes  
+- If you change the **ID** column, the element can't be found in the project and gets the **Not found** status (same as if you delete it). So, **you shouldn't change this parameter**.
+- If you change the **current localization** in the table but not in the project itself, the file will be marked outdated and the element won’t count as translated. Next time you try to view another localization, **you’ll be prompted to update the file**.  
 
-:::warning **Во избежание ошибок загрузки файла переводов.**
-Мы рекомендуем выполнять все изменения таблицы с помощью специальных редакторов.
+:::warning **To avoid errors loading translation files.**
+We recommend making all table changes only with special editors.
 :::  
 _______________________________________________ 
-## Работа с переводом.  
-### Обновление файла перевода.  
-Эта функция необходима для записи в файл новых значений, а также для обновления текста текущей локализации элементов.  
+## Working with Translations  
+### Updating the Translation File  
+You need this function to record new values to the file and refresh the translation texts for elements.  
 
-При наличии файла перевода рядом с проектом в меню будет доступен раздел **Локализация**, который содержит кнопки обновления файла и просмотра других локализаций проекта:  
+When you have a translation file next to your project, the menu will include a **Localization** section with buttons to update the file and view other languages:  
 
-![Локализация](./assets/Localization/Localization_pic4.png)  
+![Localization](./assets/Localization/Localization_pic4.png)  
 
-При нажатии кнопки **Обновить файл перевод** текущие значения текстовых полей проекта будут собраны и сопоставлены с полями в файле. У существующих элементов будет обновлен текст и статус локализации. А новые элементы добавятся в статусе **Need update**. Элементы же, которые присутствуют в файле, но не будут найдены, получат статус **Not found**.  
+When you press **Update translation file**, the current values from all of the project's text fields will be collected and matched with entries in the file. Existing elements get their texts and status refreshed. New ones get added with **Need update** status. If there are items in the file that don’t exist in the project anymore, they’ll get **Not found** status.
 _______________________________________________ 
-### Перевод проекта.
-Перевод осуществляется путём замены текста переведённых элементов на значения, которые заданы в файле локализации текста. При замене выполняется сравнение id элементов и их текущих значений в проекте и файле.  
+### Translating the Project
+Translation works by replacing the translated elements’ texts with the values from the translation file. It matches up element IDs and their current values between the project and the file.  
 
-Когда текст в проекте был изменён, а файл при этом не обновлялся, то элемент считается неактуальным. Поэтому он не будет переведён при открытии проекта. Однако при просмотре локализации вам всё же предложат обновить файл, потому что иначе просмотр будет недоступен.  
+If you’ve changed some text in the project and haven’t updated the translation file, the element is marked as outdated and won’t be translated when you open the project. But if you try to view its localization, you’ll be asked to update the file, otherwise the view isn’t available.  
 
-Данная логика позволяет предотвратить разногласия исходного текста с локализацией файла. И в то же время переводить максимальное количество элементов при открытии проекта.  
+This setup helps you avoid mismatches between the source text and the translation file, while still translating as many elements as possible when opening the project.  
 
-:::info **Если у элемента отсутствует текст перевода для просматриваемой локализации.**
-То он не будет изменен и останется в том виде, в котором представлен в исходной локализации проекта. 
+:::info **If an element doesn’t have translated text for the language you're viewing**
+It won't be changed and will just show up as it is in the original project localization.
 :::  
 _______________________________________________ 
-### Просмотр перевода.
-Данная функция выполняет перевод проекта в точном соответствии с переводом при открытии проекта в программе с другой локализацией.  
+### Previewing the Translation
+This function simulates exactly how the project would look if you opened it with another localization.  
 
-:::warning **В режиме просмотра перевода недоступно выполнение и запись проекта, а также его сохранение и изменение.**
+:::warning **When previewing a translation, you can’t run or record the project, or save or change it.**
 :::   
 
-![Просмотр перевода](./assets/Localization/Localization_pic5.png) 
+![Translation preview](./assets/Localization/Localization_pic5.png) 
 
-Чтобы выйти из режима просмотра локализации необходимо нажать кнопку **Вернуться к редактированию** на информационной панели. Либо же выбрать в меню **Просмотр перевода** текущую локализацию программы.  
+To exit translation preview, just click **Return to editing** on the information panel. Or in the menu, select **Preview translation** and choose your program’s current localization.  
 
-Если во время просмотра перевода файл таблицы был повреждён или удалён, то проект вернётся в исходное состояние и выведет сообщение об ошибке.  
+If the translation table file gets damaged or deleted during preview, the project will go back to its original state and show an error message.  
 
-Обратите внимание, что в отличии от групп действий и комментариев к ним, заметки не адаптируют свой размер в зависимости от текста.  
+Keep in mind that unlike action groups and comments, notes don't resize depending on the length of the text.
 _______________________________________________  
-## Полезные ссылки.   
-- [**Заметки**](../Project%20Editor/Project/Notes).  
-- [**Выполнить событие**](../Android/ProLite/RunEvent).   
-- [**Обработка текста**](../Data/Text). 
+## Useful links  
+- [**Notes**](../Project%20Editor/Project/Notes)  
+- [**Run event**](../Android/ProLite/RunEvent)  
+- [**Text processing**](../Data/Text)

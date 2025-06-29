@@ -1,72 +1,78 @@
 ---
 sidebar_position: 7
-title: Тестер X/JSON Path
-description: Проверка корректности данных в форматах XML и JSON.
+title: X/JSON Path Tester
+description: Check the correctness of your XML and JSON data.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info Please read the [*Terms of Use for Materials on This Site*](../Disclaimer).  
 :::
-_______________________________________________ 
-## Описание.  
-Этот инструмент предназначен для проверки корректности данных в форматах **XML** или **JSON** и помощи в составлении правильных выражений для парсинга данных.  
+_______________________________________________
 
-### Как открыть?  
-#### Через Панель инструментов.  
-![Через Панель инструментов](./assets/JSON_Tester/JSON_Tester_pic1.png)   
+## Description
+This tool is meant to help you check if your **XML** or **JSON** data is valid and to help you create the right expressions for parsing data.
+
+### How to open it?
+#### From the Toolbar
+![From the Toolbar](./assets/JSON_Tester/JSON_Tester_pic1.png)
 
 _______________________________________________
-## Как работать с инструментом?  
-### Как проверить правильность выражения XPath/JSONPath?  
-![Как проверить правильность](./assets/JSON_Tester/JSON_Tester_pic2.png)  
 
-**1**. В поле ввода вставляем код для обработки.    
-**2**. Выше добавляем готовое выражение, которое хотим проверить.  
-**3**. Нажимаем на кнопку **Тест**.  
-**4**. По итогу в **Результате** обработки получаем совпадения. Если выражение было составлено правильно, то здесь отобразятся те значения, которые нам и нужны.  
+## How do you use this tool?
+### How can you check if your XPath/JSONPath expression is correct?
+![How to check correctness](./assets/JSON_Tester/JSON_Tester_pic2.png)
 
-### Как быстро составить выражение XPath/JSONPath?
-![Как быстро составить](./assets/JSON_Tester/JSON_Tester_pic3.png)  
+**1.** Paste the code you want to work with into the input field.  
+**2.** Enter the XPath/JSONPath expression you want to check above it.  
+**3.** Click the **Test** button.  
+**4.** After processing, the **Result** section will show you the matches. If your expression is correct, you’ll see the values you needed.
 
-**1**. В поле ввода вставляем код для обработки и выделяем тот фрагмент, по примеру которого хотим составить выражение.    
-**2**. Нажимаем на кнопку **Найти**.  
-**3**. Теперь в поле с XPath/JSONPath получаем готовое выражение под наши нужды.  
-**4**. Можно проверить результат работы выражения по совпадениям, которые оно выдаёт.  
+### How can you quickly make an XPath/JSONPath expression?
+![How to make quickly](./assets/JSON_Tester/JSON_Tester_pic3.png)
 
-Получившееся выражение можно в дальнейшем использовать в экшене [**Обработка JSON и XML**](../Data/JSON_XML).  
+**1.** Paste your code into the input field, then highlight the fragment you want to base your expression on.  
+**2.** Click the **Find** button.  
+**3.** The field with XPath/JSONPath will now show a ready-to-use expression for your needs.  
+**4.** You can check if the expression works with the matches it returns.
 
-:::tip **Кнопка «Beautify».**  
-Она позволяет автоматически отформатировать код и привести его к удобному для чтения формату. 
-::: 
-_______________________________________________ 
-## Базовый синтаксис.  
-### XPath.  
-| Выражение    | Результат |
-| :--------: | :------- |
-| `имя_узла`  | Выбирает все узлы с именем `имя_узла`.    |
-| `/` | Выбор осуществляется от корневого узла.     |
-| `//` | Выбор от узла, соответствующего выбору, независимо от местонахождения.    |
-| `.`  | Выбирает текущий узел.    |
-| `..` | Выбирает родителя текущего узла.    |
-| `@` | Выбор атрибутов.    |  
+You can use the resulting expression later in the [**JSON and XML Processing**](../Data/JSON_XML) action.
 
-**Для поиска неизвестных узлов используются специальные символы:**  
-| Спец. символ    | Описание |
-| :--------: | :------- |
-| `*`  | Любой элемент.    |
-| `@*` | Каждый из атрибутов.     |
-| `node()` | Соответствует любому узлу каждого типа    |
+:::tip The "Beautify" Button  
+This button automatically formats your code to make it easier to read.
+:::
+_______________________________________________
 
-### JSONPath.  
-| Выражение    | Результат |
-| :--------: | :------- |
-| `$`  | Выбирает от корневого узла. |
-| `..` | Родительский оператор. |
-| `[]` | Операторы потомка. |
-| `.`  |  Выбор от текущего узла, соответствующего выбору. |
-| `@` | Выбирает текущий узел. |
-| `?()` | Применяет выражение по фильтру. |  
-_______________________________________________ 
-## Пример.  
-### Код для обработки.  
+## Basic Syntax
+
+### XPath
+| Expression      | Result                                         |
+| :-------------: | :--------------------------------------------- |
+| `node_name`     | Selects all nodes named `node_name`            |
+| `/`             | Selects from the root node                     |
+| `//`            | Selects nodes anywhere under the selection     |
+| `.`             | Selects the current node                       |
+| `..`            | Selects the parent of the current node         |
+| `@`             | Selects attributes                             |
+
+**To search for unknown nodes, use these special symbols:**
+| Special Symbol  | Description                                    |
+| :-------------: | :--------------------------------------------- |
+| `*`             | Any element                                    |
+| `@*`            | All attributes                                 |
+| `node()`        | Any node of any type                           |
+
+### JSONPath
+| Expression      | Result                                         |
+| :-------------: | :--------------------------------------------- |
+| `$`             | Selects from the root node                     |
+| `..`            | Parent operator                                |
+| `[]`            | Child operators                                |
+| `.`             | Selects from the current node                  |
+| `@`             | Selects the current node                       |
+| `?()`           | Applies a filter expression                    |
+_______________________________________________
+
+## Example
+
+### Example Code
 ```js
 { "store": {
     "book": [ 
@@ -99,22 +105,23 @@ _______________________________________________
     }
   }
 }
-```  
+```
 
-### Примеры выражений.  
-| XPath              | JSONPath | Результат |
-| :---------------- | :------ | ----: |
-| `/store/book/author` |   `$.store.book[*].author`   | Ищем элементы `author` всех элементов `book` в `store`.|
-| `//author`           |   `$..author`   | Все элементы `author`. |
-| `/store/*`   |  `$.store.*`   | Берём всё содержимое из `store`. |
-| `/store//price` |  `$.store..price`   | Достаём значение цены из элемента `price` для всех элементов в `store`. |
-| `//book[3]` |   `$..book[2]`   | Получаем третий элемент `book`. |
-| `//book[last()]` |   `$..book[(@.length-1)]` или `$..book[-1:]`   | Последний элемент `book`. |
-| `//book[position()<3]`    |  `$..book[0,1]` или `$..book[:2]`   | Первые **2** элемента `book`. |
-| `//book[isbn]` |  `$..book[?(@.isbn)]`   | Фильтруем по всем элементам `book` со значением `isbn`. |
-| `//book[price<10]` |   `$..book[?(@.price<10)]`   | Фильтруем по всем элементам `book` со значением цены `price` меньше, чем **10**.  |
-| `//*`          |   `$..*`   | Берём все элементы в XML документе или же все члены JSON структуры. |
-_______________________________________________  
-## Полезные ссылки.   
-- [**Обработка JSON и XML**](../Data/JSON_XML).  
-- [**Дерево элементов**](../pm/Interface/ElementTree).
+### Example Expressions
+| XPath                | JSONPath                 | Result                                                                                     |
+| :------------------- | :---------------------- | :---------------------------------------------------------------------------------------- |
+| `/store/book/author` |   `$.store.book[*].author`   | Find all `author` elements in all `book` entries inside `store`.                         |
+| `//author`           |   `$..author`                | Every `author` element.                                                                   |
+| `/store/*`           |   `$.store.*`                | Get everything inside `store`.                                                            |
+| `/store//price`      |   `$.store..price`           | Grab the `price` value from every element called `price` in `store`.                      |
+| `//book[3]`          |   `$..book[2]`               | Get the third `book` element. (Index starts at 0 in JSONPath)                            |
+| `//book[last()]`     |   `$..book[(@.length-1)]` or `$..book[-1:]` | The last `book` element.                                              |
+| `//book[position()<3]` |   `$..book[0,1]` or `$..book[:2]`  | The first **2** `book` elements.                                                       |
+| `//book[isbn]`       |   `$..book[?(@.isbn)]`           | Filter for all `book` elements that have an `isbn`.                                     |
+| `//book[price<10]`   |   `$..book[?(@.price<10)]`       | Filter for all `book` elements with a `price` less than **10**.                        |
+| `//*`                |   `$..*`                        | Select all elements in the XML or all members of the JSON structure.                    |
+_______________________________________________
+
+## Useful links
+- [**JSON and XML Processing**](../Data/JSON_XML)
+- [**Element Tree**](../pm/Interface/ElementTree)

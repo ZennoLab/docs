@@ -1,55 +1,55 @@
 ---
 sidebar_position: 2
-title: Менеджер устройств (Enterprise)
-description: Работа с подключенными устройствами.
+title: Device Manager (Enterprise)
+description: Working with connected devices.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please familiarize yourself with the [*Rules for using materials on this resource*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.
-![Реальные устройства](./assets/Device_Manager/Device_Manager_pic6.png)  
+## Description
+![Real devices](./assets/Device_Manager/Device_Manager_pic6.png)  
 
-В этом окне перечислены все реальные устройства, подключенные к компьютеру, а также запущенные эмуляторы. Здесь можно получить краткую информацию о них и быстро переключиться между ними.  
+This window lists all the real devices connected to your computer, as well as any running emulators. Here you can get a quick overview of them and easily switch between devices.  
 
-### Как его открыть?  
-Есть два способа.  
-#### Через Панель инструментов.  
-![Через Панель инструментов](./assets/Device_Manager/Device_Manager_pic2.png)  
+### How do you open it?  
+There are two ways:  
+#### Through the Toolbar  
+![Through the Toolbar](./assets/Device_Manager/Device_Manager_pic2.png)  
 
-#### В выпадающем списке раздела «Инструменты».  
-![В выпадающем списке](./assets/Device_Manager/Device_Manager_pic3.png)  
+#### From the "Tools" dropdown menu  
+![From the dropdown menu](./assets/Device_Manager/Device_Manager_pic3.png)  
 
-### Описание доступных элементов.    
-#### Колонки:  
-- **Индекс**. Порядковый номер устройства. Индексы присваиваются в алфавитном порядке, основываясь на идентификаторе устройства.  
-- **Устройство**. Идентификатор устройства, его серийный номер или IP адрес в локальной сети.    
-- **Название**. По умолчанию совпадает с идентификатором устройства. Но для удобства распознавания вы можете задать более конкретное имя. Сделать это можно:  
-    - нажав на нужную ячейку + F2,  
-    - через экшен [**Переименовать**](../Android/Enterprise/action#как-переименовать-устройство).  
-- **Модель**. Тут указывается модель телефона. Информация отображается только для подключённых в данный момент устройств.  
-- **Состояние**. Статус подключения устройства к компьютеру.  
-    - *Подключено*. Всё в порядке, с устройством можно работать.  
-    - *Отключено*. Компьютер видит устройство, но не может с ним взаимодействовать.    
-    Возможные пути решения:  
-        - *нажать кнопку переподключить*,  
-        - *вытащить кабель из устройства и вставить заново*,  
-        - *перезагрузить устройство*.  
-    - *Не авторизовано*. Необходимо в телефоне разрешить взаимодействие с компьютером, подтвердив всплывающий запрос.  
+### Description of available elements  
+#### Columns:  
+- **Index**. The device's serial number. Indexes are assigned alphabetically, based on device ID.  
+- **Device**. The device identifier, serial number, or its IP address on your local network.  
+- **Name**. By default, matches the device identifier. But for convenience, you can give it a more specific name. To do this:  
+    - Select the desired cell and press F2,  
+    - or use the [**Rename**](../Android/Enterprise/action#как-переименовать-устройство) action.  
+- **Model**. Shows the phone model. This info is only shown for devices that are currently connected.  
+- **Status**. Device connection status:  
+    - *Connected.* Everything’s good, you can work with the device.  
+    - *Disconnected.* The computer sees the device but can’t interact with it.  
+        Possible solutions:  
+            - *Press the reconnect button,*  
+            - *unplug and replug the cable,*  
+            - *restart the device.*  
+    - *Unauthorized.* You need to allow the computer to interact with your phone by confirming the pop-up prompt on the device.  
 
-#### Кнопки:  
-- **Выбрать**. Сделает активным устройство, которое выбрано в таблице.  
-Используется для быстрого переключения между подключенными устройствами.  
-Название выбранного устройства также отображается в панели состояния:  
-![в панели состояния](./assets/Device_Manager/Device_Manager_pic7.png)  
-- **Освободить**. Останавливает активное устройство и полностью отключает его от использования.  
-Строка в панели состояния при этом становится пустой.  
-Используется для устранения ошибки **Устройство занято в ProjectMaker**, когда нет возможности переключиться на другое.  
-- **Остановить**. Останавливает активное устройство, которое при этом продолжает считаться выбранным.  
-Используется в качестве альтернативы для экшена [**Остановить**](../Android/Enterprise/action#как-остановить-устройство).  
-- **Поиск**. Сканирует локальную сеть на наличие устройств подключенных через ADB. Альтернатива команде adb connect `192.168.x.x:5555`.  
-- **Переподключить**. Осуществляет попытку переподключения устройств, которые отображаются в списке, но имеют статус **Отключено**. 
+#### Buttons:  
+- **Select**. Makes the device you selected in the table active.  
+Used for quickly switching between connected devices.  
+The selected device name also shows up in the status bar:  
+![in the status bar](./assets/Device_Manager/Device_Manager_pic7.png)  
+- **Release**. Stops the active device and disconnects it completely.  
+The status bar line will then be empty.  
+Use this to fix the **Device busy in ProjectMaker** error when you can’t switch to another device.  
+- **Stop**. Stops the active device, but it’s still considered selected.  
+This is an alternative to the [**Stop**](../Android/Enterprise/action#как-остановить-устройство) action.  
+- **Search**. Scans your local network for devices connected via ADB. This is an alternative to the adb connect `192.168.x.x:5555` command.  
+- **Reconnect**. Tries to reconnect any devices shown in the list that have the **Disconnected** status.
 _______________________________________________  
-## Полезные ссылки.   
-- [**Действия с устройством**](../Android/Enterprise/action).  
-- [**Окно устройства**](../pm/Interface/DeviceWindow).   
-- [**Подключение реального устройства (ZDE)**](../Enterprise/Connection).
+## Useful links  
+- [**Device Actions**](../Android/Enterprise/action)  
+- [**Device Window**](../pm/Interface/DeviceWindow)  
+- [**Connecting a real device (ZDE)**](../Enterprise/Connection)

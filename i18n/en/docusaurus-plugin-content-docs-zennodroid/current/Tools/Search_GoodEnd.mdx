@@ -1,61 +1,61 @@
 ---
 sidebar_position: 12
-title: Поиск успешных выходов
-description: Поиск незапланированного успешного завершения проекта.
+title: Finding Successful Exits
+description: Searching for unplanned successful project completions.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of Material Use for this resource*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.  
-Данный инструмент позволяет найти незапланированное **успешное** завершение проекта, а также разрывы в его работе.  
+## Description  
+This tool helps you find any unplanned **successful** project completions, as well as breaks in its workflow.
 
-![Описание](./assets/Search_GoodEnd/Search_GoodEnd_pic1.png)  
+![Description](./assets/Search_GoodEnd/Search_GoodEnd_pic1.png)
 
-### Как открыть?  
-**Есть два способа:**  
-#### Через Контекстное меню.  
-ПКМ по любой части холста → Поиск успешных выходов.  
+### How to open it?  
+**You’ve got two ways:**  
+#### Through the Context Menu  
+Right-click anywhere on the canvas → Find Successful Exits.
 
-![Через Контекстное меню](./assets/Search_GoodEnd/Search_GoodEnd_pic2.png)  
+![Via Context Menu](./assets/Search_GoodEnd/Search_GoodEnd_pic2.png)  
 
-#### Через Верхнюю панель.  
-Редактирование → Поиск успешных выходов.  
+#### Via the Top Menu  
+Edit → Find Successful Exits.
 
-![Через Верхнюю панель](./assets/Search_GoodEnd/Search_GoodEnd_pic3.png)  
-_______________________________________________ 
-## Работа с окном.  
-### Взглянем детальнее.  
-![Взглянем детальнее](./assets/Search_GoodEnd/Search_GoodEnd_pic4.png)
-
-*1*. Строка быстрого поиска нужного экшена.  
-*2*. Список действий, которые приводят к успешному завершению проекта.  
-
-Если дважды кликнуть по одному из действий, то фокус проекта сместится на него.  
-
-:::tip **Поиск находит функцию, только если она указана внутри экшена.**
-:::  
-
-### Как можно использовать?  
-Бывают ситуации, когда по невнимательности вы забываете соединить два экшена с помощью стрелок логики. Тогда проект будет досрочно завершаться с успехом, выполнив только часть задуманной работы. При этом ошибок никаких не будет.  
-
-#### Пример досрочного завершения.  
-![Пример досрочного завершения](./assets/Search_GoodEnd/Search_GoodEnd_pic5.png)  
-
-Проект со скриншота завершится успехом на экшене **click**, потому что он не соединён с другими экшенами.  
-
-Если в проекте не более 10 кубиков, то это не станет существенной проблемой. Однако при работе с большими шаблонами поиск такого разрыва вручную займёт много времени.  
-
-### Пример использования.  
-1. Открываем окно **Поиска успешных выходов**.  
-2. Сверяем список удачных завершений с запланированной логикой.  
-3. Исправляем шаблон при необходимости.  
-
-Таким образом, если вы где-то ошиблись, то этот инструмент покажет возможные проблемные места.  
-
-:::info **Мы рекомендуем пользоваться этим после написания каждого шаблона для грамотной отладки.**
-::: 
+![Via Top Menu](./assets/Search_GoodEnd/Search_GoodEnd_pic3.png)  
 _______________________________________________  
-## Полезные ссылки.   
-- [**Выполнить событие**](../Android/ProLite/RunEvent).  
-- [**Обработка текста**](../Data/Text).   
-- [**Пауза**](../Project%20Editor/Logic/Pause).
+## Working with the window  
+### Let’s take a closer look  
+![Let’s take a closer look](./assets/Search_GoodEnd/Search_GoodEnd_pic4.png)
+
+*1*. Quick search bar for finding the right action.  
+*2*. A list of actions that can lead to the successful completion of your project.
+
+If you double-click on one of the actions, the project view will jump right to it.
+
+:::tip **The search only finds a function if it’s used inside an action.**
+:::
+
+### How can you use this?  
+Sometimes you might accidentally forget to connect two actions with logic arrows. When that happens, your project ends up finishing early with a success, after only doing part of what you wanted—it won’t throw any errors, though.
+
+#### Example of early completion  
+![Example of early completion](./assets/Search_GoodEnd/Search_GoodEnd_pic5.png)  
+
+In the project shown, it will finish successfully on the **click** action, because it’s not connected to any other actions.
+
+If your project has 10 blocks or fewer, this isn’t a big deal. But searching for this kind of break by hand in big templates can take forever.
+
+### Example workflow  
+1. Open up the **Find Successful Exits** window.  
+2. Compare the list of successful completions with the logic you’d planned.  
+3. Fix your template if needed.
+
+So if you made a mistake somewhere, this tool will help you spot any trouble spots.
+
+:::info **We recommend using this after you finish each template, to properly debug your work.**
+:::
+_______________________________________________  
+## Helpful links  
+- [**Run Event**](../Android/ProLite/RunEvent)  
+- [**Text Processing**](../Data/Text)  
+- [**Pause**](../Project%20Editor/Logic/Pause)

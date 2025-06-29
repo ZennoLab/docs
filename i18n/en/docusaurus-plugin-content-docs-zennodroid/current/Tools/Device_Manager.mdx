@@ -1,53 +1,53 @@
 ---
 sidebar_position: 2
-title: Менеджер устройств
-description: Работа с подключенными устройствами.
+title: Device Manager
+description: Working with connected devices.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please check out the [*Terms of Use for Materials on This Resource*](../Disclaimer).**
 :::
 _______________________________________________  
-## Memu.  
+## Memu  
 ![Memu](./assets/Device_Manager/Device_Manager_pic1.png)  
 
-В данном окне отображаются все виртуальные устройства, созданные в MEmu. Здесь можно получить краткую информацию о них и быстро переключиться между ними.  
+This window shows all the virtual devices you've created in MEmu. Here, you can see some basic info about them and quickly switch between devices.  
 
-### Как его открыть?  
-Есть два способа.  
-#### Через Панель инструментов.  
-![Через Панель инструментов](./assets/Device_Manager/Device_Manager_pic2.png)  
+### How do you open it?  
+There are two ways:  
+#### Through the Toolbar  
+![Through the Toolbar](./assets/Device_Manager/Device_Manager_pic2.png)  
 
-#### В выпадающем списке раздела «Инструменты».  
-![В выпадающем списке](./assets/Device_Manager/Device_Manager_pic3.png)
+#### From the drop-down menu in the "Tools" section  
+![From the drop-down menu](./assets/Device_Manager/Device_Manager_pic3.png)
 
-### Описание доступных элементов.  
-![Описание доступных элементов](./assets/Device_Manager/Device_Manager_pic4.png)  
+### Description of available elements  
+![Description of available elements](./assets/Device_Manager/Device_Manager_pic4.png)  
 
-#### Колонки:  
-- **Индекс**. Порядковый номер устройства.  
-- **Название**. По умолчанию все устройства проименованы в формате `MEmu+Индекс`. Но для удобства распознавания вы можете задать более конкретное имя. Сделать это можно:  
-    - нажав на нужную ячейку + F2,  
-    - через экшен [**Переименовать**](../Android/ProLite/action#как-переименовать-устройство).  
-- **Модель**. Тут указывается модель телефона. Информация отображается только для подключённых в данный момент устройств.  
-- **Состояние**. Статус подключения эмулятора.  
-    - *Подключено*. Всё в порядке, с устройством можно работать.  
-    - *Отключено*. Эмулятор запущен, но ZennoDroid не может с ним взаимодействовать.  
-    Возможные пути решения:  
-        - *перезагрузить устройство*,  
-        - *удалить устройство*,  
-        - *создать новое устройство*.  
-    - *Неизвестно*. Эмулятор остановлен.  
+#### Columns:  
+- **Index**: The device’s number in the list.  
+- **Name**: By default, all devices are named `MEmu+Index`. To make it easier to tell them apart, you can give each one a specific name. You can do this by:
+    - selecting the desired cell and pressing F2,
+    - or using the [**Rename**](../Android/ProLite/action#how-to-rename-a-device) action.
+- **Model**: Shows the phone model. This info is displayed only for devices that are currently connected.  
+- **Status**: Shows if the emulator is connected.
+    - *Connected*: Everything’s fine; you can use this device.
+    - *Disconnected*: The emulator is running, but ZennoDroid can't interact with it.
+    Possible fixes for this:
+        - *restart the device*,
+        - *delete the device*,
+        - *create a new device*.
+    - *Unknown*: The emulator is stopped.
 
-#### Кнопки:  
-- **Выбрать**. Сделает активным устройство, которое выбрано в таблице.  
-Используется для быстрого переключения между подключенными устройствами.  
-Название выбранного устройства также отображается в панели состояния:  
-![Инструменты](./assets/Device_Manager/Device_Manager_pic5.png)  
-- **Освободить**. Останавливает активное устройство и полностью отключает его от использования.  
-Строка в панели состояния при этом становится пустой.  
-Используется для устранения ошибки **Устройство занято в ProjectMaker**, когда нет возможности переключиться на другое.  
-- **Остановить**. Останавливает активное устройство, которое при этом продолжает считаться выбранным.  
-Используется в качестве альтернативы для экшена [**Остановить**](../Android/ProLite/action#как-остановить-устройство).
+#### Buttons:  
+- **Select**: Makes the chosen device in the list active.  
+Use this to quickly switch between connected devices.  
+The name of the selected device also appears on the status bar:  
+![Tools](./assets/Device_Manager/Device_Manager_pic5.png)  
+- **Release**: Stops the current active device and fully disconnects it.  
+The panel status line goes blank after this.  
+This is useful if you see the **Device busy in ProjectMaker** error and can't switch to another device.  
+- **Stop**: Stops the current active device, but it still stays marked as selected.  
+This is an alternative to the [**Stop**](../Android/ProLite/action#how-to-stop-a-device) action.
 _______________________________________________  
-## Полезные ссылки.   
-- [**Действия с устройством**](../Android/ProLite/action).  
-- [**Окно устройства**](../pm/Interface/DeviceWindow).   
+## Useful links  
+- [**Device actions**](../Android/ProLite/action)
+- [**Device window**](../pm/Interface/DeviceWindow)

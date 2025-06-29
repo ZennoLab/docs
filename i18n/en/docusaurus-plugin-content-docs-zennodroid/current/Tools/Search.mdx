@@ -1,64 +1,64 @@
 ---
 sidebar_position: 11
-title: Поиск по проекту
-description: Поиск ошибок, переменных и экшенов.
+title: Project Search
+description: Searching for errors, variables, and actions.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please check out the [*Material Usage Rules for this resource*](../Disclaimer).**
 :::
 _______________________________________________   
-## Описание.  
-Этот инструмент помогает найти в проекте экшен по его id или через переменную, которую он использует.  
+## Description  
+This tool helps you find an action in your project by its id or by a variable it uses.
 
-![Описание](./assets/Search/Search_pic1.png)  
+![Description](./assets/Search/Search_pic1.png)
 
-Может пригодиться для:  
-- *отладки проекта*;  
-- *поиска ошибок, переменных и экшенов*;  
-- *быстрого перехода к определенному элементу проекта*.
+It can come in handy for:
+- *debugging your project*;
+- *searching for errors, variables, and actions*;
+- *quickly jumping to a specific project element*.
 
-### Как начать поиск?  
-**Есть два способа:**  
-- С помощью комбинации горячих клавиш **`CTRL+F`**.  
-- Через Панель инструментов, если туда вынесена соответствующая кнопка.  
-![Через Панель инструментов](./assets/Search/Search_pic2.png)
+### How do you start searching?
+**There are two ways:**
+- Using the keyboard shortcut **`CTRL+F`**.
+- Through the Toolbar, if you’ve added the relevant button there.
+![Via the Toolbar](./assets/Search/Search_pic2.png)
 _______________________________________________
-## Работа с поиском.  
-### Последовательность действий.  
-![Последовательность действий](./assets/Search/Search_pic3.png)  
+## Working with Search
+### Steps to follow
+![Steps to follow](./assets/Search/Search_pic3.png)
 
-**1**. Вводим в соответствующее поле id экшена или название переменной.  
-**2**. Устанавливаем чек-бокс, если открыто больше одного проекта, а нам нужен поиск сразу во всех.  
-**3**. Запускаем процесс поиска или же закрываем окно, если передумали.  
+**1**. Enter the action id or variable name in the field.
+**2**. Check the box if you have more than one project open and want to search through all of them.
+**3**. Start the search, or close the window if you’ve changed your mind.
 
-:::tip **В нашем примере мы указываем id ошибки.**
-Как его получить, расскажем далее.
-:::  
+:::tip **In our example, we’re entering an error id.**
+We’ll explain how to get it in a bit.
+:::
 
-### Как получить id экшена.
-:::info **Откуда берутся ошибки?**
-Они появляются в [**Логе**](../pm/Interface/Log_window) при работе шаблона, если что-то идёт не так.
-:::  
+### How to get an action id
+:::info **Where do errors come from?**
+They appear in the [**Log**](../pm/Interface/Log_window) when running a template if something goes wrong.
+:::
 
-![Как получить id экшена](./assets/Search/Search_pic4.png)  
+![How to get an action id](./assets/Search/Search_pic4.png)
 
-**1**. Нажимаем ПКМ по интересующей нас ошибке.  
-**2**. Кликаем **Скопировать Id действия**.  
+**1**. Right-click on the error you’re interested in.
+**2**. Click **Copy Action Id**.
 
-:::tip **Скопировать id можно из любого сообщения в логе.**
-Не только из ошибки.
+:::tip **You can copy an id from any log message.**
+Not just errors.
 ::: 
 _______________________________________________
-## Пример использования.  
-Представим, что после создания проекта в ProjectMaker мы решили запустить его в ZennoDroid. В ходе выполнения нами была получена ошибка, которую нужно найти и исправить. Сделаем вот так:  
-1. Скопируем код ошибки.  
-2. Откроем **Поиск по проекту**.  
-3. Вставим id ошибки, который получили ранее.  
-4. Нас перенесёт к экшену, на выполнении которого возникла эта ошибка.  
-5. Теперь мы можем исправить ошибку или изменить логику определённого потока.  
+## Example of Use
+Let’s say that after creating your project in ProjectMaker, you decide to run it in ZennoDroid. During execution, you get an error that you need to find and fix. Here’s how you’d do it:
+1. Copy the error code.
+2. Open **Project Search**.
+3. Paste in the error id you got earlier.
+4. You’ll be taken to the action where the error occurred.
+5. Now you can fix the error or change the logic for that particular flow.
 
-Этот способ можно использоваться также и для покупных шаблонов. Так как часто авторы продают свои продукты в закрытом виде. Вы не сможете просто посмотреть и самостоятельно исправить возникшую проблему. Придётся копировать код ошибки и передавать его разработчику.  
+You can use this method for paid templates too. Authors often sell products in closed format. You won’t be able to just look inside and fix the problem yourself. You’ll need to copy the error code and send it to the developer.
 _______________________________________________  
-## Полезные ссылки.   
-- [**Окно Лога**](../pm/Interface/Log_window).  
-- [**Вкладка «Лог» в ZD**](../Execution/Log).   
-- [**Поиск элементов**](../pm/Creating/ElementSearch). 
+## Useful Links
+- [**Log Window**](../pm/Interface/Log_window)
+- [**The “Log” Tab in ZD**](../Execution/Log)
+- [**Element Search**](../pm/Creating/ElementSearch)
