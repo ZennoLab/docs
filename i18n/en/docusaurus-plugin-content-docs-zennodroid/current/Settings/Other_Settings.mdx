@@ -1,107 +1,107 @@
 ---
 sidebar_position: 14
-title: Другое
-description: Другие доступные настройки.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Other
+description: Other available settings.
+---
+:::info Please review the [*Material Usage Policy for this Resource*](../Disclaimer).
 :::
-_______________________________________________  
-## Внешний вид.  
-![Описание](./assets/Other_Settings/Other_Settings_pic1.png)  
-
-## Общие настройки.  
-### Отключить отчёты об ошибках программ (глобально).  
-Иногда из-за внутренних проблем устройство может крашнуться. ZennoDroid отслеживает это и старается восстановить его работу. Однако если при этом будет висеть окно с уведомлениями о случившейся ошибке, то есть вероятность, что устройство не сможет перезагрузиться.  
-
-### Отключить диалог восстановления настроек проектов.  
-Эта опция отключает возможность восстановления настроек в случае аварийного завершения программы. Она может пригодиться в ситуации, когда данное окно блокирует автозапуск ZennoDroid.  
-
-:::warning **Не рекомендуем отключать данную опцию.**
-:::  
-
-### Пропускать выполнение задания планировщика для работающих заданий.
-Если проект уже выполняется в момент, когда вы хотите запустить его в планировщике, то это задание планировщика запустится только после окончания основного выполнения.  
-
-### Сворачивать ZennoDroid в трей.  
-При сворачивании окна программы, она будет выгружаться в трей.  
-
-### Отслеживать состояние потоков.  
-Включает отслеживание состояния потоков в программе для статистики. Эта информация может быть полезна только при обращении в поддержку. Поэтому **не советуем включать эту опцию просто так**.  
-
-### Сжимать кучу больших объектов.
-Эта функция полезна при обработке больших строковых данных. Например, при включенном автопоиске в ProxyChecker.  
-
-Также задаётся временной промежуток, через которой будет происходить сжатие. Например, раз в 5 или 10 минут.  
-
-### Автоматически продолжать активные задания после перезапуска.  
-Отвечает за то, нужно ли продолжать выполнение заданий, которые были активны до последнего закрытия программы.
 _______________________________________________
-## Настройки лога.
-### Отключать автопрокрутку лога, только по клику на записи в логе.  
-Автопрокрутка записей в логе будет отключаться только после клика по любой из записей в логе.  
+## Appearance
+![Description](./assets/Other_Settings/Other_Settings_pic1.png)
 
-### Выводить оповещение только в лог.
-Сообщения выводимые с помощью экшена [**Оповещение**](../Project%20Editor/Logic/Notification) будут отображаться только в логе, без всплывающего окна. Независимо от настроек экшена.  
+## General Settings
+### Disable error reports (globally)
+Sometimes, due to internal issues, the device might crash. ZennoDroid tracks these problems and tries to restore its operation. But if a notification window pops up at that moment, there’s a chance the device won’t be able to reboot.
 
-### Отображать дату в логе.  
-В логе дополнительно будет показываться текущая дата.  
+### Disable the project settings recovery dialog
+This option disables the ability to recover settings in case of a program crash. It can be useful if this recovery window blocks ZennoDroid from auto-starting.
 
-### Выводить в лог уведомления об успешном выполнении проекта.  
-При успешном выполнении проекта в лог будет выводиться сообщение об этом.  
-
-### Выводить в лог уведомления о неуспешном выполнении проекта.
-Если проект завершился неудачно, то в логе появится сообщение об этом.  
-
-### Хранить записи в логе часов.  
-Указываем максимальное время хранения записей в логе (в часах).  
-
-### Хранить максимально записей для одного задания.  
-Здесь можно задать максимальное количество записей в логе, которые относятся к одному заданию.  
-
-:::info **Максимально допустимое значение — 9999.**
-:::  
-
-### Максимальный размер записи в логе.  
-Устанавливаем ограничение на максимальный размер (в килобайтах) записи, которая может быть отображена в окне лога.  
-
-### Ограничить максимальный размер записи в файл лога.  
-Данная настройка ограничивает размер записи, которая может быть сохранена в файл лога. Мы рекомендуем включить это ограничение, если вы не работаете с большими данными, и вам не нужен полный лог. Так как это повысит производительность ZennoDroid и снизит потребление памяти.  
-
-Файлы логов хранятся в директории с установленным ZennoDroid, в папке `Logs`. Возможный путь:  
-`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Logs\`  
-
-:::warning **Для вступления изменений требуется перезагрузка программы.**
-:::  
-_______________________________________________
-## Прочее.  
-### Подробный лог (Отладочная информация для разработчиков).  
-Будет записываться более подробная информация о работе. Это может пригодиться при обращении в поддержку.  
-
-### Диагностика.  
-Эта кнопка запускает диагностическую утилиту (`diagnostic.exe`) для получения информации при возникновении проблем.  
-
-После выполнения диагностики в директории с установленным ZennoDroid будет создан файл `report.zip`.  
-
-:::tip **Читайте здесь [как правильно сделать диагностику](https://zennolab.atlassian.net/wiki/spaces/RU/pages/870419658).**
-:::  
-
-### Сохранить настройки.  
-Открывается менеджер сохранения текущих настроек программы. Для корректной работы после запуска менеджера нужно вручную закрыть ZennoDroid и ProjectMaker, а затем уже нажать **Сохранить**.
-
-### Восстановить настройки.  
-Этот менеджер нужен для восстановления сохранённых настроек. Работает по такому же принципу, как и описанный выше менеджер.  
-
-### Сбросить настройки.  
-Сбрасывает текущие настройки программы до значений по умолчанию.  
-
-### BuildId.  
-Эта строка состоит из комбинации букв и цифр, уникальной для каждой версии программы. В ней также содержится дата релиза текущий версии.  
-
-:::tip **Значение в этом поле можно выделить и скопировать.**  
-![Описание](./assets/Other_Settings/Other_Settings_pic2.gif)
+:::warning We don’t recommend turning off this option.
 :::
-_______________________________________________  
-## Полезные ссылки.   
-- [**Окно лога**](../pm/Interface/Log_window).  
-- [**Диспетчер заданий**](../get-started/Task_Manager).   
-- [**Логика в ZD**](../category/логика-в-zd).
+
+### Skip scheduler tasks for running jobs
+If a project is already running when you want to launch it using the scheduler, that scheduled task will be delayed until the current job finishes.
+
+### Minimize ZennoDroid to tray
+When you minimize the program window, it’ll go to the system tray.
+
+### Monitor thread state
+Enables monitoring of thread status in the program for statistics. This info is only helpful if you contact tech support. So **we don’t recommend turning on this option just for fun**.
+
+### Compress large object heap
+This feature is handy when processing big text data, for example, with auto search enabled in ProxyChecker.
+
+You can also set how often compression happens, like, every 5 or 10 minutes.
+
+### Auto-continue active tasks after restart
+Controls whether to resume tasks that were active before the last program shutdown.
+_______________________________________________
+## Log Settings
+### Only stop log autoscroll on log record click
+Log autoscrolling will only pause after you click on any record in the log.
+
+### Display notifications in log only
+Messages sent using the [**Notification**](../Project%20Editor/Logic/Notification) action will only show up in the log, without a popup window, no matter how the action’s settings are set.
+
+### Show the date in the log
+The current date will also be shown in the log.
+
+### Log successful project completion notifications
+If a project completes successfully, the log will show a message about it.
+
+### Log unsuccessful project completion notifications
+If a project fails, you’ll also see a message about it in the log.
+
+### Keep log records for (hours)
+Sets the max amount of time log entries are stored (in hours).
+
+### Max log entries per task
+Here you set the maximum number of log entries that can be stored for a single task.
+
+:::info The max allowed value is 9999.
+:::
+
+### Max log entry size
+Limits the maximum size (in kilobytes) of a single entry displayed in the log window.
+
+### Limit max log entry size for log files
+This setting limits the size of each entry that can be saved in the log file. We recommend enabling this limit if you aren’t working with large data sets and don’t need full logs, since it’ll boost ZennoDroid performance and reduce memory consumption.
+
+Log files are stored in the directory where ZennoDroid is installed, in the `Logs` folder. Possible path:  
+`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Logs\`
+
+:::warning Program restart is required for changes to take effect.
+:::
+_______________________________________________
+## Miscellaneous
+### Detailed log (Debug info for developers)
+More detailed info about what’s happening in the software will be logged. This can come in handy if you need support.
+
+### Diagnostics
+This button starts the diagnostic tool (`diagnostic.exe`) to collect info in case something goes wrong.
+
+After running diagnostics, a file called `report.zip` will be created in the ZennoDroid installation folder.
+
+:::tip Check [here for how to run diagnostics properly](https://zennolab.atlassian.net/wiki/spaces/RU/pages/870419658).
+:::
+
+### Save settings
+Opens the manager for saving the current program settings. To do it right, close ZennoDroid and ProjectMaker manually after starting the manager, then click **Save**.
+
+### Restore settings
+Use this manager to restore previously saved settings. It works the same way as the save manager above.
+
+### Reset settings
+Resets the program settings to factory defaults.
+
+### BuildId
+This string is a mix of letters and numbers unique to each program version. It also contains the release date for the current version.
+
+:::tip You can select and copy the value in this field.
+![Description](./assets/Other_Settings/Other_Settings_pic2.gif)
+:::
+_______________________________________________
+## Useful links
+- [**Log window**](../pm/Interface/Log_window)
+- [**Task manager**](../get-started/Task_Manager)
+- [**ZD logic**](../category/логика-в-zd)

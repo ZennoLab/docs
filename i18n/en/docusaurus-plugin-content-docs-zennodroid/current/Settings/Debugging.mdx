@@ -1,105 +1,105 @@
 ---
 sidebar_position: 5
-title: Отладка
-description: Настройки воспроизведения проектов. 
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Debugging
+description: Project playback settings.
+---
+:::info Please familiarize yourself with the [*Terms of Use for Materials on This Resource*](../Disclaimer).
 :::
-_______________________________________________  
-![Внешний вид](./assets/Debugging/Debugging_pic1.png)  
-
-## Откуда следует продолжать выполнение проекта.  
-Данные настройки влияют на то, как будет вести себя проект при клике по кнопкам **Далее** или **До конца**.  
-
-### Следующее действие после последнего выполненного.  
-Если включить, то проект продолжит выполняться со следующего действия, которое следует за последним выполненным.  
-
-### С выбранного действия.  
-А в этом случае выполнение продолжится с действия, которое пользователь в данный момент выделил в схеме проекта.  
-
-### Всегда спрашивать.  
-Данный чекбокс отвечает за то, будет ли запрашиваться выбор из двух верхних вариантов у пользователя каждый раз перед продолжением.  
 _______________________________________________
-## Выполнение проекта сначала.
-Эта настройка определяет поведение проекта при клике ***С начала***.  
+![Appearance](./assets/Debugging/Debugging_pic1.png)
 
-### Выполнить первое действие.  
-При выборе данной опции фокус проекта будет смещаться на первый экшен после нажатия кнопки **С начала**.  
+## Where to continue project execution from
+These settings control what happens when you click **Next** or **To End** during project playback.
 
-### Выполнять до точки останова.  
-Действия будут выполняться до первой ***Точки останова***, а если её нет, то сразу до конца проекта.  
+### Next action after the last completed one
+If enabled, the project will continue from the next action after the last one that was performed.
 
-### Спрашивать.  
-В этом случае порядок выполнения будет каждый раз запрашиваться у пользователя.  
+### From the selected action
+With this one, the project continues running from whichever action you currently have selected in the project scheme.
+
+### Always ask
+This checkbox means you’ll be asked to choose between the above two options every time before continuing.
 _______________________________________________
-## Опции отладчика.  
-### Очищать лог в начале отладки.  
-При каждом запуске проекта **С начала** лог будет автоматически очищен.  
+## Running the project from the beginning
+This setting decides how the project behaves when you click ***From the Beginning***.
 
-### Расширенный вариант окна лога.  
-Лог будет отображаться в окне с дополнительными опциями и возможностью копирования текста.  
+### Perform the first action
+With this option, the project’s focus will jump to the first action right after you click **From the Beginning**.
 
-:::tip **Настройка включается одновременно для ZennoDroid и ProjectMaker.**
-:::  
+### Run until a breakpoint
+Actions will be executed up to the first ***Breakpoint***—or straight to the end if there isn’t one.
 
-Из отличий, например, появление заголовков:  
+### Ask
+You’ll be asked every time which behavior to use.
+_______________________________________________
+## Debugger options
+### Clear log at the start of debugging
+Every time you run the project **From the Beginning**, the log will be wiped automatically.
 
-![появление заголовков](./assets/Debugging/Debugging_pic2.png)  
+### Advanced log window
+The log will show up in a window with extra features and the ability to copy text.
 
-:::info **Для применения опции требуется перезапуск.**
+:::tip This setting turns on simultaneously for both ZennoDroid and ProjectMaker.
 :::
 
-### Всегда выводить предупреждения в лог.  
-В логе появятся дополнительные предупреждения. Например:  
-- `Выполнение логического оператора If Результат: false`, если экшен [**IF**](../Project%20Editor/Logic/IF) вышел по красной ветке.    
+Some differences, like headers appearing for example:
 
-### Показывать предупреждение о неподходящей версии браузера.  
-:::warning **Неактуально для ZennoDroid. Ни на что не влияет.**
-:::  
+![headers appearing](./assets/Debugging/Debugging_pic2.png)
 
-### Переходить в Bad/GoodEnd при многократной отладке.  
-Если данная опция включена, то выполнение экшена сможет перебрасываться то в [**BadEnd**](../Project%20Editor/Logic/BadEnd), то в [**GoodEnd**](../Project%20Editor/Logic/GoodEnd), в зависимости от того возникают ли ошбики, или работа продвигается успешно.  
-
-Но когда опция выключена, то попадание в *Bad/GoodEnd* возможно лишь раз за выполнение, а затем придётся перезапускать проект **С начала**.  
-
-### Пересоздавать поток выполнения C# кода.  
-Данная настройка помогает в некоторых случаях **избежать утечек памяти** в *ProjectMaker* на процессорах AMD при выполнении C# кода. Сам баг при этом находится в *.NET Framework*.  
-
-:::warning **Исключает использование ThreadStatic.**  
-Если вы используете в своих проектах С# вместе с [**ThreadStatic**](https://www.c-sharpcorner.com/article/overview-of-threadstatic-attribute-in-c-sharp/), то эту настройку нужно выключить.
-:::  
-_______________________________________________
-## Настройки уведомлений.  
-Эта настройка регулирует [**Оповещения**](../Project%20Editor/Logic/Notification), выводящиеся на рабочем столе.  
-
-![Оповещения](./assets/Debugging/Debugging_pic3.png)  
-
-### Тема.  
-Выбор цвета фона для оповещений:  
-- **Black**, чёрный;  
-- **White**, белый;  
-- **Blue**, синий;  
-- **Green**, зелёный;  
-- **Orange**, оранжевый;  
-- **WhiteRed**, красно-белый; 
-
-### Увеличенный размер сообщений.  
-Уведомления будут отображаться в увеличенном виде.  
-
-### Расположение.  
-Выбор области отображения оповещения на рабочем пространстве:  
-- *правый нижний угол (по умолчанию)*;  
-- *левый нижний угол*;  
-- *левый верхний угол*;  
-- *правый верхний угол*.  
-_______________________________________________
-## Сброс расположения док-панелей в случае неполадок.  
-Кнопка **Сбросить панели** восстанавливает изначальное отображение окон программы, если вдруг вы открепляли, перемещали или закрывали их.  
-
-:::tip **Окна также сбрасываются при изменении *Режима интерфейса*.**  
-![Режима интерфейса](./assets/Debugging/Debugging_pic4.png)
+:::info You’ll need to restart for this option to take effect.
 :::
-_______________________________________________  
-## Полезные ссылки.   
-- [**Окно лога**](../pm/Interface/Log_window).  
-- [**Отладка проектов**](../pm/Debugging).   
+
+### Always show warnings in the log
+Extra warnings will show up in the log. For example:
+- `If statement execution Result: false` if the [**IF**](../Project%20Editor/Logic/IF) action follows the red branch.
+
+### Show warning about unsupported browser version
+:::warning Not relevant for ZennoDroid. Doesn't affect anything.
+:::
+
+### Switch to Bad/GoodEnd during multiple debug runs
+If this option is enabled, an action can transfer execution to [**BadEnd**](../Project%20Editor/Logic/BadEnd) or [**GoodEnd**](../Project%20Editor/Logic/GoodEnd), depending on whether errors occur or things are going smoothly.
+
+But if you turn this option off, you can only hit *Bad/GoodEnd* once per run—after that, you’ll have to restart the project **From the Beginning**.
+
+### Recreate C# code execution thread
+This setting helps, in some cases, **prevent memory leaks** in *ProjectMaker* when running C# code on AMD processors. The actual bug is in *.NET Framework*.
+
+:::warning Disables use of ThreadStatic.
+If you use [**ThreadStatic**](https://www.c-sharpcorner.com/article/overview-of-threadstatic-attribute-in-c-sharp/) in your C# project, you should turn this option off.
+:::
+_______________________________________________
+## Notification settings
+This controls [**Notifications**](../Project%20Editor/Logic/Notification) that pop up on your desktop.
+
+![Notifications](./assets/Debugging/Debugging_pic3.png)
+
+### Theme
+Choose a background color for notifications:
+- **Black**, black
+- **White**, white
+- **Blue**, blue
+- **Green**, green
+- **Orange**, orange
+- **WhiteRed**, red and white
+
+### Large message size
+Notifications will show up bigger.
+
+### Placement
+Choose where notifications appear on your desktop:
+- *bottom right (default)*
+- *bottom left*
+- *top left*
+- *top right*
+_______________________________________________
+## Reset dock panel layout in case of glitches
+The **Reset panels** button brings the program’s windows back to their default positions, which is useful if you undocked, moved, or closed them.
+
+:::tip Windows also reset when you change the *Interface Mode*.
+![Interface Mode](./assets/Debugging/Debugging_pic4.png)
+:::
+_______________________________________________
+## Useful links
+- [**Log Window**](../pm/Interface/Log_window)
+- [**Project Debugging**](../pm/Debugging)

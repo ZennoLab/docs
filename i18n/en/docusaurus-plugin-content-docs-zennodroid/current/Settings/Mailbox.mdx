@@ -1,100 +1,100 @@
 ---
 sidebar_position: 12
-title: Почта
-description: Настройка подключения к почтовым ящикам.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Mail
+description: Setting up connections to mailboxes.
+---
+:::info Please read the [*Terms of Use for Materials on this Resource*](../Disclaimer).  
 :::
 _______________________________________________  
-## Описание.  
-Этот раздел настроек предназначен для подключения почтовых ящиков, которые затем можно будет использовать для [**отправки писем**](../Project%20Editor/SendEmails).  
+## Description  
+This settings section is for connecting mailboxes, which you can then use for [**sending emails**](../Project%20Editor/SendEmails).
 
-![Описание](./assets/Mailbox/Mailbox_pic1.png)
+![Description](./assets/Mailbox/Mailbox_pic1.png)
 _______________________________________________
-## Кнопка «Добавить».  
-Клик по данной кнопке открывает окно для добавления нового подключения.  
+## "Add" Button  
+Clicking this button opens the window for adding a new connection.
 
-![Добавить](./assets/Mailbox/Mailbox_pic2.png)  
+![Add](./assets/Mailbox/Mailbox_pic2.png)
 
-### Название сервиса.
-Кастомное обозначение этого аккаунта, которое вы придумываете самостоятельно. Под данным именем он будет отображаться в списке доступных, например, в экшене [**Отправить почту**](../Project%20Editor/SendEmails).  
+### Service Name  
+A custom name for this account, which you make up yourself. This is how it’ll show up in the available list, for example, in the [**Send Mail**](../Project%20Editor/SendEmails) action.
 
-:::warning **Это обязательный параметр, который должен быть уникальным в рамках программы.**
-:::  
+:::warning This is a required field and must be unique within the program.
+:::
 
-### Имя отправителя.  
-Под этим именем будет отображаться отправитель в специальной графе у получателя.  
+### Sender Name  
+This is the name your recipient will see as the sender.
 
-### Email.  
-Полный адрес электронного ящика, с которого будет отправляться почта. Он должен быть настоящим, иначе программа выдаст ошибку.  
+### Email  
+The full email address from which emails will be sent. It has to be real, otherwise the program will give an error.
 
-### Пароль. 
-Пароль от этого ящика.  
+### Password  
+The password for this mailbox.
 
-Некоторые провайдеры электронных адресов в целях безопасности устанавливают специальный пароль для подключения сторонних программ. Он называется **Пароль приложений**. Получить его можно в настройках выбранного сервиса.  
+For security reasons, some email providers require a special password for third-party programs. It’s called an **App Password**. You can get it in the settings of your chosen service.
 _______________________________________________
-### Кнопка «Войти в почту».  
-После нажатия выполнится проверка корректности данных для подключения к SMTP-серверу. При этом правильность пары *Email-Пароль* не проверяется.  
+### "Login to Mail" Button  
+After clicking this, the program will check if your SMTP server connection details are correct. However, it does not check if the *Email-Password* pair is correct.
 
-В случае успешного подключения внизу окна появится зеленая надпись:  
+If the connection is successful, a green message will show up at the bottom of the window:
 
-![зеленая надпись](./assets/Mailbox/Mailbox_pic3.png)  
+![Green message](./assets/Mailbox/Mailbox_pic3.png)
 
-Если же программе не удастся подключиться к серверу, то появится всплывающее окно с ошибкой:  
+If the program fails to connect to the server, you’ll get a pop-up error window:
 
-![окно с ошибкой](./assets/Mailbox/Mailbox_pic4.png)  
+![Error window](./assets/Mailbox/Mailbox_pic4.png)
 
-В этом случае нужно вручную настроить подключение. Для этого убираем галочку с опции **Определить настройки автоматически**.   
+If this happens, you’ll have to set up the connection manually. To do this, uncheck **Detect settings automatically**.
 
-### Определить настройки автоматически.  
-![Определить настройки автоматически](./assets/Mailbox/Mailbox_pic5.png)  
+### Detect Settings Automatically  
+![Detect settings automatically](./assets/Mailbox/Mailbox_pic5.png)
 
-Когда данная настройка включена, то программа попытается автоматически подобрать настройки подключения к SMTP-серверу на основе введенного Email-адреса.  
+When this option is enabled, the program will try to figure out the right SMTP connection settings based on the email address you’ve entered.
 
-Если после автоматических настроек вы получаете ошибку, то уберите галочку и введите их вручную, ориентируясь на информацию с сайта провайдера.  
+If you get an error after using automatic settings, uncheck this and enter them manually, using info from your provider’s website.
 
-### По умолчанию.  
-При включении этой опции текущее подключение будет использоваться каждый раз по умолчанию во всех кубиках [Отправки почты](../Project%20Editor/SendEmails), если не указано иное.  
+### Default  
+If you switch this on, this connection will be used by default every time in [Mail Sending](../Project%20Editor/SendEmails) blocks, unless you specify otherwise.
 _______________________________________________
-### Не проверять сертификаты сервера.  
-В некоторых случаях при подключении аккаунта можно получить ошибку:  
-**`An error occured while attempting to establish an SSL or TLS connection`**.  
+### Do Not Check Server Certificates  
+Sometimes, when connecting an account, you might get an error like:  
+**`An error occured while attempting to establish an SSL or TLS connection`**.
 
-Возникает такая ошибка чаще всего при установке незащищенного соединения с сервером почты. Провайдер же из-за этого отказывает в подключении, так как система не может проверить подлинность SSL/TLS сертификатов.  
+This usually happens if the connection to the mail server isn’t secured. Because of this, the provider refuses the connection since the system can’t verify the authenticity of SSL/TLS certificates.
 
-Причины могут быть различными, вот самые частые из них:  
-- Старая версия Windows, у которой давно не обновлялись доверенные сертификаты;  
-- Антивирус, подменяющий сертификаты сервера для расшифровки и проверки входящего трафика;  
-- Включенные файервол или брандмауэр.  
+There can be different reasons for this. The most common are:  
+- An old version of Windows with outdated trusted certificates;
+- An antivirus that replaces server certificates to decrypt and check incoming traffic;
+- Firewall or security software is turned on.
 
-Решение следует из конкретной причины. Можно обновить Windows или же отключить Файервол/Брандауэр. В случае же с антивирусом особое внимание нужно уделить настройкам проверки входящего трафика и почты.  
+The solution depends on the cause. You might need to update Windows or disable the firewall. For antivirus, pay extra attention to its email and traffic scanning settings.
 
-Если же ничего не помогает, тогда включайте данную настройку. После этого любые сертификаты, отправленные сервером для установки соединения, проверяться не будут, а соединение успешно отметится как защищенное.  
+If nothing else helps, you can enable this option. With it, any certificates sent by the server for connecting won’t be checked, and the connection will show as secure.
 
-:::warning **При отключении проверки сертификатов ваш трафик с Email-провайдером может быть перехвачен.**
-::: 
-_______________________________________________
-### Кнопка «Отправить тестовое письмо».  
-При её нажатии ZennoDroid попытается отправить письмо на ваш Email, используя указанный SMTP-сервер. Это нужно для проверки работоспособности введёных данных.  
-
-Если учётные данные аккаунта указаны корректно, то отобразится статус: **`Тестовое письмо отправлено успешно`**. Это значит, что почтовый сервис готов к использованию в программе.  
-
-В случае введения неправильной информации отобразится ошибка: **`Не удалось отправить тестовое письмо`**. В окне можно будет увидеть её более детальное описание.  
-
-:::tip **Некоторые Email-провайдеры требуют явного включения доступа к почте для сторонних программ.**
-Найти самостоятельно подходящие настройки можно с помощью запроса в поисковой системе:  
-`smtp настройки подключения <НАЗВАНИЕ_ВАШЕГО_ПРОВЙДЕРА>`
+:::warning Disabling certificate checks means your traffic with the email provider could be intercepted.
 :::  
 _______________________________________________
-## Кнопка «Редактировать».  
-С помощью этой кнопки можно отредактировать добавленные ранее почтовые аккаунты.
+### "Send Test Email" Button  
+When you click this button, ZennoDroid will try to send an email to your account using the specified SMTP server. This is to make sure your details are set up correctly.
 
-## Кнопка «По умолчанию».  
-Данная опция позволяет изменить аккаунт, который будет использоваться по умолчанию.  
+If the account details are correct, you’ll see a status: **`Test email sent successfully`**. That means your mail service is ready to use in the program.
 
-## Кнопка «Удалить».
-Удаляет выбранный аккаунт из настроек программы. 
+If there’s incorrect info, you’ll get an error: **`Failed to send test email`**, with a more detailed description in the window.
+
+:::tip Some email providers require you to explicitly enable third-party mail access.
+You can find suitable settings by searching:  
+`smtp connection settings <YOUR_PROVIDER_NAME>`
+:::
+_______________________________________________
+## "Edit" Button  
+You can use this button to edit mail accounts you added earlier.
+
+## "Default" Button  
+This lets you change which account will be used by default.
+
+## "Delete" Button  
+Deletes the selected account from the program settings.
 _______________________________________________  
-## Полезные ссылки.    
-- [**Принять почту**](../Project%20Editor/SendEmails).   
-- [**Окно переменных**](../pm/Interface/Variables).
+## Useful Links  
+- [**Receive Mail**](../Project%20Editor/SendEmails)
+- [**Variables Window**](../pm/Interface/Variables)

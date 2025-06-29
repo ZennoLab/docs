@@ -1,109 +1,109 @@
 ---
 sidebar_position: 3
-title: Редактор
-description: Настройки редактора проектов. 
+title: Editor
+description: Project Editor Settings.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please review the [*Terms of Use for materials on this site*](../Disclaimer).**
 :::
 _______________________________________________  
-![Внешний вид](./assets/Editor/Editor_pic1.png)   
+![Appearance](./assets/Editor/Editor_pic1.png)   
 
-## Редактор.  
-### Открывать при запуске ранее открытые проекты.  
-Если включить эту опцию, то при запуске программы будут открываться все проекты, которые не были закрыты перед последним выключением.  
+## Editor  
+### Open previously opened projects at startup  
+If you enable this option, when you launch the program, all projects that weren’t closed before you last exited will open up automatically.
 
-### Рисовать скриншот элемента (если есть).  
-![скриншот элемента](./assets/Editor/Editor_pic2.png)   
+### Draw element screenshot (if available)  
+![element screenshot](./assets/Editor/Editor_pic2.png)   
 
-На блоке с действием будет отрисовываться скриншот соответствующего элемента. Это увеличивает общий вес шаблона, но зато помогает лучше в нём ориентироваться.  
+You'll see a screenshot of the corresponding element on the action block itself. This will make the overall template heavier, but it helps you navigate it more easily.
 
-### Не заполнять кэш настроек действий.  
-Отключает заполнение кэша настроек действий, тем самым ускоряя запуск программы.  
+### Don’t fill the action settings cache  
+Disables loading the action settings cache, which speeds up the program’s startup time.
 
-### Показывать результирующую переменную в описании действия.  
-Добавляет в комментарии некоторых блоков (в которых подразумевается возврат результата) такую конструкцию: `название действия → {переменная}`.  
+### Show result variable in action description  
+Adds a line to the comments of some blocks (ones that are supposed to return a result) that looks like this: `action name → {variable}`.
 
-![результирующую переменную](./assets/Editor/Editor_pic5.png) 
+![result variable](./assets/Editor/Editor_pic5.png) 
 
-### Сортировать переменные проекта по алфавиту.  
-Переменные будут расположены в алфавитном порядке.  
+### Sort project variables alphabetically  
+Variables will be arranged in alphabetical order.
 
-### Использовать автодополнение в выпадающих списках.  
-![автодополнение](./assets/Editor/Editor_pic3.gif)   
+### Use autocomplete in dropdown lists  
+![autocomplete](./assets/Editor/Editor_pic3.gif)   
 
-При написании имени переменной или списка/таблицы в выпадающем поле будет срабатывать автонабор. Это позволит не писать всё название целиком и быстро заполнить поле.  
+When typing a variable name or list/table in a dropdown field, autocomplete will kick in. This saves you from typing out the whole name and helps fill out the field faster.
 
-:::info **Для применения требуется перезагрузка.**
+:::info **A restart is required to apply this.**
 :::
 
-### Не предлагать сохранять новый проект.
-Убирает окошко с предложением сохранить проект после нажатия кнопки ***С начала***.
+### Don’t suggest saving a new project  
+Removes the window asking if you want to save the project after clicking ***Start Over***.
 
-### Предлагать создание действий для новой линии.  
-При создании новой линии, когда вы потянете за стрелочку от кубика, будет автоматически появляться список возможных действий для добавления.  
+### Suggest actions when creating a new line  
+When you create a new line—by dragging an arrow from a block—a list of possible actions to add will automatically pop up.
 
-![создание действий](./assets/Editor/Editor_pic4.gif)  
+![creating actions](./assets/Editor/Editor_pic4.gif)  
 
-### Показывать окно быстрого перехода к действиям.  
-При наведении на точки крепления линий будет выводится окно для быстрого перехода к действиям.  
+### Show quick jump window for actions  
+When you hover over a connector dot, a quick jump window for actions will show up.
 
-![быстрого перехода](./assets/Editor/Editor_pic6.png)
+![quick jump](./assets/Editor/Editor_pic6.png)
 
-## Свойства действия. 
-### Ограничить ширину свойств действий.
-Управляет сеткой окна **Свойства действия**. Если стоит галочка, то сетка будет фиксированной. Но если ее убрать, она станет гибкой, подстраиваемой под ширину окна.  
+## Action Properties  
+### Limit width of action properties  
+Controls the grid in the **Action Properties** window. If checked, the grid has a fixed size. If unchecked, it will flex and adjust to the window’s width.
 
-### Открывать несколько настроек действий в режиме “С Устройством/Без Устройства“.  
-Позволяет открывать сразу несколько настроек действий рядом с кубиком. По умолчанию опция включена только в режиме “Без Устройства“. Это значит, что если вы подключите устройство, то настройка станет не активной.
+### Open multiple action settings in “With/Without Device” mode  
+Lets you open several action settings at once next to the block. By default, this option is enabled only in “Without Device” mode. So, if you connect a device, this setting becomes inactive.
 
-| ![несколько настроек](./assets/Editor/Editor_pic7.png)    | 
+| ![multiple settings](./assets/Editor/Editor_pic7.png)    | 
 | :--------: | 
-| *Открыть можно два и более окон настроек*  |
+| *You can open two or more settings windows*  |
 
-## Другое.  
-### Максимальная высота сообщения в логе до появления скролла.  
-Устанавливает высоту поля с сообщением в логе, которая будет видна без необходимости прокрутки. Число означает количество строк, которые поместятся для предпросмотра.  
+## Other  
+### Max log message height before scroll appears  
+Sets how much of a log message will be visible before you have to scroll. The number means how many lines are shown for preview.
 
-### Высота ячейки в списке переменных до появления скролла.  
-По аналогии с прошлым пунктом задаётся высота ячейки в окне **Переменные** доступная для просмотра.  
+### Variable list cell height before scroll  
+Likewise, this sets the visible height for cells in the **Variables** window before scrolling becomes necessary.
 
-### Количество строк в статических блоках до появления скролла. 
-Здесь также задаём доступное количество строк в разделе статических блоков до появления прокрутки.  
+### Number of lines in static blocks before scroll appears  
+Here you set how many lines are visible in the static blocks section before you have to scroll.
 
-### Запоминать количество последних открытых проектов.  
-Регулирует количество последних открытых проектов, которые будут отображаться на [**Стартовой странице**](../pm/Welcome_PM).
+### Remember the number of recently opened projects  
+Controls how many of your latest projects will show on the [**Welcome page**](../pm/Welcome_PM).
 
-### Таймаут автосохранения.
-Устанавливаем время в минутах, через которое проект будет автоматически сохраняться.  
+### Autosave timeout  
+Sets how many minutes pass before your project is auto-saved.
 
-### Директория C# сниппетов.
-Указываем директорию, из которой в программу будут автоматически подгружаться **C# сниппеты**.  
+### C# snippets directory  
+Sets the directory from which **C# snippets** are loaded automatically into the program.
 
-**Директория по умолчанию:**  
+**Default directory:**  
 `C:\Users\*USERNAME*\AppData\Roaming\ZennoLab\ZennoDroid\2\Snippets` 
 
-### Шрифт C# и JavaScript кода. 
-Задаём шрифт, который будет использоваться в экшенах [**C#**](../Project%20Editor/CustomCode/С) и [**JavaScript**](../Project%20Editor/CustomCode/JS) кода. По умолчанию стоит *Consolas* 10-го размера.  
+### Font for C# and JavaScript code  
+Lets you choose the font used in [**C#**](../Project%20Editor/CustomCode/С) and [**JavaScript**](../Project%20Editor/CustomCode/JS) code actions. By default, it’s *Consolas* at size 10.
 
-### Запоминать положение курсора в C# блоке.
-Код будет открываться на той строке, где вы остановились работать в прошлый раз.  
+### Remember cursor position in C# block  
+The code will open to the line where you left off last time.
 
-### Нумерация строк в C# блоке по умолчанию.
-Строки в [**Коде C#**](../Project%20Editor/CustomCode/С) будут автоматически пронумерованы.  
+### Show line numbers in C# block by default  
+Lines in [**C# code**](../Project%20Editor/CustomCode/С) will be automatically numbered.
 
-![Нумерация строк](./assets/Editor/Editor_pic8.png)
+![Line numbering](./assets/Editor/Editor_pic8.png)
 
-### Перенос строк в C# блоке по умолчанию.
-Эта опция включает автоматический перенос строк в C# коде, если они не помещаются в текущее окно.  
+### Word wrap in C# block by default  
+Turns on automatic word wrap in C# code if the lines don’t fit in the window.
 
-| ![Перенос включён](./assets/Editor/Editor_pic9.png)    | ![Перенос выключен](./assets/Editor/Editor_pic10.png) |
+| ![Wrap on](./assets/Editor/Editor_pic9.png)    | ![Wrap off](./assets/Editor/Editor_pic10.png) |
 | -------- | ------- |
-| Перенос включён  | Перенос выключен    |  
+| Wrap on  | Wrap off    |  
 
-### Массовое шифрование проектов.
-Эта кнопка включает позволяет [**Зашифровать**](../Project%20Editor/Static%20Block%20Panel/Encryption) все открытые проекты.  
+### Bulk project encryption  
+This button lets you [**Encrypt**](../Project%20Editor/Static%20Block%20Panel/Encryption) all open projects at once.
 _______________________________________________  
-## Полезные ссылки.   
-- [**Все о работе с редактором**](../category/редактор-проектов).  
-- [**Все о панели статических блоков**](../category/панель-статических-блоков).   
-- [**Написание кода в ZD**](../category/свой-код).
+## Useful links  
+- [**All about working with the editor**](../category/редактор-проектов)  
+- [**All about the static blocks panel**](../category/панель-статических-блоков)  
+- [**Writing code in ZD**](../category/свой-код)

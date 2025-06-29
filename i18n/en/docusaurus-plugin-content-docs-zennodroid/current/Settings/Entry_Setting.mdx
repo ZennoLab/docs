@@ -1,65 +1,65 @@
 ---
 sidebar_position: 4
-title: Входные настройки
-description: Входные параметры для проектов.
+title: Input Settings
+description: Input parameters for projects.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Rules for Using Materials on this Resource*](../Disclaimer).**
 :::
 _______________________________________________
-## Что такое Входные параметры?  
-Эти настройки нужны для передачи данных в шаблон. В них могут содержаться различные типы данных, такие как: пути к файлам, строки текста, числа, сервисы по работе с капчей, СМС-сервисы, выпадающие списки и так далее.  
+## What Are Input Parameters?
+These settings are used to pass data into a template. They can contain various types of data, such as file paths, text strings, numbers, captcha services, SMS services, dropdown menus, and so on.
 
-В ZennoDroid существует два типа входных настроек - [**Классические**](../Project%20Editor/Project/InputSetting) и [**Интерфейс бота (BotUI)**](../Project%20Editor/Project/BotInterface).  
+In ZennoDroid, there are two types of input settings — [**Classic**](../Project%20Editor/Project/InputSetting) and [**Bot Interface (BotUI)**](../Project%20Editor/Project/BotInterface).
 
-### Примеры внешнего вида.  
-| Классические настройки    | Интерфейс бота (BotUI) |
+### Examples of What They Look Like
+| Classic Settings    | Bot Interface (BotUI) |
 | :--------: | :-------: |
-| ![Внешний вид](./assets/Entry_Setting/Entry_Setting_pic1.png)  | ![Внешний вид](./assets/Entry_Setting/Entry_Setting_pic2.png)    |  
+| ![Appearance](./assets/Entry_Setting/Entry_Setting_pic1.png)  | ![Appearance](./assets/Entry_Setting/Entry_Setting_pic2.png)    |
 
-### Как открыть?  
-Этот раздел доступен для редактирования **только через ZennoDroid**, в ProjectMaker вы его не найдёте.  
+### How to Open?
+You can edit this section **only via ZennoDroid** — you won’t find it in ProjectMaker.
 
-Выберите нужный **Проект → ПКМ по нему → Настройки**.  
+Choose the desired **Project → Right-click on it → Settings**.
 
-![Внешний вид](./assets/Entry_Setting/Entry_Setting_pic3.png)  
+![Appearance](./assets/Entry_Setting/Entry_Setting_pic3.png)
 _______________________________________________
-## Кнопки управления.  
-![Внешний вид](./assets/Entry_Setting/Entry_Setting_pic4.png)  
+## Control Buttons
+![Appearance](./assets/Entry_Setting/Entry_Setting_pic4.png)
 
-### Экспорт.  
-Позволяет сохранить файл с текущими установленными настройками.   
+### Export
+Lets you save a file with the current settings.
 
-| Также настройки можно помещать в [**.bat файл**](../Execution/BatFile)    | 
+| You can also put your settings into a [**.bat file**](../Execution/BatFile)    | 
 | :--------: | 
-| ![Внешний вид](./assets/Entry_Setting/Entry_Setting_pic5.png)  |  
+| ![Appearance](./assets/Entry_Setting/Entry_Setting_pic5.png)  |  
 
-### Импорт.  
-С помощью этой кнопки можно загрузить настройки из уже существующего файла.  
+### Import
+This button lets you load settings from an existing file.
 
-### По умолчанию.  
-Сброс входных настроек до значений по умолчанию *(те, которые были выставлены разработчиком шаблона)*.  
+### Default
+Resets the input settings to their default values *(the ones set by the template developer)*.
 
-### Настройки профиля.  
-При клике по данной кнопке откроется окно настроек генерации профиля. В нём можно изменить национальность, пол, возраст и формулу генерации логина.  
+### Profile Settings
+When you click this button, a profile generation settings window will pop up. There, you can change nationality, gender, age, and the login generation formula.
 
-![Внешний вид](./assets/Entry_Setting/Entry_Setting_pic6.png)  
+![Appearance](./assets/Entry_Setting/Entry_Setting_pic6.png)
 
-Более подробная информация доступна в статье про [**Профиль**](../Project%20Editor/Static%20Block%20Panel/Profile)  
+You can find more detailed info in the article about [**Profile**](../Project%20Editor/Static%20Block%20Panel/Profile)
 
-### ОК и Отмена.  
-Позволяют либо сохранить, либо отменить все внесённые изменения.  
+### OK and Cancel
+These let you either save or discard any changes you’ve made.
 _______________________________________________
-## Важное примечание.  
-Входные настройки считываются **только один раз при старте потока**!  
+## Important Note
+Input settings are read **only once when the thread starts**!
 
-Если же изменить настройки во время выполнения, то они никак не отразятся на проекте до нового старта.  
+If you change the settings during execution, it won’t affect the project until it’s started again.
 
-### Пример.  
-Представим, что пользователь вводит во входных настройках ФИО и дату рождения, а затем запускает шаблон. Когда проект уже запущен, обнаруживается, что были введены некорректные данные. Пользователь бежит в настройки и меняет параметры у работающего шаблона.  
+### Example
+Let’s say you enter your full name and date of birth in the input settings and launch the template. Once the project is running, you notice the data was entered incorrectly. You go to the settings and change them for the running template.
 
-И получится так, что все потоки, которые стартовали до введения новых данных, продолжат работу со старыми значениями. Изменения же применятся только для тех потоков, которые будут запущены после.
+But in this case, all threads that were started before the new data are going to keep working with the old values. The changes will only affect threads started after you update the settings.
 _______________________________________________  
-## Полезные ссылки.   
-- [**Окно профиля**](../pm/Interface/Work_with_Profile).  
-- [**Все о панели статических блоков**](../category/панель-статических-блоков).   
-- [**Диспетчер заданий**](../get-started/Task_Manager).
+## Useful Links   
+- [**Profile Window**](../pm/Interface/Work_with_Profile)  
+- [**All About the Static Block Panel**](../category/панель-статических-блоков)  
+- [**Task Manager**](../get-started/Task_Manager)

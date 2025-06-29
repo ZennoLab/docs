@@ -1,89 +1,89 @@
 ---
 sidebar_position: 8
 title: SMS
-description: Настройки подключения SMS-сервисов. 
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
-:::
-_______________________________________________ 
-## Описание.  
-Некоторые ресурсы для подтверждения регистрации требуют ввести номер мобильного телефона, на который будет отправлен проверочный код.  
-
-| ![Как подключиться?](./assets/SMS/SMS_pic2.png)  ![Как подключиться?](./assets/SMS/SMS_pic3.png)    | 
-| :--------: | 
-| **Примеры запросов SMS для входа.**  |
-
-Именно для этого могут понадобиться сторонние SMS-сервисы. А мы постараемся упростить работу с ними.   
-_______________________________________________ 
-## Как подключиться?
-![Как подключиться?](./assets/SMS/SMS_pic1.png)
-### Секретный ключ.
-Чаще всего для работы с сервисом необходим так называемый **API ключ**. Это *уникальная строка из случайных символов*, благодаря которой сервис может вас идентифицировать. Например, он может выглядеть вот так: `8fc9b30e544885b8480fb590dfcbdd71`.  
-
-Для получения API ключа вам нужно перейти на сайт подходящего сервиса и ознакомиться с его условиями. Когда определитесь с выбором, выполните регистрацию в SMS-сервисе и получите свой *API-ключ* в личном кабинете.  
-
-### Дополнительные параметры.
-Тут пишется **URL-адрес (домен)** для приёма API-запросов. Он установлен в программе по умолчанию и его **не нужно менять без необходимости**. Если вдруг URL не прописан заранее, то его необходимо уточнить в документации выбранного сервиса.  
-
-### Баланс.  
-После авторизации в сервисе в данном поле появится ваш текущий баланс.  
-
-:::warning **Если после ввода API-ключа данное поле остаётся пустым, значит произошла какая-то ошибка.**
-Возможные варианты: введён неправильный ключ, неполадки у сервиса, ключ был забанен.
+description: SMS service connection settings.
+---
+:::info Please read the [*Terms of Use for materials on this site*](../Disclaimer).
 :::
 _______________________________________________
-## Доступные  сервисы.  
-- [5SIM Five Sim](http://5sim.net/);    
-- [GetSmsOnline](http://getsms.online/);  
-- [Give-SMS](http://give-sms.com/);  
-- [SIMsmsOrg](http://simsms.org/);  
-- [SMSAcktiwator](http://sms-acktiwator.ru/);  
-- [SMS Activate](http://sms-activate.ru/ru/);  
-- [SmsHub](https://smshub.org/);  
-- [SMSpvaCom](http://smspva.com/);  
-- [SMS-REG](http://sms-reg.com/);  
-- [VAK-SMS](http://vak-sms.com/);  
-- [virtualSMS](http://virtualsms.ru/);  
-_______________________________________________  
-## Свой сервис.
-### Добавить свой сервис (модуль).  
-Вы также можете добавить собственный сервис приёма SMS на основе API популярных сервисов.  
+## Description
+Some sites require you to enter a mobile phone number to confirm your registration, so they can send you a verification code.
 
-![Как подключиться?](./assets/SMS/SMS_pic4.png)  
-### Необходимые параметры. 
-:::tip **Если вы не уверены, какие данные нужно вводить.**
-То проконсультируйтесь с поставщиком услуг.
+| ![How to connect?](./assets/SMS/SMS_pic2.png)  ![How to connect?](./assets/SMS/SMS_pic3.png) |
+| :--------: |
+| **Examples of SMS login requests.** |
+
+That’s where third-party SMS services come in handy. Our goal is to make working with them easy.
+_______________________________________________
+## How to connect?
+![How to connect?](./assets/SMS/SMS_pic1.png)
+### Secret key
+Usually, to use a service, you’ll need what’s called an **API key**. That’s a *unique string of random characters* that lets the service recognize you. For example, it might look like this: `8fc9b30e544885b8480fb590dfcbdd71`.
+
+To get your API key, go to the website of the SMS service you picked and look over their terms. Once you’ve chosen, sign up for the SMS service and get your *API key* from your personal account.
+
+### Additional parameters
+Here, you enter the **URL address (domain)** for sending API requests. This is preset in the program by default and **you don’t need to change it unless you have to**. If the URL isn’t filled in, check the documentation for your chosen service.
+
+### Balance
+Once you’re logged in to the service, you’ll see your current balance in this field.
+
+:::warning If this field is still empty after you enter your API key, something’s gone wrong.
+Possible reasons: wrong key, service issues, or the key has been banned.
 :::
-#### Название модуля.  
-Указываем имя нового сервиса, **максимум 20 символов**.  
+_______________________________________________
+## Available services
+- [5SIM Five Sim](http://5sim.net/);
+- [GetSmsOnline](http://getsms.online/);
+- [Give-SMS](http://give-sms.com/);
+- [SIMsmsOrg](http://simsms.org/);
+- [SMSAcktiwator](http://sms-acktiwator.ru/);
+- [SMS Activate](http://sms-activate.ru/ru/);
+- [SmsHub](https://smshub.org/);
+- [SMSpvaCom](http://smspva.com/);
+- [SMS-REG](http://sms-reg.com/);
+- [VAK-SMS](http://vak-sms.com/);
+- [virtualSMS](http://virtualsms.ru/);
+_______________________________________________
+## Your own service
+### Add your own service (module)
+You can also add your own SMS receiving service based on the APIs of popular providers.
 
-#### API.  
-![Как подключиться?](./assets/SMS/SMS_pic5.png)  
+![How to connect?](./assets/SMS/SMS_pic4.png)
+### Required parameters
+:::tip If you’re not sure what to enter,
+please check with your service provider.
+:::
+#### Module name
+Enter the name of your new service, **up to 20 characters**.
 
-Выбираем API сервиса, на основе которого создадим свой модуль.  
+#### API
+![How to connect?](./assets/SMS/SMS_pic5.png)
 
-#### API-key.
-Ключ от сервиса. Тот же самый, который указываем в поле **Секретный ключ** при подключении сервиса.  
+Choose the service’s API this module will be based on.
 
-#### Server.  
-URL-адрес (домен), куда будут отправляться запросы для приёма SMS.  
+#### API-key
+Enter the service’s key. This is the same as the **Secret key** you use when connecting a service.
 
-#### Иконка.  
-Указанная картинка будет отображаться рядом с нашим модулем.  
+#### Server
+The URL address (domain) to send SMS receiving requests to.
 
-![Как подключиться?](./assets/SMS/SMS_pic6.png)  
+#### Icon
+The chosen image will be displayed next to your module.
 
-Доступные форматы: `jpg`, `bmp`, `gif`, `png`.
+![How to connect?](./assets/SMS/SMS_pic6.png)
 
-### Работа с добавленным сервисом.
-После добавления модуля его можно будет выбрать в экшене [**Работа с SMS сервисами**](../Data/SMS_Services). А далее работать с ним, как и со встроенными сервисами. 
+Supported formats: `jpg`, `bmp`, `gif`, `png`.
 
-![Как подключиться?](./assets/SMS/SMS_pic7.png)  
+### Working with your added service
+After adding your module, you can select it in the [**Working with SMS Services**](../Data/SMS_Services) action. From there, just use it like any of the built-in services.
 
-### Удаление модуля.  
-Чтобы убрать созданный модуль из программы, **необходимо удалить два файла**:  
-- `c:\Users\USERNAME\AppData\Roaming\ZennoLab\Configs\ИмяМодуля.dll.config`  
-- `c:\Users\USERNAME\AppData\Roaming\ZennoLab\CustomModules\Sms\ИмяМодуля.dll`  
+![How to connect?](./assets/SMS/SMS_pic7.png)
 
-:::warning **Рекомендуем закрыть ZennoDroid и ProjectMaker перед удаление этих файлов.**
+### Removing a module
+To remove a module you created from the program, **you’ll need to delete two files**:
+- `c:\Users\USERNAME\AppData\Roaming\ZennoLab\Configs\ModuleName.dll.config`
+- `c:\Users\USERNAME\AppData\Roaming\ZennoLab\CustomModules\Sms\ModuleName.dll`
+
+:::warning We recommend closing ZennoDroid and ProjectMaker before deleting these files.
 :::

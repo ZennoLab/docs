@@ -1,58 +1,58 @@
 ---
 sidebar_position: 11
-title: Проксирование трафика (Enterprise)
-description: Проксирование трафика на реальном устройстве. 
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Traffic Proxying (Enterprise)
+description: Traffic proxying on a real device.
+---
+:::info **Please review the [*Terms of Use for materials on this site*](../Disclaimer).**
 :::
-_______________________________________________  
-## Описание.  
-ZennoDroid позволяет выбрать способ проксирования трафика для выполнения экшена [**Установка прокси**](../Android/Enterprise/setting#как-поставить-прокси).  
-
-Параметры задаются на вкладке [**Настройки Android**](../Android/Enterprise/setting#как-поставить-прокси). По умолчанию используется **Proxifier**.  
-
-![Описание](./assets/Proxy_Traffic/Proxy_Traffic_pic2.png)    
-_______________________________________________ 
-### [Proxifier](https://proxifier.com/).  
-Это мощная и гибкая программа для перенаправления интернет-трафика через прокси-сервер. Она позволяет приложениям, которые не поддерживают работу через прокси, использовать его.   
-
-Используется интернет-подключение компьютера. Весь трафик с телефона заворачивается в VPN с помощью Gnirehtet и передаётся на ПК, где уже проксируется через приложение Proxifier.  
-
-:::tip **Gnirehtet — это инструмент, который позволяет раздавать интернет с компьютера на Android-устройство.**
-Работает, как привычная всем "точка доступа", но с обратным смыслом. Это полезно в ситуациях, когда у вашего телефона нет мобильного интернета или доступа к Wi-Fi, но ваш компьютер подключен к сети.  
-
-Программа работает через USB-кабель или по беспроводной сети и не требует root-прав на устройстве. 
-:::
-__________________________________________ 
-### Redsocks.  
-Данная утилита нужна для перенаправления сетевого трафика через прокси-сервер, минуя необходимость ручной настройки прокси в каждом отдельном приложении. Выполняется прозрачный редиректор TCP/UDP-соединений в прокси.  
-
-Все необходимые файлы копируются на устройство автоматически при первой установке прокси.
-
-:::warning **Работает только на устройствах с Root.**
-:::  
-_______________________________________________ 
-### Clash.  
-Это продвинутый прокси-клиент с возможностью маршрутизации трафика по заданным правилам. Он отличается мощным rule-based подходом и сам решает через какой сервер направить трафик в зависимости от настроенных правил. 
-
-Простое и полное проксирование всего UDP-трафика — в отличие от redsocks, не требуется настраивать отдельное проксирование для каждого IP. Благодаря этому, при использовании прокси с поддержкой UDP, даже IP-адрес через WebRTC отображается как адрес прокси.  
-
-:::warning **Работает только на устройствах с Root.**
-Необходим BusyBox версии не ниже 1.36.1.
-:::  
-__________________________________________
-### Использовать интернет-подключение компьютера (Gnirehtet).  
-Если эта настройка выключена, то весь интернет-трафик будет передоваться через Wi-Fi подключение телефона.  
-
-Но при её включении весь трафик с телефона начинает заворачиваться в VPN с помощью Gnirehtet и передаваться на компьютер.  
-
-:::info **Обязательно выключите передачу данных на телефоне.**
-Мы рекомендуем так сделать, если для проксирования трафика используется интернет-подключение компьютера. Это поможет избежать случайной утечки трафика в сеть через Wi-Fi или мобильный интернет смартфона. 
-
-Сделать это можно вручную или с помощью экшена [Консольные команды](../Android/ProLite/ADB_Shell):
-
-- Выключить WiFi: `svc wifi disable`
-- Включить WiFi: `svc data disable`
-:::  
 _______________________________________________
-- [**Установка Clash (Box for Root).**](../Android/Enterprise/Clash).
+## Description
+ZennoDroid lets you choose how to proxy traffic when running the [**Set Proxy**](../Android/Enterprise/setting#как-поставить-прокси) action.
+
+You can set up your preferences under the [**Android Settings**](../Android/Enterprise/setting#как-поставить-прокси) tab. By default, **Proxifier** is used.
+
+![Description](./assets/Proxy_Traffic/Proxy_Traffic_pic2.png)
+_______________________________________________
+### [Proxifier](https://proxifier.com/)
+This is a powerful and flexible program that reroutes internet traffic through a proxy server. It even lets apps that don’t have built-in proxy support use one.
+
+It uses your computer's internet connection. All your phone's traffic is tunneled into a VPN using Gnirehtet and sent to your PC, where Proxifier handles the rest.
+
+:::tip **Gnirehtet is a tool for sharing your computer’s internet with your Android device.**
+It works kind of like a hotspot, but in the opposite direction. This comes in handy if your phone doesn’t have mobile data or Wi-Fi access, but your computer does.
+
+Gnirehtet works over USB or wirelessly, and doesn't need root access.
+:::
+__________________________________________
+### Redsocks
+This utility is used to redirect network traffic through a proxy server, so you don’t have to manually set up a proxy for each app. It transparently redirects TCP/UDP connections to the proxy.
+
+All necessary files are automatically copied to your device the first time you set up a proxy.
+
+:::warning **Works only on rooted devices.**
+:::
+_______________________________________________
+### Clash
+Clash is an advanced proxy client that can route traffic based on specific rules. It’s really flexible and can decide which proxy server to use for different types of traffic, depending on how you set it up.
+
+It can easily and completely proxy all UDP traffic — unlike redsocks, you don't need to set up proxy rules for each IP individually. This means when you're using a proxy that supports UDP, even your IP address through WebRTC shows up as the proxy's address.
+
+:::warning **Works only on rooted devices.**
+You’ll need BusyBox version 1.36.1 or higher.
+:::
+__________________________________________
+### Use Computer’s Internet Connection (Gnirehtet)
+If this option is turned off, all internet traffic from your phone goes through its Wi-Fi connection.
+
+But if you turn it on, all the traffic from your phone is tunneled into a VPN using Gnirehtet and routed through your computer.
+
+:::info **Be sure to turn off your phone’s data connection.**
+We recommend doing this if you’re proxying traffic through your computer’s internet connection. That way, you can avoid accidentally leaking traffic through your phone’s Wi-Fi or mobile network.
+
+You can do it manually or by running the [Console Commands](../Android/ProLite/ADB_Shell) action:
+
+- Turn off Wi-Fi: `svc wifi disable`
+- Turn off mobile data: `svc data disable`
+:::
+_______________________________________________
+- [**How to Install Clash (Box for Root).**](../Android/Enterprise/Clash)

@@ -1,68 +1,68 @@
 ---
 sidebar_position: 10
-title: Создание контента и Google таблицы
-description: Создание контента и Google таблицы. 
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Creating Content and Google Sheets
+description: Creating Content and Google Sheets.
+---
+:::info Please review the [*Usage Policy for Materials on this Resource*](../Disclaimer).
 :::
-_______________________________________________  
-## Модули создания контента.  
-### Описание.  
-Данные модули позволяют создавать контент на основе заданного текста через сторонние сервисы. Технологии на основе ИИ пишут текст, по качеству сравнимый с человеческим.  
-
-Подходят для **рерайтинга текста** и **создания уникального контента**.
-
-:::warning **Работают только с английским языком.**
-:::  
-
-### Внешний вид.  
-![Внешний вид](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic1.png)  
 _______________________________________________
-### Настройка ArticleForge.  
-![Настройка ArticleForge](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic2.png)  
+## Content Creation Modules
+### Description
+These modules let you create content based on your input text using third-party services. AI technology writes text that’s on par with what a human would produce.
 
-#### 1. Создаём аккаунт, если его ещё нет.  
-#### 2. Получаем свой ключ в разделе API Information.  
+Perfect for **rewriting text** and **creating unique content**.
+
+:::warning **Works with English only.**
+:::
+
+### How it Looks
+![How it looks](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic1.png)
 _______________________________________________
-### Настройка WordAi.  
-![Настройка WordAi](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic3.png)  
+### Setting Up ArticleForge
+![Setting Up ArticleForge](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic2.png)
 
-#### 1. Создаём аккаунт, если его ещё нет.  
-#### 2. Вводим в настройки ZennoDroid свой логин и ключ из раздела API.  
-_______________________________________________  
-## Google таблицы.  
-В данной статье мы рассказываем **только** о *настройке Google Таблиц* в программе. [Процесс подключения описан здесь](../Project%20Editor/Lists%20and%20Google%20Sheets/Connecting_GoogleSheets).  
+#### 1. If you don’t have an account, create one.
+#### 2. Get your API key in the API Information section.
+_______________________________________________
+### Setting Up WordAi
+![Setting Up WordAi](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic3.png)
 
-### Внешний вид.  
-![Google таблицы](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic4.png) 
+#### 1. If you don’t have an account, create one.
+#### 2. Enter your login and API key from the API section into ZennoDroid settings.
+_______________________________________________
+## Google Sheets
+In this article, we cover **only** *setting up Google Sheets* in the program. [You can find connection instructions here](../Project%20Editor/Lists%20and%20Google%20Sheets/Connecting_GoogleSheets).
 
-### Путь к OAuth-ключу Google.  
-Здесь необходимо выбрать путь к файлу с [настройками подключения к Google API](../Project%20Editor/Lists%20and%20Google%20Sheets/Connecting_GoogleSheets).  
+### How it Looks
+![Google Sheets](./assets/Creator_and_GoogleSheets/Creator_and_GoogleSheets_pic4.png)
 
-:::warning **Файл обязательно должен иметь расширение `.json`.**
-:::  
+### Path to the Google OAuth Key
+Here you need to select the path to the file with your [Google API connection settings](../Project%20Editor/Lists%20and%20Google%20Sheets/Connecting_GoogleSheets).
 
-### Таймаут очистки неиспользуемых Google таблиц.  
-Эта настройка определяет время хранения таблицы в памяти.  
+:::warning **The file must have a `.json` extension.**
+:::
 
-Если ни один проект в ZennoDroid не использует Google таблицу в течение указанного в этой настройке количества минут, то эта таблица будет выгружена из памяти для экономии ресурсов компьютера.  
+### Timeout for Clearing Unused Google Sheets
+This setting determines how long the sheet will be stored in memory.
 
-**Большой таймаут** может быть полезен, когда между запуском определенного проекта есть пауза (например по расписанию, каждый час). Тогда не надо будет каждый раз скачивать таблицу из облака.  
+If no project in ZennoDroid uses a Google Sheet for the number of minutes set here, that sheet will be unloaded from memory to save your computer’s resources.
 
-**Малый таймаут** пригодится, если во время каждого выполнения проекта формируется отчёт о работе, который сохраняется в новую таблицу. При этом нет необходимости хранить эти таблицы в памяти после выгрузки данных.  
+**A long timeout** can be useful when there’s a break between project launches (like on a schedule, every hour). That way, you won’t have to re-download the sheet from the cloud each time.
 
-### Таймаут загрузки таблицы из облака.  
-Тут указываем время, отведённое на загрузку таблицы из облака.
+**A short timeout** is useful if you generate a new report with each run of your project and save it to a fresh sheet. In that case, you don’t need to keep those sheets in memory after uploading the data.
 
-Если таблица большая, то синхронизация иногда занимает длительное время. Это может привести к ошибке загрузки, так как запрос выполняется слишком долго.  
+### Timeout for Loading a Sheet from the Cloud
+Set the time allowed to load the sheet from the cloud here.
 
-### Политика обработки изменений таблиц.  
-В этой настройке можно выбрать, должен ли ZennoDroid загружать сторонние изменения таблицы во время работы с ней.  
+If the sheet is large, syncing may take a while. This can sometimes cause a loading error if the request takes too long.
 
-При выборе режима **Никогда не загружать сторонние изменения во время работы** программа будет *только отсылать* локальные данные, не сопоставляя их с теми, что находятся в облаке. То есть программа не будет тратить ваше время и ресурсы компьютера на это. Полезно, если таблица большая.  
+### Policy for Handling Sheet Changes
+In this setting, you can choose whether ZennoDroid should load outside changes to the sheet while you’re working with it.
 
-Отключение синхронизации также пригодится при парсинге данных, когда не нужны актуальные данные из облака.
-_______________________________________________  
-## Полезные ссылки.   
-- [**Подключение Google-таблиц**](../Project%20Editor/Lists%20and%20Google%20Sheets/Connecting_GoogleSheets).  
-- [**Модули создания контента**](../Data/ContentCreator).   
+If you choose **Never load outside changes while working**, the program will *only send* local data, ignoring whatever's currently in the cloud. This means the program won’t use up your time or computer resources on this. Handy for large sheets.
+
+Turning off syncing is also useful when parsing data, if you don’t need up-to-date info from the cloud.
+_______________________________________________
+## Useful Links
+- [**Connecting Google Sheets**](../Project%20Editor/Lists%20and%20Google%20Sheets/Connecting_GoogleSheets)
+- [**Content Creation Modules**](../Data/ContentCreator)
