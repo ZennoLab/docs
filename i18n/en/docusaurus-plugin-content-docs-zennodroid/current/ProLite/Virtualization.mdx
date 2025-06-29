@@ -1,66 +1,69 @@
 ---
 sidebar_position: 2
-title: Включение виртуализации
-description: Как включить аппаратную виртуализацию (VT)
+title: Enabling Virtualization
+description: How to enable hardware virtualization (VT)
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info Please read the [*Terms of Use for Materials on this Resource*](../Disclaimer).
 :::
 _______________________________________________
-## Что такое виртуализация и зачем её включать?  
+## What is virtualization and why enable it?
 
-Виртуализация позволяет запускать на вашем устройстве различные операционные системы, например Android. В том числе ZennoDroid использует эту виртуальную среду для более эффективной работы с эмулятором. Мы настоятельно рекомендуем включать виртуализацию, так как вы получите более высокую производительность при работе с эмулированными устройствами.  
+Virtualization lets you run different operating systems on your device, like Android. For example, ZennoDroid uses this virtual environment for better performance with the emulator. We strongly recommend enabling virtualization because you'll get much better performance when working with emulated devices.
+
 <details>
-<summary>***Так можно узнать, включена ли уже виртуализация.***</summary>  
+<summary>***Here's how to check if virtualization is already enabled.***</summary>
 
- ![Проверка](./assets/Virtualization/Virtualization_pic3.jpg) 
+ ![Check](./assets/Virtualization/Virtualization_pic3.jpg) 
 </details>
  _______________________________________________ 
-## Проверим, доступна ли виртуализация.
-### Компьютеры с процессорами (CPU) от Intel.  
-Скачайте и установите [**Intel Processor Identification Utility**](https://www.intel.com/content/www/us/en/download/12136/28539/intel-processor-identification-utility-windows-version.html?v=t), откройте вкладку **CPU Technologies**. Галочка рядом с  
-*Intel® Virtualization Technology* указывает на доступность включения виртуализации.  
+## Let's check if virtualization is available.
 
-![Intel® Virtualization](./assets/Virtualization/Virtualization_pic1.png)
-### Компьютеры с CPU от AMD.
-Скачайте [**AMD-V Detection Utility**](https://download.amd.com/techdownloads/AMD-VwithRVI_Hyper-V_CompatibilityUtility.zip) и распакуйте файлы. Запустите **.exe** как администратор. Программа сообщит, доступна ли вашему устройству функция виртуализации.  
+### Computers with Intel CPUs
+Download and install the [**Intel Processor Identification Utility**](https://www.intel.com/content/www/us/en/download/12136/28539/intel-processor-identification-utility-windows-version.html?v=t), then go to the **CPU Technologies** tab. If there's a checkmark next to  
+*Intel® Virtualization Technology*, it means you can enable virtualization.
+
+![Intel® Virtualization](./assets/Virtualization/Virtualization_pic1.png)  
+
+### Computers with AMD CPUs
+Download the [**AMD-V Detection Utility**](https://download.amd.com/techdownloads/AMD-VwithRVI_Hyper-V_CompatibilityUtility.zip) and extract the files. Run the **.exe** as administrator. The program will tell you if virtualization is available on your device.
 
 ![AMD-V Detection](./assets/Virtualization/Virtualization_pic2.png)  
 _______________________________________________
-## Как войти BIOS?
-![Как войти BIOS](./assets/Virtualization/Virtualization_pic4.gif) 
-1. Зайдите в меню **Пуск** и перейдите в **Параметры/Настройки Windows**.  
-2. Нажмите на **Центр обновления Windows** и выберите **Восстановление**, затем **Перезагрузить сейчас**.  
-3. Выберите **Troubleshoot** и **Расширенные опции**.  
-4. Выберите **UEFI Firmware settings** и нажмите **Перезагрузить сейчас**.  
+## How to enter the BIOS?
+![How to enter BIOS](./assets/Virtualization/Virtualization_pic4.gif) 
+1. Go to the **Start** menu and open **Windows Settings**.  
+2. Click **Windows Update**, then choose **Recovery**, and then **Restart now**.  
+3. Pick **Troubleshoot** and **Advanced options**.  
+4. Choose **UEFI Firmware settings** and click **Restart now**.  
 
-Также вы можете попасть в BIOS, нажав на кнопку доступа во время включения компьютера:  
+You can also enter BIOS by pressing the designated access key while your computer boots up:
 
-![Кнопки доступа](./assets/Virtualization/Virtualization_pic5.png)  
+![Access Keys](./assets/Virtualization/Virtualization_pic5.png)  
 
-Мы собрали ряд самых популярных производителей для вашего удобства в этой таблице. Однако если вы не видите вашего варианта в списке, то мы рекомендуем уточнить информацию в инструкции к оборудованию.  
+We've listed the most popular manufacturers for your convenience in the table. If you don't see yours here, we recommend checking your device's user manual.
 _________________
-## Включаем виртуализацию.  
-:::tip *Содержание и внешний вид BIOS отличаются у разных производителей, но общая логика сохраняется.*
-:::  
+## Enabling virtualization
+:::tip *The BIOS layout and look may vary between manufacturers, but the general process is similar.*
+:::
 >   
 ### Intel CPU   
 ![Intel CPU](./assets/Virtualization/Virtualization_pic6.gif)   
-1. Нажмите **F7** или на вкладку **Advanced Mode (расширенные настройки)**.  
-2. Там выберите **CPU Configuration**.  
-3. Перейдите к строке **Intel Virtualization Technology** и нажмите на параметр **Disabled** чтобы сменить его на **Enabled**.  
-4. Нажмите на **Exit** и выберите <mark>**Save changes & reset**</mark>, чтобы включить виртуализацию.  
-:::warning **Обязательно сохраните изменение перед выходом, чтобы оно применилось.**
+1. Press **F7** or go to **Advanced Mode**.  
+2. Choose **CPU Configuration**.  
+3. Go to **Intel Virtualization Technology** and change the setting from **Disabled** to **Enabled**.  
+4. Press **Exit** and select <mark>**Save changes & reset**</mark> to turn on virtualization.  
+:::warning Make sure you save the changes before exiting, so they take effect.
 ::: 
 ### AMD CPU  
 ![AMD CPU](./assets/Virtualization/Virtualization_pic7.gif)
-1. Нажмите **F7** или на вкладку **Advanced Mode (расширенные настройки)**. 
-2. Там выберите **CPU Configuration**.  
-3. Перейдите к строке **SVM Mode** и выберите **Enabled** из выпадающего меню.  
-4. В конце нажмите на **Exit** и **OK**, чтобы применить настройки.  
-:::warning **Обязательно сохраните изменение перед выходом, чтобы оно применилось.**
+1. Press **F7** or go to **Advanced Mode**.
+2. Choose **CPU Configuration**.
+3. Find **SVM Mode** and select **Enabled** from the drop-down menu.
+4. Finally, hit **Exit** and then **OK** to apply the settings.
+:::warning Make sure you save the changes before exiting, so they take effect.
 :::
 _______________________________________________
-## Полезные ссылки.  
-- [**Включение виртуализации в Windows, сайт Microsoft**](https://support.microsoft.com/ru-ru/windows/%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B2-windows-c5578302-6e43-4b4b-a449-8ced115f58e1). 
-- [**Как работать с BIOS и UEFI компьютера**](https://club.dns-shop.ru/blog/t-328-prilojeniya/29344-kak-rabotat-s-bios-i-uefi-komputera-ili-noutbuka/?utm_referrer=https%3A%2F%2Fwww.google.com%2F).     
-- [**Что такое процессор (CPU)**](https://help.sweb.ru/chto-takoe-processor-(cpu)_1365.html). 
+## Useful links  
+- [**Enabling virtualization in Windows, Microsoft website**](https://support.microsoft.com/ru-ru/windows/%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B2-windows-c5578302-6e43-4b4b-a449-8ced115f58e1). 
+- [**How to work with your computer's BIOS and UEFI**](https://club.dns-shop.ru/blog/t-328-prilojeniya/29344-kak-rabotat-s-bios-i-uefi-komputera-ili-noutbuka/?utm_referrer=https%3A%2F%2Fwww.google.com%2F).     
+- [**What is a processor (CPU)**](https://help.sweb.ru/chto-takoe-processor-(cpu)_1365.html).

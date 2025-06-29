@@ -1,59 +1,59 @@
 ---
 sidebar_position: 3
-title: Выключение Hyper-V
-description: Как выключить Hyper-V в Windows
+title: Turning off Hyper-V
+description: How to disable Hyper-V in Windows
 ---
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of Use for materials on this site*](../Disclaimer).**
 :::
 _______________________________________________
-Hyper-V позволяет запускать несколько операционных систем в виде виртуальных машин в Windows. Также он  предоставляет возможность выполнять виртуализацию оборудования. Но при работе с ZennoDroid и эмуляторами Hyper-V может мешать, поэтому в этой статье мы расскажем, как его отключить.  
+Hyper-V lets you run multiple operating systems as virtual machines in Windows. It also allows you to virtualize hardware. But if you’re using ZennoDroid or emulators, Hyper-V might get in the way, so in this article, let’s go over how to turn it off.  
 _________________
-## Включен ли Hyper-V? 
-Сначала проверим, запущена ли эта низкоуровневая оболочка:  
-**1.** В поиске приложений введите ***msinfo32.exe***  
-**2.** Выберите Сведения о системе.  
-**3.** В окне сведений найдите эту запись:  
-*«Обнаружена низкоуровневая оболочка. Функции, необходимые для Hyper-V, отображены не будут»*.  
+## Is Hyper-V enabled?
+First, let’s check if the low-level shell is running:  
+**1.** In the app search, type ***msinfo32.exe***  
+**2.** Select System Information.  
+**3.** In the information window, look for this entry:  
+*“A low-level shell has been detected. Features required for Hyper-V will not be displayed.”*  
 
-![Включен ли Hyper-V?](./assets/HyperV/HyperV_pic1.png)  
+![Is Hyper-V enabled?](./assets/HyperV/HyperV_pic1.png)  
 _________________  
-## Отключение через командную строку.
-**1.** Нажмите на строку поиска и введите **Командная строка**. 
-> *Или нажмите Win+R, введите ***cmd***, затем нажмите **Ok** или **Enter**.*
+## Disabling it via Command Prompt
+**1.** Click the search bar and type **Command Prompt**.  
+> *Or press Win+R, type ***cmd*** and hit **Ok** or **Enter**.*
 
-**2.** В командной строке введите эту команду и нажмите Enter:  
+**2.** In the command window, type this command and press Enter:  
 `bcdedit /set hypervisorlaunchtype off`  
-**3.** Готово, Hyper-V отключен 😎  
+**3.** Done, Hyper-V is off 😎  
 
-![через командную строку](./assets/HyperV/HyperV_pic2.gif)  
+![Using Command Prompt](./assets/HyperV/HyperV_pic2.gif)  
 _________________ 
-## Отключение через Панель управления.  
-**1.** Заходим в Панель управления → Программы → Программы и компоненты → нажимаем на  
-**Включение или отключение компонентов Windows**.  
+## Disabling it through Control Panel  
+**1.** Go to Control Panel → Programs → Programs and Features → click on  
+**Turn Windows features on or off.**  
 
-![через Панель управления](./assets/HyperV/HyperV_pic3.jpeg)  
+![Via Control Panel](./assets/HyperV/HyperV_pic3.jpeg)  
 
-**2.** Теперь нам нужно снять галочки со следующих строк:
+**2.** Now uncheck the following boxes:
     - *Hyper V*
-    - *Платформа низкоуровневой оболочки Windows*
-    - *Песочница Windows*
-    - *Платформа виртуальной машины*
-    - *Подсистема Windows для Linux*  
+    - *Windows Hypervisor Platform*
+    - *Windows Sandbox*
+    - *Virtual Machine Platform*
+    - *Windows Subsystem for Linux*  
 
-![снять галочки](./assets/HyperV/HyperV_pic4.gif)  
+![Uncheck boxes](./assets/HyperV/HyperV_pic4.gif)  
 
-**3.** После этого нажмите **Ок** и <mark>перезагрузите компьютер</mark>.  
+**3.** After that, click **OK** and <mark>restart your computer</mark>.  
 
-![перезагрузите компьютер](./assets/HyperV/HyperV_pic5.gif)  
+![Restart computer](./assets/HyperV/HyperV_pic5.gif)  
 _________________
-## Отключение целостности памяти.  
-Для корректной работы без Hyper-V нам также нужно отключить целостность памяти.  
-1. В поиске Windows введите **Изоляция ядра** и нажмите **Enter**.  
-2. В настройках изоляции ядра отключите **Целостность памяти**.  
+## Turning off Memory Integrity  
+For everything to work smoothly without Hyper-V, let’s also turn off Memory Integrity.  
+1. In the Windows search, type **Core Isolation** and hit **Enter**.  
+2. In Core Isolation settings, disable **Memory Integrity**.  
 
-![перезагрузите компьютер](./assets/HyperV/HyperV_pic6.gif)  
+![Restart computer](./assets/HyperV/HyperV_pic6.gif)  
 _______________________________________________
-## Полезные ссылки.  
-- [**Обзор технологии Hyper-V**](https://learn.microsoft.com/ru-ru/windows-server/virtualization/hyper-v/hyper-v-overview). 
-- [**Включение виртуализации**](./Virtualization).     
+## Useful links  
+- [**Hyper-V technology overview**](https://learn.microsoft.com/ru-ru/windows-server/virtualization/hyper-v/hyper-v-overview). 
+- [**Enabling virtualization**](./Virtualization).
