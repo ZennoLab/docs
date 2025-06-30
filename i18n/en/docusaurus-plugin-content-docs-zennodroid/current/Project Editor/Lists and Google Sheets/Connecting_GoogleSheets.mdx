@@ -1,155 +1,153 @@
 ---
 sidebar_position: 6
-title: Настройка подключения Google Таблиц
-description: Разберемся, как подключить Google таблицы к ZennoDroid.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::    
+title: Setting Up Google Sheets Connection
+description: Let's figure out how to connect Google Sheets to ZennoDroid.
+---
+:::info **Please read [*Rules for using materials on this site*](../../Disclaimer).**
+:::
 
-Для использования Google-таблиц в ZennoDroid нужно выполнить действия, описанные в этой статье.  
+To use Google Sheets in ZennoDroid, you need to follow the steps described in this article.
 _______________________________________________
-## Добавление нового приложения.  
-- Входим в свой Google аккаунт или создаем новый.  
+## Adding a new app.
+- Log into your Google account or create a new one.
 _______________________________________________
-- Заходим в [**Google Cloud Platform**](https://console.cloud.google.com/projectselector2/apis/credentials/consent?supportedpurview=project). При первом переходе надо будет:    
-    - выбрать страну (1);  
-    - ознакомиться с правилами и принять их (2);  
-    - согласиться или отказаться от рассылки (3);  
-    - в конце нажать **AGREE AND CONTINUE** (4);  
+- Go to [**Google Cloud Platform**](https://console.cloud.google.com/projectselector2/apis/credentials/consent?supportedpurview=project). The first time, you'll need to:
+    - select your country (1);
+    - read the terms and accept them (2);
+    - choose to subscribe or not to emails (3);
+    - at the end, click **AGREE AND CONTINUE** (4);
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic1.png) 
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic1.png)
 _______________________________________________
-- Выбираем в левой панели **OAuth consent screen (1)** и нажимаем **CREATE PROJECT (2)**, чтобы создать новый проект.  
+- On the left panel, select **OAuth consent screen (1)** and click **CREATE PROJECT (2)** to start a new project.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic2.png)   
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic2.png)
 _______________________________________________
-- Вводим любое название проекта в поле **Project name (1)**, но только на английском языке. И **Location (Местоположение организации) (2)**, а затем **CREATE (3)**.  
+- Enter any project name in the **Project name (1)** field, but only in English. Add **Location (2)** if needed, then click **CREATE (3)**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic3.png)   
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic3.png)
 _______________________________________________
-- В следующем окне выбираем **External (1)** и снова **CREATE (2)**.  
+- In the next window, pick **External (1)** and click **CREATE (2)** again.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic4.png)   
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic4.png)
 _______________________________________________
-- В открывшемся окне вводим любое имя приложения **App name (1)** и выбираем email в списке **User support email (2)**.  
+- In the new window, enter any app name in **App name (1)** and pick an email from the **User support email (2)** list.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic5.png)   
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic5.png)
 _______________________________________________
-- Прокручиваем страницу до конца и еще раз вводим свой **email (3)**, а затем нажмимаем **SAVE AND CONTINUE (4)**.  
+- Scroll down to the bottom of the page and enter your **email (3)** again, then hit **SAVE AND CONTINUE (4)**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic6.png)   
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic6.png)
 _______________________________________________
-- В следующем окне ***Scopes*** просто проматываем страницу в самый низ и нажимаем **SAVE AND CONTINUE**.  
+- In the ***Scopes*** window, just scroll to the bottom and click **SAVE AND CONTINUE**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic7.png) 
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic7.png)
 _______________________________________________
-- В окне ***Test users*** тоже пролистываем вниз и нажимаем **SAVE AND CONTINUE**.  
+- On the ***Test users*** screen, scroll down and click **SAVE AND CONTINUE**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic8.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic8.png)
 _______________________________________________
-- В новом окне ***Summary*** также листаем до конца и нажимаем **BACK TO DASHBOARD**.  
+- In the ***Summary*** window, scroll down and click **BACK TO DASHBOARD**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic9.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic9.png)
 _______________________________________________
-## Публикация проекта.  
-### Testing mode.  
-Можно оставить приложение в тестовом режиме. Тогда оно будет доступно только для аккаунта-создателя и пользователей, которые добавлены в список ***Test Users***. 
-:::warning **Количество тестовых пользователей ограничено.**  
-Их может быть не больше 100. И после добавления пользователя в список тестеров удалить его оттуда уже нельзя!
-:::     
-#### Как добавить в список Test Users?  
-- На вкладке **OAuth consent screen** листаем немного вниз и в разделе ***Test users*** нажмимаем кнопку **`+ADD USERS`**.  
-- В открывшемся окне добавляем email необходимого аккаунта и нажмимаем кнопку **SAVE**.  
+## Publishing the project.
+### Testing mode.
+You can leave the app in testing mode. In that case, it's only available to the owner account and users added to the ***Test Users*** list.
+:::warning **The number of test users is limited.**
+There can be no more than 100. And after you add someone to the test user list, you can't remove them!
+:::
+#### How to add users to the Test Users list?
+- Go to the **OAuth consent screen** tab, scroll down a bit, and in the ***Test users*** section, click **`+ADD USERS`**.
+- In the pop-up window, add the email of the needed account and hit **SAVE**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic10.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic10.png)
 _______________________________________________
-### Publish App.  
-Теперь можно опубликовать приложение, чтобы оно стало доступно всем пользователям, у которых есть Google аккаунт. Для этого достаточно нажать кнопку **PUBLISH APP**.  
+### Publish App.
+Now you can publish the app so it's available to anyone with a Google account. To do that, just hit **PUBLISH APP**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic11.png) 
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic11.png)
 _______________________________________________
-## Создание учетных данных.  
-- В разделе **Credentials (1)** нажимаем **`+CREATE CREDENTIALS`** (2) и выбираем пункт **OAuth client ID (3)**.  
+## Creating credentials.
+- In the **Credentials (1)** section, click **`+CREATE CREDENTIALS`** (2) and pick **OAuth client ID (3)**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic12.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic12.png)
 _______________________________________________
-- Выбираем пункт ***Desktop app*** в выпадающем списке *Application type (1)* и нажимаем **CREATE (2)**.  
+- Choose ***Desktop app*** in the *Application type (1)* dropdown and hit **CREATE (2)**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic13.png) 
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic13.png)
 _______________________________________________
-- Откроется новое окно **OAuth client created**, в нём кликаем **`OK`**.  
+- A new window **OAuth client created** will open, click **`OK`**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic14.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic14.png)
 _______________________________________________
-- После этого жмем по названию только что созданного приложения или же по значку его редактирования.  
+- Then click the name of the app you just created, or its edit icon.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic15.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic15.png)
 _______________________________________________
-- В открывшемся окне нужно скачать ключ в виде файла, для этого жмем кнопку **`DOWNLOAD JSON`**.  
+- In the opened window, you need to download the key as a file: click **`DOWNLOAD JSON`**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic16.png)  
-
-## Работа с API.  
-### Включение API от Google.  
-:::warning **Очень важно включить именно оба API: для Sheets и Drive, иначе программа будет работать не корректно.**  
-:::   
-- [**Ссылка для включения Google Sheets API**](https://console.developers.google.com/apis/library/sheets.googleapis.com). Выбираем свой проект и нажимаем **ENABLE**.  
-
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic17.png) 
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic16.png)
 _______________________________________________
-- [**Ссылка для включения Google Drive API**](https://console.developers.google.com/apis/library/drive.googleapis.com). Также выбираем проект, а затем **ENABLE**.  
+## Working with the API.
+### Enabling Google APIs.
+:::warning **It's very important to enable both APIs: for Sheets and Drive, otherwise the program won't work right.**
+:::
+- [**Google Sheets API enable link**](https://console.developers.google.com/apis/library/sheets.googleapis.com). Pick your project and click **ENABLE**.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic18.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic17.png)
 _______________________________________________
-### Добавление ключа в программу.  
-:::warning **Google таблицы нужно подключать отдельно для ProjectMaker и ZennoDroid.**  
-:::  
+- [**Google Drive API enable link**](https://console.developers.google.com/apis/library/drive.googleapis.com). Also pick your project, then hit **ENABLE**.
 
-- Открываем **Настройки подключения Google таблиц** (***Редактирование → Настройки → Google таблицы***).  
-- Нажимаем многоточие […] в правом крае поля для указания пути и выбираем ***файл учетных данных (1)***, а затем нажимаем **Подключить (2)**.  
-:::info **Файл обязательно должен иметь расширение .json.**  
-:::  
-
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic19.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic18.png)
 _______________________________________________
-- После этого откроется окно браузера, где необходимо будет войти в аккаунт Google, с которого вы создавали ключ.  
-- Скорее всего появится окно с предупреждением. Поскольку мы доверяем своему приложению, необходимо выбрать *Дополнительные настройки (1)* и *Перейти на страницу "Ваше приложение" (2)*.  
+### Adding the key to the program.
+:::warning **You have to connect Google Sheets separately for ProjectMaker and ZennoDroid.**
+:::
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic20.png)   
-_______________________________________________
-- Теперь даем доступ к данным аккаунта, чтобы можно было читать и записывать таблицы.  
+- Open **Google Sheets Connection Settings** (***Edit → Settings → Google Sheets***).
+- Click the ellipsis […] on the right side of the field for the path, pick the ***credentials file (1)***, then click **Connect (2)**.
+:::info **The file must have a .json extension.**
+:::
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic21.png)  ![Через ProjectMaker](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic22.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic19.png)
 _______________________________________________
-- И еще раз.  
+- Then a browser window will open where you need to log in to the Google account you created the key with.
+- Most likely, you'll get a warning window. Since you trust your own app, pick *Advanced (1)* and *Go to "Your App" page (2)*.
 
-![Настройка подключения Google Таблиц](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic23.png)  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic20.png)
 _______________________________________________
-- Если все сделано правильно, то появится надпись:  
-`Received verification code. You may now close this window`.   
-_______________________________________________
-### Лимиты запросов к API.  
-#### Какие есть ограничения?
-Есть ограничения на количество запросов: 300 запросов в минуту для одного проекта, общее количество за день не ограничено. *Информация актуальна на июль 2024 года.*  
-#### Где можно увидеть текущее количество сделанных запросов?  
-Эту информацию можно найти на [**Дашборде Google Cloud Platform**](https://console.cloud.google.com/apis/dashboard?hl=ru), выбрав нужный проект.  
-#### Как увеличить лимиты?  
-Эту информацию можно найти в официальной документации Google — [**Request a higher quota**](https://cloud.google.com/docs/quotas/view-manage#requesting_higher_quota).  
-#### Как ZennoDroid расходует лимиты?  
-На количество запросов влияют два фактора: *изменялась ли таблица* и *включена ли загрузка сторонних изменений*.  
+- Now allow access to the account data so you can read and write to your sheets.
 
-Например, если загрузка сторонних изменений включена, то каждую минуту будет отправляться запрос к API Google Drive для сравнения версий таблиц.  
-
-При изменении самой таблицы используются разные виды запросов. Примерно до 5 запросов на таблицу в минуту. То есть если активно меняются 10 таблиц, то будет максимум около 60 запросов в минуту (Sheets API + Drive API).  
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic21.png)  ![Via ProjectMaker](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic22.png)
 _______________________________________________
-### Ошибка авторизации (403: access_denied).  
-#### Подробный текст ошибки:  
-*The developer hasn’t given you access to this app. It’s currently being tested and it hasn’t been verified by Google. If you think you should have access, contact the developer*.  
-#### Причина:  
-Вы пытаетесь авторизоваться в приложение, которое находится в ***Testing Mode*** с аккаунта, который не находится в списке тестовых пользователей (и не является его создателем). 
-_______________________________________________
-## Полезные ссылки. 
-- [**Google Cloud**](https://console.cloud.google.com). 
-- [**Гид по Google Таблицам**](https://www.unisender.com/ru/blog/google-tablicy-dlya-nachinayushchih/). 
- 
+- And once more.
 
+![Setting Up Google Sheets Connection](./assets/Connecting_GoogleSheets/Connecting_GoogleSheets_pic23.png)
+_______________________________________________
+- If you did everything right, you'll see this message:
+`Received verification code. You may now close this window`.
+_______________________________________________
+### API request limits.
+#### What are the limits?
+There are limits on the number of requests: 300 per minute per project, with no overall daily limit. *Info as of July 2024.*
+#### Where can you see your current requests count?
+You can find this info on the [**Google Cloud Platform Dashboard**](https://console.cloud.google.com/apis/dashboard?hl=ru), just pick your project.
+#### How do you increase these limits?
+Check the official Google docs — [**Request a higher quota**](https://cloud.google.com/docs/quotas/view-manage#requesting_higher_quota).
+#### How does ZennoDroid use up your limit?
+Two main things affect the number of requests: *if the sheet has changed* and *if checking for external changes is enabled*.
+
+For example, if checking for outside changes is on, every minute there will be a request to the Google Drive API to compare the sheet versions.
+
+When you change the sheet itself, different types of requests are used. Usually it's around 5 requests per sheet per minute. So if you’re actively changing 10 sheets, that's a max of about 60 requests per minute (Sheets API + Drive API).
+_______________________________________________
+### Authorization error (403: access_denied).
+#### Exact error message:
+*The developer hasn’t given you access to this app. It’s currently being tested and it hasn’t been verified by Google. If you think you should have access, contact the developer.*
+#### Cause:
+You're trying to authorize in an app that's in ***Testing Mode*** from an account that's not listed as a test user (and isn't the owner).
+_______________________________________________
+## Useful links.
+- [**Google Cloud**](https://console.cloud.google.com).
+- [**Google Sheets Guide**](https://www.unisender.com/ru/blog/google-tablicy-dlya-nachinayushchih/).

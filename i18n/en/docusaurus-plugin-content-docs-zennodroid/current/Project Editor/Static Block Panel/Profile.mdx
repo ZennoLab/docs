@@ -1,98 +1,98 @@
 ---
 sidebar_position: 2
-title: Профиль
-description: Генерация профиля для проекта
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-::: 
+title: Profile
+description: Profile generation for your project
+---
+:::info **Please read the [*Rules for Using Materials on This Resource*](../../Disclaimer).**
+:::
 
-![Поиск](./assets/Profile/Profile_pic1.png)  
+![Search](./assets/Profile/Profile_pic1.png)  
 _______________________________________________
-**Профиль** — это виртуальная личность, параметры которой генерируются при каждом новом запуске шаблона. В ProjectMaker генерация происходит во время нажатия кнопки **«Сначала»**; а в ZennoDroid — при каждом новом выполнении проекта. Подробная информация о профиле указана в **Окне профиля**.   
+**Profile** is a virtual persona whose parameters are generated every time you launch a new template. In ProjectMaker, generation happens when you click the **“Start Over”** button; in ZennoDroid, it’s with every new project run. Detailed info about the profile is shown in the **Profile Window**.
 
-![Поиск](./assets/Profile/Profile_pic2.png)   
+![Search](./assets/Profile/Profile_pic2.png)
 
-При выполнении проекта в профиле сгенерируются все необходимые данные. Такие как:  
-- личные, которые используются при регистрации;    
-- от устройства, они нужны для работы с сервисами.  
-:::warning **Важно.**
-Лучше избегать переназначений отдельных настроек профиля в рамках одного выполнения проекта — вместо этого просто завершите проект и выполните его ещё столько раз, сколько потребуется. Это позволит не усложнять проект внутренними циклами.
-::: 
+When the project runs, all the needed data will be generated in the profile. These include:  
+- personal info, which is used for registration;  
+- device info, necessary for working with services.  
+:::warning **Important.**
+It’s better not to reassign individual profile settings within a single project run — instead, just finish the project and run it again as many times as you need. This way, you don’t complicate your project with internal cycles.
+:::
 
-При регистрации аккаунтов правильная логика работы с проектом выглядит так:  
-**1.** Старт проекта.  
-**2.** Генерация одного нового профиля.  
-**3.** Выполнение необходимых действи.  
-**4.** Завершение проекта. 
-_______________________________________________ 
-## Настройка генерации профиля для текущего проекта.  
-Для открытия параметров генерации профиля необходимо кликнуть по иконке **Профиля** на **Панели статических блоков**. Она находится под холстом с экшенами.  
+When you’re registering accounts, the right workflow is:  
+**1.** Start the project.  
+**2.** Generate one new profile.  
+**3.** Perform the needed actions.  
+**4.** End the project.
+_______________________________________________
+## Setting up profile generation for the current project
+To open the profile generation settings, click the **Profile** icon in the **Static Block Panel**. You’ll find it below the action canvas.
 
-![Поиск](./assets/Profile/Profile_pic3.png)  
-:::info **Не отображается *Панель Статических Блоков*?**
-Нужно кликнуть правой кнопкой мыши в любом пустом месте холста с экшенами и выбрать соответствующую настройку из контекстного меню, которая включает эту область.
+![Search](./assets/Profile/Profile_pic3.png)
+:::info **Can’t see the *Static Block Panel*?**
+Just right-click any empty spot on the action canvas and pick the right setting in the context menu to enable this area.
 
-![Поиск](./assets/Profile/Profile_pic4.png) 
-:::   
-  
-## Вкладка «Пользователь».  
-![Поиск](./assets/Profile/Profile_pic5.png)   
-### Национальность.  
-:::tip **Национальность по умолчанию.**
-*Можно выставить в Настройках, во вкладке Профиль. Также там можно указать email и пароль от него.*
-::: 
+![Search](./assets/Profile/Profile_pic4.png)
+:::
 
-Доступно 6 национальностей:  
-- Россия,  
-- USA (США),  
-- Germany (Германия),  
-- France (Франция),  
-- Spain (Испания),  
-- United Kingdom (Великобритания).
-_______________________________________________   
-### Местоположение.  
-Местоположение настраивается при помощи выпадающего списка с возможностью выбора нескольких значений. Содержимое списка зависит от выбранной страны:  
-- Россия — области, края, республики, некоторые большие города (Москва, Сочи и другие);  
-- США — штаты;  
-- Германия — земли;  
-- Франция — регионы;  
-- Испания — автономные сообщества;  
-- Великобритания — страны, входящие в её состав. 
+## “User” Tab
+![Search](./assets/Profile/Profile_pic5.png)
+### Nationality
+:::tip **Default nationality**
+*You can set this up in Settings, on the Profile tab. You can also set your email and its password there.*
+:::
 
-![Поиск](./assets/Profile/Profile_pic6.png)   
-### Логин.  
-При генерации логина используется формула из нескольких частей. По умолчанию в настройках уже сохранены несколько видов формул. Вы также можете вписать туда свою.   
+You can pick from 6 nationalities:  
+- Russia,  
+- USA,  
+- Germany,  
+- France,  
+- Spain,  
+- United Kingdom.
+_______________________________________________
+### Location
+Location is set through a dropdown list where you can choose several options. The list content depends on the country you picked:  
+- Russia — regions, territories, republics, some big cities (Moscow, Sochi, etc.);  
+- USA — states;  
+- Germany — lands;  
+- France — regions;  
+- Spain — autonomous communities;  
+- United Kingdom — the countries that make it up.
 
-![Поиск](./assets/Profile/Profile_pic7.png)   
-#### Подробное описание формул.  
-На данный момент для формул поддерживаются языки: `Eng` — английский, `Lat` — латынь, `Jap` — японский.  
-Например, при вводе значения `[Eng|4]` сгенерируется никнейм длиной в 4 английских слога с вероятностью таких же сочетаний слогов, как в реальных словах. Через изменение формулы можно создавать более сложные конструкции. Разберем такую формулу:  
+![Search](./assets/Profile/Profile_pic6.png)
+### Login
+When generating a login, the program uses a formula made up of several parts. By default, a few types of formulas are already saved in the settings. You can add your own too.
 
-`[RndSym|[RndNum|0|4]|0123456789][Lat|3][RndSym|[RndNum|0|2]|-][Jap|1][RndText|2|D]`  
+![Search](./assets/Profile/Profile_pic7.png)
+#### Detailed explanation of formulas
+Formulas currently support these languages: `Eng` — English, `Lat` — Latin, `Jap` — Japanese.  
+For example, if you input `[Eng|4]`, you’ll get a nickname 4 English syllables long, with syllable combos similar to real words. You can create more complicated constructions by tweaking the formula. Let’s break down this one:
 
-`[RndSym|[RndNum|0|4]|0123456789]` — означает, что в начале ника будет использоваться от 0 до 3 цифр;  
-`[Lat|3]` — генерируем 3 слога на латыни;  
-`[RndSym|[RndNum|0|2]|-]` — берем случайные 2 буквы или цифры.  
+`[RndSym|[RndNum|0|4]|0123456789][Lat|3][RndSym|[RndNum|0|2]|-][Jap|1][RndText|2|D]`
 
-В результате генерации получатся такие ники:  
+`[RndSym|[RndNum|0|4]|0123456789]` — at the start of the nickname, from 0 to 3 digits will be used;  
+`[Lat|3]` — 3 Latin syllables generated;  
+`[RndSym|[RndNum|0|2]|-]` — random 2 letters or digits.
+
+With this formula you could get nicknames like:  
 - 053bomenca-iem,  
 - 7lialeme-nozr,  
 - 46atbemig-poex,  
 - simpvido-se8f,  
 - 3afosuxhif6,  
 - frigulimdeif,  
-- misssefu-yucn.  
-_______________________________________________ 
-### Пол.  
-С помощью этого ползунка устанавливается вероятность генерации того или иного пола.  
-_______________________________________________ 
-### Возраст.  
-Этот параметр позволяет выставить диапазон, в пределах которого будет генерироваться возраст для профиля.  
-_______________________________________________ 
-## Для чего нужен Профиль?     
-Для регистрации на сайтах, форумах, блогах, в социальных сетях и т.д. Благодаря ему вам не нужно ломать голову над тем, где взять имена, фамилии, индексы, города, логины и как генерировать различные параметры устройства. Всё это уже встроено в программу. Вы же можете сосредоточиться на решении более важных задач.
-_______________________________________________  
-## Полезные ссылки.   
-- [**Настройки заполнения профиля**](../../Settings/Profile_Setting).  
-- [**Окно профиля**](../../pm/Interface/Work_with_Profile).   
-- [**Операции над профилем**](../../Data/WorkWithProfile). 
+- misssefu-yucn.
+_______________________________________________
+### Gender
+Use this slider to set the probability of generating a certain gender.
+_______________________________________________
+### Age
+This parameter lets you set the range within which the profile’s age will be generated.
+_______________________________________________
+## What is the Profile for?
+For registering on websites, forums, blogs, social networks and so on. Thanks to this, you don’t have to rack your brain about where to get names, surnames, zip codes, cities, logins or how to generate different device parameters. It’s all built into the program already. You can just focus on more important tasks.
+_______________________________________________
+## Useful links
+- [**Profile filling settings**](../../Settings/Profile_Setting)
+- [**Profile window**](../../pm/Interface/Work_with_Profile)
+- [**Profile operations**](../../Data/WorkWithProfile)

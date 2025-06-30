@@ -1,61 +1,60 @@
 ---
 sidebar_position: 6
-title: Соединение FTP
-description: Настройки FTP соединения.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-_______________________________________________  
-### Как создать?  
-Создать новое FTP-соединение можно из контекстного меню:  
-**Добавить действие → FTP → соединение FTP** 
-
-![Как добавить в проект?](./assets/FTP_Connect/FTP_Connect_pic1.png)  
-
-или через ***Панель статических блоков***:  
-
-![через](./assets/FTP_Connect/FTP_Connect_pic2.png)  
+title: FTP Connection
+description: FTP connection settings.
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../../Disclaimer).**
+:::
 _______________________________________________
-## Как работать?  
-![через](./assets/FTP_Connect/FTP_Connect_pic3.png)  
+### How to create one?
+You can create a new FTP connection from the context menu:
+**Add Action → FTP → FTP Connection**
 
-### Доступные настройки.  
-![через](./assets/FTP_Connect/FTP_Connect_pic4.png)  
+![How to add to the project?](./assets/FTP_Connect/FTP_Connect_pic1.png)
 
-#### Выбор типа протокола передачи.  
-Нажатием на самое верхнее поле можно вызвать список доступных протоколов:  
-- **FTP (File Transfer Protocol).**  
-Cтандартный протокол, который предназначен для передачи файлов.  
-- **FTPs (FTP + SSL).**  
-Защищённый протокол передачи файлов.  
-- **sFTP (SSH(Secure Shell) + FTP).**  
-Протокол для операций с файлами поверх надёжного и безопасного соединения.  
+or via the ***Static Blocks Panel***:
 
-#### Сервер (обязательно).  
-Здесь указываем имя FTP-сервера.  
-
-#### Порт (обязательно).  
-Нужно указать порт FTP соединения. По умолчанию указано `21`.  
-
-#### Логин и Пароль.  
-Данные для авторизации к соединению. Их можно не использовать, если это позволяет сервер.  
-
-#### Активный режим.  
-Ставим здесь галочку, если нужно использовать активный режим работы FTP.  
-:::info **Основная особенность активного режима**  
-В том, что именно *сервер инициирует соединение* для передачи данных.  
-Это может вызывать проблемы, если у вас включен Firewall или NAT, которые блокируют входящие соединения.
-::: 
-
-#### Прокси.  
-Можно оставить режим *Без прокси*, либо выбрать между:  
-- *Строка формата protocol://login:pass@ip:port*;  
-- *Другой*.  
-
-В режиме *Другой* можно вставить прокси в любом формате, указав в полях необходимую информацию.  
-Адрес, порт и данные авторизации берутся у поставщика услуг.
+![via](./assets/FTP_Connect/FTP_Connect_pic2.png)
 _______________________________________________
-## Полезные ссылки.    
-- [**Подробнее о Протоколах**](https://blog.skillfactory.ru/glossary/protokol/).  
-- [**Что такое статические блоки?**](../Static%20Block%20Panel/CommonPrinciples)   
-- [**Проксирование трафика**](../../Settings/Proxy_Traffic).
+## How does it work?
+![via](./assets/FTP_Connect/FTP_Connect_pic3.png)
+
+### Available settings.
+![via](./assets/FTP_Connect/FTP_Connect_pic4.png)
+
+#### Choosing the file transfer protocol type.
+Clicking on the very top field brings up a list of available protocols:
+- **FTP (File Transfer Protocol).**
+Standard protocol designed for file transfers.
+- **FTPs (FTP + SSL).**
+A secure file transfer protocol.
+- **sFTP (SSH(Secure Shell) + FTP).**
+A protocol for file operations over a reliable, secure connection.
+
+#### Server (required).
+Enter the FTP server name here.
+
+#### Port (required).
+Specify the FTP connection port. By default, it's `21`.
+
+#### Login and Password.
+Credentials for connecting. You can leave these blank if the server allows it.
+
+#### Active mode.
+Tick this box if you need to use active FTP mode.
+:::info **Main feature of active mode**
+The *server initiates the connection* to transfer data. This can cause problems if you have a Firewall or NAT enabled that blocks incoming connections.
+:::
+
+#### Proxy.
+You can leave it on *No proxy*, or choose between:
+- *String in the format protocol://login:pass@ip:port*
+- *Other*
+
+In the *Other* mode, you can paste the proxy in any format, filling in the required info in the fields.
+You get the address, port, and auth data from your provider.
+_______________________________________________
+## Useful links.
+- [**More about Protocols**](https://blog.skillfactory.ru/glossary/protokol/)
+- [**What are static blocks?**](../Static%20Block%20Panel/CommonPrinciples)
+- [**Traffic Proxying**](../../Settings/Proxy_Traffic)

@@ -1,116 +1,116 @@
 ---
 sidebar_position: 2
-title: POST-запрос
-description: Отправка данных в POST-запросе
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-_______________________________________________  
-ZennoDroid позволяет отправлять данные в **POST-запросах**. С этим экшеном вы можете: 
-- *отсылать информацию для регистрации на сайте*,    
-- *загружать файлы на сервер*,  
-- *быстро отправлять данные*,  
-- *запускать шаблоны без браузера*,   
-- *работать с API веб-сервисов и приложений*.  
-_______________________________________________ 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → HTTP → POST-запрос**.  
+title: POST request
+description: Sending data in a POST request
+---
+:::info **Please read the [*Material Usage Rules on this resource*](../../Disclaimer).**
+:::
+_______________________________________________
+ZennoDroid lets you send data in **POST requests**. With this action you can:
+- *send info to register on a website*,
+- *upload files to a server*,
+- *quickly send data*,
+- *run templates without a browser*,
+- *work with the API of web services and apps*.
+_______________________________________________
+### How do you add it to a project?
+Use the context menu: **Add action → HTTP → POST request**.
 
-![Как добавить в проект?](./assets/POST/POST_pic1.png)
-_______________________________________________ 
-## Вкладка «Основные»   
-![Вкладка «Основные»](./assets/POST/POST_pic2.png)  
-_______________________________________________ 
-### URL.  
-Целевой адрес сайта (ссылка), по которому будет отправлен запрос. *Можно использовать переменную*.  
-_______________________________________________ 
-### Referer.  
-Заголовок [**Referer**](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer) используется для указания URL-адрес, с которого пользователь пришел на текущую страницу. Он помогает анализировать трафик и узнавать, с какого ресурса переходят чаще всего.  
+![How do you add it to a project?](./assets/POST/POST_pic1.png)
+_______________________________________________
+## "Main" tab
+![Main tab](./assets/POST/POST_pic2.png)
+_______________________________________________
+### URL.
+Target site address (link) where the request will be sent. *You can use a variable*.
+_______________________________________________
+### Referer.
+The [**Referer**](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer) header is used to specify the URL from which the user came to the current page. It helps analyze traffic and track which resources users are coming from most often.
 
-:::warning **Заголовок *Referer* может раскрыть информацию об истории посещённых страниц, что может привести к нарушению приватности.**
-:::  
-_______________________________________________ 
-### Кодировка.  
-Выбираем кодировку для запроса.  
-_______________________________________________ 
-### Таймаут.  
-Максимальное время ожидания ответа от сайта в секундах.  
-При достижении установленного времени, действие будет завершено ошибкой и выйдет по *красной ветке*.  
-Можно использовать макросы переменных.  
-_______________________________________________   
+:::warning **The *Referer* header can reveal information about the browsing history, which can be a privacy issue.**
+:::
+_______________________________________________
+### Encoding.
+Choose the encoding for the request.
+_______________________________________________
+### Timeout.
+Maximum time to wait for a response from the site, in seconds.
+If the set time is reached, the action will fail and go down the *red branch*.
+You can use variable macros.
+_______________________________________________
 
-### Данные.  
-Тут пишем сам текст запроса.  
-_______________________________________________ 
-### Тип данных.  
-Здесь мы выбираем, какие данные будут отправлены в запросе. Указанный тип будет передан в заголовке как [***Content-Type***](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type).  
+### Data.
+Write the request body text here.
+_______________________________________________
+### Data type.
+Here you choose what type of data will be sent in the request. The specified type is passed in the headers as [***Content-Type***](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type).
 
-Доступные варианты:  
-#### urlencoded.  
+Available options:
+#### urlencoded.
 :::info ***`Content-Type: application/x-www-form-urlencoded`***
-:::  
+:::
 
-Стоит использовать, когда на сервер отсылается *текстовая информация*. В поле **Данные** она указывается в формате:  
-`имяпараметра1=значение1&имяпараметра2=значение2`  
+Best for sending *text information* to the server. In the **Data** field, enter it like:
+`paramname1=value1&paramname2=value2`
 
-#### multipart.  
+#### multipart.
 :::info ***`Content-Type: multipart/form-data`***
-:::  
-Этот тип используется, когда в запросе отправляются *двоичные данные (файлы)* на сервер.  
+:::
+Use this when your request sends *binary data (files)* to the server.
 
-#### Другой.  
-Вы можете задать любой другой тип данных, если два заготовленных не подходят.  
+#### Other.
+You can set any other data type if the two presets aren't suitable.
 
-Например, для взаимодействия с API [**CapMonster Cloud**](https://docs.capmonster.cloud/ru/docs/category/api) нужно отправлять POST-запрос в формате JSON. Для этого указываем в **Типе данных** `application/json`   
-_______________________________________________ 
-### Загружать.  
-#### Только содержимое.  
-В переменную будет сохранено только тело ответа.  
-  
-#### Только заголовки.  
-Сохранятся только заголовки.   
+For example, to work with the [**CapMonster Cloud**](https://docs.capmonster.cloud/ru/docs/category/api) API, you need to send the POST request in JSON format. For this, set the **Data type** to `application/json`
+_______________________________________________
+### Download.
+#### Only content.
+Only the response body will be saved to the variable.
 
-#### Заголовки и содержимое.  
-В переменную сохранятся и заголовок ответа, и его тело, разделенные двумя пустыми строками.    
+#### Only headers.
+Only the headers will be saved.
 
-#### Как файл.  
-Выбирайте этот режим, если нужно скачать файл с помощью запроса.  
-В переменную сохранится путь к скачанному файлу.  
+#### Headers and content.
+Both the response header and body will be saved to the variable, separated by two blank lines.
 
-:::info **По умолчанию файлы скачиваются в папку `Trash` в директории с программой.**  
-Путь может выглядеть так:  
-`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`  
+#### As file.
+Choose this mode if you need to download a file with the request.
+The variable will hold the path to the downloaded file.
 
-Изменить его можно в настройках, но только глобально для всех проектов. 
-:::  
+:::info **By default, files are downloaded to the `Trash` folder in the program directory.**
+The path may look like this:
+`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`
 
-#### Как файл + заголовки.  
-В переменную сохранятся заголовки ответа и путь к скачанному файлу.  
-_______________________________________________  
-### Положить в переменную.  
-Здесь надо выбрать (или создать новую) переменную, в которую будет сохранён результат запроса.  
-_______________________________________________  
-## Вкладка «Дополнительно».  
-![Вкладка «Дополнительно»](./assets/GET/GET_pic3.png)
-_______________________________________________ 
-### Редирект.  
-Используется для установки перенаправления. Если ответ на запрос будет содержать *код редиректа*, то ZennoDroid перейдет к следующей странице, используя заголовок ***Location***.  
+You can change this in the settings, but only globally for all projects.
+:::
 
-Здесь мы цифрами указываем максимальное количество переходов. К примеру, `0` — остаться на исходной странице, `5` — количество переходов до конечного URL.  
-_______________________________________________ 
-### Использовать оригинальный URL.  
-Когда эта опция включена, кодирование URL из вкладки «Основные» будет отменено. Пример:  
-- **URL по умолчанию (с кодированием)**:  
-`https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5`  
-- **Оригинальный URL**:  
-`https://ru.wikipedia.org/wiki/Приветствие`  
-_______________________________________________ 
-### Заголовки.  
-#### Использовать по умолчанию.  
-В запрос будут подставлены заголовки по умолчанию. Заголовок `Host` меняется в зависимости от адреса в запросе.  
+#### As file + headers.
+The variable will hold the response headers and the path to the downloaded file.
+_______________________________________________
+### Save to variable.
+Here you need to select (or create a new) variable where the result of the request will be saved.
+_______________________________________________
+## "Advanced" tab.
+![Advanced tab](./assets/GET/GET_pic3.png)
+_______________________________________________
+### Redirect.
+Sets up redirection. If the response contains a *redirect code*, ZennoDroid will go to the next page using the ***Location*** header.
+
+Here you specify the max number of redirects as a number. For example, `0` — stay on the current page, `5` — up to 5 redirects to the final URL.
+_______________________________________________
+### Use original URL.
+When this option is on, encoding of the URL from the "Main" tab is turned off. Example:
+- **Default URL (with encoding)**:
+`https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5`
+- **Original URL**:
+`https://ru.wikipedia.org/wiki/Приветствие`
+_______________________________________________
+### Headers.
+#### Use default.
+The default headers will be used in the request. The `Host` header changes based on the request address.
 
 <details>
-<summary>**Пример ответа при запросе *https://httpbin.org/get*.**</summary>
+<summary>**Example response for *https://httpbin.org/get*.**</summary>
 <!--All you need is a blank line-->
 
    ```
@@ -120,95 +120,95 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Encoding: gzip, deflate
 Accept-Language: en-US,en;q=0.5
    ```
-</details>  
+</details>
 
-#### Текущий профиль.  
-Будут подставлены заголовки из текущего ***профиля проекта***.  
+#### Current profile.
+Headers from the current ***project profile*** will be used.
 
-#### Загрузить из профиля.  
-Необходимо выбрать файл или указать переменную, содержащую путь до профиля, из которого будут загружены заголовки для запроса.  
+#### Load from profile.
+You need to select a file or specify a variable holding the path to the profile from which headers will be loaded for the request.
 
-#### Пользовательские настройки.  
-![Пользовательские настройки](./assets/GET/GET_pic5.png)  
+#### Custom settings.
+![Custom settings](./assets/GET/GET_pic5.png)
 
-Позволяет самостоятельно указать каждый параметр заголовка, следуя правилам:  
-- :warning: Первой **всегда указывается строка User-Agent!** И только потом все остальные заголовки.  
-- Каждый заголовок начинается с новой строчки.  
-- Можно указать *статичные значения*, *свои переменные* или *переменные профиля*.  
-_______________________________________________ 
-### Использовать CookieContainer.  
-С помощью этой опции можно синхронизировать куки с целым браузером или между отдельными запросами. Вам не понадобится вручную их парсить и подставлять.  
+Lets you specify each header field yourself, following these rules:
+- :warning: **User-Agent must ALWAYS be first!** Then all other headers.
+- Each header starts on a new line.
+- You can use *static values*, *your variables*, or *profile variables*.
+_______________________________________________
+### Use CookieContainer.
+This option syncs cookies with the entire browser or between individual requests. You won't have to parse and use them manually.
 
 <details>
-<summary>**Пример использования.**</summary>
+<summary>**Usage example.**</summary>
 <!--All you need is a blank line-->
 
-   Представим, что наш проект работает с сайтом, используя запросы. Для работы нужно быть авторизованным. При этом процесс авторизации крайне сложен для повторения его через запросы. Поэтому для входа на сайт используем браузерный режим.  
+   Let's say your project works with a site using requests. You need to be logged in to work. Logging in through requests is really complicated. So you log in using browser mode.
 
-   После авторизации ***отключаем браузер*** и начинаем работать с запросами. С включенной опцией **Использовать CookieContainer** куки будут автоматически синхронизированы между браузером и запросами, их не придется подставлять вручную.    
+   After logging in, ***turn off the browser*** and start working with requests. With **Use CookieContainer** enabled, cookies are auto-synced between the browser and requests, no need to set them manually.
 
-    Если при одном из запросов сайт вернет новое значение кук, то оно автоматически синхронизируется с браузером и будет использовано в дальнейшем.
-</details>  
-_______________________________________________ 
-### Сookie.  
-:::info **Данное поле ввода отображается только при отключении прошлой опции.**
-:::    
-
-![Сookie](./assets/GET/GET_pic4.png) 
-
-Можно указать готовые куки или взять из переменной.  
-
-**Формат:** `имя=значение`, несколько значений разделяются через `;`  
-***Пример:*** `user=1992103;session=f79fcadd847b80f9df78ba4fb276c867;id=889`  
-_______________________________________________ 
-## Вкладка «Прокси».  
-![Вкладка «Прокси»](./assets/GET/GET_pic6.png)  
-_______________________________________________ 
-### Без прокси.  
-Экшен будет работать через реальный IP компьютера или сервера.  
-_______________________________________________ 
-### Строка формата.  
-![Строка формата](./assets/GET/GET_pic7.png)  
-
-Указываем прокси в формате (можно указать переменную):  
-- ***С авторизацией***. `socks5://логин:пароль@ip:port` или `http://логин:пароль@ip:port`  
-- ***Без авторизации***. `socks5://ip:port` или `http://ip:port`  
-- ***Без указания протокола (по умолчанию http://)***. `логин:пароль@ip:port` или `ip:port`  
-_______________________________________________ 
-### Другой.  
-![Другой](./assets/GET/GET_pic8.png)  
-
-Выбираем в том случае, если нужно указать детальные настройки прокси.  
-Тип прокси, данные авторизации, адрес и порт уточняйте у поставщика услуг.  
-Во всех полях можно использовать переменные.  
-
-:::info **Если не указан протокол, то по умолчанию используется http://**
-:::  
-_______________________________________________ 
-## Способ передачи запроса.
-В ZennoDroid есть два метода работы с запросами:  
-- **Стандартный**. Стоит по умолчанию (библиотека Chilkat).  
-- **Альтернативный**. Наша собственная разработка.  
-
-Если при работе с HTTP-запросами что-то работает неправильно, то попробуйте переключиться на альтернативный метод.  
-Сделать это можно через **Настройки →  Выполнение → Использовать альтернативный способ передачи HTTP-запросов**.  
-
-![Использовать альтернативный способ](./assets/GET/GET_pic9.png)   
-_______________________________________________ 
-## Пример использования.  
-Нужно отправить ответ ReCaptchaV2 на сайт для прохождения капчи.  
-
-![Пример использования](./assets/POST/POST_pic3.png)  
-
-1. CM Cloud разгадывает капчу и выдает нам ответ.  
-2. Добавляем к нему экшен POST.  
-3. Заполняем все поля. В поле *Данные* вводим ответ на капчу в нужном формате.  
-4. Отправляем запрос на целевой сайт.  
-5. Капча разгадана.  
-
-При работе без браузера мы экономим время и ресурсы, затрачиваемые при разгадывании капчи в окне таба.
+    If any request gets new cookies from the site, they'll be auto-synced to the browser and used from then on.
+</details>
 _______________________________________________
-## Полезные ссылки.    
-- [**Окно переменных**](../../pm/Interface/Variables)  
-- [**Что такое API**](https://practicum.yandex.ru/blog/chto-takoe-api/)  
-- [**API CapMonster Cloud**](https://docs.capmonster.cloud/ru/docs/category/api/).
+### Cookie.
+:::info **This field is shown only when the previous option is off.**
+:::
+
+![Cookie](./assets/GET/GET_pic4.png)
+
+You can enter ready-made cookies or take them from a variable.
+
+**Format:** `name=value`, multiple values separated by `;`
+***Example:*** `user=1992103;session=f79fcadd847b80f9df78ba4fb276c867;id=889`
+_______________________________________________
+## "Proxy" tab.
+![Proxy tab](./assets/GET/GET_pic6.png)
+_______________________________________________
+### No proxy.
+The action will use the real IP of your computer or server.
+_______________________________________________
+### Format string.
+![Format string](./assets/GET/GET_pic7.png)
+
+Specify the proxy in the following format (you can use a variable):
+- ***With auth***. `socks5://login:password@ip:port` or `http://login:password@ip:port`
+- ***No auth***. `socks5://ip:port` or `http://ip:port`
+- ***Without protocol (defaults to http://)***. `login:password@ip:port` or `ip:port`
+_______________________________________________
+### Other.
+![Other](./assets/GET/GET_pic8.png)
+
+Choose this if you need to set detailed proxy settings.
+Type, auth info, address, and port should be checked with your provider.
+You can use variables in any of the fields.
+
+:::info **If you don't specify the protocol, http:// is used by default**
+:::
+_______________________________________________
+## Request sending method.
+ZennoDroid has two ways to work with requests:
+- **Standard**. Default (Chilkat library).
+- **Alternative**. Our own development.
+
+If something is not working right with HTTP requests, try switching to the alternative method.
+Do this via **Settings → Execution → Use alternative HTTP request sending method**.
+
+![Use alternative method](./assets/GET/GET_pic9.png)
+_______________________________________________
+## Usage example.
+Suppose you need to send a ReCaptchaV2 answer to a site to solve a captcha.
+
+![Usage example](./assets/POST/POST_pic3.png)
+
+1. CM Cloud solves the captcha and sends us the answer.
+2. Add the POST action for it.
+3. Fill in all the fields. Enter the captcha answer in the *Data* field in the required format.
+4. Send the request to the target site.
+5. The captcha is solved.
+
+Working without a browser saves time and resources that'd normally be spent solving the captcha in a tab window.
+_______________________________________________
+## Useful links.
+- [**Variables window**](../../pm/Interface/Variables)
+- [**What is an API**](https://practicum.yandex.ru/blog/chto-takoe-api/)
+- [**CapMonster Cloud API**](https://docs.capmonster.cloud/ru/docs/category/api/).

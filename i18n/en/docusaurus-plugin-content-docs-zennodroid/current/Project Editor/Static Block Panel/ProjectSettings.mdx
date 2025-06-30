@@ -1,51 +1,49 @@
 ---
 sidebar_position: 1
-title: Настройки проекта
-description: Настройки для запуска проекта
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
+title: Project Settings
+description: Settings for launching the project
+---
+:::info **Please read the [*Rules for using materials on this site*](../../Disclaimer).**
+:::
 
-С помощью данных настроек можно задать значения, которые будут автоматически применены при запуске шаблона.  
+With these settings, you can set values that will be automatically applied when the template is launched.
 _______________________________________________
-## Как открыть настройки?  
-Для того чтобы открыть **Настройки проекта**, необходимо нажать соответствующую кнопку в ***Панели статических блоков***.  
+## How to open the settings?
+To open **Project Settings**, you need to click the corresponding button in the ***Static Blocks Panel***.
 
-![Поиск](./assets/ProjectSettings/ProjectSettings_pic1.png)  
+![Search](./assets/ProjectSettings/ProjectSettings_pic1.png)
 _______________________________________________
-## Доступные параметры.  
-### Android.  
-![Поиск](./assets/ProjectSettings/ProjectSettings_pic2.png)  
+## Available options.
+### Android.
+![Search](./assets/ProjectSettings/ProjectSettings_pic2.png)
 
-Здесь доступна настройка **Паузы между действиями**, которая будет выполнена перед действием. После ее изменения нужно начать проект **С начала** с помощью специальной кнопки в верхней панели.  
+Here, you can set up the **Pause between actions**, which will be triggered before the action. After you change it, you need to start the project **From the beginning** using the special button in the top panel.
 
-Список экшенов, на которые влияет данная опция:  
-- [**Взятие значения**](../../Android/ProLite/GetValue);  
-- [**Установка значения**](../../Android/ProLite/SetValue);  
-- [**Выполнить событие**](../../Android/ProLite/RunEvent);  
-- [**Эмуляция touch**](../../Android/ProLite/Touch_Emulation);  
-- [**Эмуляция swipe**](../../Android/ProLite/Swipe);  
-- [**Эмуляция клавиатуры**](../../Android/ProLite/Keyboard).  
+Here are the actions affected by this option:
+- [**Get value**](../../Android/ProLite/GetValue)
+- [**Set value**](../../Android/ProLite/SetValue)
+- [**Run event**](../../Android/ProLite/RunEvent)
+- [**Touch emulation**](../../Android/ProLite/Touch_Emulation)
+- [**Swipe emulation**](../../Android/ProLite/Swipe)
+- [**Keyboard emulation**](../../Android/ProLite/Keyboard)
 
-Стоит учитывать, что в некоторых из этих экшенов есть свои настройки пауз. Так что по итогу эти две настройки сложатся — сначала выполнится пауза из настроек проекта, затем из настроек экшена.  
+Keep in mind some of these actions also have their own pause settings. So, in the end, these two settings will add up — first, the pause from the project settings will run, then the one from the action settings.
 
-:::tip **Пример настроек паузы из экшена.**  
-![Поиск](./assets/ProjectSettings/ProjectSettings_pic3.png)
-:::  
+:::tip **Example of action pause settings.**
+![Search](./assets/ProjectSettings/ProjectSettings_pic3.png)
+:::
 _______________________________________________
-### Настройки проксичекера.  
-![Поиск](./assets/ProjectSettings/ProjectSettings_pic4.png)  
+### Proxy checker settings.
+![Search](./assets/ProjectSettings/ProjectSettings_pic4.png)
 
-Тут можно выбрать правило, по которому будут браться прокси при старте проекта. Само правило для [**Proxychecker**](../../get-started/ProxyCheckerZD) можно изменить, используя экшен [**Получить прокси**](../GetProxy).  
+Here, you can choose the rule for how proxies will be picked when the project starts. The rule for the [**Proxychecker**](../../get-started/ProxyCheckerZD) itself can be changed using the [**Get proxy**](../GetProxy) action.
 _______________________________________________
-### Настройки HTTP.  
-![Поиск](./assets/ProjectSettings/ProjectSettings_pic5.png)  
+### HTTP settings.
+![Search](./assets/ProjectSettings/ProjectSettings_pic5.png)
 
-В этой вкладке устанавливается способ передачи HTTP-запросов:  
-- **По умолчанию**. Способ, который выбран в *настройках программы во вкладке «Выполнение»*.  
-- **Стандартный метод**. Будет использована библиотека Chilkat.  
-- **Альтернативный метод**. Выбирается *ZennoHttpClient*, который позволяет решить проблемы с некоторыми сайтами.  
+In this tab, you set the way HTTP requests are sent:
+- **Default**. The method picked in the *program settings in the "Execution" tab*.
+- **Standard method**. The Chilkat library will be used.
+- **Alternative method**. *ZennoHttpClient* will be used, which lets you fix issues with certain sites.
 
-Данные настройки используются для работы с экшенами запросов. Подробнее про их работу можно почитать в статьях [**GET-запрос**](../../Project%20Editor/HTTP%20and%20FTP/GET), [**POST-запрос**](../../Project%20Editor/HTTP%20and%20FTP/POST) и [**HTTP-запросы**](../../Project%20Editor/HTTP%20and%20FTP/HTTP). 
-
-
+These settings are used for request actions. You can read more about how they work in these articles: [**GET request**](../../Project%20Editor/HTTP%20and%20FTP/GET), [**POST request**](../../Project%20Editor/HTTP%20and%20FTP/POST), and [**HTTP requests**](../../Project%20Editor/HTTP%20and%20FTP/HTTP).

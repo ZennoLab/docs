@@ -1,152 +1,150 @@
 ---
 sidebar_position: 1
-title: Принять почту
-description: Работа с почтовыми аккаунтами
+title: Receive Mail
+description: Working with mail accounts
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
-:::  
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
+:::
 _______________________________________________  
-## Описание.   
-Позволяет найти нужное письмо и информацию в нём. Подходит для массовой обработки входящей корреспонденции.  
+## Description  
+Lets you find the email you need and the info in it. Good for handling large volumes of incoming mail.
 
-![Описание](./assets/RecieveEmails/RecieveEmails_pic1.png) 
+![Description](./assets/RecieveEmails/RecieveEmails_pic1.png)
 
-Подходит для:  
-- Быстрого доступа к письмам;  
-- Получения данных из письма;  
-- Активации учетных записей;  
-- Удаление ненужных писем;  
-- Удаление загруженных писем.
-_______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Работа с почтой → Принять почту**.  
-
-![Как добавить в проект?](./assets/RecieveEmails/RecieveEmails_pic2.png)   
-_______________________________________________ 
-## Как работать с экшеном?  
-:::info **Перед работой убедитесь, что в вашей учетной записи активирована опция доступа через IMAP.**
-:::   
+Suitable for:
+- Quick access to emails
+- Getting data from emails
+- Account activation
+- Deleting unwanted emails
+- Deleting downloaded emails
 _______________________________________________
-### Вкладка «Основные».   
-![Вкладка «Основные»](./assets/RecieveEmails/RecieveEmails_pic3.png)  
+## How do I add it to my project?
+Right-click menu: **Add Action → Work with mail → Receive Mail**.
 
-#### Кнопка «Расширенный вид».  
-При клике по данной кнопке откроется окно ***Обработки почты***.  
-
-#### Email и Пароль.  
-Указываем эти данные от электронного ящика  
+![How do I add it to my project?](./assets/RecieveEmails/RecieveEmails_pic2.png)
 _______________________________________________
-### Настройки подключения.   
-![Настройки подключения.](./assets/RecieveEmails/RecieveEmails_pic4.png)   
-
-#### Автоопределение настроек.  
-При включении данной настройки ZennoDroid автоматически подберёт параметры для соединения с почтовым сервером.  
-
-:::warning **Работает не со всеми почтовыми провайдерами.**
-:::  
-
-#### Сервер, Порт, Имя пользователя, Использовать SSL, Протокол.   
-Все эти параметры нужно взять из документации выбранного почтового провайдера.  
+## How do I use this action?
+:::info **Before starting, make sure your account has IMAP access enabled.**
+:::
 _______________________________________________
-### Как искать письмо.   
-![Как искать письмо.](./assets/RecieveEmails/RecieveEmails_pic5.png)   
+### “Main” tab
+![“Main” tab](./assets/RecieveEmails/RecieveEmails_pic3.png)
 
-#### Каталоги Imap.  
-![Каталоги Imap.](./assets/RecieveEmails/RecieveEmails_pic6.png)   
+#### “Advanced view” button
+When you click this button, the ***Mail Processing*** window opens.
 
-Здесь можно выбрать папки почтового ящика, в которых будет производиться поиск письма.  
-
-![кнопка](./assets/RecieveEmails/RecieveEmails_pic7.png)  А эта кнопка обновляет список доступных папок.  
-
-#### Рег. выр. (Регулярное выражение).    
-В данное поле вносится регулярное выражение, согласно которому будет происходить поиск письма в ящике.  
-
-#### Интервалы загрузки писем.  
-Письма от сервисов могут приходить с задержкой. Поэтому можно указать промежуток времени в секундах и количество попыток скачивания списка писем.  
-
- Разделитель `;` указывает на количество попыток. Например, на скриншоте это: *первая через 15 сек, вторая - 30 сек, третья - 60 сек*.  
-
-#### Из каталога загружать не более писем.   
-Указываем количество писем, которые будут загружены.  
-
-#### Удалять найденное письмо.  
-При включении данной настройки найденное письмо будет удалено из ящика после обработки.
+#### Email and Password
+Enter the email and password for the mailbox here
 _______________________________________________
-### Поиск текста в письме.   
-![Поиск текста в письме](./assets/RecieveEmails/RecieveEmails_pic8.png)   
+### Connection settings
+![Connection settings](./assets/RecieveEmails/RecieveEmails_pic4.png)
 
-Можно сохранять результат работы сразу нескольких регулярных выражений!  
+#### Auto detect settings
+When on, ZennoDroid will automatically select settings for connecting to the mail server.
 
-Например, в письме есть: 
-- код активации,  
-- адрес сайта,  
-- номер телефона,  
-- имя и фамилия.   
-Все это можно достать за одно действие! Достаточно под каждый элемент составить регулярное выражение и добавить переменные, в которые будет сохранён результат работы.  
+:::warning **Doesn’t work with all mail providers.**
+:::
 
-#### Регулярное выражение.     
-Тут указываем регулярное выражение для поиска нужного текста.  
-
-#### № совпадения.  
-Часто для одного регулярного выражения может быть сразу несколько совпадений. Тут отобразится порядковый номер найденного элемента. ***Нумерация с нуля***.  
-
-:::warning **Не рекомендуем привязываться к номеру совпадения.**  
-Так как структура проекта может измениться, а вместе с ней и порядковый номер ссылки.  
-Старайтесь подбирать регулярное выражение таким образом, чтобы в результате его работы оставалось только одно совпадение.
-:::  
-
-#### Сохранить в переменную.  
-В этой колонке нужно выбрать существующую или создать новую переменную, куда будет сохранён результат работы регулярного выражения.  
+#### Server, Port, Username, Use SSL, Protocol
+You need to get all these settings from your mail provider’s documentation.
 _______________________________________________
-### Сохранить ошибку в переменную.  
-![Сохранить ошибку в переменную](./assets/RecieveEmails/RecieveEmails_pic9.png)  
+### How to search for an email
+![How to search for an email](./assets/RecieveEmails/RecieveEmails_pic5.png)
 
-Если во время работы экшена возникнет ошибка, то эта настройка сохранит её текст в переменную (новую или уже созданную).  
+#### Imap folders
+![Imap folders](./assets/RecieveEmails/RecieveEmails_pic6.png)
+
+Here you can pick which mailbox folders the emails will be searched in.
+
+![button](./assets/RecieveEmails/RecieveEmails_pic7.png)  This button refreshes the list of available folders.
+
+#### Reg. expr. (Regular Expression)
+Type in a regular expression here to filter the emails you want in the mailbox.
+
+#### Mail fetch intervals
+Emails from services can come with a delay. So you can set the interval in seconds and how many times to try downloading the list of emails.
+
+The divider `;` shows the number of attempts. For instance, in the screenshot it’s: *first try after 15 sec, second - 30 sec, third - 60 sec*.
+
+#### Download no more than X emails from folder
+Set the number of emails to be downloaded.
+
+#### Delete found email
+If on, the found email will be deleted from the mailbox after it’s processed.
 _______________________________________________
-### Вкладка «Прокси».  
-![Вкладка «Прокси»](./assets/RecieveEmails/RecieveEmails_pic10.png)  
+### Search text in email
+![Search text in email](./assets/RecieveEmails/RecieveEmails_pic8.png)
 
-#### Без прокси.  
-Работа экшена будет происходить через реальный ip компьютера/сервера.  
+You can save the results of a few different regular expressions at once!
 
-#### Строка формата.  
-![Строка формата](./assets/RecieveEmails/RecieveEmails_pic11.png)   
+For example, in the email you might have:
+- activation code,
+- website address,
+- phone number,
+- name and surname.
+You can pull all this out in one go! Just write a regex for each item and add variables to save the results into.
 
-Указываем прокси в формате:  
-- ***С авторизацией***. `socks5://логин:пароль@ip:port` или `http://логин:пароль@ip:port`  
-- ***Без авторизации***. `socks5://ip:port` или `http://ip:port`  
-- ***Без указания протокола*** *(по умолчанию http://)*. `логин:пароль@ip:port` или `ip:port`  
+#### Regular Expression
+Write the regex for finding the text you need.
 
-:::tip **Можно указывать переменные.**  
-::: 
+#### Match #
+Often a single regex may have more than one match. Here you’ll see the zero-based number of the found item. ***Counting starts at zero***.
 
-#### Другой.  
-![Другой](./assets/RecieveEmails/RecieveEmails_pic12.png)   
+:::warning **We recommend not relying on the match number.**
+The project structure can change, so can the order of links.
+Try to write your regex so that it only matches one result.
+:::
 
-Эта опция выбирается, если необходимо указать детальные настройки прокси. Такие как: тип прокси, данные авторизации, адрес и порт. Эту информацию можно узнать у поставщика услуг.  
-
-:::tip **Можно использовать переменные в любом из полей.**  
-:::  
-
-:::info **Если не указать протокол прокси, то по умолчанию будет выбран http://**  
-:::  
+#### Save to variable
+In this column, pick an existing variable or create a new one – this is where the regex result will be stored.
 _______________________________________________
-## Пример использования.  
-Допустим, что после регистрации в приложении нам нужно подтвердить свою учетную запись, перейдя по ссылке из письма.  
+### Save error to variable
+![Save error to variable](./assets/RecieveEmails/RecieveEmails_pic9.png)
 
-![Пример использования](./assets/RecieveEmails/RecieveEmails_pic13.png)  
+If there’s an error during the action, this setting will save its text in a variable (new or existing).
+_______________________________________________
+### “Proxy” tab
+![“Proxy” tab](./assets/RecieveEmails/RecieveEmails_pic10.png)
 
-1. Регистрируемся в приложении.  
-2. Добавляем в проект экшен **Принять почту** и настраиваем его.  
-3. Получаем письмо для активации аккаунта.  
-4. Переходим по ссылке.  
-5. Аккаунт успешно подтвержден.  
+#### No Proxy
+The action will work through your computer’s/server’s actual IP.
 
-Это особенно удобно при массовых действиях в приложениях, так как работа без отдельного почтового клиента экономит время и ресурсы. 
-_______________________________________________  
-## Полезные ссылки.   
-- [**Настройки Почты**](../Settings/Mailbox).  
-- [**Тестер регулярных выражений**](../Tools/RegEx_Tester).   
-- [**Переменные окружения**](../pm/Creating/Variables)
+#### Format string
+![Format string](./assets/RecieveEmails/RecieveEmails_pic11.png)
 
+Enter the proxy in one of these formats:
+- ***With authorization***  `socks5://login:password@ip:port` or `http://login:password@ip:port`
+- ***Without authorization***  `socks5://ip:port` or `http://ip:port`
+- ***Without protocol*** *(defaults to http://)*  `login:password@ip:port` or `ip:port`
 
+:::tip **You can use variables here.**
+:::
+
+#### Custom
+![Custom](./assets/RecieveEmails/RecieveEmails_pic12.png)
+
+Pick this option if you need detailed proxy settings: proxy type, auth details, address, and port. You can get this info from your service provider.
+
+:::tip **You can use variables in any field.**
+:::
+
+:::info **If you don’t specify a protocol for the proxy, http:// will be used by default**
+:::
+_______________________________________________
+## Example
+Let’s say that after registering in an app, you need to confirm your account by clicking the link in the email.
+
+![Example](./assets/RecieveEmails/RecieveEmails_pic13.png)
+
+1. Sign up in the app.
+2. Add the **Receive Mail** action to your project and set it up.
+3. Get the activation email.
+4. Click the link.
+5. Account is successfully confirmed.
+
+This is especially handy when automating things in apps, since not using a separate mail client saves time and resources.
+_______________________________________________
+## Useful links
+- [**Mailbox Settings**](../Settings/Mailbox)
+- [**Regex Tester**](../Tools/RegEx_Tester)
+- [**Environment Variables**](../pm/Creating/Variables)

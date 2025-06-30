@@ -1,111 +1,107 @@
 ---
 sidebar_position: 1
-title: Оператор IF
-description: Условие «Если ... то ...».
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-## Описание.  
-Кубик **IF** — это один из основных логических экшенов, используемых в ZennoDroid. В своей работе он использует логику из *JavaScript*. Для сравнения используются логические операторы.   
+title: IF Operator
+description: The "If ... then ..." condition.
+---
+:::info **Please read [*Rules for using materials on this resource*](../../Disclaimer).**
+:::
+## Description.
+The **IF** block is one of the main logical actions used in ZennoDroid. It works using logic from *JavaScript*. Logical operators are used for comparison.
 
-Например, в самом простом виде оператор `if` сравнивает между собой два значения. Если значение оператора верное, то кубик принимает значение `True` (***выход по зелёной ветке***), а если не верное, то `False` (***выход по красной ветке***).  
+For example, in the simplest form, the `if` operator compares two values. If the operator’s condition is true, the block gets the value `True` (***it goes out through the green branch***), and if it’s false — `False` (***through the red branch***).
 
-В свойствах экшена есть поле ввода, куда можно вставить переменные проекта и окружения, а также константы. Кубик **IF** оперирует только двумя типами данных: числа и строки.  
+In the action’s properties there’s an input field — you can insert project and environment variables there, as well as constants. The **IF** block only works with two data types: numbers and strings.
 
-#### Для чего используется:  
-- Сравнить значения чисел;  
-- Сопоставить текстовые строки;  
-- Проверка условий.  
-_______________________________________________ 
-## Как работать с экшеном IF?  
-### Добавление в проект.    
-Через контекстное меню: **Добавить действие → Логика → If**.  
-
-![Добавление в проект.](./assets/IF/IF_pic6.png) 
-
-### Пример №1  
-**Рассмотрим простой пример для понимания этого оператора:**  
-
-![Пример №1](./assets/IF/IF_pic1.png) 
-  
-**1.** Создадим переменную `value1` и присвоим ей значение `1`.  
-**2.** Добавим кубик **IF** с помощью действий: ***Логика → If***.  
-**3.** В поле свойств кубика вставим операнд: `{-Variable.value1-}`  
-**4.** Добавим оператор *равно*: `==`  
-**5.** Вставим второе сравниваемое значение: константу `1`.  
-**6.** Если теперь запустить кубик, то он завершится по зеленой линии (*появится зеленая галочка*). Потому что значение верное (***True***), так как переменная `value1` равна `1`.  
-**7.** А вот если заменить значение переменной на `2`, то кубик завершится по красной линии (*появится красный крестик*). Так как значение не верное (***False***).  
-
-В этом примере мы использовали числовые данные и оператор сравнения `==`. А в следующем познакомимся с оператором **Не равно**: `!=`  
-_______________________________________________ 
-### Пример №2.  
-:::warning **Кавычки при сравнении значений.**  
-Для текстовых данных и переменных нужны **обязательно** (одинарные или двойные). А вот для чисел наоборот **не нужны**. Иначе сравнение будет работать некорректно.   
-:::  
-
-![Пример №2](./assets/IF/IF_pic2.png)  
-
-**1.** Создадим переменную `value1` и присвоим ей значение `“Hello World“`.  
-**2.** Добавим кубик **IF** с помощью действий: ***Логика → If***.  
-**3.** В поле свойств кубика вставим операнд: `{-Variable.value1-}`  
-**4.** Добавим оператор *не равно*: `!=`  
-**5.** Вставим второе сравниваемое значение: константу `“Hello World“`.  
-**6.** Если теперь запустить кубик, то он завершится по красной линии. Потому что значение ошибочное (***False***), так как переменные равны (а у нас оператор **Не равно**).   
-**7.** Когда мы поменяем значение переменной `value1` на `“Goodbye World“` и повторим кубик, то действие уже завершится по зеленой линии (***True***).  
-_______________________________________________ 
-### Пример №3  
-Сравнение можно также использовать для проверки того, загрузился ли на странице хоть какой-то текст.  
-
-![Пример №3](./assets/IF/IF_pic5.png)  
-
-**1.** Проверяем переменную окружения `{-Page.Text-}` на пустоту.  
-**2.** Если на странице нет текста (она пустая), то кубик выйдет по зеленой ветке (***True***).  
-**3.** Тогда можно перезагрузить страницу или поставить дополнительную паузу, ожидая подгрузки страницы.  
-
-Также кубик **IF** часто используется в циклах со счетчиком для сравнения с каким-либо максимальным значением.
-_______________________________________________ 
-## Доступные операторы.  
-:::info **Для логического сравнения, помимо кубика «IF», можно использовать аналогичный оператор из C# кода.** 
-::: 
-#### Таблица всех операторов:  
-| Оператор   |      Описание     |  Пример использования |
-|----------|:-------------:|------:|
-| `<` |  Меньше | `1<2` |
-| `>` |    Больше   |   `5>3` |
-| `<=` | Меньше или равно | `7 <= 10` |  
-| `>=` |  Больше или равно | `8 >= 8` |
-| `==` |    Равно   |   `“Привет” == “Привет”` |
-| `!=` | Не равно | `“Привет” != “Пока”` | 
-| `&&` |  Логическое **И** | `“Привет” != “Пока” && 5>3` |
-| &#124;&#124; |    Логическое **ИЛИ**   |  “День“ == “Ночь” &#124;&#124; 2 > 1  |  
-_______________________________________________ 
-### Оператор ИЛИ ||  
-Этот оператор записывается как двойной символ вертикального слэша. Он позволяет сравнить сразу несколько условий в цепи, которые будут вычисляться слева направо. Кубик выдаст истинное значение **True**, если хотя бы одно из условий оказалось верным. Тогда как для получения **False** нужно, чтобы все выражения оказались ложными.  
-
-![Оператор ИЛИ](./assets/IF/IF_pic3.png)  
-
-  
-**1.** Присвоим переменной `{-Variable.value1-}` значение `1`, а `{-Variable.value2-}` значение `12`.   
-**2.** В поле ввода экшена напишем строку: `{-Variable.value1-} > 0 || {-Variable.value2-} < 10`.  
-**3.** Несмотря на то, что второе равенство *неверное*, кубик все равно завершится по зеленой ветке. Так как оператор **ИЛИ** выдает ***True***, если хотя бы одно из сравнений **верное**.  
-**4.** Изменим значение первой переменной на `-6`, тогда кубик выдаст ***False***, потому что все значения **неверные**.  
-_______________________________________________ 
-### Оператор И &&  
-Оператор **И** пишется как два амперсанда `&&` и возвращает ***True***, когда все аргументы истинны, а если хотя бы одно ложное — ***False***.  
-
-Рассмотрим работу этого оператора на конкретном примере с текстовыми строками.  
-
-![Оператор И](./assets/IF/IF_pic4.png)
-
-В этом случае оба аргумента истинны. В переменной `value1` значение отличное от (**Не равно**) `“Hello“`, а в переменной `value2` как раз значение (**Равно**) `“World“`. Поэтому кубик завершается по зеленой ветке.   
-:::warning **Приоритет операторов.**  
-Приоритет оператора **И &&** больше, чем у **ИЛИ ||**, поэтому **И** выполняется в первую очередь, если они оба присутствуют в одном кубике.
-::: 
+#### What it’s used for:
+- Compare number values;
+- Match text strings;
+- Check conditions.
 _______________________________________________
-## Полезные ссылки.  
-- [**Переменные окружения**](../../pm/Creating/Variables).
-- [**Диапазоны значений**](../../pm/Creating/Value_Ranges). 
+## How to use the IF action?
+### Adding to the project.
+Through the context menu: **Add action → Logic → If**.
+
+![Adding to the project.](./assets/IF/IF_pic6.png)
+
+### Example #1
+**Let’s look at a simple example to understand how this operator works:**
+
+![Example #1](./assets/IF/IF_pic1.png)
+
+**1.** Create a variable `value1` and set it to `1`.
+**2.** Add the **IF** block via: ***Logic → If***.
+**3.** In the block properties field, insert the operand: `{-Variable.value1-}`
+**4.** Add the *equals* operator: `==`
+**5.** Insert the second value to compare: the constant `1`.
+**6.** If you run the block now, it’ll end on the green line (*a green check will appear*). That’s because the value is correct (***True***), since variable `value1` equals `1`.
+**7.** But if you change the variable value to `2`, the block will end on the red line (*a red cross will appear*). That’s because the value is wrong (***False***).
+
+In this example we used number data and the `==` comparison operator. Next, we’ll check out the Not Equals operator: `!=`
+_______________________________________________
+### Example #2.
+:::warning **Quotes when comparing values.**
+For text data and variables, you **must** use quotes (single or double). But for numbers they are **not needed**. Otherwise, the comparison won’t work right.
+:::
+
+![Example #2](./assets/IF/IF_pic2.png)
+
+**1.** Create a variable `value1` and set it to `“Hello World“`.
+**2.** Add the **IF** block like this: ***Logic → If***.
+**3.** In the block property field, insert the operand: `{-Variable.value1-}`
+**4.** Add the *not equals* operator: `!=`
+**5.** Insert the second value to compare: the constant `“Hello World“`.
+**6.** If you run the block now, it’ll end on the red line. That’s because the value is wrong (***False***), since the variables are equal (but we are using the Not Equals operator).
+**7.** When you change the variable `value1` to `“Goodbye World“` and run the block again, it’ll end on the green line (***True***).
+_______________________________________________
+### Example #3
+You can also use comparison to check if there’s at least some text loaded on a page.
+
+![Example #3](./assets/IF/IF_pic5.png)
+
+**1.** Check the environment variable `{-Page.Text-}` for emptiness.
+**2.** If there’s no text on the page (it’s empty), the block will go through the green branch (***True***).
+**3.** Then you can reload the page or add an extra pause, waiting for the page to load.
+
+The **IF** block is also often used in counter loops to compare with some maximum value.
+_______________________________________________
+## Available operators.
+:::info **For logical comparison, you can also use a similar operator from C# code, as well as the IF block.**
+:::
+#### Table of all operators:
+| Operator  |      Description     |  Usage example |
+|----------|:-------------:|------:|
+| `<` |  Less than | `1<2` |
+| `>` |  Greater than   |   `5>3` |
+| `<=` | Less than or equal | `7 <= 10` |  
+| `>=` |  Greater than or equal | `8 >= 8` |
+| `==` |    Equal   |   `“Hello” == “Hello”` |
+| `!=` | Not equal | `“Hello” != “Bye”` |
+| `&&` |  Logical **AND** | `“Hello” != “Bye” && 5>3` |
+| &#124;&#124; |    Logical **OR**   |  “Day“ == “Night” &#124;&#124; 2 > 1  |
+_______________________________________________
+### The OR operator ||
+This operator is written as two vertical slashes. It lets you compare several conditions in a chain, going left to right. The block will output **True** if at least one of the conditions came out true. To get **False**, all the conditions have to be false.
+
+![OR Operator](./assets/IF/IF_pic3.png)
+
+**1.** Set variable `{-Variable.value1-}` to `1`, and `{-Variable.value2-}` to `12`.
+**2.** In the action’s input field, write: `{-Variable.value1-} > 0 || {-Variable.value2-} < 10`.
+**3.** Even though the second comparison is *not correct*, the block still ends on the green branch. That’s because **OR** returns ***True*** if at least one comparison is **true**.
+**4.** Change the first variable’s value to `-6` — then the block gives ***False***, because all values are **false**.
+_______________________________________________
+### The AND operator &&
+The **AND** operator is written as two ampersands `&&` and returns ***True*** when all arguments are true, and ***False*** if even one is false.
+
+Let’s see how this operator works with text strings.
+
+![AND Operator](./assets/IF/IF_pic4.png)
+
+In this case both arguments are true. Variable `value1` is not (**Not equal**) to `“Hello“`, and `value2` is exactly (**Equal**) to `“World“`. So the block ends on the green branch.
+:::warning **Operator precedence.**
+The **AND &&** operator has higher precedence than **OR ||**, so **AND** runs first if they’re both in the same block.
+:::
+_______________________________________________
+## Useful links.
+- [**Environment Variables**](../../pm/Creating/Variables).
+- [**Value ranges**](../../pm/Creating/Value_Ranges).
 - [**BadEnd**](./BadEnd).
-
-
-

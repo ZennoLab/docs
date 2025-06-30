@@ -1,122 +1,121 @@
 ---
 sidebar_position: 3
-title: HTTP-запросы
-description: Остальные типы запросов
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-_______________________________________________  
-С помощью этого экшена можно создать любой тип HTTP-запроса:  
-- **Put** — полностью обновляет информацию;   
-- **Delete** — удаляет записи;  
-- **Head** — получает только заголовки ответа, без содержимого;  
-- **Options** — запрашивает информацию о поддерживаемых методах;  
-- **Patch** — частично обновляет записи;  
-- **Trace** — диагностический запрос для отладки.  
+title: HTTP Requests
+description: Other types of requests
+---
+:::info Please read [*The rules for using materials on this site*](../../Disclaimer).
+:::
+_______________________________________________
+With this action, you can create any type of HTTP request:
+- **Put** – completely updates information
+- **Delete** – deletes records
+- **Head** – gets only response headers, without the content
+- **Options** – requests information about supported methods
+- **Patch** – partially updates records
+- **Trace** – diagnostic request for debugging
 
-А для запросов [**GET**](./GET) и [**POST**](./POST) есть отдельные экшены.
-_______________________________________________ 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → HTTP → HTTP-запрос**.  
+There are separate actions for [**GET**](./GET) and [**POST**](./POST) requests.
+_______________________________________________
+### How to add it to your project?
+Use the context menu: **Add action → HTTP → HTTP Request**
 
-![Как добавить в проект?](./assets/HTTP/HTTP_pic1.png)
-_______________________________________________ 
-## Вкладка «Основные»   
-![Вкладка «Основные»](./assets/HTTP/HTTP_pic2.png)  
-_______________________________________________  
-### Тип запроса.  
-Выбираем необходимый запрос из списка.  
-### URL.  
-Целевой адрес сайта (ссылка), по которому будет отправлен запрос. *Можно использовать переменную*.  
-_______________________________________________ 
-### Referer.  
-Заголовок [**Referer**](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer) используется для указания URL-адрес, с которого пользователь пришел на текущую страницу. Он помогает анализировать трафик и узнавать, с какого ресурса переходят чаще всего.  
+![How to add to your project?](./assets/HTTP/HTTP_pic1.png)
+_______________________________________________
+## “Main” Tab
+![“Main” Tab](./assets/HTTP/HTTP_pic2.png)
+_______________________________________________
+### Request type.
+Pick the request you need from the list.
+### URL.
+The target website address (link) where the request will be sent. *You can use a variable*.
+_______________________________________________
+### Referer.
+The [**Referer**](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer) header is used to specify the URL from which a user came to the current page. It helps analyze traffic and see which sources users come from most often.
 
-:::warning **Заголовок *Referer* может раскрыть информацию об истории посещённых страниц, что может привести к нарушению приватности.**
-:::  
-_______________________________________________ 
-### Кодировка.  
-Выбираем кодировку для запроса.  
-_______________________________________________ 
-### Таймаут.  
-Максимальное время ожидания ответа от сайта в секундах.  
-При достижении установленного времени, действие будет завершено ошибкой и выйдет по *красной ветке*.  
-Можно использовать макросы переменных.  
-_______________________________________________   
+:::warning The *Referer* header can reveal information about your browsing history, which may lead to privacy issues.
+:::
+_______________________________________________
+### Encoding.
+Pick the encoding for the request.
+_______________________________________________
+### Timeout.
+Max wait time for a response from the site, in seconds.
+If it reaches the set limit, the action will end with an error and go through the *red branch*.
+You can use variable macros.
+_______________________________________________
 
-### Данные.  
-Тут пишем сам текст запроса.  
-_______________________________________________ 
-### Тип данных.  
-Здесь мы выбираем, какие данные будут отправлены в запросе. Указанный тип будет передан в заголовке как [***Content-Type***](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type).  
+### Data.
+Write the request body here.
+_______________________________________________
+### Data type.
+Here you pick what kind of data will be sent in the request. The set type will be passed in the header as [***Content-Type***](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type).
 
-Доступные варианты:  
-#### urlencoded.  
+Available options:
+#### urlencoded.
 :::info ***`Content-Type: application/x-www-form-urlencoded`***
-:::  
+:::
 
-Стоит использовать, когда на сервер отсылается *текстовая информация*. В поле **Данные** она указывается в формате:  
-`имяпараметра1=значение1&имяпараметра2=значение2`  
+Use this when you’re sending *text information* to the server. In the **Data** field, specify it like this:
+`parametername1=value1&parametername2=value2`
 
-#### multipart.  
+#### multipart.
 :::info ***`Content-Type: multipart/form-data`***
-:::  
-Этот тип используется, когда в запросе отправляются *двоичные данные (файлы)* на сервер.  
+:::
+This type is used when you’re sending *binary data (files)* to the server.
 
-#### Другой.  
-Вы можете задать любой другой тип данных, если два заготовленных не подходят.  
+#### Other.
+You can set any other data type if the two default ones aren’t what you need.
 
-Например, для взаимодействия с API [**CapMonster Cloud**](https://docs.capmonster.cloud/ru/docs/category/api) нужно отправлять POST-запрос в формате JSON. Для этого указываем в **Типе данных** `application/json`   
-_______________________________________________ 
-### Загружать.  
-#### Только содержимое.  
-В переменную будет сохранено только тело ответа.  
-  
-#### Только заголовки.  
-Сохранятся только заголовки.   
+For example, to work with the [**CapMonster Cloud**](https://docs.capmonster.cloud/ru/docs/category/api) API, you need to send POST requests in JSON format. For this, set **Data type** to `application/json`
+_______________________________________________
+### Download.
+#### Content only.
+Only the response body will be saved to the variable.
 
-#### Заголовки и содержимое.  
-В переменную сохранятся и заголовок ответа, и его тело, разделенные двумя пустыми строками.    
+#### Headers only.
+Only the headers will be saved.
 
-#### Как файл.  
-Выбирайте этот режим, если нужно скачать файл с помощью запроса.  
-В переменную сохранится путь к скачанному файлу.  
+#### Headers and content.
+The variable will get both the response headers and the body, separated by two blank lines.
 
-:::info **По умолчанию файлы скачиваются в папку `Trash` в директории с программой.**  
-Путь может выглядеть так:  
-`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`  
+#### As file.
+Pick this mode if you need to download a file via the request.
+The variable will get the path to the downloaded file.
 
-Изменить его можно в настройках, но только глобально для всех проектов. 
-:::  
+:::info By default, files are saved to the `Trash` folder inside the program’s directory.
+The path might look like this:
+`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`
 
-#### Как файл + заголовки.  
-В переменную сохранятся заголовки ответа и путь к скачанному файлу.  
-_______________________________________________  
-### Положить в переменную.  
-Здесь надо выбрать (или создать новую) переменную, в которую будет сохранён результат запроса.  
-_______________________________________________  
-## Вкладка «Дополнительно».  
-![Вкладка «Дополнительно»](./assets/GET/GET_pic3.png)
-_______________________________________________ 
-### Редирект.  
-Используется для установки перенаправления. Если ответ на запрос будет содержать *код редиректа*, то ZennoDroid перейдет к следующей странице, используя заголовок ***Location***.  
+You can change this in the settings, but only for all projects at once.
+:::
 
-Здесь мы цифрами указываем максимальное количество переходов. К примеру, `0` — остаться на исходной странице, `5` — количество переходов до конечного URL.  
-_______________________________________________ 
-### Использовать оригинальный URL.  
-Когда эта опция включена, кодирование URL из вкладки «Основные» будет отменено. Пример:  
-- **URL по умолчанию (с кодированием)**:  
-`https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5`  
-- **Оригинальный URL**:  
-`https://ru.wikipedia.org/wiki/Приветствие`  
-_______________________________________________ 
-### Заголовки.  
-#### Использовать по умолчанию.  
-В запрос будут подставлены заголовки по умолчанию. Заголовок `Host` меняется в зависимости от адреса в запросе.  
+#### As file + headers.
+The variable will contain the response headers and the path to the downloaded file.
+_______________________________________________
+### Put in variable.
+Here you need to pick (or create) a variable to save the request’s result.
+_______________________________________________
+## “Advanced” Tab
+![“Advanced” Tab](./assets/GET/GET_pic3.png)
+_______________________________________________
+### Redirect.
+Used for setting up redirects. If the response has a *redirect code*, ZennoDroid will go to the next page using the ***Location*** header.
+
+Enter the max number of redirects as a number. For example, `0` — stay on the original page, `5` — up to 5 redirects until the final URL.
+_______________________________________________
+### Use original URL.
+When this option is on, URL encoding from the “Main” tab will be skipped. Example:
+- **Default URL (with encoding):**
+`https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5`
+- **Original URL:**
+`https://ru.wikipedia.org/wiki/Приветствие`
+_______________________________________________
+### Headers.
+#### Use default.
+Default headers will be added to the request. The `Host` header changes based on the address in the request.
 
 <details>
-<summary>**Пример ответа при запросе *https://httpbin.org/get*.**</summary>
-<!--All you need is a blank line-->
+<summary>**Example response when requesting *https://httpbin.org/get*.**</summary>
 
    ```
 Host: httpbin.org
@@ -125,82 +124,81 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Encoding: gzip, deflate
 Accept-Language: en-US,en;q=0.5
    ```
-</details>  
+</details>
 
-#### Текущий профиль.  
-Будут подставлены заголовки из текущего ***профиля проекта***.  
+#### Current profile.
+Headers from the current ***project profile*** will be used.
 
-#### Загрузить из профиля.  
-Необходимо выбрать файл или указать переменную, содержащую путь до профиля, из которого будут загружены заголовки для запроса.  
+#### Load from profile.
+You’ll need to pick a file or specify a variable with the path to a profile with headers to load for the request.
 
-#### Пользовательские настройки.  
-![Пользовательские настройки](./assets/GET/GET_pic5.png)  
+#### Custom settings.
+![Custom settings](./assets/GET/GET_pic5.png)
 
-Позволяет самостоятельно указать каждый параметр заголовка, следуя правилам:  
-- :warning: Первой **всегда указывается строка User-Agent!** И только потом все остальные заголовки.  
-- Каждый заголовок начинается с новой строчки.  
-- Можно указать *статичные значения*, *свои переменные* или *переменные профиля*.  
-_______________________________________________ 
-### Использовать CookieContainer.  
-С помощью этой опции можно синхронизировать куки с целым браузером или между отдельными запросами. Вам не понадобится вручную их парсить и подставлять.  
+You can set each header yourself, following these rules:
+- :warning: The first line must *always be the User-Agent*! Only then all other headers.
+- Each header starts on a new line.
+- You can use *static values*, *your own variables*, or *profile variables*.
+_______________________________________________
+### Use CookieContainer.
+With this option, you can sync cookies with the whole browser or between separate requests. You won’t have to parse and insert them manually.
 
 <details>
-<summary>**Пример использования.**</summary>
-<!--All you need is a blank line-->
+<summary>**Example of use.**</summary>
 
-   Представим, что наш проект работает с сайтом, используя запросы. Для работы нужно быть авторизованным. При этом процесс авторизации крайне сложен для повторения его через запросы. Поэтому для входа на сайт используем браузерный режим.  
+   Let’s say your project works with a site using requests. To work, you need to be logged in. But the login process is too hard to repeat via requests. So you use browser mode to log in.
 
-   После авторизации ***отключаем браузер*** и начинаем работать с запросами. С включенной опцией **Использовать CookieContainer** куки будут автоматически синхронизированы между браузером и запросами, их не придется подставлять вручную.    
+   After you’re logged in, ***turn off the browser*** and start working with requests. If **Use CookieContainer** is enabled, cookies will sync automatically between browser and requests — you don’t have to insert them yourself.
 
-    Если при одном из запросов сайт вернет новое значение кук, то оно автоматически синхронизируется с браузером и будет использовано в дальнейшем.
-</details>  
-_______________________________________________ 
-### Сookie.  
-:::info **Данное поле ввода отображается только при отключении прошлой опции.**
-:::    
-
-![Сookie](./assets/GET/GET_pic4.png) 
-
-Можно указать готовые куки или взять из переменной.  
-
-**Формат:** `имя=значение`, несколько значений разделяются через `;`  
-***Пример:*** `user=1992103;session=f79fcadd847b80f9df78ba4fb276c867;id=889`  
-_______________________________________________ 
-## Вкладка «Прокси».  
-![Вкладка «Прокси»](./assets/GET/GET_pic6.png)  
-_______________________________________________ 
-### Без прокси.  
-Экшен будет работать через реальный IP компьютера или сервера.  
-_______________________________________________ 
-### Строка формата.  
-![Строка формата](./assets/GET/GET_pic7.png)  
-
-Указываем прокси в формате (можно указать переменную):  
-- ***С авторизацией***. `socks5://логин:пароль@ip:port` или `http://логин:пароль@ip:port`  
-- ***Без авторизации***. `socks5://ip:port` или `http://ip:port`  
-- ***Без указания протокола (по умолчанию http://)***. `логин:пароль@ip:port` или `ip:port`  
-_______________________________________________ 
-### Другой.  
-![Другой](./assets/GET/GET_pic8.png)  
-
-Выбираем в том случае, если нужно указать детальные настройки прокси.  
-Тип прокси, данные авторизации, адрес и порт уточняйте у поставщика услуг.  
-Во всех полях можно использовать переменные.  
-
-:::info **Если не указан протокол, то по умолчанию используется http://**
-:::  
-_______________________________________________ 
-## Способ передачи запроса.
-В ZennoDroid есть два метода работы с запросами:  
-- **Стандартный**. Стоит по умолчанию (библиотека Chilkat).  
-- **Альтернативный**. Наша собственная разработка.  
-
-Если при работе с HTTP-запросами что-то работает неправильно, то попробуйте переключиться на альтернативный метод.  
-Сделать это можно через **Настройки →  Выполнение → Использовать альтернативный способ передачи HTTP-запросов**.  
-
-![Использовать альтернативный способ](./assets/GET/GET_pic9.png) 
+   If one of your requests gets new cookies, they’ll be synced automatically with the browser and used in the future.
+</details>
 _______________________________________________
-## Полезные ссылки.    
-- [**Основы HTTP**](https://habr.com/ru/articles/813395/)  
-- [**Как использовать cURL с прокси**](https://blog.capmonster.cloud/ru/blog/bypass-captcha/how-to-use-curl-with-proxy)  
-- [**Что такое парсинг сайтов и зачем он нужен?**](https://blog.capmonster.cloud/ru/blog/sel-1/what-is-website-parsing-and-why-do-you-need-it).
+### Cookie.
+:::info **This input is shown only if the previous option is off.**
+:::
+
+![Cookie](./assets/GET/GET_pic4.png)
+
+You can enter ready-made cookies or use a variable.
+
+**Format:** `name=value`, several values separated by `;`
+***Example:*** `user=1992103;session=f79fcadd847b80f9df78ba4fb276c867;id=889`
+_______________________________________________
+## “Proxy” Tab
+![“Proxy” Tab](./assets/GET/GET_pic6.png)
+_______________________________________________
+### No proxy.
+The action will use the computer or server’s real IP.
+_______________________________________________
+### Format string.
+![Format string](./assets/GET/GET_pic7.png)
+
+Enter the proxy in the format (you can use a variable):
+- ***With authentication***. `socks5://username:password@ip:port` or `http://username:password@ip:port`
+- ***No authentication***. `socks5://ip:port` or `http://ip:port`
+- ***No protocol (defaults to http://)***. `username:password@ip:port` or `ip:port`
+_______________________________________________
+### Other.
+![Other](./assets/GET/GET_pic8.png)
+
+Pick this if you need to set detailed proxy settings.
+Proxy type, auth data, address, and port — get them from your provider.
+You can use variables in all fields.
+
+:::info **If no protocol is set, http:// is used by default**
+:::
+_______________________________________________
+## Method of sending the request.
+ZennoDroid has two ways to work with requests:
+- **Standard**. Enabled by default (Chilkat library).
+- **Alternative**. Our own development.
+
+If something works wrong with HTTP requests, try switching to the alternative method.
+You can do this through **Settings → Execution → Use alternative method for HTTP requests**.
+
+![Use alternative method](./assets/GET/GET_pic9.png)
+_______________________________________________
+## Useful links.
+- [**HTTP Basics**](https://habr.com/ru/articles/813395/)
+- [**How to use cURL with a proxy**](https://blog.capmonster.cloud/ru/blog/bypass-captcha/how-to-use-curl-with-proxy)
+- [**What is web scraping and why do you need it?**](https://blog.capmonster.cloud/ru/blog/sel-1/what-is-website-parsing-and-why-do-you-need-it).

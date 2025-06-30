@@ -1,190 +1,190 @@
 ---
 sidebar_position: 2
-title: Операции над списком
-description: Как работать со списками.
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-::: 
+title: List operations
+description: How to work with lists.
+---
+:::info **Please check out the [*Rules for using materials on this resource*](../../Disclaimer).**
+:::
 
-Списки нужны для получения строк данных из текстового документа, либо для записи данных в файл.  
-Например, есть файл со списком URL, на которые нужно зайти по очереди. Или же вы парсите какие-то значения с сайта (например, e-mail адреса) и нужно их отсортировать, удалить дубли и сохранить в файл.  
-_______________________________________________ 
-## Как добавить этот экшен в проект?  
-Из контекстного меню: ***Добавить действие → Списки → Операции над списком***.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic1.png)    
-
-### Для чего используется?  
-- Добавление и получение элементов списка;  
-- Удаление строк и дублей;  
-- Привязка к файлу;  
-- Получение количества строк;  
-- Перемешивание;  
-- Сортировка значений;  
-_______________________________________________ 
-## Как работать с экшеном?  
-После добавления экшена в проект в его свойствах нам нужно выбрать список, с которым будем работать, а затем действие для выполнения.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic2.png)    
-_______________________________________________ 
-**Рассмотрим подробнее каждое доступное действие:**  
-### Выделить подсписок.  
-Выполняет выделение части строк из списка.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic3.png)   
-
-- **Список.** Выбираем список, в который будет сохранен результат.  
-- **Диапазон.** Способ фильтрации подсписка. Также для выбора доступны:  
-    - *Элементы, не содержащие текст.*  
-    Выберет все строки которые не содержат заданный текст. Можно использовать переменные.  
-    - *Элементы, не удовлетворяющие регулярному выражению.*  
-    Критерии поиска задаются с помощью Regex (регулярных выражений).  
-    - *Элементы, содержащие текст.*  
-    Выберет значения, которые содержат необходимый текст. Можно использовать переменные.  
-    - *Элементы, удовлетворяющие регулярному выражению.*  
-    Критерии поиска задаются с помощью Regex (регулярных выражений).  
-- **Поле для ввода критериев.** Указываются значения, соответствующие прошлому пункту.  
-- **Удалить строки после взятия.** Будут удалены строки, которые попали под критерии поиска.  
-- **Выходить по ошибке, если список пуст.** Если список пустой, то выполнение проекта пойдёт по красной ветке.  
-_______________________________________________ 
-### Добавить данные из списка.  
-Добавление данных из одного списка в другой.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic4.png)    
-
-- **Список.** Выбираем список, в который будет сохранен результат.  
-- **Куда.** В какую позицию поместим результат: `в конец`, `в начало`, `в позицию`.  
-- **В позицию.** Если выбрали этот вариант, то в соседнем поле нужно указать номер строки или переменную.  
-
-:::info *При копировании строки не удаляются из исходного списка.*
-:::  
-_______________________________________________ 
-### Добавить строку.  
-Добавление строки в список.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic5.png)  
-
-**1.** Выбираем список, в который будем добавлять строку.  
-**2.** Устанавливаем функцию.  
-**3.** Вносим значение или переменную.  
-**4.** В какую позицию поместим результат: `в конец`, `в начало`, `в позицию`.  
-**5.** Если выбрали `в позицию`, то в соседнем поле нужно указать номер строки или переменную.  
-***Подчеркнуто красной линией***. Значение, которое копируем в данном примере.  
-_______________________________________________ 
-### Добавить текст.  
-Добавляет текст в существующий список.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic6.png)   
-
-**1.** Выбираем список, в который будем добавлять текст.  
-**2.** Устанавливаем функцию.  
-**3.** Текст или набор символов для добавления в список, можно указать переменную. 
-**4.** В какую позицию поместим результат: `в конец`, `в начало`, `в позицию`.  
-**5.** Добавлять пустые строки в случае отсутствия текста.  
-_______________________________________________ 
-### Объединить элементы списка.  
-Объединение элементов списка с указанием разделителя и возможностью записи в переменную.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic7.png)   
-
-- **Разделитель.**  
-    - *Новая строка.* Каждый элемент списка будет записан с новой строки.  
-    - *Свой.* Указываем свой текст или символы, которые будут вставлены между элементами списка.  
-    - *Указанный в списке.* Используется разделитель из настроек списка.  
-- **Положить в переменную**. Переменная для записи данных после обработки.  
-
-### Перемешать элементы списка.  
-Размещает элементы в списке в случайном порядке.  
-
-:::info *Изменение позиции не влечет за собой потери значений строки.*
-:::  
-_______________________________________________ 
-### Получить количество строк.  
-Позволяет узнать количество строк в списке.  
-
-#### Критерии поиска:  
-- Все;
-- Не содержат текст;  
-- Не удовлетворяет регулярному выражению;
-- Со значением;
-- Содержат текст;
-- Удовлетворяет регулярному выражению;  
-
-:::info *Переменная всегда будет содержать только цифровое значение.*
-:::   
-_______________________________________________ 
-### Получить строку.  
-Эта функция получает строку, а также дает возможность удалить ее из списка и записать в переменную.  
-
-- **Критерии поиска:** 
-    - *Не содержит текст*;
-    - *Не удовлетворяет регулярному выражению*;
-    - *Первую*;
-    - *По номеру*;
-    - *Случайную*;
-    - *Удовлетворяет регулярному выражению*;  
-- **Удалить строку после взятия**. Когда выбранная строка возьмется из списка, то после этого будет удалена.  
-- **Положить в переменную**. Здесь указываем кастомную переменную, в которую мы положим скопированную строку.  
-_______________________________________________ 
-### Привязать к файлу. 
-Привязка списка к файлу в ходе выполнения проекта.  
-
-- **Путь к файлу**. Выбираем конкретный файл или указываем переменную, содержащую путь к нему.  
-- **Создавать файл при отсутствии.** Если файл отсутствует по указанному пути, то он будет автоматически создан.  
-_______________________________________________ 
-### Сортировать.  
-Сортировка элементов списка по убыванию или возрастанию.  
-
-- **Сортировать как числа, если это возможно.** Использовать принцип сортировки как у чисел.  
-- **Тип сортировки**. По возрастанию или убыванию.  
-
-:::info *Не всегда буквенные и символьные строки можно упорядочить.*
-:::  
-_______________________________________________ 
-### Сохранить в файл.  
-Сохраняет список в файл.  
-
-- **Разделитель**. Устанавливает разделитель:  
-    - *Новая строка*;  
-    - *Свой*;  
-    - *Указанный в списке*;  
-- **Путь к файлу**. Выбираем файл или указываем переменную, содержащую путь к файлу.    
-- **Дописывать в конец файла**. Позволяет записывать новые данные в файл или перезаписывать его полностью.  
-_______________________________________________ 
-### Удалить дубли.  
-Удаление повторяющихся строк в списке.  
-
-:::info *Для обработки файла с большим количеством строк может потребоваться время.*
-:::  
-_______________________________________________ 
-### Удалить строки.  
-Удаляет строки из списка с заданными критериями.  
-
-- **Критерии удаления строк:** 
-    - *Все*;
-    - *Не содержащие текст*;
-    - *Не удовлетворяющие регулярному выражению*;
-    - *Первую*;
-    - *Под номерами (можно использовать диапазоны)*;
-    - *Со значением*;  
-    - *Содержащие текст*;
-    - *Содержащие только пробельные символы*;
-    - *Удовлетворяющие регулярному выражению*;  
-_______________________________________________ 
-### Пример работы со списками.  
-Представим, что нам необходимо перейти по всем страницам из списка + собрать их названия + положить в другой список.  
-
-![Как добавить этот экшен в проект? ](./assets/Work_with_Lists/Work_with_Lists_pic8.png)   
-
-**1.** Создаём `Список_1` с несколькими страницами, предварительно привязав его к файлу.  
-**2.** Удаляем дубли, чтобы не переходить на страницу дважды.  
-**3.** Создаём `Список_2` и привязываем его к файлу.  
-**4.** Парсим необходимую информацию со страниц `Список_1` и копируем ее в `Список_2`.  
-**5.** Удаляем дубли.  
-
-Таким образом можно наполнять списки нужной информации для дальнейшей обработки и использования.
+Lists are used for getting lines of data from a text document or for saving data to a file.
+For example, you have a file with a list of URLs you need to visit one by one. Or maybe you’re parsing some values from a website (like e-mail addresses), and you need to sort them, remove duplicates, and save them to a file.
 _______________________________________________
-## Полезные ссылки.  
-- [**Диапазоны значений**](../../pm/Creating/Value_Ranges). 
-- [**Переменные окружения**](../../pm/Creating/Variables).  
-- [**Создание списка**](./Lists).
+## How do you add this action to your project?
+From the context menu: ***Add action → Lists → List operations***.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic1.png)
+
+### What’s it used for?
+- Adding and getting list items
+- Deleting lines and duplicates
+- Linking to a file
+- Getting the number of lines
+- Shuffling
+- Sorting values
+_______________________________________________
+## How to work with the action?
+After you add the action to the project, go to its properties, pick the list you want to work with, and then select the action you need.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic2.png)
+_______________________________________________
+**Let’s look at each available action in detail:**
+### Select a sublist
+Selects part of the lines from the list.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic3.png)
+
+- **List.** Choose the list where the result will go.
+- **Range.** How you want to filter the sublist. You can also pick:
+    - *Items not containing the text.*
+    This will pick all lines that don't have the given text. You can use variables.
+    - *Items not matching a regular expression.*
+    Set the search criteria using Regex (regular expressions).
+    - *Items containing the text.*
+    Picks the values that have the needed text. You can use variables.
+    - *Items matching a regular expression.*
+    Set the search criteria using Regex (regular expressions).
+- **Field for criteria.** Enter the values you want based on the previous point.
+- **Delete lines after picking.** Lines that match the criteria will be deleted.
+- **Stop with error if the list is empty.** If the list is empty, the project will switch to the red branch.
+_______________________________________________
+### Add data from a list
+Add data from one list to another.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic4.png)
+
+- **List.** Choose the list where the result will go.
+- **Destination.** Where to put the result: `to end`, `to start`, `to position`.
+- **To position.** If you picked this, enter the line number or a variable in the next field.
+
+:::info *When you copy, lines are not removed from the source list.*
+:::
+_______________________________________________
+### Add a line
+Add a line to a list.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic5.png)
+
+**1.** Pick the list you want to add a line to.
+**2.** Set the function.
+**3.** Enter a value or variable.
+**4.** Where to put the result: `to end`, `to start`, `to position`.
+**5.** If you picked `to position`, enter the line number or variable in the next field.
+***Marked with a red line.*** The value being copied in this example.
+_______________________________________________
+### Add text
+Adds text to an existing list.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic6.png)
+
+**1.** Pick the list you want to add text to.
+**2.** Set the function.
+**3.** Text or set of characters to add to the list (you can use a variable).
+**4.** Where to put the result: `to end`, `to start`, `to position`.
+**5.** Add empty lines if there’s no text.
+_______________________________________________
+### Join list items
+Join list items with a chosen separator and optionally save to a variable.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic7.png)
+
+- **Separator.**
+    - *New line.* Each item will be written on a new line.
+    - *Custom.* Enter your text or characters, which will go between the list items.
+    - *Defined in the list.* Uses the separator from the list settings.
+- **Save to variable.** Variable for storing the result after processing.
+
+### Shuffle list items
+Shuffles the items in the list randomly.
+
+:::info *Changing positions doesn’t mean you lose the line values.*
+:::
+_______________________________________________
+### Get line count
+Lets you find out how many lines are in the list.
+
+#### Filter options:
+- All;
+- Don’t contain text;
+- Don’t match a regex;
+- With a value;
+- Contain text;
+- Match a regex;
+
+:::info *The variable will always only have a numeric value.*
+:::
+_______________________________________________
+### Get line
+This function gets a line, and you can also remove it from the list and save it to a variable.
+
+- **Filter options:**
+    - *Doesn’t contain text;*
+    - *Doesn’t match regex;*
+    - *First;*
+    - *By number;*
+    - *Random;*
+    - *Matches regex;*
+- **Delete line after picking.** Once you’ve taken a line from the list, it’ll be deleted after.
+- **Save to variable.** Here you set your custom variable where the copied line will go.
+_______________________________________________
+### Link to a file
+Links the list to a file while the project runs.
+
+- **Path to file.** Pick a specific file or set a variable with the path.
+- **Create file if not found.** If there’s no file at the given path, one will be created automatically.
+_______________________________________________
+### Sort
+Sorts list items in ascending or descending order.
+
+- **Sort as numbers if possible.** Use numeric sorting when you can.
+- **Sort type.** Ascending or descending.
+
+:::info *You can’t always sort alphabetic and symbol-only lines in order.*
+:::
+_______________________________________________
+### Save to file
+Saves the list to a file.
+
+- **Separator.** Sets what to use as separator:
+    - *New line;*
+    - *Custom;*
+    - *Defined in the list;*
+- **Path to file.** Pick a file or set a variable with the file path.
+- **Append to the end of the file.** Lets you add new data to a file or overwrite it completely.
+_______________________________________________
+### Remove duplicates
+Removes repeating lines in the list.
+
+:::info *It may take a while to process a file with many lines.*
+:::
+_______________________________________________
+### Delete lines
+Removes lines from the list with set criteria.
+
+- **Criteria for removing lines:**
+    - *All;*
+    - *Not containing text;*
+    - *Not matching regex;*
+    - *First;*
+    - *By numbers (ranges allowed);*
+    - *With a value;*
+    - *Containing text;*
+    - *Containing only whitespace;*
+    - *Matching regex;*
+_______________________________________________
+### Example: working with lists
+Let’s say you need to go through all pages in a list + collect their titles + put them in another list.
+
+![How do you add this action to your project?](./assets/Work_with_Lists/Work_with_Lists_pic8.png)
+
+**1.** Create `List_1` with several pages and first link it to a file.
+**2.** Remove duplicates so you won’t visit the same page twice.
+**3.** Create `List_2` and link it to a file.
+**4.** Parse the needed info from the `List_1` pages and copy it to `List_2`.
+**5.** Remove duplicates.
+
+This way, you can fill lists with the data you need for later use and processing.
+_______________________________________________
+## Useful links
+- [**Value ranges**](../../pm/Creating/Value_Ranges)
+- [**Environment variables**](../../pm/Creating/Variables)
+- [**Creating a list**](./Lists)

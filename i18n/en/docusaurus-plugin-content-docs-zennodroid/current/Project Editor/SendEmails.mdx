@@ -1,57 +1,57 @@
 ---
 sidebar_position: 2
-title: Отправить почту
-description: Как отправить электронное письмо?
+title: Send Email
+description: How do I send an email?
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Rules for Using Materials on This Resource*](../Disclaimer).**
 :::  
 _______________________________________________  
-## Описание.   
-С этим экшеном вы можете отправить письмо на любой адрес электронной почты, используя SMTP сервер.  
+## Description  
+With this action, you can send an email to any address using an SMTP server.
 
-Подходит для:  
-- Отправки уведомления о событиях в проекте (успешное выполнение, возникла ошибка и так далее);  
-- Передачи сообщений на указанные адреса со своего ящика;  
+Good for:
+- Sending notifications about events in a project (successful completion, errors, and so on)
+- Sending messages to specified addresses from your own mailbox
 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Работа с почтой → Отправить почту**.  
+### How to add it to your project?  
+From the context menu: **Add action → Work with mail → Send email**
 
-![Как добавить в проект?](./assets/SendEmails/SendEmails_pic1.png)
+![How to add to project?](./assets/SendEmails/SendEmails_pic1.png)
 
 _______________________________________________ 
-## Как работать с экшеном?  
-:::info **Перед началом работы добавьте данные вашего ящика.**
-Сделать это можно в настройках программы в разделе [**Почта**](../Settings/Mailbox). Там указываются аккаунты, с которых будут отправляться письма.  
-:::  
+## How to work with this action?  
+:::info **Before you start, add your mailbox info.**
+You can do this in the program settings in the [**Mail**](../Settings/Mailbox) section. There you specify the accounts from which emails will be sent.
+:::
 
-![Как работать с экшеном?](./assets/SendEmails/SendEmails_pic2.png)  
+![How does this action work?](./assets/SendEmails/SendEmails_pic2.png)
 
-### Способ отправки.  
-Здесь отобразятся все почтовые ящики, которые вы добавили в [**Настройках программы**](../Settings/Mailbox). Выбираем из них один, с которого произведётся отправка.  
+### Send from
+Here you’ll see all the mailboxes you’ve added in [**Program Settings**](../Settings/Mailbox). Pick one to send your email from.
 
-Доступно использование [**Переменных проекта**](../Data/WorkWithVariables).  
+You can use [**Project Variables**](../Data/WorkWithVariables).
 
-### Кому.  
-Указываем Email-адрес получателя.
+### To  
+Enter the recipient’s email address.
 
-### Тема. 
-Задаём тему для нашего письма.
+### Subject  
+Set the subject line for your email.
 
-### Содержание.  
-Сюда помещаем основной текст сообщения. Поддерживается HTML-разметка.
+### Body  
+Here’s where you put the main text of your message. HTML is supported.
 
-### Тип содержимого.  
-#### TEXT.  
-Оставляем этот вариант, если хотим отправить обычый текст.  
-#### HTML.  
-Этот же пункт выбираем, когда содержимое включает HTML-разметку.
+### Content type  
+#### TEXT  
+Leave this selected if you want to send plain text.
+#### HTML  
+Pick this if your message contains HTML markup.
 
-### Прикрепить файлы.
-Вместе с письмом можно отправить любое количество файлов. В данном поле указывается путь к нужным файлам, каждый с новой строки.  
+### Attach files
+You can send any number of files with your email. Here, put the path to each file, one per line.
 
-Путь к файлам можно прописать вручную или выбрать через кнопку **Добавить**. Поддерживаются также [**Переменные проекта**](../Data/WorkWithVariables).  
+You can enter the path manually or select it using the **Add** button. [**Project Variables**](../Data/WorkWithVariables) are also supported.
 _______________________________________________  
-## Полезные ссылки.    
-- [**Принять почту**](./RecieveEmails).  
-- [**Настройки Почты**](../Settings/Mailbox).  
-- [**Окно переменных**](../pm/Interface/Variables)
+## Useful links
+- [**Receive email**](./RecieveEmails)
+- [**Mail Settings**](../Settings/Mailbox)
+- [**Variables window**](../pm/Interface/Variables)

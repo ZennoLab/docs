@@ -1,57 +1,55 @@
 ---
 sidebar_position: 4
-title: Пауза 
-description: Действие остановки проекта.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::   
+title: Pause
+description: Stopping project execution.
+---
+
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
+:::
 _______________________________________________
-Данное действие позволяет останавливать выполнение проекта на заданный в секундах промежуток времени.  
+This action lets you stop running the project for a set amount of time in seconds.
 
-Используется для:  
-- Ожидания полной загрузки приложения;  
-- Создания человеческого поведения с помощью случайных пауз;  
-- Задания промежутка времени между выполнениями действий;  
+Used for:
+- Waiting until the app fully loads
+- Making things look more human with random pauses
+- Setting pauses between different actions
 _______________________________________________
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Логика → Пауза**.  
+### How do I add it to my project?
+Through the context menu: **Add action → Logic → Pause**.
 
-![Как добавить в проект?](./assets/Pause/Pause_pic1.png)    
+![How do I add it to my project?](./assets/Pause/Pause_pic1.png)
 _______________________________________________
-## Как работать с экшеном?  
-:::info **Значение устанавливается в секундах.**  
-Если используются переменные, то значение должно быть цифровым.
-:::   
+## How does this action work?
+:::info **The value is set in seconds.**
+If you use variables, the value must be numeric.
+:::
 
-### Точная.  
-Проект остановит выполнение на указанное количество секунд. Значение можно задать вручную или через переменную.  
+### Exact pause.
+The project will stop for the exact number of seconds you set. You can enter a number or use a variable.
 
-![Точная](./assets/Pause/Pause_pic2.png)  
+![Exact pause](./assets/Pause/Pause_pic2.png)
 
-### Интервал.  
-Указывается пауза в заданном цифровом промежутке, можно использовать переменные.  
+### Interval pause.
+You set a pause within a certain range of seconds, you can use variables too.
 
-![Интервал](./assets/Pause/Pause_pic3.png)  
+![Interval pause](./assets/Pause/Pause_pic3.png)
 
-- **ОТ**. Минимальное время в секундах.  
-- **ДО**. Максимальная пауза в секундах (**НЕ ВКЛЮЧИТЕЛЬНО**).  
+- **FROM**. Minimum time in seconds.
+- **TO**. Maximum pause in seconds (**NOT INCLUDED**).
 
-Например, после настроек со скриншота проект уйдет в ожидание на время, выбранное случайным образом из диапазона от 20 до 59 секунд.  
+For example, with the settings in the screenshot, the project will wait for a randomly chosen time between 20 and 59 seconds.
 _______________________________________________
-### Пример.  
-Допустим, что нам нужно сделать несколько однотипных действий в приложении. Чтобы они не выглядели роботизировано из-за молниеносного выполнения, мы рекомендуем делать случайные паузы между действиями.  
+### Example.
+Say you need to do a few similar things in your app. So it doesn't look robotic because everything runs instantly, we suggest adding random pauses between actions.
 
-Это может выглядеть вот так:  
-1. Открываем приложение.  
-2. Выполняем необходимые действия.  
-3. Задаем паузу в интервале.  
-4. Снова выполняем действия.  
+It can look like this:
+1. Open the app.
+2. Do what you need to do.
+3. Set a pause within an interval.
+4. Do the next actions.
 
-Таким образом, выдерживая паузы между действиями, мы даем понять сайту, что работает *живой* пользователь, а не бот.
+Adding pauses like this makes the site think there's a *real* user, not a bot.
 _______________________________________________
-## Полезные ссылки.  
-- [**Диапазоны значений**](../../pm/Creating/Value_Ranges).
-- [**Обработка переменных**](../../Data/WorkWithVariables). 
-
-
-
+## Helpful Links.
+- [**Value ranges**](../../pm/Creating/Value_Ranges)
+- [**Working with variables**](../../Data/WorkWithVariables)

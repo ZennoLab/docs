@@ -1,166 +1,164 @@
 ---
 sidebar_position: 3
-title: Запуск программ
-description: Запуск сторонних приложений.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-_______________________________________________  
-## Описание.  
-Экшен служит для запуска сторонних программ. Таких как:  
-| Десктопные программы  | Консольные утилиты | 
+title: Running Programs
+description: Launching third-party applications.
+---
+:::info **Please read the [*Terms of Use for materials on this site*](../../Disclaimer).**
+:::
+_______________________________________________
+## Description.
+This action lets you launch third-party programs. For example:
+| Desktop programs     | Console utilities    |
 |:--:| :--:|
-| Notepad, WinRar, Paint | ffmpeg, ImageMagick | 
+| Notepad, WinRar, Paint | ffmpeg, ImageMagick |
 
-#### Как можно использовать:  
-- [**ImageMagick**](https://imagemagick.org). Набор утилит для чтения и редактирования файлов множества графических форматов (изображений).  
-- [**FFmpeg**](https://ffmpeg.org). Библиотеки с открытым исходным кодом. Позволяют записывать, конвертировать и передавать цифровые аудио- и видеозаписи в различных форматах.   
-- Запуск скриптов на [**Python**](https://www.python.org) и других языках программирования.  
-- Работа с любыми другими приложениями.  
+#### How you can use it:
+- [**ImageMagick**](https://imagemagick.org). A set of utilities for reading and editing files in many graphic (image) formats.
+- [**FFmpeg**](https://ffmpeg.org). Open-source libraries that let you record, convert, and stream digital audio and video in various formats.
+- Running scripts in [**Python**](https://www.python.org) and other programming languages.
+- Or work with any other applications.
 
-_______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Свой код → Запуск программы**.  
-
-![Как добавить в проект?](./assets/RunningPrograms/RunningPrograms_pic1.png)  
 _______________________________________________
-## Как работать с экшеном?  
-![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic2.png)  
-_______________________________________________
-### Исполняемый файл.  
-Тут пишем полный путь к файлу, который надо запустить. Нажатие на многоточие откроет стандартное окно поиска файлов на компьютере.  
-#### Особенности:  
-- **Если файл по указанному пути не будет найден, то экшен завершится с ошибкой.**  
-- Можно использовать [**макросы переменных**](../../pm/Interface/Variables).  
-- Если каталог выполняемой программы находится в переменной [**среды PATH**](https://ru.wikipedia.org/wiki/PATH_(%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F)), то можно указывать не полный путь к файлу, а только его название (например, `notepad.exe` или `calc.exe`).  
-_______________________________________________
-### Параметры запуска.  
-Здесь можно указать дополнительные команды, которые передаются запускаемой программе. У каждой программы свои параметры запуска (можно использовать макросы переменных).  
+## How to add to your project?
+Through the context menu: **Add Action → Own code → Run program**.
 
-| ![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic3.png)  |
+![How to add to your project?](./assets/RunningPrograms/RunningPrograms_pic1.png)
+_______________________________________________
+## How to work with the action?
+![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic2.png)
+_______________________________________________
+### Executable file.
+Here you write the full path to the file you want to run. Clicking on the ellipsis will open the standard file search window on your computer.
+#### Details:
+- **If the file isn't found at the specified path, the action will end with an error.**
+- You can use [**variable macros**](../../pm/Interface/Variables).
+- If the application's folder is in your [**PATH environment variable**](https://ru.wikipedia.org/wiki/PATH_(%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F)), you can just type the file name (for example, `notepad.exe` or `calc.exe`) instead of the full path.
+_______________________________________________
+### Launch parameters.
+Here you can enter extra commands that get passed to the program you’re running. Each program has its own launch parameters (macros also work here).
+
+| ![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic3.png)  |
 |:--:|
-| *Запуск нового окна браузера Chrome с URL https://zennolab.com* |  
+| *Launching a new Chrome browser window with the URL https://zennolab.com* |
 
-:::info **При запуске консольных утилит в данной строке передаются аргументы.**
-:::  
+:::info **When launching console utilities, you pass arguments in this line.**
+:::
 _______________________________________________
-### Таймаут.  
-Если вызванная программа не выполнится за указанное здесь количества секунд, то экшен завершится с ошибкой. Это удобно использовать, если вы знаете точное время выполнения.  
+### Timeout.
+If the launched program doesn’t finish in the number of seconds specified here, the action will stop with an error. Handy when you know exactly how long something should take.
 
-:::info **Можно указывать дробное значение через `,`.**
-::: 
+:::info **You can enter a fractional value separated with a comma `,`.**
+:::
 _______________________________________________
-### Не показывать окно процесса.  
-При включении данной опции запускаемая программа не будет отображена.  
+### Don’t show process window.
+If you check this option, the program you run won’t open a visible window.
 _______________________________________________
-### Не ждать завершения работы.  
-С этой настройкой *Таймаут* будет игнорироваться, и экшен не будет ждать, пока программа закончит работу.  
+### Don’t wait for completion.
+With this setting, *Timeout* gets ignored and the action won’t wait for the program to finish running.
 _______________________________________________
-### Записать EXIT CODE.  
-[**Код возврата**](https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4_%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%82%D0%B0) — это числовое значение, возвращаемое программой после завершения своей работы. Этот код может сообщать о том, завершилась ли программа успешно или произошла ошибка.  
+### Save EXIT CODE.
+[**Exit code**](https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4_%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%82%D0%B0) is a numeric value a program returns after it finishes. This code can indicate whether it finished successfully or if something went wrong.
 
-При нормальном завершении работы программы возвращают `0` (ноль). Если возвращено что-то другое, то скорее всего программа завершилась с ошибкой.  
+A normal finish returns `0`. If you get something else, it probably means there was an error.
 
-Чтобы опознать конкретный код, стоит вбить в поиск запрос: `название_программы exit code код_возврата`. **Пример:** `ffmpeg exit code 137`.  
+To find out what a specific code means, just google: `program_name exit code return_code`. **Example:** `ffmpeg exit code 137`.
 _______________________________________________
-### Записать STD OUT.  
-**STDOUT (Standard Output)** — это стандартный поток вывода, который используется программами для вывода текстовой информации, любой кроме ошибок. Он отображается в окне консоли.  
+### Save STD OUT.
+**STDOUT (Standard Output)** is the standard output stream programs use to print text info (anything except errors). You see it in the console window.
 
-#### Рассмотрим пример:  
-При установке [ImageMagick](https://imagemagick.org/index.php) программа добавляет путь к своей папке в переменную [*среды PATH*](https://ru.wikipedia.org/wiki/PATH_(%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F)). После этого нет необходимости указывать полный путь к исполняемому файлу, можно просто написать: `magick.exe <тут_аргументы>`.  
+#### Example:
+When you install [ImageMagick](https://imagemagick.org/index.php), it adds its folder to the [*PATH environment variable*](https://ru.wikipedia.org/wiki/PATH_(%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F)). After that, you don’t need the full path to the exe file—just write: `magick.exe <here_are_arguments>`.
 
-Для демонстрации запустим программу с аргументом `-usage` и перенаправим **STD OUT** в переменную. В ответ программа напишет базовую информацию о себе.  
+To show how it works, let’s run the program with the argument `-usage` and redirect **STD OUT** to a variable. The program will then output some basic info about itself.
 
-![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic4.png)  
+![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic4.png)
 _______________________________________________
-### Записать STD ERR.  
-**STD ERR (Standard Error)** — стандартный поток, предназначенный только для вывода данных при ошибках.  
+### Save STD ERR.
+**STD ERR (Standard Error)** is just for programs’ error outputs.
 
-#### Пример:  
-Повторим команду из предыдущего пункта, но сделаем ошибку и напишем `-usage22`:  
+#### Example:
+Let’s repeat the previous command, but make a mistake and type `-usage22`:
 
-![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic5.png)  
+![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic5.png)
 
-На скриншоте видно, что в **STD ERR** попал текст ошибки, сообщающий о неправильном аргументе или недостаточном их количестве.  
-Но мы также получили текст и в **STD OUT** — программа подсказывает, как правильно ею пользоваться.  
+You can see in the screenshot that **STD ERR** got an error message saying there’s an invalid argument or not enough parameters.
+But we also got text in **STD OUT**—the program is hinting how to use it correctly.
 _______________________________________________
-:::info **Чтобы повторить команды, описанные выше.**  
-Установите [**ImageMagick**](https://imagemagick.org).  
-Откройте окно консоли (например, через **Win+R → ввести cmd.exe → нажать Enter**).  
-Затем написать команды: `magick-usage` и `magick-usage22`.  
-:::  
+:::info **To follow along with the commands above.**
+Install [**ImageMagick**](https://imagemagick.org).
+Open a console window (like with **Win+R → type cmd.exe → press Enter**).
+Then type these commands: `magick-usage` and `magick-usage22`.
+:::
 _______________________________________________
-## Примеры использования.  
-Рассмотрим несколько сценариев на основе ImageMagick.  
+## Usage examples.
+Let’s look at a few scenarios using ImageMagick.
 
-**Цель:** создать изображение.  
-- **Размер**: 600 на 600 пикселей (`-size 600x600`).  
-- **Цвет фона**: светло-зеленый (`-background lightgreen`).  
-- **Расположение**: по центру (`-gravity Center`).  
-- **Цвет текста**: зеленый (`-fill blue`).  
-- **Шрифт**: Arial (`-font Arial`).  
-- **Размер шрифта**: 72 (`-pointsize 72`).  
-- **Текс**: ZennoDroid (`label:ZennoDroid`).  
+**Goal:** create an image.
+- **Size:** 600 by 600 pixels (`-size 600x600`).
+- **Background color:** light green (`-background lightgreen`).
+- **Position:** centered (`-gravity Center`).
+- **Text color:** green (`-fill blue`).
+- **Font:** Arial (`-font Arial`).
+- **Font size:** 72 (`-pointsize 72`).
+- **Text:** ZennoDroid (`label:ZennoDroid`).
 
-**Результат сохраним** в файл: `C:\Users\Administrator\Desktop\result.jpg`.  
+**Result will be saved** to: `C:\Users\Administrator\Desktop\result.jpg`.
 
-**Путь**: `C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe`.  
+**Path:** `C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe`.
 
-:::info **На вашем компьютере пути к файлам скорее всего будут отличаться.**
-:::  
+:::info **The file paths on your computer will probably be different.**
+:::
 
-| ![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic6.png)  |
+| ![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic6.png)  |
 |:--:|
-| *Результат* |  
+| *Result* |
 
-### Способ №1. Все параметры жёстко прописаны.  
-![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic7.png)  
+### Method 1. Parameters are hard-coded.
+![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic7.png)
 
-**Исполняемый файл**: `C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe`.  
+**Executable:** `C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe`.
 
-**Параметры запуска**: `-size 600x600 -background lightgreen -gravity Center -fill green -font Arial -pointsize 72 label:ZennoDroid C:\Users\Administrator\Desktop\result.jpg`.  
+**Launch parameters:** `-size 600x600 -background lightgreen -gravity Center -fill green -font Arial -pointsize 72 label:ZennoDroid C:\Users\Administrator\Desktop\result.jpg`.
 
-После выполнения данного экшена на рабочем столе появится файл `result.jpg`  
+After you run this action, you’ll see the file `result.jpg` appear on your desktop.
 _______________________________________________
-### Способ №2. Параметры переданы в переменных.  
-![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic8.png)  
+### Method 2. Parameters in variables.
+![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic8.png)
 
-**Исполняемый файл**: `{-Variable.imagemagick_dir_path-}magick.exe`.  
+**Executable:** `{-Variable.imagemagick_dir_path-}magick.exe`.
 
-**Параметры запуска**: `{-Variable.parameters-} {-Project.Directory-}result.jpg`.  
+**Launch parameters:** `{-Variable.parameters-} {-Project.Directory-}result.jpg`.
 
-> *`{-Project.Directory-}` — системная переменная, в которой хранится полный путь к расположению текущего проекта.*
+> *`{-Project.Directory-}` is a system variable that stores the full path to your current project's location.*
 
+Here, *the path to the folder with the exe* and *all parameters* are put in separate variables. This is convenient for running templates on different machines in case the path is different.
 
-Здесь мы вынесли *путь к папке с исполняемым файлом* и *все параметры* в отдельные переменные. Это удобно для запуска шаблона на разных компьютерах, когда путь может отличаться.  
+You can also split the parameters into several variables instead of just one.
 
-Параметры также можно поместить не в одну переменную, а разделить на несколько разных.  
+The final `result.jpg` will be saved to the same directory where the project is.
 
-Итоговый файл `result.jpg` сохранится в ту же директорию, в которой находится проект.  
-
-:::warning **Обратите внимание.**  
-Проект должен быть сохранён на компьютере для использовании переменной `{-Project.Directory-}`, иначе она будет пустой.
-::: 
+:::warning **Pay attention.**
+The project needs to be saved on your computer to use the `{-Project.Directory-}` variable; otherwise, it’ll be empty.
+:::
 _______________________________________________
-### Пример со скриптом на Python.  
-:::tip Для работы данного примера в системе должен быть установлен Python.  
-:::  
+### Example with a Python script.
+:::tip Python needs to be installed on your system for this example to work.
+:::
 
-При поиске решения в интернете для той или иной задачи можно найти скрипты написанные на разных языках программирования. Можно, конечно, полностью переписать код скрипта и запустить его с помощью соответствующего экшена. Но чаще удобнее запустить скрипт непосредственно через экшен **Запуск программы* и сразу воспользоваться результатом его работы.  
+If you're searching for a solution online for some task, you might find scripts in different programming languages. Of course, you could rewrite the script and run it with the matching action, but it’s usually much easier to just launch the script directly with the **Run Program** action and immediately use its result.
 
-![Как работать с экшеном?](./assets/RunningPrograms/RunningPrograms_pic9.png)  
+![How to work with the action?](./assets/RunningPrograms/RunningPrograms_pic9.png)
 
-**Исполняемый файл**: `C:\Users\user\AppData\Local\Programs\Python\Python38-32\python.exe`.  
+**Executable:** `C:\Users\user\AppData\Local\Programs\Python\Python38-32\python.exe`.
 
-**Параметры запуска**: `C:\ZD\my_sript.py` и два аргумента: `12 11`.  
+**Launch parameters:** `C:\ZD\my_sript.py` and two arguments: `12 11`.
 
-**Результат**: `132` запишется в переменную `result`.
+**Result:** `132` will be saved to the variable `result`.
 
-В этом примере скрипт лежит в `C:\ZD\my_sript.py`. На входе он принимает два числа и умножает их друг на друга. Затем ответ возвращается в консоль.  
+In this example, the script sits at `C:\ZD\my_sript.py`. It takes two numbers as input, multiplies them, and prints the answer to the console.
 
-В вашем случае скрипт может генерировать изображения или текст. Также он может содержать нейросеть для разгадывания капчи. В общем, все что угодно. 
+For your case, the script might generate an image or some text. It could also have a neural net for solving captchas. Really, whatever you want.
 _______________________________________________
-## Полезные ссылки.  
-- [**Обработка переменных**](../../Data/WorkWithVariables).
-- [**Разработка надёжных Python-скриптов**](https://habr.com/ru/companies/ruvds/articles/462007/).  
-
+## Useful links.
+- [**Working with variables**](../../Data/WorkWithVariables).
+- [**Writing robust Python scripts**](https://habr.com/ru/companies/ruvds/articles/462007/).

@@ -1,100 +1,100 @@
 ---
 sidebar_position: 5
-title: Google таблица 
-description: Что можно делать с Google таблицами в ZD.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::    
+title: Google Sheets
+description: What you can do with Google Sheets in ZD.
+---
+:::info **Please read [*the rules for using the materials on this resource*](../../Disclaimer).**
+:::
 
-## Создание Google таблицы:
-### Через ProjectMaker.  
-- Из контекстного меню: ***Добавить действие → Таблицы → Google таблица***:  
+## Creating a Google Sheet:
+### Using ProjectMaker.
+- From the context menu: ***Add Action → Tables → Google Sheet***:
 
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic1.png) 
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic1.png)
 
-- Через ***Панель статических блоков***:  
+- Through the ***Static Blocks Panel***:
 
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic2.png)  
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic2.png)
 
-Созданная таблица отобразится в нижней панели:
+The sheet you created will show up in the bottom panel:
 
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic3.png)  
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic3.png)
 _______________________________________________
-### Через облако.  
-Переходим на Google.com → авторизуемся в свой аккаунт → нажимаем на значок с 9-ю точками → выбираем **Таблицы** → создаем Пустую таблицу.  
+### Through the cloud.
+Go to Google.com → sign in to your account → click the icon with 9 dots → pick **Sheets** → create a Blank sheet.
 
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic4.png) 
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic5.png)  
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic4.png)
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic5.png)
 _______________________________________________
-Либо через [**Google Диск**](https://drive.google.com/drive/my-drive) → Создать → Google таблицы → Создать пустую таблицу.  
+Or through [**Google Drive**](https://drive.google.com/drive/my-drive) → Create → Google Sheets → Create blank spreadsheet.
 
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic6.png)  
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic6.png)
 _______________________________________________
-После создания таблицы любым из способов скопируйте URL из адресной строки для привязки к ProjectMaker.   
+After you create a sheet any way you like, copy the URL from the address bar to link it with ProjectMaker.
 _______________________________________________
-## Настройки таблицы.  
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic7.png)  
+## Sheet settings.
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic7.png)
 
-:::info **Подключение.**  
-Перед началом работы с Google Таблицами их надо подключить к программе.  
-Как это сделать мы рассмотрим в следующей статье [**Настройка подключения Google Таблиц**](./Connecting_GoogleSheets).
-:::   
+:::info **Connection.**
+You need to connect Google Sheets to the program before you start using them.
+We’ll go over how to do this in the next article [**Setting up Google Sheets connection**](./Connecting_GoogleSheets).
+:::
 
-### Разберем подробнее каждый из разделов:   
-#### Вставьте ссылку на Google таблицу.  
-В это поле нужно вставить ссылку (URL) на таблицу, с которой будем работать.  
-_______________________________________________  
-#### Перезагрузить Google таблицу.  
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic8.png) 
+### Let’s go over each section in detail:
+#### Paste your Google Sheet link.
+Paste the link (URL) for the sheet you want to work with in this field.
+_______________________________________________
+#### Reload Google Sheet.
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic8.png)
 
-С помощью нажатия на эту кнопку можно обновить данные в таблице.  
-:::info **Для чего нужно?**  
-*Это может быть полезно, если вы что-то меняли не через саму программу, а с обычного браузера или с другого устройства.*  
-:::  
-_______________________________________________
-#### Превью Google таблицы.  
-В этом окне будут отображены данные таблицы. Если она большая, то все данные могут не поместиться, тогда вы увидите только часть.  
-_______________________________________________
-#### Сохранять изменения таблицы в облако.  
-Если поставить здесь галочку, то в облако будут сохраняться все изменения, которые вы внесете через ZennoDroid.  
-_______________________________________________
-#### Первая строка - заголовки.  
-Первая строка таблицы станет заголовком.  
-_______________________________________________
-#### Использовать атомарное добавление строк.  
-Включение данной настройки может быть полезным, когда с таблицей работает сразу несколько копий ZennoDroid.  
-Более подробно об атомарном добавлении можно почитать в статье [**Операции и Многопоточная работа с Google-таблицами**](./GoogleSheet_Processing).
-_______________________________________________
-#### Запоминать закреплённые строки и столбы.  
-Данная опция позволяет сохранять закрепленное состояние строк и столбцов.  
-При этом будет отправлен дополнительный запрос к API, который расходует лимит.  
-_______________________________________________
-#### Разделитель строк.  
-Тут мы указываем, что будет использовано в качестве разделителя строк таблицы:  
-- **Новая строка**;
-- **Свой разделитель**;  
-- **Несколько разделителей**;  
-_______________________________________________
-#### Разделитель столбцов.  
-А здесь уже определяем разделитель для столбцов таблицы:  
-- Символ `;`  
-- Табуляция через `Tab`  
-- Любой кастомный разделитель  
-- Несколько своих разделителей.  
-_______________________________________________
-#### Просмотр содержимого.  
-Эта кнопка позволяет открыть таблицу и полностью посмотреть ее содержимое. В открывшемся окне можно включить отображение управляющих символов, задать фильтр для поиска нужной строки или ячейки, а так же воспользоваться конструктором фильтра.  
-
-![Через ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic9.png)  
-_______________________________________________
-### Нюансы работы с Google-таблицами.  
-- При каждом новом старте проекта в программе создаётся виртуальная копия Google-таблицы.  
-- Виртуальная копия содержит в себе все данные из Google-таблицы.  
-- В процессе выполнения проекта программа работает именно с виртуальной копией.  
-- Если включена опция **Сохранять изменения таблицы в облако**, то данные периодически будут переноситься из виртуальной копии в оригинальную Google-таблицу.  
-:::info **Данные в Google-таблице появляются не моментально, а в течение от 10 до 60 секунд.**   
+Click this button to refresh the data in the sheet.
+:::info **Why do you need this?**
+*This can be useful if you changed something not through the program but in a browser or on another device.*
 :::
 _______________________________________________
-## Полезные ссылки.  
-- [**Гид по Google Таблицам**](https://www.unisender.com/ru/blog/google-tablicy-dlya-nachinayushchih/). 
-- [**Google таблицы**](https://docs.google.com/spreadsheets/). 
+#### Google Sheet preview.
+In this window you’ll see your sheet’s data. If it’s large, you might not see all the data here, just part of it.
+_______________________________________________
+#### Save sheet changes to the cloud.
+Check this box if you want to save every change you make through ZennoDroid to the cloud.
+_______________________________________________
+#### First row as headers.
+The first row in your sheet will become the header.
+_______________________________________________
+#### Use atomic row append.
+Turning this on might be handy if you’re working with several copies of ZennoDroid at once.
+You can read more about atomic row appending in [**Operations and Multithreaded Work with Google Sheets**](./GoogleSheet_Processing).
+_______________________________________________
+#### Remember frozen rows and columns.
+This option lets you save the frozen state of rows and columns.
+It will send an extra request to the API, which uses up your limit.
+_______________________________________________
+#### Row separator.
+Here you choose what will be used as the row separator in your sheet:
+- **New Line**
+- **Custom Separator**
+- **Multiple Separators**
+_______________________________________________
+#### Column separator.
+Here, you set the separator for your sheet’s columns:
+- The `;` character
+- Tab character
+- Any custom separator
+- Multiple custom separators
+_______________________________________________
+#### View content.
+This button opens the sheet so you can look at everything inside. In the window you can turn on control character display, set a filter to search for a specific row or cell, or use the filter builder.
+
+![Via ProjectMaker](./assets/Google_Sheet/Google_Sheet_pic9.png)
+_______________________________________________
+### Some quirks of working with Google Sheets.
+- Every time you start a new project in the program, a virtual copy of the Google Sheet is made.
+- The virtual copy has all the data from the original sheet.
+- During the project, you work with the virtual copy.
+- If you turn on **Save sheet changes to the cloud**, the data will be updated from the virtual copy to the original Google Sheet from time to time.
+:::info **Data in the Google Sheet doesn't show up instantly — it takes anywhere from 10 to 60 seconds.**
+:::
+_______________________________________________
+## Useful links.
+- [**Google Sheets Guide**](https://www.unisender.com/ru/blog/google-tablicy-dlya-nachinayushchih/)
+- [**Google Sheets**](https://docs.google.com/spreadsheets/)

@@ -1,10 +1,10 @@
 ---
 sidebar_position: 2
-title: Оператор Switch
-description: Выбор из нескольких вариантов
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
+title: Switch Operator
+description: Choosing from several options
+---
+:::info **Please read the [*Terms of Use for materials on this site*](../../Disclaimer).**
+:::
 
 export const VideoSample = ({source}) => (
   <video controls playsInline muted preload="auto" className='docsVideo'>
@@ -12,46 +12,44 @@ export const VideoSample = ({source}) => (
 </video>
 );
 
-Оператор Switch представляет собой расширенную версию [**IF**](./IF). Но оператор **IF** имеет только два выхода — ***True*** или ***False*** (*зеленая или красная ветви*), тогда как у **Switch** есть возможность выбрать несколько разных вариантов. В случае отсутствия нужного варианта, кубик выйдет по ветке *Default*.  
+The Switch operator is like an advanced version of [**IF**](./IF). But the **IF** operator only has two outcomes — ***True*** or ***False*** (*green or red branches*), while **Switch** lets you pick from several different options. If there’s no suitable option, the block will exit through the *Default* branch.
 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Логика → Switch**.  
+### How to add it to your project?
+Through the context menu: **Add action → Logic → Switch**.
 
-![Добавление в проект.](./assets/Switch/Switch_pic1.png)  
-_______________________________________________ 
-## Как пользоваться?  
-Данный экшен нужен для выбора варианта из заданного перечня. Либо для проверки на определенное соответствие.  
-
-![Как пользоваться?](./assets/Switch/Switch_pic2.png)  
-_______________________________________________ 
-### Доступные свойства.  
-#### Переменная.  
-Здесь указывается переменная, которую мы будем проверять. Если она не была создана ранее, то ее можно задать прямо из этого поля.  
-
-#### Список условий.  
-Тут мы пишем условия для выхода. Значение из *переменной* будет сравниваться с каждым из условий и при нахождении совпадения выйдет по соответствующей ветке.  
-
-В качестве условия для выхода можно использовать не только жестко заданный текст, но и переменные. Как в этом примере:  
-
-![Список условий](./assets/Switch/Switch_pic3.png)  
-
-#### Выход Default.  
-Если не будет найдено ни одного совпадения, то экшен выйдет по ветке ***Default***. Если данная ветка при этом не соединена с экшеном, то появится ошибка.  
-_______________________________________________ 
-### Пример работы.  
-
-![Пример работы](./assets/Switch/Switch_pic4.png)  
-_______________________________________________ 
-### Пример в видео.  
-Представим ситуацию, в которой у нас существует какое-либо значение для переменной `switch_test`.  
-
-Далее создадим операции [**Оповещение**](./Notification) для каждого из вариантов.  
-
-Видео с примером:  
-
-<VideoSample source={require("@site/static/video/Switch.mp4").default}/> 
+![Adding to project.](./assets/Switch/Switch_pic1.png)
 _______________________________________________
-## Полезные ссылки.  
-- [**Обработка переменных**](../../Data/WorkWithVariables).
+## How to use it?
+This action is used to pick an option from a preset list, or to check for a specific match.
 
+![How to use it?](./assets/Switch/Switch_pic2.png)
+_______________________________________________
+### Available properties.
+#### Variable.
+Specify the variable you want to check here. If you haven’t created it yet, you can set it right in this field.
 
+#### List of conditions.
+Here, you write the conditions for exit. The value from the *variable* will be checked against each condition, and if there’s a match, it’ll exit through the matching branch.
+
+You don’t have to use only hard-coded text for these conditions — you can use variables too. Like in this example:
+
+![List of conditions](./assets/Switch/Switch_pic3.png)
+
+#### Default exit.
+If no matches are found, the action will go through the ***Default*** branch. If this branch isn’t connected to an action, you’ll get an error.
+_______________________________________________
+### Example in action.
+
+![Example in action](./assets/Switch/Switch_pic4.png)
+_______________________________________________
+### Example on video.
+Let’s imagine you have some value for the variable `switch_test`.
+
+Next, create [**Notification**](./Notification) operations for each of the options.
+
+Video example:
+
+<VideoSample source={require("@site/static/video/Switch.mp4").default}/>
+_______________________________________________
+## Useful links.
+- [**Working with variables**](../../Data/WorkWithVariables).

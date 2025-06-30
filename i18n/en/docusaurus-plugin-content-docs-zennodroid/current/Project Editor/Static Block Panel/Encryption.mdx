@@ -1,47 +1,46 @@
 ---
 sidebar_position: 4
-title: Шифрование
-description: Защита проектов.
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
+title: Encryption
+description: Project protection.
+---
+:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
+:::
 
-Шифрование позволяет защитить созданные проекты от непредвиденного копирования и редактирования. Это, например, может пригодится при передаче шаблона другому пользователю, чтобы доступ был только у него.  
+Encryption allows you to protect your projects from unexpected copying and editing. For example, this can come in handy when you're passing a template to another user so only that person has access.
 
-## Где находится?  
-![Поиск](./assets/Encryption/Encryption_pic1.png)   
+## Where is it?
+![Search](./assets/Encryption/Encryption_pic1.png)
 
-После создания проекта внизу, на панели статических блоков, есть иконка замка. Это и есть блок шифрования.  
+After creating a project, you'll see a lock icon at the bottom, on the static blocks panel. That's the encryption block.
 _______________________________________________
-## Описание полей.  
-![Поиск](./assets/Encryption/Encryption_pic2.png)   
+## Field descriptions
+![Search](./assets/Encryption/Encryption_pic2.png)
 _______________________________________________
-### Минимальная версия ZennoDroid.  
-В выпадающем списке можно выбрать минимальную версию, на которой запустится шаблон.  
+### Minimum ZennoDroid version
+You can select the minimum version required to run the template from the dropdown list.
 
-После клика по кнопке **Проверить** запустится проверка шаблона для оценки минимально-возможной версии.  
+When you click **Check**, it'll test the template to determine the minimum possible version.
 _______________________________________________
-### Разрешения.  
-| Email              | Выполнение | Чтение | Изменение | Полный доступ |
+### Permissions
+| Email              | Execute | Read | Edit | Full access |
 | :----------------: | :------: | :----: |:------: | :----: |
-| Поле для ввода идентификатора |  Отвечает за возможность выполнять проект   | Дает просмотреть структуру проекта | Позволяет редактировать проект  | Всё перечисленное + выдача права другим пользователям. |  
+| Field for entering ID |  Allows running the project | Lets you see the project structure | Lets you edit the project  | All of the above plus granting rights to other users. |
 
-#### Доступные форматы идентификатора:  
-- **support@zennolab.com**. Почта, к которой привязан ZennoDroid.  
-- **e927aabf-5ee3-4d3d-9ba7-e0f70537b923@zenno.club**. Можно получить в [**Личном кабинете**](https://account.zennolab.com/personal-area-profile).  
-- **allusers@zennolab.com**. Универсальный адрес, который распространяется на всех пользователей.  
+#### Accepted ID formats:
+- **support@zennolab.com**. The email linked to ZennoDroid.
+- **e927aabf-5ee3-4d3d-9ba7-e0f70537b923@zenno.club**. You can get it in your [**Personal account**](https://account.zennolab.com/personal-area-profile).
+- **allusers@zennolab.com**. A universal address that applies to all users.
 
-#### Подробнее про настройки доступа.  
-**Выполнение → Чтение → Изменение → Полный доступ**. Именно в такой иерархии происходит выдача доступа.  
-Например, если выдать **Изменение**, то **Чтение** и **Выполнение** включатся автоматически. И наоборот, если снять **Выполнение**, то все следующие также станут неактивны.  
+#### More about access settings
+**Execute → Read → Edit → Full access**. Access is given in this hierarchy.
+For example, if you give **Edit** rights, **Read** and **Execute** will be granted automatically. Conversely, if you remove **Execute**, all the following permissions also become inactive.
 _______________________________________________
-### Скрыть ID автора.  
-Включите эту опцию, если при передаче шаблона другим пользователям, вы не хотите раскрывать свой внутренний ID в системе ZennoLab.  
+### Hide author ID
+Turn this option on if you don't want to reveal your internal ZennoLab system ID when you're passing the template to other users.
 _______________________________________________
-### Скрыть инстанс для пользователей.  
-Эту опцию стоит включить, когда вы не хотите, чтобы браузер был виден при передаче шаблона другим пользователям.  
+### Hide instance for users
+You should turn on this option if you don’t want the browser to be visible when you pass the template to other users.
 
-Данная настройка не влияет на выполнение проекта, а лишь скрывает отображение браузера в ProjectMaker. Она применяется для тех пользователей, у которых есть доступ только на **Выполнение** шаблона.  
+This setting doesn’t affect project execution and only hides the browser from showing up in ProjectMaker. It applies to users who only have **Execute** rights for the template.
 
-Скрывается конкретно окно браузера в ProjectMaker при выполнения проекта в качестве плагина или подпроекта. Но опция не распространяется на экшен ***Ожидание действий пользователя***.
-
+Specifically, it hides the browser window in ProjectMaker when the project is run as a plugin or subproject. But it doesn't apply to the ***Wait for user actions*** action.

@@ -1,50 +1,50 @@
 ---
 sidebar_position: 1
-title: GET-запрос
-description: Получение данных через GET-запросы
+title: GET Request
+description: Retrieving data using GET requests
 ---  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read [*Usage Guidelines for Materials on this Resource*](../../Disclaimer).**
 :::  
 _______________________________________________  
 
-В ZennoDroid вы можете использовать ***HTTP запросы*** при работе с различными сайтами.  
-Например, можно получать данные через **GET-запросы**:  
-- *запрашивать результаты из поисковой системы*,    
-- *скачивать файлы*,  
-- *парсить данные*,  
-- *запускать шаблоны без браузера*,   
-- *работать с API веб-сервисов и приложений*.  
+In ZennoDroid, you can use ***HTTP requests*** when working with different websites.  
+For example, you can get data using **GET requests**:  
+- *request search engine results*,  
+- *download files*,  
+- *parse data*,  
+- *run templates without a browser*,  
+- *work with API of web services and apps*.  
 _______________________________________________ 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → HTTP → GET-запрос**.  
+### How to add it to a project?  
+Via the context menu: **Add Action → HTTP → GET Request**.  
 
-![Как добавить в проект?](./assets/GET/GET_pic1.png)
+![How to add to a project?](./assets/GET/GET_pic1.png)
 _______________________________________________ 
-## Вкладка «Основные»   
-![Вкладка «Основные»](./assets/GET/GET_pic2.png)  
+## "Main" Tab   
+![Main Tab](./assets/GET/GET_pic2.png)  
 _______________________________________________ 
 ### URL.  
-Целевой адрес сайта (ссылка), по которому будет отправлен запрос. *Можно использовать переменную*.  
+The target website address (link) the request will be sent to. *You can use a variable.*  
 _______________________________________________ 
 ### Referer.  
-Заголовок [**Referer**](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer) используется для указания URL-адрес, с которого пользователь пришел на текущую страницу. Он помогает анализировать трафик и узнавать, с какого ресурса переходят чаще всего.  
+The [**Referer**](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer) header is used to specify the URL the user came from to reach the current page. It helps analyze traffic and see which resources are most often used as referral sources.  
 
-:::warning **Заголовок *Referer* может раскрыть информацию об истории посещённых страниц, что может привести к нарушению приватности.**
+:::warning **The *Referer* header can reveal info about visited pages, which may lead to privacy issues.**
 :::  
 _______________________________________________ 
-### Кодировка.  
-Выбираем кодировку для запроса.  
+### Encoding.  
+Select the encoding for the request.  
 _______________________________________________ 
-### Таймаут.  
-Максимальное время ожидания ответа от сайта в секундах.  
-При достижении установленного времени, действие будет завершено ошибкой и выйдет по *красной ветке*.  
-Можно использовать макросы переменных.  
+### Timeout.  
+The maximum time to wait for a website response, in seconds.  
+If the timer runs out, the action will end with an error and follow the *red branch*.  
+You can use variable macros.  
 _______________________________________________ 
-### Загружать.  
-#### Только содержимое.  
-В переменную будет сохранено только тело ответа.  
+### Download.  
+#### Content only.  
+Only the response body is saved to the variable.  
 <details>
-<summary>**Пример ответа при запросе *https://httpbin.org/get*.**</summary>
+<summary>**Example response for *https://httpbin.org/get*.**</summary>
 <!--All you need is a blank line-->
 
    ```JS
@@ -65,10 +65,10 @@ _______________________________________________
    ```
 </details>   
 
-#### Только заголовки.  
-Сохранятся только заголовки.  
+#### Headers only.  
+Only the headers are saved.  
 <details>
-<summary>**Пример ответа при запросе *https://httpbin.org/get*.**</summary>
+<summary>**Example response for *https://httpbin.org/get*.**</summary>
 <!--All you need is a blank line-->
 
    ```JS
@@ -83,10 +83,10 @@ _______________________________________________
    ```
 </details>  
 
-#### Заголовки и содержимое.  
-В переменную сохранятся и заголовок ответа, и его тело, разделенные двумя пустыми строками.  
+#### Headers and content.  
+Both the response header and body are saved together to the variable, separated by two blank lines.  
 <details>
-<summary>**Пример ответа при запросе *https://httpbin.org/get*.**</summary>
+<summary>**Example response for *https://httpbin.org/get*.**</summary>
 <!--All you need is a blank line-->
 
    ```JS
@@ -117,44 +117,44 @@ Access-Control-Allow-Credentials: true
    ```
 </details>  
 
-#### Как файл.  
-Выбирайте этот режим, если нужно скачать файл с помощью запроса.  
-В переменную сохранится путь к скачанному файлу.  
+#### As file.  
+Pick this mode if you want to download a file through the request.  
+The variable will have the path to the downloaded file.  
 
-:::info **По умолчанию файлы скачиваются в папку `Trash` в директории с программой.**  
-Путь может выглядеть так:  
+:::info **By default, files are downloaded to the `Trash` folder in the program directory.**  
+The path may look like this:  
 `C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`  
 
-Изменить его можно в настройках, но только глобально для всех проектов. 
+You can change this in the settings, but only globally for all projects. 
 :::  
 
-#### Как файл + заголовки.  
-В переменную сохранятся заголовки ответа и путь к скачанному файлу.  
+#### File + headers.  
+Headers and the path to the downloaded file are saved together to the variable.  
 _______________________________________________ 
-### Положить в переменную.  
-Здесь надо выбрать (или создать новую) переменную, в которую будет сохранён результат запроса.  
+### Save to variable.  
+Pick (or create a new) variable where the request result will be saved.  
 _______________________________________________ 
-## Вкладка «Дополнительно».  
-![Вкладка «Дополнительно»](./assets/GET/GET_pic3.png)
+## "Advanced" Tab  
+![Advanced Tab](./assets/GET/GET_pic3.png)
 _______________________________________________ 
-### Редирект.  
-Используется для установки перенаправления. Если ответ на запрос будет содержать *код редиректа*, то ZennoDroid перейдет к следующей странице, используя заголовок ***Location***.  
+### Redirect.  
+Used to set up redirects. If the response has a *redirect code*, ZennoDroid will move to the next page using the ***Location*** header.  
 
-Здесь мы цифрами указываем максимальное количество переходов. К примеру, `0` — остаться на исходной странице, `5` — количество переходов до конечного URL.  
+Here you set the max number of hops with numbers. For example, `0` — stay on the original page, `5` — number of hops before the final URL.  
 _______________________________________________ 
-### Использовать оригинальный URL.  
-Когда эта опция включена, кодирование URL из вкладки «Основные» будет отменено. Пример:  
-- **URL по умолчанию (с кодированием)**:  
+### Use the original URL.  
+If this option is enabled, URL encoding from the "Main" tab will be ignored. Example:  
+- **Default URL (encoded):**  
 `https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5`  
-- **Оригинальный URL**:  
+- **Original URL:**  
 `https://ru.wikipedia.org/wiki/Приветствие`  
 _______________________________________________ 
-### Заголовки.  
-#### Использовать по умолчанию.  
-В запрос будут подставлены заголовки по умолчанию. Заголовок `Host` меняется в зависимости от адреса в запросе.  
+### Headers.  
+#### Use default.  
+Default headers will be added to the request. The `Host` header changes depending on the request address.  
 
 <details>
-<summary>**Пример ответа при запросе *https://httpbin.org/get*.**</summary>
+<summary>**Example response for *https://httpbin.org/get*.**</summary>
 <!--All you need is a blank line-->
 
    ```
@@ -166,87 +166,80 @@ Accept-Language: en-US,en;q=0.5
    ```
 </details>  
 
-#### Текущий профиль.  
-Будут подставлены заголовки из текущего ***профиля проекта***.  
+#### Current profile.  
+Headers from the current ***project profile*** will be added.  
 
-#### Загрузить из профиля.  
-Необходимо выбрать файл или указать переменную, содержащую путь до профиля, из которого будут загружены заголовки для запроса.  
+#### Load from profile.  
+You need to pick a file or give a variable with the profile path to load headers from for the request.  
 
-#### Пользовательские настройки.  
-![Пользовательские настройки](./assets/GET/GET_pic5.png)  
+#### Custom settings.  
+![Custom settings](./assets/GET/GET_pic5.png)  
 
-Позволяет самостоятельно указать каждый параметр заголовка, следуя правилам:  
-- :warning: Первой **всегда указывается строка User-Agent!** И только потом все остальные заголовки.  
-- Каждый заголовок начинается с новой строчки.  
-- Можно указать *статичные значения*, *свои переменные* или *переменные профиля*.  
+Lets you specify each header manually, following these rules:  
+- :warning: The **User-Agent string always comes first!** Then all other headers.  
+- Each header must start on a new line.  
+- You can set *static values*, *your variables*, or *profile variables*.  
 _______________________________________________ 
-### Использовать CookieContainer.  
-С помощью этой опции можно синхронизировать куки с целым браузером или между отдельными запросами. Вам не понадобится вручную их парсить и подставлять.  
+### Use CookieContainer.  
+This option lets you sync cookies with the whole browser or between separate requests. You don't have to parse or insert them manually.  
 
 <details>
-<summary>**Пример использования.**</summary>
+<summary>**Example usage.**</summary>
 <!--All you need is a blank line-->
 
-   Представим, что наш проект работает с сайтом, используя запросы. Для работы нужно быть авторизованным. При этом процесс авторизации крайне сложен для повторения его через запросы. Поэтому для входа на сайт используем браузерный режим.  
+   Imagine your project works with a site using requests. You need to be logged in. The login process is too complicated to repeat through requests. So, you log in using browser mode.  
 
-   После авторизации ***отключаем браузер*** и начинаем работать с запросами. С включенной опцией **Использовать CookieContainer** куки будут автоматически синхронизированы между браузером и запросами, их не придется подставлять вручную.    
+   Then you ***turn off the browser*** and start working with requests. With **Use CookieContainer** turned on, cookies will sync automatically between browser and requests, no need to paste them by hand.    
 
-    Если при одном из запросов сайт вернет новое значение кук, то оно автоматически синхронизируется с браузером и будет использовано в дальнейшем.
+    If the site sends new cookies in some request, they will be synced with the browser automatically and used afterwards.
 </details>  
 _______________________________________________ 
-### Сookie.  
-:::info **Данное поле ввода отображается только при отключении прошлой опции.**
+### Cookie.  
+:::info **This field is visible only if the previous option is off.**
 :::    
 
-![Сookie](./assets/GET/GET_pic4.png) 
+![Cookie](./assets/GET/GET_pic4.png) 
 
-Можно указать готовые куки или взять из переменной.  
+You can paste ready cookies or use one from a variable.  
 
-**Формат:** `имя=значение`, несколько значений разделяются через `;`  
-***Пример:*** `user=1992103;session=f79fcadd847b80f9df78ba4fb276c867;id=889`  
+**Format:** `name=value`, multiple values separated by `;`  
+***Example:*** `user=1992103;session=f79fcadd847b80f9df78ba4fb276c867;id=889`  
 _______________________________________________ 
-## Вкладка «Прокси».  
-![Вкладка «Прокси»](./assets/GET/GET_pic6.png)  
+## "Proxy" Tab  
+![Proxy Tab](./assets/GET/GET_pic6.png)  
 _______________________________________________ 
-### Без прокси.  
-Экшен будет работать через реальный IP компьютера или сервера.  
+### No proxy.  
+The action will use the real IP of your computer or server.  
 _______________________________________________ 
-### Строка формата.  
-![Строка формата](./assets/GET/GET_pic7.png)  
+### Format line.  
+![Format line](./assets/GET/GET_pic7.png)  
 
-Указываем прокси в формате (можно указать переменную):  
-- ***С авторизацией***. `socks5://логин:пароль@ip:port` или `http://логин:пароль@ip:port`  
-- ***Без авторизации***. `socks5://ip:port` или `http://ip:port`  
-- ***Без указания протокола (по умолчанию http://)***. `логин:пароль@ip:port` или `ip:port`  
+Specify the proxy in the format (you can use a variable):  
+- ***With authentication***. `socks5://login:password@ip:port` or `http://login:password@ip:port`  
+- ***Without authentication***. `socks5://ip:port` or `http://ip:port`  
+- ***No protocol specified (http:// by default)***. `login:password@ip:port` or `ip:port`  
 _______________________________________________ 
-### Другой.  
-![Другой](./assets/GET/GET_pic8.png)  
+### Other.  
+![Other](./assets/GET/GET_pic8.png)  
 
-Выбираем в том случае, если нужно указать детальные настройки прокси.  
-Тип прокси, данные авторизации, адрес и порт уточняйте у поставщика услуг.  
-Во всех полях можно использовать переменные.  
+Use this if you need to set detailed proxy settings.  
+Proxy type, auth data, address, and port — check with your provider.  
+You can use variables in any field.  
 
-:::info **Если не указан протокол, то по умолчанию используется http://**
+:::info **If you don't specify a protocol, http:// is used by default**
 :::  
 _______________________________________________ 
-## Способ передачи запроса.
-В ZennoDroid есть два метода работы с запросами:  
-- **Стандартный**. Стоит по умолчанию (библиотека Chilkat).  
-- **Альтернативный**. Наша собственная разработка.  
+## How the request is sent
+ZennoDroid has two methods to work with requests:  
+- **Standard**. Default option (Chilkat library).  
+- **Alternative**. Our own implementation.  
 
-Если при работе с HTTP-запросами что-то работает неправильно, то попробуйте переключиться на альтернативный метод.  
-Сделать это можно через **Настройки →  Выполнение → Использовать альтернативный способ передачи HTTP-запросов**.  
+If something doesn't work right with HTTP requests, try switching to the alternative method.  
+Do this via **Settings → Execution → Use alternative HTTP request method**.  
 
-![Использовать альтернативный способ](./assets/GET/GET_pic9.png)  
+![Use alternative method](./assets/GET/GET_pic9.png)  
 _______________________________________________
-## Полезные ссылки.    
-- [**GET запросы на практике: правила, принципы и примеры**](https://habr.com/ru/companies/X5Tech/articles/798681/).  
-- [**Переменные окружения**](../../pm/Creating/Variables)  
-- [**Проксирование трафика**](../../Settings/Proxy_Traffic).
-
-
-
-
-
-
-
+## Useful links.    
+- [**GET Requests in Practice: Rules, Principles, and Examples**](https://habr.com/ru/companies/X5Tech/articles/798681/).  
+- [**Environment Variables**](../../pm/Creating/Variables)  
+- [**Proxying Traffic**](../../Settings/Proxy_Traffic).

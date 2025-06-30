@@ -1,69 +1,69 @@
 ---
 sidebar_position: 5
-title: Директории FTP
-description: Работа с директориями на FTP сервере.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+title: FTP Directories
+description: Working with directories on an FTP server.
+---
+:::info **Please read the [*Rules for using materials on this site*](../../Disclaimer).**
 :::  
-_______________________________________________   
-Данный экшен позволяет вам работать с директориями, а именно:  
-- ***Скачать** директорию с файлами данных проекта, которая находится на FTP-сервере;*  
-- ***Загрузить** директорию с данными проекта на FTP-сервер;*  
-- ***Удалить** директорию с файлами из сервера;*  
-- ***Получить** список рабочих файлов, которые находятся в определенной директории;*  
-- ***Переименовать** директорию на сервере.*  
-_______________________________________________ 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → FTP → файлы FTP**.  
-
-![Как добавить в проект?](./assets/FTP_Dir/FTP_Dir_pic1.png)
-_______________________________________________   
-## Как работать с экшеном?  
-![Как работать с экшеном?](./assets/FTP_Dir/FTP_Dir_pic2.png)  
-_______________________________________________   
-### Доступные варианты действий:  
-![варианты действий](./assets/FTP_Dir/FTP_Dir_pic3.png) 
-#### Загрузить директорию с сервера.  
-Позволяет скачать директорию с сервера на свой компьютер.  
-
-#### Загрузить директорию на сервер.  
-Загружает директорию с вашего компьютера на сервер.    
-
-#### Удалить директорию на сервере.  
-Удаляет директорию с сервера. Необходимо указать к ней путь.  
-
-#### Переименовать директорию на сервере.  
-Нужен для изменения имени директории на сервере. Указываем путь к директории и ее новое имя.  
-
-#### Получить список файлов.  
-Используется для получения списка файлов, содержащихся в определённой директории на сервере.  
-Необходимо указать список, в который будут сохраняться имена файлов.  
 _______________________________________________
-### Доступные настройки:  
-![Доступные настройки](./assets/FTP_Dir/FTP_Dir_pic4.png)  
-
-- **Путь на сервере**.  
-Путь к нужной директории на сервере.  
-- **Локальный путь**.  
-Путь на личном компьютере, куда сохранится скачанная директория.  
-- **Обрабатывать поддиректории**.  
-При работе будут учитываться поддиректории, если они есть в основной директории.  
-- ***Включать имена директорий***.   
- *(Дополнительная настройка для* **Получить список файлов**).  
- Включает в итоговый список файлов имена директорий.   
-- **Тип пути**.  
-Относительный (относительно текущей папки) или абсолютный (от корня системы) путь на сервере.  
-_______________________________________________  
-## Пример использования.  
-![Пример использования](./assets/FTP_Dir/FTP_Dir_pic5.png)  
-### Скачиваем папку с файлами.  
-**1.** Проверяем есть ли файлы в директории на FTP сервере.   
-**2.** Если директория не пустая, то скачиваем ее для дальнейшей работы.  
-**3.** Получаем список файлов.  
-**4.** Если строк в списке больше 0, то скачиваем все файлы с FTP-сервера и работаем с ними.  
-**5.** Когда строки заканчиваются, выводим уведомление об этом и завершаем работу.  
+This action lets you work with directories, specifically:
+- ***Download** a directory with your project’s data files located on the FTP server;*
+- ***Upload** a project data directory to the FTP server;*
+- ***Delete** a directory with files from the server;*
+- ***Get** a list of working files located in a specific directory;*
+- ***Rename** a directory on the server.*
 _______________________________________________
-## Полезные ссылки.    
-- [**Список**](../Lists%20and%20Google%20Sheets/Lists).  
-- [**Оператор IF**](../Logic/IF).  
-- [**Оповещение**](../Logic/Notification).
+### How to add it to your project?
+Through the context menu: **Add Action → FTP → FTP files**.
+
+![How to add it to your project?](./assets/FTP_Dir/FTP_Dir_pic1.png)
+_______________________________________________
+## How to use the action?
+![How to use the action?](./assets/FTP_Dir/FTP_Dir_pic2.png)
+_______________________________________________
+### Available actions:
+![action options](./assets/FTP_Dir/FTP_Dir_pic3.png)
+#### Download a directory from the server.
+Lets you download a directory from the server to your computer.
+
+#### Upload a directory to the server.
+Uploads a directory from your computer to the server.
+
+#### Delete a directory on the server.
+Deletes a directory from the server. You’ll need to specify its path.
+
+#### Rename a directory on the server.
+Used to change the directory name on the server. Specify the directory path and its new name.
+
+#### Get a list of files.
+Used to get a list of files contained in a specific directory on the server.
+You need to specify the list where the file names will be saved.
+_______________________________________________
+### Available settings:
+![Available settings](./assets/FTP_Dir/FTP_Dir_pic4.png)
+
+- **Server path**
+The path to the desired directory on the server.
+- **Local path**
+The path on your personal computer where the downloaded directory will be saved.
+- **Process subdirectories**
+Subdirectories inside the main directory will be taken into account, if they exist.
+- ***Include directory names***
+ *(An extra option for* **Get a list of files**).  
+ Adds folder names to the resulting file list.
+- **Path type**
+Relative (relative to the current folder) or absolute (from the system root) path on the server.
+_______________________________________________
+## Usage example.
+![Usage example](./assets/FTP_Dir/FTP_Dir_pic5.png)
+### Downloading a folder with files.
+**1.** Check if there are files in the directory on the FTP server.  
+**2.** If the directory isn’t empty, download it for further work.  
+**3.** Get the list of files.  
+**4.** If there’s more than 0 lines in the list, download all the files from the FTP server and work with them.  
+**5.** When there are no lines left, show a notification about it and finish.
+_______________________________________________
+## Useful links.
+- [**List**](../Lists%20and%20Google%20Sheets/Lists)
+- [**IF Operator**](../Logic/IF)
+- [**Notification**](../Logic/Notification)

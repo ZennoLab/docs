@@ -1,70 +1,70 @@
 ---
 sidebar_position: 4
-title: Файлы FTP
-description: Работа с файлами на FTP сервере.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-_______________________________________________  
-В ZennoDroid есть встроенные возможности для работы с FTP-ресурсами. Вы можете автоматически загружать файлы на FTP-сервер, создавать и удалять директории, а так же производить другие операции. Это удобно, когда файлы ваших проектов хранятся на FTP-сервере.  
-
-Данный экшен позволяет вам работать с файлами, а именно:  
-- ***Загрузить один** файл С или НА сервер;*  
-- ***Загрузить несколько** файлов С или на сервер;*  
-- ***Удалить** один или несколько файлов с сервера;*  
-- ***Переименовать** файл на сервере.*  
-_______________________________________________ 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → FTP → файлы FTP**.  
-
-![Как добавить в проект?](./assets/FTP_Files/FTP_Files_pic1.png)
-_______________________________________________   
-## Как работать с экшеном?  
-![Как работать с экшеном?](./assets/FTP_Files/FTP_Files_pic2.png)  
+title: FTP Files
+description: Working with files on an FTP server.
+---
+:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
+:::
 _______________________________________________
-### Доступные варианты действий:  
-![варианты действий](./assets/FTP_Files/FTP_Files_pic3.png) 
-#### Загрузить файл с сервера.  
-Позволяет скачать файл с сервера на свой компьютер.  
+ZennoDroid has built-in features for working with FTP resources. You can automatically upload files to an FTP server, create and delete directories, and do other operations as well. This is useful if your project files are stored on an FTP server.
 
-#### Загрузить файл на сервер.  
-Загружает файл с вашего компьютера на сервер.  
-
-#### Загрузить файлы с сервера.  
-Нужен для скачивания нескольких файлов с сервера на компьютер.  
-Пути к файлам указываются в ***Списке***. За один проход экшена берется только одна строка с путем из списка.  
-
-#### Загрузить файлы на сервер.  
-Используется для загрузки нескольких файлов с компьютера на сервер.  
-Пути к файлам указываются в ***Списке***. За один проход экшена берется только одна строка с путем из списка.  
-
-#### Удалить файл на сервере.  
-Удаляет файл с сервера. Необходимо указать к нему путь.  
-
-#### Переименовать файл на сервере.  
-Нужен для изменения имени файла на сервере. Указываем путь к файлу и его новое имя.  
+This action lets you work with files, specifically:
+- ***Upload a single** file FROM or TO the server;*
+- ***Upload several** files FROM or TO the server;*
+- ***Delete** one or more files from the server;*
+- ***Rename** a file on the server.*
 _______________________________________________
-### Доступные настройки:  
-![Доступные настройки](./assets/FTP_Files/FTP_Files_pic4.png)  
+### How to add it to your project?
+Via the context menu: **Add Action → FTP → FTP files**.
 
-- **Путь на сервере**.  
-Путь к нужному файлу на сервере.  
-- **Локальный путь**.  
-Путь на личном компьютере, куда сохранится скачанный файл.  
-- **Тип пути**.  
-Относительный (относительно текущей папки) или абсолютный (от корня системы) путь на сервере.  
+![How to add to your project?](./assets/FTP_Files/FTP_Files_pic1.png)
 _______________________________________________
-## Пример использования.  
-![Пример использования](./assets/FTP_Files/FTP_Files_pic5.png)  
-### Скачиваем файлы с FTP-сервера по списку.  
-Пути к файлам, которые нам нужно скачать, хранятся в списке.  
-**1.** Получаем количество строк из списка.   
-**2.** Если список не пустой, то скачиваем файл с FTP-сервера.  
-**3.** Затем удаляем строку, которая содержит путь к уже скачанному файлу.  
-**4.** Возвращаемся в начало цикла (к 1 шагу).  
-**5.** Как только строк в списке не останется, выводим оповещение о том, что все файлы скачаны.
+## How to work with this action?
+![How to use the action?](./assets/FTP_Files/FTP_Files_pic2.png)
 _______________________________________________
-## Полезные ссылки.    
-- [**Как подключиться к серверу по FTP**](https://help.reg.ru/support/hosting/dostupy-i-podklyucheniye-panel-upravleniya-ftp-ssh/kak-podklyuchitsya-k-serveru-po-ftp-i-nachat-rabotu#0)  
-- [**Оператор IF**](../Logic/IF)  
-- [**Оповещение**](../Logic/Notification).
+### Available action types:
+![Action types](./assets/FTP_Files/FTP_Files_pic3.png)
+#### Download a file from the server.
+Lets you download a file from the server to your computer.
+
+#### Upload a file to the server.
+Uploads a file from your computer to the server.
+
+#### Download files from the server.
+Needed for downloading several files from the server to your computer.
+The file paths are listed in a ***List***. The action processes just one line from the list at a time.
+
+#### Upload files to the server.
+Used for uploading several files from your computer to the server.
+The file paths are provided in a ***List***. The action processes just one line from the list at a time.
+
+#### Delete a file on the server.
+Deletes a file from the server. You need to specify its path.
+
+#### Rename a file on the server.
+Lets you change the name of a file on the server. You enter the path to the file and its new name.
+_______________________________________________
+### Available settings:
+![Available settings](./assets/FTP_Files/FTP_Files_pic4.png)
+
+- **Path on server**
+Path to the needed file on the server.
+- **Local path**
+Path on your PC where the downloaded file will be saved.
+- **Path type**
+Relative (from the current folder) or absolute (from the root of the system) path on the server.
+_______________________________________________
+## Usage example
+![Usage example](./assets/FTP_Files/FTP_Files_pic5.png)
+### Downloading files from the FTP server using a list
+The file paths you need to download are stored in a list.
+**1.** Get the line count from the list.
+**2.** If the list isn't empty, download the file from the FTP server.
+**3.** Then delete the line that contains the path of the already downloaded file.
+**4.** Return to the start of the loop (step 1).
+**5.** When there are no lines left in the list, show a notification saying all files are downloaded.
+_______________________________________________
+## Useful links
+- [**How to connect to a server via FTP**](https://help.reg.ru/support/hosting/dostupy-i-podklyucheniye-panel-upravleniya-ftp-ssh/kak-podklyuchitsya-k-serveru-po-ftp-i-nachat-rabotu#0)
+- [**IF Operator**](../Logic/IF)
+- [**Notification**](../Logic/Notification).

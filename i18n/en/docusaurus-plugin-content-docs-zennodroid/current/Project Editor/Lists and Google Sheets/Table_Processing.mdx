@@ -1,174 +1,169 @@
 ---
 sidebar_position: 4
-title: Операции над таблицами
-description: Рассмотрим экшен для работы с таблицами.
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::   
+title: Table Operations
+description: Let's look at the actions for working with tables.
+---
+:::info **Please read the [*Terms of Use for materials on this site*](../../Disclaimer).**
+:::
 
-Таблицы используются для получения более сложно организованных данных, чем [**списки**](./Lists). Это может быть каталог товаров для интернет-магазина, в котором построчно прописаны разные данные: название, цена, описание и тд.  
+Tables are used to handle more complex, organized data than [**lists**](./Lists). For example, an online store catalog where each row has different data: name, price, description, etc.
 
-#### Они могут использоваться для:  
-- Работы с комплексом данных;  
-- Добавления и получения элементов таблицы;  
-- Удаления строк, столбцов и дублей;  
-- Привязки к файлу;  
-- Получение количества строк и столбцов;  
+#### Tables can be used for:
+- Working with a set of data
+- Adding and getting table elements
+- Deleting rows, columns, and duplicates
+- Linking to a file
+- Getting the number of rows and columns
 _______________________________________________
-## Как добавить в проект?  
-Через контекстное меню: ***Добавить действие → Таблицы → Операции над таблицей***.  
+## How to add to your project?
+Right-click: ***Add Action → Tables → Table Operations***.
 
-![Как добавить в проект?](./assets/Table_Processing/Table_Processing_pic1.png)   
+![How to add to project?](./assets/Table_Processing/Table_Processing_pic1.png)
 _______________________________________________
-## Доступные функции:  
-:::tip **Нюанс.**  
-*В качестве номера столбца можно использовать числа (нумерация с нуля), либо буквы латинского алфавита (в верхнем регистре).*
-:::  
+## Available functions:
+:::tip **Note**
+*For column numbers, you can use either numbers (starting at zero) or uppercase Latin letters.*
+:::
 
-### Взять столбец.  
-Позволяет взять значения определенного столбца из таблицы и положить его в список.  
+### Get column
+Lets you take the values of a certain table column and put them into a list.
 
-![Взять столбец](./assets/Table_Processing/Table_Processing_pic2.png) 
+![Get column](./assets/Table_Processing/Table_Processing_pic2.png)
 
-Выбираем Таблицу → определяем Функцию → указываем Столбец, который хотим забрать → выбираем Список, куда поместим столбец.  
+Choose the Table → select the Function → specify the Column you want to get → choose the List to put the column in.
 _______________________________________________
-### Взять строки.  
-Получаем строки с возможностью удаления их из таблицы и записью в список или переменные.  
+### Get rows
+You can get rows with the option to delete them from the table and write them to a list or variables.
 
-![Взять строки](./assets/Table_Processing/Table_Processing_pic3.png)
+![Get rows](./assets/Table_Processing/Table_Processing_pic3.png)
 
-- **Критерии выбора строк:**  
-    - *Все*;  
-    - *Не содержит текст*;  
-    - *Неудовлетворяющие регулярному выражению*;  
-    - *Первую*;  
-    - *Под номерами*;  
-    - *Случайную*;  
-    - *Содержит текст*;  
-    - *Удовлетворяющие регулярному выражению*;  
-- **Удалить после взятия.** Определяет, останутся ли взятые строки в таблице или нет.  
-- **Поместить результат.** Строку можно отправить В список или в Переменные. А далее идет таблица, где мы можем это контроллировать.  
+- **Row selection criteria:**
+    - *All*
+    - *Does not contain text*
+    - *Does not match regex*
+    - *First*
+    - *By indices*
+    - *Random*
+    - *Contains text*
+    - *Matches regex*
+- **Delete after getting.** Decides if the rows you got will stay in the table.
+- **Put result in:** You can put the row into a List or Variables. There's a table below to set this up.
 _______________________________________________
-### Добавить список. 
-Здесь же наоборот можно положить выбранный список в определенный столбец таблицы.  
+### Add list
+This does the opposite — you can put a chosen list into a specific table column.
 
-***Выбираем столбец, в который положим → Указываем список.***  
+***Pick a column to fill → Select a list.***
 _______________________________________________
-### Добавить строку.  
-:::tip **Рекомендуем.**  
-*Когда нужно добавить сразу несколько строк в таблицу, то стоит воспользоваться экшеном **Обработка текста с функцией «В таблицу»**.*
-::: 
-С помощью этой функции в таблицу можно положить статический текст (string) или переменную. Эти данные будут добавлены в конец таблицы.   
+### Add row
+:::tip **Recommended**
+*If you need to add several rows at once, use the action **Text Processing with “To Table” function**.*
+:::
+With this function, you can put static text (string) or a variable into a table. These will be added to the end of the table.
 
-:::warning **Обратите внимание**  
-Если таблица привязана к файлу с расширениями `.csv`, `.xls(x)` или `.ods`, то в качестве разделителя нужно использовать `{-String.Tab-}`. 
-:::   
+:::warning **Note**
+If your table is linked to a file with `.csv`, `.xls(x)`, or `.ods` extension, use `{-String.Tab-}` as a separator.
+:::
 _______________________________________________
-### Записать ячейку.  
-Добавляет текст в конкретную ячейку. 
+### Write cell
+Adds text to a specific cell.
 
-![Записать ячейку](./assets/Table_Processing/Table_Processing_pic4.png) 
+![Write cell](./assets/Table_Processing/Table_Processing_pic4.png)
 
-- **Строка и Столбец**. Здесь указываем статические координаты ячейки. Это также можно сделать через переменные.  
-- **Значение**. Пишем статический текст (string) или переменную. 
+- **Row and Column.** Here you set the static cell coordinates or do it through variables.
+- **Value.** Enter static text (string) or a variable.
 _______________________________________________
-### Получить количество столбцов.  
-Здесь можно узнать, сколько всего столбцов содержит таблица.  
-Результат можно положить в переменную (***содержит только числовое значение (int)***).  
+### Get column count
+Find out how many columns are in the table.
+You can put the result into a variable (***numeric value only (int)***).
 _______________________________________________
-### Получить количество строк.  
-Эта операция показывает, сколько строк содержит таблица.   
-Результат можно положить в переменную (***содержит только числовое значение (int)***).   
+### Get row count
+Shows how many rows are in the table.
+You can put the result into a variable (***numeric value only (int)***).
 _______________________________________________
-### Привязать к файлу.  
-Позволяет привязать таблицу к файлу в ходе выполнения проекта.  
+### Link to file
+Lets you link the table to a file while your project is running.
 
-Этот экшен нужно использовать, если путь файла не известен на момент старта шаблона, а будет вычислен только во время выполнения.   
+You need this action if you don’t know the file path when launching the template, and will get it while running.
 
-- **Путь к файлу**. Выбираем файл или указываем переменную, содержащую путь к файлу.  
-- **Создавать файл при отсутствии**. Если файл отсутствует по указанному пути, то он будет автоматически создан.   
+- **File path.** Choose a file or variable with the file path.
+- **Create file if missing.** If there’s no file, it’ll be created automatically.
 _______________________________________________
-### Прочитать ячейку.  
-Получить значение из заданной ячейки.  
+### Read cell
+Get the value from a specified cell.
 
-- **Строка и Столбец**. Здесь указываем статические координаты ячейки. Это также можно сделать через переменные.  
-- **Положить в переменную**. Указываем переменную, в которую положим результат.  
+- **Row and Column.** Set static cell coordinates, or use variables.
+- **Put into variable.** Pick a variable to put the result in.
 _______________________________________________
-### Сортировать таблицу.  
-Сортирует элементы таблицы по убыванию или возрастанию.  
+### Sort table
+Sorts table elements in ascending or descending order.
 
-![Сортировать таблицу](./assets/Table_Processing/Table_Processing_pic5.png) 
+![Sort table](./assets/Table_Processing/Table_Processing_pic5.png)
 
-- **Столбцы**. Выбираем нужные.   
-ZennoDroid автоматически определяет столбцы со значениями и предлагает их.  
-- **Сортировать как числа, если это возможно**. Использовать принцип сортировки как у чисел.  
-:::info **Условие для работы**  
-*Данная опция сработает, только если в столбце находятся целые числа. Если же там присутствуют дробные числа, то столбец отсортируется по принципу строк.*  
-:::   
-- **Тип сортировка**. Сортируем По возрастанию или По убыванию.  
+- **Columns.** Select the ones you need.
+ZennoDroid will pick up columns with values and suggest them.
+- **Sort as numbers where possible.** Uses numeric sorting if it’s possible.
+:::info **Condition for use**
+*This option only works if the column contains only whole numbers. If there are decimals, it sorts as strings.*
+:::
+- **Sort type.** Sort Ascending or Descending.
 _______________________________________________
-### Сохранить в файл.  
-Сохранение таблицы в файл во время выполнения проекта. Нужно выбрать файл или указать переменную, содержащую путь к нему.  
+### Save to file
+Saves the table to a file while the project runs. You need to pick a file or variable with the path.
 
-:::warning **Обратите внимание**  
-Функция умеет только **перезаписывать** существующий файл.
-:::   
+:::warning **Note**
+This function only **overwrites** an existing file.
+:::
 _______________________________________________
-### Удалить дубли.  
-Эта функция удаляет повторяющиеся значения из таблицы.  
+### Remove duplicates
+This function deletes duplicate values from the table.
 
-- **Столбцы**. Проверяем на дубли Все или конкретные.  
-ZennoDroid автоматически определяет столбцы со значениями и предлагает их.  
+- **Columns.** Check for duplicates in All or specific columns.
+ZennoDroid will pick up columns with values and suggest them.
 _______________________________________________
-### Удалить столбец.  
-Целиком удаляет выбранный столбец из таблицы.  
+### Remove column
+Deletes the selected column from the table entirely.
 
-- **Столбец**. Вводим конкретный столбец или переменную.  
-:::warning **Обратите внимание**  
-Столбец будет удалён **со всеми значениями**.
-:::  
+- **Column.** Enter a specific column or variable.
+:::warning **Note**
+The column will be deleted **with all its values**.
+:::
 _______________________________________________
-### Удалить строки.  
-Позволяет удалить определенные строки во всех столбцах.  
+### Remove rows
+Lets you delete certain rows across all columns.
 
-![Удалить строки](./assets/Table_Processing/Table_Processing_pic6.png)
+![Remove rows](./assets/Table_Processing/Table_Processing_pic6.png)
 
-- **Критерии выбора строк**:  
-    - Все;
-    - Не содержит текст;
-    - Неудовлетворяющие регулярному выражению;
-    - Первую;
-    - Под номерами (*нумерация с нуля*);
-    - Случайную;
-    - Содержит текст;
-    - Содержащие только пробельные символы;
-    - Удовлетворяющие регулярному выражению;  
+- **Row selection criteria:**
+    - All
+    - Does not contain text
+    - Does not match regex
+    - First
+    - By indices (*starts from zero*)
+    - Random
+    - Contains text
+    - Only whitespace
+    - Matches regex
 
-:::warning **Обратите внимание**  
-Заданная строка будет удалена **во всех столбцах**.
-:::  
+:::warning **Note**
+The specified row gets deleted **from all columns**.
+:::
 _______________________________________________
-## Рекомендации по работе с таблицами.  
-:::tip **Эта информация будет полезна для корректной работы в проектах**  
-:::  
+## Tips for working with tables
+:::tip **This info helps for proper project use**
+:::
 
-- Не стоит привязывать к таблице слишком большие файлы (*100мб и более*) без опции ***«Сохранять изменения таблицы в файл»***. Особенно, если у вас мало оперативной памяти.  
-- При работе с таблицой, которая привязана к одному файлу сразу в нескольких проектах, нужно использовать одинаковый разделитель. Например, если в одном шаблоне столбцы разделены через `;` , а в другом через `-` , то произойдет ошибка.  
-- Когда проект работает в многопоточном режиме, а каждый поток при этом обрабатывает свою отдельную строку, то лучше включить опцию ***«Сохранять изменения таблицы в файл»***. Это позволит брать данные из таблицы и *удалять их после взятия*.  
-- Если вы синхронизируетесь с файлом, то все изменения в каждом из потоков будут сразу отображаться в проекте, так как таблица одна на все потоки.  
-- Однако если вы не используете синхронизацию с файлом, то для каждого потока будет создаваться своя копия таблицы. В этом случае удаление строки таблицы из одного потока не меняет таблицу в других потоках.  
-- Стоит учитывать, что таблицы в оперативной памяти занимают намного больше места, чем исходный файл на жестком диске. Например, таблица на основе файла CSV размером 10 MB в 100 потоков без синхронизации с файлом, может занять 5 GB оперативной памяти. Поэтому старайтесь не использовать списки и таблицы в режиме ***«без синхронизации»*** с файлом без необходимости. 
+- Avoid linking very large files (*100 MB or more*) to a table without using ***“Save table changes to file”***, especially if you have low RAM.
+- If you’re working with a table linked to the same file in several projects at once, use the same separator everywhere. For example, if one template uses `;` for columns and another uses `-`, it’ll cause errors.
+- If your project runs with multiple threads, and each thread handles its own row, you should turn on ***“Save table changes to file”***. This lets you get data from the table and *delete it after you take it*.
+- If you sync with a file, changes made by any thread will instantly show up in the project since the table is shared across all threads.
+- But if you’re not syncing with a file, every thread makes its own copy of the table. That means deleting a row in one thread won’t change the table in the others.
+- Keep in mind: tables in RAM take up much more space than the original file. For example, a 10 MB CSV-based table in 100 threads with no file sync can use up 5 GB of RAM. So try not to use lists and tables in ***“no sync”*** mode unless you really have to.
 _______________________________________________
-## Пример использования.  
-Открываем приложение маркетплейса, собираем название нужных товаров в список, а затем добавляем их в таблицу для дальнейшего использования.   
+## Example
+Open the marketplace app, collect product names you want into a list, and then add them to a table for future use.
 
-![Пример использования](./assets/Table_Processing/Table_Processing_pic7.png)
+![Example](./assets/Table_Processing/Table_Processing_pic7.png)
 _______________________________________________
-## Полезные ссылки.  
-- [**Диапазоны значений**](../../pm/Creating/Value_Ranges). 
-- [**Переменные окружения**](../../pm/Creating/Variables).  
-
-
-
-
-
+## Useful links
+- [**Value ranges**](../../pm/Creating/Value_Ranges)
+- [**Environment variables**](../../pm/Creating/Variables)

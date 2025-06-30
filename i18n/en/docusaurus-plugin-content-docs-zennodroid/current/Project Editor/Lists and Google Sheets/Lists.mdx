@@ -1,70 +1,70 @@
 ---
 sidebar_position: 1
-title: Список
-description: Создание списка и его настройки.
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-::: 
+title: List
+description: Creating a list and its settings.
+---
+:::info **Please read through the [*Terms of Use for materials on this resource*](../../Disclaimer).**
+:::
 
-Список — это упорядоченный набор строк. С помощью них можно получать данные из текстового документа, сохранять их в файл, либо вовсе работать с набором строк в памяти без привязки к конкретному файлу.  
-_______________________________________________ 
-## Создание списка.  
-Создать новый список можно из контекстного меню: ***Добавить действие → Списки → Список***.  
-
-![Создание списка](./assets/Lists/Lists_pic1.png) 
-
-Либо через *Панель статических блоков*: ***клик по иконке*** `+` ***→ Добавить список***.  
-
-![через панель статических блоков](./assets/Lists/Lists_pic2.png) 
-
-Созданный список отобразится на панели статических блоков:  
-
-![отобразится на панели](./assets/Lists/Lists_pic3.png)  
-
-При открытии списка появятся его настройки и превью содержимого.  
-Если список привязан к файлу, то отобразится содержимое этого файла.  
-Но когда привязки к файлу нет, то можно задать свои значения по умолчанию.  
-_______________________________________________ 
-## Настройки списка.    
-![Настройки списка](./assets/Lists/Lists_pic4.png) 
-
-#### Загружать из файла.  
-Поставив галочку, мы обозначаем, что будем брать данные для списка из текстового файла формата `.txt`.  
-В случае, если галочку мы не ставим, то у каждого потока будет своя независимая копия списка.  
-
-#### Сохранять изменения списка в файл.  
-При включении данной опции результат работы со списком будет автоматически сохраняться в привязанный текстовый файл.  
-
-Если включена предыдущая настройка *Загрузка из файла*, но выключено *Сохранение в файл*, то для каждого потока будет создана своя, локальная, копия списка на основе указанного файла. Изменения списка внутри потоков никак не отразятся на привязанном файле.  
-
-Но в случае, когда эта опция включена, то все потоки будут работать с одной копией списка. Соответственно, все изменения будут сохраняться в привязанный файл.  
-
-#### Оставлять пустой файл.  
-Отвечает за то, нужно ли оставить пустой файл или удалить его, когда все данные в списке закончатся.  
-
-#### Разделитель.  
-Здесь мы указываем, что будет использоваться в качестве разделения строк списка. Это может быть клавиша **Enter**, произвольный текст или регулярное выражение (Regex).
-
-![Разделитель](./assets/Lists/Lists_pic5.png)   
-
-#### Путь к файлу.  
-![Путь к файлу.](./assets/Lists/Lists_pic6.png)   
-
-Тут указываем путь к текстовому документу, из которого будем загружать список. Данные из него будут выгружаться в список при старте проекта.  
-:::tip **Если вы не знаете путь к файлу.**
-Бывает такое, что путь определяется только во время выполнения проекта. Тогда можно использовать экшен **Работа со списком** с функцией ***Привязать к файлу***.  
-::: 
-_______________________________________________ 
-## Просмотр содержимого.  
-![Просмотр содержимого](./assets/Lists/Lists_pic7.png) 
-
-Здесь можно полностью посмотреть весь список.   
-Помимо этого можно включить отображение управляющих символов, задать фильтр для поиска нужной строки, а также воспользоваться конструктором фильтра.  
-:::tip **Что такое управляющие символы?**
-*Это невидимые символы, которые используются для управления форматированием текста и дополнительными операциями: перенос строки, табуляция.* 
-::: 
+A list is an ordered set of lines. With lists, you can pull data from a text document, save them to a file, or just work with a set of strings in memory, without tying them to a specific file.  
 _______________________________________________
-## Полезные ссылки.  
-- [**Что такое статические блоки?**](../Static%20Block%20Panel/CommonPrinciples)  
-- [**Тестер регулярных выражений**](../../Tools/RegEx_Tester).  
-- [**Символы управления в программировании**](https://otus.ru/journal/simvoly-upravleniya-v-programmirovanii/).
+## Creating a list.  
+You can create a new list from the context menu: ***Add action → Lists → List***.
+
+![Creating a list](./assets/Lists/Lists_pic1.png)
+
+Or through the *Static Blocks Panel*: ***click on the icon*** `+` ***→ Add list***.
+
+![through static blocks panel](./assets/Lists/Lists_pic2.png)
+
+The list you create will show up on the static blocks panel:
+
+![shows up on panel](./assets/Lists/Lists_pic3.png)
+
+When you open the list, you’ll see its settings and a preview of what's inside.  
+If the list is linked to a file, then you’ll see that file’s contents.  
+But if there’s no file attached, you can set your own default values.  
+_______________________________________________
+## List settings.
+![List settings](./assets/Lists/Lists_pic4.png)
+
+#### Load from file.  
+If you check this box, it means you’ll be getting data for the list from a `.txt` text file.  
+If you leave it unchecked, then each thread will get its own separate copy of the list.
+
+#### Save list changes to file.  
+If you turn this option on, any work you do with the list will automatically be saved to the linked text file.
+
+If the previous setting, *Load from file*, is enabled but *Save to file* is off, then every thread will get its own local copy of the list based on the selected file. Changes to the list within the threads won’t affect the attached file at all.
+
+But if this option is on, then all threads will work with a single shared copy of the list. So, all changes will be saved to the linked file.
+
+#### Leave empty file.  
+This determines whether to keep an empty file or delete it when all data in the list runs out.
+
+#### Separator.  
+Here you set what’s going to be used as the string separator in the list. This could be the **Enter** key, any text you want, or a regular expression (Regex).
+
+![Separator](./assets/Lists/Lists_pic5.png)
+
+#### File path.
+![File path.](./assets/Lists/Lists_pic6.png)
+
+Here you set the path to the text document you’ll be loading the list from. Data from it will be loaded into the list when the project starts.
+:::tip **If you don’t know the file path.**
+Sometimes, the path is only set during project runtime. In that case, you can use the **List action** with the ***Attach to file*** function.
+:::
+_______________________________________________
+## Viewing contents.
+![Viewing contents](./assets/Lists/Lists_pic7.png)
+
+Here you can view the entire list.  
+You can also show control characters, set a filter to search for a specific line, and use the filter constructor.
+:::tip **What are control characters?**
+*These are invisible symbols used for things like formatting text and other extra functions: line breaks, tabs.*
+:::
+_______________________________________________
+## Useful links.
+- [**What are static blocks?**](../Static%20Block%20Panel/CommonPrinciples)
+- [**Regular expression tester**](../../Tools/RegEx_Tester).
+- [**Control characters in programming**](https://otus.ru/journal/simvoly-upravleniya-v-programmirovanii/).

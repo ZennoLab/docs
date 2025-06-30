@@ -1,94 +1,94 @@
 ---
 sidebar_position: 5
 title: BadEnd 
-description: Выход по красной ветке.
+description: Exit through the red branch.
 ---  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
 :::  
 _______________________________________________  
-В случае возникновения ошибки в каком-либо из экшенов и при выходе из кубика по красной ветке выполнение проекта переходит в блок, который связан с действием **Bad End**. Это нужно, чтобы задать дополнительные действия в случае завершения работы шаблона с ошибкой.   
+If there's an error in any of the actions or you exit the cube through the red branch, the project moves to the block that's linked to the **Bad End** action. This is needed so you can set up extra steps for when the template finishes its work with an error.   
 
-#### Когда используется?  
-При работе шаблона могут возникнуть ошибки:  
-- На сайте изменилась верстка, и шаблон теперь не может найти нужный HTML элемент.  
-- Логика шаблона не полностью продумана и не учитывает определенные ситуации.  
+#### When do you use it?  
+While the template is running, errors might pop up:  
+- The website layout changed, so the template can't find the HTML element it needs anymore  
+- The logic of the template wasn't fully thought through and doesn't cover certain cases  
 
-Из-за этого проект не будет выполнен до конца и завершится с ошибкой.  
-Чтобы исключить такие ситуации, ***можно использовать Bad End для***:  
+Because of this, the project won't complete and will end with an error.  
+To prevent issues like this, ***you can use Bad End for***:  
 
-- Возврата данных обратно в списки или таблицы для последующего их использования без потерь;  
-- Логирования ошибок;  
-- Добавления в Blacklist невалидной информации;  
-- Сохранения бэкапа.  
+- Returning data back to lists or tables so you don't lose it and can use it later  
+- Logging errors  
+- Adding bad info to the Blacklist  
+- Saving a backup  
 _______________________________________________ 
-### Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Логика → BadEnd**.  
+### How do you add it to a project?  
+Through the context menu: **Add Action → Logic → BadEnd**  
 
-![Как добавить в проект?](./assets/BadEnd/BadEnd_pic1.png)  
+![How do you add it to a project?](./assets/BadEnd/BadEnd_pic1.png)  
 _______________________________________________ 
-### Как работать с экшеном?  
-В случае завершения шаблона ошибкой, выполнятся действия, привязанные к Bad End:  
+### How do you work with the action?  
+If the template ends with an error, the actions linked to Bad End will run:  
 
-![Как работать с экшеном?](./assets/BadEnd/BadEnd_pic2.png)  
+![How do you work with the action?](./assets/BadEnd/BadEnd_pic2.png)  
 
-Bad End также срабатывает при прерывании шаблона или по истечению глобального таймаута выполнения.  
-За это отвечает настройка проекта в ZennoDroid — [**Выполнять BadEnd при прерывании проекта**](../../Execution/Stopping):  
+Bad End will also trigger if you interrupt the template or if the global timeout is reached.  
+This is controlled by the project setting in ZennoDroid — [**Run BadEnd on project interrupt**](../../Execution/Stopping):  
 
-![Выполнять BadEnd при прерывании проекта](./assets/BadEnd/BadEnd_pic3.png) 
+![Run BadEnd on project interrupt](./assets/BadEnd/BadEnd_pic3.png) 
 
-:::info **Bad End срабатывает 1 раз для каждого потока.**
+:::info **Bad End runs once for each thread.**
 :::  
 
-### Многократный переход в BadEnd.  
-При отладке проект переходит в BadEnd по умолчанию только один раз. Затем нужно перезапустить проект кнопкой **С начала**.  
-Для возможности переходить в BadEnd несколько раз подряд нужно включить в *Настройках* опцию [**Переходить в Bad/GoodEnd при многократной отладке**](../../Settings/Debugging).  
+### Multiple jumps into BadEnd  
+By default, while debugging, the project goes to BadEnd just once. After that, you need to restart the project with the **From Beginning** button.  
+If you want to be able to go into BadEnd several times in a row, you need to turn on [**Jump into Bad/GoodEnd on repeated debugging**](../../Settings/Debugging) in *Settings*.  
 
-![Многократный переход в BadEnd](./assets/BadEnd/BadEnd_pic4.png) 
+![Multiple jumps into BadEnd](./assets/BadEnd/BadEnd_pic4.png) 
 _______________________________________________ 
-## Примеры использования.  
-### Восстановление данных в случае ошибки.  
-Представим, что для работы мы берем из списка строку с ее последующим удалением. Если в процессе проект завершился с какой-либо ошибкой до того, как мы обработали эту строку, то данные будут утеряны. Чтобы этого избежать мы используем Bad End вместе с действием добавления строки обратно в список. Таким образом при неудачном завершении работы необработанные данные будут сохранены назад в список для последующей обработки.  
+## Examples  
+### Restoring data after an error  
+Let's say you take a line from a list to work with and then delete it. If your project crashes with some error before you've processed that line, the data would be lost. To avoid this, use Bad End together with the action that adds the line back into the list. That way, if the run fails, any unprocessed data gets saved back to the list for next time.  
 
-### Отследить и исправить ошибку.  
-Каждое действие в шаблоне имеет уникальный идентификатор, с помощью которого его можно найти. Для того чтобы получить id экшена с ошибкой, нужно в логе кликнуть по ней ПКМ и нажать ***Скопировать id действия***.  
+### Track and fix an error  
+Every action in the template has its own unique identifier, which lets you find it. To get the ID of the action with the error, right-click on the error in the log and hit ***Copy action ID***.  
 
-![Отследить и исправить ошибку.](./assets/BadEnd/BadEnd_pic5.png)  
+![Track and fix an error.](./assets/BadEnd/BadEnd_pic5.png)  
 
-Далее можно вызвать поиск через `Ctrl+F`, вставить полученный ID и нажать кнопку **Найти**.  
-Программа выделит проблемный экшен синей рамкой:  
+Then you can use `Ctrl+F` to search, paste the ID, and click **Find**.  
+The program will highlight the problem action with a blue border:  
 
-![проблемный экшен синей рамкой](./assets/BadEnd/BadEnd_pic6.png) 
+![problem action with a blue border](./assets/BadEnd/BadEnd_pic6.png) 
 
-Ошибочное действие также можно подсветить через ПКМ в логе и выбором нужной опции:  
+You can also highlight the faulty action by right-clicking on it in the log and choosing the right option:  
 
-![подсветить через ПКМ](./assets/BadEnd/BadEnd_pic7.png)  
+![highlight by right-click](./assets/BadEnd/BadEnd_pic7.png)  
 
-Так как сложно уследить за каждой ошибкой, мы рекомендуем логировать их в файл. Для этого нужно после **BadEnd** добавить кубик [**Записать в файл**](../../Android/ProLite/Files) и вставить в него этот текст:  
+Since it's hard to catch every error, we suggest logging them into a file. For this, after **BadEnd**, add the [**Write to file**](../../Android/ProLite/Files) cube and paste this text in:  
 ```  
 {-TimeNow.Date-} {-Project.LastExecutedActionId-}  
 ```   
 
-![логировать их в файл](./assets/BadEnd/BadEnd_pic8.png)  
+![log them into a file](./assets/BadEnd/BadEnd_pic8.png)  
 
-Теперь при возникновении ошибки в проекте создастся файл `log.txt`, в котором будут записаны время и ID ошибки.  
+Now, if an error shows up in your project, a file called `log.txt` will be created where you'll see the time and error ID.  
 
-Если одного ID мало для определения проблемы, то можно добавить сохранение:  
-- ***скриншота экрана***;  
-- ***исходного кода страницы***;  
-- ***значения переменных***.  
-Это позволит максимально подробно восстановить картину, которая привела к ошибке, и внести необходимые правки.  
+If just the ID isn't enough to figure things out, you can save:  
+- ***a screenshot of the screen***  
+- ***the page's source code***  
+- ***the values of variables***  
+This will let you fully reconstruct what led to the error and make fixes.  
 
-### Добавление в Blacklist невалидной информации.  
-Можно создать список для хранения невалидной информации, которая приводит к ошибкам. Это могут быть неправильные логин с паролем. Тогда при последующей работе шаблон будет проверять наличие данных в *Blacklist* и в случае совпадения производить замену.  
+### Adding bad info to the Blacklist  
+You can make a list to store info that leads to errors, like wrong login details. The next time the template runs, it'll check if the data is in the *Blacklist* and swap it out if it matches.  
 
-![Добавление в Blacklist](./assets/BadEnd/BadEnd_pic9.png) 
+![Adding to Blacklist](./assets/BadEnd/BadEnd_pic9.png) 
 
-### Сохранение бэкапа.  
-Можно сохранить рабочий профиль, чтобы в случае возникновения ошибки не потерять его. Затем после устранения проблемы его можно будет загрузить и продолжить работу.  
+### Saving a backup  
+You can save the working profile so that if an error happens, you don't lose it. Then, once you fix the problem, you can load it back in and keep working.  
 
-![Сохранение бэкапа](./assets/BadEnd/BadEnd_pic10.png)
+![Saving a backup](./assets/BadEnd/BadEnd_pic10.png)
 _______________________________________________
-## Полезные ссылки.  
-- [**Отладка проектов**](../../pm/Debugging).
-- [**Окно лога**](../../pm/Interface/Log_window).  
-- [**Настройки воспроизведения проектов**](../../Settings/Debugging). 
+## Useful links  
+- [**Project debugging**](../../pm/Debugging)
+- [**Log window**](../../pm/Interface/Log_window)  
+- [**Project playback settings**](../../Settings/Debugging)

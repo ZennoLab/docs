@@ -1,79 +1,78 @@
 ---
 sidebar_position: 3
-title: Таблица
-description: Как работать со таблицами.
+title: Table
+description: How to work with tables.
 --- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please review the [*Terms of Use for materials on this resource*](../../Disclaimer).**
 :::   
 
-Таблица — это структурированный набор данных, организованный в строки и столбцы. Строки обычно представляют отдельные записи, а столбцы — различные атрибуты или параметры этих записей. Таблицы позволяют сохранять и получать данные из файла в различных форматах, либо вообще работать с данными в памяти без привязки к файлу.  
+A table is a structured set of data organized into rows and columns. Rows usually represent individual records, and columns represent different attributes or parameters of those records. Tables let you save and retrieve data from a file in various formats, or just work with data in memory without needing a file at all.  
 _______________________________________________ 
-## Создание таблицы.  
-Создать новую таблицу можно из контекстного меню: ***Добавить действие → Таблицы → Таблица***  
+## Creating a table.  
+You can make a new table from the context menu: ***Add action → Tables → Table***  
 
-![Создание таблицы](./assets/Tables/Tables_pic1.png) 
+![Creating a table](./assets/Tables/Tables_pic1.png) 
 
-Либо через *Панель статических блоков*: ***клик по иконке*** `+` ***→ Добавить таблицу***. Созданная таблица также отобразится на этой панели.    
+Or through the *Static Blocks Panel*: ***click the icon*** `+` ***→ Add table***. The table you make will also show up on this panel.    
 
-![Создание таблицы](./assets/Tables/Tables_pic2.png)   
+![Creating a table](./assets/Tables/Tables_pic2.png)   
 _______________________________________________ 
-## Настройки таблицы.  
-![Создание таблицы](./assets/Tables/Tables_pic3.png)  
+## Table settings.  
+![Creating a table](./assets/Tables/Tables_pic3.png)  
 _______________________________________________ 
-### Просмотр содержимого.  
-Эта опция позволяет посмотреть полное содержимое всей таблицы.  
-Также здесь можно включить отображение управляющих символов, задать фильтр для поиска нужной строки или ячейки и воспользоваться конструктором фильтра.
+### Viewing the contents.  
+This option lets you see the complete contents of the whole table.  
+Here you can also turn on the display of control characters, set a filter to search for a specific row or cell, and use the filter builder.
 
-![Создание таблицы](./assets/Tables/Tables_pic6.png) 
+![Creating a table](./assets/Tables/Tables_pic6.png) 
 _______________________________________________ 
-### Загружать из файла.  
-Позволяет брать данные для таблицы из файла.  
+### Load from file.  
+Lets you take the table’s data from a file.  
 
-Если не загружать таблицу из файла, то у каждого потока будет своя, независимая копия таблицы.  
+If you don’t load the table from a file, then every thread will have its own independent copy of the table.  
 _______________________________________________ 
-### Сохранять изменения таблицы в файл.  
-Результат работы с таблицей будет автоматически сохранён в привязанный файл.  
+### Save table changes to a file.  
+The result of working with the table will be automatically saved to the linked file.  
 
-Если включена предыдущая настройка *Загрузка из файла*, но выключено *Сохранение в файл*, то для каждого потока будет создана своя, локальная, копия таблицы на основе указанного файла. Изменения таблицы внутри потоков никак не отразятся на привязанном файле.  
+If the previous setting *Load from file* is enabled, but *Save to file* is off, then each thread will have its own local copy of the table based on the selected file. Changes to the table inside the threads won’t affect the linked file.  
 
-Но в случае, когда эта опция включена, то все потоки будут работать с одной копией таблицы. Соответственно, все изменения будут сохраняться в привязанный файл.  
+But if this option is enabled, all threads will work with one copy of the table. So, all changes will be saved to the linked file.  
 _______________________________________________ 
-### Оставлять пустой файл.  
-Если все данные в таблице закончатся, нужно ли оставить файл пустым или стоит удалить его.  
+### Leave file empty.  
+If all the data in the table runs out, should you leave an empty file or just delete it?  
 _______________________________________________ 
-### Свой формат.  
-Можно использовать как свой формат файла, так и выбрать один из готовых форматов таблиц.  
-![Создание таблицы](./assets/Tables/Tables_pic4.png)   
+### Custom format.  
+You can use your own file format or pick one of the ready-made table formats.  
+![Creating a table](./assets/Tables/Tables_pic4.png)   
 
-Если выбрать работу с готовыми форматами, то появятся дополнительные настройки:  
+If you pick a standard table format, extra settings pop up:  
 
-![Создание таблицы](./assets/Tables/Tables_pic5.png)  
+![Creating a table](./assets/Tables/Tables_pic5.png)  
 
-- **Первая строка — заголовки**. Использовать первую строку таблицы под заголовки;  
-- **Корректное отображение в Excel не латинских букв для .csv файлов**.  
-- **Разбирать тип данных (если возможно)**. Определяет тип данных в содержимом;  
-- **Разделитель для .csv формата**. Доступны `;` и `,`  
+- **First row — headers**. Use the first row of the table as headers  
+- **Proper display of non-Latin letters in Excel for .csv files**  
+- **Parse data type (if possible)**. Figures out the data type in the contents  
+- **Separator for .csv format**. Choices: `;` and `,`  
 
-:::warning **Обратите внимание.**
-При выборе готовых форматов работа идёт только с первым листом документа.
+:::warning **Pay attention.**
+When you pick a ready-made format, you’ll only be working with the first sheet of the document.
 :::  
 _______________________________________________ 
-### Разделитель строк. 
-Этот параметр указывает, что должно использоваться в качестве разделения строк таблицы.  
-В качестве разделителей могут выступать: новая строка (`Enter`), свой кастомный разделитель, либо несколько разделителей.  
+### Row separator. 
+This parameter sets what will be used to split up the rows in the table.  
+Separators can be: a new line (`Enter`), your own custom separator, or multiple separators.  
 _______________________________________________ 
-### Разделитель столбцов.  
-Устанавливает способ разделения столбцов таблицы.  
-Ими могут быть: символ `;`, клавиша `Tab`, а также свой один или несколько разделителей.  
+### Column separator.  
+Sets how the columns in the table should be separated.  
+Options: the character `;`, the `Tab` key, or your own one or several separators.  
 _______________________________________________ 
-### Путь к файлу.  
-Если таблица будет загружаться из файла, то здесь необходимо указать путь к нему. Данные будут загружены при старте проекта.  
+### File path.  
+If you plan to load the table from a file, this is where you need to set the path to it. The data will load at project startup.  
 
-:::tip **Если вы не знаете путь к файлу.**
-Бывает такое, что путь определяется только во время выполнения проекта. Тогда можно использовать экшен **Работа с таблицами** с функцией ***Привязать к файлу***.  
+:::tip **If you don’t know the file path.**
+Sometimes you only get the path while the project is running. In that case, you can use the **Work with tables** action with the ***Link to file*** function.  
 :::  
 _______________________________________________
-## Полезные ссылки.  
-- [**Что такое статические блоки?**](../Static%20Block%20Panel/CommonPrinciples)  
-- [**Окно переменных**](../../pm/Interface/Variables).  
-
+## Useful links.  
+- [**What are static blocks?**](../Static%20Block%20Panel/CommonPrinciples)  
+- [**Variables window**](../../pm/Interface/Variables).

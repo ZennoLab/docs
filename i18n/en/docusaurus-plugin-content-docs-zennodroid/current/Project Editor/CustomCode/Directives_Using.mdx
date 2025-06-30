@@ -1,70 +1,70 @@
 ---
 sidebar_position: 5
-title: Директивы using и общий код
-description: Дополнительные классы и функции.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-_______________________________________________   
-## Описание.  
-**Общий код** - это функционал, расширяющий возможности стандартных кубиков C#. Он используется для вставки дополнительных классов и функций.   
-
-А **Using-директивы** нужны для доступа к функциям и классам, а также для создания пространства имён (*namespaсes*).  
-
-#### Как можно использовать?  
-- Более эффективная работа с C# кодом.  
-- Создание новых пространств имен.  
-- Организация работы с большим объемом кода.  
-- Избежание конфликтов в пространстве имен.
-
-:::warning **Работа с общим кодом подразумевает, что у вас уже есть базовые знания C#.**
-:::  
+title: Using Directives and Shared Code
+description: Additional classes and functions.
+---
+:::info **Please review the [*Rules for Using Materials on this Resource*](../../Disclaimer).**
+:::
 _______________________________________________
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Свой код → Директивы using и общий код**.  
+## Description.
+**Shared code** is functionality that extends the capabilities of standard C# blocks. It's used to insert additional classes and functions.
 
-![Как добавить в проект](./assets/Directives_Using/Directives_Using_pic1.png)  
+And **using directives** are needed to access functions and classes, as well as to create namespaces.
 
-Или через **[*Панель статических блоков*](../Static%20Block%20Panel/CommonPrinciples) → Добавить → Добавить директивы using и общий код**:  
+#### How can you use this?
+- Work with C# code more efficiently.
+- Create new namespaces.
+- Organize working with large amounts of code.
+- Avoid naming conflicts.
 
-![Панель статических блоков](./assets/Directives_Using/Directives_Using_pic2.png)  
+:::warning **Working with shared code assumes you already have basic C# knowledge.**
+:::
 _______________________________________________
-## Общий код.  
-![Панель статических блоков](./assets/Directives_Using/Directives_Using_pic3.png)  
+## How do you add it to a project?
+Via the context menu: **Add action → Custom code → Using directives and shared code**.
 
-Это окно представляет собой редактор кода с подсветкой синтаксиса. В контекстном меню можно получить доступ к базовому функционалу для редактирования кода: копирование, вставка, комментирование, поиск, замена и т. д.  
+![How to add to a project](./assets/Directives_Using/Directives_Using_pic1.png)
 
-В нижней части окна есть чекбокс, который позволяет загружать код из своего файла в форматах `.txt` или `.cs`.  
+Or through the **[*Static block panel*](../Static%20Block%20Panel/CommonPrinciples) → Add → Add using directives and shared code**:
 
-Самыми первыми в коде перечислены все **using**, используемые в проекте. А далее идет пример объявления `namespace ZennoLab.OwnCode`. Вы можете по аналогии создавать свои пространства имён и обращаться к ним в дальнейшем.  
-
-Для доступа к функциям и методам общего кода их нужно объявлять с модификатором `public`. Если не нужно работать с объектами определенного класса, то его можно объявить статичным `public static`. А когда не понадобится наследование, то лучше сразу объявить как `public sealed`.  
+![Static block panel](./assets/Directives_Using/Directives_Using_pic2.png)
 _______________________________________________
-## Директивы Using.  
-![Панель статических блоков](./assets/Directives_Using/Directives_Using_pic4.png)  
+## Shared code.
+![Static block panel](./assets/Directives_Using/Directives_Using_pic3.png)
 
-Перейдя на эту вкладку, вы увидите перед собой два поля:  
-- **Верхнее**. Служит для добавления *namespaces*, которые используются при выполнении кода в экшенах C#. Например, для парсинга XML нужно написать `using System.Xml;`.  
-- **Нижнее**. Здесь перечислены все *using*, которые используются проектом по умолчанию. Их нельзя редактировать.  
+This window is a code editor with syntax highlighting. In the context menu, you get access to basic code editing tools: copy, paste, comment, search, replace, etc.
+
+At the bottom of the window, there’s a checkbox for loading code from your own file in `.txt` or `.cs` formats.
+
+At the very top of the code are all the **using** directives used in your project. After that, there's an example of declaring `namespace ZennoLab.OwnCode`. You can create your own namespaces the same way and refer to them later.
+
+To access functions and methods from the shared code, they need to be declared with the `public` modifier. If you don’t need to work with objects of a certain class, you can declare it static: `public static`. And if you aren’t planning to use inheritance, it’s best to declare the class as `public sealed` right away.
 _______________________________________________
-## Пример работы.  
-Подадим изображение и коэффициент прозрачности на вход метода `SetImageOpacity`. В результате мы получим картинку с эффектом полупрозрачности, которую можно сохранить на диск.  
+## Using Directives.
+![Static block panel](./assets/Directives_Using/Directives_Using_pic4.png)
+
+When you open this tab, you’ll see two fields:
+- **Top field.** This is for adding *namespaces* that are used when executing code in C# actions. For example, to parse XML you need to write `using System.Xml;`.
+- **Bottom field.** Here you see all the *using* directives used by the project by default. You can’t edit these.
+_______________________________________________
+## Example.
+Let’s pass an image and a transparency coefficient to the `SetImageOpacity` method. As a result, you’ll get a semi-transparent picture you can save to disk.
 ```C
 public static Image SetImageOpacity(Image image, float opacity)  
 {  
     try  {  
-		Bitmap bmp = new Bitmap(image.Width, image.Height);
-        //создание графики из картинки
+        Bitmap bmp = new Bitmap(image.Width, image.Height);
+        //create graphics from the image
         using (Graphics gfx = Graphics.FromImage(bmp)) {
-            //создание объекта color matrix  
+            //create a color matrix object  
             ColorMatrix matrix = new ColorMatrix();      
-            //установка прозрачности 
+            //set opacity 
             matrix.Matrix33 = opacity;  
-            //создание новых атрибутов
+            //create new attributes
             ImageAttributes attributes = new ImageAttributes();      
-            //установка цвета прозрачности картинки
+            //set the image’s opacity color
             attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);    
-            //отрисовываем картинку
+            //draw the image
             gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
         }
         return bmp;  
@@ -73,11 +73,11 @@ public static Image SetImageOpacity(Image image, float opacity)
         return null;  
     }  
 } 
-```  
+```
 
-А вот так эта функция вызывается из [**экшена C#**](./С):  
+And here’s how you call this function from a [**C# action**](./С):
 `Image img = OwnCode.CommonCode.SetImageOpacity(Image.FromFile(project.Directory + "//image.jpg"), .5f);`
 _______________________________________________
-## Полезные ссылки.  
-- [**Полное руководство по языку программирования С#**](https://metanit.com/sharp/tutorial/?ysclid=m6tuqoibxu646819911).
-- [**Директива using: импорт типов из пространства имен**](https://learn.microsoft.com/ru-ru/dotnet/csharp/language-reference/keywords/using-directive).  
+## Useful links.
+- [**Comprehensive Guide to the C# Programming Language**](https://metanit.com/sharp/tutorial/?ysclid=m6tuqoibxu646819911).
+- [**Using Directive: Import types from a namespace**](https://learn.microsoft.com/ru-ru/dotnet/csharp/language-reference/keywords/using-directive).

@@ -1,41 +1,41 @@
 ---
 sidebar_position: 3
-title: Получить прокси
-description: Получить прокси
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
-:::  
-_______________________________________________    
-
-В ZennoDroid вы можете использовать сторонний прокси-сервер для работы с приложениями во время выполнения проекта. Данный экшен подходит для получения значений из Proxychecker.  
-_______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Проксичекер → Получить прокси**.  
-
-![Как добавить в проект?](./assets/GetProxy/GetProxy_pic1.png) 
-_______________________________________________ 
-## Как работать с экшеном?  
-![Как добавить в проект?](./assets/GetProxy/GetProxy_pic2.png)   
-
-### Взять по правилу.  
-На выбор доступно несколько вариантов:  
-- **Без правил**;  
-- **Anonymous/Anonymous (HTTPS)**;  
-- **Google passed with Captcha**;  
-- **Google passed**;  
-- **Elite/Elite (HTTPS)**;  
-- **Socks**.  
-
-Редактировать эти правила нужно через Proxychecker.  
-
-При выборе варианта ***Без правил*** прокси будут браться по очередности.  
-
-А опция **Удалять прокси из живого списка** удаляет прокси-сервер из списка после получения.  
-
-Полученное прокси также можно **Положить в переменную**.  
-На скриншоте выше это `{-Variable.taken_proxy-}`.   
+title: Get Proxy
+description: Get Proxy
+---
+:::info **Please check out the [*Rules for using materials on this site*](../Disclaimer).**
+:::
 _______________________________________________
-## Полезные ссылки.    
-- [**Основные понятия**](../basicterms).  
-- [**Настройки Почты**](../get-started/ProxyCheckerZD).  
-- [**Проксирование трафика**](../Settings/Proxy_Traffic).
+
+In ZennoDroid, you can use a third-party proxy server to work with apps while running a project. This action is suitable for getting values from Proxychecker.
+_______________________________________________
+## How to add to your project?
+Right-click menu: **Add action → Proxychecker → Get proxy**.
+
+![How to add to your project?](./assets/GetProxy/GetProxy_pic1.png)
+_______________________________________________
+## How does this action work?
+![How to add to your project?](./assets/GetProxy/GetProxy_pic2.png)
+
+### Pick by rule.
+A few options are available:
+- **No rules**
+- **Anonymous/Anonymous (HTTPS)**
+- **Google passed with Captcha**
+- **Google passed**
+- **Elite/Elite (HTTPS)**
+- **Socks**
+
+You need to edit these rules in Proxychecker.
+
+If you choose ***No rules***, proxies will be taken in order.
+
+And the option **Remove proxy from live list** deletes the proxy server from the list after you take it.
+
+You can also **Put the received proxy into a variable**.
+On the screenshot above, it’s `{-Variable.taken_proxy-}`.
+_______________________________________________
+## Useful links.
+- [**Basic terms**](../basicterms)
+- [**Mail setup**](../get-started/ProxyCheckerZD)
+- [**Proxy traffic**](../Settings/Proxy_Traffic)

@@ -1,303 +1,300 @@
 ---
 sidebar_position: 1
-title: C# код
-description: Код на C# в ZennoDroid.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
-:::  
-_______________________________________________   
-## Описание.  
-С помощью этого экшена можно вставлять в проект куски кода, которые написаны на языке программирования C#. Тем самым функционал ZennoDroid заметно расширяется, как и область его использования.  
-
-Хоть C# — это и объектно-ориентированный язык, но в данном экшене не используются некоторые преимущества такого подхода. Например, классы и наследования. Код будет исполняться последовательно за исключением использования классов и публичных переменных из [**Директив Using и общего кода**](./Directives_Using).  
-
-#### Где можно применить:  
-- Практически любые действия кубиков можно заменить через C#. При этом ускоряется разработка и эффективность с помощью выполнения кода.  
-- Использование любых разработок на C# в своём проекте.  
-- Интеграция сторонних библиотек и применение их в коде.  
-
-_______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Свой код → C# код**.  
-
-![Как добавить в проект?](./assets/C/C_pic1.png)
-_______________________________________________   
-## Как работать с экшеном?  
-Кубик **C# код** представляет собой обычный текстовый редактор с базовой подсветкой кода.  
-
-В него можно передавать любые переменные проекта, а результат сохранять в текстовом файле, таблице, базе данных или также в переменной.  
-
-Для использования методов и свойств проекта используется сущность `project`. Например, если вы хотите вставить переменную проекта в код, то вызывать ее нужно так: `project.Variables["counter"].Value`, где `counter` — имя переменной.
+title: C# Code
+description: C# code in ZennoDroid.
+---
+:::info **Please check out the [*Rules for using materials on this site*](../../Disclaimer).**
+:::
 _______________________________________________
-### Контекстное меню.  
-Нажав ПКМ по полю ввода в свойствах действия, вы откроете контекстное меню.  
+## Description.
+With this action, you can insert code snippets written in C# into your project. This noticeably expands ZennoDroid's functionality as well as the ways you can use it.
 
-![Контекстное меню](./assets/C/C_pic2.png)  
+Even though C# is an object-oriented language, this action doesn’t use some of those advantages, like classes and inheritance. The code will execute sequentially, except when using classes and public variables from [**Using Directives and General Code**](./Directives_Using).
+
+#### Where can you use it:
+- You can replace almost any action block with C#, making development and efficiency faster thanks to direct code execution
+- You can use any C# development in your project
+- It allows you to integrate third-party libraries and use them in your code
+
 _______________________________________________
-#### Отменить/Повторить.  
-Отменяет последнее изменение в коде. Однако если это было сделано случайно, то можно повторить отмененный ввод.  
+## How do you add it to your project?
+Via the context menu: **Add Action → Custom Code → C# code**.
 
-Данные действия работают только в коде окна C# и не вызывают изменений в других кубиках. Для аналогичной функции с другими кубиками нужно зайти в раздел **Редактирование** на верхней панели ProjectMaker.  
+![How to add to project?](./assets/C/C_pic1.png)
 _______________________________________________
-#### Вырезать\Копировать\Вставить\Удалить.  
-Стандартные действия по работе с кодом как с текстом.  
+## How do you work with the action?
+The **C# code** block is a regular text editor with basic code highlighting.
+
+You can pass any project variables into it, and save the result in a text file, table, database, or another variable.
+
+To use methods and properties of the project, you use the `project` entity. For example, if you want to insert a project variable into your code, call it like this: `project.Variables["counter"].Value`, where `counter` is the name of the variable.
 _______________________________________________
-#### Закомментировать\Отменить комментирование.  
-Добавляет к выделенному коду символы `//`, превращая его в комментарий. То есть эти строки будут отключены из общего выполнения.  
+### Context menu.
+If you right-click on the input field in the action properties, you'll open the context menu.
 
-Это особенно полезно при работе над большими проектами или для отладки кода. В комментариях также можно разместить информацию об изменениях, связях или функционале.  
+![Context menu](./assets/C/C_pic2.png)
 _______________________________________________
-#### Нумерация строк.  
-![Нумерация строк](./assets/C/C_pic3.png)   
+#### Undo/Redo.
+This undoes the last change in your code. If you did that by accident, you can redo the undone input.
 
-Включает/отключает числовое обозначение строк. Помогает в быстрой навигации по коду, а также для нахождения ошибок по информации из лога.  
+These actions work only inside the C# code window and don’t affect other blocks. To use similar features in other blocks, go to the **Edit** section on the top menu of ProjectMaker.
+_______________________________________________
+#### Cut/Copy/Paste/Delete.
+These are the standard actions for editing code as text.
+_______________________________________________
+#### Comment/Uncomment.
+Adds `//` to the selected code, turning it into a comment. Those lines won’t execute.
 
-На небольших проектах нумерацию можно отключить, чтобы расширить рабочее пространство.  
+This is especially useful when working on big projects or debugging code. You can also add notes on what changed, how things are connected, or what the code does, right in the comments.
+_______________________________________________
+#### Line numbering.
+![Line numbering](./assets/C/C_pic3.png)
+
+Turns line numbering on or off. This helps you quickly navigate through the code or find errors based on what you see in the logs.
+
+For small projects, you can turn off line numbers to get more workspace.
 
 <details>
-<summary>**В настройках ProjectMaker можно задать поведение по умолчанию.**</summary>
-<!--All you need is a blank line-->
+<summary>**In ProjectMaker settings you can choose the default behavior.**</summary>
 
-    ![Нумерация строк](./assets/C/C_pic4.png) 
-</details>  
+    ![Line numbering](./assets/C/C_pic4.png)
+</details>
 _______________________________________________
-#### Перенос строк.  
-Включает автоматический перенос строк, если в текущем окне не хватает места.  
-| ![Настройка выключена](./assets/C/C_pic5.png)  |![Настройка включена](./assets/C/C_pic6.png) | 
+#### Word wrap.
+Turns on auto line break if there’s not enough space in the current window.
+| ![Setting off](./assets/C/C_pic5.png)  |![Setting on](./assets/C/C_pic6.png) |
 |:--:| :--:|
-| *Настройка выключена* | *Настройка включена* |   
+| *Setting off* | *Setting on* |
 
 <details>
-<summary>**В настройках ProjectMaker можно задать поведение по умолчанию.**</summary>
-<!--All you need is a blank line-->
+<summary>**In ProjectMaker settings you can choose the default behavior.**</summary>
 
-    ![Перенос строк](./assets/C/C_pic7.png) 
-</details> 
+    ![Word wrap](./assets/C/C_pic7.png)
+</details>
 _______________________________________________
-#### Перейти к строке.
-Позволяет быстро показать необходимую строку, введя номера линии и столбца в открывшемся диалоговом окне.  
+#### Go to line.
+Lets you quickly go to the line you need, just enter the line and column number in the dialog window.
 
-![Перейти к строке](./assets/C/C_pic8.png)
+![Go to line](./assets/C/C_pic8.png)
 
-Используется для поиска ошибочного участка кода по информации из лога.  
+This is used to find the error spot in the code using info from the logs.
 _______________________________________________
-#### Поиск.  
-Открывает окно поиска по коду этого экшена. Искать можно с учетом параметров:  
-- *С учетом регистра*;  
-- *Слово целиком*;  
-- *Искать назад*;  
-- *Использовать: Регулярные выражения или Знаки подстановки*;  
+#### Find.
+Opens the search window for this action’s code. You can search with the following options:
+- *Case sensitive*
+- *Whole word*
+- *Search backwards*
+- *Use: Regular expressions or wildcards*
 
-![Поиск](./assets/C/C_pic9.png)  
+![Find](./assets/C/C_pic9.png)
 
-После нажатия на кнопку *Найти далее* курсор переходит на первое найденное значение. Повторное нажатие переводит курсор на следующее найденное значение и т. д.  
+After pressing *Find Next* the cursor moves to the first found value. Repeating it moves to the next match, and so on.
 _______________________________________________
-#### Замена.  
-Похоже на **Поиск**, но сразу после нахождения искомого значения производится его замена на введенное значение.  
+#### Replace.
+Works like **Find**, but after finding the value it immediately replaces it with the value you entered.
 
-![Замена](./assets/C/C_pic10.png)  
+![Replace](./assets/C/C_pic10.png)
 
-Работать может в пошаговом режиме, либо сразу *Заменить все* найденные вхождения.  
+You can work step by step or replace all at once with *Replace all*.
 _______________________________________________
-#### Вставить C# сниппет.  
-В место, где сейчас находится курсор, будет вставлено всё содержимое выбранного файла.  
+#### Insert C# snippet.
+Wherever your cursor is, everything from the selected file will be inserted.
 
-![Вставить C# сниппет](./assets/C/C_pic11.png)  
+![Insert C# snippet](./assets/C/C_pic11.png)
 
-Изначально этот пункт меню не отображается. Чтобы он появился, надо в ***Директорию C# сниппетов*** добавить хотя бы один файл.  
+At first, this menu item isn’t shown. To make it appear, you need to add at least one file to the ***C# Snippets Directory***.
 
-![Директорию C# сниппетов](./assets/C/C_pic12.png)
+![C# Snippets Directory](./assets/C/C_pic12.png)
 
-Сохранить фрагмент кода в файл, например, можно с помощью функции **Сохранить в C# сниппет** (описано ниже).  
-Файлы в директории можно помещать в папки и таким образом удобно их группировать.  
+You can save a code fragment to a file, for example, by using the **Save to C# snippet** function (explained below).
+You can put files into folders within the directory and group them however you like.
 _______________________________________________
-#### Сохранить в C# сниппет.  
-Позволяет сохранять выделенный фрагмент кода в TXT-файл. Этот сниппет можно быстро использовать в дальнейшем и вставлять в другие проекты.  
+#### Save to C# snippet.
+Lets you save the selected code fragment to a TXT file. You can quickly use this snippet later and insert it into other projects.
 _______________________________________________
-#### Установить значение из переменной.  
-При наведении курсора на этот пункт открывается список всех [**Своих**](../../Data/WorkWithVariables) и [**Авто-сгенерированных**](../../pm/Creating/Variables) переменных проекта.  
+#### Set value from variable.
+When you hover over this item the full list of [**Custom**](../../Data/WorkWithVariables) and [**Auto-generated**](../../pm/Creating/Variables) project variables appears.
 
-![Установить значение из переменной](./assets/C/C_pic13.png)  
+![Set value from variable](./assets/C/C_pic13.png)
 
-Выбрав нужную переменную в редакторе появляется конструкция вида `project.Variables["myVar"].Value`. Это значение всегда имеет строковый тип (string), и для его использовании в качестве других типов необходима конвертация.
+After picking a variable, the editor inserts something like `project.Variables["myVar"].Value`. This value is always a string type, so if you need it as another type, you’ll need to convert it.
 _______________________________________________
-### Не возвращать значение.  
-После отключения этого чекбокса результат выполнения кода будет передан с помощью оператора `return`.  
+### Don’t return a value.
+When you uncheck this box, the result of your code will be returned via the `return` statement.
 _______________________________________________
-### Положить результат в переменную.  
-Если отключен предыдущий чекбокс, то результат выполнения `return` можно сохранить в любую переменную.  
+### Save result to variable.
+If the previous checkbox is unchecked, you can save the value returned by `return` to any variable.
 
-:::info **Каждая строка C# обязательно должна заканчиваться символом `;` .**  
-Это помогает компилятору определить, где заканчивается строка. Без этого символа проект просто выдаст ошибку на этапе запуска.
-:::  
+:::info **Every line of C# has to end with a `;`**
+This lets the compiler know where the line ends. Without this character, the project will just give an error at runtime.
+:::
 _______________________________________________
-## Настройки по умолчанию.  
-В настройках программы есть блок настроек специально для кубика **C#**. Выше мы уже упоминали некоторые из них.  
+## Default settings.
+The program has a special section in the settings for the **C#** block. We’ve already mentioned some of them above.
 
-![Настройки по умолчанию](./assets/C/C_pic14.png)  
+![Default settings](./assets/C/C_pic14.png)
 _______________________________________________
-## Конвертация экшенов в код.  
-В ZennoDroid есть функция, которая позволяет новичкам быстро освоиться с C#. Некоторые из экшенов можно конвертировать в код и дальше работать с ним, как если бы это был кубик.  
+## Converting actions to code.
+ZennoDroid has a feature that lets beginners get comfortable with C# fast. Some actions can be converted to code so you can work with them as if they were a block.
 
-Вам нужно **нажать на необходимый кубик ПКМ → Конвертировать в C# → вставить скопированный код в поле кубика C#**.  
+Just **right-click the needed block → Convert to C# → paste the copied code into the C# block field**.
 
-![Конвертация экшенов в код](./assets/C/C_pic15.png)  
+![Convert actions to code](./assets/C/C_pic15.png)
 _______________________________________________
-## Отладка C#.  
-В сложных и больших фрагментах C# иногда бывает сложно быстро найти ошибку. Поэтому необходима отладка (debug) C# кода с пошаговым мониторингом изменения переменных и данных в списках, таблицах и базах данных. Каждый экшен C# можно отладить в Project Maker с помощью установки одной или нескольких точек останова.  
+## C# debugging.
+With complex and large C# fragments it's sometimes tricky to quickly find errors. That’s why you need to debug C# code step by step, watching how variables and data in lists, tables, and databases change. Every C# action can be debugged in Project Maker by setting one or more breakpoints.
 
-![Отладка C#](./assets/C/C_pic16.png)  
+![C# Debugging](./assets/C/C_pic16.png)
 
-Для добавления точки останова нужно кликнуть в поле слева от редактора кода напротив нужной строки. Нажатием *Далее* запускаем исполнение кубика. Можно проверять работу кода по шагам или до следующей точки останова с помощью кнопок над редактором. Смотрим изменения в [**Окне переменных**](../../pm/Creating/Variables) и эффективно исправляем ошибки.  
+To add a breakpoint, click in the field to the left of the code editor next to the needed line. Hit *Next* to start running the block. You can check the code step-by-step or go to the next breakpoint using the buttons above the editor. Watch changes in the [**Variables window**](../../pm/Creating/Variables) and efficiently fix errors.
 _______________________________________________
-## Примеры использования.  
-Обучение программированию на C# выходит за рамки данной документации. Однако мы можем дать несколько советов и показать практические примеры, которые часто используют пользователи ZennoDroid при работе с C#.  
+## Usage examples.
+Learning C# programming is outside the scope of this documentation. But we can offer a few tips and show some practical examples that ZennoDroid users often use when working with C#.
 _______________________________________________
-### Арифметические действия с целыми числами.  
-```C  
+### Arithmetic with integers.
+```C
 int value1 = Convert.ToInt32(project.Variables["value1"].Value);
 int value2 = Convert.ToInt32(project.Variables["value2"].Value);
-int value3 = value1 + value2; //или value1 - value2 или value1 * value2 и т. д.
-return value3.ToString(); //сумма двух чисел  
-```  
-_______________________________________________
-### Округление результата деления.  
-```C  
-float value1 = Convert.ToSingle(project.Variables["value1"].Value);
-float value2 = Convert.ToSingle(project.Variables["value2"].Value);
-return Math.Ceiling(value1/value2); // округление в большую сторону
-//или
-return Math.Ground(value1/value2); // округление в меньшую сторону  
-```  
-_______________________________________________
-### Создание списка со случайными числами от 1 до 10.  
-:::tip **В этом примере ключевое слово `var` ссылается на тип неявным способом.**  
-Это любой псевдоним, а реальный тип определит компилятор C#.
-:::  
-
-```C  
-var list = project.Lists["numbers"];//обращаемся к списку списков проекта для получения сущности одного из них.
-list.Clear();//очищаем список перед заполнением
-int value;//объясляем цельночисленную переменную
-List <string> tempList = new List<string> ();//создаём новый список из строк, но этот список существует только в рамках этого экшена и будет уничтожен после выполнения экшена
-for (int i = 0; i < 10; i++) {//цикл из 10 иттераций 
-	value = i;//присваиваем значение счетчика цикла чтобы не имзменять его
-	value++;//увеличиваем на 1 значение переменной
-	tempList.Add(value.ToString());//добавляем во временный список строковое значение числа
-}//повторяем так 10 раз
-tempList.Shuffle();//перемешиваем список
-list.AddRange(tempList);//добавляем в результирующий список перемешанный список чисел от 1 до 10  
-```  
-:::info **Обратите внимание, в этом примере экшен C# ничего не возвращает, в отличии от двух примеров выше.**  
-Здесь результат работы сохраняется в списке, а не с помощью оператора возврата `return` попадает в указанную кубиком переменную. 
-:::  
-_______________________________________________
-### Получение случайной строки из файла с доступами к аккаунтам и разделение её на логин и пароль.  
-Ключевое слово **null** является литералом, представляющим пустую ссылку, которая не ссылается на объект. А оператор `return` можно использовать для возврата **null**. При этом экшен C# выйдет по красной линии и это бывает удобно при создании взаимосвязей с другими кубиками.  
-
-```C  
-IZennoList list = project.Lists["accounts"];//получаем список с привязанным TXT-файлом в котором построчно хранятся доступы в формате логин:пароль
-if (list.Count== 0) return null;//Если список пустой, то выходим из кубика по красной линии
-Random rnd = new Random();//создаем генератор случайных чискел
-string str = list[rnd.Next(0, list.Count)];//вычисляем случайное чисто от 0 до количества элементов списка (не включительно) и назначаем значение найденного индекса строковой переменной
-string [] arr = str.Split(':');//формируем массив строк разделяя переменную с помощью делимера :
-project.Variables["login"].Value = arr[0];//берем первый элемент массива, который является логином (индесы массивов, списков всегда начинаются с 0) и присваиваем это значение переменной login
-project.Variables["password"].Value = arr[1];//второй элемент массива будет паролем 
-```  
-
-В этом примере мы выводим предупреждение при пустом списке аккаунтов и заполняем пустой список из TXT новыми доступами.   
-Тоже самое можно выполнить с помощью метода `project.SendInfoToLog("Пустой список", true);`.  
-_______________________________________________
-### Работа с файлами: получение разрешения (ширина x высота) изображения.  
-```C  
-Image img = Image.FromFile(project.Directory + @"/temp.jpg");//получаем изображение из файла
-int width = img.Width;//получаем ширину картинки
-int height = img.Height;//и высоту
-return width.ToString() + "х"+ height.ToString();//формируем строку с данными  
-```  
-:::info **Символ `@` означает, что компилятор будет использовать строку за ним буквально, а не как escape-последовательность.**  
-Если убрать этот символ, то для корректной работы кода в пути пришлось бы ставить двойной слэш вместо одинарного.  
-:::  
-_______________________________________________
-### Работа с OwnCode и с изображениями: наложение полупрозрачного “водяного знака” по центру.  
-На практике часто требуется вывести некоторые функции на C# в отдельное место и обращаться к ним из разных экшенов. С этим поможет ***OwnCode (свой код)***. В этот класс можно вставить функцию, которая будет доступна из кубиков. Она может принимать параметры (аргументы) и возвращать результаты вычислений.  
-
-```C  
-Image original = Image.FromFile(project.Directory + @"/image.jpg");//исходная картинка на которую нужно наложить водяной знак
-
-int w = original.Width;//азмеры исходной картинки
-int h = original.Height;
-
-int w_wm = (int) w/10;//ширина водяного знака, в данном случае эта ширина составляет 10 исходной картинки
-
-Image wm = OwnCode.CommonCode.SetImageOpacity(Image.FromFile(project.Directory + @"/wm.png"), .5F);//в одной строке получаем изображение из файла и обрабатываем его (накладываем эффект полупрозрачности) с помощью функции SetImageOpacity, которая находится в классе общего кода
-float scale = (float)wm.Height / wm.Width; //пропорции водяного знака
-int h_wm = (int) (w_wm * scale);//вычисляем новую высоту водяного знака в зависимости от новой ширины и пропорций
-int x = (int) (w/2 - w_wm/2);//позиция x водяного знака (середина основной картинки минус середина новой ширины водяного знака)
-int y = (int) (h/2 - h_wm/2);//позиция y водяного знака
-
-Graphics gr = Graphics.FromImage(original);//создаём графический объект из исходкого изображения
-gr.DrawImage(wm, x, y, w_wm, h_wm);//рисуем поверх исходной картинки водяной знак с вычисленными ранее координатами и новыми размерами
-
-original.Save(project.Directory + @"/image_result.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);//сохраняем картинку в формате JPEG по указанному пути
-original.Dispose();//уничтожаем объекты, которые уже не нужны, чтобы они не занимали память
-wm.Dispose();
-gr.Dispose();
-```  
-
-В данном примере создаётся функция `SetImageOpacity`. На входе она принимает изображение вместе со значением для изменения прозрачности, а на выходе отправляет измененное изображение. Эта функция требует `using System.Drawing.Imaging;`  
-
-А дальше используем функцию `SetImageOpacity`, которую нужно вставить в классе `OwnCode.CommonCode`.  
-
-```C  
-using System.Drawing.Imaging;
-public static Image SetImageOpacity(Image image, float opacity)  
-{  
-    try  {  
-		Bitmap bmp = new Bitmap(image.Width, image.Height);
-        //создание графики из картинки
-        using (Graphics gfx = Graphics.FromImage(bmp)) {
-            //создание объекта color matrix  
-            ColorMatrix matrix = new ColorMatrix();      
-            //установка прозрачности 
-            matrix.Matrix33 = opacity;  
-            //создание новых атрибутов
-            ImageAttributes attributes = new ImageAttributes();      
-            //установка цвета прозрачности картинки
-            attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);    
-            //отрисовываем картинку
-            gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
-        }
-        return bmp;  
-    }  
-    catch (Exception ex)  
-    {  
-        return null;  
-    }  
-}   
-```  
-_______________________________________________
-### Работа с Regex.  
-С помощью регулярных выражений в C# можно: 
-- *парсить данные*;  
-- *находить нужные значения*;  
-- *обрабатывать и присваивать переменные*;  
-- *очищать тексты от мусора*.  
-
-В примере ниже мы очистим от всех тегов HTML-содержимое некоторого элемента.  
-```C  
-string html = project.Variables["value1"].Value;//присваиваем значение переменной где содержится исходный код элемента
-return Regex.Replace(html, @"<.*?>", String.Empty);//заменяем HTML-теги на пустоту и возвращаем результат
-```  
-_______________________________________________
-### Работа с макросами.  
-С помощью объекта `Macros` можно получить доступ ко множеству функций для работы с файловой системой или для обработки текстов. Например, можно в C# организовать обработку `Spintax`, аналогичную соответствующему кубику.  
-```C  
-return Macros.TextProcessing.Spintax("{0|1|2}");//случайно выведет одно из трёх значений
+int value3 = value1 + value2; //or value1 - value2 or value1 * value2 etc.
+return value3.ToString(); //sum of two numbers
 ```
 _______________________________________________
-## Полезные ссылки.  
-- [**Полное руководство по языку программирования С#**](https://metanit.com/sharp/tutorial/?ysclid=m6tuqoibxu646819911).
-- [**Логические операции в ZennoDroid**](../../category/логика-в-zd).  
-- [**Тестер регулярных выражений**](../../Tools/RegEx_Tester). 
+### Rounding division results.
+```C
+float value1 = Convert.ToSingle(project.Variables["value1"].Value);
+float value2 = Convert.ToSingle(project.Variables["value2"].Value);
+return Math.Ceiling(value1/value2); // round up
+//or
+return Math.Ground(value1/value2); // round down
+```
+_______________________________________________
+### Creating a list with random numbers from 1 to 10.
+:::tip **In this example, the `var` keyword references the type implicitly.**
+It’s just an alias, and the actual type gets determined by the C# compiler.
+:::
 
+```C
+var list = project.Lists["numbers"];//we access the project list entity by name
+list.Clear();//clear the list before filling it
+int value;//declare an integer variable
+List <string> tempList = new List<string> ();//create a new local string list; it exists only inside this action and will be destroyed after execution
+for (int i = 0; i < 10; i++) {//loop 10 times
+	value = i;//assign the loop counter value to avoid modifying the counter itself
+	value++;//increase the variable by 1
+	tempList.Add(value.ToString());//add the string value to the temp list
+}//repeat 10 times
+tempList.Shuffle();//shuffle the list
+list.AddRange(tempList);//add the shuffled list of numbers 1 to 10 to the main list
+```
+:::info **Notice: in this example, the C# action doesn't return anything, unlike the first two examples.**
+Here, the result is stored in the list, not returned by `return` to the variable in the block.
+:::
+_______________________________________________
+### Getting a random line from a file with account credentials and splitting into login and password.
+The **null** keyword is a literal representing an empty reference that doesn’t point to any object. And you can use the `return` operator to return **null**. In this case, the C# action will exit along the red line, which can be convenient for setting relationships with other blocks.
+
+```C
+IZennoList list = project.Lists["accounts"];//get the list attached to a TXT file with lines like login:password
+if (list.Count== 0) return null;//If the list is empty, exit the block via the red line
+Random rnd = new Random();//create a random number generator
+string str = list[rnd.Next(0, list.Count)];//pick a random index and assign its value to a string variable
+string [] arr = str.Split(':');//split the string into an array using the : delimiter
+project.Variables["login"].Value = arr[0];//use the first element (index 0) as login value
+project.Variables["password"].Value = arr[1];//second element is the password
+```
+
+In this example we show a warning when there are no account entries, and fill the empty list from the TXT with new credentials.
+You can do the same thing using this method: `project.SendInfoToLog("Empty list", true);`.
+_______________________________________________
+### Working with files: getting image resolution (width x height).
+```C
+Image img = Image.FromFile(project.Directory + @"/temp.jpg");//get image from file
+int width = img.Width;//get width
+int height = img.Height;//and height
+return width.ToString() + "x"+ height.ToString();//create a string with this info
+```
+:::info **The `@` symbol means the compiler treats the string as literal, not an escape sequence.**
+If you leave it out, you’d need to use double backslashes in the path rather than single for the code to work right.
+:::
+_______________________________________________
+### Working with OwnCode and images: adding a semi-transparent watermark in the center.
+In practice, it’s often useful to offload some functions to C# and access them from different actions. That’s where ***OwnCode (custom code)*** helps. You can put a function in this class and call it from blocks. It can take arguments (parameters) and return values.
+
+```C
+Image original = Image.FromFile(project.Directory + @"/image.jpg");//original image to watermark
+
+int w = original.Width;//get original dimensions
+int h = original.Height;
+
+int w_wm = (int) w/10;//watermark width: 1/10 of original
+
+Image wm = OwnCode.CommonCode.SetImageOpacity(Image.FromFile(project.Directory + @"/wm.png"), .5F);//get the image and apply half transparency using SetImageOpacity from the common code class
+float scale = (float)wm.Height / wm.Width; //watermark proportions
+int h_wm = (int) (w_wm * scale);//calculate new watermark height
+int x = (int) (w/2 - w_wm/2);//x position: middle of main image minus half watermark width
+int y = (int) (h/2 - h_wm/2);//y position
+
+Graphics gr = Graphics.FromImage(original);//create graphics object from original image
+gr.DrawImage(wm, x, y, w_wm, h_wm);//draw the watermark over the original at given size and coordinates
+
+original.Save(project.Directory + @"/image_result.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);//save image as JPEG
+original.Dispose();//free objects to release memory
+wm.Dispose();
+gr.Dispose();
+```
+
+This example creates a `SetImageOpacity` function. It takes an image and a value for the opacity, and returns the modified image. This function requires `using System.Drawing.Imaging;`.
+
+Next, use the `SetImageOpacity` function, which you need to add to the `OwnCode.CommonCode` class.
+
+```C
+using System.Drawing.Imaging;
+public static Image SetImageOpacity(Image image, float opacity)
+{
+    try  {
+		Bitmap bmp = new Bitmap(image.Width, image.Height);
+        //create graphics from image
+        using (Graphics gfx = Graphics.FromImage(bmp)) {
+            //make color matrix
+            ColorMatrix matrix = new ColorMatrix();
+            //set opacity
+            matrix.Matrix33 = opacity;
+            //make new attributes
+            ImageAttributes attributes = new ImageAttributes();
+            //set transparency for image color
+            attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+            //draw image
+            gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+        }
+        return bmp;
+    }
+    catch (Exception ex)
+    {
+        return null;
+    }
+}
+```
+_______________________________________________
+### Working with Regex.
+With regular expressions in C# you can:
+- *parse data*
+- *find needed values*
+- *process and assign variables*
+- *clean up text from junk*
+
+In the example below, we’ll remove all HTML tags from an element’s content.
+```C
+string html = project.Variables["value1"].Value;//get variable where the source code is stored
+return Regex.Replace(html, @"<.*?>", String.Empty);//replace HTML tags with nothing and return result
+```
+_______________________________________________
+### Working with Macros.
+Using the `Macros` object you get access to lots of functions for working with the file system or processing text. For example, in C# you can handle `Spintax` the same way as with a block.
+```C
+return Macros.TextProcessing.Spintax("{0|1|2}");//randomly returns one of three values
+```
+_______________________________________________
+## Useful links.
+- [**Complete C# Programming Language Guide**](https://metanit.com/sharp/tutorial/?ysclid=m6tuqoibxu646819911)
+- [**Logical operations in ZennoDroid**](../../category/логика-в-zd)
+- [**Regular Expression Tester**](../../Tools/RegEx_Tester)

@@ -1,69 +1,69 @@
 ---
 sidebar_position: 2
-title: Код JavaScript
-description: Работа с JavaScript в ZennoDroid.
+title: JavaScript Code
+description: Working with JavaScript in ZennoDroid.
 ---  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read the [*Rules for using materials on this site*](../../Disclaimer).**
 :::  
 _______________________________________________   
-## Описание.  
-Этот экшен позволяет выполнять пользовательский JavaScript код и производить арифметические операции с переменными проекта.  
+## Description  
+This action lets you run custom JavaScript code and do arithmetic operations with project variables.
 
-![Описание](./assets/JS/JS_pic1.png)  
+![Description](./assets/JS/JS_pic1.png)  
 
 _______________________________________________ 
-## Как добавить в проект?  
-Через контекстное меню: **Добавить действие → Свой код → JavaScript**.  
+## How to add it to your project?  
+Using the context menu: **Add action → Your code → JavaScript**.
 
-![Как добавить в проект?](./assets/JS/JS_pic2.png)  
+![How to add to project?](./assets/JS/JS_pic2.png)  
 _______________________________________________
-## Как работать с экшеном?  
-Есть **два режима работы:**  
+## How does this action work?  
+There are **two modes:**
 
-### Локально.  
-Код будет выполнен в изолированном окружении, независимо от открытого приложения и за его пределами.   
-Этот способ можно использовать для работы с любыми данными, которые поддерживает JS. Например с:  
-- *переменными*,  
-- *числами*,  
-- *строками*.  
+### Locally  
+The code will run in an isolated environment, independent of the open app and outside of it.  
+You can use this method to work with any data JS supports—like:  
+- *variables*  
+- *numbers*  
+- *strings*
 
-![Описание](./assets/JS/JS_pic3.png) 
+![Description](./assets/JS/JS_pic3.png) 
 
-При работе в данном режиме **не надо** указывать ключевое слово *return*, если собираетесь вернуть какое-то значение. Данный экшен сам вернет результат вычислений из последней строки.  
-В примере выше в переменную проекта `{-Variable.result-}` попадёт значение `6`, результат выражения `2+2*2`.  
+While working in this mode, you **don’t need** to write the *return* keyword if you plan to return a value. This action will return the result of the last line by itself.
+In the example above, variable `{-Variable.result-}` gets the value `6`, which is the result of `2+2*2`.
 
-:::info **Протестировать такой код можно с помощью *Тестера JavaScript*.**  
-![Описание](./assets/JS/JS_pic4.png)
+:::info **You can test this code with the *JavaScript Tester*.**  
+![Description](./assets/JS/JS_pic4.png)
 :::
 
-### На текущей странице.  
-Код будет выполнен на открытой странице браузера. Этот способ стоит использовать для работы с DOM-древом, чтобы взаимодействовать с элементами страницы.  
+### On the current page  
+The code will run on the open browser page. Use it when you want to work with the DOM tree and interact with page elements.
 
-При работе в данном режиме открывается доступ ко все объектам текущей страницы. В том числе к подключенным на сайте библиотекам и фреймворкам (например jQuery).  
+In this mode, you get access to all objects on the current page, including libraries and frameworks hooked up on the site (like jQuery).
 
 _______________________________________________  
-:::warning **Независимо от выбранного режима**  
-В настройках экшена обязательно должна быть указана переменная, в которую сохранится результат работы. Даже если логика кода не подразумевает возврат значения. 
+:::warning **No matter which mode you use**  
+In the action settings, you must specify a variable to save the result, even if your code logic isn’t supposed to return anything.
 :::  
 _______________________________________________  
 
-## Примеры использования.  
-### Арифметические операции.  
-| ![Описание](./assets/JS/JS_pic5.png)  |
+## Usage Examples  
+### Arithmetic operations  
+| ![Description](./assets/JS/JS_pic5.png)  |
 |:--:|
-| *После выполнения этого экшена в переменную **result** сохранится результат деления переменной **height** на **2*** |  
+| *After this action, the **result** variable will contain the value of **height** divided by **2*** |  
 
-### Подключение JavaScript библиотек.  
-Можно также встроить на страницу библиотеку, которой изначально не было. Например, с помощью кода добавить jQuery:  
+### Connecting JavaScript libraries  
+You can also embed a library that wasn’t on the page originally. For example, you can add jQuery with code like this:
 
 ```JS  
 int value1 = Convert.ToInt32(project.Variables["value1"].Value);
 int value2 = Convert.ToInt32(project.Variables["value2"].Value);
-int value3 = value1 + value2; //или value1 - value2 или value1 * value2 и т. д.
-return value3.ToString(); //сумма двух чисел  
+int value3 = value1 + value2 // or value1 - value2 or value1 * value2, etc.
+return value3.ToString(); // sum of two numbers  
 ```  
 _______________________________________________
-## Полезные ссылки.  
-- [**Основные принципы работы в JavaScript**](https://medium.com/@stasonmars/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2-%D0%B2-javascript-%D0%B4%D0%BB%D1%8F-%D1%82%D0%BE%D0%B3%D0%BE-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B8%D0%B4%D1%82%D0%B8-%D0%B4%D0%B0%D0%BB%D1%8C%D1%88%D0%B5-a5beae5dc9e4).
-- [**Тестер JavaScript**](../../Tools/Java_Tester).  
-- [**Окно переменных**](../../pm/Interface/Variables). 
+## Useful links  
+- [**Basic JavaScript concepts**](https://medium.com/@stasonmars/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2-%D0%B2-javascript-%D0%B4%D0%BB%D1%8F-%D1%82%D0%BE%D0%B3%D0%BE-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B8%D0%B4%D1%82%D0%B8-%D0%B4%D0%B0%D0%BB%D1%8C%D1%88%D0%B5-a5beae5dc9e4)
+- [**JavaScript Tester**](../../Tools/Java_Tester)  
+- [**Variables window**](../../pm/Interface/Variables)
