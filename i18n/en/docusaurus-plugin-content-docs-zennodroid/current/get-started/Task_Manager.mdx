@@ -1,126 +1,126 @@
 ---
 sidebar_position: 7
-title: Диспетчер заданий
-description: Настройка выполнения заданий
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Task Manager
+description: Setting Up Task Execution
+---
+:::info **Please read the [*Rules for Using Materials on This Resource*](../Disclaimer).**
 :::
 _______________________________________________
-Эта утилита позволяет настроить выполнение проектов по расписанию или по заданному триггеру. Принцип работы схож с **Планировщиком**, однако он позволяет настраивать расписание не для каждого проекта отдельно, а создавать задание сразу для нескольких проектов. Они при этом будут выполняться последовательно, сверху вниз.  
+This tool lets you set up your projects to run on a schedule or in response to a trigger. It works a lot like the **Scheduler**, but with one key difference: you can set up a schedule for several projects at once, not just one at a time. Projects will run in order, from top to bottom.
 _______________________________________________
-## Главное меню.  
-![Главное меню](./assets/Task_Manager/Task_Manager_pic1.png)  
-### Доступные кнопки:
-- **Добавить задание**. С нуля создает новое задание.  
-- **Удалить задание**. Удаляет выделенное задание.  
-- **Выполнить сейчас**. Однократное выполнение выбранного задания.  
-- **Остановить**. Происходит плавная остановка. Текущий работающий шаблон доходит до логического конца и задание останавливается, даже если дальше в очереди есть проекты для выполнения.  
-:::info **Расписание при этом тоже отключиться.**
-Чтоб снова запустить его, нужно повторно включить чекбокс напротив нужного задания в колонке ***Включить***.  
-:::  
-- **Прервать**. Резкая остановка работы, выполнение проекта немедленно прерывается.  
-- **Настроить**. Открывает настройки выделенного задания.  
+## Main Menu
+![Main Menu](./assets/Task_Manager/Task_Manager_pic1.png)
+### Available Buttons:
+- **Add Task**. Creates a new task from scratch.
+- **Delete Task**. Deletes the selected task.
+- **Run Now**. Instantly runs the selected task one time.
+- **Stop**. Graceful stop — the current task will finish whatever it’s doing, and then the execution stops, even if there are more projects waiting in the queue.
+:::info **This also disables the schedule.**
+To start it up again, just check the box next to the desired task in the ***Enable*** column.
+:::
+- **Abort**. Force stop — immediately interrupts whatever is running.
+- **Edit**. Opens the settings for the selected task.
 _______________________________________________
-## Создание нового задания.  
-![Создание нового задания](./assets/Task_Manager/Task_Manager_pic2.png)  
+## Creating a New Task
+![Creating a New Task](./assets/Task_Manager/Task_Manager_pic2.png)
 _______________________________________________
-## Окно с настройкой расписания.
-Нажимаем на кнопку **Добавить задание** → откроется новое окно с настройками расписания → кликаем по кнопке **Next** после установки расписания.  
+## Schedule Setup Window
+Click the **Add Task** button. A new window with scheduling options pops up. Set up the schedule, then click **Next**.
 
-**Можно гибко задать периодичность выполнения:**  
-- *Один раз в день;*  
-- *Каждый день;*   
-- *Каждую неделю (можно выбрать конкретные дни недели);*  
-- *Каждый месяц (позволяет задать диапазон дней);*  
-- *А также по сигналу (нужно прикрепить файл-триггер).*  
- 
-![Расписание](./assets/Task_Manager/Task_Manager_pic3.png) 
-     
+**You can flexibly set how often to run the tasks:**
+- *Once a day;*
+- *Every day;*
+- *Every week (choose specific days);*
+- *Every month (set a range of days);*
+- *Or by trigger (attach a trigger file).*
+
+![Schedule](./assets/Task_Manager/Task_Manager_pic3.png)
+
 _______________________________________________
-## Окно добавления проектов.  
-![Окно добавления проектов](./assets/Task_Manager/Task_Manager_pic4.png)   
-### Доступные кнопки:  
-- **Добавить**. Открывает стандартное окно выбора файла. Можно выбрать сразу несколько шаблонов.  
-- **Удалить**. Удаляет выбранный шаблон из задания.  
-- **Вверх/вниз**. Меняют порядок шаблонов в очереди. Чем выше, тем приоритетнее.  
-- **Продолжать выполнение при ошибках**. Если эта настройка включена, то выполнение перейдёт к следующему шаблону в очереди даже если текущий завершил работу с ошибками.  
-- **Число выполнений на каждый проект**. Указывает количество раз, которое каждый проект в задании будет выполняться подряд.  
+## Add Projects Window
+![Add Projects Window](./assets/Task_Manager/Task_Manager_pic4.png)
+### Available Buttons:
+- **Add**. Opens the file picker. You can select multiple templates at once.
+- **Delete**. Removes the selected template from the task.
+- **Up/Down**. Changes the order of templates in the queue. The higher it is, the higher the priority.
+- **Continue on Errors**. If this is enabled, execution moves to the next template in the queue, even if the current one finished with errors.
+- **Executions per Project**. Sets how many times each project in the task will run consecutively.
 
-### Столбец «Группа»:  
-![Столбец «Группа»](./assets/Task_Manager/Task_Manager_pic5.png)
+### "Group" Column:
+![Group Column](./assets/Task_Manager/Task_Manager_pic5.png)
 
-Позволяет группировать проекты внутри задания. Шаблоны с одинаковым названием группы и находящиеся по соседству друг с другом будут выполняться одновременно. Управление перейдёт к следующей группе (или шаблону) только после того, как закончат работу все проекты внутри текущей группы.  
-:::info **Имейте в виду.**
-*В данную колонку можно вручную внести любое текстовое значение.*  
-::: 
+This lets you group projects inside a task. Templates with the same group name next to each other will run in parallel. Only after all projects in the current group finish does it move on to the next group (or template).
+:::info **Note:**
+*You can type anything you want into this column.*
+:::
 _______________________________________________
-## Таблица заданий.
-![Таблица заданий](./assets/Task_Manager/Task_Manager_pic6.png) 
-### Колонки.
-Все добавленные задания отображаются в Таблице заданий, которая состоит из следующих колонок:  
-- **Включить**. Включает или отключает выполнение задания по расписанию.  
-- **Название**. Имя задания. По умолчанию каждое называется «Задание».  
-- **Проекты**. Список проектов, которые входят в это задание.  
-- **Последний запуск**. Время последнего запуска данного задания.  
-- **Число выполнений**. Показывает, сколько раз уже было выполнено данное задание.  
-- **Следующий запуск**. Время, в которое произойдет следующий запуск по настроенному расписанию.  
-- **Значок сортировки**. Задания можно сортировать по каждой из колонок, для этого достаточно кликнуть по её названию.  
+## Task Table
+![Task Table](./assets/Task_Manager/Task_Manager_pic6.png)
+### Columns
+All your tasks show up in the Task Table, which has these columns:
+- **Enable**. Switches scheduled execution of the task on or off.
+- **Name**. Task name. By default, every new one is called “Task.”
+- **Projects**. The list of projects inside this task.
+- **Last Run**. When the task last ran.
+- **Executions**. How many times this task has run so far.
+- **Next Run**. When it’s scheduled to run next.
+- **Sort Icon**. You can sort tasks by any column; just click its title.
 _______________________________________________
-## Настройки задания.  
-![Настройки задания](./assets/Task_Manager/Task_Manager_pic8.png)   
+## Task Settings
+![Task Settings](./assets/Task_Manager/Task_Manager_pic8.png)
 
-### Как их открыть?  
-Есть несколько способов:  
-- Выделить задание и нажать кнопку **Настроить** в главном меню.  
-- Вызвав нажатием правой кнопки мыши контекстное меню.  
-- Двойной клик по заданию.  
+### How to Open Them
+There are a few ways:
+- Select a task, then click **Edit** in the main menu.
+- Right-click the task to open the context menu.
+- Double-click the task.
 
-![Как их открыть?](./assets/Task_Manager/Task_Manager_pic7.png) 
+![How to Open Them](./assets/Task_Manager/Task_Manager_pic7.png)
 
-### Имя задания.  
-В этой строке можно указать новое имя.  
+### Task Name
+You can give your task a new name in this field.
 
-![Имя задания](./assets/Task_Manager/Task_Manager_pic9.png)  
+![Task Name](./assets/Task_Manager/Task_Manager_pic9.png)
 
-### Вкладка «Проекты в задании»  
-![Вкладка «Проекты в задании»](./assets/Task_Manager/Task_Manager_pic10.png)  
-- **Редактирование списка заданий**. Здесь, как и прежде, можно **Добавить** или **Удалить** проекты, а также изменить их очередность и назначить группы.  
-:::tip **Если дважды кликнуть по проекту, то откроются его Входные настройки.**
-:::  
+### The “Projects in Task” Tab
+![Projects in Task Tab](./assets/Task_Manager/Task_Manager_pic10.png)
+- **Edit Project List**. Same as before: you can **Add** or **Delete** projects, change their order, or assign groups.
+:::tip **Double-click a project to open its Input Settings.**
+:::
 
-### Вкладка «Настройки».  
-![Вкладка «Настройки»](./assets/Task_Manager/Task_Manager_pic11.png)   
-:::warning **Эти параметры настраиваются отдельно для каждого проекта, а НЕ для всего задания!** 
-:::  
-- **Сколько делать**. Количество выполнений проекта. Если стоит `-1`, то это означает бесконечное выполнение. То есть шаблон будет выполнен столько раз, сколько указано в настройке **Количество успехов** во вкладке **Остановка**.  
-- **Максимум потоков**. Сколько максимум потоков могут работать в контексте данного шаблона.  
-- **Прокси**. Стоит ли использовать прокси из встроенного **ProxyChecker**.  
-- **Правила**. По ним будут браться прокси.  
+### The “Settings” Tab
+![Settings Tab](./assets/Task_Manager/Task_Manager_pic11.png)
+:::warning **These settings are for each individual project, NOT for the whole task!**
+:::
+- **How Many to Run**. Number of times to run the project. If set to `-1`, it will run endlessly — it’ll keep running until the number you set under **Success Count** in the **Stop** tab is reached.
+- **Max Threads**. Max number of threads that can be used for this template.
+- **Proxy**. Whether or not to use proxies from the built-in **ProxyChecker**.
+- **Rules**. How proxies will be chosen.
 
-### Вкладка «Остановка».  
-![Вкладка «Остановка»](./assets/Task_Manager/Task_Manager_pic12.png)   
-- **Количество успехов**.  
-По умолчанию здесь будет находиться число, которое вы указали в настройке **Число выполнений на каждый проект** при создании задания. Если стоит `-1`, то это означает бесконечное выполнение. То есть шаблон будет выполнен столько раз, сколько указано в **Сколько делать** во вкладке **Настройки**.  
-- **Количество неуспехов подряд.**  
-Сколько подряд может быть допущено ошибок, после которых выполнение перейдет к следующему шаблону в очереди. Задание также может быть остановлено, если не стоит галочка возле пункта **Продолжать выполнение при ошибках**.  
-:::warning **Не ставьте в этой настройке значение `-1`.**
-Так как в случае возникновения ошибки шаблон никогда не сможет завершиться.     
-:::  
-- **Таймаут выполнения (секунды)**.  
-Если проект не выполнится в указанное время, то будет принудительно прерван.  
-- **Выполнить BadEnd при прерывании проекта**.  
-**BadEnd** — это экшен в **ProjectMaker**, который используется для выполнения дополнительных действий в случае завершения шаблона с ошибкой. Данная настройка позволяет нам направлять прерывание проекта по этому экшену. Учитывается, как ручное прерывание, так и по таймауту.  
-![BadEnd](./assets/Task_Manager/Task_Manager_pic13.png)  ![BadEnd](./assets/Task_Manager/Task_Manager_pic14.png)   
+### The “Stop” Tab
+![Stop Tab](./assets/Task_Manager/Task_Manager_pic12.png)
+- **Success Count**
+By default, this is the number you set under **Executions per Project** when creating the task. If set to `-1`, it runs endlessly — as many times as set under **How Many to Run** in the **Settings** tab.
+- **Consecutive Failures**
+How many errors in a row are allowed before switching to the next template in the list. The task can also be stopped if the **Continue on Errors** box isn’t checked.
+:::warning **Don’t set this to `-1`.**
+Otherwise, if an error happens, the template will never finish.
+:::
+- **Execution Timeout (seconds)**
+If the project doesn’t finish in time, it gets force-stopped.
+- **Run BadEnd on Project Abort**
+**BadEnd** is an action in **ProjectMaker** that runs extra steps if a template ends with an error. This setting lets you trigger that on abort (manual or by timeout).
+![BadEnd](./assets/Task_Manager/Task_Manager_pic13.png)  ![BadEnd](./assets/Task_Manager/Task_Manager_pic14.png)
 
-### Вкладка «Условия выполнения».  
-![Вкладка «Условия выполнения»](./assets/Task_Manager/Task_Manager_pic15.png)  
-Здесь можно отредактировать расписание, по которому будет выполняться проект.  
+### The “Execution Conditions” Tab
+![Execution Conditions Tab](./assets/Task_Manager/Task_Manager_pic15.png)
+This is where you edit the schedule for running a project.
 _______________________________________________
-## Как посмотреть лог проекта?  
-Откройте вкладку «Проекты» → выберите задание → выделите один или несколько проектов с зажатым Ctrl → после этого появится **Лог**.  
+## How to View a Project’s Log
+Go to the “Projects” tab → select a task → pick one or more projects (hold Ctrl) → the **Log** will show up.
 
-![посмотреть лог проекта](./assets/Task_Manager/Task_Manager_pic16.png)  
+![View project log](./assets/Task_Manager/Task_Manager_pic16.png)
 _______________________________________________
-## Полезные ссылки.  
-- [**BadEnd**](../Project%20Editor/Logic/BadEnd).  
-- [**Окно лога**](../pm/Interface/Log_window).  
+## Useful Links
+- [**BadEnd**](../Project%20Editor/Logic/BadEnd)
+- [**Log Window**](../pm/Interface/Log_window)

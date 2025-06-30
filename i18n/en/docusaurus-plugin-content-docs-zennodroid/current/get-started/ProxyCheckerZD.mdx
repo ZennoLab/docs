@@ -1,143 +1,136 @@
 ---
 sidebar_position: 4
-title: ProxyChecker для ZD
-description: Как работать с ProxyChecker.
+title: ProxyChecker for ZD
+description: How to use ProxyChecker.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please review the [*Terms of Use for materials on this resource*](../Disclaimer).**
 :::
 _______________________________________________
-## Что такое **ZennoProxyChecker**?
-Это наш продукт, предназначенный для загрузки прокси, их хранения, автоматической перепроверки и предоставления их разными способами в соответствии с гибкими критериями.  
-Он существует как в виде отдельного приложения, так и **прямо внутри ZennoDroid**.  
-### Основные возможности:
+## What is **ZennoProxyChecker**?
+This is our tool for loading, storing, automatically re-checking, and supplying proxies in various ways based on flexible criteria.
+It comes both as a standalone app and is built right into **ZennoDroid**.
+### Key features:
 <details>
-<summary>**Добавление**</summary>
-<!--All you need is a blank line-->
+<summary>**Adding**</summary>
 
-Добавление прокси возможно различными способами: как вручную, прямой вставкой адресов прокси, так и автоматически, когда программа сама ищет и собирает (парсит) адреса прокси с web-страниц или локальных файлов со списками прокси.
+You can add proxies in several ways: manually by entering the proxy addresses, or automatically—the program can search for and collect (parse) proxy addresses from web pages or local files with proxy lists.
 </details> 
 
 <details>
-<summary>**Проверка**</summary>
-<!--All you need is a blank line-->
+<summary>**Checking**</summary>
 
-ProxyChecker может проверять прокси примерно по 20 параметрам, отфильтровывая опасные и выбирая самые лучшие и быстрые. Кроме того, в программе можно делать проверку на URL, отбирая прокси для работы с нужными web-ресурсами.
+ProxyChecker can check proxies by about 20 parameters, filtering out the risky ones and picking only the best and fastest. You can also check proxies for specific URLs, selecting those that work with certain web resources.
 </details> 
 
 <details>
-<summary>**Выдача**</summary>
-<!--All you need is a blank line-->
+<summary>**Supply**</summary>
 
-Программа позволяет настроить несколько каналов выдачи прокси, так, чтобы разным шаблонам предоставлялись прокси с разными параметрами. Списки прокси также можно сохранять в локальные файлы и выкладывать на сетевые ресурсы, выдавая свежие прокси с определенной периодичностью.
+You can set up several channels for supplying proxies, so different templates get proxies with different parameters. Proxy lists can also be saved to local files or shared over the network, providing fresh proxies on a schedule.
 </details>  
 _______________________________________________
-## Быстрый старт.
-Основная задача программы — проверить прокси и отобрать из них рабочие для использования в проектах.  
-Рассмотрим основные шаги, которые для этого требуются:   
+## Quick start.
+The main goal of the program is to check your proxies and pick out working ones for use in your projects.
+Here are the main steps:
 <details>
-<summary>**1.** Открываем вкладку **Источники** → **Добавить прокси**.  
-Формат адреса прокси - `ip:port` для обычных прокси, и `login:password@ip:port` для прокси с авторизацией.</summary>
-<!--All you need is a blank line-->
+<summary>**1.** Open the **Sources** tab → **Add proxies**.  
+Proxies should be in `ip:port` format for regular proxies, or `login:password@ip:port` for proxies with authentication.</summary>
 
-![Быстрый старт. Источники](./assets/ProxyChecker/ProxyCheck_pic01.png)
+![Quick start. Sources](./assets/ProxyChecker/ProxyCheck_pic01.png)
 </details>
 
 <details>
-<summary>**2.** Переходим на вкладку **Управление** → нажимаем на кнопки **Загружать прокси** и **Проверять прокси** → запускаем кнопкой **Старт**.</summary>
-<!--All you need is a blank line-->
+<summary>**2.** Go to the **Management** tab → click **Load proxies** and **Check proxies** → start with the **Start** button.</summary>
 
-![Быстрый старт. Загружать и проверять](./assets/ProxyChecker/ProxyCheck_pic02.png)
+![Quick start. Load and check](./assets/ProxyChecker/ProxyCheck_pic02.png)
 </details>  
 
 <details>
-<summary>**3.** Получим проверенные прокси на вкладке **Прокси**. Там же можно задать *Правила* для отбора подходящих прокси.</summary>
-<!--All you need is a blank line-->
+<summary>**3.** Get your checked proxies in the **Proxies** tab. There you can also set up *Rules* for selecting suitable proxies.</summary>
 
-![Быстрый старт. Список прокси](./assets/ProxyChecker/ProxyCheck_pic03.png)
+![Quick start. Proxy list](./assets/ProxyChecker/ProxyCheck_pic03.png)
 </details>
 
 <details>
-<summary>**4.** Полученные прокси можно **Cкопировать в буфер** или **Cохранить в файл**.</summary>
-<!--All you need is a blank line-->
+<summary>**4.** You can **Copy to clipboard** or **Save to file** your proxies.</summary>
 
-![Быстрый старт. Копировать, сохранить, очистить](./assets/ProxyChecker/ProxyCheck_pic04.png)
+![Quick start. Copy, save, clear](./assets/ProxyChecker/ProxyCheck_pic04.png)
 </details>
 _______________________________________________
-## Настройки ProxyChecker.
-![Настройки ProxyChecker](./assets/ProxyChecker/ProxyCheck_pic05.png)
-### Адрес сервера проверки проксей.  
-![Адрес сервера проверки проксей](./assets/ProxyChecker/ProxyCheck_pic06.png)  
+## ProxyChecker settings.
+![ProxyChecker settings](./assets/ProxyChecker/ProxyCheck_pic05.png)
+### Proxy checking server address.
+![Proxy checking server address](./assets/ProxyChecker/ProxyCheck_pic06.png)  
 
-Здесь мы выбираем сервера из списка, которые будут проверять наши прокси.  
-#### Список.
-URL адреса, которые программа использует для проверки прокси. По умолчанию здесь указаны пять адресов, но вы можете добавить свои.  
-#### Кнопка **Тест**.
-После её нажатия программа последовательно будет проверять адреса из **Списка** на работоспособность. Тест завершится, когда будет найден первый рабочий сервер проверки. Либо когда кончатся адреса в списке.  
-#### Выбран.
-Здесь будет указан адрес, с помощью которого будут проверяться все прокси на предмет того живы они или нет. Сюда попадает первый рабочий адрес из **Списка**.  
+Here you choose which servers from the list will be used to check your proxies.
+#### List.
+URLs that the program uses to check proxies. By default, there are five addresses but you can add your own.
+#### **Test** Button.
+When you click it, the program will sequentially check each address in the **List** for availability. The test stops when the first working check server is found, or when the list runs out.
+#### Selected.
+Here you'll see the address that checks whether all the proxies are alive or not. This will be the first working address from the **List**.
 _________________
-### Настройки поведения.  
-![Настройки поведения](./assets/ProxyChecker/ProxyCheck_pic07.png)
-#### Считать неанонимные прокси мёртвыми.
-Программа будет фильтровать неанонимные прокси и выдавать только анонимные.
-#### Удалить прокси при закрытии программы.
-Очистка списка прокси при закрытии программы.
-#### Число потоков на процесс.
-Задаёт число потоков, используемых для проверки.  
-:::warning **Для применения изменений нужно перезапустить программу.**
+### Behavior settings.
+![Behavior settings](./assets/ProxyChecker/ProxyCheck_pic07.png)
+#### Treat non-anonymous proxies as dead.
+The program will filter out non-anonymous proxies and only provide anonymous ones.
+#### Delete proxies on program exit.
+Cleans out the proxy list on program exit.
+#### Threads per process.
+Sets the number of threads used for checking.
+:::warning **You’ll need to restart the program for changes to take effect.**
 :::  
 _______________________________________________
-### Настройки парсинга прокси.  
-![Настройки парсинга прокси](./assets/ProxyChecker/ProxyCheck_pic08.png)  
-С помощью конструктора можно добавить новые структуры (регулярные выражения) для парсинга прокси или отредактировать существующие. Нажмите **Открыть конструктор**, чтобы начать работу.  
+### Proxy parsing settings.
+![Proxy parsing settings](./assets/ProxyChecker/ProxyCheck_pic08.png)  
+With the builder, you can add new structures (regular expressions) for parsing proxies or edit existing ones. Click **Open Builder** to get started.
 
-![Список структур](./assets/ProxyChecker/ProxyCheck_pic09.png) 
-#### Вкладка **Список структур**.
-По умолчанию сюда уже внесены 2 регулярных выражения. Также можно **Добавить (1)** или **Удалить(2)** свои структуры. А с помощью кнопки **Справка по полям структур (3)** можно получить описание используемых полей.
+![Structure list](./assets/ProxyChecker/ProxyCheck_pic09.png) 
+#### **Structure list** tab.
+By default, there are already 2 regular expressions here. You can also **Add (1)** or **Delete (2)** your own structures. With the **Field help (3)** button you can see the purpose of different fields.
 
-![Кнопки структур](./assets/ProxyChecker/ProxyCheck_pic10.png)  
+![Structure buttons](./assets/ProxyChecker/ProxyCheck_pic10.png)  
 
-На некоторых сайтах может встретиться своя разметка прокси, поэтому, при необходимости, можно создать свою структуру парсинга практически для любого вида и протестировать на конкретном источнике с помощью тестера.  
-#### Вкладка **Тестировать источник**.
-![Тестировать источник](./assets/ProxyChecker/ProxyCheck_pic11.png) 
-- **Адрес источника**. Tут нужно указать адрес сайта, с которого будет происходить парсинг проксей.  
-- **Выбранная структура**. Необходимо выбрать добавленное ранее условие для парсинга из вкладки **Список структур**.
-- Кнопка **Тест**. Запускает тестирование.
-- Окно **Результат теста**. Здесь вы увидите полученные в соответствии с условиями парсинга прокси.  
-:::warning **Результаты парсинга не сохраняются.**
-После закрытия окна **Конструктора** или нажатии кнопки **Отмена**.
+Some sites might use a different proxy format, so if needed, you can create your own parsing structure for almost any format and test it on a specific source using the tester.
+#### **Test source** tab.
+![Test source](./assets/ProxyChecker/ProxyCheck_pic11.png) 
+- **Source address.** Enter the website address where proxies will be parsed.
+- **Selected structure.** Choose a previously added parsing rule from the **Structure list** tab.
+- **Test button.** Starts the test.
+- **Test result window.** Shows the proxies found based on your parsing rule.
+:::warning **Parsing results are not saved.**
+They’ll be lost when you close the **Builder** window or hit **Cancel**.
 :::  
 _______________________________________________
-### Настройки автопоиска. 
-![Настройки автопоиска](./assets/ProxyChecker/ProxyCheck_pic12.png)
-#### Подробный лог работы автопоиска.
-Поставив здесь галочку, вы будете видеть подробный отчет о работе ZennoProxyChecker в режиме автопоиска.  
-#### Останавливать, если в очереди на проверку более *XXX* прокси.  
-При превышении данного количества прокси в очереди, автопоиск будет остановлен.  
-#### Останавливать, если в базе более *XXX* прокси.
-При превышении данного количества прокси в базе, автопоиск будет остановлен.  
-#### Останавливать, если в базе более *XXX* источников
-При превышении данного количества источников, автопоиск будет остановлен.
-#### Настройки источников по-умолчанию.
-Здесь указываются настройки, которые будут применены ко всем вновь добавленным источникам. 
+### Auto-search settings.
+![Auto-search settings](./assets/ProxyChecker/ProxyCheck_pic12.png)
+#### Detailed auto-search log.
+Check this to see a detailed report of ZennoProxyChecker in auto-search mode.
+#### Stop if over *XXX* proxies are in the check queue.
+If there are more proxies in the queue than this number, auto-search will stop.
+#### Stop if over *XXX* proxies are in the database.
+If there are more proxies in the database than this number, auto-search will stop.
+#### Stop if over *XXX* sources are in the database.
+If there are more sources in the database than this number, auto-search will stop.
+#### Default source settings.
+These settings are applied to every newly added source.
 _________________
-### Настройки проверки прокси.
-![Настройки проверки прокси](./assets/ProxyChecker/ProxyCheck_pic13.png)
-#### Использовать для проверки прокси .NET процесс.
-Если параметр установлен, то прокси будут проверяться с помощью .NET реализации CheckingProcessor (***требуется перезапуск***).  
+### Proxy checking settings.
+![Proxy checking settings](./assets/ProxyChecker/ProxyCheck_pic13.png)
+#### Use .NET process for proxy checking.
+If enabled, proxies will be checked using the .NET version of CheckingProcessor (***requires restart***).
 _________________
-## Как получить актуальную базу GeoIP?  
-### 1. [Зарегистрироваться на сайте](https://www.maxmind.com/en/account/login)  
-### 2. Выбрать раздел «Downloads».  
-![Выбрать раздел «Downloads».](./assets/ProxyChecker/ProxyCheck_pic31.png)  
-### 3. Скачать базу «GeoLite2 City».
-![Скачать базу «GeoLite2 City»](./assets/ProxyChecker/ProxyCheck_pic32.png)
-### 4. Разархивировать и положить файл `GeoLite2-City.mmdb` в папку:  
-`C:\Users\{имя_пользователя}\AppData\Roaming\ZennoLab\ZennoDroid\2\Data\`  
-### 5. Задать файлу `GeoLite2-City.mmdb` права только на чтение.  
-![права только на чтение](./assets/ProxyChecker/ProxyCheck_pic33.png)  
+## How to get the latest GeoIP database?
+### 1. [Register on the website](https://www.maxmind.com/en/account/login)
+### 2. Go to the ‘Downloads’ section.
+![Go to the “Downloads” section.](./assets/ProxyChecker/ProxyCheck_pic31.png)
+### 3. Download the ‘GeoLite2 City’ database.
+![Download the ‘GeoLite2 City’ database](./assets/ProxyChecker/ProxyCheck_pic32.png)
+### 4. Unzip it and place the `GeoLite2-City.mmdb` file in:
+`C:\Users\{username}\AppData\Roaming\ZennoLab\ZennoDroid\2\Data\`
+### 5. Set the `GeoLite2-City.mmdb` file to read-only.
+![read-only permissions](./assets/ProxyChecker/ProxyCheck_pic33.png)
 _________________
-## Полезные ссылки.  
-- [**Главная страница ZennoProxyChecker**](https://zennolab.com/ru/products/zennoproxychecker/)  
-- [**Что такое прокси? Для самых маленьких**](https://habr.com/ru/articles/866406/).  
-- [**Подробная справка по ZennoProxyChecker**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507/ZennoProxyChecker).
+## Useful Links
+- [**ZennoProxyChecker Homepage**](https://zennolab.com/ru/products/zennoproxychecker/)
+- [**What is a proxy? For complete beginners**](https://habr.com/ru/articles/866406/).
+- [**Detailed ZennoProxyChecker Manual**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507/ZennoProxyChecker).

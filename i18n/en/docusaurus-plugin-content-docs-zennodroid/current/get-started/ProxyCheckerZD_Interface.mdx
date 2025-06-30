@@ -1,107 +1,107 @@
 ---
 sidebar_position: 5
-title: Обзор интерфейса ProxyChecker для ZD
-description: Познакомимся с интерфейсом ProxyChecker
+title: ProxyChecker Interface Overview for ZD
+description: Get to know the ProxyChecker interface
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please review the [*Terms of Use for content on this site*](../Disclaimer).**
 :::
 _______________________________________________
-![Обзор интерфейса ProxyChecker для ZD](./assets/ProxyChecker/ProxyCheck_pic14.png)
-## Панель Управления.
-Это окно открыто по умолчанию. Через него осуществляется контроль сбора прокси, а также настройка каждого этапа.  
+![ProxyChecker Interface Overview for ZD](./assets/ProxyChecker/ProxyCheck_pic14.png)
+## Control Panel
+This window opens up by default. Here’s where you manage proxy collection and set up each stage.
 
-![Панель Управления](./assets/ProxyChecker/ProxyCheck_pic15.png)
-- **Старт\Стоп**. C помощью данных кнопок запускается\останавливается сбор и проверка прокси.
-- **Фильтры**. Набор правил, которые применяются к прокси после загрузки их с источника, но до занесения в базу программы.  
-- **Правила**. Набор условий, по которым можно взять прокси из списка *живых*.   
-- **Сетевой монитор**. С помощью этой встроенной утилиты можно протестировать интернет подключение на максимальное количество одновременных потоков 
-- **Справка**. Открывает в браузере Справку по продукту.
+![Control Panel](./assets/ProxyChecker/ProxyCheck_pic15.png)
+- **Start/Stop**. You use these buttons to start or stop collecting and checking proxies.
+- **Filters**. A set of rules applied to proxies after they’re grabbed from the source but before they go into the program’s database.
+- **Rules**. These are conditions for picking proxies from the "live" list.
+- **Network Monitor**. With this built-in tool, you can test your internet connection for the maximum number of simultaneous threads.
+- **Help**. Opens the product manual in your browser.
 _________________
-### Источники прокси.
-![Источники прокси.](./assets/ProxyChecker/ProxyCheck_pic16.png)  
+### Proxy Sources
+![Proxy Sources.](./assets/ProxyChecker/ProxyCheck_pic16.png)
 
-Здесь настраивается загрузка прокси из источников. На значок планеты можно нажать, он перенаправит вас во вкладку **Источники**.
+This is where you set up loading proxies from sources. You can click the globe icon to go straight to the **Sources** tab.
 _________________
-#### Количество источников.  
-![Количество источников](./assets/ProxyChecker/ProxyCheck_pic17.png)  
+#### Number of Sources
+![Number of Sources](./assets/ProxyChecker/ProxyCheck_pic17.png)
 
-Верхнее число отображает количество живых (рабочих) источников, а нижнее общее их количество.
-#### Кнопка Загружать прокси.
-При нажатии будет запущен сбор прокси из источников.  
+The top number shows how many active (working) sources there are, the bottom one is the total number.
+#### Load Proxies Button
+When you click this, proxy collection from the sources will start.
 
-![Кнопка Загружать прокси.](./assets/ProxyChecker/ProxyCheck_pic18.png)  
+![Load Proxies Button.](./assets/ProxyChecker/ProxyCheck_pic18.png)
 
-С помощью кнопки с шестеренкой вы можете регулировать сколько потоков будет задействовано в загрузке прокси из источников.  
-#### Включить автопоиск.
-![Включить автопоиск.](./assets/ProxyChecker/ProxyCheck_pic19.png)
-:::warning **Кнопка активна только тогда, когда включена Загрузка прокси.**
+With the gear button, you can choose how many threads will be used to load proxies from the sources.
+#### Enable Auto Search
+![Enable Auto Search.](./assets/ProxyChecker/ProxyCheck_pic19.png)
+:::warning **This button is only active when proxy loading is enabled.**
 :::
-После нажатия данной кнопки ProxyChecker будет самостоятельно искать в интернете источники с прокси. При нажатии на шестеренку можно гибко настроить параметры автопоиска.
+After clicking it, ProxyChecker will start searching the internet for proxy sources all by itself. If you click the gear, you can fine-tune the auto search settings.
 _________________
-### База прокси.
-![База прокси.](./assets/ProxyChecker/ProxyCheck_pic20.png)  
+### Proxy Database
+![Proxy Database.](./assets/ProxyChecker/ProxyCheck_pic20.png)
 
-Собственно, здесь и запускается процесс проверки прокси. На значок круглых ячеек можно нажать, он перенаправит вас во вкладку **Источники**. 
-#### Кнопка Проверять прокси. 
-![Кнопка Проверять прокси.](./assets/ProxyChecker/ProxyCheck_pic21.png)  
+Here’s where you actually start checking proxies. You can click the round cell icon to go to the **Sources** tab.
+#### Check Proxies Button
+![Check Proxies Button.](./assets/ProxyChecker/ProxyCheck_pic21.png)
 
-Она запускает процесс проверки. Рядом также расположена уже привычная шестеренка, которая отвечает за настройки проверки. Тут можно задать число потоков для проверки и ограничение на количество живых прокси, по достижении которого проверка будет остановлена.  
+This starts the checking process. Next to it is the familiar gear icon for check settings. Here you can set the number of checking threads and a limit for live proxies — once you hit that, checking stops.
 _________________
-### Живые прокси.
-![Живые прокси.](./assets/ProxyChecker/ProxyCheck_pic22.png)  
+### Live Proxies
+![Live Proxies.](./assets/ProxyChecker/ProxyCheck_pic22.png)
 
-Тут можно увидеть количество живых прокси, а также настроить время, в течение которого они будут считаться таковыми. На значок монитора можно нажать, он перенаправит вас во вкладку **Прокси**.  
-#### Кнопка Очищать список.
-![Кнопка Очищать список](./assets/ProxyChecker/ProxyCheck_pic23.png)  
+Here you can see the number of live proxies and set the amount of time they’ll keep their live status. You can click the monitor icon to go to the **Proxies** tab.
+#### Clear List Button
+![Clear List Button](./assets/ProxyChecker/ProxyCheck_pic23.png)
 
-При нажатии список живых прокси будет очищаться согласно настройке времени жизни, которую можно задать, кликнув на шестеренку.  
+When you click this, the live proxies list gets cleared according to the set live-time, which you can set by clicking the gear.
 _________________
-## Панель источники.
-![Панель источники.](./assets/ProxyChecker/ProxyCheck_pic24.png)  
-### Помощник.
-![Помощник.](./assets/ProxyChecker/ProxyCheck_pic25.png)  
-Он предназначен для упрощения добавления **Источников парсинга** в программу.
-#### Что нужно добавить?
-![Что нужно добавить?](./assets/ProxyChecker/ProxyCheck_pic26.png)  
+## Sources Panel
+![Sources Panel.](./assets/ProxyChecker/ProxyCheck_pic24.png)
+### Wizard
+![Wizard.](./assets/ProxyChecker/ProxyCheck_pic25.png)
+This helps you add **parsing sources** into the program more easily.
+#### What do you want to add?
+![What do you want to add?](./assets/ProxyChecker/ProxyCheck_pic26.png)
 
-Доступно четыре сценария:  
-- **Вставить прокси в программу напрямую.** При выборе этого сценария, откроется пустое окно для внесения прокси.  
-- **Источник прокси.** Здесь можно указать **Путь к файлу** или **Адрес URL (веб-страницу)**, откуда будут собираться прокси.  
-- **Список источников прокси.** Буквально то же самое, что и первый вариант, но с возможностью указать сразу несколько источников.  
-- **Путь к списку источников прокси.** Здесь как и во втором варианте, но указываются сразу несколько путей.  
+There are four options:
+- **Paste proxies straight into the program.** When you choose this, an empty window opens for you to add proxies.
+- **Proxy source.** Here you can specify a **file path** or a **URL (web page)** to collect proxies from.
+- **List of proxy sources.** It’s basically the first option, but lets you add several sources at once.
+- **Path to a list of proxy sources.** Like option two, but you can enter multiple paths.
 _________________
-### Главное окно Источников.  
-На данной вкладке отображаются все добавленные в программу источники прокси. Также здесь находятся элементы управления, которые позволяют менять настройки источников, удалять их, добавлять, увидеть количество прокси и др.  
+### Main Sources Window
+This tab shows all the proxy sources you’ve added. You’ll also find controls to tweak source settings, delete or add sources, see proxy counts, and more.
 
-![Главное окно Источников.](./assets/ProxyChecker/ProxyCheck_pic27.png)
-#### Доступные кнопки:
-- **Добавить прокси.** Позволяет добавить прокси списком.  
-- **Добавить источник.** Нужна для добавления источника сбора прокси.  
-- **Настройки источника.** Данная кнопка изменяет настройки уже добавленных источников.  
-- **Удалить**. С помощью нее можно удалить ненужные источники.  
-:::warning **Удаление источника также повлечет удаление всех проксей этого источника.**
-:::  
-- **Сохранить**. Эта кнопка сохраняет адреса источников в файл.  
-- **Загрузить прокси**. Загружает прокси из источника.  
-- **Проверить прокси**. Запускает процесс проверки прокси на живых.  
-- **Допроверить живые**. Позволяет повторно проверить уже найденные живые прокси источников.  
-- **Развернуть**. Разворачивает группу со списком источников, если она была до этого в свёрнутом виде. 
-- **Свернуть**. Сворачивает список.  
-- **Панель авто-режима**. С помощью данной кнопки можно активировать панель для быстрого управления загрузкой и проверкой прокси. Появляется данная панель над списком источников: 
+![Main Sources Window.](./assets/ProxyChecker/ProxyCheck_pic27.png)
+#### Available Buttons:
+- **Add Proxies.** Lets you add a list of proxies.
+- **Add Source.** Lets you add a new proxy source.
+- **Source Settings.** This button changes the settings for already added sources.
+- **Delete.** Use this to delete unwanted sources.
+:::warning **Deleting a source will also remove all proxies from that source.**
+:::
+- **Save.** This button saves source addresses to a file.
+- **Load Proxies.** Loads proxies from a source.
+- **Check Proxies.** Starts checking proxies for live ones.
+- **Recheck Live.** Lets you recheck already found live proxies from sources.
+- **Expand.** Expands the group with the source list if it was collapsed before.
+- **Collapse.** Collapses the list.
+- **Auto Mode Panel.** With this button, you turn on a panel for quick loading and checking control. This panel shows up above the source list:
 
-![Панель авто-режима](./assets/ProxyChecker/ProxyCheck_pic28.png) 
+![Auto Mode Panel](./assets/ProxyChecker/ProxyCheck_pic28.png)
 
-В левой части панели отображено количество источников (живые источники/общее количество). А справа расположены кнопки для загрузки, поиска и проверки прокси.  
-- **Время загрузки**. Добавляет три новых столбца в таблицу.
+The left side of the panel shows source count (live/total). On the right you have buttons for loading, searching, and checking proxies.
+- **Load Time.** Adds three new columns to the table.
 
-![Время загрузки](./assets/ProxyChecker/ProxyCheck_pic29.png)  
+![Load Time](./assets/ProxyChecker/ProxyCheck_pic29.png)
 
-- **Удалить все прокси**. Удаляет все прокси из программы.  
-- **Чёрный список**. Если прокси не подходят для выполнения проекта или сам источник не вызывает доверия, то его можно добавить в черный список.  
+- **Delete All Proxies.** Wipes all proxies from the program.
+- **Blacklist.** If proxies don’t fit your project or you don’t trust the source, you can add it to the blacklist.
 
-![Чёрный список](./assets/ProxyChecker/ProxyCheck_pic30.png)
+![Blacklist](./assets/ProxyChecker/ProxyCheck_pic30.png)
 _________________
-## Полезные ссылки.  
-- [**Главная страница ZennoProxyChecker**](https://zennolab.com/ru/products/zennoproxychecker/)  
-- [**Интерфейс ProjectMaker**](../category/интерфейс).  
-- [**Подробная справка по ZennoProxyChecker**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507/ZennoProxyChecker).
+## Useful Links
+- [**ZennoProxyChecker Main Page**](https://zennolab.com/en/products/zennoproxychecker/)
+- [**ProjectMaker Interface**](../category/интерфейс)
+- [**Detailed ZennoProxyChecker Help**](https://zennolab.atlassian.net/wiki/spaces/EN/pages/475365507/ZennoProxyChecker)

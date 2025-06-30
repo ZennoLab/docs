@@ -1,110 +1,141 @@
 ---
 sidebar_position: 6
-title: Другие настройки
-description: Какие еще есть настройки в ZD?
+title: Other Settings
+description: What other settings are there in ZD?
 ---
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
 :::
 _______________________________________________
-## Настройки из вкладки «Другое».  
+## Settings from the "Other" tab.
 
-![Другие настройки](./assets/Other_Settings/Other_Settings_pic1.png)
-  
-### Отключить отчёты об ошибках программ (глобально).  
-В некоторых случаях из-за сбоя в работе какого-либо приложения эмулятор зависает. ZennoDroid отслеживает это и старается восстановить работу. Если при краше эмулятора будет висеть окно с информацией о случившейся ошибке, то высока вероятность, что он уже не перезапустится.    
+![Other Settings](./assets/Other_Settings/Other_Settings_pic1.png)
+
+### Disable program error reports (globally).
+Sometimes if an app crashes, the emulator freezes up. ZennoDroid keeps an eye on this and tries to recover. If an error message window stays open after the emulator crashes, it's very likely it won't restart.
+
 _______________________________________________
-### Отключить диалог восстановления настроек проектов.  
-Отключает возможность восстановления настроек в случае аварийного завершения программы. Мы не рекомендуем ставить галочку на этой настройке. Однако в некоторых случаях она может быть полезна. Например, если окно восстановления блокирует автозапуск ZennoPoster.  
+### Disable project settings recovery dialog.
+This turns off the option to recover your settings if the program crashes. We don’t recommend checking this box. But it might help in some cases, like if the recovery window blocks ZennoPoster’s auto-start.
+
 _______________________________________________
-### Пропускать выполнение задания планировщика для работающих заданий.  
-При включении данной опции сначала будет выполняться работающий проект (он становится приоритетным в очереди), а затем уже задание планировщика, если по каким-либо причинам их работа произошла одновременно.  
+### Skip scheduler task for running tasks.
+When this is on, the running project gets priority in the queue and will finish first before a scheduled task starts, if by chance they overlap.
+
 _______________________________________________
-### Сворачивать ZennoDroid в трей.  
-При сворачивании окна программы она будет выгружаться в трей.  
-:::tip **Что такое трей?**
-***Трей** — элемент панели задач в Windows, который открывается нажатием на стрелочку в правом крае панели. Используется для длительно запущенных, но при этом не постоянно используемых программ.* 
-:::  
+### Minimize ZennoDroid to the tray.
+When you minimize the app window, it will go to the tray.
+
+:::tip **What's the tray?**
+*The tray is a part of the Windows taskbar that pops up when you click the arrow on the bottom right. It’s used for programs that are running in the background but aren’t used all the time.*
+:::
+
 _______________________________________________
-### Отслеживать состояние потоков.  
-Эта функция нужна только для сбора статистики, которая, например, может пригодиться при обращении [в поддержку](https://helpdesk.zennolab.com/ru/conversation/new). Она запускает отслеживание состояния потоков в программе.  
+### Track thread status.
+This is only for collecting stats, which can be useful if you contact [support](https://helpdesk.zennolab.com/ru/conversation/new). It starts tracking the status of threads in the app.
+
 _______________________________________________
-### Сжимать кучу больших объектов.  
-Устанавливает время в минутах, через которое *куча больших объектов* будет сжиматься. Настройка полезна при обработке больших строковых данных. Например, при включенном автопоиске в ProxyChecker.  
+### Compact large object heap.
+Sets an interval (in minutes) after which the *large object heap* will be compacted. This is useful when you’re working with large strings, for example, when auto-search is on in ProxyChecker.
+
 _______________________________________________
-### Автоматически продолжать активные задания после перезапуска.  
-Управляет тем, нужно ли продолжать выполнение заданий, которые были активны до закрытия программы.  
+### Auto-continue active tasks after restart.
+Decides whether tasks that were running before you closed the app should automatically continue when you open it again.
+
 _______________________________________________
-### Тема оформления (Light/Dark)  
-![Light](./assets/Other_Settings/Other_Settings_pic2.png)  
+### Theme (Light/Dark)
+![Light](./assets/Other_Settings/Other_Settings_pic2.png)
 
 ![Dark](./assets/Other_Settings/Other_Settings_pic3.png)
 _______________________________________________
-### Настройка директории загрузки проектов.  
-В данную папку будут сохраняться проекты, которые вы получили от других пользователей. В качестве имени папок будут использоваться email разработчиков проекта, либо их ZennoLab ID.  
-:::warning **Вручную копировать проекты в эту папку нельзя!**
-::: 
-_______________________________________________
-## Настройки [Лога](../pm/Interface/Log_window).  
-### Отключать автопрокрутку лога, только по клику на записи в логе. 
-Автопрокрутка записей в логе будет отключаться только после клика по записи.  
-_______________________________________________
-### Выводить оповещение только в лог.  
-Сообщения выводимые с помощью экшена [**Оповещение**](../Project%20Editor/Logic/Notification) будут выводиться только в лог, без всплывающего окна и независимо от настроек экшена.  
-_______________________________________________
-### Отображать дату в логе.  
-Дополнительно показывать в логе текущую дату.  
-_______________________________________________
-### Выводить в лог уведомления об успешном выполнении проекта.  
-Оповещение в логе об успешном выполнении проекта.  
-_______________________________________________
-### Выводить в лог уведомления о не успешном выполнении проекта.  
-Информация в логе о не успешном выполнении проекта.  
-_______________________________________________
-### Хранить записи в логе часов.  
-Указывается максимальное время в часах, которое будут храниться записи в логе.  
-_______________________________________________
-### Хранить максимально записей для одного задания.  
-Количество записей в логе для одного задания. **Максимальное значение - 9999**.  
-_______________________________________________
-### Максимальный размер записи в логе.  
-Ограничение на максимальный размер записи в килобайтах, которая может быть *отображена* в окне лога.  
-_______________________________________________
-### Ограничить максимальный размер записи в файл лога.  
-:::tip **Рекомендуем включить.**
-*Пользователям, которые работают с большими данными, и которым не нужен полный лог, **рекомендуется включить ограничение**. Это повысит производительность и снизит потребление памяти.*  
-:::   
-Данная настройка ограничивает размер записи, которая может быть *сохранена* в файл лога.  
-:::info **Logs.**
-Файлы логов хранятся в директории с установленным ZennoDroid в папке - **Logs**.  
-Возможный путь - `C:\Program Files\ZennoLab\RU\ZennoDroid Pro\2.3.8.0\Progs\Logs\`  
-:::   
+### Project downloads folder.
+Projects you get from other users will be saved here. The folder names will use either the project developer’s email or their ZennoLab ID.
 
-:::warning **Для вступления изменений требуется перезагрузка программы.**
-:::  
+:::warning **Do NOT copy projects into this folder by hand!**
+:::
+
 _______________________________________________
-### Подробный лог (Отладочная информация для разработчиков).  
-Запускает подробную запись информации о работе. Может потребоваться при обращении в поддержку.  
+## Log [Settings](../pm/Interface/Log_window).
+
+### Disable log autoscroll only on log entry click.
+Autoscroll in the log will turn off only after you click an entry.
+
 _______________________________________________
-### BuildID  
-Комбинация букв и цифр в данной строке отображает текущую версию программы, а также дату релиза.  
-:::tip **Значение в этом поле можно выделить и скопировать с помощью контекстного меню.**
-:::  
+### Show notifications in the log only.
+Notifications sent using the [**Notification**](../Project%20Editor/Logic/Notification) action will just go to the log, with no pop-up window, no matter how the action is set.
+
+_______________________________________________
+### Show date in the log.
+Shows the current date in the log, on top of everything else.
+
+_______________________________________________
+### Log notifications of successful project completion.
+A log notification when a project finishes successfully.
+
+_______________________________________________
+### Log notifications of unsuccessful project completion.
+Info in the log about projects that didn’t finish successfully.
+
+_______________________________________________
+### Log record retention time (hours).
+Specifies the max amount of time (in hours) log entries will be stored.
+
+_______________________________________________
+### Max entries per task in the log.
+How many log entries for a single task. **Maximum is 9999.**
+
+_______________________________________________
+### Max log entry size.
+Limits the max size (in kilobytes) of a log entry that can be *shown* in the log window.
+
+_______________________________________________
+### Limit max log entry size in log files.
+
+:::tip **Recommended to turn on.**
+*If you work with big data and don’t need full logs, **we recommend turning this on**. This will boost performance and lower memory use.*
+:::
+
+This sets a limit for the size of entries that can be *saved* in the log file.
+
+:::info **Logs.**
+Log files are stored in the ZennoDroid installation folder, in the **Logs** directory.
+For example: `C:\Program Files\ZennoLab\RU\ZennoDroid Pro\2.3.8.0\Progs\Logs\`
+:::
+
+:::warning **The program needs to be restarted for changes to take effect.**
+:::
+
+_______________________________________________
+### Detailed log (Debug info for developers)
+Starts detailed recording of what’s going on. Might come in handy for support requests.
+
+_______________________________________________
+### BuildID
+This line shows the current program version and release date, using letters and numbers.
+
+:::tip **You can select and copy the value here using the context menu.**
+:::
+
 ![BuildID](./assets/Other_Settings/Other_Settings_pic4.gif)
 _______________________________________________
-## Доступные кнопки.  
-### Диагностика.  
-Открывает утилиту для диагностики `diagnostic.exe`, которая отображает информацию при возникновении проблем. После выполнения в директории установленного ZennoDroid будет создан файл `report.zip`  
+## Available buttons.
+
+### Diagnostics.
+Opens the `diagnostic.exe` utility, which gives you info if there’s a problem. When it finishes, you’ll find a `report.zip` file in your ZennoDroid folder.
+
 _______________________________________________
-### Сохранить настройки.  
-Сохраняет текущие настройки программы. Для использования нужно сначала нажать на кнопку, а затем закрыть программу.  
+### Save settings.
+Saves your current program settings. You’ll need to hit this button first, then close the app.
+
 _______________________________________________
-### Восстановить настройки.  
-Позволяет восстановить настройки, которые были сохранены последними. Опять же нужно сначала нажать на эту кнопку, а затем перезапустить программу.  
+### Restore settings.
+Lets you put your settings back to the last version you saved. Same deal—hit the button, then restart the app.
+
 _______________________________________________
-### Сбросить настройки.  
-Сброс текущих настроек на значения по умолчанию.  
+### Reset settings.
+Resets all settings to their defaults.
+
 _______________________________________________
-## Полезные ссылки.    
-- [**Окно лога**](../pm/Interface/Log_window).  
-- [**Какие есть настройки?**](../category/настройки)  
+## Useful links.
+- [**Log window**](../pm/Interface/Log_window)
+- [**What settings are there?**](../category/настройки)
