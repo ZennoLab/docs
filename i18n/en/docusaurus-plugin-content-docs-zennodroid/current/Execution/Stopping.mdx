@@ -1,52 +1,52 @@
 ---
 sidebar_position: 2
-title: Вкладка «Остановка»
-description: Условия для прекращения выполнения
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: «Stopping» Tab
+description: Conditions for stopping project execution
+---
+:::info **Please read the [*Rules for using materials on this resource*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.
-Данная вкладка содержит настройки условий, при наступлении которых проект прекратит выполнение.  
+## Description
+This tab contains the settings for the conditions under which your project will stop running.
 
-Она находится на главной странице ZennoDroid, достаточно нажать на интересующее нас задание, а затем на раздел **Остановка**.   
+You can find it on ZennoDroid's main page—just click on the task you’re interested in, then go to the **Stopping** section.
 
-![Описание](./assets/Stopping/Stopping_pic1.png)  
+![Description](./assets/Stopping/Stopping_pic1.png)
 _______________________________________________
-## Доступные параметры.   
-### Количество успехов.  
-В этой настройке мы задаём количество выполнений для проекта, по достижению которого он остановится.  
+## Available parameters
+### Number of successes
+Here you set the number of times the project should run successfully before it stops.
 
-По умолчанию указано **`-1`**, то есть бесконечно. Успехи не будут считаться, проект будет выполняться, пока вы не остановите его вручную.  
+By default, it’s set to **`-1`**, which means unlimited. Successes won’t be counted—the project will keep running until you stop it manually.
 
-:::tip **В Таблице проектов можно увидеть общее число успехов и ошибок для конкретного задания.**
-![число успехов и ошибок](./assets/Stopping/Stopping_pic3.png)
+:::tip **In the Projects Table, you can see the total number of successes and errors for any given task.**
+![number of successes and errors](./assets/Stopping/Stopping_pic3.png)
 :::
-### Количество неуспехов подряд.  
-Проект может завершиться с ошибкой только указанное здесь количество раз подряд, после этого он будет остановлен.  
+### Number of consecutive failures
+The project can only fail as many times in a row as you specify here—after that, it’ll stop.
 
-Счётчик неуспешных выполнений сбрасывается после того, как задание хотя бы раз завершится успешно.  
+The counter for unsuccessful runs resets as soon as the task is completed successfully once.
 
-По умолчанию стоит значение **`-1`**, то есть бесконечно. Ошибки не будут учитываться, а проект будет выполняться до остановки вручную. 
+By default, the value is **`-1`**, which means endless. Errors won’t be tracked, and the project will keep going until you stop it by hand.
 
-:::tip **В *Таблице проектов* по умолчанию не отображается колонка с Неуспехами подряд.**  
-Но её можно включить, **нажав ПКМ по любому из заголовков таблицы**.  
+:::tip **The *Projects Table* doesn’t show the “Consecutive Failures” column by default.**
+But you can enable it **by right-clicking any table header**.
 
-![Неуспехами подряд](./assets/Stopping/Stopping_pic2.png)
-:::  
+![Consecutive Failures](./assets/Stopping/Stopping_pic2.png)
+:::
 
-### Таймаут выполнения (секунды).  
-Задаём максимальное время, выделенное для одного выполнения проекта.  
+### Execution timeout (seconds)
+Here, you set the max time allowed for a single run of the project.
 
-Если по истечении этого времени задание не успело завершиться, то оно будет прервано, независимо от того, на каком этапе оно находится.  
+If the task isn’t finished within this timeframe, it’ll be stopped, no matter what stage it’s on.
 
-:::tip **Представим, что выполнение нашего проекта занимает примерно 6-8 минут.**  
-Тогда **Таймаут выполнения** выставляем на 600 секунд, то есть 10 минут (с небольшим запасом).
+:::tip **Let’s say our project usually takes about 6–8 minutes to run.**
+In that case, set the **Execution Timeout** to 600 seconds (10 minutes, with a bit of a buffer).
 
-По какой-либо причине наш шаблон неожиданно завис прямо посреди работы. Ровно через 600 секунд от начала он будет прерван, чтобы напрасно не тратить ресурсы и время.
-:::  
+If, for some reason, the template hangs right in the middle of running, it’ll get interrupted exactly 600 seconds from the start—so you don’t waste resources or time.
+:::
 
-### Выполнить BadEnd при прерывании проекта.  
-Если включить данную настройку, то при прерывании проекта через кнопку **Прервать** или при истечении **Таймаута выполнения** он выйдет по красной линии (BadEnd).  
+### Run BadEnd when stopping the project
+If you turn this setting on, when you stop the project with the **Stop** button or the **Execution Timeout** runs out, it will follow the red line (BadEnd).
 
-![Прервать](./assets/Stopping/Stopping_pic4.png)
+![Stop](./assets/Stopping/Stopping_pic4.png)

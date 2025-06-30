@@ -1,61 +1,61 @@
 ---
 sidebar_position: 7
-title: Создать .bat файл
-description: Создать .bat файл
+title: Create a .bat File
+description: Create a .bat File
 ---  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info **Please read the [*Terms of Use for materials on this site*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.  
-![Описание](./assets/BatFile/BatFile_pic1.png)  
+## Description  
+![Description](./assets/BatFile/BatFile_pic1.png)  
 
-Для каждого добавленного в ZennoDroid проекта вы можете создать отдельный .bat файл. С его помощью, например, можно:  
-- Запускать и останавливать шаблон;  
-- Добавлять попытки;  
-- Изменять количество потоков;  
-- Задавать новые входные настройки.  
+For every project you add to ZennoDroid, you can create a separate .bat file. With it, you can, for example:  
+- Start and stop the template;  
+- Add attempts;  
+- Change the number of threads;  
+- Set new input settings.  
 
-Для одного .bat файла можно задать сразу несколько функций.  
+You can assign several functions at once to one .bat file.  
 
-:::warning **.bat файлы не работают в [*Демо версии*](../Installation/ZD_Demo) программы.**
+:::warning **.bat files do not work in the program’s [*Demo Version*](../Installation/ZD_Demo).**
 :::  
 
-### Как создать?  
-В **Таблице проектов** кликаем ПКМ по нужному шаблону и в [**Контекстном меню**](./Context_menu) выбираем **Создать bat файл**.  
+### How to create one?  
+In the **Project Table**, right-click on the template you need, and in the [**Context Menu**](./Context_menu) select **Create bat file**.  
 
-![Как создать?](./assets/BatFile/BatFile_pic2.png)
+![How to create one?](./assets/BatFile/BatFile_pic2.png)
 _______________________________________________
-## Работа с окном.  
-### Путь.  
-Тут мы указываем место на компьютере, куда хотим сохранить bat файл.  
+## Working with the window  
+### Path  
+Here, you choose where on your computer you want to save the bat file.  
 
-### Поиск задания по.  
-В этом пункте нужно выбрать, по какому признаку bat файл будет искать проект для работы с ним.  
+### Find task by  
+In this section, you need to pick what criteria the bat file will use to find the project to work with.  
 
-- **Уникальный идентификатор**.  
-У каждого добавленного в ZennoDroid проекта есть уникальный идентификатор (пример - `81ca46b9-8eaa-94e3-92be-33b22ba4ca1a`).  
-:::warning **Каждый раз генерируется новый идентификатор.**  
-Если несколько раз добавить и удалить один и тот же шаблон в программу, то каждый раз для него будет формироваться новый id.  
+- **Unique Identifier**  
+Every project you add to ZennoDroid has a unique identifier (for example, `81ca46b9-8eaa-94e3-92be-33b22ba4ca1a`).  
+:::warning **A new identifier is generated each time.**  
+If you add and remove the same template in the program several times, each time a new id will be created for it.  
 
-Учитывайте это при работе.
+Keep this in mind while you work.
 :::  
 
-- **Имя задания**.  
-Поиск шаблона выполнится по его имени.  
+- **Task Name**  
+The search for the template will use its name.  
 
-Если же добавить сразу несколько проектов с одинаковым именем, то настройки будут применены к первому из них.  
+If you add several projects with the same name at once, the settings will apply to the first one.  
 
-### Что сделать.  
-- **Запустить/Остановить/Прервать**. Позволяет запустить, либо же плавно/резко завершить работу проекта.  
-- **Добавить попытки**. К текущим попыткам выполнения будет добавлено указанное здесь количество. 
-- **Установить попытки**. Для выбранного шаблона будет установлено указанное здесь количество попыток выполнения.  
-- **Сбросить успехи/неуспехи подряд**. Сбрасывает счётчик количества успешных или неуспешных выполнений.  
-- **Установить количество потоков**. Задаёт число потоков для шаблона.  
-- **Показать/скрыть инстанс**. Данные опции позволяют запустить отображение инстансов у работающих потоков.  
+### What to do  
+- **Start/Stop/Abort**. Lets you start the project or, smoothly or abruptly, stop its work.  
+- **Add attempts**. The number you enter here will be added to the current number of attempts.  
+- **Set attempts**. This will set the number of execution attempts for the selected template.  
+- **Reset successes/failures in a row**. Resets the counter for the number of successive successes or failures.  
+- **Set number of threads**. Sets the number of threads for the template.  
+- **Show/hide instance**. These options let you display running instances for active threads.  
 
-### Изменить критерии останова.  
-Здесь можно задать условия, при наступлении которых шаблон прекратит работу. Работает аналогично функциям из вкладки [**Остановка**](./Stopping).  
+### Change stopping criteria  
+Here, you can set the conditions under which the template will stop working. This works just like the functions in the [**Stopping**](./Stopping) tab.  
 
-### Входные настройки.  
-Тут нужно указать место на диске, где находится файл с сохранёнными [**Входными настройками**](../Project%20Editor/Project/InputSetting).  
+### Input settings  
+Here, you need to specify the location on your disk where the file with the saved [**Input Settings**](../Project%20Editor/Project/InputSetting) is located.  
 _______________________________________________

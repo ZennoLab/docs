@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
-title: Вкладка «Расписание»
-description: Работа с «Планировщиком»
+title: «Schedule» Tab
+description: Working with the Scheduler
 ---  
 export const VideoSample = ({source}) => (
   <video controls playsInline muted preload="auto" className='docsVideo'>
@@ -9,171 +9,170 @@ export const VideoSample = ({source}) => (
 </video>
 ); 
 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::info Please read the [Rules for Using Materials on this Resource](../Disclaimer).
 :::
 _______________________________________________
-## Описание.  
-В этой вкладке ведётся работа с **Планировщиком расписания**. Это инструмент, который позволяет детально настроить и автоматизировать выполнение проектов по расписанию.  
+## Overview  
+This tab is where you work with the **Schedule Planner**. It's a tool that lets you fine-tune and automate your project execution according to a schedule.
 
-**Его возможности:**  
-- **Создание простых расписаний.**   
-Однократное выполнение заданий.  
-- **Установка сложных расписаний.**  
-Которые учитывают интервалы времени, количество попыток и повторений для них.  
-- **Отладка расписаний.**  
-Для проверки того, что всё выполняется корректно.  
+**Here’s what it can do:**  
+- **Create simple schedules.**  
+Run tasks a single time.
+- **Set up advanced schedules.**  
+Take into account time intervals, number of attempts, and repetitions.
+- **Debug schedules.**  
+Make sure everything is set up and running as expected.
 
-:::tip **Независимо от сложности необходимого расписания.**
-Планирование заданий в нашем **Планировщике** доступно пользователям с любым уровнем подготовки. Последовательность элементов интерфейса делает процесс составления расписания понятным и логичным. 
+:::tip No matter how complex your schedule needs to be.
+Planning tasks with our **Scheduler** is available to users of any experience level. The interface steps make the process clear and logical.
 :::
 
-### Начало работы.  
-По умолчанию планировщик выключен и просто так его включить не получится, появится ошибка. **Сначала нужно настроить расписание** в соответствии с вашими нуждами. 
+### Getting Started  
+By default, the scheduler is off, and if you try to turn it on right away, you’ll get an error. **You need to set up a schedule first** according to your needs.
 
-Когда вы проверите через отладчик, что все настройки выставлены корректно, то можно переместить слайдер в положение **Включить**.  
+Once you use the debugger to make sure everything is set up properly, you can move the slider to **Enable**.
 
-![Начало работы](./assets/Schedule/Schedule_pic1.png)  
+![Getting Started](./assets/Schedule/Schedule_pic1.png)
 
-:::warning **Если в настройках расписания будут ошибки.**
-То они будут подсвечены красной рамкой, а слайдер включения планировщика станет неактивным.
+:::warning If there are any errors in your schedule settings,
+they’ll be highlighted with a red frame, and the enable slider will be grayed out.
 :::
 
-### Меню планировщика.  
-![Меню планировщика](./assets/Schedule/Schedule_pic2.png) 
+### Scheduler Menu  
+![Scheduler Menu](./assets/Schedule/Schedule_pic2.png)
 
-- **Копировать**. Скопировать всё расписание проекта для использования с другим проектом.  
-- **Вставить**. Вставить расписание из другого проекта.  
-- **Загрузить**. Загрузить файл с компьютера, который содержит настройки расписания.  
-- **Сохранить**. Сохранить текущие настройки во внешний файл.  
-- **Показать лог**. Показать историю добавления попыток планировщиком.  
-- **Отладчик расписания**. Запускает утилиту, которая позволяет рассчитать приблизительное время выполнения заданий. *Будет подробнее рассмотрен ниже.*
+- **Copy**. Copy the entire schedule of a project to use it in another one.
+- **Paste**. Paste a schedule from another project.
+- **Load**. Load a file from your computer containing schedule settings.
+- **Save**. Save your current settings to an external file.
+- **Show log**. Show the history of attempt additions by the scheduler.
+- **Schedule Debugger**. Launch a utility to calculate approximate task timings. *More details below.*
 _______________________________________________
-## Основные функции.  
-### Как выполнять.  
-![Как выполнять](./assets/Schedule/Schedule_pic3.png)  
+## Main Features  
+### How to Run  
+![How to Run](./assets/Schedule/Schedule_pic3.png)
 
-Данный пункт отвечает за настройку периодичности выполнения задания. Всего доступно 5 опций:  
-- **Один раз**. Задание выполнится ровно один раз.  
-- **Каждый день**. Проект будет выполняться каждый день с Понедельника по Воскресенье.  
-- **Каждую неделю**. С этой опцией задание станет выполняться в указанные дни недели.  
-![Каждую неделю](./assets/Schedule/Schedule_pic4.png)  
-- **Каждый месяц**. Ставим проект на выполнение ежемемячно в определённые даты. Отдельные числа месяца нужно указывать через запятую, а интервалы дат через дефис.   
+This section sets up how often the task runs. There are 5 options:
+- **One time**. The task will run exactly once.
+- **Every day**. The project runs every day, Monday through Sunday.
+- **Every week**. With this, the task runs on specific days of the week.
+![Every week](./assets/Schedule/Schedule_pic4.png)
+- **Every month**. Set the project to run monthly on certain dates. List individual dates separated by commas, and ranges with a dash.
 
-| ![Каждый месяц](./assets/Schedule/Schedule_pic5.png)    | 
+| ![Every month](./assets/Schedule/Schedule_pic5.png)    | 
 | -------- | 
-| *Проект будет выполняться с 1 по 5 число каждого месяца, а также 10 и 20.*  | 
+| *The project will run on the 1st to 5th of each month, and also on the 10th and 20th.*  | 
 
-- **По сигналу**. Выполнение задания будет начинаться при появлении загруженного файла.  
-*Если хотите, чтобы файл удалялся после старта задания, тогда отметьте чекбокс **Удалять файл**.* 
+- **By trigger**. The task will start whenever a file is uploaded.
+*If you want the file to be deleted after the task starts, check the **Delete file** box.*
 
-### Начать.  
-![Начать](./assets/Schedule/Schedule_pic6.png)  
+### Start  
+![Start](./assets/Schedule/Schedule_pic6.png)
 
-В данной опции мы указываем принцип начала задания:  
-- **Сразу**. Начнёт выполняться сразу после включения планировщика.  
-- **По дате**. Задание выполнится в указанную дату по времени.
+Here you choose how tasks start:
+- **Immediately**. Runs as soon as you turn on the scheduler.
+- **On a set date**. The task will run at a specified date and time.
 
-### Сколько делать.  
-![Сколько делать](./assets/Schedule/Schedule_pic7.png)  
+### How Many Times  
+![How Many Times](./assets/Schedule/Schedule_pic7.png)
 
-Тут мы указываем количество попыток выполнения задания.  
+Here you set how many times to try running the task.
 
-Его можно задать как точным числом, так и диапазоном (кнопка **Указать диапазон**). Во втором случае количество попыток будет определено случайным образом.  
+You can enter a specific number or a range (with the **Set range** button). In the second case, the system will randomly pick a number within that range.
 
-Опция **Сбрасывать успехи** отвечает за то, будет ли обнуляться счётчик успехов с вкладки *Остановка*.
+The **Reset successes** option controls whether the success counter in the *Stop* tab will reset.
 
-### Когда повторять. 
-![Когда повторять](./assets/Schedule/Schedule_pic8.png) 
+### When to Repeat  
+![When to Repeat](./assets/Schedule/Schedule_pic8.png)
 
-В этом пункте мы указываем временные интервалы для повторения проекта.  
+Here you set time slots for repeating the project.
 
-Нажимаем на **Добавить интервал**, чтобы задать необходимый временной промежуток. Если понадобится ещё один, то просто снова кликаем на эту кнопку. Общее количество интервалов — **неограничено**.  
+Click **Add interval** to enter a time span. If you need more slots, just click it again. There's **no limit** to the number of intervals you can add.
 
-![Добавить интервал](./assets/Schedule/Schedule_pic9.png)  
+![Add interval](./assets/Schedule/Schedule_pic9.png)
 
-:::tip **Если не указать интервалы, то проект будет выполняться круглосуточно.**
-*Актуально только для режимов **Каждый день**, **Каждую неделю** и **Каждый месяц**.*
+:::tip If you don’t set any intervals, the project will run 24/7.
+*This applies only for the **Every day**, **Every week**, and **Every month** modes.*
 ::: 
 
-### Как повторять.  
-![Как повторять](./assets/Schedule/Schedule_pic10.png)  
+### How to Repeat  
+![How to Repeat](./assets/Schedule/Schedule_pic10.png)
 
-Здесь мы задаём вид повторения проекта.  
+This is where you set how the project repeats.
 
-:::info **Активируется в режимах *Каждый день*, *Каждую неделю* и *Каждый месяц*.**
-:::  
-
-На выбор доступно **четыре способа повторения**:  
-- **Подряд**. Задание начнёт выполняться заново сразу же после завершения прошлого повторения.  
-- **Подряд с паузой**. Теперь между повторами добавляется пауза. Её можно задать как точным числом, так и **Указать диапазоном** (в минутах), из которого время будет выбираться случайным образом.   
-![Подряд с паузой](./assets/Schedule/Schedule_pic11.png)  
-- **Регулярно**. Задание выполнится заново спустя указанное время. В этом случае оно не зависит от предыдущего повторения по сравнению с прошлым способом.  
-- **Распределить по интервалу**. Повторы автоматически распределятся по интервалам, которые вы указали в разделе **Когда повторять**.
-
-
-### Завершить.  
-![Завершить](./assets/Schedule/Schedule_pic12.png)
-
-В последнем пункте мы указываем условия для завершения задания.  
-:::info **Активируется в режимах *Каждый день*, *Каждую неделю* и *Каждый месяц*.**
+:::info This option is available in **Every day**, **Every week**, and **Every month** modes.
 :::
 
-Доступно **три способа завершения** выполнения заданий:  
-- **По дате**. Проект будет выполняться **До** указанной даты и времени.  
-- **После N повторений**. Проект завершится после выполнения определённого количества раз. Можно задать точное число или **Указать диапазон**.  
-![После N повторений](./assets/Schedule/Schedule_pic13.png)  
-- **Без конца**. В этом случае проект будет выполняться неограниченное число раз, пока вы не остановите его вручную.
-_______________________________________________
-## Примеры работы.  
-### Один раз.  
-| Выполнить проект *один раз* в заданный день в 12:30.    | 
-| -------- | 
-| ![Каждый день](./assets/Schedule/Schedule_pic14.png)  | 
-### Каждый день.
-| Выполнять задание *каждый день* с 10:00 до 15:00 не более одного раза с паузой между выполнением в 10 минут.    | 
-| -------- | 
-| ![Каждый день](./assets/Schedule/Schedule_pic15.png)  |  
+You have **four repeat options**:
+- **Back to back**. The task restarts as soon as the last run finishes.
+- **Back to back with pause**. Now there’s a pause between repeats. You can set a specific number of minutes, or **Set range** and let the system pick a random value.
+![Back to back with pause](./assets/Schedule/Schedule_pic11.png)
+- **Regularly**. The task runs again after a set period, unrelated to the previous run.
+- **Spread out over the interval**. Repeats are automatically distributed within the intervals you set in **When to Repeat**.
 
-### Несколько попыток. 
-| Выполнять шаблон каждый день с 8:00 до 12:00 и с 13:00 до 19:00, повторяя его каждые 20-40 минут и делая при этом *от одной до семи попыток*.    | 
-| -------- | 
-| ![Несколько попыток](./assets/Schedule/Schedule_pic16.png)  | 
+### End  
+![End](./assets/Schedule/Schedule_pic12.png)
 
-### Распределить случайно.
-| Выполнять проект каждые Вторник, Среду и Четверг с 16:00 до 23:00, *случайно распределяя* 50 повторений по заданному интервалу.    | 
-| -------- | 
-| ![Распределить случайно](./assets/Schedule/Schedule_pic17.png)  |  
+In this section, you set up conditions for ending the task.
+:::info This option is available in **Every day**, **Every week**, and **Every month** modes.
+:::
+
+You can finish tasks in **three ways**:
+- **By date**. The project keeps running **until** the specified date and time.
+- **After N repeats**. The project stops when it’s been run the specified number of times. You can set an exact number or **Set range**.
+![After N repeats](./assets/Schedule/Schedule_pic13.png)
+- **Without end**. The project keeps running indefinitely, until you stop it manually.
 _______________________________________________
-## Видео с примером.  
+## Example Setups  
+### One time  
+| Run the project *one time* on a certain day at 12:30. | 
+| -------- |
+| ![Every day](./assets/Schedule/Schedule_pic14.png) |
+### Every day
+| Run the task *every day* from 10:00 to 15:00, only once per day, with a 10-minute pause between runs.    | 
+| -------- | 
+| ![Every day](./assets/Schedule/Schedule_pic15.png)  |  
+
+### Multiple Attempts
+| Run the template every day from 8:00 to 12:00 and 13:00 to 19:00, repeating it every 20-40 minutes, *doing between one and seven attempts*.    | 
+| -------- | 
+| ![Multiple attempts](./assets/Schedule/Schedule_pic16.png)  | 
+
+### Random Distribution
+| Run the project every Tuesday, Wednesday, and Thursday from 16:00 to 23:00, *randomly distributing* 50 repeats across the time slot.    | 
+| -------- | 
+| ![Random distribution](./assets/Schedule/Schedule_pic17.png)  |  
+_______________________________________________
+## Example Video  
 <VideoSample source={require("@site/static/video/Schedule.mp4").default}/>
 _______________________________________________
-## Отладчик расписания.
-### Общая информация.  
-:::info **Отладчик расписания позволяет рассчитать приблизительное время выполнения заданий.**
-А также посмотреть примерный ход выполнения проекта по расписанию.
-:::  
+## Schedule Debugger
+### General Info  
+:::info The Schedule Debugger helps you estimate how long your tasks will take to run.
+And shows you an example of how the project will run according to the schedule.
+:::
 
-Открыть его можно через **Меню расписания проекта**:  
-![Меню расписания](./assets/Schedule/Schedule_pic18.png)
+You can open it from the **project schedule menu**:  
+![Schedule menu](./assets/Schedule/Schedule_pic18.png)
 
-:::tip **Не забывайте пользоваться Отладчиком расписания каждый раз.**
-Ведь это даёт уверенность в том, что задания будут выполнены корректно.
-:::  
+:::tip Make sure to use the schedule debugger every time.
+It gives you confidence that your tasks will run as you expect.
+:::
 
-### Работа с Отладчиком расписания.  
-#### Шаг 1.  
-Первым делом нужно указать примерное время в секундах, выделенное для однократного выполнения проекта. Это нужно для того, чтобы отладчик смог отобразить более правдоподобный ход выполнения. Чем точнее указано время, тем более корректными будут расчеты.  
+### How the Schedule Debugger Works  
+#### Step 1  
+First, you’ll need to enter a rough estimate (in seconds) of how long running the project once will take. This helps the debugger make a realistic prediction of how things will run. The more accurate your estimate, the better the calculations.
 
-![Шаг 1](./assets/Schedule/Schedule_pic19.png)  
+![Step 1](./assets/Schedule/Schedule_pic19.png)
 
-#### Шаг 2.  
-После указания времени выполнения проекта нужно нажать кнопку **Рассчитать** и подождать несколько секунд. Затем отладчик отобразит примерный ход выполнения проекта по заданному расписанию. Вы увидите ход от начала планируемого запуска до конца выполнения проекта или завершения периода эмуляции.  
+#### Step 2  
+After you’ve entered a duration, click **Calculate** and wait a few seconds. The debugger will then show you an estimated run of your project according to your schedule. You’ll see how the process will go, from the planned start to the end of the project or the end of the emulation period.
 
-![Шаг 2](./assets/Schedule/Schedule_pic20.png)  
+![Step 2](./assets/Schedule/Schedule_pic20.png)
 
-По итогу произведённого расчёта отладчик покажет ход выполнения проекта в формате:  
-**Дата выполнения** + **Время выполнения** + **Количество попыток**.  
+The final calculation will show the progress in this format:
+**Run date** + **Run time** + **Number of attempts**.
 
-С помощью полученных данных можно отследить, как именно будет работать расписание, и понять, правильно ли настроены его интервалы и повторения.  
+With this data, you can check how the schedule will actually work and see if the intervals and repeats are set correctly.
 
-Однако нужно понимать, что отладчик показывает только примерный ход выполнения. И при непосредственной работе задания по расписанию время его выполнения может отличаться от ранее заданного значения в отладчике.
+Just keep in mind, the debugger only shows an approximate run. When tasks actually run according to the schedule, the real time may differ from what you entered in the debugger.

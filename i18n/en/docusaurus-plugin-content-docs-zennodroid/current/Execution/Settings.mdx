@@ -1,99 +1,99 @@
 ---
 sidebar_position: 1
-title: Вкладка «Настройки»
-description: Настраиваем количество потоков и выполнений
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: «Settings» Tab
+description: Setting up the number of threads and runs
+---
+:::info **Please read the [*Terms of Use for materials on this site*](../Disclaimer).**
 :::
-_______________________________________________  
-## Описание.
-В данной вкладке можно настроить количество выполнений и потоков, а также использование прокси.  
-
-Она находится на главной странице ZennoDroid, достаточно нажать на интересующее нас задание.   
-
-![Описание](./assets/Settings/Settings_pic1.png)  
 _______________________________________________
-## Доступные параметры.  
-### Сколько делать.  
-Тут указывается количество повторений для выбранного проекта.  
+## Description.
+In this tab, you can set the number of runs and threads, as well as proxy usage.
 
-Можно написать значение **`-1`**, тогда задание будет выполняться бесконечное число раз, пока вы его не остановите. Прекратить выполнение можно кнопкой **Стоп**, или изменив значение с `-1` на `0`. Также остановка произойдёт при наступлении ***одного из специальных условий***.  
+It's on the main ZennoDroid page—just click on the job you're interested in.
 
-### Максимум потоков.  
-Определяем максимально допустимое число одновременно запущенных потоков в проекте.  
+![Description](./assets/Settings/Settings_pic1.png)
+_______________________________________________
+## Available parameters.
+### How many to do.
+Here you set the number of runs for the selected project.
 
-:::tip **Далее в статье мы приведём несколько примеров**
-Которые показывают связь параметров «Сколько делать» и «Максимум потоков».
+You can enter **`-1`**, which means the job will run endlessly until you stop it. You can stop the job with the **Stop** button, or by changing the value from `-1` to `0`. It will also stop if ***one of the special conditions*** occurs.
+
+### Maximum threads.
+Set the maximum number of threads that can run at the same time in the project.
+
+:::tip **Further in this article, we'll give a few examples**
+That show the connection between the "How many to do" and "Maximum threads" parameters.
 :::
 
-### Приоритет.  
-Здесь устанавливается приоритет выполнения шаблона относительно других заданий.  
+### Priority.
+Here you set the priority for this template compared to other jobs.
 
-Приоритетные потоки, например, могут прерывать запрос на инстанс от менее приоритетных (если включена соответствующая настройка).  
+Priority threads, for example, can interrupt an instance request from lower-priority ones (if the right option is enabled).
 
-### Метки.  
-Проще говоря, это теги, которые позволяют группировать проекты. Для одного задания можно выбрать сразу несколько тегов.  
+### Tags.
+Basically, these are tags for grouping projects together. You can select several tags for a single job.
 
-![Метки](./assets/Settings/Settings_pic2.png) 
+![Tags](./assets/Settings/Settings_pic2.png)
 
-Если у вас уже есть метки, то их можно выбрать в выпадающем списке. Либо создайте новые, нажав на кнопку с ✙.  
+If you already have tags, you can pick them from the drop-down list. Or create new ones by clicking the ✙ button.
 
-### Прокси.  
-Указываем, хотим ли использовать в проекте встроенные прокси из [**ProxyChecker**](../get-started/ProxyCheckerZD).  
+### Proxy.
+Set whether you want to use built-in proxies from [**ProxyChecker**](../get-started/ProxyCheckerZD) in the project.
 
-#### Доступные варианты:  
-- **Не использовать**.  
-Задание будет выполняться на вашем реальном IP-адресе, без прокси.  
-- **Если возможно**.  
-Прокси будут использованы только в том случае, если среди них есть **Живые**.  
-- **Использовать (без удаления)**.  
-После использования прокси, они не будут удаляться из списка **Живых**.  
-- **Использовать**.  
-Когда прокси будет использовано в проекте, оно сразу удалится из списка **Живых**.  
+#### Options:
+- **Don't use**.
+The job will run on your real IP, no proxy.
+- **If possible**.
+Proxies will be used only if there are any **Live** ones.
+- **Use (without removal)**.
+After using a proxy, it stays in the **Live** list.
+- **Use**.
+When a proxy is used in the project, it's immediately removed from the **Live** list.
 
-:::info **Варианты с «Использовать».**
-В двух последних опциях прокси однозначно используются для выбранного задания. Если подходящего прокси нет, то проект будет ожидать его появления.   
-:::  
+:::info **Options with "Use".**
+In the last two options, proxies are definitely used for this job. If there's no suitable proxy, the project will wait for one to show up.
+:::
 
-### Правила.  
-Выбор [**Правил**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/848560252), по которым будут браться прокси из списка **Живых**. Они создаются не в ZennoDroid, а в [ProxyChecker](../get-started/ProxyCheckerZD_Interface).  
+### Rules.
+Choose [**Rules**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/848560252) for picking proxies from the **Live** list. They're made not in ZennoDroid, but in [ProxyChecker](../get-started/ProxyCheckerZD_Interface).
 _______________________________________________
-## Многопоточный режим.  
-На тарифах **Professional** и **Enterprise** открыта возможность одновременного запуска нескольких потоков выполнения для одного проекта.  
+## Multithreaded mode.
+If you have a **Professional** or **Enterprise** plan, you can run several threads for a single project at the same time.
 
-Для этого в параметре **Максимум потоков** указываем желаемое их количество, а в настройке **Сколько делать** число повторений.  
+Just set how many threads you want in **Maximum threads**, and how many runs in **How many to do**.
 
-:::tip **Если проект находится в статусе «Остановлен».**
-То для применения изменений нужно нажать кнопку **Старт**.   
-:::  
+:::tip **If your project is showing "Stopped".**
+Press **Start** to apply changes.
+:::
 
-### Что такое поток?  
-Это отдельная единица выполнения со своим набором данных (переменные, списки, таблицы и подобное). Выполнение в несколько потоков равносильно выполнению определённых действий несколькими людьми.
+### What's a thread?
+It's a separate run with its own data set (variables, lists, tables, and so on). Running several threads is like having several people do the same actions.
 
-#### Рекомендация.  
-**Мы не советуем сразу пытаться выполнить проект в 100 и более потоков.**  
+#### Tip.
+**We don't recommend trying to run 100+ threads right away.**
 
-Потому что каждый поток потребляет ресурсы компьютера. В первую очередь RAM и CPU, но также и обращается к жёсткому диску. 
+Each thread uses your PC resources—mainly RAM and CPU, but also the hard drive.
 
-:::tip **Интенсивность потребления зависит от логики шаблона, с которым вы работаете.**   
-:::  
+:::tip **Usage load depends on how your template works.**
+:::
 
-Одновременный запуск большого количества потоков может привести к зависанию программы или даже операционной системы. Не редки в таких сценариях и аварийные завершению работы компьютера.  
+Launching a lot of threads at once can lead to the program freezing up, or even crashing your system. Sometimes, your computer might unexpectedly shut down.
 
-### Пример №1.  
-**Сколько делать: `60`.**  
-**Максимум потоков: `1`.**  
+### Example #1.
+**How many to do: `60`.**
+**Maximum threads: `1`.**
 
-**Выполнение:** запускается только **один поток**, а затем последовательно, один за другим, происходят **60 его повторений**.  
+**Result:** Only **one thread** starts, and does **60 runs** one after another.
 
-### Пример №2.  
-**Сколько делать: `60`.**  
-**Максимум потоков: `10`.**  
+### Example #2.
+**How many to do: `60`.**
+**Maximum threads: `10`.**
 
-**Выполнение:** тут одновременно запускается 10 потоков, которые работают параллельно. Представим, что одно выполнение длится 1 минуту, тогда в этом случае на 60 выполнений нужно будет уже не 60 минут, а всего 6 минут. Происходит это потому, что теперь за 1 минуту делается сразу 10 выполнений.  
+**Result:** Here, 10 threads start at once and work in parallel. Suppose one run takes one minute—then all 60 runs finish in 6 minutes, not 60. That's because 10 runs are happening each minute.
 
-### Пример №3.  
-**Сколько делать: `-1`.**  
-**Максимум потоков: `10`.**  
+### Example #3.
+**How many to do: `-1`.**
+**Maximum threads: `10`.**
 
-**Выполнение:** снова одновременно запускается 10 потоков, но теперь они будут выполняться до тех пор пока вы не остановите проект. Если вы нажмёте **Стоп** или поменяете значение повторений на `0`, то работающие потоки завершатся, а новые не будут стартовать.  
+**Result:** Again, 10 threads run at once, but now they'll keep going until you stop the project. If you press **Stop** or change runs to `0`, the active threads will finish, and new ones won't start.

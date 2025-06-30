@@ -1,71 +1,72 @@
 ---
 sidebar_position: 6
-title: Контекстное меню
-description: Контекстное меню выполнения
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Context Menu
+description: Execution context menu
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.
-Контекстное меню можно вызвать, кликнув ПКМ по любому из заданий в таблице.  
+## Description.
+You can open the context menu by right-clicking on any task in the table.
 
-![Описание](./assets/Context_menu/Context_menu_pic1.png)  
+![Description](./assets/Context_menu/Context_menu_pic1.png)
 
-Можно даже выделить сразу несколько проектов, тогда выбранное действие применится сразу к каждому из них.  
+You can even select several projects at once—then the chosen action will apply to all of them.
+
 _______________________________________________
-## Пункты меню.  
-### Настройки.  
-Этот пункт открывает [**Входные настройки**](../Project%20Editor/Project/InputSetting) проекта.  
+## Menu Items.
+### Settings.
+This option opens the project's [**Input Settings**](../Project%20Editor/Project/InputSetting).
 
-Их также можно открыть, если дважды кликнуть по заданию.  
+You can also open them by double-clicking on the task.
 
-### Запустить.  
-Запускает выполнение шаблона.  
+### Run.
+Starts executing the template.
 
-:::info **Во вкладке [*Настройки проекта*](../Project%20Editor/Static%20Block%20Panel/ProjectSettings) при этом должно быть выставлено количество потоков и повторений.**
+:::info **In the [*Project Settings*](../Project%20Editor/Static%20Block%20Panel/ProjectSettings) tab, you need to set the number of threads and repetitions beforehand.**
 :::
-  
-### Остановить.  
-Отвечает за плавную остановку работу.  
 
-После нажатия все работающие потоки дойдут до своего логического конца и больше не будут запускаться. Старт произойдёт только после клика по кнопке **Запустить**.  
+### Stop.
+Allows you to gently stop the process.
 
-### Прервать.  
-Резко прерывает выполнение задания. То есть проект немедленно прекратит свою работу, независимо от текущего этапа.  
+After clicking, all running threads will finish their current step and won't restart. They will only start again when you click **Run**.
 
-### Удалить.
-Удалит выбранное задание из **Таблицы проектов**.  
+### Abort.
+Immediately interrupts the task. The project will stop running right away, no matter what stage it’s at.
 
-### Переименовать.  
-Данная функция позволяет изменить имя проекта.  
+### Delete.
+Deletes the selected task from the **Projects Table**.
 
-![Переименовать](./assets/Context_menu/Context_menu_pic5.png)
+### Rename.
+This function lets you change the project’s name.
 
-Это также можно сделать, нажав на задание, а потом на **F2**.  
+![Rename](./assets/Context_menu/Context_menu_pic5.png)
 
-### Сбросить успехи/неуспехи подряд.  
-Сбрасывает счётчик успехов или неуспехов до нуля.  
+You can also do this by clicking the task and hitting **F2**.
 
-Это может быть полезно, когда настроена **Остановка** по их числу.
+### Reset Successes/Failures in a Row.
+Resets the counter for successes or failures to zero.
 
-### Создать .bat файл.  
-Создаёт отдельный файл для запуска шаблона.  
+This can be useful when you have **Stop** set based on their number.
 
-Принцип действия описан в статье [**Создать .bat файл**](./BatFile).  
+### Create .bat File.
+Creates a separate file to launch the template.
 
-### Открыть в ProjectMaker.  
-Открывает выбранный проект в ProjectMaker для редактирования.  
+How this works is described in the article [**Create .bat File**](./BatFile).
 
-:::warning **У вас должны быть права на открытие и редактирование этого проекта.**
-:::  
+### Open in ProjectMaker.
+Opens the selected project in ProjectMaker so you can edit it.
+
+:::warning **You need to have permissions to open and edit this project.**
+:::
 _______________________________________________
-### Сохранить настройки.  
-Эта функция сохраняет все настройки и данные проекта. Такие как количество потоков и их выполнений, теги, условия для остановки, текущий статус, id, расписание и прочие.  
+### Save Settings.
+This function saves all project settings and data. Things like the number of threads and their executions, tags, stop conditions, current status, ID, schedule, and more.
 
-У полученного файла будет расширение `.zptsk`. Его можно открыть через любой текстовый редактор (Notepad++, SublimeText и другие). Внутри будут данные в формате XML.  
+The saved file will have the `.zptsk` extension. You can open it with any text editor (Notepad++, SublimeText, etc.). The data inside is in XML format.
 
 <details>
-<summary>**Пример данных в виде XML.**</summary>
+<summary>**Example of data in XML format.**</summary>
 <!--All you need is a blank line-->
 ```xml
      <Id>e6a601d1-fd0e-4198-a667-80614726186f</Id>
@@ -91,7 +92,7 @@ _______________________________________________
     <ProxyLabels></ProxyLabels>
     <ShouldBeExecutedRandomly>False</ShouldBeExecutedRandomly>
     <GroupLabels>sometag</GroupLabels>
-    <GroupStates>Выполнены</GroupStates>
+    <GroupStates>Completed</GroupStates>
     <MaxNumOfSuccessStop>1024</MaxNumOfSuccessStop>
     <Timeout>-1</Timeout>
     <MaxNumOfFailStop>128</MaxNumOfFailStop>
@@ -145,36 +146,36 @@ _______________________________________________
   <PurchaseState>None</PurchaseState>
   ```
 </details>
-> 
+>
 
-#### Как загрузить эти настройки?  
-Сделать это можно с помощью `.bat` файла с таким содержимым:  
+#### How do I load these settings?
+You can do this using a `.bat` file with the following contents:
 
-`"%ZennoPosterCurrentPath%\TasksRunner.exe" -o LoadSettings -o "c:\path\to\file.zptsk"`  
+`"%ZennoPosterCurrentPath%\TasksRunner.exe" -o LoadSettings -o "c:\path\to\file.zptsk"`
 
-#### Для чего может пригодиться?  
-- **Динамическая смена настроек проекта**.  
-Вы можете заранее создать несколько файлов с настройками и затем загружать их с помощью экшена [**Запуск программ**](../Project%20Editor/CustomCode/RunningPrograms). Или же через действие [**Работа с файлами**](../Android/ProLite/Files) динамически создавать файл, а потом сохранять в него все данные и подгружать по необходимости.  
+#### When would this come in handy?
+- **Dynamically changing project settings**.  
+You can create several settings files ahead of time, and then load them with the [**Run Programs**](../Project%20Editor/CustomCode/RunningPrograms) action. Or use the [**Work with Files**](../Android/ProLite/Files) action to dynamically create a file, save all the data you need there, and load it as necessary.
 
-- **Восстановление удалённого из таблицы шаблона**.   
-Для добавления настроек нажмите кнопку **Добавить** в главном меню.  
+- **Restoring a template deleted from the table**.  
+To add settings, click **Add** in the main menu.
 
-![Добавить](./assets/Context_menu/Context_menu_pic2.png)  
+![Add](./assets/Context_menu/Context_menu_pic2.png)
 
-А в открывшемся окне сделайте поиск по всем файлам (*`All files (*.*)`*), чтобы не искать только среди `.zp`.  
+Then, in the window that appears, search for all files (*`All files (*.*)`*), not just `.zp` files.
 
-![All files](./assets/Context_menu/Context_menu_pic3.png)  
+![All files](./assets/Context_menu/Context_menu_pic3.png)
 
-После чего выберите необходимый файл и откройте его. В таблицу проектов будет добавлен шаблон со всеми его настройками.  
+After that, select the file you need and open it. The table will have the template added with all its settings.
 _______________________________________________
-### Директория проектов.  
-При нажатии в Проводнике откроется папка, в которой сохранён файл выбранного проекта.  
+### Project Directory.
+When you click, it’ll open the folder in Explorer where the project's file is saved.
 
-### Показать/скрыть инстансы.
-Перенаправляет вас на вкладку **Инстансы** и показывает информационное окно, которое можно скрыть навсегда.  
+### Show/Hide Instances.
+Takes you to the **Instances** tab and brings up an info window, which you can hide permanently.
 
-![Инстансы](./assets/Context_menu/Context_menu_pic4.png) 
+![Instances](./assets/Context_menu/Context_menu_pic4.png)
 
-### Трассировать выполнение.  
-Запускает ***Трассировку проектов***.
+### Trace Execution.
+Starts **Project Tracing**.
 _______________________________________________
