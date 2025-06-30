@@ -1,127 +1,127 @@
 ---
 sidebar_position: 8
-title: Поиск по пикселю
-description: Визуальный поиск по цвету пикселя.
+title: Pixel Search
+description: Visual search by pixel color.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read [*Material Usage Rules for this resource*](../../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.  
-Позволяет произвести нажатие на элемент, используя визуальный поиск по цвету пикселя. Рекомендуем использовать, когда не получается [**найти элемент**](./ElementSearch) другими способами.  
+## Description.  
+Lets you click on an element using visual search by pixel color. We recommend using this when you can't [**find the element**](./ElementSearch) in other ways.  
 
-![Описание](./assets/SearchByPix/SearchByPix_pic1.png)  
+![Description](./assets/SearchByPix/SearchByPix_pic1.png)  
 
-:::danger **Действие использует много ресурсов компьютера.**
+:::danger **This action uses a lot of your computer’s resources.**
 :::
 
-#### Для чего это нужно?   
-Чтобы совершить клик по элементу, к которому нельзя подобраться через экшен [**Выполнить событие**](../../Android/ProLite/RunEvent).  
+#### What’s this for?   
+To click on an element that you can’t reach through the [**Run Event**](../../Android/ProLite/RunEvent) action.  
 
-### Как добавить в проект?  
-Для добавления этого действия нужно в [Окне устройства](../Interface/DeviceWindow) навести курсор мыши на нужную часть изображения, вызвать контекстное меню правой кнопкой мыши и выбрать пункт **Поиск по пикселю**.  
+### How do I add this to my project?  
+To add this action, in the [Device Window](../Interface/DeviceWindow) hover your mouse over the area of the image you need, open the context menu with the right mouse button and select **Pixel Search**.  
 
-![Как добавить в проект?](./assets/SearchByPix/SearchByPix_pic2.png)  
+![How to add to project?](./assets/SearchByPix/SearchByPix_pic2.png)  
 
 _______________________________________________
 
-## Элементы окна.  
-![Элементы окна](./assets/SearchByPix/SearchByPix_pic3.png)  
+## Window elements.  
+![Window Elements](./assets/SearchByPix/SearchByPix_pic3.png)  
 
-### Цвет пикселя.  
-![Цвет пикселя](./assets/SearchByPix/SearchByPix_pic4.png)  
+### Pixel color.  
+![Pixel Color](./assets/SearchByPix/SearchByPix_pic4.png)  
 
-Это поле автоматически заполняется при *Поиске по пикселю* из контекстного меню. Сам цвет задаётся в [формате HTML](https://ru.wikipedia.org/wiki/HTML-%D1%86%D0%B2%D0%B5%D1%82%D0%B0).  
+This field is automatically filled in when you use *Pixel Search* from the context menu. The color itself is specified in [HTML format](https://ru.wikipedia.org/wiki/HTML-%D1%86%D0%B2%D0%B5%D1%82%D0%B0).  
 
-Если необходимо искать **одновременно** несколько пикселей разного цвета, сразу же здесь указываем эти цвета. Для этого, не закрывая это окно, нужно еще раз нажать в контекстном меню **Поиск по пикселю** в другом месте экрана. Новый цвет добавится в таблицу.  
+If you need to search for **several** pixels of different colors at the same time, just specify those colors here. To do that, without closing this window, click **Pixel Search** in the context menu again in another place on the screen. The new color will be added to the table.  
 
-### Область поиска.  
-![Область поиска](./assets/SearchByPix/SearchByPix_pic5.png)  
+### Search area.  
+![Search Area](./assets/SearchByPix/SearchByPix_pic5.png)  
 
-В данном блоке можно задать область, внутри которой будет выполнен поиск пикселя.  
+In this section you can set the area where the pixel search will be performed.  
 
-- **Весь экран**. Ищем пиксель по всему доступному экрану.  
-- **Выделенная область**. При активации данного режима в [Окне устройства](../Interface/DeviceWindow) можно будет выбрать область для ограничения поиска. Используйте его, когда точно известно, что элемент появится в определённой части экрана.  
+- **Whole screen**. Search for the pixel throughout the available screen.  
+- **Selected area**. When you activate this mode in the [Device Window](../Interface/DeviceWindow), you’ll be able to select an area to restrict the search. Use this if you know for sure that the element will appear in a certain part of the screen.  
 
-:::tip **Поиск в заданной области происходит намного быстрее и снижает нагрузку на CPU.**
+:::tip **Searching in a set area is much faster and lowers the CPU load.**
 :::
 
-Выбрать область поиска по умолчанию можно в [**Настройках Записи**](../../Settings/Record_and_InputMethods#область-поиска).  
+You can set the default search area in [**Recording Settings**](../../Settings/Record_and_InputMethods#область-поиска).  
 
-#### Как происходит установка области?  
-После выбора режима **Выделенная область** в [Окне эмулятора](../Interface/DeviceWindow) появится рамка. С помощью неё можно выбрать область, внутри которой будет произведён поиск.  
+#### How do you set the area?  
+After selecting **Selected area** mode, a frame will appear in the [Emulator Window](../Interface/DeviceWindow). You can use this frame to select the area in which the search will be done.  
 
-![Выделенная область](./assets/SearchByPix/SearchByPix_pic6.png)  
+![Selected Area](./assets/SearchByPix/SearchByPix_pic6.png)  
 
-### Поиск.  
-**Отклонение цвета**. Эта настройка регулирует точность поиска. Чем выше значение, тем сильнее допускается отличие от нужного цвета.  
+### Search.  
+**Color tolerance**. This setting determines the search accuracy. The higher the value, the more difference from the exact color is allowed.  
 
-Если же установить значение *0*, то будет выполнен поиск абсолютно идентичного цвета.  
+If you set the value to *0*, it will search only for the exact color.  
 
-![Отклонение цвета](./assets/SearchByPix/SearchByPix_pic7.png)  
+![Color tolerance](./assets/SearchByPix/SearchByPix_pic7.png)  
 
-Нажатие по кнопке **Поиск** выполняет тестирование поиска. Если всё в порядке, то нажимайте **Да**.  
+Click **Search** to start a test run. If everything works, click **Yes**.  
 
-Когда поиск выполнен неверно, вам нужно кликнуть на **Нет**, обновить параметры поиска и попробовать снова.  
+If the search wasn't correct, click **No**, update the search parameters and try again.  
 
-Если нужный пиксель был найден, то возле кнопки **Поиск** появится символ галочки, свидетельствующий об успехе, а элемент в окне устройства будет подсвечен крестиком.  
+If the needed pixel was found, a checkmark will appear next to the **Search** button to show success, and the element in the device window will be marked with a cross.  
 
-![символ галочки](./assets/SearchByPix/SearchByPix_pic8.png)  
+![Checkmark](./assets/SearchByPix/SearchByPix_pic8.png)  
 
-В случае завершения поиска с ошибкой возле кнопки **Поиск** появится красный крестик.  
+If the search ends with an error, a red cross will appear next to the **Search** button.  
 
-![красный крестик](./assets/SearchByPix/SearchByPix_pic9.png)  
+![Red cross](./assets/SearchByPix/SearchByPix_pic9.png)  
 
-### Скрытие части изображения.  
-Существует возможность закрыть часть изображения, чтобы убедиться, что поиск не будет находить ничего лишнего. Для этого нужно кликнуть по кнопке с изображением бабочки, в нижней части [Окна устройства](../Interface/DeviceWindow). Затем нажмите по области, которую хотите скрыть, и снова на **Поиск**.  
+### Hiding parts of the image.  
+You can hide part of the image to make sure the search doesn’t pick up anything extra. To do this, click the butterfly button at the bottom of the [Device Window](../Interface/DeviceWindow). Then click on the area you want to hide, and click **Search** again.  
 
-![Скрытие части изображения](./assets/SearchByPix/SearchByPix_pic10.png)
+![Hiding part of the image](./assets/SearchByPix/SearchByPix_pic10.png)
 
-Для выхода из этого режима повторно кликните по кнопке с изображением бабочки.  
+To exit this mode, just click the butterfly button again.  
 _______________________________________________
 
-## Добавление в проект.  
-После нахождения нужного пикселя и нажатия на кнопку **Да** появится дополнительное меню:  
+## Adding to your project.  
+Once you’ve found the needed pixel and clicked **Yes**, an extra menu appears:  
 
-![Добавление в проект](./assets/SearchByPix/SearchByPix_pic11.png)
+![Adding to Project](./assets/SearchByPix/SearchByPix_pic11.png)
 
-### Тип клика.  
-![Тип клика](./assets/SearchByPix/SearchByPix_pic12.png)  
+### Click type.  
+![Click Type](./assets/SearchByPix/SearchByPix_pic12.png)  
 
-- *Обычное нажатие* — быстрый клик на выбранный элемент.  
-- *Долгое нажатие* — длительное удержанием по элементу.  
-- *Без нажатия* — не совершать никакого действия, а только проверить наличие элемента.  
+- *Regular click* — quick press on the selected element.  
+- *Long press* — hold down on the element.
+- *No click* — don’t do anything, just check for the element.  
 
-Если фрагмент будет найден, то экшен выйдет по зелёной ветке, а если ничего не найдётся — по красной.
+If the fragment is found, the action goes through the green branch; if not found — through the red one.
 
-### Смещение нажатия.  
-![Смещение нажатия](./assets/SearchByPix/SearchByPix_pic13.png)  
+### Click offset.  
+![Click offset](./assets/SearchByPix/SearchByPix_pic13.png)  
 
-Используется, когда необходимо совершить нажатие с отклонением от координат найденного пикселя (например, выше или ниже).  
+Use this if you need to click with an offset from the pixel’s detected coordinates (for example, above or below).  
 
-### Тестировать.  
-В зависимости от выбранных настроек будет осуществлено нажатие на экран по найденным координатам (с учетом заданного смещения).  
+### Test.  
+Depending on your settings, this will click on the screen at the found coordinates (including the specified offset).
 
-### Добавить в проект.  
-После того как всё было настроено, можно нажимать данную кнопку для добавления в проект этого экшена.  
+### Add to Project.  
+When everything is set up, you can click this button to add this action to the project.  
 _______________________________________________
-## Вкладка «Дополнительно».  
-Эта вкладка появляется после добавления экшена в проект.  
+## The “Advanced” tab.  
+This tab appears after you add the action to your project.  
 
-![Дополнительно](./assets/SearchByPix/SearchByPix_pic14.png)  
+![Advanced](./assets/SearchByPix/SearchByPix_pic14.png)  
 
-### Доступные настройки:  
-#### Ожидание элемента.  
-Указывается время в секундах, в течение которого экшен будет ожидать появление элемента.  
+### Available settings:  
+#### Wait for element.  
+Set the number of seconds for the action to wait for the element to appear.  
 
-В [**настройках Записи**](../../Settings/Record_and_InputMethods) можно задать время поиска по умолчанию для всех следующих создаваемых экшенов.  
+In [**Recording Settings**](../../Settings/Record_and_InputMethods) there’s a default search time you can set for all new actions.  
 
-#### Область поиска.  
-Тут можно вручную (или с помощью переменных) задать область, в пределах которой будет произведён поиск.  
+#### Search area.  
+Here you can manually (or using variables) set the search area.
 
-#### Сохранить найденные координаты.  
-Данная секция позволяет сохранить в отдельные переменные координаты найденного пикселя по X и Y.  
+#### Save found coordinates.  
+This section lets you save the found pixel’s X and Y coordinates into separate variables.  
 _______________________________________________
-## Полезные ссылки.  
-- [**Поиск по картинке**](./SearchByPic)  
-- [**Запуск эмулятора**](../../ProLite/Memu_Start)
-- [**Выполнить событие**](../../Android/ProLite/RunEvent)
+## Useful links.
+- [**Image Search**](./SearchByPic)  
+- [**Run Emulator**](../../ProLite/Memu_Start)
+- [**Run Event**](../../Android/ProLite/RunEvent)

@@ -1,82 +1,82 @@
 ---
 sidebar_position: 2
-title: Дерево элементов
-description: Окно со структурой страницы
+title: Element Tree
+description: Window showing page structure
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.
+## Description.
 
-![Дерево](./assets/ElementTree/ElementTree_pic1.png)  
-В этой статье мы детально рассмотрим окно под названием «Дерево элементов». В нем отображается структура страницы, которая находится на главном экране эмулятора, в виде древа. То есть все элементы выходят друг из друга в порядке взаимосвязи.  
+![Tree](./assets/ElementTree/ElementTree_pic1.png)  
+In this article, we'll take a closer look at the window called "Element Tree". This window shows the structure of the page that's open on the main screen of the emulator, displayed as a tree. So, all elements branch out from each other in order of their relationship.
 
-Структуру страницы можно вывести в виде XML строки с помощью действия  
-[**Получить структуру элементов (XML)**](../../Android/ProLite/Utilities#получить-структуру-элементов-xml), которое вы найдете в Утилитах.  
+You can get the page's structure as an XML string using the  
+[**Get element structure (XML)**](../../Android/ProLite/Utilities#получить-структуру-элементов-xml) action, which you’ll find in Utilities.
 
-:::info **При выделении элемента в Древе он также будет подсвечен в Окне эмулятора**  
-![Выделение](./assets/ElementTree/ElementTree_pic2.png)  
-::: 
+:::info **If you select an element in the Tree, it’ll also get highlighted in the Emulator Window**  
+![Selected](./assets/ElementTree/ElementTree_pic2.png)  
+:::
 
-## Функции.  
-### Обновить содержимое.  
-![Обновить](./assets/ElementTree/ElementTree_pic3.png)   
-Эта кнопка обновляет структуру элементов. Нажимать ее нужно каждый раз при открытии новой страницы приложения, чтобы подгрузить актуальную структуру.  
+## Features.  
+### Refresh contents.  
+![Refresh](./assets/ElementTree/ElementTree_pic3.png)   
+This button refreshes the element structure. You’ll need to click it every time you open a new app page to load the latest structure.  
 _______________________________________________ 
 ### WebView.
-:::tip **Что это?**
-***WebView** — это компонент пользовательского интерфейса, который используется в мобильных приложений для отображения веб-содержимого (HTML, CSS, JavaScript) прямо внутри приложения. Он позволяет интегрировать веб-страниц без перенаправления в отдельный веб-браузер.* 
+:::tip **What’s this?**
+***WebView** is a user interface component used in mobile apps to display web content (HTML, CSS, JavaScript) right inside the app. It lets you show web pages without redirecting to a separate browser.*
 :::     
-Если в древе присутствует подобный элемент, то после первого клика по кнопке «Обновить» его содержимое не будет отображено, нужно нажать повторно. Причем отобразится не HTML-структура web-страницы, а именно стандартная разметка Android.   
-![ВебВью](./assets/ElementTree/ElementTree_pic4.png)
+If there’s a similar element in the tree, after the first click on "Refresh," its contents won’t be displayed – you'll need to click again. But it won’t show you the HTML structure of the web page, only the standard Android layout.   
+![WebView](./assets/ElementTree/ElementTree_pic4.png)
 _______________________________________________ 
-### Только видимые элементы.  
-![Видимые](./assets/ElementTree/ElementTree_pic5.png)  
+### Only visible elements.  
+![Visible](./assets/ElementTree/ElementTree_pic5.png)  
 
-Включает отображение только тех элементов, которые находятся в области видимости.  
+Shows only elements that are currently in the visible area.  
 _______________________________________________   
-### Автообновление.  
-:::warning **При включении данной функции перестает работать свайп мышкой в окне эмулятора.** 
-Но свайп через колесо мыши по-прежнему будет работать.  
+### Auto-refresh.  
+:::warning **When this feature is on, mouse swipe stops working in the emulator window.** 
+But scrolling with the mouse wheel will still work.  
 :::   
 
-![Автообнов](./assets/ElementTree/ElementTree_pic6.png)  
+![AutoRefresh](./assets/ElementTree/ElementTree_pic6.png)  
 
-Эта функция всегда работает, когда включена автозапись действий. То есть перед каждой записью экшена в проекте структура будет обновляться до актуальной.  
-:::warning **Надо убедиться.**
-Для корректной работы Автообновления надо убедиться, что отключена настройка  
-[**Запись нажатий через поиск по картинкам**](../../Settings/Record_and_InputMethods#запись-нажатий-через-поиск-по-картинкам) на вкладке Запись.  
+This always works when auto-recording actions is on. That means right before every action is recorded in your project, the structure will be updated to the latest version.
+:::warning **Make sure.**
+For Auto-refresh to work correctly, make sure you turn off  
+[**Recording clicks by searching for images**](../../Settings/Record_and_InputMethods#запись-нажатий-через-поиск-по-картинкам) in the Recording tab.
 :::   
 _______________________________________________  
-### Сворачивание.  
-![Сворачивание](./assets/ElementTree/ElementTree_pic7.gif)  
-Для удобства работы вы можете сворачивать любые элементы в древе.  
+### Collapse.  
+![Collapse](./assets/ElementTree/ElementTree_pic7.gif)  
+For convenience, you can collapse any elements in the tree.  
 _______________________________________________  
-## Контекстное меню.  
-![КонтекстМеню](./assets/ElementTree/ElementTree_pic8.png)   
-Выберете элемент и нажмите по нему правой кнопкой мыши, чтобы открыть Контекстное меню.
+## Context menu.  
+![ContextMenu](./assets/ElementTree/ElementTree_pic8.png)   
+Select an element and right-click it to open the Context Menu.
 _______________________________________________    
-### Исследовать элемент.  
-Позволяет детально изучить элемент, открыв его **Свойства**.  
+### Inspect element.  
+Let’s you examine the element in detail by opening its **Properties**.  
 
-![Свойства](./assets/ElementTree/ElementTree_pic9.png)  
+![Properties](./assets/ElementTree/ElementTree_pic9.png)  
 _______________________________________________    
-### Следовать за курсором.  
-После включения данной опции элемент под курсором будет подсвечен, выделен в древе, а также отобразятся его свойства.  
-![Следовать](./assets/ElementTree/ElementTree_pic10.gif)  
+### Follow cursor.  
+After turning this on, the element your cursor is hovering over will get highlighted, selected in the tree, and its properties will show up.  
+![Follow](./assets/ElementTree/ElementTree_pic10.gif)  
 _______________________________________________  
-### В конструктор действий.  
-Отправляет элемент в конструктор, чтобы взаимодействовать с ним в рамках проекта.  
+### To action builder.  
+Sends the element to the builder, so you can interact with it within your project.  
 _______________________________________________   
-### Это капча!   
-При нажатии создается экшен [**Распознавание капчи**](../../Android/ProLite/CaptchaSolving). Параметры для поиска подбираются автоматически. После выбора пункта **Это капча!** появляется два дополнительных параметра.  
-![Это капча](./assets/ElementTree/ElementTree_pic11.png)  
-#### Приклеить к каптче.  
-Этот параметр позволяет соединить несколько отдельных картинок в одну и отправить цельное изображение на сервис распознавания каптчи. Удобно использовать, когда каптча состоит из нескольких отдельных элементов.  
-#### Поле для результата распознавания каптчи.  
-Вводит результат распознавания в поле ввода и, если включена **Запись**, добавляет экшен [**Установка значения**](../../Android/ProLite/SetValue).  
+### This is captcha!   
+On clicking, an action [**Captcha recognition**](../../Android/ProLite/CaptchaSolving) is created. Search parameters are picked automatically. After choosing **This is captcha!** two extra options appear.  
+![This is captcha](./assets/ElementTree/ElementTree_pic11.png)  
+#### Stick to captcha.  
+This option lets you combine a few separate pictures into one and send a single image to the captcha recognition service. Handy if a captcha is made up of several bits.  
+#### Field for captcha recognition result.  
+Enters the recognition result into the input field and, if **Recording** is on, adds a [**Set value**](../../Android/ProLite/SetValue) action.  
 _______________________________________________
-## Полезные ссылки.  
-- [**Конструктор действий**](./ActionBuilder).  
-- [**Установить значение**](../../Android/ProLite/SetValue).  
-- [**Запись и Ввод**](../../Settings/Record_and_InputMethods).
+## Useful links.  
+- [**Action builder**](./ActionBuilder).  
+- [**Set value**](../../Android/ProLite/SetValue).  
+- [**Recording and Input**](../../Settings/Record_and_InputMethods).

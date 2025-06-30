@@ -1,133 +1,133 @@
 ---
 sidebar_position: 4
-title: Переменные окружения
-description: Хранение различных параметров.
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+title: Environment Variables
+description: Storing various parameters.
+---
+:::info **Please read [*The rules for using materials on this site*](../../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.  
-В ZennoDroid есть предустановленные переменные окружения, в которых хранятся параметры устройства (разрешение экрана, геоданные, мобильная связь и прочее), время и дата, информация о проекте (его имя, название папки, правила для прокси, id последней ошибки), данные профиля (почта, пол, имя).  
+## Description.  
+In ZennoDroid, there are predefined environment variables that store device parameters (screen resolution, geolocation data, mobile connection, and so on), time and date, project info (its name, folder name, proxy rules, last error id), profile data (email, gender, name).
 _______________________________________________
-### Профиль. 
-:::info **Начинаются с `-Profile.`.**
-::: 
-| Название    | Содержание |
+### Profile.
+:::info **They start with `-Profile.`.**
+:::
+| Name    | Contents |
 | :-------- | :-------: |
-| `{-Profile.Age-}`  | **Возраст**   |
-| `{-Profile.AndroidID-}` | **ID Android устройства**    |
-| `{-Profile.BornDay-}`    | **День рождения**    |
-| `{-Profile.BornYear-}`  | **Год рождения**   |
-| `{-Profile.BornMonth-}` | **Месяц рождения**    |
-| `{-Profile.Country-}`    | **Страна профиля**    |
-| `{-Profile.CpuCount-}`  | **Количество выделенных на эмулятор ядер процессора**   |
-| `{-Profile.DisplayDensity-}` | **Плотность (DPI) экрана эмулятора**    |
-| `{-Profile.DisplayHeight-}`    | **Высота экрана эмулятора**    |
-| `{-Profile.DisplayWidth-}`  | **Ширина экрана эмулятора**   |
-| `{-Profile.Email-}` | **E-mail адрес профиля**    |
-| `{-Profile.EmailPassword-}`    | **Пароль от почтового ящика профиля**    |
-| `{-Profile.GeoLatitude-}`    | **Широта эмулятора (геоданные)**    |
-| `{-Profile.GeoLongitude-}`  | **Долгота эмулятора (геоданные)**   |
-| `{-Profile.IMEI-}` | **IMEI устройства**    |
+| `{-Profile.Age-}`  | **Age**   |
+| `{-Profile.AndroidID-}` | **Android device ID**    |
+| `{-Profile.BornDay-}`    | **Birth day**    |
+| `{-Profile.BornYear-}`  | **Birth year**   |
+| `{-Profile.BornMonth-}` | **Birth month**    |
+| `{-Profile.Country-}`    | **Profile country**    |
+| `{-Profile.CpuCount-}`  | **Number of CPU cores allocated to the emulator**   |
+| `{-Profile.DisplayDensity-}` | **Emulator screen density (DPI)**    |
+| `{-Profile.DisplayHeight-}`    | **Emulator screen height**    |
+| `{-Profile.DisplayWidth-}`  | **Emulator screen width**   |
+| `{-Profile.Email-}` | **Profile email address**    |
+| `{-Profile.EmailPassword-}`    | **Profile email password**    |
+| `{-Profile.GeoLatitude-}`    | **Emulator latitude (geodata)**    |
+| `{-Profile.GeoLongitude-}`  | **Emulator longitude (geodata)**   |
+| `{-Profile.IMEI-}` | **Device IMEI**    |
 | `{-Profile.IMSI-}`    | **IMSI**    |
-| `{-Profile.Language-}`  | **Язык профиля (значение зависит от выбранной национальности)**   |
-| `{-Profile.Login-}` | **Логин профиля**    |
-| `{-Profile.Name-}`    | **Имя профиля**    |
-| `{-Profile.NickName-}`    | **Никнейм профиля**    |
-| `{-Profile.OperatorCode-}`  | **Код оператора связи**   |
-| `{-Profile.OperatorCountry-}` | **Страна оператора связи**    |
-| `{-Profile.OperatorName-}`    | **Название оператора связи**    |
-| `{-Profile.Password-}`  | **Пароль профиля**   |
-| `{-Profile.PhoneModel-}` | **Модель телефона**    |
-| `{-Profile.PhoneManufacturer-}`    | **Производитель**    |
-| `{-Profile.PhoneNumber-}`  | **Номер телефона**   |
-| `{-Profile.RAM-}` | **Количество оперативной памяти, выделенной для работы**    |
-| `{-Profile.SecretQuestionAnswer1/2-}`    | **Ответ на секретный вопрос #1 или #2**    |
-| `{-Profile.Sex-}`  | **Пол профиля**   |
-| `{-Profile.SimSerial-}` | **Серийный номер SIM-карты**    |
-| `{-Profile.Surname-}`    | **Фамилия профиля**    |
-| `{-Profile.Town-}`    | **Город профиля**    |
-| `{-Profile.WiFiMAC-}`  | **Сгенерированный MAC-адрес**   |
-| `{-Profile.WiFiName-}` | **Сгенерированное имя WiFi сети**    |
-| `{-Profile.ZipCode-}`    | **Индекс профиля**    |  
+| `{-Profile.Language-}`  | **Profile language (depends on chosen nationality)**   |
+| `{-Profile.Login-}` | **Profile login**    |
+| `{-Profile.Name-}`    | **Profile name**    |
+| `{-Profile.NickName-}`    | **Profile nickname**    |
+| `{-Profile.OperatorCode-}`  | **Carrier code**   |
+| `{-Profile.OperatorCountry-}` | **Carrier country**    |
+| `{-Profile.OperatorName-}`    | **Carrier name**    |
+| `{-Profile.Password-}`  | **Profile password**   |
+| `{-Profile.PhoneModel-}` | **Phone model**    |
+| `{-Profile.PhoneManufacturer-}`    | **Manufacturer**    |
+| `{-Profile.PhoneNumber-}`  | **Phone number**   |
+| `{-Profile.RAM-}` | **Amount of RAM allocated**    |
+| `{-Profile.SecretQuestionAnswer1/2-}`    | **Answer to secret question #1 or #2**    |
+| `{-Profile.Sex-}`  | **Profile gender**   |
+| `{-Profile.SimSerial-}` | **SIM card serial number**    |
+| `{-Profile.Surname-}`    | **Profile surname**    |
+| `{-Profile.Town-}`    | **Profile city**    |
+| `{-Profile.WiFiMAC-}`  | **Generated MAC address**   |
+| `{-Profile.WiFiName-}` | **Generated WiFi network name**    |
+| `{-Profile.ZipCode-}`    | **Profile zip code**    |  
 _______________________________________________
-### Время и дата. 
-:::info **Начинаются с `-TimeNow.`.**
+### Time and Date.
+:::info **They start with `-TimeNow.`.**
 :::
-| Название    | Содержание |
+| Name    | Contents |
 | :-------- | :-------: |
-| `{-TimeNow.Date-}`  | **Текущие дата и время в формате `ММ/ДД/ГГГГ чч:мм:сс` *(пример - 01/25/2020 14:41:18)***   |
-| `{-TimeNow.TimeNow-}` | **Текущие дата и время в формате `ГГГГ-ММ-ДД чч-мм-сс--миллисекунды` *(пример -2020-01-25 14-41-59--834)***    |
-| `{-TimeNow.Day-}`    | **День месяца**    |
-| `{-TimeNow.Month-}`  | **Текущий месяц (числом)**   |
-| `{-TimeNow.Year-}` | **Текущий год**    |
-| `{-TimeNow.DayOfWeek-}`    | **День недели, на английском**    |
-| `{-TimeNow.Hour-}`  | **Текущий час (в 24 часовом формате)**   |
-| `{-TimeNow.Minute-}` | **Текущая минута**    |
-| `{-TimeNow.Second-}`    | **Текущая секунда**    |
-| `{-TimeNow.Millisecond-}`  | **Текущая миллисекунда**   |
-| `{-TimeNow.UnixTime-}` | **Время в формате Unix. Пример: `1629891362.23929`**    |  
+| `{-TimeNow.Date-}`  | **Current date and time in the format `MM/DD/YYYY hh:mm:ss` *(for example - 01/25/2020 14:41:18)***   |
+| `{-TimeNow.TimeNow-}` | **Current date and time in the format `YYYY-MM-DD hh-mm-ss--milliseconds` *(for example -2020-01-25 14-41-59--834)***    |
+| `{-TimeNow.Day-}`    | **Day of the month**    |
+| `{-TimeNow.Month-}`  | **Current month (number)**   |
+| `{-TimeNow.Year-}` | **Current year**    |
+| `{-TimeNow.DayOfWeek-}`    | **Day of the week, in English**    |
+| `{-TimeNow.Hour-}`  | **Current hour (24-hour format)**   |
+| `{-TimeNow.Minute-}` | **Current minute**    |
+| `{-TimeNow.Second-}`    | **Current second**    |
+| `{-TimeNow.Millisecond-}`  | **Current millisecond**   |
+| `{-TimeNow.UnixTime-}` | **Time in Unix format. Example: `1629891362.23929`**    |
 
-:::tip **Формат строки.**
-Для **`{-TimeNow.Date-}`** вы можете менять формат выводимой строки. Просто запишите его шаблон в фигурных скобках **после** названия переменной, например вот так: `{-TimeNow.Date dd.MM.yyyy HH.mm-}`. Ответ будет таким: **25.01.2020 14.41**.  
+:::tip **String format.**
+For **`{-TimeNow.Date-}`** you can change the output format. Just put the template in curly braces **after** the variable name, like this: `{-TimeNow.Date dd.MM.yyyy HH.mm-}`. The result will be **25.01.2020 14.41**.
 
-А вот переменная `{-TimeNow.TimeNow-}` форматирование **не поддерживает**.
+But the variable `{-TimeNow.TimeNow-}` **does not support** formatting.
 :::
 _______________________________________________
-### Переменные проекта. 
-:::info **Начинаются с `-Project.`.**
+### Project variables.
+:::info **They start with `-Project.`.**
 :::
-| Название    | Содержание |
+| Name    | Contents |
 | :-------- | :-------: |
-| `{-Project.Directory-}`  | **Директория шаблона**   |
-| `{-Project.PluginDirectory-}` | **Директория плагина (если выполняемый шаблон - это *плагин*)**    |
-| `{-Project.Name-}`    | **Название шаблона**    |
-| `{-Project.Proxy-}`  | **Текущий прокси проекта**   |
-| `{-Project.ProxyRules-}` | **Используемое правило из ProxyChecker’a**    |
-| `{-Project.LastExecutedActionElapsedTime-}`    | **Время, затраченное на выполнение последнего запущенного экшена**    |
-| `{-Project.LastExecutedActionId-}`  | **ID последнего выполненного действия**   |
-| `{-Project.LastErrorComment-}` | **Текст последнего экшена завершившегося с ошибкой**    |
+| `{-Project.Directory-}`  | **Template directory**   |
+| `{-Project.PluginDirectory-}` | **Plugin directory (if the running template is a *plugin*)**    |
+| `{-Project.Name-}`    | **Template name**    |
+| `{-Project.Proxy-}`  | **Current project proxy**   |
+| `{-Project.ProxyRules-}` | **Current rule from ProxyChecker**    |
+| `{-Project.LastExecutedActionElapsedTime-}`    | **Time spent on the last executed action**    |
+| `{-Project.LastExecutedActionId-}`  | **ID of the last executed action**   |
+| `{-Project.LastErrorComment-}` | **Text of the last action that ended with an error**    |
 
 :::tip **`{-Project.LastErrorComment-}`.**
-Если для экшена не был задан пользовательский комментарий (через ПКМ → Комментарий), то вернётся пустая строка.
+If you didn’t set a user comment for the action (via right-click → Comment), you’ll just get an empty string.
 :::
 _______________________________________________
-### Переменные окружения. 
-:::info **Начинаются с `-Environment.`.**
+### Environment variables.
+:::info **They start with `-Environment.`.**
 :::
 
-| Название    | Содержание |
+| Name    | Contents |
 | :-------- | :-------: |
-| `{-Environment.CurrentUser-}`  | **ID пользователя ZennoDroid из личного кабинета, который в данный момент работает с шаблоном**   |
-| `{-Environment.EmulatorDirectory-}` | **Полный путь к директории, куда установлена программа Memu (если вы работаете через эмулятор)**    |
-| `{-Environment.TickCount-}`    | **Количество миллисекунд, прошедших с момента включения компьютера**    |
+| `{-Environment.CurrentUser-}`  | **ZennoDroid user ID from your personal account who is currently working on the template**   |
+| `{-Environment.EmulatorDirectory-}` | **Full path to the directory where Memu is installed (if you use the emulator)**    |
+| `{-Environment.TickCount-}`    | **Milliseconds since your computer was last turned on**    |
 
 :::tip **`{-Environment.TickCount-}`.**
-Эта переменная основана на **Environment.TickCount из C#**, поэтому ей присуща одна особенность.  
+This variable is based on **Environment.TickCount from C#**, so it has one peculiarity.
 
-Если компьютер будет долго и беспрерывно работать, то через ~24,9 дней эта переменная достигнет максимального положительного значения - **2147483647**.  
+If your computer runs non-stop for a long time, after about 24.9 days this variable will reach its maximum positive value – **2147483647**.
 
-Затем она перепрыгнет к минимально возможному значению - **-2147483648** и наоборот начнёт отсчёт к нулю (достигнет его также через ~24,9 дней).  
+After that it jumps to the minimum possible value – **-2147483648** and starts counting up to zero again (will reach zero again after about 24.9 days).
 
-По достижению нуля снова начнётся увеличение счётчика до максимально возможного значения. **И так по кругу**.
+When it hits zero, it starts increasing again to the maximum possible value. **And so on in a loop**.
 :::
 _______________________________________________
-### Строковые переменные. 
-:::info **Начинаются с `-String.`.**
+### String variables.
+:::info **They start with `-String.`.**
 :::
 
-| Название    | Содержание |
+| Name    | Contents |
 | :-------- | :-------: |
-| `{-String.Enter-}`  | **Переход на новую строку**   |
-| `{-String.Space-}` | **Пробел**    |
-| `{-String.Tab-}`    | **Символ табуляции**    |  
+| `{-String.Enter-}`  | **New line character**   |
+| `{-String.Space-}` | **Space**    |
+| `{-String.Tab-}`    | **Tab character**    |  
 _______________________________________________
-### Другое.  
-| Название    | Содержание |
+### Other.
+| Name    | Contents |
 | :-------- | :-------: |
-| `{-//-}`  | **Переход на новую строку**   |  
+| `{-//-}`  | **New line character**   |  
 _______________________________________________
-## Полезные ссылки.    
-- [**Окно переменных**](../Interface/Variables).  
-- [**Профиль**](../../Project%20Editor/Static%20Block%20Panel/Profile).  
-- [**Обработка переменных**](../../Data/WorkWithVariables).
+## Useful links.
+- [**Variables window**](../Interface/Variables).
+- [**Profile**](../../Project%20Editor/Static%20Block%20Panel/Profile).
+- [**Working with variables**](../../Data/WorkWithVariables).

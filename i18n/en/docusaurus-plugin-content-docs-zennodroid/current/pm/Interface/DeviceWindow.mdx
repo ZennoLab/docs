@@ -1,118 +1,113 @@
 ---
 sidebar_position: 4
-title: Окно устройства
-description: Взаимодействие с устройством.
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+title: Device Window
+description: Interacting with the device.
+---
+:::info **Please familiarize yourself with the [*Material Usage Rules for this resource*](../../Disclaimer).**
 :::
 _______________________________________________
- 
-## Начало работы.
-В данном окне можно взаимодействовать как с эмулятором, так и с реальным устройством.  
-Когда вы запустите ProjectMaker окно устройства будет выглядеть вот так:  
 
-![Начало работы.](./assets/DeviceWindow/DeviceWindow_pic1.png)
+## Getting Started
+In this window, you can interact with both the emulator and a real device.  
+When you launch ProjectMaker, the device window will look like this:  
 
-Для начала работы вам нужно нажать **Запустить устройство**. Если при этом включена **Запись** проекта, то на холст с экшенами будет добавлено два действия: **Выбрать устройство** и **Запуск/перезапуск устройства**.  
-_______________________________________________ 
-## Компоненты окна.   
-Такое окно вы увидите после успешного запуска устройства:  
+![Getting Started.](./assets/DeviceWindow/DeviceWindow_pic1.png)
 
-![Компоненты окна. ](./assets/DeviceWindow/DeviceWindow_pic2.png)
+To get started, you need to click **Start Device**. If **Recording** is enabled for the project, two actions will be added to the actions canvas: **Select Device** and **Start/restart Device**.
+_______________________________________________
+## Window Components
+This is what the window looks like after a successful device launch:  
 
-Тут вы можете напрямую взаимодействовать с ним: кликать, свайпать, открывать приложения, все действия будут транслироваться. А если включена запись, то они еще и будут добавляться на холст в виде соответствующих экшенов.  
-_______________________________________________ 
-### Кнопки управления эмулятором.  
-![Кнопки управления эмулятором. ](./assets/DeviceWindow/DeviceWindow_pic3.png)  
+![Window Components.](./assets/DeviceWindow/DeviceWindow_pic2.png)
 
-| Кнопка      | Описание |
+Here, you can interact with the device directly: click, swipe, open apps—everything you do will be reflected. And if recording is enabled, these actions will also show up on the canvas as corresponding actions.
+_______________________________________________
+### Emulator Control Buttons
+![Emulator Control Buttons.](./assets/DeviceWindow/DeviceWindow_pic3.png)
+
+| Button      | Description |
 | ----------- | ----------- |
-| ![Переход на прошлый экран. ](./assets/DeviceWindow/DeviceWindow_minipic1.png) | Переход на прошлый экран. |
-| ![Возврат на домашний экран. ](./assets/DeviceWindow/DeviceWindow_minipic2.png)   | Возврат на домашний экран. |
-| ![Открыть список недавних приложений. ](./assets/DeviceWindow/DeviceWindow_minipic3.png)   | Открыть список недавних приложений. |
-| ![Увеличение масштаба ](./assets/DeviceWindow/DeviceWindow_minipic4.png)   | Увеличение масштаба*   |
-| ![Уменьшение масштаба ](./assets/DeviceWindow/DeviceWindow_minipic5.png)   | Уменьшение масштаба*      |
-| ![Закрыть участок ](./assets/DeviceWindow/DeviceWindow_minipic6.png)   | Закрыть участок изображения. Используется для тестирования поиска по картинке.      |
-| ![Начать запись ](./assets/DeviceWindow/DeviceWindow_minipic7.png)   | Начать запись движения мышью       |  
-:::info **(*) Примечание.**
-Масштаб также можно изменить дважды кликнув колесиком мыши в окне эмулятора с зажатой клавишей ***Ctrl***.  
-:::  
-_______________________________________________ 
-### Имя текущего устройства/эмулятора.  
-![Имя текущего устройства/эмулятора. ](./assets/DeviceWindow/DeviceWindow_pic4.png)   
+| ![Go Back.](./assets/DeviceWindow/DeviceWindow_minipic1.png) | Go back to the previous screen. |
+| ![Go Home.](./assets/DeviceWindow/DeviceWindow_minipic2.png)   | Return to the home screen. |
+| ![Show Recents.](./assets/DeviceWindow/DeviceWindow_minipic3.png)   | Show recent apps. |
+| ![Zoom In.](./assets/DeviceWindow/DeviceWindow_minipic4.png)   | Zoom in*   |
+| ![Zoom Out.](./assets/DeviceWindow/DeviceWindow_minipic5.png)   | Zoom out*      |
+| ![Close Area.](./assets/DeviceWindow/DeviceWindow_minipic6.png)   | Close part of the image. Used for testing image search.      |
+| ![Start Mouse Recording.](./assets/DeviceWindow/DeviceWindow_minipic7.png)   | Start recording mouse movements      |  
+:::info **(*) Note:**
+You can also zoom by double-clicking the mouse wheel in the emulator window while holding ***Ctrl***.
+:::
+_______________________________________________
+### Current Device/Emulator Name
+![Current Device/Emulator Name.](./assets/DeviceWindow/DeviceWindow_pic4.png)
 
-Устройство, которое активно в данный момент.  
-_______________________________________________ 
-### Установленный прокси.  
-![Установленный прокси.  ](./assets/DeviceWindow/DeviceWindow_pic5.png)   
+This is the device that's currently active.
+_______________________________________________
+### Configured Proxy
+![Configured Proxy.](./assets/DeviceWindow/DeviceWindow_pic5.png)
 
-Отображает текущий установленный прокси.  
-_______________________________________________ 
-### Координаты мыши.  
-![Координаты мыши. ](./assets/DeviceWindow/DeviceWindow_pic6.png)  
+Shows the currently set proxy.
+_______________________________________________
+### Mouse Coordinates
+![Mouse Coordinates.](./assets/DeviceWindow/DeviceWindow_pic6.png)
 
-Если курсор находится в пределах окна устройства, то здесь будут отображены его текущие координаты (X, Y).  
-Эти координаты можно использовать в экшенах [**Эмуляция swipe**](../../Android/ProLite/Swipe)  и [**Эмуляция touch**](../../Android/ProLite/Touch_Emulation). 
-_______________________________________________ 
-### Контекстное меню.  
-![Контекстное меню. ](./assets/DeviceWindow/DeviceWindow_pic7.png)  
+If the cursor is inside the device window, the current coordinates (X, Y) will be shown here.  
+You can use these coordinates in the [**Swipe Emulation**](../../Android/ProLite/Swipe) and [**Touch Emulation**](../../Android/ProLite/Touch_Emulation) actions.
+_______________________________________________
+### Context Menu
+![Context Menu.](./assets/DeviceWindow/DeviceWindow_pic7.png)
 
-Кликнув ПКМ по любому месту окна, вы откроете контекстное меню.  
-#### Доступные кнопки:  
-- **Очистить текст**.  
-Позволяет очистить всё содержимое поля ввода.  
-Если включена запись, то в проект добавится экшен [**Эмуляции клавиатуры**](../../Android/ProLite/Keyboard) с таким содержимым `{AndroidKeys.CLEAR}`  
-- **Установить значение из профиля**.  
-Позволяет установить в поле ввода значение из **Профиля** проекта.  
-Если включена запись, то в проект добавится экшен [**Установить значение**](../../Android/ProLite/SetValue) с макросом из выбранного профиля.  
-- **Установить значение переменной**.  
-Позволяет установить в поле ввода значение из пользовательской переменной.  
-Если включена запись, то в проект добавится экшен [**Установить значение**](../../Android/ProLite/SetValue) с макросом выбранной переменной.  
-:::info **Первые три кнопки, которые мы сейчас рассмотрели, отображаются только для полей ввода.**  
-:::  
-- **Исследовать элемент**.  
-Вызывает окно [**Свойства элемента**](./ElementProp) для более детального изучения. Так же выбранный элемент будет выделен в окне [**Дерева элементов**](./ElementTree).  
-- **Следовать за курсором**.  
-При включении данной опции элемент, который находится под курсором, будет подсвечен и выделен, а его свойства попадут в [**Окно свойства элементов**](./ElementProp).  
+Right-click anywhere in the window to open the context menu.
+#### Available Buttons:
+- **Clear Text**  
+Lets you clear everything in an input field.
+If recording is on, the [**Keyboard Emulation**](../../Android/ProLite/Keyboard) action will be added to your project with this content: `{AndroidKeys.CLEAR}`
+- **Set Value from Profile**  
+Lets you set an input field value from the project's **Profile**.
+If recording is on, a [**Set Value**](../../Android/ProLite/SetValue) action with the selected profile macro will be added.
+- **Set Variable Value**  
+Lets you set an input field value from a user variable.
+If recording is on, a [**Set Value**](../../Android/ProLite/SetValue) action with the selected variable macro will be added.
+:::info **The first three buttons we've just covered show up only for input fields.**
+:::
+- **Inspect Element**  
+Opens the [**Element Properties**](./ElementProp) window for a closer look at the element. The chosen element will also be highlighted in the [**Element Tree**](./ElementTree) window.
+- **Follow Cursor**  
+When turned on, the element under the cursor will be highlighted, and its properties will show up in the [**Element Properties Window**](./ElementProp).
 
 <details>
-<summary>**Пример.**</summary>
-<!--All you need is a blank line-->
+<summary>**Example.**</summary>
 
-    ![Следовать за курсором ](./assets/DeviceWindow/DeviceWindow_pic8.gif)  
-</details>     
-- **В конструктор действий**.  
-Отправляет элемент в [**Конструктор действий**](./ActionBuilder).  
-- **Поисках xPath**.  
-Анализирует элемент на странице и выводит информацию в формате xPath.  
+    ![Follow Cursor](./assets/DeviceWindow/DeviceWindow_pic8.gif)
+</details>
+- **To Action Builder**  
+Sends the element to the [**Action Builder**](./ActionBuilder).
+- **Find by xPath**  
+Analyzes the element on the page and shows info in xPath format.
 
-![Поисках xPath ](./assets/DeviceWindow/DeviceWindow_pic9.png)
+![Find by xPath](./assets/DeviceWindow/DeviceWindow_pic9.png)
 
-- **Это капча!**.  
-Позволяет отметить изображение как капчу и отправить ее либо на ручное распонзавание, либо с помощью специального модуля (например, [**CapMonster.Cloud**](https://capmonster.cloud/)).  
+- **This is a captcha!**  
+Lets you mark the image as a captcha and send it either for manual solving or with a special module (for example, [**CapMonster.Cloud**](https://capmonster.cloud/)).
 
-![Это капча! ](./assets/DeviceWindow/DeviceWindow_pic10.png) 
+![This is a captcha!](./assets/DeviceWindow/DeviceWindow_pic10.png)
 
-- **Приклеить к капче**.  
-Позволяет соединить несколько отдельных картинок в одну и отправить цельное изображение на распознавание.  
-- **Поле для результата распознавания каптчи**.  
-Вводит результат распознавания в поле ввода и, если включена **Запись**, добавляет экшен [**Установки значения**](../../Android/ProLite/SetValue).
-- **Создать проверку наличия текста**.  
-Позволяет проверить наличие определенного текста. Он вводится в окно ввода, а затем создается специальный экшен, где можно указать дополнительные параметры поиска.  
+- **Attach to captcha**  
+Lets you combine multiple images into one and send the whole thing for captcha solving.
+- **Captcha solve result field**  
+Enters the captcha result into the field and, if **Recording** is on, adds a [**Set Value**](../../Android/ProLite/SetValue) action.
+- **Create text check**  
+Lets you check for specific text. Enter the text in the input window, then a special action will be created where you can set extra search parameters.
 
-![Создать проверку наличия текста ](./assets/DeviceWindow/DeviceWindow_pic11.png) 
+![Create text check](./assets/DeviceWindow/DeviceWindow_pic11.png)
 
-- **Поиск по картинке**.  
-Выполняет поиск по выбранной картинке. Открывается дополнительное окно с настройкой параметров поиска.  
+- **Find by image**  
+Searches by the selected image. A window opens for you to adjust the search settings.
 
-![Поиск по картинке ](./assets/DeviceWindow/DeviceWindow_pic12.png)
+![Find by image](./assets/DeviceWindow/DeviceWindow_pic12.png)
 
 _______________________________________________
-## Полезные ссылки.  
-- [**Конструктор действий**](./ActionBuilder).  
-- [**Действия с устройством**](../../Android/ProLite/action).
-- [**Эмуляция клавиатуры**](../../Android/ProLite/Keyboard). 
-
-
-
- 
+## Useful Links
+- [**Action Builder**](./ActionBuilder)
+- [**Device Actions**](../../Android/ProLite/action)
+- [**Keyboard Emulation**](../../Android/ProLite/Keyboard)

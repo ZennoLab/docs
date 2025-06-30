@@ -1,83 +1,81 @@
 ---
 sidebar_position: 3
-title: Диапазоны значений
-description: Как использовать диапазоны?
+title: Value Ranges
+description: How do you use ranges?
 --- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.
-Довольно часто при настройке проекта встречаются места, где при поиске нужно указать номера совпадений, строк, ячеек и т.д. Причём, не всегда получается указать конкретный номер. Так вот диапазоны нужны для более гибкой нумерации таких перечислений.  
+## Description.
+Pretty often, when setting up a project, you’ll come across spots where you need to specify match numbers, lines, cells, etc. And most of the time, you can’t just put in a specific number. That’s what ranges are for – they let you number stuff more flexibly.
 
-Далее в статье будут приведены примеры для списков, но помните, что они также применимы для всех случаев, где нужно указать какой-либо номер.  
+The article uses examples with lists, but remember, you can use the same approach anywhere you need to put in some kind of number.
 
-### В каких случаях применяются диапазоны?  
-- Получение интервала строк. Например, с пятой по седьмую и т.д.;  
-- Взять последнюю строку, не зная их общее количество;  
-- Нужно взять случайную строку или несколько случайных строк просто/из указанного интервала;      
-- Получить чётные/нечётные строки из указанного интервала;  
-- Взятие случайных строк из чётных/нечётных строк из указанного интервала;  
-- В качестве номера совпадения при выполнении экшенов: [**Выполнить событие**](../../Android/ProLite/RunEvent), [**Установка значений**](../../Android/ProLite/SetValue), [**Взятие значений**](../../Android/ProLite/GetValue).  
+### When do you use ranges?  
+- To get a range of lines. For example, from the fifth to the seventh, and so on.  
+- To grab the last line, even if you don’t know how many there are in total.  
+- To pick a random line or several random lines, either from the whole thing or from a range you specify.  
+- To get even/odd lines from a certain interval.  
+- To grab random lines from even/odd lines in a range.  
+- As the match number when running actions: [**Run Event**](../../Android/ProLite/RunEvent), [**Set Values**](../../Android/ProLite/SetValue), [**Get Values**](../../Android/ProLite/GetValue).  
 _______________________________________________  
-## Подробнее про каждый. 
-### Взять строки из одного или нескольких интервалов.  
-![Запуск программы](./assets/Value_Ranges/Value_Ranges_pic1.png)    
+## More details on each one. 
+### Getting lines from one or several ranges.  
+![Program Start](./assets/Value_Ranges/Value_Ranges_pic1.png)    
 
-Если нужно взять строки с пятой по седьмую, например, то пишется в номере строки так:
+If you want to get lines from the fifth to the seventh, for example, you’d write the line number like this:
 
-**`4-6`** *(на 1 меньше, т.к. нумерация строк начинается с 0)*.  
+**`4-6`** *(it’s one less because numbering starts from 0)*.  
 
-Можно указать несколько интервалов через знак **`;`** или **`,`**  
-Например, **`10-15; 7; 22-34`**   
+You can put in a few ranges, separated by **`;`** or **`,`**  
+For example, **`10-15; 7; 22-34`**   
 _______________________________________________ 
-### Выбрать случайный элемент.  
-Это нужно в тех случаях, когда на странице несколько одинаковых элементов, и вам неважно с каким из них взаимодействовать. Чтобы кликнуть по одному из них в случайном порядке, необходимо в качестве номера совпадения указать слово **`random`**.  
+### Picking a random element.  
+This is useful if there are several identical elements on a page and you don’t really care which one you interact with. To click one of them at random, just put **`random`** as the match number.
 
-![Запуск программы](./assets/Value_Ranges/Value_Ranges_pic3.png)  
+![Program Start](./assets/Value_Ranges/Value_Ranges_pic3.png)  
 _______________________________________________ 
-### Длина списка неизвестна, но нужно взять его до конца.  
-Конец списка обозначается ключевым словом **`end`**. Так что просто указываем необходимый интервал в таком формате: например, **`10-end`**, чтобы взять строки с 11 до конца файла.  
-:::info **Взять все строки из списка.**
-Взять все строки можно с помощью ключевого слова **`all`**.
+### Don’t know the length of the list but need to go to the end.  
+The end of the list is written as **`end`**. So just set the interval as needed: for example, **`10-end`** will get lines 11 through the last one in the file.  
+:::info **Getting all lines from the list**
+You can grab all the lines using the **`all`** keyword.
 :::  
 _______________________________________________ 
-### Взять случайную строку или несколько случайных строк из интервала.  
-Для этого в номере строки пишем слово **`random`** и количество строк, которые нужно взять. Затем в скобках добавляем из каких конкретно строк брать.  
-:::tip **ПРИМЕРЫ.**
-**`random1(1, 12-15, 35-end)`** - взятие ***одной строки*** из указанных;  
-**`random15(1, 12-15, 35-end)`** - получить ***15 строк*** из указанных;  
-**`randomAll(1, 12-15, 35-end)`** - чтобы взять ***все строки*** из указанных в случайном порядке.
+### Grab a random line, or several random lines from an interval.  
+For this, write **`random`** and how many lines you need. Then in parentheses, add which lines to pick from.  
+:::tip **EXAMPLES.**
+**`random1(1, 12-15, 35-end)`** – pick ***one line*** from those listed.  
+**`random15(1, 12-15, 35-end)`** – get ***15 lines*** from those listed.  
+**`randomAll(1, 12-15, 35-end)`** – to grab ***all lines*** from those listed, in random order.
 :::
 _______________________________________________ 
-### Исключающие диапазоны.  
-Иногда требуется не учитывать последние варианты. Например, чтобы исключить последние 5 строк и взять 1 случайный элемент, это будет выглядеть вот так: **`random1(0-(end-5))`**.  
+### Excluding ranges.  
+Sometimes you need to skip the last few options. For example, if you want to leave out the last 5 lines and grab one random item, it would look like this: **`random1(0-(end-5))`**.
 
-![Запуск программы](./assets/Value_Ranges/Value_Ranges_pic2.png)  
+![Program Start](./assets/Value_Ranges/Value_Ranges_pic2.png)  
 _______________________________________________ 
-### Получить только чётные или наоборот нечётные значения.  
-#### Чётные (*на англ. even*):  
-- **`even(1,12-15,35-end)`** или **`even1(1,12-15,35-end)`**.  
-Получить первое чётное значения из диапазона.  
+### Get only_even or only odd values.  
+#### Even:
+- **`even(1,12-15,35-end)`** or **`even1(1,12-15,35-end)`**.  
+Get the first even value from the range.  
 - **`even5(1,12-15,35-end)`**.  
-Взять 5 первых чётных значений из диапазона.  
+Grab the first 5 even values from the range.  
 - **`evenAll(1,12-15,35-end)`**.  
-Достать все чётные значения из диапазона.  
-#### Нечётные (*на англ. odd*):  
+Get all the even values in the range.  
+#### Odd:
 - **`odd(1,12-15,35-end)`**.  
-Получить первое нечётное значения из диапазона.  
+Get the first odd value from the range.  
 - **`odd5(1,12-15,35-end)`**.  
-Взять 5 первых нечётных значений из диапазона.  
+Grab the first 5 odd values from the range.  
 - **`oddAll(1,12-15,35-end)`**.  
-Достать все нечётные значения из диапазона.   
+Get all the odd values in the range.   
 _______________________________________________ 
-### Комбинирование операторов.  
-Операторы **`random`**, **`even`** и **`odd`** можно комбинировать.  
-Например, чтобы взять все чётные строки в случайном порядке из диапазона:  
+### Combining operators.  
+You can combine the **`random`**, **`even`** and **`odd`** operators.  
+For example, if you need to get all even lines in random order from a range:  
 **`randomAll(evenAll(1,12-15,35-end))`**.  
 _______________________________________________
-## Полезные ссылки.    
-- [**Действия с устройством**](../../Android/ProLite/action).  
-- [**Логика в ZD**](../../category/логика-в-zd).  
-- [**Списки и Таблицы**](../../category/списки-и-таблицы).
-
- 
+## Useful links.    
+- [**Device actions**](../../Android/ProLite/action).  
+- [**ZD Logic**](../../category/логика-в-zd).  
+- [**Lists and Tables**](../../category/списки-и-таблицы).

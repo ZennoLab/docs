@@ -1,71 +1,71 @@
 ---
 sidebar_position: 7
-title: Поиск элементов
-description: Найти элемент в окне эмулятора/устройства.
+title: Finding Elements
+description: Find an element in the emulator/device window.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please familiarize yourself with the [*Rules for using materials on this resource*](../../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.  
-Вам понадобится найти элемент, прежде чем начать с ним взаимодействовать.   
+## Description.  
+You'll need to find an element before you can start interacting with it.  
 
-В этой статье мы расскажем не про конкретный экшен, а про раздел поиска, который присутствует в различных действиях программы. Таких как:  
-- [**Взятие значения**](../../Android/ProLite/GetValue);  
-- [**Установка значения**](../../Android/ProLite/SetValue);  
-- [**Выполнить событие**](../../Android/ProLite/RunEvent).   
+In this article, we're not talking about a specific action, but about the search section that you'll find in different program actions. For example:  
+- [**Getting a value**](../../Android/ProLite/GetValue)  
+- [**Setting a value**](../../Android/ProLite/SetValue)  
+- [**Triggering an event**](../../Android/ProLite/RunEvent)  
 _______________________________________________
-## Классический поиск.  
-Поиск происходит по параметрам HTML элемента: тэг, атрибут и его значение.  
+## Classic Search  
+The search is done by the HTML element’s parameters: tag, attribute, and its value.  
 
-![Классический поиск](./assets/ElementSearch/ElementSearch_pic1.png)  
+![Classic search](./assets/ElementSearch/ElementSearch_pic1.png)  
 
-### Условия поиска.  
-![Условия поиска](./assets/ElementSearch/ElementSearch_pic2.png)  
+### Search conditions  
+![Search conditions](./assets/ElementSearch/ElementSearch_pic2.png)  
 
-**1. Группа**. Она определяет приоритет конкретного условия. Чем выше число, тем ниже приоритет. То есть **0** — самое значимое условие.  
+**1. Group**. This sets the priority of a particular condition. The higher the number, the lower the priority. So, **0** is the most important condition.  
 
-Если не был найден элемент по наивысшему приоритету, то поиск переходит далее по списку. И так продолжается, пока не найдётся элемент, либо пока не закончатся все условия поиска.  
+If no element is found using the highest priority, the search moves to the next one in the list. This process continues until an element is found or all search conditions have been checked.  
 
-Можно добавить несколько условий с одинаковым приоритетом, тогда они будут использоваться одновременно.  
+You can add several conditions with the same priority, and then they'll be used at the same time.  
 
-**2. Атрибут**. Тут указывается атрибут HTML-тега, по которому выполняется поиск.  
-**3. Тип поиска**:  
-    - *text*. Поиск по полному или частичному совпадению текста;  
-    - *notext*. Ищем элементы, в которых не будет указанного текста;  
-    - *regexp*. Выполняем поиск через [**регулярные выражения**](../../Tools/RegEx_Tester).  
-    *Последний тип поиска по умолчанию зависит от регистра.  
-    Чтобы он не учитывался, добавьте в начало выражения `(?-i)`*  
-**4. Значение**. Записываем содержание соответствующего атрибута HTML-тега.  
-**5. № совпадения**. Порядковый номер найденного элемента, нумерация с нуля! Здесь можно использовать [**Диапазоны**](./Value_Ranges) и [**Макросы переменных**](./Variables).  
+**2. Attribute**. Here you specify the HTML tag’s attribute to search by.  
+**3. Search type**:  
+    - *text*. Search for a full or partial text match  
+    - *notext*. Looks for elements that don't have the specified text  
+    - *regexp*. Search using [**regular expressions**](../../Tools/RegEx_Tester)  
+    *By default, the last search type is case-sensitive.  
+    To make it case-insensitive, add `(?-i)` to the start of the expression*  
+**4. Value**. Enter the value of the relevant HTML tag attribute here.  
+**5. Match number**. The ordinal number of the found element, starting from zero! Here you can use [**Ranges**](./Value_Ranges) and [**Variable macros**](./Variables).  
 
-:::info **Мы рекомендуем подбирать условия поиска таким образом.**  
-Чтобы в его результате оставался только один элемент, который будет с порядковым номером `0`.
+:::info **We recommend setting up your search conditions in such a way**  
+that only one element remains in the results, which will have the index `0`.
 :::  
 
-**Удалить условие** поиска можно, кликнув ЛКМ слева от таблицы (выделено синим на скриншоте выше), а затем Delete на клавиатуре.  
+**To delete a condition**, click the left mouse button to the left of the table (highlighted in blue in the screenshot above), then press Delete on your keyboard.  
 
-Для поиска нужного элемента иногда может потребоваться сразу **несколько условий**.  
+Sometimes you'll need **several conditions at once** to find the right element.  
 _______________________________________________
-## xPath (XML Path Language).  
+## xPath (XML Path Language)  
 ![xPath](./assets/ElementSearch/ElementSearch_pic3.png)  
 
-Поиск выполняется с помощью [**xPath выражений**](../../Tools/JSON_Tester). Данный вариант является более универсальным и устойчивым к изменениям структуры сайтов и приложений.  
+Searching is done using [**xPath expressions**](../../Tools/JSON_Tester). This option is more universal and robust to changes in the structure of sites and apps.  
 
-:::tip **Это язык для поиска и извлечения данных из XML-документов.**  
-Он позволяет искать и выбирать узлы в XML-документе на основе их иерархической структуры, используя путь или выражения. XPath широко применяется для автоматизации, веб-скрапинга, тестирования и обработки данных.
+:::tip **This is a language for searching and extracting data from XML documents.**  
+It lets you search for and select nodes in an XML document based on their hierarchical structure, using paths or expressions. XPath is widely used for automation, web scraping, testing, and data processing.
 :::  
 
-### Преимущества xPath.  
-- **Гибкость**.  
-Позволяет точно выбирать элементы и атрибуты, а также применять сложные фильтры и условия.  
-- **Широкое использование**.  
-Поддерживается многими инструментами и языками программирования, а также используется в таких библиотеках, как Selenium.  
-- **Комплексные запросы**.  
-Может извлекать данные, учитывая иерархию, атрибуты и текстовые значения.   
-- **Экономия времени**.  
-Сокращает время, необходимое для извлечения нужных данных из сложных документов.  
+### Advantages of xPath  
+- **Flexibility**  
+Lets you precisely select elements and attributes, and apply complex filters and conditions.  
+- **Widely used**  
+Supported by many tools and programming languages, and used in libraries like Selenium.  
+- **Complex queries**  
+Can extract data considering hierarchy, attributes, and text values.  
+- **Time saving**  
+Reduces the time needed to extract the required data from complex documents.  
 _______________________________________________
-## Полезные ссылки.  
-- [**Поиск по картинке**](./SearchByPic). 
-- [**Обработка текста**](../../Data/Text).     
-- [**Свойства элемента**](../Interface/ElementProp).
+## Useful links  
+- [**Search by image**](./SearchByPic)  
+- [**Text processing**](../../Data/Text)  
+- [**Element properties**](../Interface/ElementProp)

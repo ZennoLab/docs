@@ -1,80 +1,81 @@
 ---
 sidebar_position: 3
-title: Отладка проектов
-description: Ошибки при отладке и Трассировка.
----  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+title: Project Debugging
+description: Debugging errors and Tracing.
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
 :::
 _______________________________________________
-## Запуск отладки.  
-![Запуск программы](./assets/Debugging/Debugging_pic3.png)  
+## Starting Debugging.
+![Program Start](./assets/Debugging/Debugging_pic3.png)
 
-Рассмотрим детальнее панель записи и отладки.  
-_______________________________________________ 
-### С начала.   
-Нажатие этой кнопки приводит к запуску проекта с самого начала. При этом будет сгенерирован новый профиль.  
-_______________________________________________ 
-### По шагам.  
-При старте *С начала* будет предложено пройти весь проект *По шагам*. Тогда каждое последующее действие будет выполняться только после кнопки ***Далее***.  
+Let’s look at the recording and debugging panel in more detail.
+_______________________________________________
+### From the top.
+Clicking this button starts the project from scratch. A new profile will be generated.
 
-![Запуск программы](./assets/Debugging/Debugging_pic4.png) 
+_______________________________________________
+### Step by step.
+When you click *From the top*, you’ll be offered to run the whole project *Step by step*. In this mode, each next action will only be performed after you hit ***Next***.
 
-Если вместо **«Да, по шагам»** нажать просто **«Да»**, то проект выполнится сразу до конца или до следующей *Точки останова (от англ. Breakpoint)*. Это точку можно установить, нажав ПКМ по любому экшену.  
+![Program Start](./assets/Debugging/Debugging_pic4.png)
 
-![Запуск программы](./assets/Debugging/Debugging_pic5.png)   
+If you click **Yes** instead of **“Yes, step by step”**, then the project will run straight through to the end or until it hits the next *Breakpoint*. To set a breakpoint, just right-click any action.
 
-Вы можете переключаться между двумя этими режимами, используя во время отладки попеременно кнопки ***Далее*** (по шагам)  и ***До конца*** (до останова).
-_______________________________________________ 
-### С курсора.  
-Также можно нажать на любой экшен в проекте, а затем на вышеописанные кнопки, и тогда выполнение шаблона начнется именно с него. Это особенно удобно при поиске проблемной части проекта во время отладки. Вы изменяете настройки экшена, а затем сразу тестируете его, без необходимости выполнять весь шаблон целиком.  
+![Program Start](./assets/Debugging/Debugging_pic5.png)
 
-![Запуск программы](./assets/Debugging/Debugging_pic6.png)   
-_______________________________________________ 
-### Перегенерация профиля.  
-Во время тестирования шаблона можно заново сгенерировать значения личности, нажав на специальную кнопку. Так, например, можно проверить, как сайт или приложение реагируют на определенные значения.  
+You can switch between these two modes while debugging: use ***Next*** (step by step) and ***To the end*** (to breakpoint), one after another as you need.
 
-![Запуск программы](./assets/Debugging/Debugging_pic7.png)  
-_______________________________________________ 
-##  Ошибки при отладке.  
-При создании и редактировании проекта иногда встречаются ошибки. Чтобы их исправить потребуется произвести *Отладку*, то есть внести изменения в какие-то действия в шаблоне. Отыскать проблемные места поможет *Лог*, про который мы уже ранее рассказывали.   
+_______________________________________________
+### From cursor.
+You can also click any action in your project and then use the buttons described above – in that case, the template will start running right from that spot. This is especially handy when you’re hunting for buggy parts of your project during debugging. You tweak the action’s settings and test it right away, no need to run the whole template every time.
 
-![Запуск программы](./assets/Debugging/Debugging_pic2.png)  
+![Program Start](./assets/Debugging/Debugging_pic6.png)
+_______________________________________________
+### Regenerating the profile.
+While testing a template, you can generate new persona values by hitting the special button. For example, this lets you check how a website or app reacts to specific values.
 
-Ошибка помечается в *Логе* красным цветом. Найти конкретный экшен, который работает неправильно, можно дважды кликнув по сообщению в *Логе*. После этого фокус сразу сместится на него.   
+![Program Start](./assets/Debugging/Debugging_pic7.png)
+_______________________________________________
+## Debugging errors.
+You’ll sometimes run into errors while creating or editing a project. To fix them, you’ll need to *Debug*—in other words, make changes to certain actions in your template. The *Log*, which we’ve already covered, is your friend in tracking down the problem spots.
 
-Либо можно кликнуть по ошибке ПКМ и скопировать ID экшена. А затем найти его через ***Редактирование → Поиск по проекту → вставить ID в поле ввода***.  
+![Program Start](./assets/Debugging/Debugging_pic2.png)
 
-![Запуск программы](./assets/Debugging/Debugging_pic1.png)   
+Errors get marked red in the *Log*. To find exactly which action is causing trouble, double-click the message in the *Log*. That’ll take you straight to the action.
 
-Когда экшен найден, можно исправить его настройки и начать *Отладку* с этого места.  
-_______________________________________________ 
-## Трассировка проектов.  
-:::tip **Слово *трассировка* происходит от французского *tracer*, что означает *отслеживать*.**
-:::   
+Or you can right-click on the error message, copy the action’s ID, and then find it through ***Edit → Search Project → paste the ID in the input field***.
 
-В нашем случае данная функция обозначает процесс отслеживания работы проекта, запись или отображение последовательности шагов, выполняемых программой. Она нужны для исследования работы шаблона: отладки, замера скорости выполнения, поиска места ошибки.  
+![Program Start](./assets/Debugging/Debugging_pic1.png)
 
-Трассировка запускается в ZennoDroid через панель заданий. Нужно:  
-**Нажать ПКМ по нужному заданию → *Трассировать выполнение***.  
+Once you’ve found the action, fix its settings and start *Debugging* from there.
+_______________________________________________
+## Project tracing.
+:::tip **The word *tracing* comes from the French *tracer*, which means *to track*.**
+:::
 
-![Запуск программы](./assets/Debugging/Debugging_pic8.png)    
+Here, this feature means following the process of your project: recording or displaying the sequence of steps taken by the program. It helps you research your template’s behavior by debugging, measuring speed, or finding where an error happened.
 
-Трассирование начинает работать сразу после включения, записывая все действия по порядку.  
-_______________________________________________ 
-## Дополнительная информация.  
-### Путь к файлам с результатами.  
-Файлы находятся в каталоге пользователя: `C:\Users\<ИМЯ ЮЗЕРА>\Documents\ZennoLab\Traces` и сгруппированы по заданиям.  
-:::info **Формат записи имеет такой вид**
-`<Время события>|<Статус сообщения>|<ID действия>|<Время выполнения (мс)>`
-:::  
-### Возможные статусы сообщения.  
-- **`Info`** - информационное сообщение;  
-- **`In`** - означает начало выполнения действия с указанным ID;  
-- **`Good`** - удачное выполнение действия с указанным ID и переход по зелёной ветке;  
-- **`Bad`** - неудачное выполнение действия с указанным ID и переход по красной ветке.
+You start tracing in ZennoDroid using the job panel. You need to:
+**Right-click the job you’re interested in → *Trace execution***
+![Program Start](./assets/Debugging/Debugging_pic8.png)
+
+Tracing starts working as soon as you enable it, recording all actions sequentially.
+_______________________________________________
+## Additional info.
+### Result file path.
+Files are found in your user directory: `C:\Users\<USERNAME>\Documents\ZennoLab\Traces` and grouped by job.
+:::info **The format of a log entry is like this**
+`<Event time>|<Message status>|<Action ID>|<Execution time (ms)>`
+:::
+### Possible message statuses.
+- **`Info`** - informational message;
+- **`In`** - marks the start of the action with the given ID;
+- **`Good`** - successful execution of the action with the given ID and switch to the green branch;
+- **`Bad`** - unsuccessful execution of the action with the given ID and switch to the red branch.
 
 <details>
-<summary>**Пример содержимого файла трассировки**</summary>
+<summary>**Example of trace file contents**</summary>
 <!--All you need is a blank line-->
     ```
     23-02-2021 06:08:59.3600|Info|---Project Start Execute---|
@@ -94,12 +95,12 @@ _______________________________________________
     23-02-2021 06:09:29.0612|Good|67c9448b-ebbe-4f54-8206-868f8ddc38c3|2
     23-02-2021 06:09:29.3509|Info|---Project Executed---|  
     ```
-</details>   
+</details>
 
-### Пример использования.  
-Бывают случаи, когда выполнение задания зависло на каком-то действии. При этом визуально невозможно определить, какое именно действие не может выполниться. В этот момент достаточно включить трассировку, и текущее действие сразу запишется в файл.
+### Example of use.
+Sometimes, a job hangs on some action and it’s impossible to tell visually which one got stuck. At that moment, just turn on tracing and you’ll instantly see which action is currently running, as it will get recorded to the file.
 _______________________________________________
-## Полезные ссылки.  
-- [**Действия с устройством**](../Android/ProLite/action). 
-- [**Окно профиля**](./Interface/Work_with_Profile).     
-- [**Окно лога**](../pm/Interface/Log_window). 
+## Handy links.
+- [**Device actions**](../Android/ProLite/action)
+- [**Profile window**](./Interface/Work_with_Profile)
+- [**Log window**](../pm/Interface/Log_window)

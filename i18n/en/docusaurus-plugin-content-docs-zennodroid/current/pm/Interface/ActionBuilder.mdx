@@ -1,100 +1,100 @@
 ---
 sidebar_position: 5
-title: Конструктор действий
-description: Работа с элементами в окне эмулятора.
+title: Action Builder
+description: Working with elements in the emulator window.
 ---  
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
 :::
 _______________________________________________
 
-Это универсальный инструмент для работы с элементами в [Окне устройства](./DeviceWindow), который позволяет подобрать оптимальные критерии для поиска.  
+This is a universal tool for working with elements in the [Device Window](./DeviceWindow) that helps you pick the best criteria for searching.  
 _______________________________________________ 
-## Как вызвать?
-#### Есть два способа:  
-- ПКМ по нужному элементу в **Окне устройства** → **В конструктор действий** из контекстного меню.  
+## How to open it?
+#### There are two ways:  
+- Right-click on the desired element in the **Device Window** → **To Action Builder** from the context menu.  
 
-![Первый способ](./assets/ActionBuilder/ActionBuilder_pic1.png) 
+![First way](./assets/ActionBuilder/ActionBuilder_pic1.png) 
 _______________________________________________ 
-- Из окна [**Древо элементов**](./ElementTree) → ПКМ по интересующему элементу → **В конструктор действий**.  
+- From the [**Element Tree**](./ElementTree) window → right-click on the element you’re interested in → **To Action Builder**.  
 
-![Второй способ](./assets/ActionBuilder/ActionBuilder_pic2.png)  
+![Second way](./assets/ActionBuilder/ActionBuilder_pic2.png)  
 _______________________________________________ 
-:::info **Полезно.**
-При добавлении элемента в **Конструктор действий** все его свойства и атрибуты автоматически попадают в окно [**Свойства элемента**](./ElementProp).  
+:::info **Useful.**
+When you add an element to the **Action Builder**, all its properties and attributes are automatically sent to the [**Element Properties**](./ElementProp) window.  
 
-![Свойства элемента](./assets/ActionBuilder/ActionBuilder_pic3.png) 
+![Element Properties](./assets/ActionBuilder/ActionBuilder_pic3.png) 
 :::  
 _______________________________________________ 
-## Параметры поиска  
-![Параметры поиска ](./assets/ActionBuilder/ActionBuilder_pic4.png)  
-### Виды поиска:  
-- **Классический**. Быстрый и простой. Для нахождения элемента используются различные атрибуты.  
-- **xPath**. Мощный и гибкий. Позволяет выполнять сложные запросы и детальную навигацию по структуре страницы.  
-### Классический поиск.  
-![Классический](./assets/ActionBuilder/ActionBuilder_pic5.png)  
+## Search parameters  
+![Search parameters](./assets/ActionBuilder/ActionBuilder_pic4.png)  
+### Search types:  
+- **Classic**. Fast and simple. Finds elements by different attributes.  
+- **xPath**. Powerful and flexible. Allows complex queries and detailed navigation of the page structure.  
+### Classic search.  
+![Classic](./assets/ActionBuilder/ActionBuilder_pic5.png)  
 
-#### Имя атрибута.  
-Атрибут элемента, по которому будет производиться поиск. Доступные атрибуты для выбранного элемента можно найти в [**Окне свойства элемента**](./ElementProp).  
-:::info **Возможные атрибуты.**
+#### Attribute name.  
+Attribute of the element you’ll search by. Available attributes for the selected element can be found in the [**Element Properties**](./ElementProp) window.  
+:::info **Possible attributes.**
 `id`, `name`, `text`, `content-desc`, `bounds`, `center X/Y`, `checkable`, `checked`, `class`, `clickable`, `focusable`, `focused`, `height`, `index`, `long-clickable`, `packadge`, `password`, `resource-id`, `scrollable`, `selected`, `width`.            
 :::  
-#### Значение.  
-То значение, которое в данный момент есть у выбранного атрибута.  
-#### Тип поиска.
-- **text**. Поиск по полному или частичному совпадению текста;  
-- **notext**. Ищет элементы, в которых не будет указанного текста.  
-- **regexp**. Поиск с помощью [**Регулярных выражений**](../../Tools/RegEx_Tester);  
-:::tip **Что такое RegExp (Regular Expression)?**
-Это мощный инструмент для работы с текстом, который позволяет находить, проверять, заменять и извлекать определенные паттерны в строках. Эти выражения состоят из символов и метасимволов, которые образуют шаблон для поиска.  
+#### Value.  
+The value that the selected attribute currently has.  
+#### Search type.
+- **text**. Finds by full or partial text match  
+- **notext**. Looks for elements that don’t contain the specified text  
+- **regexp**. Search using [**Regular Expressions**](../../Tools/RegEx_Tester)  
+:::tip **What's RegExp (Regular Expression)?**
+It's a powerful tool for working with text that allows you to find, check, replace, and pull out certain patterns in strings. These expressions consist of characters and metacharacters, which form a template for searching.  
 :::
 
-:::warning **Будьте внимательны.**
-![сразу несколько элементов](./assets/ActionBuilder/ActionBuilder_pic6.png)  
+:::warning **Be careful.**
+![several elements at once](./assets/ActionBuilder/ActionBuilder_pic6.png)  
 
-Если указать слишком общие параметры для поиска, то им будут соответствовать сразу несколько элементов. Это не очень хорошо, поэтому всегда подбирайте более узкие значения.
+If you set search parameters that are too broad, they might match several elements at once. That’s not great, so try to pick narrower values.
 :::  
 _______________________________________________ 
-### Поиск по xPath.  
-**XPath (XML Path Language)** - это язык запросов, используемый для навигации и поиска информации в XML-документах. Он позволяет точно указать путь к элементам, атрибутам и текстовым данным, которые нужно найти в структуре XML файлов и получить данные при необходимости.
+### xPath search  
+**XPath (XML Path Language)** is a query language used to navigate and search XML documents. It lets you specify the path to elements, attributes, and text that you want to find in the XML file structure and get the data you need.
 
-XPath предлагает набор выражений, операторов и функций для указания конкретных путей обхода XML-деревьев и фильтрации данных с помощью различных критериев. Эти выражения состоят из элементов и операторов, которые можно комбинировать, чтобы получить нужные результаты.  
+XPath offers a set of expressions, operators, and functions for setting specific ways to walk through XML trees and filtering data by various criteria. These expressions are made up of elements and operators that you can combine to get what you want.  
 
-Доступно два варианта для формата данных:  
-**1.** В виде выражения.  
+Two options are available for data format:  
+**1.** As an expression.  
 
-![В виде выражения.](./assets/ActionBuilder/ActionBuilder_pic7.png)  
+![As an expression.](./assets/ActionBuilder/ActionBuilder_pic7.png)  
 
-**2.** В виде древа пути (иерархии).  
+**2.** As a path tree (hierarchy).  
 
-![В виде древа пути (иерархии).](./assets/ActionBuilder/ActionBuilder_pic8.png)  
+![As a path tree (hierarchy).](./assets/ActionBuilder/ActionBuilder_pic8.png)  
 _______________________________________________  
-## Выбор действия.  
-Можно выбрать одно из трёх возможных действий:  
-- **Set (Установка значения)**.  
+## Choose an action  
+You can pick one of three possible actions:  
+- **Set (Set value)**  
 ![Set](./assets/ActionBuilder/ActionBuilder_pic9.png)  
-    - *Атрибут*. Доступен только атрибут “input”. Для него можно установить новое значение.  
-    - *Значение*. Текст, который необходимо вставить. Можно использовать как простой текст, так и переменные проекта: `{-Variable.someVar-}`, `{-Profile.Name-}`, а также их комбинации: `Привет. Меня зовут {-Profile.Name-}`.  
+    - *Attribute*. Only the "input" attribute is available. You can set a new value for it.  
+    - *Value*. The text you need to insert. You can use plain text or project variables: `{-Variable.someVar-}`, `{-Profile.Name-}`, and their combos: `Hello. My name is {-Profile.Name-}`.  
 
-- **Get (Получение значения)**.  
+- **Get (Get value)**  
 ![Get](./assets/ActionBuilder/ActionBuilder_pic10.png)   
-    - *Атрибут*. Атрибут, значение которого надо получить.  
-    - *Значение*. Здесь отобразится значение найденного атрибута.  
+    - *Attribute*. The attribute whose value you want to get.  
+    - *Value*. The value of the found attribute will show here.  
 
-- **Rise (Выполнить действие)**.  
+- **Rise (Perform action)**  
 ![Rise](./assets/ActionBuilder/ActionBuilder_pic11.png)   
-    С помощью данного действия можно выполнить события *touch (нажатие)* и *long touch (долгое нажатие)* для элемента.  
+    With this you can trigger *touch* and *long touch* events on the element.  
 _______________________________________________   
-## Завершающие действия.  
-![Завершающие действия](./assets/ActionBuilder/ActionBuilder_pic12.png)   
-### Тестировать.  
-После подбора оптимальных параметров поиска и нужного действия можно протестировать их, нажав на эту кнопку.  
-### Добавить в проект.  
-Нажимаем эту кнопку в самом конце, когда результат поиска нас полностью устраивает.  
-### Комментарий.  
-Здесь можно оставить комментарий для создаваемого экшена, так как автоматические подписи содержат мало информации.  
+## Final actions  
+![Final actions](./assets/ActionBuilder/ActionBuilder_pic12.png)   
+### Test  
+After picking the best search parameters and needed action, you can test them by pressing this button.  
+### Add to project  
+Press this button at the very end, when the search result fully suits you.  
+### Comment  
+Here you can leave a comment for the action you’re creating, since the auto-generated labels don’t have much info.  
 
 _______________________________________________
-## Полезные ссылки.  
-- [**Установить значение**](../../Android/ProLite/SetValue).
-- [**Взять значение**](../../Android/ProLite/GetValue).  
-- [**Тестер X/JSON Path**](../../Tools/JSON_Tester)
+## Useful links  
+- [**Set Value**](../../Android/ProLite/SetValue)
+- [**Get Value**](../../Android/ProLite/GetValue)  
+- [**X/JSON Path Tester**](../../Tools/JSON_Tester)

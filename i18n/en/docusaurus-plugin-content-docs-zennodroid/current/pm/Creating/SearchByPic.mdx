@@ -1,112 +1,107 @@
 ---
 sidebar_position: 2
-title: Поиск по картинке
-description: Визуальный поиск через нажатие на элемент.
+title: Image Search
+description: Visual search by clicking on an element.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please get familiar with [*Rules for using materials on this site*](../../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.
-Данное действие позволяет произвести нажатие на элемент, используя визуальный поиск.  
-Мы рекомендуем использовать его, когда не получается найти элемент другими способами,  
-так как **данная операция использует много ресурсов компьютера**. Также это действие используется  
-для клика по элементу, к которому нельзя подобраться с помощью экшена [**Выполнить событие**](../../Android/ProLite/RunEvent). 
+## Description.
+This action lets you click on an element using visual search.  
+We recommend using it only if you can't find the element in other ways,  
+since **this operation uses a lot of your computer's resources**. It's also useful  
+for clicking on elements you can't reach using the [**Run Event**](../../Android/ProLite/RunEvent) action.
 _______________________________________________ 
-## Как работать с этим действием?  
-![Действие](./assets/SearchByPic/SearchByPic_pic1.png)
+## How does this action work?  
+![Action](./assets/SearchByPic/SearchByPic_pic1.png)
 _______________________________________________   
-### Добавление в проект.  
-В Окне эмулятора наводим **курсор мыши на элемент** **→ нажимаем ПКМ → Поиск по картинке**.  
+### Adding to your project.  
+In the emulator window, **hover your mouse over the element** **→ right-click → Search by image**.
 
-![Добавление](./assets/SearchByPic/SearchByPic_pic2.png)  
+![Adding](./assets/SearchByPic/SearchByPic_pic2.png)  
 _______________________________________________ 
-### Область поиска.  
-![Выбор области](./assets/SearchByPic/SearchByPic_pic3.png)  
+### Search area.  
+![Selecting area](./assets/SearchByPic/SearchByPic_pic3.png)  
 
-Ее можно регулировать специальным пунктирным квадратом. Наводите курсор на белые точки, зажимаете и меняете размер под свои нужды. Чем больше область поиска, тем больше ресурсов требуется для выполнения. **Выделять необходимо уникальную часть элемента**, которая отличается по цвету. Так, например, если выделяете кнопку, то не нужно выделять её всю, потому что она содержит много монотонного цвета.  
+You can change the area with a special dashed square. Move your cursor over the white dots, hold and drag to resize as needed. The bigger the search area, the more resources are needed. **You should highlight a unique part of the element**, something that stands out in color. For example, if you're highlighting a button, you don't need to highlight the whole thing—it usually has a lot of flat color.
 
-![Прицел](./assets/SearchByPic/SearchByPic_pic4.png)  
+![Target](./assets/SearchByPic/SearchByPic_pic4.png)  
 
-**Круглым прицелом** также можно задать **место совершения клика** со случайным отклонением. Он может находиться вне области поиска.  
+With the **round crosshair** you can also **set the click point** with some random offset. It can even be outside the search area.
 _______________________________________________    
-### Скопировать хэш.  
-![хэш](./assets/SearchByPic/SearchByPic_pic5.png)   
+### Copy hash.  
+![hash](./assets/SearchByPic/SearchByPic_pic5.png)   
 
-Кнопка позволяет скопировать хэш изображения в буфер обмена. Его можно использовать в C# методах для поиска по изображению.  
+This button copies the image hash to the clipboard. You can use it in C# methods for image search.
 _______________________________________________ 
-### Способ поиска.  
-![область поиска](./assets/SearchByPic/SearchByPic_pic6.png)  
+### Search method.  
+![search area](./assets/SearchByPic/SearchByPic_pic6.png)  
 
-Тут можно выбрать, как именно будет искаться изображение:  
-- **Весь экран**. Поиск осуществляется по всему экрану.  
-- **Выделенная область**. Данный режим позволяет выбрать область поиска в [Окне устройства](../Interface/DeviceWindow), как мы уже видели ранее в статье. Можно использовать, когда точно известно, что элемент появится в определённой части экрана.  
-:::tip **Поиск в заданной области происходит быстрее и снижает нагрузку на CPU.**
+Here you can pick how the image will be searched:
+- **Entire screen**. The search covers the whole screen.
+- **Selected area**. This mode lets you pick the search area in the [Device window](../Interface/DeviceWindow), like shown earlier. Use this if you know the element will show up in a certain part of the screen.
+:::tip **Searching in a specified area is faster and loads the CPU less.**
 :::
 _______________________________________________  
-### Поиск.  
-![Поиск](./assets/SearchByPic/SearchByPic_pic7.png)  
-- **Точность совпадения**. Данная настройка регулирует точность поиска. Чем выше точность, тем больше нужно ресурсов и времени для распознавания.  
-- **Кнопка «Поиск»**. Тестирование операции поиска.  
-- **Да**. Нажать в случае удачного поиска.  
-- **Нет**. Нажмите, если не получилось найти. Затем измените параметры поиска и попробуйте снова.  
+### Search.  
+![Search](./assets/SearchByPic/SearchByPic_pic7.png)  
+- **Match accuracy**. Adjusts the search accuracy. The higher it is, the more resources and time it uses.
+- **Search button**. Tests the search operation.
+- **Yes**. Click if search was successful.
+- **No**. Click if it didn't find what you're looking for. Then change the search settings and try again.
 _______________________________________________  
- ### Цветовой режим.  
- ![Цветовой режим](./assets/SearchByPic/SearchByPic_pic8.png)  
+### Color mode.  
+![Color mode](./assets/SearchByPic/SearchByPic_pic8.png)  
 
- Выбор цветового режима, в котором будет происходить поиск картинки.  
- - **RGB**. Поиск по цветному изображению.    
- - **Gray**. Картинка только с оттенками серого.    
- - **Black**. Черно-белый режим. Для него рекомендуется выставлять *Точность совпадения* не выше 90%.  
-:::tip **Поиск в режимах Gray и Black происходит быстрее и меньше нагружает CPU.**
+Choose the color mode for the image search.  
+- **RGB**. Searches by colored image.  
+- **Gray**. Image with gray shades only.  
+- **Black**. Black and white mode. It's best to keep *Match accuracy* at 90% or lower here.
+:::tip **Search in Gray and Black modes is faster and loads the CPU less.**
 ::: 
-  ![RGB](./assets/SearchByPic/SearchByPic_pic9.png)![Gray](./assets/SearchByPic/SearchByPic_pic10.png)![Black](./assets/SearchByPic/SearchByPic_pic11.png)  
-:::info **Пункт Порог.**
-Картинка переводится в формат GrayScale, в котором каждой точке соответствует значение **от 0 - черный, до 255 - белый**. Пиксели с яркостью выше порога считаются белыми, ниже порога - чёрными. Этот параметр доступен только **в режиме Black**.
-:::     
- _______________________________________________ 
-  ### Тип клика.  
-  - **Touch**. Быстрое нажатие на элемент.  
-  - **Long touch**. Удержание пальцем по элементу.   
-  - **None**. Не совершать никакого действия, а только проверить наличие элемента в Окне эмулятора. 
-  _______________________________________________  
-## Тестирование поиска.  
- После того, как выделили необходимую область нажмите кнопку «Поиск». Если искомый фрагмент будет найден, то возле кнопки появится зеленая галочка, свидетельствующая об успехе, а элемент будет подсвечен в Окне эмулятора.  
+![RGB](./assets/SearchByPic/SearchByPic_pic9.png)![Gray](./assets/SearchByPic/SearchByPic_pic10.png)![Black](./assets/SearchByPic/SearchByPic_pic11.png)  
+:::info **Threshold option.**
+The image is converted to GrayScale, where each point gets a value **from 0 - black, to 255 - white**. Pixels with brightness above the threshold are considered white, below it—black. This setting is only available **in Black mode**.
+:::
+_______________________________________________ 
+### Click type.  
+- **Touch**. Quick tap on the element.
+- **Long touch**. Press and hold the element.
+- **None**. Don't do anything, just check if the element is in the emulator window.
+_______________________________________________  
+## Testing the search.  
+Once you've highlighted the area you want, click “Search”. If the target fragment is found, a green check will appear next to the button showing success, and the element will be highlighted in the emulator window.
 
-![Успех](./assets/SearchByPic/SearchByPic_pic12.png)  
- <details>
-<summary>Если же поиск завершился неуспехом, то появится красный крестик.</summary>  
+![Success](./assets/SearchByPic/SearchByPic_pic12.png)  
+<details>
+<summary>If the search fails, a red X will appear.</summary>  
 
-![Неудача](./assets/SearchByPic/SearchByPic_pic13.png)
+![Fail](./assets/SearchByPic/SearchByPic_pic13.png)
 </details>
- 
- ### Скрытие части изображения.  
- Чтобы убедиться, что поиск не будет находить ничего лишнего, есть возможность закрыть часть изображения. Для этого нужно кликнуть **по кнопке с изображением бабочки** в нижней части Окна эмулятора, а затем нажать по области, которую нужно скрыть, и снова выполнить поиск.  
- 
- ![Скрытие](./assets/SearchByPic/SearchByPic_pic14.gif) 
-## Вкладка «Дополнительно».  
-![Дополнительно](./assets/SearchByPic/SearchByPic_pic15.png)  
-Эта вкладка появляется после добавление экшена в проект. Параметры:  
-- **Ждать элемент не более**. Время в секундах, в течение которого экшен будет ожидать появление элемента. В [*Настройках записи*](../../Settings/Record_and_InputMethods) можно задать время поиска по умолчанию для всех создаваемых экшенов.  
-- **Область поиска**. Здесь можно вручную или с помощью переменных задать область для поиска.  
-- **Сохранить найденные координаты.** Данная секция позволяет сохранить в переменные координаты верхнего левого угла найденного элемента.  
+
+### Hiding part of the image.  
+To make sure the search doesn't find anything extra, you can hide part of the image. Just click **the butterfly button** at the bottom of the emulator window, then click the area you want to hide, and run the search again.
+
+![Hiding](./assets/SearchByPic/SearchByPic_pic14.gif)
+## "Advanced" tab.  
+![Advanced](./assets/SearchByPic/SearchByPic_pic15.png)  
+This tab shows up once you've added the action to your project. The options:
+- **Don't wait for the element more than**. Time (in seconds) the action will wait for the element to appear. In [*Recording settings*](../../Settings/Record_and_InputMethods) you can set the default search time for all new actions.
+- **Search area**. Here you can set the area manually or using variables.
+- **Save found coordinates.** This section lets you save the coordinates of the top-left corner of the found element as variables.
 _______________________________________________
-## Пример использования.  
-Представим, что нам нужно создать новую запись в приложении **Заметки**:    
-1. Выделяем уникальную область на кнопке создания заметки. На левом скриншоте пример правильного выделения, а на правом то, как делать не нужно.    
-![Правильно](./assets/SearchByPic/SearchByPic_pic16.png) ![Неправильно](./assets/SearchByPic/SearchByPic_pic17.png)  
-2. С помощью кнопки **«Поиск»** тестируем нахождение объекта. Нажимаем **«Да»** в случае успеха.  
-3. Добавляем экшен в проект.  
-![Добавляем экшщен](./assets/SearchByPic/SearchByPic_pic18.png)  
-:::warning **Важно.**
-*Поиск по картинке может сломаться, если экшен был записан, например, в режиме рендеринга OpenGL, а затем сменён на DirectX.*
-:::  
+## Example of use.  
+Let's say you need to make a new note in the **Notes** app:
+1. Highlight a unique area on the new note button. The left screenshot shows a good selection, the right one shows what you shouldn't do.
+![Right](./assets/SearchByPic/SearchByPic_pic16.png) ![Wrong](./assets/SearchByPic/SearchByPic_pic17.png)
+2. Use the **“Search”** button to test if the object can be found. Click **“Yes”** if it works.
+3. Add the action to your project.
+![Add action](./assets/SearchByPic/SearchByPic_pic18.png)
+:::warning **Important.**
+*Image search can break if you recorded the action in, say, OpenGL render mode and then switched to DirectX.*
+:::
 _______________________________________________
-## Полезные ссылки.  
-- [**Конструктор действий**](../Interface/ActionBuilder). 
-- [**Настройки записи проектов**](../../Settings/Record_and_InputMethods).     
-- [**Выполнить событие**](../../Android/ProLite/RunEvent).
-  
-
-
-
-  
+## Useful links.  
+- [**Action builder**](../Interface/ActionBuilder).
+- [**Project recording settings**](../../Settings/Record_and_InputMethods).
+- [**Run event**](../../Android/ProLite/RunEvent).

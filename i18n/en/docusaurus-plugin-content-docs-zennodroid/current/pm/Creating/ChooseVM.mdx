@@ -1,37 +1,37 @@
 ---
 sidebar_position: 6
-title: Выбор и запуск виртуальной машины
-description: Как правильно выбрать и запустить виртуальную машину.
+title: Choosing and Starting a Virtual Machine
+description: How to properly choose and start a virtual machine.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::info **Please read the [*Terms of Use for Materials on This Resource*](../../Disclaimer).**
 :::
 _______________________________________________
-Познакомимся с тем, как правильно выбрать и запустить виртуальную машину при работе с Zennodroid. 
+Let’s go over how to properly choose and start a virtual machine when working with Zennodroid.
 _______________________________________________
-## Принцип работы с виртуальными машинами в ZD.  
-Когда в действии **Выбрать** не указано имя или индекс, то ZennoDroid всегда выбирает рандомную виртуальную машину, которая не занята в этот момент. Указание конкретной ВМ позволяет избегать ситуаций, когда разные потоки выбирают одну и ту же машину одновременно.  
-#### Пример:  
-Доступна виртуальная машина с именем ***Memu_1*** и два проекта: ***Проект1*** и ***Проект2***, которые с ней работают.  
-***Проект1*** стартует раньше, поэтому забирает ***Memu_1*** себе. Затем запускается ***Проект2***, который подождет 60 секунд и, если ВМ так и не освободится, то завершится с ошибкой. Но если вдруг за это время первый проект освободит машину, то второй заберет ее себе.  
+## How Virtual Machines Work in ZD
+If you don’t specify a name or index in the **Choose** action, ZennoDroid will always pick a random virtual machine that’s not busy at the moment. If you set a specific VM, you can avoid cases where different threads pick the same one at the same time.
+#### Example:
+A virtual machine named ***Memu_1*** is available, and there are two projects: ***Project1*** and ***Project2***, both working with it.
+***Project1*** starts first and grabs ***Memu_1***. Then ***Project2*** starts and will wait 60 seconds. If the VM doesn’t free up, the project will fail with an error. But if the first project lets go before those 60 seconds are up, the second will grab it.
 
-Принцип также актуален в рамках одного проекта, который разделен на несколько потоков. Если для него указана одна конкретная машина, то ее займет поток, который стартует первым, последующие же выдадут ошибку.  
+The same rule works within a single project that uses multiple threads. If you specify just one machine, the thread that starts first takes it, and the rest will get an error.
 _______________________________________________
-## Выбор виртуальной машины.  
-![Выбор](./assets/ChooseVM/ChooseVM_pic1.png)   
-Прежде всего нужно выбрать ВМ, с которой будет работать текущий поток. Сделать это можно с помощью действия [**Выбрать**](../../Android/ProLite/action#как-выбрать-устройство), которое показано на скриншоте выше.         
+## Choosing a Virtual Machine
+![Choosing](./assets/ChooseVM/ChooseVM_pic1.png)
+First, you need to choose a VM for your current thread. Do this with the [**Choose**](../../Android/ProLite/action#как-выбрать-устройство) action shown in the screenshot above.
 _______________________________________________
-### Как правильно выбрать ВМ.  
-Самым простым вариантом будет случайный выбор. Для этого в настройках действия [**Выбрать**](../../Android/ProLite/action#как-выбрать-устройство) нужно оставить пустым поле *«Полное название или индекс»*. А в полях для имени и индекса нужно указать переменные, в которые они сохранятся.  
+### How to Choose a VM Correctly
+The simplest option is random choice. For that, leave the *“Full name or index”* field empty in the [**Choose**](../../Android/ProLite/action#как-выбрать-устройство) action settings. In the name and index fields below, enter variables they’ll be saved to.
 
-При таком подходе ZennoDroid ищет ВМ среди всех доступных, которые не заняты в данный момент.  
-:::warning **Важно.**
-Виртуальная машина, которая в [**Настройках**](../../Settings/Settings_for_Android#использовать-устройство-по-умолчанию) выбрана **по умолчанию** всегда считается занятой, поэтому будет пропускаться при случайном выборе.
-:::    
+With this approach, ZennoDroid will look for available VMs that aren’t busy right now.
+:::warning **Important**
+The virtual machine set as **default** in [**Settings**](../../Settings/Settings_for_Android#использовать-устройство-по-умолчанию) always counts as busy and will be skipped during random selection.
+:::
 _______________________________________________
-## Запуск виртуальной машины.  
-![Запуск](./assets/ChooseVM/ChooseVM_pic2.png)   
-Когда ВМ выбрана, её нужно запустить. Для этого используется действие [**Запустить\Перезапустить**](../../Android/ProLite/action#как-запустить-или-перезапустить-устройство).  
+## Starting a Virtual Machine
+![Starting](./assets/ChooseVM/ChooseVM_pic2.png)
+Once you’ve chosen a VM, you need to start it. Use the [**Start\Restart**](../../Android/ProLite/action#как-запустить-или-перезапустить-устройство) action for that.
 _______________________________________________
-## Полезные ссылки.    
-- [**Действия с устройством**](../../Android/ProLite/action).   
-- [**Установка Memu**](../../ProLite/Memu_Install).
+## Useful links
+- [**Device Actions**](../../Android/ProLite/action)
+- [**Installing Memu**](../../ProLite/Memu_Install)

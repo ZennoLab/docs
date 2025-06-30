@@ -1,57 +1,55 @@
 ---
 sidebar_position: 5
-title: Циклы в ZD
-description: Использование циклов в ZennoDroid
---- 
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+title: Loops in ZD
+description: Using loops in ZennoDroid
+---
+:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
 :::
 _______________________________________________  
-## Описание.
-**Циклы** — это программная конструкция, которая повторяет набор инструкций некоторое количество раз, пока выполняется определенное условие.  
-:::tip **Не используйте циклы часто.**  
-Это сложная конструкция, в которой может возникнуть ряд непредвиденных ошибок. Особенно, если вы не разбираетесь в программировании.  
+## Description.
+**Loops** are a programming construct that repeats a set of instructions a certain number of times while a given condition is met.  
+:::tip **Don’t use loops too often.**  
+This is a complex construct where a number of unexpected errors can occur. Especially if you’re not familiar with programming.
 :::
-_______________________________________________   
-## Автоматическое создание.  
-Нажимаем ПКМ на любой экшен (или выделяем группу экшенов) → ***Повторить в цикле***.  
-
-![Повторить в цикле](./assets/Loops/Loops_pic1.png) 
-
-Затем появится окно с выбором причины завершения цикла:  
-
-![причины завершения цикла](./assets/Loops/Loops_pic2.png)   
-_______________________________________________ 
-### Повторять указанное число раз.  
-При выборе этого варианта нужно будет ввести желаемое число повторений действия. После подтверждения будут созданы **переменная-счетчик**, **экшен для сравнения** с указанным числом и **экшен для прибавления** к значению счетчика.  
-
-![Повторять указанное число раз](./assets/Loops/Loops_pic3.png) 
-_______________________________________________ 
-### Повторять, пока выполняется условие.  
-Здесь же надо указать условие, в рамках которого цикл будет продолжать выполняться *(True)*. Как только условия не совпадут и вернут значение *False*, цикл прервется.  
-После клика на *Ок* данные из поля с условиями перенесутся в [**экшен IF**](../../Project%20Editor/Logic/IF), так что нужно соблюдать правила построения выражений.  
-
-| ![Повторять, пока выполняется условие](./assets/Loops/Loops_pic4.png)    | 
-| -------- | 
-| *Пока текущий URL равен https://google.com будет происходить клик.*   | 
- 
-_______________________________________________ 
-## Создание вручную.  
-Два верхних вариант относятся к автоматическому созданию циклов. Но можно также делать это вручную.  
-
-***Пример:*** необходимо достать данные из сайта, на котором много страниц. Для перехода на каждую следующую страницу необходимо кликнуть по кнопке ***Далее***. Однако когда страницы кончаются, то этой кнопки нет.  
-
-В данном случае условием для завершения цикла станет ошибка при поиске элемента ***Далее***. То есть как только кнопка пропадает, цикла останавливается.  
-
-![Создание вручную](./assets/Loops/Loops_pic5.png)  
-_______________________________________________ 
-:::warning **Не создавайте вечные циклы и не зацикливайте весь проект целиком.**  
-Обязательно добавляйте счетчик в циклы. Иначе шаблон может зависнуть из-за бесконечного выполнения.  
-А помещение в цикл всего проекта может привести к непредсказуемым ошибкам.
-:::  
 _______________________________________________
-## Полезные ссылки.  
-- [**Логика в ZennoDroid**](../../category/логика-в-zd). 
-- [**Написание кода в ZennoDroid**](../../category/свой-код).     
-- [**Выполнить событие**](../../Android/ProLite/RunEvent).
+## Automatic creation.  
+Right-click on any action (or select a group of actions) → ***Repeat in loop***.  
 
+![Repeat in loop](./assets/Loops/Loops_pic1.png)
 
+Then a window will pop up where you choose the reason to end the loop:
+
+![Reasons to end the loop](./assets/Loops/Loops_pic2.png)
+_______________________________________________
+### Repeat a specified number of times.
+When you select this option, you need to enter the desired number of repetitions. After confirming, a **counter variable**, an **action to compare** with the specified number, and an **action to increment** the counter value will be created.
+
+![Repeat a specified number of times](./assets/Loops/Loops_pic3.png)
+_______________________________________________
+### Repeat while condition is true.
+Here you need to set the condition for the loop to keep running *(True)*. As soon as the condition is no longer met and returns *False*, the loop will stop.
+After clicking *OK*, the data from the condition field moves to [**IF action**](../../Project%20Editor/Logic/IF), so be sure to stick to proper expression syntax.
+
+| ![Repeat while condition is true](./assets/Loops/Loops_pic4.png)    | 
+| -------- | 
+| *While the current URL equals https://google.com, a click will happen.*   | 
+
+_______________________________________________
+## Manual creation.
+The two options above are for automatic creation of loops. But you can also do it manually.
+
+***Example:*** You need to scrape data from a website with many pages. To go to each next page, you have to click the ***Next*** button. But when you reach the last page, the button disappears.
+
+In this case, the condition to finish the loop will be the error finding the ***Next*** element. So as soon as the button disappears, the loop stops.
+
+![Manual creation](./assets/Loops/Loops_pic5.png)
+_______________________________________________
+:::warning **Do not create endless loops and don’t put the entire project in a loop.**  
+Always add a counter in your loops. Otherwise, your template can freeze due to infinite execution.
+And putting the whole project in a loop can cause unpredictable errors.
+:::
+_______________________________________________
+## Useful links.
+- [**Logic in ZennoDroid**](../../category/логика-в-zd). 
+- [**Writing code in ZennoDroid**](../../category/свой-код).     
+- [**Run event**](../../Android/ProLite/RunEvent).
