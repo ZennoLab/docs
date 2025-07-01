@@ -1,18 +1,18 @@
----
+﻿---
 sidebar_position: 2
 title: Input Settings
 description: Setting input parameters.
 ---
-:::info **Please read the [*Terms of use for the materials on this resource*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________
 With input settings, you can set the values needed to run the project properly.
 
 :::warning **Input settings are only read at startup!**
-Changing them while the project is running won’t apply until you restart.
+Changing them while the project is running won't apply until you restart.
 :::
 _______________________________________________
-## How do you add “Input Settings” to a project?
+## How do you add "Input Settings" to a project?
 Via the context menu: **Add action → Project → Input settings**.
 
 ![How to add it to the project?](./assets/InputSetting/InputSetting_pic1.png)
@@ -34,17 +34,17 @@ _______________________________________________
 _______________________________________________
 ### Available fields:
 #### Name.
-This is where you give a name to the setting you’re creating.
+This is where you give a name to the setting you're creating.
 
 #### Type.
 ![Type](./assets/InputSetting/InputSetting_pic6.png) ![How to add it to the project?](./assets/InputSetting/InputSetting_pic7.png)
 
 Different data types are supported. They decide what kind of info a user can enter, and also how the setting appears visually.
 
-Below, in a separate section, we’ll go over each one in detail.
+Below, in a separate section, we'll go over each one in detail.
 
 #### Default value.
-The initial value for the parameter. When the project starts, it’ll also be in the ***project variable***.
+The initial value for the parameter. When the project starts, it'll also be in the ***project variable***.
 
 #### Save to variable.
 The variable name where the value will be stored.
@@ -58,7 +58,7 @@ _______________________________________________
 ![Buttons on the right](./assets/InputSetting/InputSetting_pic9.png)
 
 #### Preview.
-The “Magnifier” icon lets you check what the settings you’ve created will look like at any time.
+The "Magnifier" icon lets you check what the settings you've created will look like at any time.
 
 ![Preview](./assets/InputSetting/InputSetting_pic10.png)
 
@@ -96,7 +96,7 @@ Heading. Used for visually splitting up logical sections.
 ![Label](./assets/InputSetting/InputSetting_pic15.png)
 _______________________________________________
 ### Boolean.
-Checkbox. It’s either checked or not (True or False).
+Checkbox. It's either checked or not (True or False).
 
 ![Boolean](./assets/InputSetting/InputSetting_pic16.png)
 _______________________________________________
@@ -140,8 +140,8 @@ Saves the result to a file. To call this option, add `{save}` to the setting nam
 
 ![Save file](./assets/InputSetting/InputSetting_pic24.png)
 
-:::info **You can even save to a file that doesn’t exist yet.**
-While the “Open file” option only works with existing files.
+:::info **You can even save to a file that doesn't exist yet.**
+While the "Open file" option only works with existing files.
 :::
 
 #### Directory path.
@@ -149,7 +149,7 @@ To work with a folder, add `{folder}` to the parameter name.
 _______________________________________________
 ### Dropdown.
 Dropdown list for selecting a value. 2 options available:
-#### Show items “As is”.
+#### Show items "As is".
 ![As is](./assets/InputSetting/InputSetting_pic25.png)
 
 Options in the dropdown will appear just like in the settings editor. Syntax: `Setting name {Option1|Option2|Option3}`.
@@ -158,7 +158,7 @@ Options in the dropdown will appear just like in the settings editor. Syntax: `S
 ![Named](./assets/InputSetting/InputSetting_pic26.png)
 
 Syntax: `Setting name {Option1:Value1|Option2:Value2|Option3:Value3}`.
-`Option` is what’s visible to the user.
+`Option` is what's visible to the user.
 `Value` is what gets stored in the variable.
 _______________________________________________
 ### DropDownMultiSelect.
@@ -166,8 +166,8 @@ Dropdown with multiple selection. Lets you tick several options at once.
 
 ![DropDownMultiSelect](./assets/InputSetting/InputSetting_pic27.png)
 
-You can put several default values separated by commas in the **Default values** field. The syntax is the same as DropDown. If several options are chosen, they’ll be saved to the variable separated by commas.
-:::info **Only “As is” items. Named values aren’t supported.**
+You can put several default values separated by commas in the **Default values** field. The syntax is the same as DropDown. If several options are chosen, they'll be saved to the variable separated by commas.
+:::info **Only "As is" items. Named values aren't supported.**
 :::
 _______________________________________________
 ### SmsServices.
@@ -181,7 +181,7 @@ Select a ***text translation*** service from the list of available ones.
 ![TranslateServices](./assets/InputSetting/InputSetting_pic29.png)
 _______________________________________________
 ### Tab.
-Add another tab to the settings window. For example, you can split “Main” and “Additional settings” into tabs.
+Add another tab to the settings window. For example, you can split "Main" and "Additional settings" into tabs.
 
 ![Tab](./assets/InputSetting/InputSetting_pic30.png)
 _______________________________________________
@@ -209,7 +209,7 @@ Anything entered here is hidden from view. But it will be visible inside the pro
 _______________________________________________
 :::info **Unicode symbols.**
 You can use Unicode symbols in any field. For example — ± ♻ 📞 💙 🚢.
-Even though the browser shows them in color, in the program’s settings they’ll be black and white.
+Even though the browser shows them in color, in the program's settings they'll be black and white.
 :::
 _______________________________________________
 ## Overview of input settings in ZennoDroid.

@@ -1,9 +1,9 @@
----
+﻿---
 sidebar_position: 2
 title: Device Settings (Enterprise)
 description: How to set up a device with ProjectMaker in the Enterprise version
 ---
-:::info **Please review the [*Rules for using materials on this resource*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________
 export const VideoSample = ({source}) => (
@@ -43,7 +43,7 @@ You can enter the data manually or use the current profile. For manual entry, al
 - ***Country***. Two letters from the ISO column.  
 - ***Operator code***. MCC and MNC columns combined (for example, 25002 for MegaFon).  
 - ***Operator name***. The Network column (Baykal Westcom, BeeLine/VimpelCom, MTS).  
-- ***Phone number***. Don’t add the "+" sign at the start—just 79*** and so on.  
+- ***Phone number***. Don't add the "+" sign at the start—just 79*** and so on.  
 
 :::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid) installed.**
 :::
@@ -69,13 +69,13 @@ Go to one of the results, and in the text look for what you need:
 `ro.hardware.chipname=exynos9820`  
 `ro.product.board = нет`  
 `ro.product.model` or `ro.product.system.model`  
-:::info **How to find out your phone’s parameters?**
+:::info **How to find out your phone's parameters?**
 *In the terminal (like [Terminal Emulator for Android](https://apkpure.com/terminal-emulator-for-android/jackpal.androidterm#google_vignette)), run the *getprop* command.*
 :::
  
 _______________________________________________
 ## How to set the WiFi MAC address:  
-Here you can set a new MAC address for the device’s WiFi adapter. You can enter the data manually or use the active profile.
+Here you can set a new MAC address for the device's WiFi adapter. You can enter the data manually or use the active profile.
 
 ![MAC address](../assets/setting/Android_Setting_pic24.png) 
 
@@ -92,7 +92,7 @@ Available values: ***en, ko, de, ja, fr, ru, es, pt, hr, cn, sr, it, cs, th, in,
 :::
 _______________________________________________
 ## Setting the time zone:  
-Lets you pick the device’s time zone.  
+Lets you pick the device's time zone.  
 The format is: ***Europe/Moscow*** or ***America/New_York***, etc.  
 ![Time zone](../assets/setting/Android_Setting_pic16.png)  
 You can check the full list of time zones [**here**](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)  
@@ -117,14 +117,14 @@ A powerful and flexible app that lets you route internet traffic through a proxy
 Here you can set DNS server addresses. If you have several, separate them with a comma `,`  
 
 #### Local IP.  
-*Set the device’s local IP address.*  
+*Set the device's local IP address.*  
 
 If you make the last part of your address zero, for example, `192.168.20.0`, a random address from that subnet will be generated: `192.168.20.2-192.168.20.254`.
 
 ### Redsocks.  
 To proxy traffic, Redsocks2 is used — a transparent redirector of TCP/UDP connections to a proxy.  
 
-#### Use computer‘s internet connection.  
+#### Use computer's internet connection.  
 When this is on, all phone traffic will be routed to your computer.
 
 #### DNS addresses.  
@@ -142,8 +142,8 @@ instance.DroidInstance.Proxy.SetProxy("socks5://10.20.30.40:8080", settings);
 **You should run this code before setting up the proxy.**
 :::  
 
-#### Local IP *(only if using the computer’s internet connection)*.  
-*Set the device’s local IP address.*  
+#### Local IP *(only if using the computer's internet connection)*.  
+*Set the device's local IP address.*  
 
 If you make the last part of your address zero, for example, `192.168.20.0`, a random address from that subnet will be generated: `192.168.20.2-192.168.20.254`.
 
@@ -156,7 +156,7 @@ A powerful proxy client that can route traffic according to rules you set.
 :::warning **BusyBox version 1.36.1 or higher is required.**
 :::
 
-#### Use computer’s internet connection.  
+#### Use computer's internet connection.  
 When this is on, all traffic from the phone is routed through the computer.  
 
 :::info **In this mode, IPv6 proxies are *not supported*.**
@@ -165,8 +165,8 @@ When this is on, all traffic from the phone is routed through the computer.
 #### DNS addresses.  
 Here you can set DNS server addresses. If you have several, separate them with a comma `,`  
 
-#### Local IP *(only if using the computer’s internet connection)*.  
-*Set the device’s local IP address.*  
+#### Local IP *(only if using the computer's internet connection)*.  
+*Set the device's local IP address.*  
 
 If you make the last part of your address zero, for example, `192.168.20.0`, a random address from that subnet will be generated: `192.168.20.2-192.168.20.254`.  
 
@@ -179,12 +179,12 @@ If you use an address like `fdfe:dcba:0::1/126` then the **`0`** will be replace
 #### Whitelist.  
 A list of apps whose traffic goes through the proxy (list each app separated by a comma). All other apps will use a direct internet connection (no proxy).  
 
-You can find an app’s identifier using the [Installed Apps](../../Tools/Installed_App) tool.  
+You can find an app's identifier using the [Installed Apps](../../Tools/Installed_App) tool.  
 
 #### Blacklist.
-Here, it’s the opposite—you set the list of apps that won’t use the proxy. Their traffic goes straight to the internet, and all other apps use the proxy.  
+Here, it's the opposite—you set the list of apps that won't use the proxy. Their traffic goes straight to the internet, and all other apps use the proxy.  
 
-You can find an app’s identifier using the [Installed Apps](../../Tools/Installed_App) tool.  
+You can find an app's identifier using the [Installed Apps](../../Tools/Installed_App) tool.  
 
 :::warning **You can use either whitelist or blacklist, not both.**
 If both are filled in, only the whitelist will be used.

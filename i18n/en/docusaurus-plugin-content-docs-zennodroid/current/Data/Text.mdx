@@ -1,13 +1,13 @@
----
+﻿---
 sidebar_position: 7
 title: Text Processing
 description: Text manipulations.
 ---
-:::info Please check out the [*Rules for using materials on this resource*](../Disclaimer).
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________  
 ## Description  
-This action block is for various text manipulations. For example: processing scraped text, cleaning up garbage, or even translating it to another language – all this and much more is what this “cube” can do.
+This action block is for various text manipulations. For example: processing scraped text, cleaning up garbage, or even translating it to another language – all this and much more is what this "cube" can do.
 
 ### How to add to your project?
 Right-click and select **Add Action → Data → Text Processing**:
@@ -22,7 +22,7 @@ The window is split into three sections:
 **2.** Actions to perform on the string, with settings.  
 **3.** Output string where your result is saved to a variable.
 
-If you put the cursor in the input field and press **Ctrl+Space**, you’ll see a dropdown with useful constants and project variables.
+If you put the cursor in the input field and press **Ctrl+Space**, you'll see a dropdown with useful constants and project variables.
 
 ![Add to project](./assets/Text/Text_pic3.png)
 _______________________________________________  
@@ -44,9 +44,9 @@ This is where you enter your regular expression to search the text. Example: `(?
 :::
 
 ### Error on No Match
-If this option is enabled, the action will return an error if the regular expression **doesn’t find anything** in the text.
+If this option is enabled, the action will return an error if the regular expression **doesn't find anything** in the text.
 
-**Note**: if the regex returns an **empty string**, even if this setting is on the action will **still complete successfully**. For example, if there’s nothing inside a *title* tag: `<title></title>`, the regex `(?<=<title>).*(?=</title>)` matches, but just returns an empty string, and the action is considered a success. But if there’s no *title* at all, you’ll get an error.
+**Note**: if the regex returns an **empty string**, even if this setting is on the action will **still complete successfully**. For example, if there's nothing inside a *title* tag: `<title></title>`, the regex `(?<=<title>).*(?=</title>)` matches, but just returns an empty string, and the action is considered a success. But if there's no *title* at all, you'll get an error.
 
 ### What to take
 ![Add to project](./assets/Text/Text_pic6.png)
@@ -71,9 +71,9 @@ Saves to a list only the matches whose indexes you specify as comma-separated (*
 This feature is for working with group regular expressions.
 
 <details>
-<summary><b>Here’s a detailed example to make it clearer.</b></summary>
+<summary><b>Here's a detailed example to make it clearer.</b></summary>
 
-Let’s say you have this text:
+Let's say you have this text:
 ```
 21.01.2003, 11:34:00.9299
 11.12.2013, 01:22:55.3021
@@ -82,11 +82,11 @@ Let’s say you have this text:
 And you want to break it down. You could use this regex:
 `(\d{2}).(\d{2}).(\d{4}), (\d{2}):(\d{2}):(\d{2}).(\d{4})`
 
-Here’s what the result looks like in the ***Regex Tester***:
+Here's what the result looks like in the ***Regex Tester***:
 
 ![Add to project](./assets/Text/Text_pic8.png)
 
-Now let’s take the day, month, and year from the second line and save them to variables. Here’s how:
+Now let's take the day, month, and year from the second line and save them to variables. Here's how:
 
 ![Add to project](./assets/Text/Text_pic9.png)
 
@@ -101,7 +101,7 @@ Pretty similar to the previous feature, except here you save all results to a ta
 <details>
 <summary><b>Example here as well.</b></summary>
 
-Let’s use the same text:
+Let's use the same text:
 ```
 21.01.2003, 11:34:00.9299
 11.12.2013, 01:22:55.3021
@@ -110,11 +110,11 @@ Let’s use the same text:
 And the same regex:
 `(\d{2}).(\d{2}).(\d{4}), (\d{2}):(\d{2}):(\d{2}).(\d{4})`
 
-Here’s the result in the [**Regex Tester**](../Tools/RegEx_Tester):
+Here's the result in the [**Regex Tester**](../Tools/RegEx_Tester):
 
 ![Add to project](./assets/Text/Text_pic8.png)
 
-For the final table, let’s say you don’t need seconds and milliseconds:
+For the final table, let's say you don't need seconds and milliseconds:
 
 ![Add to project](./assets/Text/Text_pic10.png)
 
@@ -122,7 +122,7 @@ Group **0** is the whole matched line, so skip it. Also ignore groups **6** and 
 </details>
 
 ### Example of Using Regex
-Here’s how you could extract links using regular expressions that you build in the [** constructor**](../Tools/RegEx_Tester#конструктор-регулярных-выражений).
+Here's how you could extract links using regular expressions that you build in the [** constructor**](../Tools/RegEx_Tester#конструктор-регулярных-выражений).
 
 **Goal:** Get profile links for active users on the [**ZennoLab forum**](https://zenno.club/discussion/)
 
@@ -131,7 +131,7 @@ Here’s how you could extract links using regular expressions that you build in
 **1.** Using the [**Get Value**](../Android/ProLite/GetValue) action, get the HTML code that contains links to online users.  
 **2.** Add the **Regex** action. Build your pattern in the [**Regex Constructor**](../Tools/RegEx_Tester#конструктор-регулярных-выражений).  
 **3.** In the action properties, put the *html* variable as input, and save results to the *urls* list.  
-**4.** After running, you’ll get a list of unique IDs which you can use to build user profile URLs.
+**4.** After running, you'll get a list of unique IDs which you can use to build user profile URLs.
 _______________________________________________
 ## Spintax (Randomizing and Varying Text)
 With this tool, you can automatically create synonymized texts. It uses curly braces and vertical slashes to mix things up in random order.
@@ -149,7 +149,7 @@ You can nest as much as you like: `[+{_|-}+Red|White|Blue {1|2}]` = **White-Blue
 Special symbols can be escaped for clarity: `[+\++Red|\[White\]|Blue]` = **[White]+Red+Blue**
 _______________________________________________
 ## Split (Splitting Text)
-Splitting is done using a specific symbol (delimiter). Afterward, you’ll get an array out of your string. This is a simpler alternative to using RegExp for splitting by characters.
+Splitting is done using a specific symbol (delimiter). Afterward, you'll get an array out of your string. This is a simpler alternative to using RegExp for splitting by characters.
 
 ### Delimiters
 Here you enter which symbols to split the data by.
@@ -161,14 +161,14 @@ Easier to show with an example:
 
 ![Add to project](./assets/Text/Text_pic14.png)
 
-Say you’ve got a line like: `name;surname;sex;birth year`. If you skip one value, like no gender: `Andrey;Pavlov;;1988`, then `1988` goes into the **sex** variable, not **year**, which might not be what you want.
+Say you've got a line like: `name;surname;sex;birth year`. If you skip one value, like no gender: `Andrey;Pavlov;;1988`, then `1988` goes into the **sex** variable, not **year**, which might not be what you want.
 
 To fix this, enable *Allow empty values*. Then you can have empty strings written to variables where needed.
 
 ### Example of Split
-Let’s break down proxy lines into parts.
+Let's break down proxy lines into parts.
 
-Bought proxies usually look like this: `login:pass@host:port`. So you’re splitting by both `:` and `@`. Your action block settings might look like this:
+Bought proxies usually look like this: `login:pass@host:port`. So you're splitting by both `:` and `@`. Your action block settings might look like this:
 
 ![Add to project](./assets/Text/Text_pic15.png)
 _______________________________________________
@@ -253,7 +253,7 @@ The effect is easiest to see with Cyrillic:
 **After:** `Привет, мир!`
 _______________________________________________
 ## UrlEncode (Encoding)
-A URL only allows Latin letters, numbers, and a handful of punctuation marks. All other symbols in HTTP requests must be encoded with **UrlEncode** or the server won’t understand your request.
+A URL only allows Latin letters, numbers, and a handful of punctuation marks. All other symbols in HTTP requests must be encoded with **UrlEncode** or the server won't understand your request.
 
 ### Encode Only Variable Values
 This option is useful when building [**HTTP requests**](../Project%20Editor/HTTP%20and%20FTP/HTTP) because you only need to encode parameters, not the site address.
@@ -278,7 +278,7 @@ This action splits your text into lines using the chosen delimiter, then puts th
 ### Delimiter
 - **Enter**. New line.
 - **Space**
-- **Custom text**. You can specify a single character (like `;`) or several (they’ll be treated as one delimiter!).
+- **Custom text**. You can specify a single character (like `;`) or several (they'll be treated as one delimiter!).
 - **Custom Regex**. Use a regex as your splitter.
 _______________________________________________
 ## To Table
@@ -303,7 +303,7 @@ What text should replace what you found in the previous step.
 
 ### Search Type
 - *Text*. Looks for the exact text you type.
-- *Regex*. Here, you give a pattern and it’ll replace matches.
+- *Regex*. Here, you give a pattern and it'll replace matches.
 
 ### What to Replace
 #### First
@@ -343,8 +343,8 @@ Several options are available, which helps make text high-quality and unique.
 ### Source Language / Target Language
 Here you specify which language to translate *from* and *to*.
 
-:::tip You can set the language to “*auto*”.
-The system will *try* to detect the source language automatically, but **can’t guarantee the result**.
+:::tip You can set the language to "*auto*".
+The system will *try* to detect the source language automatically, but **can't guarantee the result**.
 :::
 
 You should enter the *language code*, not its full name. Examples:
@@ -355,7 +355,7 @@ You should enter the *language code*, not its full name. Examples:
 - *And so on. [**Full list**](http://www.loc.gov/standards/iso639-2/php/code_list.php).*
 
 :::warning **Every service has its own language codes.**
-For the most accurate list, always check your chosen service’s docs.
+For the most accurate list, always check your chosen service's docs.
 :::
 _______________________________________________
 ## JavaScript Preparation
@@ -373,7 +373,7 @@ Takes a specific section out of a string. Give it the **From** and **To** charac
 
 ![Add to project](./assets/Text/Text_pic28.png)
 
-In this example, we’re taking a substring **from character 95** to **end of string**, getting *“до другого.”*.
+In this example, we're taking a substring **from character 95** to **end of string**, getting *"до другого."*.
 _______________________________________________
 ## Transliteration
 On rare occasions, you might still need to *convert* Cyrillic into Latin characters. This action does that.

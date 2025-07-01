@@ -1,9 +1,9 @@
----
+﻿---
 sidebar_position: 14
 title: Console Commands
 description: Running console commands.
 ---
-:::info **Please read the [*Guidelines for using materials on this resource*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________
 ## ADB Shell  
@@ -23,7 +23,7 @@ _______________________________________________
 :::warning **All commands should be entered without starting with `ADB Shell`.**
 :::
 
-There are tons of commands, so a whole separate manual would be needed to cover them all. Here we’ll just go over the most popular ones.
+There are tons of commands, so a whole separate manual would be needed to cover them all. Here we'll just go over the most popular ones.
 
 ### File System
 | Name    | Description |
@@ -59,7 +59,7 @@ There are tons of commands, so a whole separate manual would be needed to cover 
 | `pm list packages`  | **Shows a list of installed apps** |
 | `pm uninstall <app_name>` | **Uninstalls an app** |
 | `pm install <path>`    | **Installs an app from the specified APK file** |
-| `pm clear <app_name>`  | **Clears an app’s data** |
+| `pm clear <app_name>`  | **Clears an app's data** |
 | `am force-stop <app_name>` | **Force stops an app** |
 
 ### How can you see all available commands?
@@ -104,8 +104,8 @@ For some commands, you can get a quick help message describing what they do. Jus
 | :-------- |
 | ![How to add to project](../assets/ADB_Shell/ADB_Shell_pic3.png)  |  
 
-:::tip  **If this way doesn’t seem informative to you.**
-You can always look up detailed info online. Since all these commands are basic Linux commands, there’s a ton of guides and explanations for them.
+:::tip  **If this way doesn't seem informative to you.**
+You can always look up detailed info online. Since all these commands are basic Linux commands, there's a ton of guides and explanations for them.
 :::
 _______________________________________________ 
 ## Special Commands
@@ -131,7 +131,7 @@ This is a component of an Android app that represents a single screen of the use
 :::
 
 #### Intent
-This is an object that tells the system what needs to be “done” (for example, open a URL, send an email to a specific address, call a phone number, or take a photo). In the web, you use a URL (link) to go to another page; in Android, you use intents to launch apps or other Activities. An app can create such an intent and send it to the system, and the system decides which activity (or other component) will handle it.
+This is an object that tells the system what needs to be "done" (for example, open a URL, send an email to a specific address, call a phone number, or take a photo). In the web, you use a URL (link) to go to another page; in Android, you use intents to launch apps or other Activities. An app can create such an intent and send it to the system, and the system decides which activity (or other component) will handle it.
 
 :::info  **Call Examples**
 - **Open URL:** `am start -a android.intent.action.VIEW -d https://zennolab.com`  
@@ -140,7 +140,7 @@ This is an object that tells the system what needs to be “done” (for example
 ::: 
 
 ### Package Manager `pm`
-This command is for managing installed apps and packages. With it, you can delete data, enable or disable an app, get a list of installed apps, and so on. The **`pm`** command is especially useful for automating app testing and managing devices that don’t have a graphical interface.
+This command is for managing installed apps and packages. With it, you can delete data, enable or disable an app, get a list of installed apps, and so on. The **`pm`** command is especially useful for automating app testing and managing devices that don't have a graphical interface.
 
 :::info  **Call Examples**
 - **Uninstall an app:** `pm uninstall com.example.MyApp`    

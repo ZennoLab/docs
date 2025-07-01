@@ -1,17 +1,17 @@
----
+﻿---
 sidebar_position: 10
 title: Working with Variables
 description: Working with variables.
 ---
-:::info **Please review the [*Rules for Using Materials on This Resource*](../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________  
 ## Overview  
-A **variable** is a memory container that can hold a set or computed value. It’s the foundation of any programming project.
+A **variable** is a memory container that can hold a set or computed value. It's the foundation of any programming project.
 
 In ZennoDroid, you can create and delete variables, rename them, and assign them different values. The most convenient way to manage them is through the [**Variables Window**](../pm/Interface/Variables).
 
-We recommend keeping C# variables, which are strongly typed, separate from project variables, which aren’t strictly typed. But you can always convert values between these two types without any loss or distortion of data.
+We recommend keeping C# variables, which are strongly typed, separate from project variables, which aren't strictly typed. But you can always convert values between these two types without any loss or distortion of data.
 
 **You can use the action to:**
 - *set and change the values of variables;*
@@ -45,7 +45,7 @@ There are three clearing modes:
 - **Listed**
 - **All except listed**
 
-For example, clearing contents can be useful before starting a new iteration, especially if your template is running in a loop and you want to make sure previous values don’t carry over.
+For example, clearing contents can be useful before starting a new iteration, especially if your template is running in a loop and you want to make sure previous values don't carry over.
 _______________________________________________
 ### Namespace  
 **Local** variables are only visible **within the same thread**. So if your project runs in multi-threaded mode, each thread will have its own independent variable.
@@ -55,7 +55,7 @@ _______________________________________________
 The **namespace** was introduced as an extra property to prevent confusion. You need to specify this when creating global variables and when accessing them.
 _______________________________________________
 ## Examples  
-Let’s look at two practical examples of using variables in projects.
+Let's look at two practical examples of using variables in projects.
 _______________________________________________
 ### Setting a Value
 You can assign or change the values of variables. You can do this in the [**Variables Window**](../pm/Interface/Variables), or using this **Work with Variables** action.
@@ -65,7 +65,7 @@ You can assign or change the values of variables. You can do this in the [**Vari
 In this example, an email address is created using two string variables: *login* and *site domain*.
 _______________________________________________
 ### Working with the Counter  
-Let’s say you need to make a list of ten current timestamps.
+Let's say you need to make a list of ten current timestamps.
 
 ![Working with the Counter](./assets/WorkWithVariables/WorkWithVariables_pic6.png)
 
@@ -73,7 +73,7 @@ Let’s say you need to make a list of ten current timestamps.
 **2.** Next, get the current timestamp using the ***environment variable*** called `{-TimeNow.TimeNow-}`. Add it to the `time` variable and save the result back to it.
 **3.** Now, you need to repeat the previous step **9 more times**. To do this, use the ***IF*** action to compare the value of your `count` counter with the max value `9`.
 **4.** If the condition is not met (the counter is less than or equal to `9`), increase `count` by `1` (the **Increase Counter** action) and repeat *step 2*.
-**5.** When the condition is met (counter is greater than `9`), finish processing and print the value of the `time` variable to the log. You can see the project’s result in the [**Variables Window**](../pm/Interface/Variables).
+**5.** When the condition is met (counter is greater than `9`), finish processing and print the value of the `time` variable to the log. You can see the project's result in the [**Variables Window**](../pm/Interface/Variables).
 _______________________________________________  
 ## Useful Links  
 - [**IF Operator**](../Project%20Editor/Logic/IF)

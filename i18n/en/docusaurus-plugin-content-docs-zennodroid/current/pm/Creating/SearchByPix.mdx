@@ -1,9 +1,9 @@
----
+﻿---
 sidebar_position: 8
 title: Pixel Search
 description: Visual search by pixel color.
 ---
-:::info **Please read [*Material Usage Rules for this resource*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________  
 ## Description.  
@@ -11,11 +11,11 @@ Lets you click on an element using visual search by pixel color. We recommend us
 
 ![Description](./assets/SearchByPix/SearchByPix_pic1.png)  
 
-:::danger **This action uses a lot of your computer’s resources.**
+:::danger **This action uses a lot of your computer's resources.**
 :::
 
-#### What’s this for?   
-To click on an element that you can’t reach through the [**Run Event**](../../Android/ProLite/RunEvent) action.  
+#### What's this for?   
+To click on an element that you can't reach through the [**Run Event**](../../Android/ProLite/RunEvent) action.  
 
 ### How do I add this to my project?  
 To add this action, in the [Device Window](../Interface/DeviceWindow) hover your mouse over the area of the image you need, open the context menu with the right mouse button and select **Pixel Search**.  
@@ -40,7 +40,7 @@ If you need to search for **several** pixels of different colors at the same tim
 In this section you can set the area where the pixel search will be performed.  
 
 - **Whole screen**. Search for the pixel throughout the available screen.  
-- **Selected area**. When you activate this mode in the [Device Window](../Interface/DeviceWindow), you’ll be able to select an area to restrict the search. Use this if you know for sure that the element will appear in a certain part of the screen.  
+- **Selected area**. When you activate this mode in the [Device Window](../Interface/DeviceWindow), you'll be able to select an area to restrict the search. Use this if you know for sure that the element will appear in a certain part of the screen.  
 
 :::tip **Searching in a set area is much faster and lowers the CPU load.**
 :::
@@ -72,7 +72,7 @@ If the search ends with an error, a red cross will appear next to the **Search**
 ![Red cross](./assets/SearchByPix/SearchByPix_pic9.png)  
 
 ### Hiding parts of the image.  
-You can hide part of the image to make sure the search doesn’t pick up anything extra. To do this, click the butterfly button at the bottom of the [Device Window](../Interface/DeviceWindow). Then click on the area you want to hide, and click **Search** again.  
+You can hide part of the image to make sure the search doesn't pick up anything extra. To do this, click the butterfly button at the bottom of the [Device Window](../Interface/DeviceWindow). Then click on the area you want to hide, and click **Search** again.  
 
 ![Hiding part of the image](./assets/SearchByPix/SearchByPix_pic10.png)
 
@@ -80,7 +80,7 @@ To exit this mode, just click the butterfly button again.
 _______________________________________________
 
 ## Adding to your project.  
-Once you’ve found the needed pixel and clicked **Yes**, an extra menu appears:  
+Once you've found the needed pixel and clicked **Yes**, an extra menu appears:  
 
 ![Adding to Project](./assets/SearchByPix/SearchByPix_pic11.png)
 
@@ -89,14 +89,14 @@ Once you’ve found the needed pixel and clicked **Yes**, an extra menu appears:
 
 - *Regular click* — quick press on the selected element.  
 - *Long press* — hold down on the element.
-- *No click* — don’t do anything, just check for the element.  
+- *No click* — don't do anything, just check for the element.  
 
 If the fragment is found, the action goes through the green branch; if not found — through the red one.
 
 ### Click offset.  
 ![Click offset](./assets/SearchByPix/SearchByPix_pic13.png)  
 
-Use this if you need to click with an offset from the pixel’s detected coordinates (for example, above or below).  
+Use this if you need to click with an offset from the pixel's detected coordinates (for example, above or below).  
 
 ### Test.  
 Depending on your settings, this will click on the screen at the found coordinates (including the specified offset).
@@ -104,7 +104,7 @@ Depending on your settings, this will click on the screen at the found coordinat
 ### Add to Project.  
 When everything is set up, you can click this button to add this action to the project.  
 _______________________________________________
-## The “Advanced” tab.  
+## The "Advanced" tab.  
 This tab appears after you add the action to your project.  
 
 ![Advanced](./assets/SearchByPix/SearchByPix_pic14.png)  
@@ -113,13 +113,13 @@ This tab appears after you add the action to your project.
 #### Wait for element.  
 Set the number of seconds for the action to wait for the element to appear.  
 
-In [**Recording Settings**](../../Settings/Record_and_InputMethods) there’s a default search time you can set for all new actions.  
+In [**Recording Settings**](../../Settings/Record_and_InputMethods) there's a default search time you can set for all new actions.  
 
 #### Search area.  
 Here you can manually (or using variables) set the search area.
 
 #### Save found coordinates.  
-This section lets you save the found pixel’s X and Y coordinates into separate variables.  
+This section lets you save the found pixel's X and Y coordinates into separate variables.  
 _______________________________________________
 ## Useful links.
 - [**Image Search**](./SearchByPic)  

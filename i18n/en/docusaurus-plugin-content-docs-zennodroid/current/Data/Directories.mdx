@@ -1,13 +1,14 @@
----
+﻿---
 sidebar_position: 4
 title: Directories
 description: Working with directories.
 ---
-:::info Please read the [*Guidelines for Using Materials on This Resource*](../Disclaimer).
+
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________  
 ## Description  
-This action is designed for working with directories. Here’s what you can do with it:
+This action is designed for working with directories. Here's what you can do with it:
 - *create*,
 - *copy*,
 - *move*,
@@ -35,17 +36,17 @@ This action copies the entire directory along with everything inside it to a new
 ![Copy](./assets/Directories/Directories_pic3.png)
 
 #### Directory path  
-Here’s where you enter the path to the original folder.
+Here's where you enter the path to the original folder.
 
 #### New path  
-And here’s where you enter the destination for the directory.
+And here's where you enter the destination for the directory.
 
 :::warning Please note  
 If a directory with the same name already exists in the new location, nothing will be copied. The action will still finish successfully (green branch).
 :::
 _______________________________________________
 ### Move  
-Works pretty much like the previous one, except it “takes” the directory away from its old locations, meaning it doesn’t keep a copy there.
+Works pretty much like the previous one, except it "takes" the directory away from its old locations, meaning it doesn't keep a copy there.
 _______________________________________________
 ### Get list of directories  
 With this action, you can get a list of all directories in the given path.
@@ -58,7 +59,7 @@ Enter the folder path here.
 #### Search in subdirectories  
 If you turn this option on, the search will look through all subdirectories, no matter how deep.
 
-If you leave it unchecked, you’ll just get the top-level directories.
+If you leave it unchecked, you'll just get the top-level directories.
 
 #### Mask filter  
 In this field, you can enter a search mask. You can set several, using `|` to separate them.
@@ -67,7 +68,7 @@ In this field, you can enter a search mask. You can set several, using `|` to se
 You can save the result to a list.
 _______________________________________________
 ### Get list of files  
-Works the same as the previous action, except this time you’re looking for individual files, not directories.
+Works the same as the previous action, except this time you're looking for individual files, not directories.
 _______________________________________________
 ### Check if directory exists  
 This action lets you check if a directory exists at the specified path. If found, the process goes down the green branch; if not, it goes down the red one.
@@ -84,11 +85,11 @@ This action gets the path to a file in the chosen directory.
 ![Get file path](./assets/Directories/Directories_pic5.png)
 
 #### Directory path  
-Type in the path to the folder where you’ll search for a file.
+Type in the path to the folder where you'll search for a file.
 
 #### File  
 - **By number**: Specify an exact file number (count starts at zero).
-- **Random**: A random file will be chosen from what’s available.
+- **Random**: A random file will be chosen from what's available.
 
 #### Sort alphabetically  
 Check this if you want the file chosen from a list sorted alphabetically.
@@ -96,7 +97,7 @@ Check this if you want the file chosen from a list sorted alphabetically.
 #### Search in subdirectories  
 If this is enabled, the file search will go through all subdirectories, no matter how deep.
 
-If not checked, the file will be picked only from the root of the directory you’re searching in.
+If not checked, the file will be picked only from the root of the directory you're searching in.
 
 #### Mask  
 You can specify a search mask here. You can use several, separated by `|`.
@@ -108,26 +109,26 @@ _______________________________________________
 This action lets you create a new directory at the specified path.
 
 :::warning Please note  
-If a directory already exists at this path, it won’t be overwritten. The action will still finish successfully (green branch).
+If a directory already exists at this path, it won't be overwritten. The action will still finish successfully (green branch).
 :::
 _______________________________________________
 ### Delete  
-This action deletes the chosen folder along with everything inside it. If you try to delete a folder that doesn’t exist, the action will still finish successfully (green branch).
+This action deletes the chosen folder along with everything inside it. If you try to delete a folder that doesn't exist, the action will still finish successfully (green branch).
 
 :::warning Folders deleted this way don't go to the Recycle Bin—they are gone for good!
 :::
 _______________________________________________
 ## Example of use  
-When registering on different sites, you often have to upload an avatar. Imagine you’ve got a folder with ready-made images in *jpg*, *jpeg*, *png*, and *tiff* formats. You need to pick just one.
+When registering on different sites, you often have to upload an avatar. Imagine you've got a folder with ready-made images in *jpg*, *jpeg*, *png*, and *tiff* formats. You need to pick just one.
 
-The site where you’re making an account specifically requires a *PNG* file. So, when searching, you’ll use the mask `*.png` and pick a random image.
+The site where you're making an account specifically requires a *PNG* file. So, when searching, you'll use the mask `*.png` and pick a random image.
 
 ![Example of use](./assets/Directories/Directories_pic6.png)
 
 After running this action, the absolute path to the file will be saved in the `avatar` variable.
 
 :::tip System variable `{-Project.Directory-}`  
-This holds the full path to the project’s folder.
+This holds the full path to the project's folder.
 :::
 _______________________________________________
 ## Mask search  

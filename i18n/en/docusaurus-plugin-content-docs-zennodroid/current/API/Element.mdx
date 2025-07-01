@@ -1,9 +1,9 @@
----
+﻿---
 sidebar_position: 6
 title: Element API
 description: Performing various operations on found elements.
 ---
-:::info **Please read the [*Terms of Use for materials on this site*](../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________  
 ## Description  
@@ -12,12 +12,12 @@ _______________________________________________
 This interface allows you to manage user interface elements in Android apps. You use it to perform various actions on elements found using the [IAppiumDriverAPI](./AppiumDriver) interface methods.
 
 ### Properties  
-- **Element’s id property value**
+- **Element's id property value**
 ```csharp
 string Id { get; }
 ```  
 
-- **Element’s text property value**
+- **Element's text property value**
 ```csharp
 string Text { get; }
 ```  
@@ -35,7 +35,7 @@ var text = de.Text; // Get the text property value
 ```
 _______________________________________________  
 ## Methods
-### Get an element’s property value
+### Get an element's property value
 ```csharp
 string GetAttribute(string name)
 ```   
@@ -73,7 +73,7 @@ if (de == null)
 de.Click(); // Click on the element
 ```
 _______________________________________________ 
-### Clear an element’s value (like input text)
+### Clear an element's value (like input text)
 ```csharp
 void Clear()
 ```   
@@ -86,10 +86,10 @@ var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by
 if (de == null)
     throw new Exception("Element not found");
 
-de.Clear(); // Clear the element’s value
+de.Clear(); // Clear the element's value
 ```
 _______________________________________________ 
-### Enter text into the element’s field
+### Enter text into the element's field
 ```csharp
 void SendText(string text)
 ```   
@@ -107,7 +107,7 @@ var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by
 if (de == null)
     throw new Exception("Element not found");
 
-de.SendText("Hello world!"); // Enter text into the element’s field
+de.SendText("Hello world!"); // Enter text into the element's field
 ```
 _______________________________________________ 
 ### Enter special characters

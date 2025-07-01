@@ -1,12 +1,12 @@
----
+﻿---
 sidebar_position: 3
 title: SMS Handling Services
 description: Receiving SMS messages to a dedicated number.
 ---
-:::info **Please make sure to read the [*Terms and Conditions for using materials on this site*](../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 
-This action is used for SMS tasks. It lets you get a number from the selected service and use it as you need. For example, it’s handy for registering on websites that require SMS confirmation.
+This action is used for SMS tasks. It lets you get a number from the selected service and use it as you need. For example, it's handy for registering on websites that require SMS confirmation.
 _______________________________________________
 ## How to add it to your project?
 Right-click and pick: **Add Action → Data → SMS Services**.
@@ -27,18 +27,18 @@ _______________________________________________
 ![Get Number](./assets/SMS_Services/SMS_Services_pic4.png)
 
 #### Service
-Pick the site or app you need the number for. You can find out exactly how to enter this in the chosen activation service’s documentation.
+Pick the site or app you need the number for. You can find out exactly how to enter this in the chosen activation service's documentation.
 
 #### Operator (Country)
 Here you set the country code for the number you want.
 
-Country codes are different for each service, so you’ll need to check the documentation.
+Country codes are different for each service, so you'll need to check the documentation.
 
 #### Forwarding
 Tick this if you want the number to be forwarded. But note, not every service supports forwarding.
 
 #### Save Activation ID in Variable
-Whatever variable you specify here will store the activation ID. You’ll need this later when your project is waiting for an SMS.
+Whatever variable you specify here will store the activation ID. You'll need this later when your project is waiting for an SMS.
 _______________________________________________
 ### Action — Change Status
 Notify the service that the status of the number has changed.
@@ -52,7 +52,7 @@ Here, enter the activation ID you got from **Get Number**. You can use a variabl
 - **SMS Sent**: The message was successfully sent to the specified number.
 - **Resend Code**: Use if you need to send another SMS.
 - **Cancel Request**: Use if you no longer need the number. Some services might refund your money.
-- **Number Already Used**: Lets the service know the number isn’t suitable because it’s already in use.
+- **Number Already Used**: Lets the service know the number isn't suitable because it's already in use.
 - **Complete**: Tells the service the task for this number is done.
 
 #### Forwarding
@@ -61,7 +61,7 @@ _______________________________________________
 ### Action — Get Status
 Use this to check the status of your number.
 
-The program will wait up to 3 minutes for the SMS to arrive. If it hasn’t arrived by then, the result variable will be set to `Wait`. You’ll have to try the action again. Some services can take up to 15 minutes to deliver the SMS, so take that into account.
+The program will wait up to 3 minutes for the SMS to arrive. If it hasn't arrived by then, the result variable will be set to `Wait`. You'll have to try the action again. Some services can take up to 15 minutes to deliver the SMS, so take that into account.
 
 ![Get Status](./assets/SMS_Services/SMS_Services_pic6.png)
 
@@ -69,7 +69,7 @@ The program will wait up to 3 minutes for the SMS to arrive. If it hasn’t arri
 Enter the activation ID from **Get Number**. You can use a variable macro.
 _______________________________________________
 ### Extra Parameters
-Some services have additional parameters that aren’t part of the standard action settings. You can enter them in a special field like this: `parameter=value`.
+Some services have additional parameters that aren't part of the standard action settings. You can enter them in a special field like this: `parameter=value`.
 
 You can send several parameters at once. Separate them with `&`, like this: `&parameter1=value1&parameter2=value2&parameterN=valueN`.
 
@@ -89,8 +89,8 @@ _______________________________________________
 |:--:|
 | *Basic SMS service flow* |
 
-:::warning **Don’t use endless loops in your projects.**
-They’ll cause your template to hang and waste your money. For example, if your project gets stuck trying to get a number, it’ll keep buying new ones until you run out of funds.
+:::warning **Don't use endless loops in your projects.**
+They'll cause your template to hang and waste your money. For example, if your project gets stuck trying to get a number, it'll keep buying new ones until you run out of funds.
 :::
 _______________________________________________
 ## Useful links

@@ -1,12 +1,12 @@
----
+﻿---
 sidebar_position: 4
 title: App Actions
 description: Functions for working in a virtual machine
 ---
-:::info **Please read the [*Materials Usage Policy on this resource*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________
-Let’s go over the available functions for working directly inside the virtual machine. For example: installing apps, launching, stopping, running console commands (ADB Shell), and more.
+Let's go over the available functions for working directly inside the virtual machine. For example: installing apps, launching, stopping, running console commands (ADB Shell), and more.
 
 ## How to add it to the project?
 ***Right-click → Add action → Android → App Actions***
@@ -46,7 +46,7 @@ Before saving data, it's best to close the app by using the Keyboard Emulation a
 :::
 
 #### Why close the app before saving data?
-If the app is open while you’re saving its data, some files might still be in memory and not in the file system, so they might not get saved. Also, you shouldn’t close the app with the **Close app** action for this purpose, as it kills the process abruptly and could result in data loss.
+If the app is open while you're saving its data, some files might still be in memory and not in the file system, so they might not get saved. Also, you shouldn't close the app with the **Close app** action for this purpose, as it kills the process abruptly and could result in data loss.
 ### Restore app data.
 ![Restore app data](../assets/App/App_pic8.png)
 This lets you load app data previously saved using the ***Save app data*** action.
@@ -57,8 +57,8 @@ This lets you load app data previously saved using the ***Save app data*** actio
 The app must be installed in the system but not running when restoring its data!
 :::
 
-### Get the app’s apk.
-![Get the app’s apk](../assets/App/App_pic9.png)
+### Get the app's apk.
+![Get the app's apk](../assets/App/App_pic9.png)
 This action lets you extract the installation file for an app in ***.apk*** or ***.apks*** format.
 You can later install the app using the **Install apk** action.
 _______________________________________________
@@ -78,7 +78,7 @@ This feature clears all accumulated notifications from the top panel.
 _______________________________________________
 ### Name of the active app.
 ![Name of the active app](../assets/App/App_pic12.png)
-This action lets you get the name of the app that’s active and in the foreground on your device.
+This action lets you get the name of the app that's active and in the foreground on your device.
 _______________________________________________
 ### Get the list of apps.
 ![Get the list of apps](../assets/App/App_pic13.png)
@@ -86,11 +86,11 @@ This action gets the names of all installed apps and saves them to a list.
 #### Filter options for apps:
 - *All*. All apps installed on the device.
 - *System*. Pre-installed system apps, which are usually not removable (only hidable).
-- *User*. Apps you’ve installed yourself.
+- *User*. Apps you've installed yourself.
 _______________________________________________
 ### Check if the app is already installed.
 ![Check if the app is already installed](../assets/App/App_pic14.png)
-This action checks if an app is installed on the device. If it’s missing, the process will go down the error branch.
+This action checks if an app is installed on the device. If it's missing, the process will go down the error branch.
 _______________________________________________
 ## Useful links.
 - [**Getting Started with the Browser**](../../get-started/browser).

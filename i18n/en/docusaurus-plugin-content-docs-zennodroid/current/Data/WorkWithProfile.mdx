@@ -4,14 +4,15 @@ title: Profile Operations
 description: Profile Operations.
 ---
 
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+
 export const VideoSample = ({source}) => (
   <video controls playsInline muted preload="auto" className='docsVideo'>
     <source src={source} type="video/mp4" />
-</video>
+  </video>
 );
 
-:::info Please read the [*Rules for using materials on this resource*](../Disclaimer).
-:::
 _______________________________________________
 ## Description
 To work on the internet, ZennoDroid uses a special entity called a **Project Profile**. You can save and load it in a template, and then use different identities for working with various resources. The profile stores a lot of commonly used parameters. For example:  
@@ -39,7 +40,7 @@ Some parameters can be set as defaults for each new profile generation. You do t
 ![Add to project](./assets/WorkWithProfile/WorkWithProfile_pic1.png)
 
 ### Current Profile
-To see the current profile’s characteristics, click the **Current Profile** button on the top panel.
+To see the current profile's characteristics, click the **Current Profile** button on the top panel.
 
 ![Add to project](./assets/WorkWithProfile/WorkWithProfile_pic2.png)
 _______________________________________________
@@ -80,7 +81,7 @@ With this action, you can manually edit profile settings. For some of them, you 
 - **Or modify profile data any other way you want to suit your needs**
 _______________________________________________
 ## Using profile data
-You can use profile data in other actions as you go. For instance, in the ***Process Variables*** action. You’ll use ***environment variable*** macros for this, like `{-Profile.Name}`.
+You can use profile data in other actions as you go. For instance, in the ***Process Variables*** action. You'll use ***environment variable*** macros for this, like `{-Profile.Name}`.
 
 ![Add to project](./assets/WorkWithProfile/WorkWithProfile_pic7.png)
 

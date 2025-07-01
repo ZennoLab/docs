@@ -1,22 +1,22 @@
----
+﻿---
 sidebar_position: 6
 title: Profile Window 
 description: Virtual identity settings.
 ---  
-:::info **Please read the [*Terms of Use for materials on this site*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________
 
 This window is used to show information about the current identity. To open it, just click on the **Current Profile** button.
 ![Current Profile](./assets/Work_with_Profile/Work_with_Profile_pic1.png)  
 _______________________________________________  
-## What is a Profile and what’s it for?  
+## What is a Profile and what's it for?  
 A **Profile** is a virtual identity that **ProjectMaker** generates. You can set up its browser, OS, platform, nationality, gender, age, emulated data, and more.
 
 ![What is a Profile](./assets/Work_with_Profile/Work_with_Profile_pic2.png) 
 
 This feature is useful while creating or debugging a project to check how it runs with different datasets. You can quickly generate a profile with new data, or load another one from a file.  
-:::info **When you save or load a profile, the browser’s cookies and cache are saved/transferred as well.**
+:::info **When you save or load a profile, the browser's cookies and cache are saved/transferred as well.**
 :::  
 _______________________________________________   
 ## Working with a Profile.  
@@ -30,10 +30,10 @@ _______________________________________________
 *You can also do these actions while working on a project through the [**Profile Operations**](../../Data/WorkWithProfile) action. There, you can also edit some fields.*
 :::   
 _______________________________________________  
-### “Person” Tab.  
-![“Person” Tab.](./assets/Work_with_Profile/Work_with_Profile_pic4.png)  
+### "Person" Tab.  
+!["Person" Tab.](./assets/Work_with_Profile/Work_with_Profile_pic4.png)  
 
-Here you’ll see basic info about the current profile. Most fields are read-only and can be copied, except for the profile's email and its password, which you can edit right here.  
+Here you'll see basic info about the current profile. Most fields are read-only and can be copied, except for the profile's email and its password, which you can edit right here.  
 :::tip ***How to copy?***
 *Double-click the value you want to select → right-click to bring up the familiar context menu → **Copy**.*
 :::  
@@ -43,10 +43,10 @@ Here you’ll see basic info about the current profile. Most fields are read-onl
 In the program settings, you can set a *Default email* and *Nationality* for all profiles.
 :::  
 _______________________________________________ 
-### “Cookies” Tab.  
-Here, you’ll see all the cookies for your current profile.
+### "Cookies" Tab.  
+Here, you'll see all the cookies for your current profile.
 
-![“Cookies” Tab.](./assets/Work_with_Profile/Work_with_Profile_pic6.png)     
+!["Cookies" Tab.](./assets/Work_with_Profile/Work_with_Profile_pic6.png)     
 
 #### Editing.  
 Use these buttons to edit Cookies.
@@ -63,13 +63,13 @@ Use these buttons to edit Cookies.
 
 Use the search bar to find Cookies by any parameter you want. Next to it is a button that sorts by domain. You can use both at the same time.
 _______________________________________________ 
-### “Profile” Tab.  
+### "Profile" Tab.  
 
 <details>
-<summary>**Here you’ll find detailed info about the generated identity.**</summary>
+<summary>**Here you'll find detailed info about the generated identity.**</summary>
 <!--All you need is a blank line-->
 
-    ![“Profile” Tab.](./assets/Work_with_Profile/Work_with_Profile_pic9.png)   
+    !["Profile" Tab.](./assets/Work_with_Profile/Work_with_Profile_pic9.png)   
 </details>    
    
 :::tip **Profile gender in ProjectMaker uses a logical type:**  
@@ -81,13 +81,13 @@ _______________________________________________
 ### Using the Variables window.  
 ![Variables window.](./assets/Work_with_Profile/Work_with_Profile_pic10.png)  
 
-In the Variables window, in the **Environment (1)** tab, you’ll find a list of variables that are handy for working with Profiles. They’ll start with `Profile`. You can also **copy the macro (2)** for a selected variable right here.
+In the Variables window, in the **Environment (1)** tab, you'll find a list of variables that are handy for working with Profiles. They'll start with `Profile`. You can also **copy the macro (2)** for a selected variable right here.
 _______________________________________________ 
 ### Manually.
-In any field that supports variable macros (for example, in the [**Notification**](../../Project%20Editor/Logic/Notification) action), press `Ctrl+Space`. Find `{}Profile` and click on it. Then type a dot to bring up another dropdown with all the profile variables. Double-click any variable you need and it’ll insert automatically.  
+In any field that supports variable macros (for example, in the [**Notification**](../../Project%20Editor/Logic/Notification) action), press `Ctrl+Space`. Find `{}Profile` and click on it. Then type a dot to bring up another dropdown with all the profile variables. Double-click any variable you need and it'll insert automatically.  
 ![Manually.](./assets/Work_with_Profile/Work_with_Profile_pic11.png) ![Macro](./assets/Work_with_Profile/Work_with_Profile_pic12.png)  ![Function](./assets/Work_with_Profile/Work_with_Profile_pic13.png)
 
-:::info **Variables that aren’t in the Profile window.**
+:::info **Variables that aren't in the Profile window.**
 `{-Profile.NickName-}` (its value is different from `{-Profile.Login-}`)  
 `{-Profile.SecretQuestionAnswer1-}` and `{-Profile.SecretQuestionAnswer2-}`
 :::  

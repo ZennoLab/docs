@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Choosing a Smartphone for Flashing
 description: Useful info for picking a device
 ---
-:::info **Please read the [*Terms of Use for Materials on This Resource*](../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________
 ## Info about firmware
@@ -13,7 +13,7 @@ _______________________________________________
 - Some firmware sometimes includes a property (prop) for a backdoor: `debug.rootbackdoor=1`, with **third-party access keys already embedded**. You can read more about this on [**4PDA**](https://4pda.to/forum/index.php?showtopic=908196&view=findpost&p=95402137).
 _________________
 ## Info about devices
-- Sometimes, to save money at work, **you can use demo versions of smartphones**. These usually don’t have a cellular module and are sold used (ex-display).
+- Sometimes, to save money at work, **you can use demo versions of smartphones**. These usually don't have a cellular module and are sold used (ex-display).
 - Devices with MediaTek-based processors still **support dumping and flashing a full image of the flash memory**. This platform is considered cheap, which is probably why you get such direct access.
 - Almost all Huawei smartphones use their own processors—**Kirin**.
 
@@ -37,7 +37,7 @@ _________________
 :::
 _________________
 ## Tips for installation and setup
-- The Enterprise version works via ADB, so **you can use any emulators**. But you’ll have to handle setting them up yourself.
+- The Enterprise version works via ADB, so **you can use any emulators**. But you'll have to handle setting them up yourself.
 ### Removing packages
 **Android can be slimmed down** by removing certain packages (including system ones) using the command `pm uninstall --user 0 package.path.name`. This works for both physical devices and virtual machines (at the very least for ad packages).
 
@@ -59,8 +59,8 @@ ________________
 Before editing partitions on a physical device, make a full flash memory dump with all partitions included. Then test the method you plan to use for restoring the dump. If the device works fine after that, you can move on to editing.
 
 #### What methods are there?
-- **Recovery**. Gives you pretty broad access and features. But without its own partition, plus with no bootloader, it won’t start.
-- [**Fastboot**](https://android.googlesource.com/platform/system/core/+/master/fastboot/README.md). Supports making logical partitions, but not all devices have it. For example, in Samsung phones, it’s just a dummy, and the phone uses its own custom protocol.
+- **Recovery**. Gives you pretty broad access and features. But without its own partition, plus with no bootloader, it won't start.
+- [**Fastboot**](https://android.googlesource.com/platform/system/core/+/master/fastboot/README.md). Supports making logical partitions, but not all devices have it. For example, in Samsung phones, it's just a dummy, and the phone uses its own custom protocol.
 - **Bootloader**. Has pretty limited capabilities—basically resetting existing partitions and flashing images over already present ones.
 ________________
 ## Useful links

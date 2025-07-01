@@ -1,19 +1,19 @@
----
+﻿---
 sidebar_position: 3
 title: Value Ranges
 description: How do you use ranges?
 --- 
-:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________  
 ## Description.
-Pretty often, when setting up a project, you’ll come across spots where you need to specify match numbers, lines, cells, etc. And most of the time, you can’t just put in a specific number. That’s what ranges are for – they let you number stuff more flexibly.
+Pretty often, when setting up a project, you'll come across spots where you need to specify match numbers, lines, cells, etc. And most of the time, you can't just put in a specific number. That's what ranges are for – they let you number stuff more flexibly.
 
 The article uses examples with lists, but remember, you can use the same approach anywhere you need to put in some kind of number.
 
 ### When do you use ranges?  
 - To get a range of lines. For example, from the fifth to the seventh, and so on.  
-- To grab the last line, even if you don’t know how many there are in total.  
+- To grab the last line, even if you don't know how many there are in total.  
 - To pick a random line or several random lines, either from the whole thing or from a range you specify.  
 - To get even/odd lines from a certain interval.  
 - To grab random lines from even/odd lines in a range.  
@@ -23,19 +23,19 @@ _______________________________________________
 ### Getting lines from one or several ranges.  
 ![Program Start](./assets/Value_Ranges/Value_Ranges_pic1.png)    
 
-If you want to get lines from the fifth to the seventh, for example, you’d write the line number like this:
+If you want to get lines from the fifth to the seventh, for example, you'd write the line number like this:
 
-**`4-6`** *(it’s one less because numbering starts from 0)*.  
+**`4-6`** *(it's one less because numbering starts from 0)*.  
 
 You can put in a few ranges, separated by **`;`** or **`,`**  
 For example, **`10-15; 7; 22-34`**   
 _______________________________________________ 
 ### Picking a random element.  
-This is useful if there are several identical elements on a page and you don’t really care which one you interact with. To click one of them at random, just put **`random`** as the match number.
+This is useful if there are several identical elements on a page and you don't really care which one you interact with. To click one of them at random, just put **`random`** as the match number.
 
 ![Program Start](./assets/Value_Ranges/Value_Ranges_pic3.png)  
 _______________________________________________ 
-### Don’t know the length of the list but need to go to the end.  
+### Don't know the length of the list but need to go to the end.  
 The end of the list is written as **`end`**. So just set the interval as needed: for example, **`10-end`** will get lines 11 through the last one in the file.  
 :::info **Getting all lines from the list**
 You can grab all the lines using the **`all`** keyword.

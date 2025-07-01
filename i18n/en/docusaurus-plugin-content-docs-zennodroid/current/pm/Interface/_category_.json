@@ -1,9 +1,9 @@
 {
-    "label": "Интерфейс",
+    "label": "Interface",
     "position": 2,
     "link": {
       "type": "generated-index",
-      "title": "Интерфейс ProjectMaker"
+      "title": "ProjectMaker Interface"
     }
   }
   

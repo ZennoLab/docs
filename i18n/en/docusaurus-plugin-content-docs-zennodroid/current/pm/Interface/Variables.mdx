@@ -1,9 +1,9 @@
----
+﻿---
 sidebar_position: 1
 title: Variables Window
 description: How do you work with variables?
 ---
-:::info **Please read the [*Rules for using materials on this resource*](../../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 _______________________________________________  
 
@@ -17,7 +17,7 @@ Click the button with four squares on the [**Static Blocks Panel**](../../catego
 
 ![First way](./assets/Variables/Variables_pic1.png) 
   
-:::info **I don’t see this panel.**
+:::info **I don't see this panel.**
 Right-click on empty space and check the right box:  
 
 ![First way](./assets/Variables/Variables_pic2.png)
@@ -29,7 +29,7 @@ Top menu **Window → Variables → ✓**:
 ![Second way.](./assets/Variables/Variables_pic3.png) 
 _______________________________________________ 
 ## Controls.
-Let’s go through each element of the **Variables Window**.  
+Let's go through each element of the **Variables Window**.  
 
 ![Controls.](./assets/Variables/Variables_pic4.png)
 _______________________________________________ 
@@ -42,13 +42,13 @@ _______________________________________________
 - **Custom.**  
 These are variables you create yourself while making your template.  
 :::info **Rules for creating variables.**
-They have to be written in English letters. Numbers can’t be at the start. No spaces or symbols except `_` allowed.
+They have to be written in English letters. Numbers can't be at the start. No spaces or symbols except `_` allowed.
 :::  
 _______________________________________________   
 - **Auto.**  
 Generated automatically in **Project Recording** mode or when adding some blocks (like [**Android → Get Value**](../../Android/ProLite/GetValue)).   
 They usually have names like `Variable1`, `RecognitionResult0`. But you can always move them to **Custom** and give them any name you want.  
-:::tip **“Move to Custom” Button.**
+:::tip **"Move to Custom" Button.**
 ![Move to Custom](./assets/Variables/Variables_pic6.png)
 :::  
 _______________________________________________ 
@@ -63,7 +63,7 @@ Project environment variables. These include:
 These are available to all projects and their threads in ZennoDroid, while regular variables exist only within a single project.  
 Their unique feature is they have an extra property — ***Namespace***.  
 :::info **Be careful.**
-**ProjectMaker** and **ZennoDroid** have *separate global variables*. So changes you make to a global variable in PM won’t show up in ZD and vice versa.
+**ProjectMaker** and **ZennoDroid** have *separate global variables*. So changes you make to a global variable in PM won't show up in ZD and vice versa.
 :::  
 _______________________________________________ 
 - **Json.**  
@@ -90,7 +90,7 @@ _______________________________________________
 #### Filter. 
 ![Filter](./assets/Variables/Variables_pic12.png) 
 
-Opens or closes the filter field. If your project has lots of variables, finding the right one can take a while. So there’s a multi-feature filter — each column can be filtered in 12 different ways.  
+Opens or closes the filter field. If your project has lots of variables, finding the right one can take a while. So there's a multi-feature filter — each column can be filtered in 12 different ways.  
 
 ![filter field](./assets/Variables/Variables_pic13.png)
 _______________________________________________ 
@@ -112,10 +112,10 @@ _______________________________________________
 #### Rename.  
 ![Rename.](./assets/Variables/Variables_pic17.png)  
 
-Brings up a dialog so you can edit the variable’s name.   
+Brings up a dialog so you can edit the variable's name.   
 Available only for **Custom** and **Global** types.  
 You can also quickly rename by double-clicking a variable in the **Name** column.  
-:::warning **The variable name will also change everywhere it’s used in actions.**
+:::warning **The variable name will also change everywhere it's used in actions.**
 :::  
 _______________________________________________ 
 #### Clear unused variables.  
@@ -132,7 +132,7 @@ You can arrange variables how you want using the **Up** and **Down** buttons. Yo
 Your own order works only when column sorting is off.  
 _______________________________________________ 
 ### Column headers.  
-They’re used both for filtering and sorting variables. Just click a column header to sort by it, ascending or descending.  
+They're used both for filtering and sorting variables. Just click a column header to sort by it, ascending or descending.  
 Right-click any column header to set which columns show up.  
 
 ![Column headers](./assets/Variables/Variables_pic20.png)  
@@ -150,13 +150,13 @@ When a project starts, all variables are empty. But if you add a value here, it 
 :::info **Environment, JSON, and XML variables never have default values.**
 ::: 
 - **Note.**  
-This column is hidden by default. You can use it for notes on the variable. For example, specify the purpose or goal so you don’t forget later.  
+This column is hidden by default. You can use it for notes on the variable. For example, specify the purpose or goal so you don't forget later.  
 _______________________________________________ 
 ### Copying and Context Menu.  
 #### Copy variable macro to clipboard.  
 ![Copying and Context Menu.](./assets/Variables/Variables_pic21.png) 
 
-A fast way to copy a macro like `{-Variable.value-}` is to just click the icon in the variable’s row.  
+A fast way to copy a macro like `{-Variable.value-}` is to just click the icon in the variable's row.  
 _______________________________________________ 
 #### Context menu.  
 Right-click any variable to get the menu. It works in the **Custom**, **Auto**, and **Global** tabs.  
@@ -172,7 +172,7 @@ Quite often you need to start a new project using variables from an old template
 ![four squares](./assets/Variables/Variables_pic24.png) 
 
 **3.** Then open the new project, right-click the variables icon again but now pick **Paste variables**.  
-**4.** In the window that pops up, check the variable types you want to add. They’ll all be copied along with their default values.  
+**4.** In the window that pops up, check the variable types you want to add. They'll all be copied along with their default values.  
 
 ![check what you need](./assets/Variables/Variables_pic25.png)  
 _______________________________________________ 
@@ -192,10 +192,10 @@ For global variables you need to specify the scope in the macro: `{-GlobalVariab
 
     In ZennoDroid, variables can be three types:  
     - **Numeric/ int and float** (`0`, `1`, `12.652`, `12507`).  
-    - **String/ string** (`“Hello World“`, `<div>Hello World</div>`).  
+    - **String/ string** (`"Hello World"`, `<div>Hello World</div>`).  
     - **Boolean/ boolean** (`True`, `False`)  
 
-    You can use variables in both **C#** and **JavaScript** blocks. But in C#, all variables come in as *text (string)* values, so if you need to use *numbers (int or float)* or *booleans (boolean)*, you’ll need to convert them.  
+    You can use variables in both **C#** and **JavaScript** blocks. But in C#, all variables come in as *text (string)* values, so if you need to use *numbers (int or float)* or *booleans (boolean)*, you'll need to convert them.  
     The screenshot below shows how to convert using addition and return:  
 
     ![conversion method](./assets/Variables/Variables_pic27.png) 
@@ -204,7 +204,7 @@ For global variables you need to specify the scope in the macro: `{-GlobalVariab
 </details>   
 _______________________________________________ 
 ### Name tips.  
-Try to name your variables so their role is clear at once. Avoid meaningless short names like `f1`, `123`, `sdgtg`, because you’ll just make project maintenance harder for yourself and anyone else who works with your template.  
+Try to name your variables so their role is clear at once. Avoid meaningless short names like `f1`, `123`, `sdgtg`, because you'll just make project maintenance harder for yourself and anyone else who works with your template.  
 If a variable is used a lot in your project, it should have a short but clear name — `counter`, `username`, `proxy`.  
 Try to separate multiple words in names either by capital letters like `MySecondPassword` or underscores like `page_html`.  
 
@@ -227,7 +227,7 @@ _______________________________________________
 ### Using variables.  
 Use variables instead of hard-coding text where the value might change.  
 
-For instance, file paths — you might have one on your computer, but your client uses another. If the needed file is in the same directory as the project (or one of its subfolders), it’s best to use the macro   
+For instance, file paths — you might have one on your computer, but your client uses another. If the needed file is in the same directory as the project (or one of its subfolders), it's best to use the macro   
 `{-Project.Directory-}`. This is the path to the folder where the project is saved.  
 _______________________________________________
 ## Useful links.  

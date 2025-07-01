@@ -4,7 +4,7 @@ title: Automating Work in Apps
 description: How to automate working in apps.
 ---
 
-:::info Please take a look at the [*Rules for Using Materials on This Site*](../Disclaimer).
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________
 export const VideoSample = ({source}) => (
@@ -13,10 +13,10 @@ export const VideoSample = ({source}) => (
 </video>
 );  
 
-Let’s look at how to install and automate an app on Android.
+Let's look at how to install and automate an app on Android.
 
 With **ZennoDroid**, you can set up automation for any action in a mobile app.  
-In this article, we’ll go over two examples:  
+In this article, we'll go over two examples:  
 - How to install Youtube on [the Memu 9 emulator](https://www.memuplay.com/) using **ZennoDroid Pro**.
 - How to update the pre-installed Youtube on a real phone using **ZennoDroid Enterprise**.
 
@@ -24,25 +24,25 @@ All the info from the text will also be shown in step-by-step video guides.
 _______________________________________________
 ## Installing an App and Taking the First Steps
 
-Here, we’ll break down how to install Youtube with the Memu 9 emulator and give a thumbs up on the first video.
+Here, we'll break down how to install Youtube with the Memu 9 emulator and give a thumbs up on the first video.
 
 ### 1. Launching Google Play  
-When your device is connected, you need to start the app. You can do this by clicking the **“Installed Apps”** button or using the **Open App** action. In both cases, you can search by *App Identifier*. For Google Play, it’s ***com.android.vending***. Just enter the app store name (Google Play) and launch it.
+When your device is connected, you need to start the app. You can do this by clicking the **"Installed Apps"** button or using the **Open App** action. In both cases, you can search by *App Identifier*. For Google Play, it's ***com.android.vending***. Just enter the app store name (Google Play) and launch it.
 
 ### 2. Search for Youtube  
-Right-click the search bar and add it to the [**Action Builder**](../pm/Interface/ActionBuilder) and in the **Value** field type “*youtube*”.
+Right-click the search bar and add it to the [**Action Builder**](../pm/Interface/ActionBuilder) and in the **Value** field type "*youtube*".
 :::info Why do this?
-The **“Test”** button lets you quickly try out the current action and make sure it works. If everything’s good, click **“Add to Project”**.
+The **"Test"** button lets you quickly try out the current action and make sure it works. If everything's good, click **"Add to Project"**.
 :::
 
 ### 3. Install and Open  
-Change the action type from **“Set”** to **“Rise”**, which gives you access to the **“Touch”** event (which covers screen taps). Select Youtube and install it. Then open the app just like you did before.
+Change the action type from **"Set"** to **"Rise"**, which gives you access to the **"Touch"** event (which covers screen taps). Select Youtube and install it. Then open the app just like you did before.
 :::info Heads up
-For the **“Open”** action, add an extra property to wait for an element. Set it to **30 seconds**—the script will try to open the app for that long before giving an error.
+For the **"Open"** action, add an extra property to wait for an element. Set it to **30 seconds**—the script will try to open the app for that long before giving an error.
 :::
 
 ### 4. Tap the First Video  
-In the app, find the first video and locate the element that plays it (you can match it by the video’s title). Add this element to the project and delete everything from the **Value** field except *Play*. Under **Search**, pick the value **0** and set **Rise**. This way, the script will always play the very first video, no matter its name.
+In the app, find the first video and locate the element that plays it (you can match it by the video's title). Add this element to the project and delete everything from the **Value** field except *Play*. Under **Search**, pick the value **0** and set **Rise**. This way, the script will always play the very first video, no matter its name.
 
 ### 5. Give a Thumbs Up  
 Next, find the element for the thumbs up button. Do the same as before, but in the **Value** field, leave only *You\liked*.
@@ -53,15 +53,15 @@ _______________________________________________
 _______________________________________________
 ## Updating an App on a Real Phone
 
-Now let’s go over how to do this on a real phone, without an emulator. We’ll update the pre-installed Youtube and like the first video.
-:::info What’s different?
+Now let's go over how to do this on a real phone, without an emulator. We'll update the pre-installed Youtube and like the first video.
+:::info What's different?
 *The steps are basically the same as the previous example, with just a few tweaks.*
 :::
 
 ### Steps
 
 1. Open the app store and find Youtube.
-2. Add the **“Update”** button to Action Builder and change the action to **“Rise”**.
+2. Add the **"Update"** button to Action Builder and change the action to **"Rise"**.
 3. Launch the app after the update is finished.
 4. Find the first video and create an action that always selects just that one.
 5. Give it a thumbs up.

@@ -1,9 +1,10 @@
----
+﻿---
 sidebar_position: 6
 title: Random
 description: Generating random numbers.
 ---
-:::info **Please check out the [*Terms of Use for Materials on This Site*](../Disclaimer).**
+
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________  
 ## Description  
@@ -32,9 +33,9 @@ Logins are generated based on a specified formula. There are three preset format
 
 The only difference here is the language: `Eng` for English, `Jap` for Japanese, `Lat` for Latin.
 
-`[Eng|4]` means a nickname will be generated that’s four English syllables long. There’s a chance the syllables will be combined like they are in actual words.
+`[Eng|4]` means a nickname will be generated that's four English syllables long. There's a chance the syllables will be combined like they are in actual words.
 
-Let’s experiment with the formula and make a more complex setup:
+Let's experiment with the formula and make a more complex setup:
 
 `[RndSym|[RndNum|0|4]|0123456789][Lat|3][RndSym|[RndNum|0|2]|-][Jap|1][RndText|2|D]`  
 
@@ -65,7 +66,7 @@ _______________________________________________
 ![Generating text](./assets/Random/Random_pic2.png)  
 
 ### Length  
-Here you set the minimum and maximum length for the final string. The upper limit is **not inclusive**—so, if you ask for a random string of 3 to 10 characters, you’ll get at most 9.
+Here you set the minimum and maximum length for the final string. The upper limit is **not inclusive**—so, if you ask for a random string of 3 to 10 characters, you'll get at most 9.
 
 ### Extra settings  
 - **Uppercase**  

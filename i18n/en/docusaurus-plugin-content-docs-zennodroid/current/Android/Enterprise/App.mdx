@@ -1,10 +1,10 @@
----
+﻿---
 sidebar_position: 4
 title: Working with Apps (Enterprise)
 description: This action brings together functions for managing apps.
 ---
 
-:::info Please, take a look at the [*Terms of Use for materials on this site*](../../Disclaimer).
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
 :::
 
 _______________________________________________
@@ -26,12 +26,12 @@ This action removes an installed app by its name, which you can find using the [
 _______________________________________________
 
 ### Open an app
-Lets you launch an app that’s already installed.
+Lets you launch an app that's already installed.
 
 ![Open an app](../assets/App/App_pic16.png)
 
 - *App name.* You can find it using the [**Installed Apps**](../../Tools/Installed_App) tool.
-- *App activity.* Lets you open a specific window of the app right away. You can find this value by checking the app’s dump: `dumpsys package com.package_name | grep -i activity`.
+- *App activity.* Lets you open a specific window of the app right away. You can find this value by checking the app's dump: `dumpsys package com.package_name | grep -i activity`.
 _______________________________________________
 
 ### Open URL
@@ -62,12 +62,12 @@ This function lets you save all app data (kind of like saving a profile in Zenno
 #### Available options:
 - *App name.* You can find it using the [**Installed Apps**](../../Tools/Installed_App) tool.
 - *Path to archive file.* Enter the path where you want to save the archived app data (archive format is ***tar.gz***).
-:::tip Here’s a good way.
-Before saving the data, it’s best to close the app using the Keyboard Emulation action with this text: `{AndroidKeys.HOME}`. This emulates pressing the HOME button.
+:::tip Here's a good way.
+Before saving the data, it's best to close the app using the Keyboard Emulation action with this text: `{AndroidKeys.HOME}`. This emulates pressing the HOME button.
 :::
 
 #### Why close the app before saving data?
-If the app is open during data saving, some information may be in RAM, not in the files. In this case, those data won’t be saved. Also, you shouldn’t use the **Close app** action for this because it kills the process and you might lose data.
+If the app is open during data saving, some information may be in RAM, not in the files. In this case, those data won't be saved. Also, you shouldn't use the **Close app** action for this because it kills the process and you might lose data.
 
 ### Restore app data
 ![Restore app data](../assets/App/App_pic19.png)
@@ -112,13 +112,13 @@ _______________________________________________
 This action lets you get the names of all installed apps and save them in a list.
 #### App filter options:
 - *All.* All apps installed on the device.
-- *System.* Pre-installed apps that you generally can’t uninstall, only hide.
+- *System.* Pre-installed apps that you generally can't uninstall, only hide.
 - *User.* Apps you installed yourself.
 _______________________________________________
 
 ### Check if app is already installed
 ![Check if app is already installed](../assets/App/App_pic14.png)
-This function checks whether an app is on the device. If it’s missing, it’ll be treated as an error and the workflow will go through the red branch.
+This function checks whether an app is on the device. If it's missing, it'll be treated as an error and the workflow will go through the red branch.
 _______________________________________________
 
 ## Useful links

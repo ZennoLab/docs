@@ -3,7 +3,7 @@ sidebar_position: 7
 title: Task Manager
 description: Setting Up Task Execution
 ---
-:::info **Please read the [*Rules for Using Materials on This Resource*](../Disclaimer).**
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
 :::
 _______________________________________________
 This tool lets you set up your projects to run on a schedule or in response to a trigger. It works a lot like the **Scheduler**, but with one key difference: you can set up a schedule for several projects at once, not just one at a time. Projects will run in order, from top to bottom.
@@ -14,7 +14,7 @@ _______________________________________________
 - **Add Task**. Creates a new task from scratch.
 - **Delete Task**. Deletes the selected task.
 - **Run Now**. Instantly runs the selected task one time.
-- **Stop**. Graceful stop — the current task will finish whatever it’s doing, and then the execution stops, even if there are more projects waiting in the queue.
+- **Stop**. Graceful stop — the current task will finish whatever it's doing, and then the execution stops, even if there are more projects waiting in the queue.
 :::info **This also disables the schedule.**
 To start it up again, just check the box next to the desired task in the ***Enable*** column.
 :::
@@ -59,11 +59,11 @@ _______________________________________________
 ### Columns
 All your tasks show up in the Task Table, which has these columns:
 - **Enable**. Switches scheduled execution of the task on or off.
-- **Name**. Task name. By default, every new one is called “Task.”
+- **Name**. Task name. By default, every new one is called "Task."
 - **Projects**. The list of projects inside this task.
 - **Last Run**. When the task last ran.
 - **Executions**. How many times this task has run so far.
-- **Next Run**. When it’s scheduled to run next.
+- **Next Run**. When it's scheduled to run next.
 - **Sort Icon**. You can sort tasks by any column; just click its title.
 _______________________________________________
 ## Task Settings
@@ -82,42 +82,42 @@ You can give your task a new name in this field.
 
 ![Task Name](./assets/Task_Manager/Task_Manager_pic9.png)
 
-### The “Projects in Task” Tab
+### The "Projects in Task" Tab
 ![Projects in Task Tab](./assets/Task_Manager/Task_Manager_pic10.png)
 - **Edit Project List**. Same as before: you can **Add** or **Delete** projects, change their order, or assign groups.
 :::tip **Double-click a project to open its Input Settings.**
 :::
 
-### The “Settings” Tab
+### The "Settings" Tab
 ![Settings Tab](./assets/Task_Manager/Task_Manager_pic11.png)
 :::warning **These settings are for each individual project, NOT for the whole task!**
 :::
-- **How Many to Run**. Number of times to run the project. If set to `-1`, it will run endlessly — it’ll keep running until the number you set under **Success Count** in the **Stop** tab is reached.
+- **How Many to Run**. Number of times to run the project. If set to `-1`, it will run endlessly — it'll keep running until the number you set under **Success Count** in the **Stop** tab is reached.
 - **Max Threads**. Max number of threads that can be used for this template.
 - **Proxy**. Whether or not to use proxies from the built-in **ProxyChecker**.
 - **Rules**. How proxies will be chosen.
 
-### The “Stop” Tab
+### The "Stop" Tab
 ![Stop Tab](./assets/Task_Manager/Task_Manager_pic12.png)
 - **Success Count**
 By default, this is the number you set under **Executions per Project** when creating the task. If set to `-1`, it runs endlessly — as many times as set under **How Many to Run** in the **Settings** tab.
 - **Consecutive Failures**
-How many errors in a row are allowed before switching to the next template in the list. The task can also be stopped if the **Continue on Errors** box isn’t checked.
-:::warning **Don’t set this to `-1`.**
+How many errors in a row are allowed before switching to the next template in the list. The task can also be stopped if the **Continue on Errors** box isn't checked.
+:::warning **Don't set this to `-1`.**
 Otherwise, if an error happens, the template will never finish.
 :::
 - **Execution Timeout (seconds)**
-If the project doesn’t finish in time, it gets force-stopped.
+If the project doesn't finish in time, it gets force-stopped.
 - **Run BadEnd on Project Abort**
 **BadEnd** is an action in **ProjectMaker** that runs extra steps if a template ends with an error. This setting lets you trigger that on abort (manual or by timeout).
 ![BadEnd](./assets/Task_Manager/Task_Manager_pic13.png)  ![BadEnd](./assets/Task_Manager/Task_Manager_pic14.png)
 
-### The “Execution Conditions” Tab
+### The "Execution Conditions" Tab
 ![Execution Conditions Tab](./assets/Task_Manager/Task_Manager_pic15.png)
 This is where you edit the schedule for running a project.
 _______________________________________________
-## How to View a Project’s Log
-Go to the “Projects” tab → select a task → pick one or more projects (hold Ctrl) → the **Log** will show up.
+## How to View a Project's Log
+Go to the "Projects" tab → select a task → pick one or more projects (hold Ctrl) → the **Log** will show up.
 
 ![View project log](./assets/Task_Manager/Task_Manager_pic16.png)
 _______________________________________________
