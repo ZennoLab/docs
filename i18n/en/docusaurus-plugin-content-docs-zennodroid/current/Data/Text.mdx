@@ -122,14 +122,14 @@ Group **0** is the whole matched line, so skip it. Also ignore groups **6** and 
 </details>
 
 ### Example of Using Regex
-Here's how you could extract links using regular expressions that you build in the [** constructor**](../Tools/RegEx_Tester#конструктор-регулярных-выражений).
+Here's how you could extract links using regular expressions that you build in the [** constructor**](../Tools/RegEx_Tester#regular-expression-builder).
 
 **Goal:** Get profile links for active users on the [**ZennoLab forum**](https://zenno.club/discussion/)
 
 ![Add to project](./assets/Text/Text_pic11.png)
 
 **1.** Using the [**Get Value**](../Android/ProLite/GetValue) action, get the HTML code that contains links to online users.  
-**2.** Add the **Regex** action. Build your pattern in the [**Regex Constructor**](../Tools/RegEx_Tester#конструктор-регулярных-выражений).  
+**2.** Add the **Regex** action. Build your pattern in the [**Regex Constructor**](../Tools/RegEx_Tester#regular-expression-builder).  
 **3.** In the action properties, put the *html* variable as input, and save results to the *urls* list.  
 **4.** After running, you'll get a list of unique IDs which you can use to build user profile URLs.
 _______________________________________________

@@ -24,7 +24,7 @@ This function is used to copy a file from your computer to a device.
 - *New path*. The location where the copied file will be saved.
 You can specify a full path with the filename right away, like `/sdcard/Pictures/pic.png`, or just a folder, like `/sdcard/Pictures/`. In the second case, the file will be copied with its original name. Media files will automatically update in the Gallery after being sent.
 :::info Note
-To send files to folders that require superuser (root) access, you'll first need to send the file to the `/data/local/tmp/` folder on the device. After that, use the [**Console Command (ADB Shell)**](./Utilities_Ent#консольная-команда-adb-shell) action to move the file to the desired location.
+To send files to folders that require superuser (root) access, you'll first need to send the file to the `/data/local/tmp/` folder on the device. After that, use the [**Console Command (ADB Shell)**](./Utilities_Ent#console-command-adb-shell) action to move the file to the desired location.
 
 For example:  `su -c cp /data/local/tmp/myfile /data/data/app/myfile`
 :::

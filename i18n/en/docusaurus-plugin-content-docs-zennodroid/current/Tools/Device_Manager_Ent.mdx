@@ -25,11 +25,11 @@ There are two ways:
 - **Device**. The device identifier, serial number, or its IP address on your local network.  
 - **Name**. By default, matches the device identifier. But for convenience, you can give it a more specific name. To do this:  
     - Select the desired cell and press F2,  
-    - or use the [**Rename**](../Android/Enterprise/action#как-переименовать-устройство) action.  
+    - or use the [**Rename**](../Android/Enterprise/action#how-to-rename-a-device) action.  
 - **Model**. Shows the phone model. This info is only shown for devices that are currently connected.  
 - **Status**. Device connection status:  
-    - *Connected.* Everything’s good, you can work with the device.  
-    - *Disconnected.* The computer sees the device but can’t interact with it.  
+    - *Connected.* Everything's good, you can work with the device.  
+    - *Disconnected.* The computer sees the device but can't interact with it.  
         Possible solutions:  
             - *Press the reconnect button,*  
             - *unplug and replug the cable,*  
@@ -43,9 +43,9 @@ The selected device name also shows up in the status bar:
 ![in the status bar](./assets/Device_Manager/Device_Manager_pic7.png)  
 - **Release**. Stops the active device and disconnects it completely.  
 The status bar line will then be empty.  
-Use this to fix the **Device busy in ProjectMaker** error when you can’t switch to another device.  
-- **Stop**. Stops the active device, but it’s still considered selected.  
-This is an alternative to the [**Stop**](../Android/Enterprise/action#как-остановить-устройство) action.  
+Use this to fix the **Device busy in ProjectMaker** error when you can't switch to another device.  
+- **Stop**. Stops the active device, but it's still considered selected.  
+This is an alternative to the [**Stop**](../Android/Enterprise/action#how-to-stop-a-device) action.  
 - **Search**. Scans your local network for devices connected via ADB. This is an alternative to the adb connect `192.168.x.x:5555` command.  
 - **Reconnect**. Tries to reconnect any devices shown in the list that have the **Disconnected** status.
 _______________________________________________  

@@ -9,7 +9,7 @@ _______________________________________________
 ## Description  
 **`IDroidInputAPI Input`**  
 
-Gives you access to emulate actions on your device for interacting with the interface and app elements. You use this interface to perform swipes, taps, and enter text, as well as execute [**ADB Shell commands**](../Android/ProLite/Utilities#консольная-команда-adb-shell).
+Gives you access to emulate actions on your device for interacting with the interface and app elements. You use this interface to perform swipes, taps, and enter text, as well as execute [**ADB Shell commands**](../Android/ProLite/Utilities#console-command-adb-shell).
 _______________________________________________
 ## Methods 
 ### Swipe the screen from point to point
@@ -230,7 +230,7 @@ var input = instance.DroidInstance.Input;
 input.ClearText(); // Clear element text
 ```
 _______________________________________________
-### Execute an [**ADB Shell**](../Android/ProLite/Utilities#консольная-команда-adb-shell) command
+### Execute an [**ADB Shell**](../Android/ProLite/Utilities#console-command-adb-shell) command
 ```csharp
 string Shell(string command)
 ```   
@@ -350,3 +350,4 @@ var message = "Hi!";
 input.SendSmsMessage(phone, message); // Simulate incoming SMS
 ```
 _______________________________________________
+You can read about the **difference between ways of sending keystrokes** in detail in the [**ADB Shell Commands**](../Android/ProLite/Utilities#console-command-adb-shell).

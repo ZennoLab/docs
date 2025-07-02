@@ -14,20 +14,20 @@ _______________________________________________
 ### Use default device.
 This setting lets you choose the device that Project Maker will use by default—as long as no other device is selected. ZennoDroid will ignore this device when randomly picking from the available list.
 
-If you want to use the selected device for running projects in ZennoDroid, turn off this setting, otherwise you’ll get the ***Device is busy in Project Maker*** error.
-:::info **The ‘Refresh’ button updates the device list**
+If you want to use the selected device for running projects in ZennoDroid, turn off this setting, otherwise you'll get the ***Device is busy in Project Maker*** error.
+:::info **The 'Refresh' button updates the device list**
 :::
 
 ### Use MJPEG for image capture.
 An alternative way to capture the device image. Only enable this if whenever you start the device through ZennoDroid it always crashes, and the log shows ***Failed to capture image***.
 _______________________________________________
 ### Device boot timeout.
-This is the amount of time the emulator gets to boot up. If the device doesn’t boot within this time, execution will fail with an error.
+This is the amount of time the emulator gets to boot up. If the device doesn't boot within this time, execution will fail with an error.
 _______________________________________________
 ### Random click offset.
 Allows clicks to happen with a slight offset from the set parameters. Used in these actions:
 - [**Image Search**](../pm/Creating/SearchByPic). The screen will be tapped not at the exact spot, but with a slight shift.
-- [**Run Event**](../Android/ProLite/RunEvent). If you choose **Center** as the tap coordinates, it’ll click the element slightly off-center.
+- [**Run Event**](../Android/ProLite/RunEvent). If you choose **Center** as the tap coordinates, it'll click the element slightly off-center.
 
 _______________________________________________
 ### Random character input offset.
@@ -39,7 +39,7 @@ _______________________________________________
 Just like the previous setting, used in [**Keyboard Emulation**](../Android/ProLite/Keyboard) and [**Set Value**](../Android/ProLite/SetValue) actions to set the delay.
 _______________________________________________
 ### Traffic proxying (Proxifier and Redsocks).
-ZennoDroid lets you choose how to proxy traffic for the [**Set Proxy**](../Android/ProLite/setting#как-поставить-прокси) action. By default, Proxifier is used.
+ZennoDroid lets you choose how to proxy traffic for the [**Set Proxy**](../Android/ProLite/setting#how-to-set-up-a-proxy) action. By default, Proxifier is used.
 
 ![Traffic proxying](./assets/Settings_for_Android/Settings_for_Android_pic3.png)
 _______________________________________________
@@ -50,21 +50,21 @@ _______________________________________________
 Lets you turn off sound and microphone in the emulators. Muting sound reduces CPU usage.
 _______________________________________________
 ### Enable GPU memory optimization.
-It’s best to always keep this on, as it reduces the load on your graphics card.
+It's best to always keep this on, as it reduces the load on your graphics card.
 _______________________________________________
 ### Turn off Anti-Flicker.
 This fixes screen flickering issues and improves image display.
 :::info **Our advice.**
-*When running multiple emulators at the same time, **it’s better to turn off** Anti-Flicker to reduce system load.*
+*When running multiple emulators at the same time, **it's better to turn off** Anti-Flicker to reduce system load.*
 :::
 _______________________________________________
 ### Disable ads.
-Memu launcher has ads built in. They can mess up your templates since the ads show up over all windows. It’s always best to turn them off.
+Memu launcher has ads built in. They can mess up your templates since the ads show up over all windows. It's always best to turn them off.
 _______________________________________________
 ### Use shared system disk.
-When you create a new emulator, it’ll use the shared system disk. You can use this disk for all emulators at once, which saves a lot of space. For example, a single Android 9 system disk is about 2GB.
+When you create a new emulator, it'll use the shared system disk. You can use this disk for all emulators at once, which saves a lot of space. For example, a single Android 9 system disk is about 2GB.
 
-The shared disk is read-only — you can’t write to it (and usually you don’t need to anyway).
+The shared disk is read-only — you can't write to it (and usually you don't need to anyway).
 
 You can change how the disk is connected for already created emulators with a special action.
 _______________________________________________
