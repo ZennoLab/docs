@@ -1,9 +1,9 @@
 {
-    "label": "Инструменты",
+    "label": "Tools",
     "position": 11,
     "link": {
       "type": "generated-index",
-      "title": "Полезные инструменты"
+      "title": "Useful Tools"
     }
   }
   

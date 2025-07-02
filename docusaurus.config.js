@@ -44,12 +44,17 @@ const config = {
           sidebarPath: './sidebars.js',
           path: 'docs/ZennoDroid',
           routeBasePath: 'zennodroid',
+          editUrl: ({locale, versionDocsDirPath, docPath}) => {
+            return locale === 'ru'
+              ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoDroid/${docPath}`
+              : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennodroid/current/${docPath}`;
+          },
           /*routeBasePath: '/',
           showLastUpdateTime: true,
             return locale === 'ru'
               ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/${versionDocsDirPath}/${docPath}`
               : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;*/
-          },
+        },
         blog: {
           showReadingTime: true,
         },
@@ -71,6 +76,11 @@ const config = {
         path: 'docs/ZennoPoster',
         routeBasePath: 'zennoposter',
         sidebarPath: './sidebars-zennoposter.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoPoster/${docPath}`
+            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoposter/current/${docPath}`;
+        },
       },
     ],
   ],

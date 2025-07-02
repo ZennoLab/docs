@@ -1,11 +1,7 @@
 {
   "title": {
-    "message": "ZennoDroid Docs",
+    "message": "ZennoLab Docs",
     "description": "The title in the navbar"
-  },
-  "item.label.Документация": {
-    "message": "Documentation",
-    "description": "Navbar item with label Документация"
   },
   "item.label.Блог": {
     "message": "Blog",
@@ -18,5 +14,13 @@
   "item.label.ZennoDroid": {
     "message": "ZennoDroid",
     "description": "Navbar item with label ZennoDroid"
+  },
+  "item.label.ZennoPoster": {
+    "message": "ZennoPoster",
+    "description": "Navbar item with label ZennoPoster"
+  },
+  "item.label.ZennoLab": {
+    "message": "ZennoLab",
+    "description": "Navbar item with label ZennoLab"
   }
 }

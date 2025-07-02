@@ -1,9 +1,9 @@
 {
-    "label": "Установка",
+    "label": "Installation",
     "position": 2,
     "link": {
       "type": "generated-index",
-      "title": "Установка ZennoDroid и необходимых компонентов"
+      "title": "Installing ZennoDroid and required components"
     }
   }
   

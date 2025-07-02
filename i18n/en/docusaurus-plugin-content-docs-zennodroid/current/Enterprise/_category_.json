@@ -1,10 +1,10 @@
 {
-    "label": "Старт ZD Enterprise",
+    "label": "ZD Enterprise Setup",
     "position": 4,
     "link": {
       "type": "generated-index",
-      "title": "Настройка версии Enterprise",
-      "description": "Версия ZennoDroid Enterprise предназначена только для работы с реальными устройствами и эмулятором Bluestacks. Если вам нужно автоматизировать Memu или LDPlayer, обратитесь к версиям Lite или Professional."
+      "title": "Enterprise version setup",
+      "description": "ZennoDroid Enterprise version is designed only for working with real devices and Bluestacks emulator. If you need to automate Memu or LDPlayer, use Lite or Professional versions."
     }
   }
   
