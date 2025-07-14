@@ -97,6 +97,20 @@ const config = {
         },
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'zennobrowser',
+        path: 'docs/ZennoBrowser',
+        routeBasePath: 'zennobrowser',
+        sidebarPath: './sidebars-zennobrowser.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoBrowser/${docPath}`
+            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennobrowser/current/${docPath}`;
+        },
+      },
+    ],
   ],
 
   themeConfig:
@@ -135,6 +149,13 @@ const config = {
             position: 'right',
             label: 'ZennoProxy',
             docsPluginId: 'zennoproxy',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennobrowserSidebar',
+            position: 'right',
+            label: 'ZennoBrowser',
+            docsPluginId: 'zennobrowser',
           },
           {to: '/blog', label: 'Блог', position: 'right'},
           {type: 'localeDropdown', position: 'right'},
@@ -188,6 +209,15 @@ const config = {
               {
                 label: 'Начало работы',
                 to: '/zennoproxy/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'ZennoBrowser',
+            items: [
+              {
+                label: 'Начало работы',
+                to: '/zennobrowser/basics/getting-started',
               },
             ],
           },
