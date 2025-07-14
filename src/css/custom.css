@@ -281,6 +281,42 @@ img[alt=small-size] { width: 200px; }
   }
 }
 
+/* Стили для ссылки на видео-курс */
+.video-course-link-container {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.video-course-link {
+  color: #06c79a !important;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.video-course-link:hover {
+  color: #67f5a9 !important;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .video-course-link {
+  color: #4fddbf !important;
+}
+
+[data-theme='dark'] .video-course-link:hover {
+  color: #67f5a9 !important;
+}
+
+@media (max-width: 996px) {
+  .video-course-link-container {
+    display: none;
+  }
+}
+
 
 .lk-link svg {
   display: none;
