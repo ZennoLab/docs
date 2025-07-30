@@ -1,0 +1,202 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Знакомство": {
+    "message": "Getting Started",
+    "description": "The label for category Знакомство in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Знакомство.link.generated-index.title": {
+    "message": "What do I need to know?",
+    "description": "The generated-index page title for category Знакомство in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Знакомство.link.generated-index.description": {
+    "message": "Here are the most essential pages you'll need to learn ZennoDroid.",
+    "description": "The generated-index page description for category Знакомство in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Установка": {
+    "message": "Installation",
+    "description": "The label for category Установка in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Установка.link.generated-index.title": {
+    "message": "ZennoDroid and Required Components Installation",
+    "description": "The generated-index page title for category Установка in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Старт ZD Lite, Pro": {
+    "message": "ZD Lite, Pro Setup",
+    "description": "The label for category Старт ZD Lite, Pro in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Старт ZD Lite, Pro.link.generated-index.title": {
+    "message": "Lite and Pro Versions Setup",
+    "description": "The generated-index page title for category Старт ZD Lite, Pro in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Старт ZD Lite, Pro.link.generated-index.description": {
+    "message": "ZennoDroid Lite and Professional versions are designed exclusively for use with Memu and LDPlayer emulators. For real device or Bluestacks automation, use the Enterprise version.",
+    "description": "The generated-index page description for category Старт ZD Lite, Pro in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Старт ZD Enterprise": {
+    "message": "ZD Enterprise Setup",
+    "description": "The label for category Старт ZD Enterprise in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Старт ZD Enterprise.link.generated-index.title": {
+    "message": "Enterprise Version Setup",
+    "description": "The generated-index page title for category Старт ZD Enterprise in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Старт ZD Enterprise.link.generated-index.description": {
+    "message": "ZennoDroid Enterprise version is designed exclusively for real devices and Bluestacks emulator. If you need to automate Memu or LDPlayer, use Lite or Professional versions.",
+    "description": "The generated-index page description for category Старт ZD Enterprise in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Начало работы": {
+    "message": "Get Started",
+    "description": "The label for category Начало работы in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Начало работы.link.generated-index.title": {
+    "message": "How to get started?",
+    "description": "The generated-index page title for category Начало работы in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Project Maker": {
+    "message": "Project Maker",
+    "description": "The label for category Project Maker in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Project Maker.link.generated-index.title": {
+    "message": "PM for ZennoDroid",
+    "description": "The generated-index page title for category Project Maker in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Интерфейс": {
+    "message": "Interface",
+    "description": "The label for category Интерфейс in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Интерфейс.link.generated-index.title": {
+    "message": "ProjectMaker Interface",
+    "description": "The generated-index page title for category Интерфейс in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Создание проекта": {
+    "message": "Project Creation",
+    "description": "The label for category Создание проекта in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Создание проекта.link.generated-index.title": {
+    "message": "Recording and Project Creation",
+    "description": "The generated-index page title for category Создание проекта in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Редактор проектов": {
+    "message": "Project Editor",
+    "description": "The label for category Редактор проектов in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Редактор проектов.link.generated-index.title": {
+    "message": "All about working with the editor",
+    "description": "The generated-index page title for category Редактор проектов in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Списки и Таблицы": {
+    "message": "Lists and Tables",
+    "description": "The label for category Списки и Таблицы in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Списки и Таблицы.link.generated-index.title": {
+    "message": "How to work with lists and Google tables",
+    "description": "The generated-index page title for category Списки и Таблицы in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Логика в ZD": {
+    "message": "Logic in ZD",
+    "description": "The label for category Логика в ZD in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Логика в ZD.link.generated-index.title": {
+    "message": "What logical operations are available in ZennoDroid?",
+    "description": "The generated-index page title for category Логика в ZD in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.HTTP и FTP": {
+    "message": "HTTP and FTP",
+    "description": "The label for category HTTP и FTP in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.HTTP и FTP.link.generated-index.title": {
+    "message": "How to work with HTTP and FTP",
+    "description": "The generated-index page title for category HTTP и FTP in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Проект": {
+    "message": "Project",
+    "description": "The label for category Проект in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Проект.link.generated-index.title": {
+    "message": "Working in project",
+    "description": "The generated-index page title for category Проект in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Свой код": {
+    "message": "Custom Code",
+    "description": "The label for category Свой код in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Свой код.link.generated-index.title": {
+    "message": "Writing code in ZD",
+    "description": "The generated-index page title for category Свой код in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Панель статических блоков": {
+    "message": "Static Blocks Panel",
+    "description": "The label for category Панель статических блоков in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Панель статических блоков.link.generated-index.title": {
+    "message": "All about static blocks panel",
+    "description": "The generated-index page title for category Панель статических блоков in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Android": {
+    "message": "Android",
+    "description": "The label for category Android in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Android.link.generated-index.title": {
+    "message": "Android workflow specifics",
+    "description": "The generated-index page title for category Android in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Версии Pro и Lite": {
+    "message": "Pro and Lite Versions",
+    "description": "The label for category Версии Pro и Lite in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Версии Pro и Lite.link.generated-index.title": {
+    "message": "Pro and Lite Versions",
+    "description": "The generated-index page title for category Версии Pro и Lite in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Версия Enterprise": {
+    "message": "Enterprise Version",
+    "description": "The label for category Версия Enterprise in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Версия Enterprise.link.generated-index.title": {
+    "message": "Enterprise Version",
+    "description": "The generated-index page title for category Версия Enterprise in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Данные": {
+    "message": "Data",
+    "description": "The label for category Данные in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Данные.link.generated-index.title": {
+    "message": "What data is available in the editor?",
+    "description": "The generated-index page title for category Данные in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Настройки": {
+    "message": "Settings",
+    "description": "The label for category Настройки in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Настройки.link.generated-index.title": {
+    "message": "What settings are available?",
+    "description": "The generated-index page title for category Настройки in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Инструменты": {
+    "message": "Tools",
+    "description": "The label for category Инструменты in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Инструменты.link.generated-index.title": {
+    "message": "Useful tools",
+    "description": "The generated-index page title for category Инструменты in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Выполнение проектов": {
+    "message": "Project Execution",
+    "description": "The label for category Выполнение проектов in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Выполнение проектов.link.generated-index.title": {
+    "message": "Working with projects in ZennoDroid",
+    "description": "The generated-index page title for category Выполнение проектов in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API": {
+    "message": "API",
+    "description": "The label for category API in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API.link.generated-index.title": {
+    "message": "ZennoDroid API methods",
+    "description": "The generated-index page title for category API in sidebar tutorialSidebar"
+  }
+}

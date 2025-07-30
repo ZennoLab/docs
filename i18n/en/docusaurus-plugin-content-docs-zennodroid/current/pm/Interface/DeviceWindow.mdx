@@ -1,0 +1,113 @@
+﻿---
+sidebar_position: 4
+title: Device Window
+description: Interacting with the device.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
+:::
+_______________________________________________
+
+## Getting Started
+In this window, you can interact with both the emulator and a real device.  
+When you launch ProjectMaker, the device window will look like this:  
+
+![Getting Started.](./assets/DeviceWindow/DeviceWindow_pic1.png)
+
+To get started, you need to click **Start Device**. If **Recording** is enabled for the project, two actions will be added to the actions canvas: **Select Device** and **Start/restart Device**.
+_______________________________________________
+## Window Components
+This is what the window looks like after a successful device launch:  
+
+![Window Components.](./assets/DeviceWindow/DeviceWindow_pic2.png)
+
+Here, you can interact with the device directly: click, swipe, open apps—everything you do will be reflected. And if recording is enabled, these actions will also show up on the canvas as corresponding actions.
+_______________________________________________
+### Emulator Control Buttons
+![Emulator Control Buttons.](./assets/DeviceWindow/DeviceWindow_pic3.png)
+
+| Button      | Description |
+| ----------- | ----------- |
+| ![Go Back.](./assets/DeviceWindow/DeviceWindow_minipic1.png) | Go back to the previous screen. |
+| ![Go Home.](./assets/DeviceWindow/DeviceWindow_minipic2.png)   | Return to the home screen. |
+| ![Show Recents.](./assets/DeviceWindow/DeviceWindow_minipic3.png)   | Show recent apps. |
+| ![Zoom In.](./assets/DeviceWindow/DeviceWindow_minipic4.png)   | Zoom in*   |
+| ![Zoom Out.](./assets/DeviceWindow/DeviceWindow_minipic5.png)   | Zoom out*      |
+| ![Close Area.](./assets/DeviceWindow/DeviceWindow_minipic6.png)   | Close part of the image. Used for testing image search.      |
+| ![Start Mouse Recording.](./assets/DeviceWindow/DeviceWindow_minipic7.png)   | Start recording mouse movements      |  
+:::info **(*) Note:**
+You can also zoom by double-clicking the mouse wheel in the emulator window while holding ***Ctrl***.
+:::
+_______________________________________________
+### Current Device/Emulator Name
+![Current Device/Emulator Name.](./assets/DeviceWindow/DeviceWindow_pic4.png)
+
+This is the device that's currently active.
+_______________________________________________
+### Configured Proxy
+![Configured Proxy.](./assets/DeviceWindow/DeviceWindow_pic5.png)
+
+Shows the currently set proxy.
+_______________________________________________
+### Mouse Coordinates
+![Mouse Coordinates.](./assets/DeviceWindow/DeviceWindow_pic6.png)
+
+If the cursor is inside the device window, the current coordinates (X, Y) will be shown here.  
+You can use these coordinates in the [**Swipe Emulation**](../../Android/ProLite/Swipe) and [**Touch Emulation**](../../Android/ProLite/Touch_Emulation) actions.
+_______________________________________________
+### Context Menu
+![Context Menu.](./assets/DeviceWindow/DeviceWindow_pic7.png)
+
+Right-click anywhere in the window to open the context menu.
+#### Available Buttons:
+- **Clear Text**  
+Lets you clear everything in an input field.
+If recording is on, the [**Keyboard Emulation**](../../Android/ProLite/Keyboard) action will be added to your project with this content: `{AndroidKeys.CLEAR}`
+- **Set Value from Profile**  
+Lets you set an input field value from the project's **Profile**.
+If recording is on, a [**Set Value**](../../Android/ProLite/SetValue) action with the selected profile macro will be added.
+- **Set Variable Value**  
+Lets you set an input field value from a user variable.
+If recording is on, a [**Set Value**](../../Android/ProLite/SetValue) action with the selected variable macro will be added.
+:::info **The first three buttons we've just covered show up only for input fields.**
+:::
+- **Inspect Element**  
+Opens the [**Element Properties**](./ElementProp) window for a closer look at the element. The chosen element will also be highlighted in the [**Element Tree**](./ElementTree) window.
+- **Follow Cursor**  
+When turned on, the element under the cursor will be highlighted, and its properties will show up in the [**Element Properties Window**](./ElementProp).
+
+<details>
+<summary>**Example.**</summary>
+
+    ![Follow Cursor](./assets/DeviceWindow/DeviceWindow_pic8.gif)
+</details>
+- **To Action Builder**  
+Sends the element to the [**Action Builder**](./ActionBuilder).
+- **Find by xPath**  
+Analyzes the element on the page and shows info in xPath format.
+
+![Find by xPath](./assets/DeviceWindow/DeviceWindow_pic9.png)
+
+- **This is a captcha!**  
+Lets you mark the image as a captcha and send it either for manual solving or with a special module (for example, [**CapMonster.Cloud**](https://capmonster.cloud/)).
+
+![This is a captcha!](./assets/DeviceWindow/DeviceWindow_pic10.png)
+
+- **Attach to captcha**  
+Lets you combine multiple images into one and send the whole thing for captcha solving.
+- **Captcha solve result field**  
+Enters the captcha result into the field and, if **Recording** is on, adds a [**Set Value**](../../Android/ProLite/SetValue) action.
+- **Create text check**  
+Lets you check for specific text. Enter the text in the input window, then a special action will be created where you can set extra search parameters.
+
+![Create text check](./assets/DeviceWindow/DeviceWindow_pic11.png)
+
+- **Find by image**  
+Searches by the selected image. A window opens for you to adjust the search settings.
+
+![Find by image](./assets/DeviceWindow/DeviceWindow_pic12.png)
+
+_______________________________________________
+## Useful Links
+- [**Action Builder**](./ActionBuilder)
+- [**Device Actions**](../../Android/ProLite/action)
+- [**Keyboard Emulation**](../../Android/ProLite/Keyboard)

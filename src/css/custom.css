@@ -35,3 +35,521 @@
   max-width: 700px;
   max-height: 512px;
 }
+
+.menu__link {
+  /* padding-left: 30px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.menu__link--active {
+  font-weight: bold;
+  /* color: #08d43b; */ 
+}
+
+[data-theme='dark'] .menu__link--active {
+  color: #4fddbf;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(1) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/zennodroid.svg');
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(2) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/install.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(3) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/prolite.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(4) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/enterprise.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(5) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/get_started.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(6) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/project.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(7) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/editor.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(8) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/android.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(9) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/data.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(10) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/settings.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(11) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/tool.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(12) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/execution.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-category-level-1:nth-child(13) > .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/api.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-doc-sidebar-item-link-level-1:nth-child(1n) .menu__link::before {
+  content: '';
+  background: url('/img/disclaimer.svg');
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.navbar__link--active {
+  font-weight: bold;
+}
+
+.markdown h1:first-child {
+  --ifm-h1-font-size: 2.25rem;
+}
+.markdown > h2 {
+  --ifm-h2-font-size: 1.5rem;
+}
+
+.markdown > h3 {
+  --ifm-h3-font-size: 1.25rem;
+}
+
+.alert p {
+  color: #1E232D;
+}
+
+[data-theme='dark'] .alert{
+  color: #DCE1EB;
+}
+
+.admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
+  color: var(--ifm-alert-foreground-color);
+}
+
+.admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
+  display: none;
+}
+
+.admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module {
+  border: 1px solid var(--ifm-alert-foreground-color);
+}
+
+code {
+  color: #05b595;
+  border-color: #c9beb3;
+}
+
+[data-theme='dark'] code {
+  color: #79fcc6;
+  border-color: #3C3764;
+  background: #3C3764;
+}
+
+
+[data-theme='dark'] details {
+  background: transparent !important;
+  border: 1px solid #D2D2FF !important;
+  border-radius: 8px !important;
+  font-weight: bold;
+}
+
+details {
+  background: transparent !important;
+  border: 1px solid #D2D2FF !important;
+  border-radius: 8px !important;
+  font-weight: bold;
+}
+
+[data-theme='dark'] summary {
+  color: #D2D2FF;
+}
+
+
+details div[class^='collapsibleContent'] {
+  border-top: 1px solid #06c79a;
+  color: #06c79a;
+}
+
+details div[class^='collapsibleContent'] a {
+  color: #06c79a;
+  text-decoration-color: #06c79a;
+}
+
+summary {
+  color: #14193C;
+}
+
+summary:before {
+  border-color: transparent transparent transparent var(--ifm-color-primary) !important;
+}
+
+pre {
+  background: #F5F5FF !important;
+}
+[data-theme='dark'] .details_node_modules-\@docusaurus-theme-classic-lib-theme-Details-styles-module {
+  background: #323440;
+  border: none !important;
+  font-weight: bold;
+}
+
+img[alt=small-size] { width: 200px; }
+
+.lk-link {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  background: #06c79a;
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media (max-width: 996px) {
+  .navbar__item.lk-link {
+    display: none;
+  }
+}
+
+/* Стили для ссылки на видео-курс */
+.video-course-link-container {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.video-course-link {
+  color: #06c79a !important;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.video-course-link:hover {
+  color: #67f5a9 !important;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .video-course-link {
+  color: #4fddbf !important;
+}
+
+[data-theme='dark'] .video-course-link:hover {
+  color: #67f5a9 !important;
+}
+
+@media (max-width: 996px) {
+  .video-course-link-container {
+    display: none;
+  }
+}
+
+
+.lk-link svg {
+  display: none;
+}
+
+.lk-link:hover, .lk-link:focus, .lk-link:active {
+  text-decoration: none;
+  color: white;
+}
+
+.lk-link:hover {
+  background: #67f5a9;
+}
+
+.lk-link:active {
+  background: #06c79a;
+}
+
+.alert--info, .alert--warning, .alert--success, .alert--secondary  {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+div[class^='admonitionHeading'] {
+  margin-bottom: 1rem !important;
+}
+
+.alert--info p code, .alert--info ul code{
+  color: #0073E1;
+  background: #BEE1FF;
+  border: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.alert--success p code{
+  color: #009650;
+  background: #B9EBD2;
+  border: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.alert--warning p code{
+  color: #D7781E;
+  background: #FFE1C3;
+  border: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.alert--secondary  p code{
+  color: #646973;
+  background: #E1E6F0;
+  border: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.alert pre {
+  background: #FAFCFF !important;
+}
+
+div[class*='codeBlockContainer'] {
+  box-shadow: none !important
+}
+
+/**
+span[class^='admonitionIcon'] {
+  display: none !important;
+}
+**/
+
+table thead tr {
+  border-width: 1px;
+}
+
+table thead {
+  background: #F0F2F5;
+}
+
+[data-theme='dark'] table thead {
+  background: #1B1B1D;
+}
+
+[data-theme='dark'] .alert p {
+  color: white;
+}
+
+a[class*='cardContainer'] {
+  box-shadow: none;
+}
+
+@media (max-width: 436px) {
+  .navbar__logo img {
+    max-width: 180px;
+  }
+}
+
+.news-banner {
+  border-radius: 10px;
+  overflow: hidden;
+  object-fit: cover;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.markdown li {
+  margin-top: var(--ifm-list-item-margin);
+}
+
+.full-width-tabs li{
+  width: 100%;
+  justify-content: center;
+  
+}
+
+.filled-tabs li.tabs__item--active {
+  background: #06c79a;
+  color: white
+}
+
+.filled-tabs li{
+  border-bottom: 2px solid #06c79a;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.bordered-panel {
+  padding: 24px;
+  border-radius: 10px;
+  border: 1px solid #f0f2f5;
+  font-size: 15px;
+  color: #14193C;
+}
+
+.bordered-panel hr {
+  background: #E9EBEE;
+}
+
+.bordered-panel :not(.paramItem) code {
+  background: #ECF0F6;
+  color: #14193C;
+  padding:  4px 10px;
+  border: none;
+}
+
+[data-theme='dark'] .bordered-panel {
+  border: 1px solid #373C46;
+  color: #D2D7E1;
+}
+
+[data-theme='dark'] .bordered-panel hr {
+  background: #373C46;
+}
+
+
+[data-theme='dark'] .bordered-panel :not(.paramItem) code {
+  background: #303237;
+  color: #D2D7E1
+}
+
+.request-tabs {
+  margin-bottom: -1rem;
+}
+
+.method-panel {
+  border: 1px solid #f0f2f5;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+.methodDescription pre, .method-panel pre {
+  background: transparent !important;
+}
+
+.method-panel-full {
+  border: 1px solid #f0f2f5;
+  border-radius: 10px;
+}
+
+.method-item .theme-code-block {
+  margin-bottom: 0;
+}
+
+.method-item code {
+  background: white;
+}
+
+[data-theme='dark'] .method-panel {
+  border: 1px solid #373C46;
+}
+
+[data-theme='dark'] .method-panel-full {
+  border: 1px solid #373C46;
+}
+
+[data-theme='dark'] .method-item code {
+  background: #1C202D;
+}
+
+/* Для светлой темы */
+[data-theme='light'] .DocSearch {
+  --docsearch-primary-color: #28a83e;
+  --docsearch-text-color: #1c1e21;
+  --docsearch-modal-background: #ffffff;
+}
+
+/* Для темной темы */  
+[data-theme='dark'] .DocSearch {
+  --docsearch-primary-color: #07e594;
+  --docsearch-text-color: #f1f3f4;
+  --docsearch-modal-background: #1b1b1d;
+  --docsearch-container-background: rgba(47, 55, 69, 0.7);
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #06c79a;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+} 

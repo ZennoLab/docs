@@ -1,0 +1,64 @@
+﻿---
+sidebar_position: 1
+title: Info API
+description: Main interface and Device Information.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+## Description  
+Welcome to the first part of the documentation for working with the ZennoDroid API. Here, you'll find key information, the main methods for working with ZennoDroid objects, and C# code examples.
+
+## The main object for working with the ZennoDroid API  
+**`IDroidInstanceAPI DroidInstance`**
+
+This object is basically a container for interfaces that let you interact with different aspects of Android, such as managing apps, sending input, settings, and so on.
+
+With it, you can access the interaction object you need and then use its methods and properties for working with the API.
+
+## Information about the current device  
+**`IDroidInfoAPI Info`**
+
+Gives you access to info about the current device. This interface is used to get various details about the connected device, but only after you've selected and connected to it using the IDroidActionAPI Action methods.
+
+### Properties  
+- **Device index**
+```csharp
+int Index { get; }
+```
+Duplicates the **Index** info from the [Device Manager](../Tools/Device_Manager) window.
+_______________________________________________
+- **Device title**
+```csharp
+string Title { get; }
+```
+Duplicates the **Title** info from the [Device Manager](../Tools/Device_Manager) window.
+_______________________________________________
+- **Device name (ADB)**
+```csharp
+string Name { get; }
+```
+This is the ADB device name, the same as the **Device** info in the [Device Manager](../Tools/Device_Manager) window.
+_______________________________________________
+- **Port shown in the instance window**
+```csharp
+int UiPort { get; }
+```
+This is only relevant when running a template in ZennoDroid.
+_______________________________________________
+- **Address for connecting via ADB**
+```csharp
+string AddressPort { get; }
+```
+This matches the *Name* property.
+_______________________________________________
+#### Example
+```csharp
+var info = instance.DroidInstance.Info;
+
+int index = info.Index;
+string title = info.Title;
+string Name = info.Name;
+int uiPort = info.UiPort;
+string addressPort = info.AddressPort;
+```

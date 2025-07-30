@@ -1,0 +1,104 @@
+﻿---
+sidebar_position: 5
+title: Databases
+description: Connecting to different databases.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+In ZennoDroid, you can work with different types of databases, such as Microsoft SQL, MySQL, PostgreSQL, SQLite, and others. You can connect to them either from your local computer or a remote server, and then upload the necessary data.
+_______________________________________________ 
+## How do you add it to your project?  
+Right-click context menu: **Add Action → Data → Directories**.  
+
+![Add to project](./assets/DataBase/DataBase_pic1.png)    
+_______________________________________________
+## What the action looks like  
+![Action appearance](./assets/DataBase/DataBase_pic2.png)  
+_______________________________________________
+## Data source  
+To make sure you work with a database properly, you need to set up the connection correctly. The required parameters will depend on the specific ***DBMS** (Database Management System)*.  
+
+### Connection Builder  
+![Connection Builder](./assets/DataBase/DataBase_pic3.png)  
+
+It's designed to make creating a *Connection String* easier. Once you fill in the main details, the string will be generated for you. First, you need to specify the data source, and then select the database file.
+ 
+| ![advanced settings](./assets/DataBase/DataBase_pic4.png)             | 
+| :----------------: | 
+| *Advanced settings are also available* |  
+
+:::warning **You can't use variable macros in the *Builder*.**
+:::
+
+### Data Providers  
+Several data providers are available:  
+- **SqlClient**  
+Provider for native connections to Microsoft SQL Server;  
+- **MySqlClient**  
+Provider for native connections to MySQL by Oracle;  
+- **OleDb** *(Object Linking and Embedding Database)*  
+This technology lets you access different data sources through a single interface (including SQL Server);  
+- **Odbc** *(Open Database Connectivity)*  
+A single interface for running SQL queries, regardless of the DBMS you're using;  
+
+### Connection String  
+Here you enter various login parameters (like username and password). Instead of building the string manually, you can use the Connection Builder described above.  
+
+[**Examples of connection strings for different DBMSs.**](https://www.connectionstrings.com/)  
+_______________________________________________
+## Query  
+![Query](./assets/DataBase/DataBase_pic5.png)  
+
+### Query type  
+#### Non-query  
+Used for operations that don't return data from the DB (for example, **INSERT** or **DELETE**). As a response, these operations return the number of rows affected.
+
+#### Scalar query  
+Lets you get a single value. For example, to use an aggregate function: `select sum(price) from fruit`.
+
+#### Standard query  
+Returns a table with data.
+
+### Query text  
+The field where you enter your SQL query.
+
+### Use parameters in query  
+Parameters make it easier to write queries because they can be inserted into places in the text you specify.
+
+There are named and unnamed parameters. For named ones, their names matter; for unnamed ones, their order matters. Which type you use depends on the specific DBMS.
+
+:::info **Text inside parameters is automatically escaped.**
+:::
+
+| ![Named](./assets/DataBase/DataBase_pic6.png)    | ![Unnamed](./assets/DataBase/DataBase_pic7.png) |
+| :--------: | :-------: |
+| Named parameters  | Unnamed parameters    |  
+_______________________________________________
+## Results processing  
+Here you choose where to save the query results.
+
+![Results processing](./assets/DataBase/DataBase_pic8.png)
+
+### Save result to:  
+#### Variable  
+All the rows and columns from the query will be saved into a single variable.
+
+You also need to pick separators for splitting up rows and columns.
+
+#### List  
+Saves the query results into a list. It's important to specify a separator for the columns. In the end, each database row will become a new item in the list, with the chosen separator between columns.
+
+#### Table  
+When saving data to a table, the cells get filled in according to your query.
+
+#### Variables  
+This option lets you save the results in several variables at once.
+
+![Variables](./assets/DataBase/DataBase_pic9.png)  
+
+**Row number**. Your query could return several rows, so you need to specify which row you want to use (numbering starts at zero).
+
+In the table below, you select the cell number in the row and which variable it should go into (also numbered from zero!).
+
+![Row number](./assets/DataBase/DataBase_pic10.png)

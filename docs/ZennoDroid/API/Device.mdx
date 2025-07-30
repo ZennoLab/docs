@@ -1,0 +1,54 @@
+---
+sidebar_position: 8
+title: Device Filter
+description: Настройка параметров фильтрации при генерации устройства.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+**`IDeviceFilter`**  
+
+Используется для работы с настройками фильтров при генерации JSON-данных для подмены информации об устройстве через LSPosed.  
+
+Этот API позволяет задавать параметры фильтрации, чтобы подбирать нужные данные при генерации устройств.  
+
+### Свойства.  
+- **Производитель телефона**. 
+```csharp
+string Manufacturer { get; set; }
+
+// Например: Samsung|Pegatron|BYD|OPPO|Inventec|Foxconn|Honor|Huawei|Lenovo
+```   
+
+- **Бренд телефона**. 
+```csharp
+string Brand { get; set; }
+
+// Например: Samsung|Xiaomi|OPPO|Realme|Honor|OnePlus|Huawei|Nothing
+```
+
+- **Модель телефона**. 
+```csharp
+string Model { get; set; }
+
+// Например: SamsungS24Ultra|Xiaomi14Pro|OPPOFindX7|RealmeGT5Pro|HonorMagic6Pro|OnePlus12|HuaweiP60Pro|Nothing(2)
+```
+
+- **Версия Android**. 
+```csharp
+string Version { get; set; }
+
+// Например: 12|13|14|15|16
+```  
+
+#### Примеры:  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+var filter = new DeviceFilter(); // Создаем фильтр с данными для генерации
+filter.Brand = "Samsung|Xiaomi|OPPO"; // Выбор устройств
+filter.Version = "10|11|12|13"; // Выбор версии Android
+var json = settings.GenerateRandomLSPosedSettings(project.Profile.Country, filter); // Генерируем случайные данные для подмены LSPosed на основание фильтра
+settings.SetLSPosedSettings(json); // Делаем подмену данных
+```

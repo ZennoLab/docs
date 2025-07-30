@@ -1,0 +1,197 @@
+---
+sidebar_position: 7
+title: Settings API
+description: Управление настройками смартфона.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+**`IDroidSettingsAPI Settings`**  
+
+Этот объект предназначен для управления настройками устройства. Он позволяет задавать базовые параметры: язык, время, геолокацию и другие системные настройки. Также он предоставляет средства для работы с [LSPosed в ZDE](../Enterprise/LSPosed), упрощая подмену данных телефона.  
+
+Повторяет логику работы кубика **Настройки устройства** для версий [**Lite/Pro**](../Android/ProLite/setting) и [**Enterprise**](../Android/Enterprise/setting).  
+_______________________________________________
+## Методы.  
+### Установить язык на устройстве.
+```csharp
+void SetLanguage(string language)
+```   
+
+*Параметры:*   
+```csharp
+string language // Тут указываем язык (например, RU).
+``` 
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetLanguage("RU"); // Установить язык системы устройства
+```
+_______________________________________________
+### Установить время на устройстве.
+```csharp
+void SetTime(string dateTime)
+```   
+
+*Параметры:*   
+```csharp
+string dateTime // Указываем время в формате строки (например, "12.05.2025 14:30").
+``` 
+
+*Перегрузка:*   
+```csharp
+DateTime dateTime // Указываем время в формате DateTime.
+``` 
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetTime(DateTime.Now); // Установить текущее время
+```
+_______________________________________________
+### Установить часовый пояс.
+```csharp
+void SetTimezone(string timezone)
+```   
+
+*Параметры:*   
+```csharp
+string timezone // Указываем нужный пояс (например, "Europe/Moscow").
+``` 
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetTimezone("Europe/Moscow");  // Установить часовый пояс
+```
+_______________________________________________
+### Смена прошивки у GSM-модуля связи.
+```csharp
+void SetBaseband(string version)
+```   
+
+*Параметры:*   
+```csharp
+string version // Указываем версию GSM-модуля (например, "G9300ZCU2API3").
+``` 
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetBaseband("G9300ZCU2API3"); // Установить модуль связи
+```
+_______________________________________________
+### Установка геолокации.
+```csharp
+void SetGeo(double longitude, double latitude)
+```   
+
+*Параметры:*   
+```csharp
+double longitude // Значение долготы.
+double latitude // Значение широты.
+``` 
+
+*Перегрузка:*   
+```csharp
+double altitude // Высота.
+double bearing // Азимут.
+double speed // Скорость движения объекта.
+``` 
+_______________________________________________
+## Работа с LSPosed в ZennoDroid Enterprise.  
+### Открыть LSPosed.
+```csharp
+void OpenLSPosed() 
+```   
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.OpenLSPosed(); // Открыть LSPosed
+```
+_______________________________________________
+### Сгенерировать JSON для подмены на случайные данные.
+```csharp
+string GenerateRandomLSPosedSettings(string countryName) 
+```   
+
+*Параметры:*   
+```csharp
+string countryName // Имя страны для подмены.
+``` 
+
+*Перегрузка:*   
+```csharp
+IDeviceFilter filter // Фильтр для генерации подмены с нужными данными.
+``` 
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+var country = project.Profile.Country; // Страна для генерации
+var json = settings.GenerateRandomLSPosedSettings(country); // Получить Json для подмены LSPosed
+```
+_______________________________________________
+### Подмена данных телефона из JSON.
+```csharp
+void SetLSPosedSettings(string json) 
+```   
+
+*Параметры:*   
+```csharp
+string json // Значение JSON для подмены через LSPosed.
+``` 
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+var country = project.Profile.Country; // Страна для генерации
+var json = settings.GenerateRandomLSPosedSettings(country); // Получить Json для подмены LSPosed
+settings.SetLSPosedSettings(json); // Сделать подмену данных устройства
+```
+_______________________________________________
+### Подмена данных телефона на случайные данные.
+```csharp
+void SetRandomLSPosedSettings(string countryName)
+```   
+
+*Параметры:*   
+```csharp
+string countryName  // Имя страны для подмены.
+``` 
+
+*Перегрузка:*   
+```csharp
+IDeviceFilter filter // Фильтр для генерации подмены с нужными данными.
+``` 
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+var country = project.Profile.Country; // Страна для генерации
+settings.SetRandomLSPosedSettings(country); // Сделать случайную подмену данных устройства
+```
+_______________________________________________
+### Очистить данные подмены LSPosed.
+```csharp
+void ClearLSPosedSettings()
+```   
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.ClearLSPosedSettings(); // Очистить данные подмены LSPosed
+```
+_______________________________________________

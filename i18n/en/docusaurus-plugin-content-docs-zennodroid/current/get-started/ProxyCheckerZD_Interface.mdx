@@ -1,0 +1,108 @@
+---
+sidebar_position: 5
+title: ProxyChecker Interface Overview for ZD
+description: Get to know the ProxyChecker interface
+---
+
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________
+![ProxyChecker Interface Overview for ZD](./assets/ProxyChecker/ProxyCheck_pic14.png)
+## Control Panel
+This window opens up by default. Here's where you manage proxy collection and set up each stage.
+
+![Control Panel](./assets/ProxyChecker/ProxyCheck_pic15.png)
+- **Start/Stop**. You use these buttons to start or stop collecting and checking proxies.
+- **Filters**. A set of rules applied to proxies after they're grabbed from the source but before they go into the program's database.
+- **Rules**. These are conditions for picking proxies from the "live" list.
+- **Network Monitor**. With this built-in tool, you can test your internet connection for the maximum number of simultaneous threads.
+- **Help**. Opens the product manual in your browser.
+_________________
+### Proxy Sources
+![Proxy Sources.](./assets/ProxyChecker/ProxyCheck_pic16.png)
+
+This is where you set up loading proxies from sources. You can click the globe icon to go straight to the **Sources** tab.
+_________________
+#### Number of Sources
+![Number of Sources](./assets/ProxyChecker/ProxyCheck_pic17.png)
+
+The top number shows how many active (working) sources there are, the bottom one is the total number.
+#### Load Proxies Button
+When you click this, proxy collection from the sources will start.
+
+![Load Proxies Button.](./assets/ProxyChecker/ProxyCheck_pic18.png)
+
+With the gear button, you can choose how many threads will be used to load proxies from the sources.
+#### Enable Auto Search
+![Enable Auto Search.](./assets/ProxyChecker/ProxyCheck_pic19.png)
+:::warning **This button is only active when proxy loading is enabled.**
+:::
+After clicking it, ProxyChecker will start searching the internet for proxy sources all by itself. If you click the gear, you can fine-tune the auto search settings.
+_________________
+### Proxy Database
+![Proxy Database.](./assets/ProxyChecker/ProxyCheck_pic20.png)
+
+Here's where you actually start checking proxies. You can click the round cell icon to go to the **Sources** tab.
+#### Check Proxies Button
+![Check Proxies Button.](./assets/ProxyChecker/ProxyCheck_pic21.png)
+
+This starts the checking process. Next to it is the familiar gear icon for check settings. Here you can set the number of checking threads and a limit for live proxies — once you hit that, checking stops.
+_________________
+### Live Proxies
+![Live Proxies.](./assets/ProxyChecker/ProxyCheck_pic22.png)
+
+Here you can see the number of live proxies and set the amount of time they'll keep their live status. You can click the monitor icon to go to the **Proxies** tab.
+#### Clear List Button
+![Clear List Button](./assets/ProxyChecker/ProxyCheck_pic23.png)
+
+When you click this, the live proxies list gets cleared according to the set live-time, which you can set by clicking the gear.
+_________________
+## Sources Panel
+![Sources Panel.](./assets/ProxyChecker/ProxyCheck_pic24.png)
+### Wizard
+![Wizard.](./assets/ProxyChecker/ProxyCheck_pic25.png)
+This helps you add **parsing sources** into the program more easily.
+#### What do you want to add?
+![What do you want to add?](./assets/ProxyChecker/ProxyCheck_pic26.png)
+
+There are four options:
+- **Paste proxies straight into the program.** When you choose this, an empty window opens for you to add proxies.
+- **Proxy source.** Here you can specify a **file path** or a **URL (web page)** to collect proxies from.
+- **List of proxy sources.** It's basically the first option, but lets you add several sources at once.
+- **Path to a list of proxy sources.** Like option two, but you can enter multiple paths.
+_________________
+### Main Sources Window
+This tab shows all the proxy sources you've added. You'll also find controls to tweak source settings, delete or add sources, see proxy counts, and more.
+
+![Main Sources Window.](./assets/ProxyChecker/ProxyCheck_pic27.png)
+#### Available Buttons:
+- **Add Proxies.** Lets you add a list of proxies.
+- **Add Source.** Lets you add a new proxy source.
+- **Source Settings.** This button changes the settings for already added sources.
+- **Delete.** Use this to delete unwanted sources.
+:::warning **Deleting a source will also remove all proxies from that source.**
+:::
+- **Save.** This button saves source addresses to a file.
+- **Load Proxies.** Loads proxies from a source.
+- **Check Proxies.** Starts checking proxies for live ones.
+- **Recheck Live.** Lets you recheck already found live proxies from sources.
+- **Expand.** Expands the group with the source list if it was collapsed before.
+- **Collapse.** Collapses the list.
+- **Auto Mode Panel.** With this button, you turn on a panel for quick loading and checking control. This panel shows up above the source list:
+
+![Auto Mode Panel](./assets/ProxyChecker/ProxyCheck_pic28.png)
+
+The left side of the panel shows source count (live/total). On the right you have buttons for loading, searching, and checking proxies.
+- **Load Time.** Adds three new columns to the table.
+
+![Load Time](./assets/ProxyChecker/ProxyCheck_pic29.png)
+
+- **Delete All Proxies.** Wipes all proxies from the program.
+- **Blacklist.** If proxies don't fit your project or you don't trust the source, you can add it to the blacklist.
+
+![Blacklist](./assets/ProxyChecker/ProxyCheck_pic30.png)
+_________________
+## Useful Links
+- [**ZennoProxyChecker Main Page**](https://zennolab.com/en/products/zennoproxychecker/)
+- [**ProjectMaker Interface**](../category/интерфейс)
+- [**Detailed ZennoProxyChecker Help**](https://zennolab.atlassian.net/wiki/spaces/EN/pages/475365507/ZennoProxyChecker)

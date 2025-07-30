@@ -1,0 +1,90 @@
+---
+sidebar_position: 1
+title: Getting Started with the Browser
+description: How to quickly start using the browser
+---
+
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+);
+
+_______________________________________________
+In this article, we'll show you how to quickly get started with the browser.
+
+With **ZennoDroid**, you can automate any actions in a mobile browser.
+Along with a written guide to the basic browser operations, you'll also find video tutorials and a template with the necessary setup.
+
+## Basic Actions in the Browser
+
+The very first step is to click the red **"Record"** button in the top left corner. After that, everything you do manually in the browser gets automatically recorded into your project. You can then review each action to check if everything recorded correctly or if something needs fixing. This way, you can just go about the browser as usual, and the program records your steps for you.
+_______________________________________________
+
+### 1. Launching the App
+Once your device is connected, you need to launch the app. You can do this either via the **"Installed Apps"** button or with the **Open app** action. In both cases, you can use the *App ID* to find the browser. For Google Chrome, for example, it's ***com.android.chrome***. Find it, click on the **"Eraser icon"** to clear cache, and then launch the app.
+<VideoSample source={require("@site/static/video/browser_1.mp4").default}/>
+:::tip **How does this work?**
+For automation, it's important to always start with a "clean" browser. Since certain actions get added to the project template, you want them to run in the same conditions every time so things don't get messed up.
+:::
+
+:::info **Why do this?**
+The **Clear App** action is exactly for wiping cache and starting the app fresh.
+:::
+_______________________________________________
+
+### 2. Choosing Actions
+Next comes picking an action. For example, there's a **Set** action for assigning values; it only has the *input* attribute. **Get** is to retrieve a value (like id, class, name, etc). But here we need the **Rise** action (call/trigger an event). That's for *tap (touch)* or long *press (long touch)*.
+We add the **"Continue"** and **"No, thanks"** buttons to the [**Action Builder**](../pm/Interface/ActionBuilder), and pick the *touch* event for them. This way, every time you skip the browser's default questions on first launch.
+<VideoSample source={require("@site/static/video/browser_2.mp4").default}/>
+:::tip **Why do it this way?**
+I said earlier that ZennoDroid will capture your actions into the project automatically. So why add taps manually? Thing is, Android has very few tags for automatically finding elements. Sometimes the software has nothing to "grab onto". To make it clear, in this video we create actions manually, just in case you ever need to know how.
+:::
+_______________________________________________
+
+### 3. Pressing Enter
+Now, pick the search bar and type "zennolab". After entering the text, the search won't start automatically—just like on a real device, you need to tap **"Enter"**, and there's a specific action for this.
+Right-click the block → Add action → [Android → Keyboard Emulation](../Android/ProLite/Keyboard). In the action properties, enter: `AndroidKeys.ENTER`.
+<VideoSample source={require("@site/static/video/browser_3.mp4").default}/>
+_______________________________________________
+
+### 4. [Action Builder](../pm/Interface/ActionBuilder)
+Add a link to ZennoDroid in the action builder and tap it using the *touch* action—same as we did before with the buttons, which opens it.
+<VideoSample source={require("@site/static/video/browser_4.mp4").default}/>
+_______________________________________________
+
+### 5. Open and Minimize
+Right-click the block with the event that opens the link → **Add action → [Logic → Pause](../Project%20Editor/Logic/Pause) → set 10 seconds**. After that, add a [**Keyboard Emulation**](../Android/ProLite/Keyboard) action with the special button, which will minimize the app. The action's text will automatically be `AndroidKeys.HOME`.
+<VideoSample source={require("@site/static/video/browser_5.mp4").default}/>
+:::info **Why a 10-second pause?**
+We add the pause so you can clearly see the page that's opened. Otherwise, right after you click the link, the app would minimize. This way, you actually see the requested page before the template moves on.
+:::
+_______________________________________________
+
+### 6. Running and Testing the Project
+<VideoSample source={require("@site/static/video/browser_6.mp4").default}/>
+_______________________________________________
+
+### How to Make a Backup
+
+If needed, you can save the browser's state as a backup (cookies, logged-in sessions, etc.) and restore it before new actions, so you don't have to start fresh each time.
+
+1. Right-click the blocks area → **Add action → [Android → App Actions](../Android/ProLite/App#save-app-data).**
+Then pick the **Save app data** action. In the **App Name** field, enter the app ID: ***com.android.chrome***. You'll also need to set a path to save the backup archive.
+2. Repeat the last step, but pick [**Restore app data**](../Android/ProLite/App#restore-app-data) as the action. Specify the path to your backup archive.
+
+##### Video tutorial:
+
+<VideoSample source={require("@site/static/video/backup.mp4").default}/>
+
+#### Ready-made template:
+[**Template**](./assets/browser.droid)
+_______________________________________________
+
+## Useful Links
+- [**App Actions**](../Android/ProLite/App)
+- [**Pause**](../Project%20Editor/Logic/Pause)
+- [**Keyboard Emulation**](../Android/ProLite/Keyboard)

@@ -1,0 +1,46 @@
+---
+sidebar_position: 10
+title: WebView API
+description: Взаимодействие с содержимым веб-страниц через JavaScript.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+**`IWebViewAPI WebView`**  
+
+Предоставляет доступ к управлению WebView, которое используется преимущественно в браузерах (в других приложениях встречается редко).  
+
+Основной ценностью WebView является возможность взаимодействия с содержимым веб-страниц через JavaScript, что существенно расширяет функционал работы с сайтами.  
+_______________________________________________
+## Методы.  
+### Выполнить JavaScript.
+```csharp
+string EvaluateScript(string script)
+```   
+
+*Параметры:*   
+```csharp
+string script // Текст JavaScript.
+``` 
+
+#### Пример.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var script = "return document.documentElement.innerHTML"; // JS получить html страницы
+var html = webView.EvaluateScript(script); // Выполнить скрипт и получить html
+```
+_______________________________________________
+### Получить URL-адрес WebSocket.
+```csharp
+string GetAttachedWebSocketUrl()
+```   
+
+#### Пример.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var webSoket = webView.GetAttachedWebSocketUrl(); // Получить WebSoket
+```
+_______________________________________________

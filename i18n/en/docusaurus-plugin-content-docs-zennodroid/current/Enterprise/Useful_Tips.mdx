@@ -1,0 +1,69 @@
+---
+sidebar_position: 1
+title: Choosing a Smartphone for Flashing
+description: Useful info for picking a device
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________
+## Info about firmware
+- Google provides [**Clean Android firmware (GSIs)**](https://developer.android.com/topic/generic-system-image) for developers. There are both Root and standard user versions. The phone must support [**Treble**](https://github.com/phhusson/treble_experimentations/wiki).
+- **Indian Samsung firmware** gets updated more often, so it's usually newer than other regions and comes with extra features (like call recording), since India is a test region.
+- Some firmware (including GSI) and bootloaders **may have hidden settings**. For example, `fastboot oem off-mode-charge 0` makes the phone power on when the charging cable is connected instead of just showing the charging animation.
+- Some firmware sometimes includes a property (prop) for a backdoor: `debug.rootbackdoor=1`, with **third-party access keys already embedded**. You can read more about this on [**4PDA**](https://4pda.to/forum/index.php?showtopic=908196&view=findpost&p=95402137).
+_________________
+## Info about devices
+- Sometimes, to save money at work, **you can use demo versions of smartphones**. These usually don't have a cellular module and are sold used (ex-display).
+- Devices with MediaTek-based processors still **support dumping and flashing a full image of the flash memory**. This platform is considered cheap, which is probably why you get such direct access.
+- Almost all Huawei smartphones use their own processors—**Kirin**.
+
+### Choosing a Smartphone for Enterprise Use
+|   Device Name  | Samsung Galaxy S8 | Xiaomi Mi 9T Pro | Redmi 4X 3/32 |
+| :-------- | :-------: | :-------: | :-------: |
+| **Firmware**  | LineageOS 20-20231226-UNOFFICIAL-dreamlte    | Custom: XTB UI 14.1.1.0 (Android 12) | Android 13 (unofficial, like SparkOS) |
+| **Install Method** | TWRP     | OrangeFox | TWRP |
+| **Custom Recovery** | TWRP 3.5.0_9.0     | OrangeFox/Twrp | TWRP 3.1.1-0 |
+| **Magisk**    |  TWRP    | Magisk 26.4 | Not required |
+| **BusyBox**    | Not required   | Pre-installed | Not required |
+| **Useful Info**    | We recommend installing LineageOS for more stability    | If the connection drops, block background launch of all emulation-related apps (Zennodroid, Appium, etc.) |  Use Mi Unlock 5.5.224.55 to unlock the bootloader |
+| **Price on Avito**    | About 2,000 RUB   | From 7,000 RUB | Around 1,000 RUB |
+| **Overall rating**    | Reliable and easy to flash, no big issues    | Excellent for everyday use. Durable, fast and bezel-less. | These devices work 24/7 without a battery, no ADB disconnects. Best value for money |  
+
+:::tip **Other good options:**
+**Samsung**: S8–S21 series (including ultra and note) with Exynos chips.  
+**Xiaomi**: MI8 and MI9 (SE, Lite, Pro), Redmi 8 and 9 (Note, T, Pro), Redmi Note 7 and 10.  
+**Poco**: Poco X3 (Pro), Poco M3 (Pro), Poco M4 (X4, Pro, 5G), Poco F1 and F3.  
+**Google**: Pixel 5, 6 and 7 (avoid carrier-locked models).
+:::
+_________________
+## Tips for installation and setup
+- The Enterprise version works via ADB, so **you can use any emulators**. But you'll have to handle setting them up yourself.
+### Removing packages
+**Android can be slimmed down** by removing certain packages (including system ones) using the command `pm uninstall --user 0 package.path.name`. This works for both physical devices and virtual machines (at the very least for ad packages).
+
+If you need to restore system packages, you can either do a full reset or individually restore them using:  
+`cmd package install-existing package.path.name`
+
+You can get a list of all packages using the *pm command*:  
+`pm list packages` plus extra arguments as needed.
+
+#### Packages we recommend removing:
+1. [**For Android 12**](https://gist.github.com/Zymlex/f0b58104dd2f9504a14ffd9bdc3799ac)
+2. [**For Android 11**](https://gist.github.com/Zymlex/51a8ed0d5864122614e6db021be8c9e9)
+
+:::warning **We recommend looking up info about your particular device before deleting anything.**
+Removing certain packages on some smartphones can cause serious loss of functionality or even a bootloop (endless reboot).
+:::
+________________
+### Partition layout
+Before editing partitions on a physical device, make a full flash memory dump with all partitions included. Then test the method you plan to use for restoring the dump. If the device works fine after that, you can move on to editing.
+
+#### What methods are there?
+- **Recovery**. Gives you pretty broad access and features. But without its own partition, plus with no bootloader, it won't start.
+- [**Fastboot**](https://android.googlesource.com/platform/system/core/+/master/fastboot/README.md). Supports making logical partitions, but not all devices have it. For example, in Samsung phones, it's just a dummy, and the phone uses its own custom protocol.
+- **Bootloader**. Has pretty limited capabilities—basically resetting existing partitions and flashing images over already present ones.
+________________
+## Useful links
+- [**Smartphone and ZD Enterprise Tips**](https://zenno.club/discussion/threads/poleznoe-po-smartfonam-i-zd-enterprise.105073/)
+- [**Share and Spy!**](https://zenno.club/discussion/threads/podelis-i-podsmotri-smartfony-dlja-zennodroid-enterprise.118499/)
+- [**Reddit section — r/androidroot**](https://www.reddit.com/r/androidroot)

@@ -1,0 +1,10 @@
+{
+  "label": "ZennoProxy",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Документация по работе с прокси-серверами с помощью ZennoProxy"
+  },
+  "collapsed": false,
+  "className": "purple"
+} 

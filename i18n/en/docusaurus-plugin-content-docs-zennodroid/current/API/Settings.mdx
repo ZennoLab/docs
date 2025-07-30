@@ -1,0 +1,197 @@
+﻿---
+sidebar_position: 7
+title: Settings API
+description: Manage your smartphone's settings.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+## Overview  
+**`IDroidSettingsAPI Settings`**  
+
+This object is for managing device settings. With it, you can set basic parameters: language, time, geolocation, and other system settings. It also provides tools for working with [LSPosed in ZDE](../Enterprise/LSPosed), making it easy to spoof phone data.
+
+It mirrors the logic of the **Device Settings** cube for [**Lite/Pro**](../Android/ProLite/setting) and [**Enterprise**](../Android/Enterprise/setting) versions.  
+_______________________________________________
+## Methods  
+### Set device language
+```csharp
+void SetLanguage(string language)
+```
+
+*Parameters:*  
+```csharp
+string language // Specify the language (for example, RU).
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetLanguage("RU"); // Set the device language
+```
+_______________________________________________
+### Set device time
+```csharp
+void SetTime(string dateTime)
+```
+
+*Parameters:*  
+```csharp
+string dateTime // Time as a string (for example, "12.05.2025 14:30").
+```
+
+*Overload:*  
+```csharp
+DateTime dateTime // Time as a DateTime object.
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetTime(DateTime.Now); // Set the current time
+```
+_______________________________________________
+### Set time zone
+```csharp
+void SetTimezone(string timezone)
+```
+
+*Parameters:*  
+```csharp
+string timezone // Set the desired time zone (for example, "Europe/Moscow").
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetTimezone("Europe/Moscow");  // Set time zone
+```
+_______________________________________________
+### Update GSM module firmware
+```csharp
+void SetBaseband(string version)
+```
+
+*Parameters:*  
+```csharp
+string version // Specify the GSM module version (for example, "G9300ZCU2API3").
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetBaseband("G9300ZCU2API3"); // Set GSM module
+```
+_______________________________________________
+### Set geolocation
+```csharp
+void SetGeo(double longitude, double latitude)
+```
+
+*Parameters:*  
+```csharp
+double longitude // Longitude value.
+double latitude // Latitude value.
+```
+
+*Overload:*  
+```csharp
+double altitude // Altitude.
+double bearing // Bearing.
+double speed // Object speed.
+```
+_______________________________________________
+## Working with LSPosed in ZennoDroid Enterprise  
+### Open LSPosed
+```csharp
+void OpenLSPosed() 
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.OpenLSPosed(); // Open LSPosed
+```
+_______________________________________________
+### Generate JSON for random data spoofing
+```csharp
+string GenerateRandomLSPosedSettings(string countryName) 
+```
+
+*Parameters:*  
+```csharp
+string countryName // Country name for spoofing.
+```
+
+*Overload:*  
+```csharp
+IDeviceFilter filter // Filter for generating specific spoofed data.
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+var country = project.Profile.Country; // Country for generation
+var json = settings.GenerateRandomLSPosedSettings(country); // Get JSON for LSPosed spoofing
+```
+_______________________________________________
+### Apply spoofed phone data from JSON
+```csharp
+void SetLSPosedSettings(string json) 
+```
+
+*Parameters:*  
+```csharp
+string json // The JSON value for LSPosed spoofing.
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+var country = project.Profile.Country; // Country for generation
+var json = settings.GenerateRandomLSPosedSettings(country); // Get JSON for LSPosed spoofing
+settings.SetLSPosedSettings(json); // Apply device data spoofing
+```
+_______________________________________________
+### Spoof phone data with random values
+```csharp
+void SetRandomLSPosedSettings(string countryName)
+```
+
+*Parameters:*  
+```csharp
+string countryName  // Country name for spoofing.
+```
+
+*Overload:*  
+```csharp
+IDeviceFilter filter // Filter for generating specific spoofed data.
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+var country = project.Profile.Country; // Country for generation
+settings.SetRandomLSPosedSettings(country); // Apply random device data spoofing
+```
+_______________________________________________
+### Clear LSPosed spoofing data
+```csharp
+void ClearLSPosedSettings()
+```
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.ClearLSPosedSettings(); // Clear LSPosed spoofed data
+```
+_______________________________________________

@@ -1,0 +1,295 @@
+---
+sidebar_position: 5
+title: AppiumDriver API
+description: Автоматизация взаимодействия с пользовательским интерфейсом.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+_______________________________________________  
+## Описание.  
+**`IAppiumDriverAPI AppiumDriver`** 
+
+Этот интерфейс предоставляет методы для поиска элементов в Android-приложениях и взаимодействия с ними. Он является ключевым инструментом автоматизации взаимодействия с пользовательским интерфейсом через ZennoDroid.  
+
+Когда элемент был успешно найден, возвращается объект `IAndroidElementAPI`, если не найден, то `null`.
+_______________________________________________ 
+## Методы.  
+### Получаем элемент, который находится в фокусе.
+```csharp
+IAndroidElementAPI ActiveElement()
+```   
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.ActiveElement(); // Получить элемент в фокусе
+```
+_______________________________________________ 
+### Поиск элемента по свойству *`content-desc`*.
+```csharp
+IAndroidElementAPI FindElementByAccessibilityId(string id)
+```   
+
+*Параметры:*   
+```csharp
+string id // Значение свойства content-desc.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByAccessibilityId("Chrome search"); // Найти элемент по свойству content-desc
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.Click(); // Кликнуть по элементу
+```
+_______________________________________________ 
+### Поиск элемента по свойству *`class`*.
+```csharp
+IAndroidElementAPI FindElementByClassName(string className)
+```   
+
+*Параметры:*   
+```csharp
+string className // Значение свойства class.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByClassName("android.widget.EditText"); // Найти элемент по имени класса
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.SendText("Привет мир!"); // Написать текс в поле элемента
+```
+_______________________________________________ 
+### Поиск элемента по свойству *`resource-id`*.
+```csharp
+IAndroidElementAPI FindElementById(string id)
+```   
+
+*Параметры:*   
+```csharp
+string id // Значение свойства resource-id.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementById("com.android.chrome:id/title"); ; // Найти элемент по свойству resource-id
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+var text = de.Text; // Получить текст элемента
+```
+_______________________________________________ 
+### Поиск элемента по *xPath*.
+```csharp
+IAndroidElementAPI FindElementByXPath(string xpath)
+```   
+
+*Параметры:*   
+```csharp
+string xpath // xPath для поиска элемента.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.Click(); // Кликнуть по элементу
+```
+_______________________________________________ 
+### Поиск элемента через [*UiSelector*](https://developer.android.com/reference/kotlin/androidx/test/uiautomator/UiSelector?hl=en).
+```csharp
+IAndroidElementAPI FindElementByUiAutomator(string uiSelector)
+```   
+
+*Параметры:*   
+```csharp
+string uiSelector  // uiSelector для поиска элемента.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByUiAutomator("new UiSelector().textContains(\"screen\")"); // Найти элемент по UiSelector
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.Click(); // Кликнуть по элементу
+```
+_______________________________________________ 
+### Поиск массива элементов по свойству *`content-desc`*.
+```csharp
+IAndroidElementAPI[] FindElementsByAccessibilityId(string id)
+```   
+
+*Параметры:*   
+```csharp
+string id  // Значение свойства content-desc.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var des = driver.FindElementsByAccessibilityId("Chrome search"); // Найти массив элементов по свойству content-desc
+if (des == null)
+    throw new Exception("Элементы не найдены");
+
+var count = des.Length; // Количество найденных элементов.
+```
+_______________________________________________ 
+### Поиск массива элементов по свойству *`resource-id`*.
+```csharp
+IAndroidElementAPI[] FindElementsById(string id)
+```   
+
+*Параметры:*   
+```csharp
+string id  // Значение свойства resource-id.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var des = driver.FindElementsById("com.android.chrome:id/title"); // Найти массив элементов по свойству resource-id
+if (des == null)
+    throw new Exception("Элементы не найдены");
+
+var count = des.Length; // Количество найденных элементов.
+```
+_______________________________________________ 
+### Поиск массива элементов по свойству *`class`*.
+```csharp
+IAndroidElementAPI[] FindElementsByClassName(string className)
+```   
+
+*Параметры:*   
+```csharp
+string className  // Значение свойства class.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var des = driver.FindElementsByClassName("android.widget.EditText"); // Найти массив элементов по имени класса
+if (des == null)
+    throw new Exception("Элементы не найдены");
+
+var count = des.Length; // Количество найденных элементов.
+```
+_______________________________________________ 
+### Поиск массива элементов по свойству *xPath*.
+```csharp
+IAndroidElementAPI[] FindElementsByXPath(string xpath)
+```   
+
+*Параметры:*   
+```csharp
+string xpath  // xPath для поиска элемента.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var des = driver.FindElementsByXPath("//*[@text=\"Display\"]");// Найти массив элементов по xPath
+if (des == null)
+    throw new Exception("Элементы не найдены");
+
+var count = des.Length; // Количество найденных элементов.
+```
+_______________________________________________ 
+### Поиск массива элементов через [*UiSelector*](https://developer.android.com/reference/kotlin/androidx/test/uiautomator/UiSelector?hl=en).
+```csharp
+IAndroidElementAPI[] FindElementsByUiAutomator(string uiSelector)
+```   
+
+*Параметры:*   
+```csharp
+string uiSelector // uiSelector для поиска элемента.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var des = driver.FindElementsByUiAutomator("new UiSelector().textContains(\"screen\")"); // Найти массив элементов по UiSelector
+if (des == null)
+    throw new Exception("Элементы не найдены");
+
+var count = des.Length; // Количество найденных элементов.
+```
+_______________________________________________ 
+### Масштабируем экран к элементу по свойству *`content-desc`*.
+```csharp
+void ScrollToElementByAccessibilityId(string id, int maxSwipes)
+```   
+
+*Параметры:*   
+```csharp
+string id // Значение свойства content-desc.
+int maxSwipes // Количество свайпов.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var countScroll = 3; // Количество скроллов
+driver.ScrollToElementByAccessibilityId("Chrome search", countScroll); // Скролим до элемента по свойству content-desc
+```
+_______________________________________________ 
+### Масштабируем экран к элементу по свойству *`class`*.
+```csharp
+void ScrollToElementByClassName(string className, int maxSwipes)
+```   
+
+*Параметры:*   
+```csharp
+string className // Значение свойства class.
+int maxSwipes // Количество свайпов.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var countScroll = 3; // Количество скроллов
+driver.ScrollToElementByClassName("android.widget.ImageView", countScroll); // Скролим до элемента по имени класса
+```
+_______________________________________________ 
+### Масштабируем экран к элементу через [*UiSelector*](https://developer.android.com/reference/kotlin/androidx/test/uiautomator/UiSelector?hl=en).
+```csharp
+void ScrollToElementByUiAutomator(string uiSelector, int maxSwipes)
+```   
+
+*Параметры:*   
+```csharp
+string uiSelector  // uiSelector для поиска элемента.
+int maxSwipes // Количество свайпов.
+``` 
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var countScroll = 3; // Количество скроллов
+driver.ScrollToElementByUiAutomator("new UiSelector().text(\"Display\")", countScroll); // Скролим до элемента по UiSelector
+```
+_______________________________________________

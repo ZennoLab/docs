@@ -10,17 +10,43 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero hero--primary', styles.heroBanner)}
+    style={{padding: "3rem 0"}}
+    >
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          Документация ZennoDroid
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/category/начало-работы">
-            ZennoDroid Pro Tutorial - 5min ⏱️
+            to="/zennodroid/category/знакомство">
+            Приступим к знакомству 📲
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+}
+// Заголовок hero {siteConfig.title}
+
+function HomepageHeaderZennoPoster() {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <header className={clsx('hero hero--primary', styles.heroBanner)}
+    style={{backgroundColor: '#1868D8', padding: "3rem 0"}}
+    >
+      <div className="container">
+        <Heading as="h1" className="hero__title">
+        Документация ZennoPoster
+        </Heading>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/zennoposter/intro">
+            Приступим к знакомству 🖥
           </Link>
         </div>
       </div>
@@ -32,9 +58,10 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`ZennoDroid Documentation`}
-      description="The Easiest Way to Automate Android Apps Without Coding">
+      title={`Документация ZennoLab`}
+      description="Самый простой способ автоматизировать без знаний кода">
       <HomepageHeader />
+      <HomepageHeaderZennoPoster />
       <main>
         <HomepageFeatures />
       </main>

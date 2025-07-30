@@ -1,0 +1,42 @@
+{
+  "link.title.Больше": {
+    "message": "More",
+    "description": "The title of the footer links column with title=Больше in the footer"
+  },
+  "link.item.label.Основные понятия": {
+    "message": "Basic Terms",
+    "description": "The label of footer link with label=Основные понятия linking to /zennodroid/get-started/BasicTerms"
+  },
+  "link.item.label.Подключение реального устройства (ZDE)": {
+    "message": "Real Device Connection (ZDE)",
+    "description": "The label of footer link with label=Подключение реального устройства (ZDE) linking to /zennodroid/get-started/Connection"
+  },
+  "link.item.label.Интерфейс ProjectMaker": {
+    "message": "ProjectMaker Interface",
+    "description": "The label of footer link with label=Интерфейс ProjectMaker linking to /zennodroid/category/интерфейс"
+  },
+  "link.item.label.Блог": {
+    "message": "Blog",
+    "description": "The label of footer link with label=Блог linking to /blog"
+  },
+  "copyright": {
+    "message": "Copyright © 2024 ZennoDroid by ZennoLab",
+    "description": "The footer copyright"
+  },
+  "link.title.ZennoDroid": {
+    "message": "ZennoDroid",
+    "description": "The title of the footer links column with title=ZennoDroid in the footer"
+  },
+  "link.title.ZennoPoster": {
+    "message": "ZennoPoster",
+    "description": "The title of the footer links column with title=ZennoPoster in the footer"
+  },
+  "link.item.label.Основы": {
+    "message": "Основы",
+    "description": "The label of footer link with label=Основы linking to /zennoposter/basics/getting-started"
+  },
+  "link.item.label.ZennoLab": {
+    "message": "ZennoLab",
+    "description": "The label of footer link with label=ZennoLab linking to https://zennolab.com"
+  }
+}

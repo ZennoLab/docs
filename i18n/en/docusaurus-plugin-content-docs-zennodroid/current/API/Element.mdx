@@ -1,0 +1,121 @@
+﻿---
+sidebar_position: 6
+title: Element API
+description: Performing various operations on found elements.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+## Description  
+**`IAndroidElementAPI`**  
+
+This interface allows you to manage user interface elements in Android apps. You use it to perform various actions on elements found using the [IAppiumDriverAPI](./AppiumDriver) interface methods.
+
+### Properties  
+- **Element's id property value**
+```csharp
+string Id { get; }
+```  
+
+- **Element's text property value**
+```csharp
+string Text { get; }
+```  
+
+#### Examples:
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+var id = de.Id; // Get the Id property value
+var text = de.Text; // Get the text property value
+```
+_______________________________________________  
+## Methods
+### Get an element's property value
+```csharp
+string GetAttribute(string name)
+```   
+
+*Parameters:*   
+```csharp
+string name // Name of the property you want to get.
+``` 
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+var bounds = de.GetAttribute("bounds"); // Get the "bounds" property value
+var text = de.GetAttribute("text"); // Get the "text" property value
+```
+_______________________________________________ 
+### Click the found element
+```csharp
+void Click()
+```   
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+de.Click(); // Click on the element
+```
+_______________________________________________ 
+### Clear an element's value (like input text)
+```csharp
+void Clear()
+```   
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+de.Clear(); // Clear the element's value
+```
+_______________________________________________ 
+### Enter text into the element's field
+```csharp
+void SendText(string text)
+```   
+
+*Parameters:*   
+```csharp
+string text  // The value you want to enter.
+``` 
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+de.SendText("Hello world!"); // Enter text into the element's field
+```
+_______________________________________________ 
+### Enter special characters
+```csharp
+void SendKeys(string text)
+```   
+
+*Parameters:*   
+```csharp
+string text  // Special characters you want to enter.
+```

@@ -1,0 +1,46 @@
+﻿---
+sidebar_position: 10
+title: WebView API
+description: Interacting with web page content via JavaScript.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+## Description  
+**`IWebViewAPI WebView`**  
+
+Gives you control over the WebView, which is mainly used in browsers (and rarely in other apps).  
+
+The main advantage of WebView is that you can interact with web page content using JavaScript, which seriously expands what you can do with websites.  
+_______________________________________________
+## Methods  
+### Run JavaScript
+```csharp
+string EvaluateScript(string script)
+```   
+
+*Parameters:*   
+```csharp
+string script // JavaScript code.
+``` 
+
+#### Example  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var script = "return document.documentElement.innerHTML"; // JS to get the page html
+var html = webView.EvaluateScript(script); // Run the script and get the html
+```
+_______________________________________________
+### Get WebSocket URL
+```csharp
+string GetAttachedWebSocketUrl()
+```   
+
+#### Example  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var webSoket = webView.GetAttachedWebSocketUrl(); // Get the WebSocket
+```
+_______________________________________________

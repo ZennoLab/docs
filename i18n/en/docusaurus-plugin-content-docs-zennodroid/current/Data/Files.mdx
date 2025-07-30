@@ -1,0 +1,92 @@
+﻿---
+sidebar_position: 2
+title: Files
+description: Automating file management.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+## Description  
+In ZennoDroid, you can automate working with files. For example:
+- insert pre-written text from a file when posting on forums, social networks, and messengers;
+- add descriptions for ads on marketplaces and other websites;
+- send mass comments and messages;
+- save data to a file while parsing;
+- keep detailed logs by writing them to a file;
+- delete or move unnecessary files.
+_______________________________________________ 
+## How to Add to Your Project  
+Using the context menu: **Add Action → Data → Files**.
+
+![Add to project](./assets/Files/Files_pic1.png) 
+_______________________________________________ 
+## Available Actions  
+![Available actions](./assets/Files/Files_pic2.png)  
+_______________________________________________  
+### Get Text  
+![Get text](./assets/Files/Files_pic3.png)  
+
+Lets you copy text from a file and save it to a variable.
+
+You can also choose to delete the file after the action is done.
+_______________________________________________ 
+### Write Text  
+![Write text](./assets/Files/Files_pic4.png)  
+
+This action writes the specified field text to the chosen file.
+
+#### Append to File  
+If this box is checked, the new text will be **added** to the file. If not, the file will be **completely overwritten**.
+
+#### Write Line Break at the End  
+This adds a line break (`\r\n`) to the end of the text. It helps to properly save multiple lines of data to a file.
+_______________________________________________ 
+### Move  
+Moves a file to the specified directory. You need to provide the current full path to the file, and then the new path and name after moving.
+
+![Move](./assets/Files/Files_pic5.png)  
+
+You can also use this action to simply rename a file.
+_______________________________________________ 
+### Check Existence  
+Lets you check if a file exists at a given path.
+- **Result:** If the file exists, the action will follow the green route; if not, it'll follow the red route.
+- **Timeout:** Enter the number of seconds to wait for the file to appear.
+_______________________________________________ 
+### Copy  
+Works just like **Move**, but the original file remains unchanged.
+_______________________________________________ 
+### Delete  
+Lets you delete a file at the specified path.
+_______________________________________________ 
+## Example  
+**Let's download an image from vk.com, rename it, and move it to the needed folder.**
+
+Say, you've already got the [**direct link to the picture**](https://sun9-40.userapi.com/impf/c848528/v848528810/1bd139/xdhmnuXGxLg.jpg?size=1200x800&quality=96&sign=d821afb870ed03538e551524acb1af31&type=album). Now, using a ***GET request***, you'll download it to your device. Use the variable `PicPath`—after the action runs, it'll contain the direct file path.
+
+![GET request](./assets/Files/Files_pic6.png)  
+
+Next, add the [**Random**](./Random) action to generate the file name.
+
+![Random](./assets/Files/Files_pic7.png)  
+
+Then, create a **Files** action with the *Move* option.
+
+![Files](./assets/Files/Files_pic8.png)  
+
+**File path:** `{-Variable.PicPath-}`  
+**New path:** `{-Project.Directory-}Village_Kitten\{-Variable.name_file-}.jpg`  
+
+:::tip **`{-Project.Directory-}`**
+This is a macro to specify the directory where your project is located.
+:::  
+
+After this action, the file will be moved to the right folder, and you can move on to uploading the next image.
+
+:::warning **File extension**
+When working with images, make sure to use the same file extension as when you downloaded it.
+:::
+_______________________________________________  
+## Useful Links  
+- [**Working with variables**](./WorkWithVariables)  
+- [**Log window**](../pm/Interface/Log_window)

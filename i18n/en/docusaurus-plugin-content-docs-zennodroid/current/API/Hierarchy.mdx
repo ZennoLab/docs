@@ -1,0 +1,24 @@
+﻿---
+sidebar_position: 11
+title: Hierarchy API
+description: Access to the interface element tree.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+## Description  
+**`IDroidHierarchyAPI Hierarchy`** 
+
+Provides access to the tree of interface elements on the current device screen. It's used to get the UI structure, which is an XML tree of all elements and their relationships.
+_______________________________________________
+## Methods
+### Get the current screen's XML tree.
+```csharp
+string GetLayout()
+```   
+
+#### Example  
+```csharp
+var xml = instance.DroidInstance.Hierarchy.GetLayout(); // Get the current device screen XML
+```
+_______________________________________________

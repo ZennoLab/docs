@@ -8,8 +8,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'ZennoDroid Docs',
-  tagline: 'The Easiest Way to Automate Android Apps Without Coding',
+  title: 'Документация ZennoLab',
+  tagline: 'Простейший способ автоматизировать работу без знания кода',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -23,7 +23,7 @@ const config = {
   organizationName: 'zennolab', // Usually your GitHub org/user name.
   projectName: 'zennodroid', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -40,7 +40,20 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          id: 'zennodroid',
           sidebarPath: './sidebars.js',
+          path: 'docs/ZennoDroid',
+          routeBasePath: 'zennodroid',
+          editUrl: ({locale, versionDocsDirPath, docPath}) => {
+            return locale === 'ru'
+              ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoDroid/${docPath}`
+              : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennodroid/current/${docPath}`;
+          },
+          /*routeBasePath: '/',
+          showLastUpdateTime: true,
+            return locale === 'ru'
+              ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/${versionDocsDirPath}/${docPath}`
+              : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;*/
         },
         blog: {
           showReadingTime: true,
@@ -55,68 +68,185 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'zennoposter',
+        path: 'docs/ZennoPoster',
+        routeBasePath: 'zennoposter',
+        sidebarPath: './sidebars-zennoposter.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoPoster/${docPath}`
+            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoposter/current/${docPath}`;
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'zennoproxy',
+        path: 'docs/ZennoProxy',
+        routeBasePath: 'zennoproxy',
+        sidebarPath: './sidebars-zennoproxy.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoProxy/${docPath}`
+            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoproxy/current/${docPath}`;
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'zennobrowser',
+        path: 'docs/ZennoBrowser',
+        routeBasePath: 'zennobrowser',
+        sidebarPath: './sidebars-zennobrowser.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoBrowser/${docPath}`
+            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennobrowser/current/${docPath}`;
+        },
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'ZennoDroid Docs',
+        title: 'ZennoLab Docs',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'ZennoLab Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
+            type: 'search',
+            position: 'left', 
+          },
+          {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Docs',
+            position: 'right',
+            label: 'ZennoDroid',
+            docsPluginId: 'zennodroid',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennoposterSidebar',
+            position: 'right',
+            label: 'ZennoPoster',
+            docsPluginId: 'zennoposter',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennoproxySidebar',
+            position: 'right',
+            label: 'ZennoProxy',
+            docsPluginId: 'zennoproxy',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennobrowserSidebar',
+            position: 'right',
+            label: 'ZennoBrowser',
+            docsPluginId: 'zennobrowser',
+          },
+          {to: '/blog', label: 'Блог', position: 'right'},
           {type: 'localeDropdown', position: 'right'},
           {
-            href: 'https://zennolab.com/en/products/zennodroid/',
-            label: 'ZennoDroid',
+            href: 'https://zennolab.com',
+            label: 'ZennoLab',
             position: 'right',
           },
         ],
+      },
+      algolia: {
+        appId: '2BMNH9NBSS',
+        apiKey: 'a9d097920f0ecd9668a0e40e61329caa',
+        indexName: 'zennodroid-pages',
+        // Опциональные настройки
+        contextualSearch: true,
+        searchPagePath: false,
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'ZennoDroid',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/category/начало-работы',
+                label: 'Основные понятия',
+                to: '/zennodroid/get-started/BasicTerms',
+              },
+              {
+                label: 'Подключение реального устройства (ZDE)',
+                to: '/zennodroid/get-started/Connection',
+              },
+              {
+                label: 'Интерфейс ProjectMaker',
+                to: '/zennodroid/category/интерфейс',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'ZennoPoster',
             items: [
               {
-                label: 'Blog',
+                label: 'Основы',
+                to: '/zennoposter/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'ZennoProxy',
+            items: [
+              {
+                label: 'Начало работы',
+                to: '/zennoproxy/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'ZennoBrowser',
+            items: [
+              {
+                label: 'Начало работы',
+                to: '/zennobrowser/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'Больше',
+            items: [
+              {
+                label: 'Блог',
                 to: '/blog',
               },
               {
-                label: 'ZennoDroid',
-                href: 'https://zennolab.com/en/products/zennodroid/',
-              },
-              {
-                label: 'Other ZennoLab Products',
+                label: 'ZennoLab',
                 href: 'https://zennolab.com',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} ZennoDroid by ZennoLab`,
+        copyright: `Copyright © ${new Date().getFullYear()} ZennoLab`,
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        theme: prismThemes.oneLight,
+        darkTheme: prismThemes.shadesOfPurple,
+        additionalLanguages: [
+          'json',
+          'java',
+          'bash',
+          'csharp',
+          'http'
+        ],
       },
     }),
 };

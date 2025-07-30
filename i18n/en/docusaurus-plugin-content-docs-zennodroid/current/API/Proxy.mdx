@@ -1,0 +1,147 @@
+﻿---
+sidebar_position: 9
+title: Proxy API
+description: Manage proxy server settings on your device.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+_______________________________________________  
+## Description  
+**`IDroidProxyAPI Proxy`**  
+
+This interface is for managing your device's proxy server settings. It lets you set up basic proxy parameters as well as advanced options needed for more precise connection configuration.  
+
+### Properties  
+- **Block WebRTC leaks**  
+```csharp
+bool BlockWebRtcLeak { get; set; }
+```   
+
+- **Block UDP leaks**  
+```csharp
+bool BlockUDPLeak { get; set; }
+```   
+
+- **DNS requests over TCP**  
+```csharp
+bool UseDnsTcp { get; set; }
+```   
+
+- **DNS requests over UDP**  
+```csharp
+bool UseDnsUdp { get; set; }
+```  
+_______________________________________________
+## Methods
+### Set Proxy
+```csharp
+void SetProxy(string proxy)
+```   
+
+*Parameters:*   
+```csharp
+string proxy // Proxy value. Format: login:pass@IP:port
+``` 
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+// Set up a proxy
+proxy.SetProxy("socks5://login:pass@100.20.30.40:8080");
+proxy.SetProxy("https://login:pass@100.20.30.40:8080");
+proxy.SetProxy("login:pass@100.20.30.40:8080");
+```
+_______________________________________________ 
+### Get Project Proxy
+```csharp
+string GetProxy()
+```    
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+var projectProxy = proxy.GetProxy(); // Get project proxy
+```
+_______________________________________________ 
+### Clear Proxy
+```csharp
+void ClearProxy()
+```    
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.ClearProxy(); // Clear project proxy
+```
+_______________________________________________ 
+### Set Your Own DNS Server
+```csharp
+void SetDnsServers(string dnsServers)
+```    
+
+*Parameters:*   
+```csharp
+string dnsServers // DNS value.
+``` 
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.SetDnsServers("1.1.1.1,8.8.4.4"); // Set DNS server
+```
+_______________________________________________ 
+### Set Local Address
+```csharp
+void SetLocalAddress(string address)
+```    
+
+*Parameters:*   
+```csharp
+string address // Local address.
+``` 
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.SetLocalAddress("192.168.20.0"); // Set local address
+```
+_______________________________________________ 
+### Enable Private DNS
+```csharp
+void EnablePrivateDns(string address)
+```    
+
+*Parameters:*   
+```csharp
+string address // Private DNS.
+``` 
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.EnablePrivateDns("dns.google"); // Enable private DNS
+```
+_______________________________________________ 
+### Disable Private DNS
+```csharp
+void DisablePrivateDns()
+```    
+
+*Parameters:*   
+```csharp
+string address // Private DNS.
+``` 
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.DisablePrivateDns(); // Disable private DNS
+```
+_______________________________________________

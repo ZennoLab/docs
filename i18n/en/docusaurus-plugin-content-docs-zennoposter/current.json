@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.zennoposterSidebar.category.Основы": {
+    "message": "Basics",
+    "description": "The label for category Основы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Основы.link.generated-index.description": {
+    "message": "Learn the basic principles of working with ZennoPoster",
+    "description": "The generated-index page description for category Основы in sidebar zennoposterSidebar"
+  }
+}

@@ -1,0 +1,133 @@
+﻿---
+sidebar_position: 4
+title: Environment Variables
+description: Storing various parameters.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
+:::
+_______________________________________________  
+## Description.  
+In ZennoDroid, there are predefined environment variables that store device parameters (screen resolution, geolocation data, mobile connection, and so on), time and date, project info (its name, folder name, proxy rules, last error id), profile data (email, gender, name).
+_______________________________________________
+### Profile.
+:::info **They start with `-Profile.`.**
+:::
+| Name    | Contents |
+| :-------- | :-------: |
+| `{-Profile.Age-}`  | **Age**   |
+| `{-Profile.AndroidID-}` | **Android device ID**    |
+| `{-Profile.BornDay-}`    | **Birth day**    |
+| `{-Profile.BornYear-}`  | **Birth year**   |
+| `{-Profile.BornMonth-}` | **Birth month**    |
+| `{-Profile.Country-}`    | **Profile country**    |
+| `{-Profile.CpuCount-}`  | **Number of CPU cores allocated to the emulator**   |
+| `{-Profile.DisplayDensity-}` | **Emulator screen density (DPI)**    |
+| `{-Profile.DisplayHeight-}`    | **Emulator screen height**    |
+| `{-Profile.DisplayWidth-}`  | **Emulator screen width**   |
+| `{-Profile.Email-}` | **Profile email address**    |
+| `{-Profile.EmailPassword-}`    | **Profile email password**    |
+| `{-Profile.GeoLatitude-}`    | **Emulator latitude (geodata)**    |
+| `{-Profile.GeoLongitude-}`  | **Emulator longitude (geodata)**   |
+| `{-Profile.IMEI-}` | **Device IMEI**    |
+| `{-Profile.IMSI-}`    | **IMSI**    |
+| `{-Profile.Language-}`  | **Profile language (depends on chosen nationality)**   |
+| `{-Profile.Login-}` | **Profile login**    |
+| `{-Profile.Name-}`    | **Profile name**    |
+| `{-Profile.NickName-}`    | **Profile nickname**    |
+| `{-Profile.OperatorCode-}`  | **Carrier code**   |
+| `{-Profile.OperatorCountry-}` | **Carrier country**    |
+| `{-Profile.OperatorName-}`    | **Carrier name**    |
+| `{-Profile.Password-}`  | **Profile password**   |
+| `{-Profile.PhoneModel-}` | **Phone model**    |
+| `{-Profile.PhoneManufacturer-}`    | **Manufacturer**    |
+| `{-Profile.PhoneNumber-}`  | **Phone number**   |
+| `{-Profile.RAM-}` | **Amount of RAM allocated**    |
+| `{-Profile.SecretQuestionAnswer1/2-}`    | **Answer to secret question #1 or #2**    |
+| `{-Profile.Sex-}`  | **Profile gender**   |
+| `{-Profile.SimSerial-}` | **SIM card serial number**    |
+| `{-Profile.Surname-}`    | **Profile surname**    |
+| `{-Profile.Town-}`    | **Profile city**    |
+| `{-Profile.WiFiMAC-}`  | **Generated MAC address**   |
+| `{-Profile.WiFiName-}` | **Generated WiFi network name**    |
+| `{-Profile.ZipCode-}`    | **Profile zip code**    |  
+_______________________________________________
+### Time and Date.
+:::info **They start with `-TimeNow.`.**
+:::
+| Name    | Contents |
+| :-------- | :-------: |
+| `{-TimeNow.Date-}`  | **Current date and time in the format `MM/DD/YYYY hh:mm:ss` *(for example - 01/25/2020 14:41:18)***   |
+| `{-TimeNow.TimeNow-}` | **Current date and time in the format `YYYY-MM-DD hh-mm-ss--milliseconds` *(for example -2020-01-25 14-41-59--834)***    |
+| `{-TimeNow.Day-}`    | **Day of the month**    |
+| `{-TimeNow.Month-}`  | **Current month (number)**   |
+| `{-TimeNow.Year-}` | **Current year**    |
+| `{-TimeNow.DayOfWeek-}`    | **Day of the week, in English**    |
+| `{-TimeNow.Hour-}`  | **Current hour (24-hour format)**   |
+| `{-TimeNow.Minute-}` | **Current minute**    |
+| `{-TimeNow.Second-}`    | **Current second**    |
+| `{-TimeNow.Millisecond-}`  | **Current millisecond**   |
+| `{-TimeNow.UnixTime-}` | **Time in Unix format. Example: `1629891362.23929`**    |
+
+:::tip **String format.**
+For **`{-TimeNow.Date-}`** you can change the output format. Just put the template in curly braces **after** the variable name, like this: `{-TimeNow.Date dd.MM.yyyy HH.mm-}`. The result will be **25.01.2020 14.41**.
+
+But the variable `{-TimeNow.TimeNow-}` **does not support** formatting.
+:::
+_______________________________________________
+### Project variables.
+:::info **They start with `-Project.`.**
+:::
+| Name    | Contents |
+| :-------- | :-------: |
+| `{-Project.Directory-}`  | **Template directory**   |
+| `{-Project.PluginDirectory-}` | **Plugin directory (if the running template is a *plugin*)**    |
+| `{-Project.Name-}`    | **Template name**    |
+| `{-Project.Proxy-}`  | **Current project proxy**   |
+| `{-Project.ProxyRules-}` | **Current rule from ProxyChecker**    |
+| `{-Project.LastExecutedActionElapsedTime-}`    | **Time spent on the last executed action**    |
+| `{-Project.LastExecutedActionId-}`  | **ID of the last executed action**   |
+| `{-Project.LastErrorComment-}` | **Text of the last action that ended with an error**    |
+
+:::tip **`{-Project.LastErrorComment-}`.**
+If you didn't set a user comment for the action (via right-click → Comment), you'll just get an empty string.
+:::
+_______________________________________________
+### Environment variables.
+:::info **They start with `-Environment.`.**
+:::
+
+| Name    | Contents |
+| :-------- | :-------: |
+| `{-Environment.CurrentUser-}`  | **ZennoDroid user ID from your personal account who is currently working on the template**   |
+| `{-Environment.EmulatorDirectory-}` | **Full path to the directory where Memu is installed (if you use the emulator)**    |
+| `{-Environment.TickCount-}`    | **Milliseconds since your computer was last turned on**    |
+
+:::tip **`{-Environment.TickCount-}`.**
+This variable is based on **Environment.TickCount from C#**, so it has one peculiarity.
+
+If your computer runs non-stop for a long time, after about 24.9 days this variable will reach its maximum positive value – **2147483647**.
+
+After that it jumps to the minimum possible value – **-2147483648** and starts counting up to zero again (will reach zero again after about 24.9 days).
+
+When it hits zero, it starts increasing again to the maximum possible value. **And so on in a loop**.
+:::
+_______________________________________________
+### String variables.
+:::info **They start with `-String.`.**
+:::
+
+| Name    | Contents |
+| :-------- | :-------: |
+| `{-String.Enter-}`  | **New line character**   |
+| `{-String.Space-}` | **Space**    |
+| `{-String.Tab-}`    | **Tab character**    |  
+_______________________________________________
+### Other.
+| Name    | Contents |
+| :-------- | :-------: |
+| `{-//-}`  | **New line character**   |  
+_______________________________________________
+## Useful links.
+- [**Variables window**](../Interface/Variables).
+- [**Profile**](../../Project%20Editor/Static%20Block%20Panel/Profile).
+- [**Working with variables**](../../Data/WorkWithVariables).
