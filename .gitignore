@@ -4,5 +4,4 @@
 .DS_Store
 /.docusaurus
 /build
-.en
-.gitignore
+.vs/
