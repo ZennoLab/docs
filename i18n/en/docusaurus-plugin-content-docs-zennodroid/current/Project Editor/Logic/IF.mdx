@@ -28,13 +28,13 @@ Through the context menu: **Add action → Logic → If**.
 
 ![Example #1](./assets/IF/IF_pic1.png)
 
-**1.** Create a variable `value1` and set it to `1`.
-**2.** Add the **IF** block via: ***Logic → If***.
-**3.** In the block properties field, insert the operand: `{-Variable.value1-}`
-**4.** Add the *equals* operator: `==`
-**5.** Insert the second value to compare: the constant `1`.
-**6.** If you run the block now, it’ll end on the green line (*a green check will appear*). That’s because the value is correct (***True***), since variable `value1` equals `1`.
-**7.** But if you change the variable value to `2`, the block will end on the red line (*a red cross will appear*). That’s because the value is wrong (***False***).
+**1.** Create a variable `value1` and set it to `1`.  
+**2.** Add the **IF** block via: ***Logic → If***.  
+**3.** In the block properties field, insert the operand: `{-Variable.value1-}`  
+**4.** Add the *equals* operator: `==`  
+**5.** Insert the second value to compare: the constant `1`.  
+**6.** If you run the block now, it’ll end on the green line (*a green check will appear*). That’s because the value is correct (***True***), since variable `value1` equals `1`.  
+**7.** But if you change the variable value to `2`, the block will end on the red line (*a red cross will appear*). That’s because the value is wrong (***False***).  
 
 In this example we used number data and the `==` comparison operator. Next, we’ll check out the Not Equals operator: `!=`
 _______________________________________________
@@ -45,22 +45,22 @@ For text data and variables, you **must** use quotes (single or double). But for
 
 ![Example #2](./assets/IF/IF_pic2.png)
 
-**1.** Create a variable `value1` and set it to `“Hello World“`.
-**2.** Add the **IF** block like this: ***Logic → If***.
-**3.** In the block property field, insert the operand: `{-Variable.value1-}`
-**4.** Add the *not equals* operator: `!=`
-**5.** Insert the second value to compare: the constant `“Hello World“`.
-**6.** If you run the block now, it’ll end on the red line. That’s because the value is wrong (***False***), since the variables are equal (but we are using the Not Equals operator).
-**7.** When you change the variable `value1` to `“Goodbye World“` and run the block again, it’ll end on the green line (***True***).
+**1.** Create a variable `value1` and set it to `“Hello World“`.  
+**2.** Add the **IF** block like this: ***Logic → If***.  
+**3.** In the block property field, insert the operand: `{-Variable.value1-}`  
+**4.** Add the *not equals* operator: `!=`  
+**5.** Insert the second value to compare: the constant `“Hello World“`.  
+**6.** If you run the block now, it’ll end on the red line. That’s because the value is wrong (***False***), since the variables are equal (but we are using the Not Equals operator).  
+**7.** When you change the variable `value1` to `“Goodbye World“` and run the block again, it’ll end on the green line (***True***).  
 _______________________________________________
 ### Example #3
 You can also use comparison to check if there’s at least some text loaded on a page.
 
 ![Example #3](./assets/IF/IF_pic5.png)
 
-**1.** Check the environment variable `{-Page.Text-}` for emptiness.
-**2.** If there’s no text on the page (it’s empty), the block will go through the green branch (***True***).
-**3.** Then you can reload the page or add an extra pause, waiting for the page to load.
+**1.** Check the environment variable `{-Page.Text-}` for emptiness.  
+**2.** If there’s no text on the page (it’s empty), the block will go through the green branch (***True***).  
+**3.** Then you can reload the page or add an extra pause, waiting for the page to load.  
 
 The **IF** block is also often used in counter loops to compare with some maximum value.
 _______________________________________________
@@ -84,10 +84,10 @@ This operator is written as two vertical slashes. It lets you compare several co
 
 ![OR Operator](./assets/IF/IF_pic3.png)
 
-**1.** Set variable `{-Variable.value1-}` to `1`, and `{-Variable.value2-}` to `12`.
-**2.** In the action’s input field, write: `{-Variable.value1-} > 0 || {-Variable.value2-} < 10`.
-**3.** Even though the second comparison is *not correct*, the block still ends on the green branch. That’s because **OR** returns ***True*** if at least one comparison is **true**.
-**4.** Change the first variable’s value to `-6` — then the block gives ***False***, because all values are **false**.
+**1.** Set variable `{-Variable.value1-}` to `1`, and `{-Variable.value2-}` to `12`.  
+**2.** In the action’s input field, write: `{-Variable.value1-} > 0 || {-Variable.value2-} < 10`.  
+**3.** Even though the second comparison is *not correct*, the block still ends on the green branch. That’s because **OR** returns ***True*** if at least one comparison is **true**.  
+**4.** Change the first variable’s value to `-6` — then the block gives ***False***, because all values are **false**.  
 _______________________________________________
 ### The AND operator &&
 The **AND** operator is written as two ampersands `&&` and returns ***True*** when all arguments are true, and ***False*** if even one is false.

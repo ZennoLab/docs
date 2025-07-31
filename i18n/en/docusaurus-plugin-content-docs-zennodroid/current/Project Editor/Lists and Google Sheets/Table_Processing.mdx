@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 4
-title: Table Operations
+title: Table Processing
 description: Let's look at the actions for working with tables.
 ---
 :::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
@@ -16,7 +16,7 @@ Tables are used to handle more complex, organized data than [**lists**](./Lists)
 - Getting the number of rows and columns
 _______________________________________________
 ## How to add to your project?
-Right-click: ***Add Action → Tables → Table Operations***.
+Right-click: ***Add Action → Tables → Table Processing***.
 
 ![How to add to project?](./assets/Table_Processing/Table_Processing_pic1.png)
 _______________________________________________
@@ -30,9 +30,9 @@ Lets you take the values of a certain table column and put them into a list.
 
 ![Get column](./assets/Table_Processing/Table_Processing_pic2.png)
 
-Choose the Table → select the Function → specify the Column you want to get → choose the List to put the column in.
+Choose the *Table* → select the *Function* → specify the *Column* you want to get → choose the *List* to put the column in.
 _______________________________________________
-### Get rows
+### Get lines
 You can get rows with the option to delete them from the table and write them to a list or variables.
 
 ![Get rows](./assets/Table_Processing/Table_Processing_pic3.png)
@@ -40,21 +40,16 @@ You can get rows with the option to delete them from the table and write them to
 - **Row selection criteria:**
     - *All*
     - *Does not contain text*
-    - *Does not match regex*
+    - *Not matching regex*
     - *First*
-    - *By indices*
+    - *By numbers*
     - *Random*
     - *Contains text*
-    - *Matches regex*
-- **Delete after getting.** Decides if the rows you got will stay in the table.
-- **Put result in:** You can put the row into a List or Variables. There's a table below to set this up.
-_______________________________________________
-### Add list
-This does the opposite — you can put a chosen list into a specific table column.
-
-***Pick a column to fill → Select a list.***
-_______________________________________________
-### Add row
+    - *Matching regex*
+- **Remove after getting.** Decides if the rows you got will stay in the table.
+- **Place the result:** You can put the row into a List or Variables. There's a table below to set this up.
+_______________________________________________  
+### Add line
 :::tip **Recommended**
 *If you need to add several rows at once, use the action **Text Processing with “To Table” function**.*
 :::
@@ -64,48 +59,59 @@ With this function, you can put static text (string) or a variable into a table.
 If your table is linked to a file with `.csv`, `.xls(x)`, or `.ods` extension, use `{-String.Tab-}` as a separator.
 :::
 _______________________________________________
-### Write cell
+### Add list
+This does the opposite — you can put a chosen list into a specific table column.
+
+***Pick a column to fill → Select a list.***
+_______________________________________________
+### Record cell
 Adds text to a specific cell.
 
 ![Write cell](./assets/Table_Processing/Table_Processing_pic4.png)
 
 - **Row and Column.** Here you set the static cell coordinates or do it through variables.
 - **Value.** Enter static text (string) or a variable.
-_______________________________________________
-### Get column count
-Find out how many columns are in the table.
-You can put the result into a variable (***numeric value only (int)***).
-_______________________________________________
-### Get row count
-Shows how many rows are in the table.
-You can put the result into a variable (***numeric value only (int)***).
-_______________________________________________
-### Link to file
-Lets you link the table to a file while your project is running.
-
-You need this action if you don’t know the file path when launching the template, and will get it while running.
-
-- **File path.** Choose a file or variable with the file path.
-- **Create file if missing.** If there’s no file, it’ll be created automatically.
-_______________________________________________
+_______________________________________________  
 ### Read cell
 Get the value from a specified cell.
 
 - **Row and Column.** Set static cell coordinates, or use variables.
-- **Put into variable.** Pick a variable to put the result in.
+- **Put to variable.** Pick a variable to put the result in.
 _______________________________________________
-### Sort table
+### Get the number of columns
+Find out how many columns are in the table.  
+
+![Bind](./assets/Table_Processing/Table_Processing_pic9.png)
+
+You can put the result into a variable (***numeric value only (int)***).
+_______________________________________________
+### Get number of lines
+Shows how many rows are in the table.
+You can put the result into a variable (***numeric value only (int)***).  
+_______________________________________________
+
+### Bind to file  
+Lets you link the table to a file while your project is running.  
+
+![Bind](./assets/Table_Processing/Table_Processing_pic8.png)
+
+You need this action if you don’t know the file path when launching the template, and will get it while running.
+
+- **File path.** Choose a file or variable with the file path.
+- **Create a file if it does not exist.** If there’s no file, it’ll be created automatically.
+_______________________________________________
+### Sort
 Sorts table elements in ascending or descending order.
 
 ![Sort table](./assets/Table_Processing/Table_Processing_pic5.png)
 
 - **Columns.** Select the ones you need.
 ZennoDroid will pick up columns with values and suggest them.
-- **Sort as numbers where possible.** Uses numeric sorting if it’s possible.
+- **Sort content as numbers if it is possible.** Uses numeric sorting if it’s possible.
 :::info **Condition for use**
 *This option only works if the column contains only whole numbers. If there are decimals, it sorts as strings.*
 :::
-- **Sort type.** Sort Ascending or Descending.
+- **Sort type.** Sort by Ascending or Descending.
 _______________________________________________
 ### Save to file
 Saves the table to a file while the project runs. You need to pick a file or variable with the path.
@@ -120,7 +126,7 @@ This function deletes duplicate values from the table.
 - **Columns.** Check for duplicates in All or specific columns.
 ZennoDroid will pick up columns with values and suggest them.
 _______________________________________________
-### Remove column
+### Delete column
 Deletes the selected column from the table entirely.
 
 - **Column.** Enter a specific column or variable.
@@ -128,21 +134,21 @@ Deletes the selected column from the table entirely.
 The column will be deleted **with all its values**.
 :::
 _______________________________________________
-### Remove rows
+### Delete lines
 Lets you delete certain rows across all columns.
 
 ![Remove rows](./assets/Table_Processing/Table_Processing_pic6.png)
 
 - **Row selection criteria:**
-    - All
-    - Does not contain text
-    - Does not match regex
-    - First
-    - By indices (*starts from zero*)
-    - Random
-    - Contains text
-    - Only whitespace
-    - Matches regex
+    - *All*  
+    - *By numbers*
+    - *Containing only space symbols*  
+    - *Containing text*  
+    - *First*  
+    - *Matching regex*  
+    - *Not containing text*
+    - *Not matching regex*
+    - *Random*
 
 :::warning **Note**
 The specified row gets deleted **from all columns**.
