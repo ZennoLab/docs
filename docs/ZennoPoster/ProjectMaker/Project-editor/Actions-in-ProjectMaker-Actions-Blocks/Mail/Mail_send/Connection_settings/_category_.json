@@ -1,0 +1,10 @@
+{
+  "label": "Настройки подключения почтовых сервисов",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Настройки подключения почтовых сервисов",
+    "description": "Actions ZennoPoster для конфигурации SMTP/IMAP/POP3: хост, порт, TLS/SSL, аутентификация (пароль, OAuth2 при поддержке сервиса), тест соединения, безопасное хранение данных, рекомендации по двум факторам и паролям приложений.",
+    "slug": "/category/actions-mail-connection-settings"
+  }
+}
