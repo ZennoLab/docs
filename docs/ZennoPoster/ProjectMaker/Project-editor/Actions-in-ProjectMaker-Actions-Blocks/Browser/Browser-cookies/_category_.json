@@ -1,0 +1,10 @@
+{
+  "label": "Работа с Cookies",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Работа с Cookies",
+    "description": "Экшены для работы с cookies в различных форматах.",
+    "slug": "/category/actions-browser-cookies"
+  }
+}

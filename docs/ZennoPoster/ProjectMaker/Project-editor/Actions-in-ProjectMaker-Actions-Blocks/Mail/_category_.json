@@ -1,0 +1,10 @@
+{
+  "label": "Работа с почтой",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "Работа с почтой",
+    "description": "Actions ZennoPoster для работы с электронной почтой: отправка и приём писем, настройки SMTP/IMAP/POP3, шаблоны сообщений (HTML/Plain), вложения, фильтры и правила, ожидания и ретраи, логирование и отладка, обработка ошибок.",
+    "slug": "/category/actions-mail"
+  }
+}
