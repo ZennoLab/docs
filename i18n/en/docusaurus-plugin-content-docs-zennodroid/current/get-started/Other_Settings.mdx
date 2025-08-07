@@ -11,19 +11,19 @@ _______________________________________________
 
 ![Other Settings](./assets/Other_Settings/Other_Settings_pic1.png)
 
-### Disable program error reports (globally).
+### Disable program crash reporting (globally).
 Sometimes if an app crashes, the emulator freezes up. ZennoDroid keeps an eye on this and tries to recover. If an error message window stays open after the emulator crashes, it's very likely it won't restart.
 
 _______________________________________________
-### Disable project settings recovery dialog.
+### Disable the task setting recovery dialog.
 This turns off the option to recover your settings if the program crashes. We don't recommend checking this box. But it might help in some cases, like if the recovery window blocks ZennoPoster's auto-start.
 
 _______________________________________________
-### Skip scheduler task for running tasks.
+### Ignore scheduler jobs for running tasks.
 When this is on, the running project gets priority in the queue and will finish first before a scheduled task starts, if by chance they overlap.
 
 _______________________________________________
-### Minimize ZennoDroid to the tray.
+### Minimize ZennoDroid to tray.
 When you minimize the app window, it will go to the tray.
 
 :::tip **What's the tray?**
@@ -31,15 +31,18 @@ When you minimize the app window, it will go to the tray.
 :::
 
 _______________________________________________
-### Track thread status.
+### Monitor threads status.
 This is only for collecting stats, which can be useful if you contact [support](https://helpdesk.zennolab.com/ru/conversation/new). It starts tracking the status of threads in the app.
 
 _______________________________________________
-### Compact large object heap.
+### Compacts the large object heap.
 Sets an interval (in minutes) after which the *large object heap* will be compacted. This is useful when you're working with large strings, for example, when auto-search is on in ProxyChecker.
 
 _______________________________________________
-### Auto-continue active tasks after restart.
+### Recover ZennoDroid if it fails.
+
+_______________________________________________
+### Automatically continue executing active tasks after restart.
 Decides whether tasks that were running before you closed the app should automatically continue when you open it again.
 
 _______________________________________________
@@ -48,48 +51,48 @@ _______________________________________________
 
 ![Dark](./assets/Other_Settings/Other_Settings_pic3.png)
 _______________________________________________
-### Project downloads folder.
+### Project directory settings.
 Projects you get from other users will be saved here. The folder names will use either the project developer's email or their ZennoLab ID.
 
 :::warning **Do NOT copy projects into this folder by hand!**
 :::
 
 _______________________________________________
-## Log [Settings](../pm/Interface/Log_window).
+## Log settings [Settings](../pm/Interface/Log_window).
 
-### Disable log autoscroll only on log entry click.
+### Disable log auto-scrolling, only when clicking on log record.
 Autoscroll in the log will turn off only after you click an entry.
 
 _______________________________________________
-### Show notifications in the log only.
+### Display alerts only in log.
 Notifications sent using the [**Notification**](../Project%20Editor/Logic/Notification) action will just go to the log, with no pop-up window, no matter how the action is set.
 
 _______________________________________________
-### Show date in the log.
+### Show date in log.
 Shows the current date in the log, on top of everything else.
 
 _______________________________________________
-### Log notifications of successful project completion.
+### Show a notification in the log about a successful execution.
 A log notification when a project finishes successfully.
 
 _______________________________________________
-### Log notifications of unsuccessful project completion.
+### Show notification in log if the project was not completed successfully.
 Info in the log about projects that didn't finish successfully.
 
 _______________________________________________
-### Log record retention time (hours).
+### Keep records in the hours log.
 Specifies the max amount of time (in hours) log entries will be stored.
 
 _______________________________________________
-### Max entries per task in the log.
+### Max records to keep for one task.
 How many log entries for a single task. **Maximum is 9999.**
 
 _______________________________________________
-### Max log entry size.
+### Maximum size of a log entry.
 Limits the max size (in kilobytes) of a log entry that can be *shown* in the log window.
 
 _______________________________________________
-### Limit max log entry size in log files.
+### Limit the maximum size of entries in the log file.
 
 :::tip **Recommended to turn on.**
 *If you work with big data and don't need full logs, **we recommend turning this on**. This will boost performance and lower memory use.*
@@ -106,8 +109,11 @@ For example: `C:\Program Files\ZennoLab\RU\ZennoDroid Pro\2.3.8.0\Progs\Logs\`
 :::
 
 _______________________________________________
-### Detailed log (Debug info for developers)
+### Detailed log (Debug information for developers)
 Starts detailed recording of what's going on. Might come in handy for support requests.
+
+_______________________________________________
+### Truncate log messages when searching if the message is longer than 500 characters.
 
 _______________________________________________
 ### BuildID

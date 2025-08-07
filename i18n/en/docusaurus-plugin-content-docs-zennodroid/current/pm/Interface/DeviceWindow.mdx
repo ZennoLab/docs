@@ -13,7 +13,7 @@ When you launch ProjectMaker, the device window will look like this:
 
 ![Getting Started.](./assets/DeviceWindow/DeviceWindow_pic1.png)
 
-To get started, you need to click **Start Device**. If **Recording** is enabled for the project, two actions will be added to the actions canvas: **Select Device** and **Start/restart Device**.
+To get started, you need to click **Run Device**. If **Recording** is enabled for the project, two actions will be added to the actions canvas: **Select Device** and **Start/restart Device**.
 _______________________________________________
 ## Window Components
 This is what the window looks like after a successful device launch:  
@@ -87,24 +87,34 @@ Analyzes the element on the page and shows info in xPath format.
 
 ![Find by xPath](./assets/DeviceWindow/DeviceWindow_pic9.png)
 
-- **This is a captcha!**  
+- **This is a CAPTCHA!**  
 Lets you mark the image as a captcha and send it either for manual solving or with a special module (for example, [**CapMonster.Cloud**](https://capmonster.cloud/)).
 
 ![This is a captcha!](./assets/DeviceWindow/DeviceWindow_pic10.png)
 
-- **Attach to captcha**  
+- **Stick to the CAPTCHA**  
 Lets you combine multiple images into one and send the whole thing for captcha solving.
-- **Captcha solve result field**  
+- **CAPTCHA recognition result**  
 Enters the captcha result into the field and, if **Recording** is on, adds a [**Set Value**](../../Android/ProLite/SetValue) action.
-- **Create text check**  
+- **Create text presence check**  
 Lets you check for specific text. Enter the text in the input window, then a special action will be created where you can set extra search parameters.
 
 ![Create text check](./assets/DeviceWindow/DeviceWindow_pic11.png)
 
-- **Find by image**  
+- **Search by picture**  
 Searches by the selected image. A window opens for you to adjust the search settings.
 
-![Find by image](./assets/DeviceWindow/DeviceWindow_pic12.png)
+![Find by image](./assets/DeviceWindow/DeviceWindow_pic12.png)  
+
+- **Search by the pixel color**  
+This action allows you to find a pixel by the specified HEX color code within the selected area or across the entire device screen.
+
+![Search by the pixel color](./assets/DeviceWindow/DeviceWindow_pic13.png) 
+
+- **Get the pixel color**  
+Allows you to copy the HEX color code of the selected pixel to the clipboard.
+
+![Get the pixel color](./assets/DeviceWindow/DeviceWindow_pic14.png)
 
 _______________________________________________
 ## Useful Links

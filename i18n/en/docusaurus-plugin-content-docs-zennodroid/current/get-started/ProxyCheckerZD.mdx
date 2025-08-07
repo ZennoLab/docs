@@ -40,7 +40,7 @@ Proxies should be in `ip:port` format for regular proxies, or `login:password@ip
 </details>
 
 <details>
-<summary>**2.** Go to the **Management** tab → click **Load proxies** and **Check proxies** → start with the **Start** button.</summary>
+<summary>**2.** Go to the **Control** tab → click **Load proxies** and **Check proxies** → start with the **Start** button.</summary>
 
 ![Quick start. Load and check](./assets/ProxyChecker/ProxyCheck_pic02.png)
 </details>  
@@ -51,11 +51,6 @@ Proxies should be in `ip:port` format for regular proxies, or `login:password@ip
 ![Quick start. Proxy list](./assets/ProxyChecker/ProxyCheck_pic03.png)
 </details>
 
-<details>
-<summary>**4.** You can **Copy to clipboard** or **Save to file** your proxies.</summary>
-
-![Quick start. Copy, save, clear](./assets/ProxyChecker/ProxyCheck_pic04.png)
-</details>
 _______________________________________________
 ## ProxyChecker settings.
 ![ProxyChecker settings](./assets/ProxyChecker/ProxyCheck_pic05.png)
@@ -65,34 +60,36 @@ _______________________________________________
 Here you choose which servers from the list will be used to check your proxies.
 #### List.
 URLs that the program uses to check proxies. By default, there are five addresses but you can add your own.
-#### **Test** Button.
+#### Test button.  
+![Proxy checking server address](./assets/ProxyChecker/ProxyCheck_pic06-1.png)  
+
 When you click it, the program will sequentially check each address in the **List** for availability. The test stops when the first working check server is found, or when the list runs out.
 #### Selected.
 Here you'll see the address that checks whether all the proxies are alive or not. This will be the first working address from the **List**.
 _________________
-### Behavior settings.
+### Operation settings.
 ![Behavior settings](./assets/ProxyChecker/ProxyCheck_pic07.png)
-#### Treat non-anonymous proxies as dead.
+#### Consider non-anonymous proxies as dead.
 The program will filter out non-anonymous proxies and only provide anonymous ones.
-#### Delete proxies on program exit.
+#### Delete proxies when the program is closed.
 Cleans out the proxy list on program exit.
-#### Threads per process.
+#### Number of threads per process.
 Sets the number of threads used for checking.
 :::warning **You'll need to restart the program for changes to take effect.**
 :::  
 _______________________________________________
 ### Proxy parsing settings.
 ![Proxy parsing settings](./assets/ProxyChecker/ProxyCheck_pic08.png)  
-With the builder, you can add new structures (regular expressions) for parsing proxies or edit existing ones. Click **Open Builder** to get started.
+With the builder, you can add new structures (regular expressions) for parsing proxies or edit existing ones. Click **Open the constructor** to get started.
 
 ![Structure list](./assets/ProxyChecker/ProxyCheck_pic09.png) 
-#### **Structure list** tab.
-By default, there are already 2 regular expressions here. You can also **Add (1)** or **Delete (2)** your own structures. With the **Field help (3)** button you can see the purpose of different fields.
+#### **List of structs**.
+By default, there are already 2 regular expressions here. You can also **Add (1)** or **Remove (2)** your own structures. With the **Fields Help (3)** button you can see the purpose of different fields.
 
 ![Structure buttons](./assets/ProxyChecker/ProxyCheck_pic10.png)  
 
 Some sites might use a different proxy format, so if needed, you can create your own parsing structure for almost any format and test it on a specific source using the tester.
-#### **Test source** tab.
+#### **Test source**.
 ![Test source](./assets/ProxyChecker/ProxyCheck_pic11.png) 
 - **Source address.** Enter the website address where proxies will be parsed.
 - **Selected structure.** Choose a previously added parsing rule from the **Structure list** tab.
@@ -104,13 +101,13 @@ They'll be lost when you close the **Builder** window or hit **Cancel**.
 _______________________________________________
 ### Auto-search settings.
 ![Auto-search settings](./assets/ProxyChecker/ProxyCheck_pic12.png)
-#### Detailed auto-search log.
+#### Detailed autosearch log.
 Check this to see a detailed report of ZennoProxyChecker in auto-search mode.
-#### Stop if over *XXX* proxies are in the check queue.
+#### Stop when the checking queue consists of more than ***xxx*** proxy.
 If there are more proxies in the queue than this number, auto-search will stop.
-#### Stop if over *XXX* proxies are in the database.
+#### Stop when the base consists of more than ***xxx*** proxy.
 If there are more proxies in the database than this number, auto-search will stop.
-#### Stop if over *XXX* sources are in the database.
+#### Stop when the base consists of more than ***xxx*** sources.
 If there are more sources in the database than this number, auto-search will stop.
 #### Default source settings.
 These settings are applied to every newly added source.
@@ -129,7 +126,6 @@ _________________
 ### 4. Unzip it and place the `GeoLite2-City.mmdb` file in:
 `C:\Users\{username}\AppData\Roaming\ZennoLab\ZennoDroid\2\Data\`
 ### 5. Set the `GeoLite2-City.mmdb` file to read-only.
-![read-only permissions](./assets/ProxyChecker/ProxyCheck_pic33.png)
 _________________
 ## Useful Links
 - [**ZennoProxyChecker Homepage**](https://zennolab.com/ru/products/zennoproxychecker/)
