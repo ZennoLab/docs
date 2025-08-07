@@ -14,12 +14,12 @@ It's most often used for repeating parts. For example:
 **1.** Say you have several separate templates for working with a specific site:
 - Product parser
 - User parser
-- Message sender
+- Message sender  
 
-**2.** You need to be logged in everywhere.
-**3.** Each template has the same authorization block.
-**4.** You move this block into a separate subtemplate and connect it wherever you need it.
-**5.** Now you only need to make changes in one subtemplate, not several projects at once.
+**2.** You need to be logged in everywhere.  
+**3.** Each template has the same authorization block.  
+**4.** You move this block into a separate subtemplate and connect it wherever you need it.  
+**5.** Now you only need to make changes in one subtemplate, not several projects at once.  
 
 This action is also great for:
 - Moving universal functions into a subtemplate to use in other projects:
@@ -53,14 +53,14 @@ _______________________________________________
 In this window, you pass data from the outer project into the inner one.
 Data can only be passed using variables.
 
-#### Match variables with the same names
+#### Associate variables with the same names
 When you turn this option on, all variables with identical names in both projects will be matched automatically—no need to set them up by hand.
 
 :::warning **Manual setup has higher priority.**
 For example, both projects have a variable called `variable`. You turned on *Match variables*, but you manually linked this variable to another one—`second_var`. So now, `variable` from both projects matches with `second_var` and not each other.
 :::
 
-#### Don't pass values back on failure
+#### Don't pass values if execution has failed
 By default, all changes to variables in the inner project will also update the variables in the outer project. If you turn this option on, any changes to variables will be ignored by the outer project if the inner one fails.
 _______________________________________________
 ## Usage example
