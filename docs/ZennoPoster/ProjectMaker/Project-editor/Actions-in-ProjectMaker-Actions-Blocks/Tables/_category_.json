@@ -1,0 +1,10 @@
+{
+  "label": "Таблицы",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Таблицы",
+    "description": "Экшены для работы с обычными и Google-таблицами.",
+    "slug": "/category/actions-tables"
+  }
+}

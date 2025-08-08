@@ -1,0 +1,10 @@
+{
+  "label": "HTTP",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "HTTP",
+    "description": "Actions ZennoPoster для выполнения HTTP-вызовов: GET-запрос (параметры в URL, заголовки, кэширование), POST-запрос (form-urlencoded, JSON, XML, multipart/form-data, загрузка файлов), универсальный HTTP-запрос (любой метод: GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS). Поддержка заголовков и куки, Query-параметров и тела запроса, авторизации (Basic, Bearer), прокси, редиректов, таймаутов, ретраев с бэк-оффом, проверки статус-кодов, обработки ошибок, распаковки gzip/deflate/br, кодировок, сохранения ответа на диск и парсинга JSON/XML/текста.",
+    "slug": "/category/actions-http"
+  }
+}
