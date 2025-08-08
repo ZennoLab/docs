@@ -45,7 +45,7 @@ function HomepageHeaderZennoPoster() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/zennoposter/intro">
+            to="/zennoposter/category/getting-started">
             Приступим к знакомству 🖥
           </Link>
         </div>
