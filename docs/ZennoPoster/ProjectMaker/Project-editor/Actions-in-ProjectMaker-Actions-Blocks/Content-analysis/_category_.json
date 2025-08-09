@@ -1,0 +1,10 @@
+{
+  "label": "Анализ содержимого",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Анализ содержимого",
+    "description": "Экшены для анализа содержимого web-страниц: извлечение статей, распознавание контекста.",
+    "slug": "/category/actions-content-analysis"
+  }
+}
