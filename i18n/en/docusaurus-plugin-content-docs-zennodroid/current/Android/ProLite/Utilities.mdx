@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 3
-title: Utilities
+title: Utils
 description: Overview of the Utilities Action
 ---
 
@@ -11,12 +11,12 @@ _______________________________________________
 This action offers a collection of different functions that will come in handy when working on your project.
 
 ## How do you add utilities to your project?
-***Right-click → Add Action → Android → Utilities***
+***Right-click → Add Action → Android → Utils***
 
 ![Add utility](../assets/Utilities/Utilities_pic1.png)
 _______________________________________________
 ## Available utilities
-### Console Command (ADB Shell)
+### Console command (ADB Shell)
 ![ADB shell](../assets/Utilities/Utilities_pic2.png)
 :::info **This action isn't a literal ADB command.**
 Think of it more like a console or terminal for the emulator. You enter all commands without 'ADB Shell' at the start.
@@ -29,7 +29,8 @@ There's a 10-second timeout for this action. If your command hasn't finished in 
 Example commands:
 - **`ls -la /sdcard/Download`** — lists all files and directories at *`/sdcard/Download`*.
 - **`pm list packages`** — lists all installed apps.
-- **`pm list packages -3`** — lists only third-party apps.
+- **`pm list packages -3`** — lists only third-party apps.  
+
 ![Command example](../assets/Utilities/Utilities_pic3.png)
 #### Save the result to a variable
 Here you'll need to specify an existing variable or create a new one to store the result.
@@ -43,9 +44,10 @@ This utility also lets you run commands for sending and receiving files to and f
 :::tip **The first path in your command is where you're copying from, the second is where you're copying to.**
 :::
 _______________________________________________
-### Set Geo-location
-![Geolocation](../assets/Utilities/Utilities_pic4.png)
-This utility lets you spoof the device's location.
+### Set Geo-location  
+This utility lets you spoof the device's location.  
+
+![Geolocation](../assets/Utilities/Utilities_pic4.png)  
 
 #### Available options:
 - *Latitude*. Allowed values: -90 to 90.
@@ -54,15 +56,18 @@ You can use decimals, either with a period [**.**] or comma [**,**] as the separ
 For example, New York's latitude and longitude: *40.7143* and *-74.006*
 _______________________________________________
 ### WiFi Settings
-![WiFi](../assets/Utilities/Utilities_pic5.png)
+![WiFi](../assets/Utilities/Utilities_pic5.png)  
+
 This action lets you change the WiFi network name (SSID) the emulator is "connected" to.
 _______________________________________________
 ### Reset Google Advert ID
-![Advert](../assets/Utilities/Utilities_pic6.png)
+![Advert](../assets/Utilities/Utilities_pic6.png)  
+
 This utility resets the device's advertising identifier.
 _______________________________________________
-### Get UI Structure (XML)
-![XML](../assets/Utilities/Utilities_pic7.png)
+### Get structure of elements (XML)
+![XML](../assets/Utilities/Utilities_pic7.png)  
+
 Lets you get the on-screen element structure as an XML string. It's the same info as you see in the  
 *Element Tree Window*, just as a **single XML string**. You can then process this with the *JSON and XML Handling* action.
 
@@ -71,17 +76,19 @@ Lets you get the on-screen element structure as an XML string. It's the same inf
 - displayed text (the **text** attribute),
 - whether the element is visible (**displayed** attribute).
 _______________________________________________
-### Pinch/Zoom
-![Pinch/Zoom](../assets/Utilities/Utilities_pic8.png)
-This action lets you scale: **Zoom Out** (shrink) or **Zoom In** (enlarge).
+### Scaling  
+This action lets you scale: **Zoom Out** (shrink) or **Zoom In** (enlarge).  
+
+![Pinch/Zoom](../assets/Utilities/Utilities_pic8.png)  
 
 #### Available options:
 - *Coordinates*. The point relative to which the scaling will happen.
 - *Factor*. How much you want to zoom in/out.
 _______________________________________________
-### Send SMS to Device
+### Send SMS to the device  
+This utility fakes sending an SMS to the device.  
+
 ![SMS](../assets/Utilities/Utilities_pic9.png)
-This utility fakes sending an SMS to the device.
 
 #### Available options:
 - *Phone*. Sender's phone number.
@@ -90,32 +97,37 @@ This utility fakes sending an SMS to the device.
 For example, Google Messages, LineageOS Messaging, or any other.
 :::
 _______________________________________________
-### Get Device ADB Connection Info
-![Connection Info](../assets/Utilities/Utilities_pic10.png)
+### Get ADB connection setting
+![Connection Info](../assets/Utilities/Utilities_pic10.png)  
+
 This action lets you get the address and port of the connected device. Useful if you need to run specific ADB commands: `adb -s serial mdns services`
 _______________________________________________
-### Get Device Clipboard
-![Get Clipboard](../assets/Utilities/Utilities_pic11.png)
+### Get device clipboard
+![Get Clipboard](../assets/Utilities/Utilities_pic11.png)  
+
 Lets you save the device's clipboard contents to a variable.
 _______________________________________________
-### Set Device Clipboard
-![Set Clipboard](../assets/Utilities/Utilities_pic12.png)
-Lets you set the clipboard contents on the device.
+### Set clipboard on device   
+Lets you set the clipboard contents on the device.  
+
+![Set Clipboard](../assets/Utilities/Utilities_pic12.png)  
 
 Then, using the [**Keyboard Emulation**](./Keyboard) action, you can paste the clipboard into any field with the `{AndroidKeys.PASTE}` macro.
 _______________________________________________
-### Run SQLite3 Query
-![SQL Query](../assets/Utilities/Utilities_pic13.png)
+### Execute SQLite3 Query  
 This action lets you run a SQL query on the device database. The first time you run it, all the necessary files will be automatically installed on your device depending on its architecture.
+
+![SQL Query](../assets/Utilities/Utilities_pic13.png)
 
 #### Available options:
 - *Database path*. The full path to the file. For example: `/data/data/com.android.providers.contacts/databases/contacts2.db`.
 - *Query*. The SQL query, like `SELECT * FROM contacts`.
 - *JSON-formatted response*. If you enable this, the query result will come back as JSON (which you can read using the [**JSON and XML Handling**](../../Data/JSON_XML) action). Otherwise, you'll get an array of strings separated by a pipe (**|**) character.
 _______________________________________________
-### Run Frida Script
-![Frida Script](../assets/Utilities/Utilities_pic14.png)
+### Execute Frida script  
 A utility for running a Frida script. On the first launch, all required files will be installed on your device automatically, depending on architecture. Then, the Frida server will start.
+
+![Frida Script](../assets/Utilities/Utilities_pic14.png)
 
 #### Available options:
 - *App name*. The app you want to inject the script into.
