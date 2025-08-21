@@ -13,83 +13,64 @@ export const VideoSample = ({source}) => (
 );
 
 _______________________________________________  
-## Description  
-This is a software suite for automating tasks and performing actions on Android devices (virtual or real).
+## Description.
+ZennoDroid is a powerful software suite for automating tasks and performing actions on Android devices. It lets you automate routine operations, test apps, collect data, and handle a bunch of other tasks—no need to do everything by hand on your phone or tablet.
 
-![Description](./assets/ZennoDroid/ZennoDroid_pic1.png)
-
-You do things on the device, and the program records them into a project. Then you can edit it and add new steps.
-
-<VideoSample source={require("@site/static/video/Screen-2-ru.mp4").default}/>  
+The platform allows you to create complex automation scenarios: from simple taps and swipes to full-on business processes with conditional logic. You can control several devices at the same time, integrate with external systems via API, monitor your tasks in real time, and analyze results.
 _______________________________________________
-## Main features  
-### Repeating actions  
-Easily record and play back your actions in Android apps.
+## Available Versions.
+ZennoDroid comes in three versions, so you can pick the one that fits your needs best.
 
-- ![Full automation of Android](./assets/ZennoDroid/ZennoDroid_pic2.png) **Full Android automation**    
-Fill out forms, collect data, and explore apps in a special device window.  
-- ![Multithreading](./assets/ZennoDroid/ZennoDroid_pic3.png) **Multithreading**   
-Run projects across multiple threads at the same time (parallel work on several Android devices).  
-- ![Bot interface](./assets/ZennoDroid/ZennoDroid_pic4.png) **Bot interface**   
-Design nice and user-friendly interfaces for your bots.  
-_______________________________________________
-### Form filling  
-Automatically fill out forms with the needed data.
+### ZennoDroid Lite.
+A basic version that's perfect for getting to know the platform and solving simple automation tasks. It works only with virtual Android devices using the MEmu and LDPlayer emulators.
 
-- ![Scheduled tasks](./assets/ZennoDroid/ZennoDroid_pic5.png) **Scheduled tasks**    
-Set your tasks to run whenever you need them.  
-- ![User data generation](./assets/ZennoDroid/ZennoDroid_pic6.png) **User data generation**   
-Automatically generate user data, anything from names to addresses.  
-- ![Proxy support](./assets/ZennoDroid/ZennoDroid_pic7.png) **Proxy support**   
-Set up a proxy for your Android virtual machine if needed.
-_______________________________________________
-### Button clicking  
-Automate button and link clicks.
+The Lite version includes all the basic tools needed to create automation scripts, but the features are limited. Everything runs in single-threaded mode, which makes it great for learning and smaller projects. The license lets you install it on just one computer, but it's a solid choice for beginners, students, or anyone just starting out with mobile app automation.
 
-- ![User emulation system](./assets/ZennoDroid/ZennoDroid_pic8.png) **User emulation system**   
-Interact with the screen using your keyboard: Tap, Long Tap, and Swipe. The actions will look just like what a real person would do.  
-- ![Virtual machine control](./assets/ZennoDroid/ZennoDroid_pic9.png) **Virtual machine control**   
-Everything from creating a virtual Android device to fully resetting it.
-_______________________________________________
-### Data collection  
-Extract data from any apps you like.
+:::info **Here you'll find [important articles to get started with Lite](../category/старт-zd-lite-pro).**
+:::
 
-- ![App structure analysis](./assets/ZennoDroid/ZennoDroid_pic10.png) **App structure analysis**   
-Use special tools to analyze the XML code of apps.  
-- ![Parsing tools](./assets/ZennoDroid/ZennoDroid_pic11.png) **Parsing tools**   
-Collect, process, and save data in any format you prefer. 
-- ![Email](./assets/ZennoDroid/ZennoDroid_pic12.png) **Email**   
-Work with mailboxes: find, analyze, and extract info from emails.
-_______________________________________________
-### Device emulation  
-Emulate any device you want and its settings: model, IMEI, and so on.
+### ZennoDroid Pro.
+A pro solution for serious commercial projects. Like the Lite version, Pro works with virtual devices through MEmu and LDPlayer emulators. But here, you get advanced scripting tools, support for complex algorithms and conditional logic, integration options with external services and databases.
 
-- ![Parameter emulation](./assets/ZennoDroid/ZennoDroid_pic13.png) **Parameter emulation**   
-Emulate any settings and fingerprints of an Android device, from model type to cellular operator.  
-- ![Superuser mode (root)](./assets/ZennoDroid/ZennoDroid_pic14.png) **Superuser mode (root)**   
-Get unlimited permissions on the emulated device by enabling root access.  
-- ![Working with apps](./assets/ZennoDroid/ZennoDroid_pic15.png) **Working with apps**   
-Install APKs, get a list of installed apps, or remove them if needed.
-_______________________________________________
-### Handling any kind of data  
-Work with texts, tables, images, databases, and more.
+The main advantage of Pro—unlimited multithreaded operation. You can run multiple tasks at once, which really boosts productivity. The license covers up to three computers, giving you flexibility in your workflow.
 
-- ![Data management](./assets/ZennoDroid/ZennoDroid_pic16.png) **Data management**   
-Work with any type of data, from text and images to Google spreadsheets and databases.  
-- ![HTTP and FTP work](./assets/ZennoDroid/ZennoDroid_pic17.png) **HTTP and FTP work**   
-Speed up your projects with HTTP and FTP requests.  
-- ![Integration with 35 services](./assets/ZennoDroid/ZennoDroid_pic18.png) **Integration with 35 services**   
-Connect services like captcha solving, SMS activation, content creation, or proxies—all in one click.
+:::tip **You can still only run it on one computer at a time.**
+:::
+
+The Pro version is great for businesses of any size that need to automate complex processes. Marketers use it to manage social media, analysts gather competitor intel, and developers use it to run thorough app testing.
+
+:::info **Here you'll find [important articles to get started with the PROFESSIONAL version](../category/старт-zd-lite-pro).**
+:::
+
+### ZennoDroid Enterprise.
+The most powerful solution for corporate needs. The main difference in the Enterprise version is that it works with real, physical Android devices, which means top speed and 100% compatibility with apps.
+
+:::tip **Plus, there's support for BlueStacks emulator for tasks that need virtualization.**
+:::
+
+Enterprise also supports unlimited threads. The license covers up to three computers, but you can still only use it on one machine at a time, so it's a flexible choice for enterprise setups.
+
+This is the pick for organizations where performance and reliability in automation are absolutely crucial.
+
+:::info **Here you'll find [important articles to get started with the Enterprise version](../category/старт-zd-enterprise).**
+:::
+
+### Feature Comparison.
+| Criteria                 | Lite | Professional | Enterprise |
+| :---------------- | :------: | :----: |:----: |
+| Supported devices        | Virtual (MEmu, LDPlayer)   | Virtual (MEmu, LDPlayer) | Physical Android + BlueStacks |
+| Project execution        | Single-threaded   | Multithreaded, no limits | Multithreaded, no limits |
+| Number of licensed PCs   | 1 PC   | 3 PCs | 3 PCs |
+| Task complexity          | Simple   | Medium and complex | Any |
+| Demo version available   | [✅](https://zennolab.com/ru/products/zennodroid/download/)   | [✅](https://zennolab.com/ru/products/zennodroid/download/) | [✅](https://zennolab.com/ru/products/zennodroid/download/) |
+| Our support level        | [Always ready to help you](https://helpdesk.zennolab.com/ru/conversation/new) 🤗🚀 | [Always ready to help you](https://helpdesk.zennolab.com/ru/conversation/new) 🤗🚀 | [Always ready to help you](https://helpdesk.zennolab.com/ru/conversation/new) 🤗🚀 |
 _______________________________________________
-### Bonus features  
-- ![Custom code](./assets/ZennoDroid/ZennoDroid_pic19.png) **Custom code**   
-Expand what the program can do using C#, JavaScript, and command line.  
-- ![Logic operations](./assets/ZennoDroid/ZennoDroid_pic20.png) **Logic operations**   
-Set up different actions depending on conditions.  
-- ![Proxy checker](./assets/ZennoDroid/ZennoDroid_pic21.png) **Proxy checker**   
-Check proxies for functionality, speed, anonymity level, country, type, and 10+ other parameters.  
+ZennoDroid unlocks a whole new level of Android automation for you. Pick your version and start building efficient solutions today.
+
+## Who is ZennoDroid for?
+The program is a must-have tool for a wide range of specialists working with data and automation. For example, SEO experts and marketers use it for automated tracking of site rankings, competitor analysis, and monitoring key metrics in Android apps. Web scraping via mobile interfaces lets you gather unique info you can't get from desktop websites, including location-based data.
+
+Data analysts and market researchers love ZennoDroid because it collects large amounts of information and exports it to Excel, Google Sheets, or databases. The platform is perfect for monitoring social media, tracking brand mentions, analyzing user behavior in mobile apps, and gathering reviews from different platforms. It especially shines when you need to automate routine chores like collecting contact info, competitor pricing, product specs, and other structured data for business analytics.
+
+Developers and QA professionals use ZennoDroid for thorough mobile app testing—functional, regression, and load testing. The tool helps automate checking user scenarios, form validation, integration testing with external services and APIs. For startups and small businesses, ZennoDroid opens up opportunities to compete with the big guys by automating processes that used to eat up tons of human resources—like managing multiple accounts, auto-publishing content, and collecting market analytics.
 _______________________________________________
-## Useful links  
-- [**Installing ZennoDroid**](../Installation/ZD_Install)  
-- [**ZennoDroid demo version**](../Installation/ZD_Demo)  
-- [**Key concepts**](../basicterms)

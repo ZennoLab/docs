@@ -19,7 +19,7 @@ _______________________________________________
 ## Data source  
 To make sure you work with a database properly, you need to set up the connection correctly. The required parameters will depend on the specific ***DBMS** (Database Management System)*.  
 
-### Connection Builder  
+### Connection Manager  
 ![Connection Builder](./assets/DataBase/DataBase_pic3.png)  
 
 It's designed to make creating a *Connection String* easier. Once you fill in the main details, the string will be generated for you. First, you need to specify the data source, and then select the database file.
@@ -47,23 +47,23 @@ Here you enter various login parameters (like username and password). Instead of
 
 [**Examples of connection strings for different DBMSs.**](https://www.connectionstrings.com/)  
 _______________________________________________
-## Query  
+## Request  
 ![Query](./assets/DataBase/DataBase_pic5.png)  
 
-### Query type  
-#### Non-query  
+### Request type  
+#### No answer 
 Used for operations that don't return data from the DB (for example, **INSERT** or **DELETE**). As a response, these operations return the number of rows affected.
 
-#### Scalar query  
+#### Scalar 
 Lets you get a single value. For example, to use an aggregate function: `select sum(price) from fruit`.
 
-#### Standard query  
+#### Normal  
 Returns a table with data.
 
-### Query text  
+### Request text  
 The field where you enter your SQL query.
 
-### Use parameters in query  
+### Use parameters in request  
 Parameters make it easier to write queries because they can be inserted into places in the text you specify.
 
 There are named and unnamed parameters. For named ones, their names matter; for unnamed ones, their order matters. Which type you use depends on the specific DBMS.
@@ -97,7 +97,7 @@ This option lets you save the results in several variables at once.
 
 ![Variables](./assets/DataBase/DataBase_pic9.png)  
 
-**Row number**. Your query could return several rows, so you need to specify which row you want to use (numbering starts at zero).
+**Line number**. Your query could return several rows, so you need to specify which row you want to use (numbering starts at zero).
 
 In the table below, you select the cell number in the row and which variable it should go into (also numbered from zero!).
 

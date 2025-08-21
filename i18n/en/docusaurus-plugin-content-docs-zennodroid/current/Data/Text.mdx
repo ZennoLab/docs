@@ -39,16 +39,16 @@ Regular expressions are super handy for parsing strings according to a specific 
 ### Regex Input Field
 This is where you enter your regular expression to search the text. Example: `(?<=<title>).*(?=</title>)`.
 
-:::tip You can use the [*Regular Expression Tester*](../Tools/RegEx_Tester) to help write regexes.
+:::tip You can use the [*Regular Expression Designer*](../Tools/RegEx_Tester) to help write regexes.
 ![Add to project](./assets/Text/Text_pic5.png)
 :::
 
-### Error on No Match
+### Error when the answer is empty
 If this option is enabled, the action will return an error if the regular expression **doesn't find anything** in the text.
 
 **Note**: if the regex returns an **empty string**, even if this setting is on the action will **still complete successfully**. For example, if there's nothing inside a *title* tag: `<title></title>`, the regex `(?<=<title>).*(?=</title>)` matches, but just returns an empty string, and the action is considered a success. But if there's no *title* at all, you'll get an error.
 
-### What to take
+### What to get
 ![Add to project](./assets/Text/Text_pic6.png)
 
 #### First
@@ -151,7 +151,7 @@ _______________________________________________
 ## Split (Splitting Text)
 Splitting is done using a specific symbol (delimiter). Afterward, you'll get an array out of your string. This is a simpler alternative to using RegExp for splitting by characters.
 
-### Delimiters
+### Separators
 Here you enter which symbols to split the data by.
 
 ![Add to project](./assets/Text/Text_pic13.png)
@@ -187,21 +187,21 @@ Changes every uppercase letter in the text to lowercase.
 
 | **Was**                    | **Now**                           |
 |----------------------------|-----------------------------------|
-| МЕНЯЕТ РЕГИСТР БУКВ НА НИЖНИЙ  | меняет регистр букв на нижний    |
+| CHANGES REGISTER OF LETTERS TO LOWER  | changes register of letters to lower   |
 
-### Word Start
+### Beginning of words
 Only the first character of every word is made lowercase.
 
 | **Was**                    | **Now**                           |
 |----------------------------|-----------------------------------|
-| МЕНЯЕТ РЕГИСТР БУКВ НА НИЖНИЙ  | мЕНЯЕТ рЕГИСТР бУКВ нА нИЖНИЙ    |
+| CHANGES REGISTER OF LETTERS TO LOWER  | cHANGES rEGISTER oF lETTERS tO lOWER    |
 
-### First Character
+### The first character
 Only the first character of the first word is made lowercase.
 
 | **Was**                    | **Now**                           |
 |----------------------------|-----------------------------------|
-| МЕНЯЕТ РЕГИСТР БУКВ НА НИЖНИЙ  | мЕНЯЕТ РЕГИСТР БУКВ НА НИЖНИЙ    |
+| CHANGES REGISTER OF LETTERS TO LOWER  | cHANGES REGISTER OF LETTERS TO LOWER    |
 _______________________________________________
 ## ToUpper (To Uppercase)
 This action makes every letter uppercase as per the setting.
@@ -213,21 +213,21 @@ Changes all lowercase letters to uppercase.
 
 | **Was**                  | **Now**                          |
 |--------------------------|----------------------------------|
-| текст в нижнем регистре  | ТЕКСТ В НИЖНЕМ РЕГИСТРЕ          |
+| lowercase text  | LOWERCASE TEXT  |
 
-### Word Start
+### Beginning of words
 Only the first letter of each word is capitalized.
 
 | **Was**                  | **Now**                          |
 |--------------------------|----------------------------------|
-| текст в нижнем регистре  | Текст В Нижнем Регистре          |
+| lowercase text  | Lowercase Text          |
 
-### First Character
+### The first character
 Only the first character of the first word is capitalized.
 
 | **Was**                  | **Now**                          |
 |--------------------------|----------------------------------|
-| текст в нижнем регистре  | Текст в нижнем регистре          |
+| lowercase text  | Lowercase text          |
 _______________________________________________
 ## Trim (Remove Characters at Start/End of String)
 Use this function to remove unwanted characters at the start and/or end of a given string.
@@ -275,7 +275,7 @@ This action splits your text into lines using the chosen delimiter, then puts th
 
 ![Add to project](./assets/Text/Text_pic22.png)
 
-### Delimiter
+### Separator
 - **Enter**. New line.
 - **Space**
 - **Custom text**. You can specify a single character (like `;`) or several (they'll be treated as one delimiter!).
@@ -284,7 +284,7 @@ _______________________________________________
 ## To Table
 This action splits your text into lines and columns using the delimiters you specify, then fills out a table.
 
-### Delimiters
+### Separator
 - **Enter**. New line.
 - **Space**
 - **Custom text**. Specify as for lists (several symbols treated as one!).
@@ -313,8 +313,6 @@ Only replaces the first found match.
 Replaces all matches at once.
 
 #### One Match
-![Add to project](./assets/Text/Text_pic24.png)
-
 In this case, only the specified match (or *last* match) is replaced.
 
 #### Match Numbers
@@ -358,7 +356,7 @@ You should enter the *language code*, not its full name. Examples:
 For the most accurate list, always check your chosen service's docs.
 :::
 _______________________________________________
-## JavaScript Preparation
+## Prepare JavaScript 
 This action processes a string for safe use in JavaScript. It mainly escapes quotes, apostrophes, and other special symbols so your text can be used in ***JavaScript*** and ***IF*** actions.
 
 **Before:** `<a href="https://zennolab.com/">`
