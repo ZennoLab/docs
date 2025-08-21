@@ -34,7 +34,7 @@ Here you set the country code for the number you want.
 
 Country codes are different for each service, so you'll need to check the documentation.
 
-#### Forwarding
+#### Redirect
 Tick this if you want the number to be forwarded. But note, not every service supports forwarding.
 
 #### Save Activation ID in Variable
@@ -49,13 +49,13 @@ Notify the service that the status of the number has changed.
 Here, enter the activation ID you got from **Get Number**. You can use a variable macro.
 
 #### Status:
-- **SMS Sent**: The message was successfully sent to the specified number.
-- **Resend Code**: Use if you need to send another SMS.
+- **SMS have been sent**: The message was successfully sent to the specified number.
+- **Repeaded code request**: Use if you need to send another SMS.
 - **Cancel Request**: Use if you no longer need the number. Some services might refund your money.
-- **Number Already Used**: Lets the service know the number isn't suitable because it's already in use.
-- **Complete**: Tells the service the task for this number is done.
+- **This number has already been used**: Lets the service know the number isn't suitable because it's already in use.
+- **Completion**: Tells the service the task for this number is done.
 
-#### Forwarding
+#### Redirection
 Write the number you want the messages forwarded to, if needed.
 _______________________________________________
 ### Action — Get Status
@@ -79,11 +79,11 @@ _______________________________________________
 Just like other actions, this field lets you set which variable will get the result.
 _______________________________________________
 ## How it works — Step by Step
-**1.** Request a number and get it.
-**2.** Send an SMS to that number.
-**3.** Let the service know the message has been sent.
-**4.** Wait for the message to arrive.
-**5.** End the session.
+**1.** Request a number and get it.  
+**2.** Send an SMS to that number.  
+**3.** Let the service know the message has been sent.  
+**4.** Wait for the message to arrive.  
+**5.** End the session.  
 
 | ![How it works](./assets/SMS_Services/SMS_Services_pic7.png)  |
 |:--:|

@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 10
-title: Working with Variables
+title: Variables Processing
 description: Working with variables.
 ---
 :::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
@@ -18,12 +18,12 @@ We recommend keeping C# variables, which are strongly typed, separate from proje
 - *increase or decrease the value of a counter.*
 _______________________________________________ 
 ## How to Add to Your Project  
-Right-click to open the context menu: **Add Action → Data → Work with Variables.**
+Right-click to open the context menu: **Add Action → Data → Variables Processing.**
 
 ![Add to the Project](./assets/WorkWithVariables/WorkWithVariables_pic1.png)
 _______________________________________________  
 ## How to Use the Action  
-### Set a Value  
+### Set Value  
 ![How to Use the Action](./assets/WorkWithVariables/WorkWithVariables_pic2.png)
 
 You can assign static strings, numbers, values from other variables, or all of these at once.
@@ -42,7 +42,7 @@ With this action, you can clear the contents of variables.
 
 There are three clearing modes:
 - **All**
-- **Listed**
+- **The listed**
 - **All except listed**
 
 For example, clearing contents can be useful before starting a new iteration, especially if your template is running in a loop and you want to make sure previous values don't carry over.
@@ -58,7 +58,7 @@ _______________________________________________
 Let's look at two practical examples of using variables in projects.
 _______________________________________________
 ### Setting a Value
-You can assign or change the values of variables. You can do this in the [**Variables Window**](../pm/Interface/Variables), or using this **Work with Variables** action.
+You can assign or change the values of variables. You can do this in the [**Variables Window**](../pm/Interface/Variables), or using this **Variables Processing** action.
 
 ![Setting a Value](./assets/WorkWithVariables/WorkWithVariables_pic5.png)
 
@@ -69,11 +69,11 @@ Let's say you need to make a list of ten current timestamps.
 
 ![Working with the Counter](./assets/WorkWithVariables/WorkWithVariables_pic6.png)
 
-**1.** Create a variable called `count` to act as a counter. Set its value to `0`.
-**2.** Next, get the current timestamp using the ***environment variable*** called `{-TimeNow.TimeNow-}`. Add it to the `time` variable and save the result back to it.
-**3.** Now, you need to repeat the previous step **9 more times**. To do this, use the ***IF*** action to compare the value of your `count` counter with the max value `9`.
-**4.** If the condition is not met (the counter is less than or equal to `9`), increase `count` by `1` (the **Increase Counter** action) and repeat *step 2*.
-**5.** When the condition is met (counter is greater than `9`), finish processing and print the value of the `time` variable to the log. You can see the project's result in the [**Variables Window**](../pm/Interface/Variables).
+**1.** Create a variable called `count` to act as a counter. Set its value to `0`.  
+**2.** Next, get the current timestamp using the ***environment variable*** called `{-TimeNow.TimeNow-}`. Add it to the `time` variable and save the result back to it.  
+**3.** Now, you need to repeat the previous step **9 more times**. To do this, use the ***IF*** action to compare the value of your `count` counter with the max value `9`.  
+**4.** If the condition is not met (the counter is less than or equal to `9`), increase `count` by `1` (the **Increase Counter** action) and repeat *step 2*.  
+**5.** When the condition is met (counter is greater than `9`), finish processing and print the value of the `time` variable to the log. You can see the project's result in the [**Variables Window**](../pm/Interface/Variables).  
 _______________________________________________  
 ## Useful Links  
 - [**IF Operator**](../Project%20Editor/Logic/IF)
