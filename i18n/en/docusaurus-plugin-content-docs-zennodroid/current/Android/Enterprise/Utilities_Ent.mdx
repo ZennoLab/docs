@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 3
-title: Utilities (Enterprise)
+title: Utils (Enterprise)
 description: Overview of the Utilities action for the Enterprise version
 ---
 :::info **Please read the [*Material Usage Rules on this site*](../../Disclaimer).**
@@ -42,7 +42,8 @@ This utility also lets you run commands to send and receive files to/from the de
 :::
 _______________________________________________
 ### WiFi Settings
-![WiFi](../assets/Utilities/Utilities_pic15.png)
+![WiFi](../assets/Utilities/Utilities_pic15.png)  
+
 With this action, you can spoof the **network name (SSID)** and **MAC address (BSSID)** of the WiFi network your device is connected to.
 
 :::warning You'll need the [ZennoDroid module for LSPosed](../../Enterprise/LSPosed) installed.
@@ -56,29 +57,32 @@ This utility lets you spoof the device's location.
 #### Available parameters:
 - *Latitude*. Accepts values from -90 to 90.
 - *Longitude*. Accepts values from -180 to 180.
-- *Altitude*. Height above sea level in meters.
+- *Height*. Height above sea level in meters.
 - *Direction*. Accepts values from 0 to 360.
 - *Speed*. How fast your phone is "moving" in km/h (pretend you're traveling).
 You can use decimals, either with a [**.**] dot or [**,**] comma as a separator.
 For example, New York latitude and longitude: *40.7143* and *-74.006*
 _______________________________________________
-### Get Element Structure (XML)
-![XML](../assets/Utilities/Utilities_pic7.png)
+### Get Structure of Elements (XML)
+![XML](../assets/Utilities/Utilities_pic7.png)  
+
 Lets you grab the screen's element structure as an XML string. This is the same data you see in the *element tree window*, just as **XML text**. Then you can process it using the *JSON and XML Processing* action.
 #### Some useful attributes you can get from an element:
 - coordinates and size (the **`bounds`** attribute)
 - displayed text (the **`text`** or **`content-desc`** attribute)
 - element's unique id (the **`resource-id`** attribute)
 _______________________________________________
-### Pinch/Zoom
-![Pinch/Zoom](../assets/Utilities/Utilities_pic8.png)
+### Scaling
+![Pinch/Zoom](../assets/Utilities/Utilities_pic8.png)  
+
 Use this action to zoom in or out: **Zoom Out** (reduce) or **Zoom In** (increase).
 #### Available parameters:
 - *Coordinates*: the point relative to which scaling will happen
-- *Scale factor*: how much to shrink or enlarge
+- *Coefficient*: how much to shrink or enlarge
 _______________________________________________
-### Send SMS to Device
-![SMS](../assets/Utilities/Utilities_pic17.png)
+### Send SMS to the Device
+![SMS](../assets/Utilities/Utilities_pic17.png)  
+
 This utility simulates sending an SMS to the device.
 #### Available parameters:
 - *Phone*. Sender's phone number.
@@ -86,37 +90,42 @@ This utility simulates sending an SMS to the device.
 :::danger You'll need root access to use this action.
 :::
 _______________________________________________
-### Get ADB Connection Parameters
-![Parameters](../assets/Utilities/Utilities_pic10.png)
+### Get ADB Connection Settings
+![Parameters](../assets/Utilities/Utilities_pic10.png)  
+
 This action lets you get the serial number or address and port of the connected device (depending on how it's connected).
 
 Use this when you need to run specific ADB commands: `adb -s serial mdns services`
 _______________________________________________
 ### Get Device Clipboard
-![Get clipboard](../assets/Utilities/Utilities_pic11.png)
+![Get clipboard](../assets/Utilities/Utilities_pic11.png)  
+
 Lets you save the contents of the device clipboard to a variable.
 _______________________________________________
-### Set Device Clipboard
-![Set Clipboard](../assets/Utilities/Utilities_pic12.png)
+### Set Clipboard on Device
+![Set Clipboard](../assets/Utilities/Utilities_pic12.png)  
+
 Lets you set the clipboard content on the device.
 
 Afterward, using the [**Keyboard Emulation**](./Keyboard) action, you can paste the content into any field using the `{AndroidKeys.PASTE}` macro.
 _______________________________________________
-### Run SQLite3 Query
-![SQL Query](../assets/Utilities/Utilities_pic13.png)
+### Execute SQLite3 Query
+![SQL Query](../assets/Utilities/Utilities_pic13.png)  
+
 Lets you run an SQL query on a database located on the device. On first launch, any needed files will be automatically installed on your device, depending on its architecture.
 #### Available parameters:
-- *Path to the database*. Full path to the file. For example, `/data/data/com.android.providers.contacts/databases/contacts2.db`
-- *Query*. SQL query, like `SELECT * FROM contacts`
-- *Response in JSON format*. If you set this, the query result will be returned in JSON format (you can read it using the [**JSON and XML Processing**](../../Data/JSON_XML) action). Otherwise, the response will be returned as an array of strings. The separator is the **|** (vertical bar) symbol.
+- *Database path*. Full path to the file. For example, `/data/data/com.android.providers.contacts/databases/contacts2.db`
+- *Request*. SQL query, like `SELECT * FROM contacts`
+- *JSON response*. If you set this, the query result will be returned in JSON format (you can read it using the [**JSON and XML Processing**](../../Data/JSON_XML) action). Otherwise, the response will be returned as an array of strings. The separator is the **|** (vertical bar) symbol.
 :::danger You'll need root access to use this action.
 :::
 _______________________________________________
-### Run Frida Script
-![Frida Script](../assets/Utilities/Utilities_pic14.png)
+### Execute Frida Script
+![Frida Script](../assets/Utilities/Utilities_pic14.png)  
+
 A utility to run a Frida script. On first launch, all necessary files will be installed automatically depending on your device's architecture. After that, the Frida server will be started.
 #### Available parameters:
-- *App name*. The name of the app where the script should be loaded.
+- *Application name*. The name of the app where the script should be loaded.
 - *Script*. Script content. Macros are supported.
 :::danger You'll need root access to use this action.
 :::

@@ -30,7 +30,7 @@ _______________________________________________
 ## How to add to your project?  
 There are two ways:  
 ### Through the emulator/device window.  
-**Right-click the captcha image → "This is a captcha!"**
+**Right-click the captcha image → "This is a CAPTCHA!"**
 
 ![Via emulator window](../assets/CaptchaSolving/CaptchaSolving_pic6.png)  
 
@@ -44,7 +44,7 @@ You'll have to download the captcha image to your computer first, then specify i
 :::  
 _______________________________________________ 
 ## Working with the window  
-### "Basic" tab  
+### "Main" tab  
 The window looks different depending on how you open it:
 
 | !["Basic" tab](../assets/CaptchaSolving/CaptchaSolving_pic12.png) | !["Basic" tab](../assets/CaptchaSolving/CaptchaSolving_pic8.png) |
@@ -70,24 +70,24 @@ Using [**XPath expressions**](../../Tools/JSON_Tester), which lets you create mo
 #### Recognize from file  
 Enter the path to the captcha image you want to solve. You can also use a variable.
 
-#### Save to variable  
+#### Put to variable  
 Add a variable for the response.
 
 #### Settings  
 Click the gear button to open settings, where you can adjust data for recognition modules.
 _______________________________________________ 
-### "Advanced" tab  
+### "More" tab  
 | !["Advanced" tab](../assets/CaptchaSolving/CaptchaSolving_pic13.png) | !["Advanced" tab](../assets/CaptchaSolving/CaptchaSolving_pic10.png) |
 | :--------: | :-------: |
 | **When opened through the emulator/device window** | **Through context menu** |  
 
-#### Wait  
-- **Pause before executing**  
+#### Waiting  
+- **Wait before execution**  
 Specify a *FROM* and *TO* range in seconds. The delay before starting will be chosen randomly within this range.
-- **Wait for element no more than**  
+- **Wait no longer than**  
 If the captcha isn't found within the time here (in seconds), the action will finish with an error (exit via the red branch).
   
-#### Module Parameters  
+#### Module Settings 
 You can use this field to provide extra parameters or conditions for solving the captcha, such as:  
 - *Case sensitivity*;  
 - *Cyrillic recognition*;  
@@ -108,10 +108,10 @@ Multiple values are separated by `&`.
 #### Scale  
 This lets you increase or decrease the size of the captcha image you send for solving.
 
-#### Stitching captchas  
+#### Stick captchas  
 Some captchas are made up of multiple images, so you may need to combine them for a quick and accurate solution.
 
-Check **Stitch captchas** for the first item. Then, right-click each following item and choose **Attach to captcha** from the context menu.
+Check **Stitch captchas** for the first item. Then, right-click each following item and choose **Stick to the CAPTCHA** from the context menu.
 
 ![Stitch captchas](../assets/CaptchaSolving/CaptchaSolving_pic11.png)  
 
@@ -122,14 +122,14 @@ Each click creates a new action. On the last one, don't forget to check **Final 
 
 This setting lets you avoid waiting for a response from the service and keep your template running.
 
-It creates an **Await captcha recognition** action. It has no settings, just a **Go to start of recognition** button, which jumps you to the main captcha-solving action. This is especially handy if these actions are far apart in your workspace. In the main action, there's a button to go **To end of recognition**.
+It creates an **Waiting for a CAPTCHA** action. It has no settings, just a **Go back to recognition** button, which jumps you to the main captcha-solving action. This is especially handy if these actions are far apart in your workspace. In the main action, there's a button to go **Go to the end of recognition**.
 
 ![Go to start](../assets/CaptchaSolving/CaptchaSolving_pic15.png)  
 
 **How it works:**  
 1. The template gets to the main **Recognize captcha** action.  
 2. Captcha is sent to the service.  
-3. Template keeps running up to the **Wait for captcha** action.  
+3. Template keeps running up to the **Waiting for a captcha** action.  
 4. Waits for the service to respond.  
 5. When the result comes, you can save it to a variable.
 
