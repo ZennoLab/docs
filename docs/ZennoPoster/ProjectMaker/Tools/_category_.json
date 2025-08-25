@@ -1,0 +1,10 @@
+{
+  "label": "Инструменты",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "title": "Инструменты",
+    "description": "Описание доступных инструментов для разработки и тестирования проектов в программе ProjectMaker",
+    "slug": "/category/tools"
+  }
+}
