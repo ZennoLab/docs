@@ -1,0 +1,10 @@
+{
+  "label": "Настройки ProjectMaker",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "title": "Настройки ProjectMaker",
+    "description": "Настройки ProjectMaker позволяют оптимизировать процесс записи Вашего проекта, настроить логи, отладить выполнение проекта, и многое другое.",
+    "slug": "/category/projectMaker-settings"
+  }
+}
