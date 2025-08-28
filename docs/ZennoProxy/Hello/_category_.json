@@ -3,6 +3,7 @@
   "position": 1,
   "link": {
     "type": "generated-index",
-    "title": "Знакомство"
+    "title": "Знакомство",
+    "slug": "/category/hello"
   }
 }

@@ -5,3 +5,4 @@
 /.docusaurus
 /build
 .vs/
+docusaurus.config.js

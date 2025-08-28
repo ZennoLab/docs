@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "title": "Начало работы"
+    "title": "Начало работы",
+    "slug": "/category/getting-started"
   }
 }
