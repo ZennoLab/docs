@@ -1,0 +1,207 @@
+---
+sidebar_position: 2
+title: "Working with Lists"
+description: "Managing lists in ZennoProxy"
+---
+
+:::info **Please check out the [*Terms of Use for materials on this site*](../Disclaimer).**
+:::
+
+Use lists for more convenient management of your connections. There's a Default list available by default.
+
+## Creating a New List
+To create a new proxy list, click the "+" button next to "Proxy Lists" in the left navigation sidebar.  
+![image1](./assets/WorkingLists/image1.png)  
+
+Once you click the button, a popup window will appear. Type in the name of your new list in the input field. For example, you could name it "Availability Monitoring". Then hit "save". Or "cancel" if you changed your mind.   
+![image2](./assets/WorkingLists/image2.png)  
+
+Once you’ve clicked "save", your new list will show up in the navigation sidebar. Click on your list’s name to open it. The active (open) list will have a blue background highlighting its name.   
+![image3](./assets/WorkingLists/image3.png)  
+
+Right now your proxy connections list is empty, so let’s create some. How to do this is described in the section [“Connecting a Proxy”](./HowAddNewConnection#тип-прокси).  
+![image4](./assets/WorkingLists/image4.png)
+
+:::note **Note**
+Now, when creating a new connection, you can select which list it goes into.
+
+![image5](./assets/WorkingLists/image5.png)
+:::  
+
+After you've added connections, you’ll see their rows appear in the selected list.  
+![image6](./assets/WorkingLists/image6.png) 
+
+## Connection Rows – Viewing and Copying
+
+For each connection, you can immediately see:
+
+- the connection name  
+- the connection type (residential – house icon, or mobile – phone icon)  
+- country   
+- region or ASN  
+- number of proxies in the connection
+
+Check out the "+" button. Click it to open up the list of actual proxy lines.  
+![image7](./assets/WorkingLists/image7.png)  
+![image8](./assets/WorkingLists/image8.png)  
+These are the lines (or line) you use for your tasks.   
+Click "copy" to copy all the proxies in this connection to the clipboard.
+
+![image9](./assets/WorkingLists/image9.png)  
+
+Or you can copy all the proxies in a connection by simply clicking the icon at the end of the row (without expanding the whole list):
+![image10](./assets/WorkingLists/image10.png)  
+
+If you want to save the connection’s proxies directly to a file, click "Download .txt".
+![image11](./assets/WorkingLists/image11.png)  
+
+## Connection Line – Details
+
+Maybe you’re wondering what exactly is in the line.
+
+A typical, simplified proxy connection string looks like: `protocol://<login>:<password>@<host>:<port>`
+
+Here's an example:  
+[`http://abcd1234abcd1234abcd1234--geo-pl_AS13000--sid-101:aAbBcCdDeE@gw.zengw.io:8080`](http://abcd1234abcd1234abcd1234--geo-pl_AS13000--sid-101:aAbBcCdDeE@gw.zengw.io:8080)
+
+What does each part mean?
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'center'}}>protocol</th>
+      <th style={{textAlign: 'center'}}>login</th>
+      <th style={{textAlign: 'center'}}></th>
+      <th style={{textAlign: 'center'}}>password</th>
+      <th style={{textAlign: 'center'}}></th>
+      <th style={{textAlign: 'center'}}>host</th>
+      <th style={{textAlign: 'center'}}></th>
+      <th style={{textAlign: 'center'}}>port</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{textAlign: 'center'}}><code>http://</code></td>
+      <td rowspan="2" style={{textAlign: 'center'}}><code>abcd1234abcd1234abcd1234--geo-pl_AS13000--sid-101</code></td>
+      <td rowspan="2" style={{textAlign: 'center'}}>:</td>
+      <td rowspan="2" style={{textAlign: 'center'}}><code>aAbBcCdDeE</code></td>
+      <td rowspan="2" style={{textAlign: 'center'}}>@</td>
+      <td rowspan="2" style={{textAlign: 'center'}}><code>gw.zengw.io</code></td>
+      <td rowspan="2" style={{textAlign: 'center'}}>:</td>
+      <td rowspan="2" style={{textAlign: 'center'}}><code>8080</code></td>
+    </tr>
+    <tr>
+      <td style={{textAlign: 'center'}}><code>socks5://</code></td>
+    </tr>
+  </tbody>
+</table>
+
+And the login part specifically contains:
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="6" style={{textAlign: 'center'}}>login</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{textAlign: 'center'}}><code>abcd1234abcd1234abcd1234</code></td>
+      <td style={{textAlign: 'center'}}><code>--pool-mobile</code></td>
+      <td style={{textAlign: 'center'}}><code>--geo-pl</code></td>
+      <td colspan="2" style={{textAlign: 'center'}}><em>region / ASN targeting</em></td>
+      <td style={{textAlign: 'center'}}><code>--sid-101</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2" style={{textAlign: 'center'}}>**your client id**\*</td>
+      <td rowspan="2" style={{textAlign: 'center'}}><em>if it's a mobile proxy</em></td>
+      <td rowspan="2" style={{textAlign: 'center'}}>**country targeting**\*:<br/><code>--geo-*country code*</code></td>
+      <td style={{textAlign: 'center'}}><code>_mazovia_warsaw</code></td>
+      <td style={{textAlign: 'center'}}><em>if region/city targeting</em></td>
+      <td rowspan="2" style={{textAlign: 'center'}}><em>if it's a static session</em></td>
+    </tr>
+    <tr>
+      <td style={{textAlign: 'center'}}><code>_AS13000</code></td>
+      <td style={{textAlign: 'center'}}><em>if targeting by ASN</em></td>
+    </tr>
+  </tbody>
+</table>
+
+*\* **the bolded parts** are required and will always be included in the login; the other parameters get added depending on your chosen connection settings*
+
+Keep in mind, your id is a permanent identifier tied to your profile.
+
+:::warning **Warning!**
+It’s very important not to share or reveal your connection lines, because somebody could figure out your data and use it without your knowledge.
+
+If this happens or you have doubts, you can reset your connection lines in settings. [**Read here how**](./Settings#сброс-пароля-подключения).
+::: 
+
+## Connection Lines – Switching HTTP / SOCKS5 Protocol
+
+By default, lines use the HTTP protocol. If you need to use SOCKS5 connections, switch the protocol in the top right corner above the table. The protocol applies to all connections in the list.
+![image12](./assets/WorkingLists/image12.png)  
+After changing this option, the protocol in the proxy lists changes.    
+BEFORE  
+![image13](./assets/WorkingLists/image13.png)  
+
+AFTER  
+![image14](./assets/WorkingLists/image14.png)
+
+## Connection Lines – Changing the Mirror
+If you can’t connect to a proxy (including from within Russia) or are having slow proxy speeds, use mirrors to switch servers.
+
+You can change the mirror in the top right corner above the table, to the left of the "http | socks5" protocol settings. Changing the mirror applies to all connections in the list.
+
+By default, the main server *gw.zengw.io* is used, which corresponds to the “Auto” mirror.
+![image15](./assets/WorkingLists/image15.png)  
+Click on the highlighted area to change the mirror. A dropdown menu with mirrors will appear. Select one of them. 
+![image16](./assets/WorkingLists/image16.png)  
+Here’s how the mirror names in the dropdown correspond to the servers:
+
+| Auto | gw.zengw.io |
+| :---- | :---- |
+| Americas | gw-us.zengw.io |
+| Europe | gw-eu.zengw.io |
+| Russia | gw-ru.zengw.io |
+
+## **Actions with the Connection List**
+
+### **Search**  
+If you have a large list of connections, you can use search.   
+Search works by connection name or country. Just enter your keywords in the upper right corner next to the magnifying glass icon.   
+For example, let’s filter connections by shop. As soon as you start typing "shop," the list will get filtered down to just the relevant connections. 
+![image17](./assets/WorkingLists/image17.png)  
+### **Download List**  
+You can download your list of connections in a few ways.
+1) Click the "Download List" button to save all connections at once to a file.
+![image18](./assets/WorkingLists/image18.png)
+2) Or do it from the three dots menu next to the list name. 
+![image19](./assets/WorkingLists/image19.png)
+3) If you only want to download certain lines, check the boxes next to the desired lines and in the menu above the table click the button 
+![image20](./assets/WorkingLists/image20.png)  
+
+### **Rename List**  
+If you want to rename a list, you can do that from the menu next to the list name. Click the three dots and then "rename".  
+![image21](./assets/WorkingLists/image21.png)  
+A familiar popup will appear. Change the name and click "save". Or cancel the change.   
+![image22](./assets/WorkingLists/image22.png)  
+
+### **Delete List**  
+You can delete a connection list in two ways.  
+1. In the menu next to the list name, choose "Delete List".
+![image23](./assets/WorkingLists/image23.png)  
+A popup will appear with a warning and a prompt for confirmation. Keep in mind, when you click "delete", all proxies in the list will be moved to the "Default list".  
+![image24](./assets/WorkingLists/image24.png)  
+
+Here’s another option:  
+You can select a particular line or lines by checking the box next to the line in the list. Just click the square – a check will appear, and the line is selected.  
+![image25](./assets/WorkingLists/image25.png)  
+ 
+
+Or check the box at the top of the table to select all connections in this list.
+![image26](./assets/WorkingLists/image26.png)  
+Once you've selected at least one line, a menu will show up at the top. Click the "delete" button.
+![image27](./assets/WorkingLists/image27.png)  
+A popup will ask you to confirm deletion of the selected lines.  
+![image28](./assets/WorkingLists/image28.png)

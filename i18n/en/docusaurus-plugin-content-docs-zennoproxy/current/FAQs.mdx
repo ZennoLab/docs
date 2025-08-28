@@ -1,0 +1,47 @@
+---
+sidebar_position: 3
+title: "Frequently Asked Questions"
+description: "Frequently Asked Questions"
+---
+:::info **Please check out the [*Terms of Use for materials on this site*](../Disclaimer).**
+:::
+
+## Q&A
+
+### **Connections aren’t working. What should I do?** 
+
+If you can’t connect to a proxy (including attempts from Russia), or you’re having issues with proxy speed, switch to a different mirror from the connection list. You’ll find more details in the *“Working with Lists”* section.
+
+### **What’s concurrency and how do I avoid getting blocked?** 
+
+Concurrency is the number of simultaneous threads per single IP. The higher it is, the faster scraping goes, but the more likely you’ll get captchas or bans. For CG-NAT (mobile proxies), keep it at ≤5-10 threads; for residential proxies, you can go 20-50 if it’s a private IP.
+
+### **How can I prevent my IPs from getting burnt out?**
+
+Set a request limit per IP, add delays (throttling), rotate your User-Agent, and clear cookies. If you get a captcha, temporarily remove that IP from the pool or move it to standby.
+
+### **What does targeting in proxies mean?**
+
+Targeting lets you pick IP addresses by attributes like country, city, or provider (ASN). You need this to make sites see you as a “legit” user from a certain region (say, to get local store prices).
+
+### **Should I choose residential or mobile connections?** 
+
+### **Residential proxies**   
+Best for: heavy, stable scraping, 20-50+ parallel threads, long “sticky” sessions, and geo-targeting down to the city level.
+
++ Lower ping and higher bandwidth mean faster, more predictable responses.  
++ IPs are more stable, making it easier to set up static chains and cache DNS.  
++ CG-NAT is used less often, so one IP is usually “almost yours” (fewer neighbors = fewer captchas).
+
+- Anti-bot systems might trust them a bit less than mobile IPs.  
+- If you scrape too aggressively and your pool is small, you might get banned or rate-limited.
+
+### **Mobile proxies**  
+Best for: strict anti-bot checks (registration, login, warming up accounts, PWA/mobile app work), when you need a mobile ASN and a “real” smartphone fingerprint.
+
++ Top-tier “human” status—sites see a real mobile ASN, which boosts trust.  
++ More forgiving of “suspicious” actions (frequent logins, page switches), since mobile networks are naturally noisier.
+
+- CG-NAT means dozens of people share one IP: running lots of threads (10+) raises captcha risk for everyone on that IP.  
+- Higher ping, possible speed fluctuations, and occasional “reconnections” with sudden IP changes.  
+- More often shared, so no guarantee of exclusivity.

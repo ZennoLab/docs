@@ -1,0 +1,126 @@
+---
+sidebar_position: 2
+title: Basic Concepts
+description: "Key concepts for working with ZennoProxy"
+--- 
+:::info **Please read the Terms of Use for materials on this site.**
+:::
+
+### **ZennoProxy**  
+A service for quickly creating proxies.
+
+### **Proxy (proxy server)**  
+An intermediary between your device (the client) and the destination server.
+
+### **Connecting via proxy**  
+A connection method where your traffic doesn't go directly to the website/service, but first to the intermediary server (the proxy), and then the proxy requests the target resources on your behalf. This lets you mask your IP/location, apply access rules, cache, and route traffic.
+
+:::note **Note**
+Don’t confuse this with VPN. VPN encrypts and tunnels all device traffic; proxies usually work at the level of a specific app or protocol.
+:::
+
+### **Proxy IP address**  
+The IP address that the proxy server uses to represent you on the internet.
+
+### **Static VS Rotating session**  
+Static and rotating sessions define how the IP address is used while you interact with sites. A static session uses the same IP throughout the session, while a rotating session changes the IP with each new request or after certain periods.
+
+### **Sticky session**  
+In this mode, the “request distributor” (load balancer) picks a specific server for you after your first request, remembers this choice (usually by cookie/session ID or IP hash), and sends all your further requests in this session to that same server—until your session ends or times out.
+
+*Are sticky and static sessions the same thing?*
+
+Both describe when, within a single session, you always hit the same server or node in a cluster. It works by saving session info and linking it to a specific server.
+
+The difference is mostly in terminology. Sometimes “static session” just means keeping state—not necessarily related to load balancing—while “sticky session” is more about load balancing and binding your session to a set server.
+
+### **Residential and mobile proxies**  
+Residential proxies send traffic via home ISPs. They look like normal homes/routers in IP databases and ASN.
+
+Mobile proxies send traffic through cell networks. Often, dozens of devices share the same external IP due to CG-NAT, so such IPs “look like smartphones on LTE/5G.”
+
+Comparison of residential and mobile proxies
+
+|  | Residential | Mobile |
+| :---- | :---- | :---- |
+| IP / ASN source | home networks | mobile operators |
+| anti-bot trust | “regular PC/router user” | “real smartphone,” usually trusted more |
+| speed and ping | usually faster and more stable | higher ping, can fluctuate more |
+| IP stability (stickiness) | can easily hold static sessions for 10–60 min or more | static sessions possible, but rare IP “jumps” due to operator reconnects/balancing |
+| shared nature | often almost “just you” on the IP | almost always shared (CG-NAT): dozens/hundreds share an IP |
+| concurrency | can handle more parallel streams | CG-NAT: being too aggressive increases CAPTCHAs and blocks for all “neighbors” on the IP |
+| geo-accuracy | city/region is usually a stable match | geo can “jump” between operator nodes |
+
+### **Concurrency**  
+How many requests/streams go at once through a single IP/account/process.
+
+### **Pool**  
+A proxy pool is a bunch of prepped IPs (exit points). The service gives you one or several: fixed ones for static sessions, or different ones with rotation.
+
+### **Key pool characteristics**  
+Size and diversity: how many IPs, and how different they are subnet-wise, by provider (ASN), and geo.  
+Type: residential or mobile.  
+Targeting: general, by country/city, or by ASN.  
+Exclusivity: shared or dedicated/private.  
+Issuing policy: time-based/request-based/error-based rotation, stickiness (sticky sessions), and TTL.  
+Limits: parallel streams, cooldown window for reusing IPs, burnout protection.
+
+Sometimes people talk about a port pool (many ports, each dynamically assigned to an IP from a big pool), or about client-side session pools—but in proxy speak, “pool” almost always means the set of available exit IPs.
+
+### **Targeting**  
+When it comes to proxies, “targeting” means choosing a particular proxy or group of proxies for a specific purpose. For example, picking by country/city, by network type (mobile/home), or other criteria to get the behavior you want online.
+
+### **Anti-fraud system**  
+Software that evaluates risks for an action (login, payment, registration, comment, etc.) and decides: allow, ask for more verification, or deny. Used in fintech/banking, marketplaces, social networks, gaming, and more.
+
+### **What signals does it analyze:**
+
+* Network: IP/ASN, country/city, proxy/VPN/DC, speed/stability, how often IPs change
+* Device/browser: User-Agent, fingerprint (Canvas/WebGL/Fonts), timezone, language, WebRTC/DNS
+* Behavior: typing speed, click/scroll patterns, mouse movement, “human-like” session stuff
+* History: account reputation, request frequency, “velocity” (number of actions per window)
+* Business rules: limits by item/price/country, blacklists/greylists, weird combos
+* Payment: 3-DS/SCA, mismatched card/geo/device, chargeback risk
+
+In the end, the system gives a risk score and chooses one of three options:  
+– let the action through,  
+– ask for extra verification (complete a “not a robot” test, enter a code from an SMS, confirm an email, enter a code from an app/token—any available 2FA method),  
+– block/deny.
+
+### **HTTP / SOCKS5**
+
+|  | HTTP Proxy | SOCKS5 Proxy |
+| :---- | :---- | :---- |
+| Purpose | HTTP proxying; HTTPS via CONNECT method (TCP tunnel to the target) | Universal transport-layer proxy (sockets) |
+| Features | caching, headers, basic auth (Proxy-Authorization) | TCP and UDP (UDP ASSOCIATE), DNS proxy at the proxy server, login/password |
+| Limitations | only TCP; UDP/QUIC (HTTP/3) won’t work in the usual way | suitable for non-HTTP protocols (e.g. some messengers/games), better supports QUIC/UDP (if UDP is enabled by provider) |
+| Typical ports | 3128, 8080 (but can be any) | 1080 |
+
+### **What to pick:**
+
+Browser web / website scraping / API over HTTPS → HTTP proxy.
+
+Need UDP / non-standard protocols / HTTP/3 compatibility → SOCKS5 proxy.
+
+### **Scraping (to scrape, scraping, web scraping)**  
+Automated gathering of data from web pages or APIs, including downloading, rendering (if needed), extracting, and saving. For example, collecting product lists, prices, reviews, ratings, news.
+
+### **Parsing**   
+Processing the fetched HTML/JSON/XML and picking out target fields (price, name, rating, etc.).
+
+### **Scraping VS Parsing**  
+Parsing is a step within scraping. Parsing produces structured data (table/JSON/DB) from raw content. Simply put:  
+scraping = grabbing and processing data (includes parsing as one step)  
+parsing = analyzing already-fetched content to get specific fields.
+
+You can scrape without parsing (download HTML to process later).  
+You can parse without scraping (someone gave you an HTML/JSON file and you just process it).
+
+### **ASN**  
+A unique ID of an autonomous system managed by one org with unified routing. Systems use ASN to identify each other when exchanging routes. ISPs, mobile operators, cloud providers, hosting companies, data centers, CDNs, large corporate/university/government networks, and IX/IXP nodes are autonomous systems.
+
+### **NAT**  
+Network Address Translation—swapping network addresses at the network edge. Most commonly, many internal (private) addresses connect to the internet through one or more public IPs.
+
+### **CG-NAT (Carrier-Grade NAT)**   
+NAT at the ISP’s side: dozens/hundreds of users share a single public IPv4. Common in mobile networks and some landline ISPs.
