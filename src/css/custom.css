@@ -255,7 +255,27 @@ pre {
   font-weight: bold;
 }
 
+/* Готовые размеры изображений */
 img[alt=small-size] { width: 200px; }
+img[alt=medium-size] { width: 400px; }
+img[alt=large-size] { width: 600px; }
+img[alt=extra-large-size] { width: 800px; }
+
+/* Размеры в процентах */
+img[alt=half-size] { width: 50%; }
+img[alt=sixty-size] { width: 60%; }
+img[alt=seventy-size] { width: 70%; }
+img[alt=eighty-size] { width: 80%; }
+
+/* Комбинированные alt (например: image2-medium) */
+img[alt*="-small"] { width: 200px; }
+img[alt*="-medium"] { width: 400px; }
+img[alt*="-large"] { width: 600px; }
+img[alt*="-extra-large"] { width: 800px; }
+img[alt*="-twenty"] { width: 20%; }
+img[alt*="-fourty"] { width: 40%; }
+img[alt*="-sixty"] { width: 60%; }
+img[alt*="-eighty"] { width: 80%; }
 
 .lk-link {
   padding-left: 20px;
