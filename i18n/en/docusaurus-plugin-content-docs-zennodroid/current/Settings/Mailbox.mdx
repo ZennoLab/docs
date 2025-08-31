@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 12
-title: Mail
+title: E-mail
 description: Setting up connections to mailboxes.
 ---
 :::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
@@ -33,7 +33,7 @@ The password for this mailbox.
 
 For security reasons, some email providers require a special password for third-party programs. It’s called an **App Password**. You can get it in the settings of your chosen service.
 _______________________________________________
-### "Login to Mail" Button  
+### "Login to e-mail" Button  
 After clicking this, the program will check if your SMTP server connection details are correct. However, it does not check if the *Email-Password* pair is correct.
 
 If the connection is successful, a green message will show up at the bottom of the window:
@@ -44,9 +44,9 @@ If the program fails to connect to the server, you’ll get a pop-up error windo
 
 ![Error window](./assets/Mailbox/Mailbox_pic4.png)
 
-If this happens, you’ll have to set up the connection manually. To do this, uncheck **Detect settings automatically**.
+If this happens, you’ll have to set up the connection manually. To do this, uncheck **Determine settings automatically**.
 
-### Detect Settings Automatically  
+### Determine Settings Automatically  
 ![Detect settings automatically](./assets/Mailbox/Mailbox_pic5.png)
 
 When this option is enabled, the program will try to figure out the right SMTP connection settings based on the email address you’ve entered.
@@ -56,7 +56,7 @@ If you get an error after using automatic settings, uncheck this and enter them 
 ### Default  
 If you switch this on, this connection will be used by default every time in [Mail Sending](../Project%20Editor/SendEmails) blocks, unless you specify otherwise.
 _______________________________________________
-### Do Not Check Server Certificates  
+### Do Not Validate Server Certificates  
 Sometimes, when connecting an account, you might get an error like:  
 **`An error occured while attempting to establish an SSL or TLS connection`**.
 

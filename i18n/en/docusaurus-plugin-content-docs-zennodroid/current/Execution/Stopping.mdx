@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: «Stopping» Tab
+title: «Stop» Tab
 description: Conditions for stopping project execution
 ---
 
@@ -10,7 +10,7 @@ _______________________________________________
 ## Description
 This tab contains the settings for the conditions under which your project will stop running.
 
-You can find it on ZennoDroid's main page—just click on the task you're interested in, then go to the **Stopping** section.
+You can find it on ZennoDroid's main page — just click on the task you're interested in, then go to the **Stop** section.
 
 ![Description](./assets/Stopping/Stopping_pic1.png)
 _______________________________________________
@@ -21,19 +21,19 @@ Here you set the number of times the project should run successfully before it s
 By default, it's set to **`-1`**, which means unlimited. Successes won't be counted—the project will keep running until you stop it manually.
 
 :::tip **In the Projects Table, you can see the total number of successes and errors for any given task.**
-![number of successes and errors](./assets/Stopping/Stopping_pic3.png)
+![Consecutive Failures](./assets/Stopping/Stopping_pic2.png)
 :::
-### Number of consecutive failures
+### Number of failures in a row
 The project can only fail as many times in a row as you specify here—after that, it'll stop.
 
 The counter for unsuccessful runs resets as soon as the task is completed successfully once.
 
 By default, the value is **`-1`**, which means endless. Errors won't be tracked, and the project will keep going until you stop it by hand.
 
-:::tip **The *Projects Table* doesn't show the "Consecutive Failures" column by default.**
-But you can enable it **by right-clicking any table header**.
+:::tip **The *Projects Table* doesn't show the "Number of failures in a row" column by default.**
+But you can enable it **by right-clicking any table header**.  
+![number of successes and errors](./assets/Stopping/Stopping_pic3.png)
 
-![Consecutive Failures](./assets/Stopping/Stopping_pic2.png)
 :::
 
 ### Execution timeout (seconds)
@@ -47,7 +47,7 @@ In that case, set the **Execution Timeout** to 600 seconds (10 minutes, with a b
 If, for some reason, the template hangs right in the middle of running, it'll get interrupted exactly 600 seconds from the start—so you don't waste resources or time.
 :::
 
-### Run BadEnd when stopping the project
+### Execute BadEnd when aborting project
 If you turn this setting on, when you stop the project with the **Stop** button or the **Execution Timeout** runs out, it will follow the red line (BadEnd).
 
 ![Stop](./assets/Stopping/Stopping_pic4.png)

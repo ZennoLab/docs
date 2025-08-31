@@ -8,16 +8,16 @@ description: Project execution settings.
 _______________________________________________
 ![Appearance](./assets/Execution/Execution_pic1.png)
 _______________________________________________
-### FTP Operation Timeout (sec).
+### Timeout for an FTP Operation (sec).
 Here, you specify the number of seconds the program will wait for an FTP operation to complete.
 _______________________________________________
-### Number of HTTP Request Attempts.
+### Number of Attempts for HTTP Request.
 The number of times the program will try to execute an [**HTTP request**](../Project%20Editor/HTTP%20and%20FTP/HTTP).
 _______________________________________________
-### Interval Between Device Launches (sec).
+### Interval Between Running Devices (sec).
 This interval helps prevent peak loads when starting multiple devices at once.
 _______________________________________________
-### Limit Frame Capture Rate.
+### Limit Framerate.
 This setting affects the display of the image in the preview window of the [**Device**](../pm/Interface/DeviceWindow).
 
 If it's turned off, the image will be shown at the FPS value set in the emulator.
@@ -26,7 +26,7 @@ If it's turned off, the image will be shown at the FPS value set in the emulator
 Especially in multi-threaded projects.
 :::
 _______________________________________________
-### Use Alternative HTTP Request Method.
+### Use an Alternative way to send HTTP Request.
 If you enable this option, the alternative HTTP request method will be used by default.
 
 It is set globally for the entire program and all new projects.
@@ -41,45 +41,47 @@ _______________________________________________
 ### Use HTTP Connection Pool.
 This option optimizes working with [**HTTP requests**](../Project%20Editor/HTTP%20and%20FTP/HTTP), making it more stable.
 _______________________________________________
-### Maximum Number of Connections in HTTP Connection Pool.
+### Maximum Number of Connections HTTP Connection Pool.
 This setting limits the number of connections for ZennoDroid and ProjectMaker, helping stabilize work with a large number of HTTP requests.
 _______________________________________________
-### Take Group Order Into Account During Classic Element Search.
+### Take into Account Group Order when Doing a Classic Element Search.
 If you turn this on, the search conditions will be processed in the order shown in the **Group** column.
 
-![Take order into account](./assets/Execution/Execution_pic2.png)
+![Take order into account](./assets/Execution/Execution_pic2.png)  
+_______________________________________________  
+### Use the updated element search method.
 _______________________________________________
-### Safely Save Files.
+### Save Files Safely.
 Prevents lists and files from getting corrupted in case of sudden server reboots.
 _______________________________________________
-### Leave Empty File in UTF-8 Encoding.
+### Leave an Empty File in UTF-8 Encoding.
 If a list remains empty during template execution, the file will be saved in UTF-8.
 _______________________________________________
-### Start Unfinished Projects at Startup.
+### Run Unfinished Projects at Startup.
 When the program starts, any projects you didn't close during the last session will launch automatically.
 _______________________________________________
-### Reset Failed Task Counter When Adding Attempts.
+### Reset Task Failures When Adding Attempts.
 The failed task counter will be reset when you add new execution attempts.
 _______________________________________________
-### Detailed Email Log.
+### Detailed Log for Email operations.
 Enables a detailed log for [**email operations**](../Project%20Editor/RecieveEmails).
 _______________________________________________
-### Detailed FTP Log.
+### Detailed Log for FTP operations.
 Enables a detailed log for [**FTP operations**](../Project%20Editor/HTTP%20and%20FTP/FTP_Dir).
 _______________________________________________
-### Detailed HTTP Log.
+### Detailed Log for HTTP operations.
 Enables a detailed log for [**HTTP operations**](../Project%20Editor/HTTP%20and%20FTP/HTTP).
 _______________________________________________
-### File Change Handling Policy.
+### File Change Processing Policy.
 Here you set how the program will behave if files linked to lists and tables are changed from outside.
 
-#### Always load file changes while working.
+#### Load file changes while working with it.
 The program will automatically detect and load file updates.
 
-#### Never load external changes while working.
+#### Never load file changes while working on them.
 The program will load the file at startup only and won’t check for changes.
 
-#### Ask the user.
+#### Ask user.
 The program will always prompt you for confirmation before loading changes from the file.
 _______________________________________________
 ### C# Thread Culture.

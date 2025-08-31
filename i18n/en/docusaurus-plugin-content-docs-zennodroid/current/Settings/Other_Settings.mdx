@@ -10,61 +10,64 @@ _______________________________________________
 ![Description](./assets/Other_Settings/Other_Settings_pic1.png)
 
 ## General Settings
-### Disable error reports (globally)
+### Disable program crash reporting (globally)
 Sometimes, due to internal issues, the device might crash. ZennoDroid tracks these problems and tries to restore its operation. But if a notification window pops up at that moment, there’s a chance the device won’t be able to reboot.
 
-### Disable the project settings recovery dialog
+### Disable the task settings recovery dialog
 This option disables the ability to recover settings in case of a program crash. It can be useful if this recovery window blocks ZennoDroid from auto-starting.
 
 :::warning We don’t recommend turning off this option.
 :::
 
-### Skip scheduler tasks for running jobs
+### Ignore scheduler jobs for running tasks
 If a project is already running when you want to launch it using the scheduler, that scheduled task will be delayed until the current job finishes.
 
 ### Minimize ZennoDroid to tray
 When you minimize the program window, it’ll go to the system tray.
 
-### Monitor thread state
+### Monitor threads status
 Enables monitoring of thread status in the program for statistics. This info is only helpful if you contact tech support. So **we don’t recommend turning on this option just for fun**.
 
-### Compress large object heap
+### Compacts the large object heap once every
 This feature is handy when processing big text data, for example, with auto search enabled in ProxyChecker.
 
-You can also set how often compression happens, like, every 5 or 10 minutes.
+You can also set how often compression happens, like, every 5 or 10 minutes.  
 
-### Auto-continue active tasks after restart
+### Recover ZennoDroid if it fails  
+This option restores the program’s operation in case of an unexpected termination.
+
+### Automatically continue executing active tasks after restart
 Controls whether to resume tasks that were active before the last program shutdown.
 _______________________________________________
-## Log Settings
-### Only stop log autoscroll on log record click
+## Configure Log Settings
+### Disable log auto-scrolling, only when clicking on log record.
 Log autoscrolling will only pause after you click on any record in the log.
 
-### Display notifications in log only
+### Display alerts only in log 
 Messages sent using the [**Notification**](../Project%20Editor/Logic/Notification) action will only show up in the log, without a popup window, no matter how the action’s settings are set.
 
-### Show the date in the log
+### Show date in log
 The current date will also be shown in the log.
 
-### Log successful project completion notifications
+### Show a notification in the log about a successful execution
 If a project completes successfully, the log will show a message about it.
 
-### Log unsuccessful project completion notifications
+### Show a notification in log if the project was not completed successfully
 If a project fails, you’ll also see a message about it in the log.
 
-### Keep log records for (hours)
+### Keep records in the hours log
 Sets the max amount of time log entries are stored (in hours).
 
-### Max log entries per task
+### Max records to keep for one task
 Here you set the maximum number of log entries that can be stored for a single task.
 
 :::info The max allowed value is 9999.
 :::
 
-### Max log entry size
+### Maximum size of a log entry 
 Limits the maximum size (in kilobytes) of a single entry displayed in the log window.
 
-### Limit max log entry size for log files
+### Limit the maximum size of entries in the log file
 This setting limits the size of each entry that can be saved in the log file. We recommend enabling this limit if you aren’t working with large data sets and don’t need full logs, since it’ll boost ZennoDroid performance and reduce memory consumption.
 
 Log files are stored in the directory where ZennoDroid is installed, in the `Logs` folder. Possible path:  
@@ -73,9 +76,11 @@ Log files are stored in the directory where ZennoDroid is installed, in the `Log
 :::warning Program restart is required for changes to take effect.
 :::
 _______________________________________________
-## Miscellaneous
+## Different
 ### Detailed log (Debug info for developers)
-More detailed info about what’s happening in the software will be logged. This can come in handy if you need support.
+More detailed info about what’s happening in the software will be logged. This can come in handy if you need support.  
+
+### Truncate log messages when searching if the message is longer than 500 characters
 
 ### Diagnostics
 This button starts the diagnostic tool (`diagnostic.exe`) to collect info in case something goes wrong.

@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 15
+title: Input Methods (Enterprise)
+description: Available input methods.
+---
+:::info **Please read the [*Material Usage Rules on this site*](../Disclaimer).**
+:::
+
+## Input Methods
+The program has **4 ways** to input characters from the keyboard.
+![4](./assets/Record_and_InputMethods/Record_and_InputMethods_pic3.png)  
+
+Different devices handle character input differently, so having several options lets you pick what works best. The first three let you enter any symbols, including emojis; the last one handles only ASCII.
+_______________________________________________
+### Details
+#### ADBKeyboard
+This uses a third-party keyboard that installs automatically when you connect your device. With it, you can type characters as if you were using a virtual keyboard.
+#### AccessibilityService
+Uses [***UiAutomator2***](https://github.com/appium/appium-uiautomator2-driver). Lets you set any value for the field that's currently focused.
+Technically, it doesn't input characters—it just changes the field's **Text** property to what you want.
+:::tip Keep in mind
+*This won't work in apps that don't have a standard element tree. For example, in games.*
+:::
+
+#### Native input + Clipboard
+Inputs characters via the **IInputManager** and **IClipboard** interfaces. This method is pretty quick.
+:::info Note
+*Inputting Cyrillic/emojis only works on Android 7 and up. ASCII works on any device.*
+:::
+
+#### Input text
+Similar to the ***input text*** command, but includes all necessary text conversions so that special characters `< > | ) (` and others get entered correctly. Only supports **ASCII characters**.
+:::info Recommendation
+*Character-by-character entry is slow, so it's better to choose an input method with **no delay** enabled.*
+:::
+_______________________________________________
+### What if ADBKeyboard didn't install?
+1. You need to install the ***com.android.adbkeyboard.apk*** app on your phone (*the file is in the main program folder*). For example, use the [**Install App**](../Android/ProLite/App#install-an-app) action.
+2. On your phone, go to your language input settings and enable ***AdbKeyboard***.
+3. Run the [**Start VM**](../Android/ProLite/action#how-do-i-start-or-restart-a-device) action. This activates the keyboard. It'll pop up in any field where you need to enter text—you'll see a small `Adb keyboard ON` notification at the bottom.
