@@ -18,6 +18,17 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
+  // Добавляем мета-тег для отключения индексации всех поисковиков
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'robots',
+        content: 'noindex, nofollow, nosnippet, noarchive',
+      },
+    },
+  ],
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'zennolab', // Usually your GitHub org/user name.
