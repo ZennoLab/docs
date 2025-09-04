@@ -1,0 +1,10 @@
+{
+  "label": "CapMonster",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Документация по сервису распознавания капчи CapMonster"
+  },
+  "collapsed": false,
+  "className": "green"
+}

@@ -111,6 +111,20 @@ const config = {
         },
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'capmonster',
+        path: 'docs/CapMonster',
+        routeBasePath: 'capmonster',
+        sidebarPath: './sidebars-capmonster.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/docs/tree/dev/docs/CapMonster/${docPath}`
+            : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-capmonster/current/${docPath}`;
+        },
+      },
+    ],
   ],
 
   themeConfig:
@@ -156,6 +170,13 @@ const config = {
             position: 'right',
             label: 'ZennoBrowser',
             docsPluginId: 'zennobrowser',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'capmonsterSidebar',
+            position: 'right',
+            label: 'CapMonster',
+            docsPluginId: 'capmonster',
           },
           // {to: '/blog', label: 'Блог', position: 'right'}, // Временно скрыто
           {type: 'localeDropdown', position: 'right'},
@@ -218,6 +239,19 @@ const config = {
               {
                 label: 'Начало работы',
                 to: '/zennobrowser/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'CapMonster',
+            items: [
+              {
+                label: 'Что такое CapMonster',
+                to: '/capmonster/hello/WhatIsCapMonster',
+              },
+              {
+                label: 'Ключевые возможности',
+                to: '/capmonster/hello/KeyFeatures',
               },
             ],
           },
