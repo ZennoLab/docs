@@ -157,7 +157,7 @@ const config = {
             label: 'ZennoBrowser',
             docsPluginId: 'zennobrowser',
           },
-          {to: '/blog', label: 'Блог', position: 'right'},
+          // {to: '/blog', label: 'Блог', position: 'right'}, // Временно скрыто
           {type: 'localeDropdown', position: 'right'},
           {
             href: 'https://zennolab.com',
@@ -224,10 +224,10 @@ const config = {
           {
             title: 'Больше',
             items: [
-              {
-                label: 'Блог',
-                to: '/blog',
-              },
+              // {
+              //   label: 'Блог',
+              //   to: '/blog',
+              // }, // Временно скрыто
               {
                 label: 'ZennoLab',
                 href: 'https://zennolab.com',
