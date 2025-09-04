@@ -50,7 +50,9 @@
   color: #4fddbf;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(1) > .menu__list-item-collapsible .menu__link::before {
+/* Иконки сайдбара для ZennoDroid */
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(1) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(1) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/zennodroid.svg');
   width: 22px;
@@ -58,7 +60,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(2) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(2) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(2) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/install.svg');
   width: 24px;
@@ -66,7 +69,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(3) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(3) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(3) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/prolite.svg');
   width: 24px;
@@ -74,7 +78,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(4) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(4) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(4) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/enterprise.svg');
   width: 24px;
@@ -82,7 +87,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(5) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(5) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(5) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/get_started.svg');
   width: 24px;
@@ -90,7 +96,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(6) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(6) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(6) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/project.svg');
   width: 24px;
@@ -98,7 +105,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(7) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(7) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(7) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/editor.svg');
   width: 24px;
@@ -106,7 +114,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(8) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(8) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(8) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/android.svg');
   width: 24px;
@@ -114,7 +123,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(9) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(9) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(9) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/data.svg');
   width: 24px;
@@ -122,7 +132,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(10) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(10) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(10) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/settings.svg');
   width: 24px;
@@ -130,7 +141,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(11) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(11) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(11) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/tool.svg');
   width: 24px;
@@ -138,7 +150,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(12) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(12) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(12) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/execution.svg');
   width: 24px;
@@ -146,7 +159,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-category-level-1:nth-child(13) > .menu__list-item-collapsible .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-category-level-1:nth-child(13) > .menu__list-item-collapsible .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-category-level-1:nth-child(13) > .menu__list-item-collapsible .menu__link::before {
   content: '';
   background: url('/img/api.svg');
   width: 24px;
@@ -154,7 +168,8 @@
   margin-right: 12px;
 }
 
-.theme-doc-sidebar-item-link-level-1:nth-child(1n) .menu__link::before {
+body[data-pathname*="zennodroid"] .theme-doc-sidebar-item-link-level-1:nth-child(1n) .menu__link::before,
+body.docs-zennodroid .theme-doc-sidebar-item-link-level-1:nth-child(1n) .menu__link::before {
   content: '';
   background: url('/img/disclaimer.svg');
   width: 24px;
