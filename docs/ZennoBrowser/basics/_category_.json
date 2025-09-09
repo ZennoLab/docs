@@ -1,9 +1,8 @@
 {
-  "label": "Основы",
+  "label": "Установка и настройка",
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "Изучите базовые принципы работы с ZennoBrowser"
-  },
-  "collapsed": false
+    "description": "Рассказываем, как установить и настроить ZennoBrowser"
+  }
 } 
