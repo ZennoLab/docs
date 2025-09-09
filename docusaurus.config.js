@@ -57,14 +57,14 @@ const config = {
           routeBasePath: 'zennodroid',
           editUrl: ({locale, versionDocsDirPath, docPath}) => {
             return locale === 'ru'
-              ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoDroid/${docPath}`
-              : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennodroid/current/${docPath}`;
+              ? `https://github.com/ZennoLab/docs/tree/dev/docs/ZennoDroid/${docPath}`
+              : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennodroid/current/${docPath}`;
           },
           /*routeBasePath: '/',
           showLastUpdateTime: true,
             return locale === 'ru'
-              ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/${versionDocsDirPath}/${docPath}`
-              : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;*/
+              ? `https://github.com/ZennoLab/docs/tree/dev/${versionDocsDirPath}/${docPath}`
+              : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;*/
         },
         blog: {
           showReadingTime: true,
@@ -89,8 +89,8 @@ const config = {
         sidebarPath: './sidebars-zennoposter.js',
         editUrl: ({locale, versionDocsDirPath, docPath}) => {
           return locale === 'ru'
-            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoPoster/${docPath}`
-            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoposter/current/${docPath}`;
+            ? `https://github.com/ZennoLab/docs/tree/dev/docs/ZennoPoster/${docPath}`
+            : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoposter/current/${docPath}`;
         },
       },
     ],
@@ -103,8 +103,8 @@ const config = {
         sidebarPath: './sidebars-zennoproxy.js',
         editUrl: ({locale, versionDocsDirPath, docPath}) => {
           return locale === 'ru'
-            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoProxy/${docPath}`
-            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoproxy/current/${docPath}`;
+            ? `https://github.com/ZennoLab/docs/tree/dev/docs/ZennoProxy/${docPath}`
+            : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoproxy/current/${docPath}`;
         },
       },
     ],
@@ -117,8 +117,8 @@ const config = {
         sidebarPath: './sidebars-zennobrowser.js',
         editUrl: ({locale, versionDocsDirPath, docPath}) => {
           return locale === 'ru'
-            ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoBrowser/${docPath}`
-            : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennobrowser/current/${docPath}`;
+            ? `https://github.com/ZennoLab/docs/tree/dev/docs/ZennoBrowser/${docPath}`
+            : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennobrowser/current/${docPath}`;
         },
       },
     ],
@@ -168,7 +168,7 @@ const config = {
             label: 'ZennoBrowser',
             docsPluginId: 'zennobrowser',
           },
-          {to: '/blog', label: 'Блог', position: 'right'},
+          // {to: '/blog', label: 'Блог', position: 'right'}, // Временно скрыто
           {type: 'localeDropdown', position: 'right'},
           {
             href: 'https://zennolab.com',
@@ -235,10 +235,10 @@ const config = {
           {
             title: 'Больше',
             items: [
-              {
-                label: 'Блог',
-                to: '/blog',
-              },
+              // {
+              //   label: 'Блог',
+              //   to: '/blog',
+              // }, // Временно скрыто
               {
                 label: 'ZennoLab',
                 href: 'https://zennolab.com',
