@@ -60,12 +60,13 @@ const config = {
               ? `https://github.com/ZennoLab/docs/tree/dev/docs/ZennoDroid/${docPath}`
               : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennodroid/current/${docPath}`;
           },
+        },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
         gtag: {
-          trackingID: 'G-VZ3ZEFVL7L'
+          trackingID: 'G-VZ3ZEFVL7L',
         },
       }),
     ],
