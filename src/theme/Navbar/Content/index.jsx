@@ -21,13 +21,15 @@ function NavbarItems({ items = [] }) {
 
 export default function NavbarContent() {
   const { i18n } = useDocusaurusContext();
-  const { currentLocale } = i18n;
+  const { currentLocale, defaultLocale } = i18n;
   const isBrowser = useIsBrowser();
 
   const isHomePage = useMemo(() => {
-    return isBrowser ? window.location.pathname === '/' : false;
-  }, [isBrowser]);
-  
+    if (!isBrowser) return false;
+    const basePath = currentLocale === defaultLocale ? '/' : `/${currentLocale}/`;
+    return window.location.pathname === basePath;
+  }, [currentLocale, defaultLocale, isBrowser]);
+
   const { leftItems, rightItems } = getMenuItems(currentLocale, isHomePage);
 
   return (
