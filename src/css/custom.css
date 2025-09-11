@@ -6,10 +6,10 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary: rgba(55, 125, 255, 1);
+  --ifm-color-primary-dark: rgba(45, 115, 255, 1);
+  --ifm-color-primary-darker: rgba(45, 115, 255, 1);
+  --ifm-color-primary-darkest: rgba(35, 105, 255, 1);
   --ifm-color-primary-light: #33925d;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
@@ -27,6 +27,19 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar__link.button--primary {
+  color: #fff;
+}
+
+.button:not(.navbar__link) {
+  font-size: 18px;
+  line-height: 36px;
 }
 
 /* A script for adding videos to articles. */

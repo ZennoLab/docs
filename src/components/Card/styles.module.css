@@ -1,0 +1,64 @@
+.card {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 16px;
+  padding: 24px;
+  width: calc(100% - 48px);
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    max-width: 370px;
+  }
+}
+
+.cardWithImage {
+  box-shadow: 0px 0px 10px rgb(0,0,0, .1);
+  padding: 0px;
+}
+
+.cardWithImage > .title,
+.cardWithImage > .description{
+  padding: 0 24px;
+}
+
+.cardWithImage > .title {
+  margin-top: 24px;
+}
+
+.cardWithImage > .cardBtn {
+  width: calc(100% - 48px); /* 48px - paddings */
+  margin: 32px 24px 24px;
+}
+
+.icon {
+  width: 100px;
+  height: 78px;
+  margin-bottom: 16px;
+}
+
+.image {
+  width: 100%;
+}
+
+.title {
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 14px;
+}
+
+.titleWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(85, 90, 100, 1);
+}
+
+.cardBtn {
+  width: 100%;
+  margin-top: 32px;
+}

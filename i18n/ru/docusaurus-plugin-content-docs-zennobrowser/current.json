@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.zennobrowserSidebar.category.Основы": {
+    "message": "Основы",
+    "description": "The label for category Основы in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Основы.link.generated-index.description": {
+    "message": "Изучите базовые принципы работы с ZennoBrowser",
+    "description": "The generated-index page description for category Основы in sidebar zennobrowserSidebar"
+  }
+}
