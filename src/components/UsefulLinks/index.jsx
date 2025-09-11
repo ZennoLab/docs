@@ -5,8 +5,9 @@ import clsx from 'clsx';
 import { ButtonType, Card } from '../Card';
 
 import styles from './styles.module.css';
+import { getImageBasePath } from '../../utils/helpers';
 
-const getItems = (locale) => {
+const getItems = (locale, defaultLocale) => {
   const {
     useFulLinksBtnLabel,
     useFulLinksCard1Title,
@@ -17,11 +18,13 @@ const getItems = (locale) => {
     useFulLinksCard3Description,
   } = getLocaleStrings(locale);
 
+  const imagePath = getImageBasePath(locale, defaultLocale);
+
   return [{
     id: 1,
-    image: '/img/useful/img_card_help.png',
+    image: `${imagePath}/useful/img_card_help.png`,
     title: useFulLinksCard1Title,
-    titleIcon: '/img/useful/icon_support.png',
+    titleIcon: `${imagePath}/useful/icon_support.png`,
     description: useFulLinksCard1Description,
     action: {
       label: useFulLinksBtnLabel,
@@ -30,9 +33,9 @@ const getItems = (locale) => {
     }
   }, {
     id: 2,
-    image: '/img/useful/img_card_zennoclub.png',
+    image: `${imagePath}/useful/img_card_zennoclub.png`,
     title: useFulLinksCard2Title,
-    titleIcon: '/img/useful/icon_club.png',
+    titleIcon: `${imagePath}/useful/icon_club.png`,
     description: useFulLinksCard2Description,
     action: {
       label: useFulLinksBtnLabel,
@@ -41,9 +44,9 @@ const getItems = (locale) => {
     }
   }, {
     id: 3,
-    image: '/img/useful/img_card_marketplace.png',
+    image: `${imagePath}/useful/img_card_marketplace.png`,
     title: useFulLinksCard3Title,
-    titleIcon: '/img/useful/icon_marketplace.png',
+    titleIcon: `${imagePath}/useful/icon_marketplace.png`,
     description: useFulLinksCard3Description,
     action: {
       label: useFulLinksBtnLabel,
@@ -55,9 +58,9 @@ const getItems = (locale) => {
 
 export const UsefulLinks = () => {
   const { i18n } = useDocusaurusContext();
-  const { currentLocale } = i18n;
+  const { currentLocale, defaultLocale } = i18n;
   const { useFulLinksTitle } = getLocaleStrings(currentLocale);
-  const items = getItems(currentLocale);
+  const items = getItems(currentLocale, defaultLocale);
 
   return (
     <section className={clsx(styles.useFulLinks, 'container')}>

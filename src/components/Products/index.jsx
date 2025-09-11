@@ -7,13 +7,15 @@ import { ButtonType, Card } from '../Card';
 
 import styles from './styles.module.css';
 import { AnchorId } from '../../utils/constants';
+import { getImageBasePath } from '../../utils/helpers';
 
 /**
  * 
  * @param {string} locale 
+ * @param {string} defaultLocale 
  * @returns array
  */
-const getItems = (locale) => {
+const getItems = (locale, defaultLocale) => {
   const {
     productsBtn,
     productsCard1Title,
@@ -32,9 +34,11 @@ const getItems = (locale) => {
     productsCard7Description,
   } = getLocaleStrings(locale);
 
+  const imagePath = getImageBasePath(locale, defaultLocale);
+
   return [{
     id: 1,
-    icon: '/img/products/icon_zennoposter.png',
+    icon: `${imagePath}/products/icon_zennoposter.png`,
     title: productsCard1Title,
     description: productsCard1Description,
     action: {
@@ -44,7 +48,7 @@ const getItems = (locale) => {
     }
   }, {
     id: 2,
-    icon: '/img/products/icon_zennodroid.png',
+    icon: `${imagePath}/products/icon_zennodroid.png`,
     title: productsCard2Title,
     description: productsCard2Description,
     action: {
@@ -54,7 +58,7 @@ const getItems = (locale) => {
     }
   }, {
     id: 3,
-    icon: '/img/products/icon_capmonster_cloud.png',
+    icon: `${imagePath}/products/icon_capmonster_cloud.png`,
     title: productsCard3Title,
     description: productsCard3Description,
     action: {
@@ -64,7 +68,7 @@ const getItems = (locale) => {
     }
   }, {
     id: 4,
-    icon: '/img/products/icon_zennobrowser.png',
+    icon: `${imagePath}/products/icon_zennobrowser.png`,
     title: productsCard4Title,
     description: productsCard4Description,
     action: {
@@ -74,7 +78,7 @@ const getItems = (locale) => {
     }
   }, {
     id: 5,
-    icon: '/img/products/icon_zennoproxy.png',
+    icon: `${imagePath}/products/icon_zennoproxy.png`,
     title: productsCard5Title,
     description: productsCard5Description,
     action: {
@@ -84,7 +88,7 @@ const getItems = (locale) => {
     }
   }, {
     id: 6,
-    icon: '/img/products/icon_zennoproxychecker.png',
+    icon: `${imagePath}/products/icon_zennoproxychecker.png`,
     title: productsCard6Title,
     description: productsCard6Description,
     action: {
@@ -94,7 +98,7 @@ const getItems = (locale) => {
     }
   }, {
     id: 7,
-    icon: '/img/products/icon_cap_monster.png',
+    icon: `${imagePath}/products/icon_cap_monster.png`,
     title: productsCard7Title,
     description: productsCard7Description,
     action: {
@@ -107,9 +111,9 @@ const getItems = (locale) => {
 
 export const Products = () => {
   const { i18n } = useDocusaurusContext();
-  const { currentLocale } = i18n;
+  const { currentLocale, defaultLocale } = i18n;
   const { productsTitle } = getLocaleStrings(currentLocale);
-  const productsItems = getItems(currentLocale);
+  const productsItems = getItems(currentLocale, defaultLocale);
 
   return (
     <GrayBlock>
