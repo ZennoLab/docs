@@ -6,6 +6,7 @@ import NavbarLogo from '@theme/Navbar/Logo';
 import styles from './styles.module.css';
 import { getMenuItems } from '../menuItems';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 import clsx from 'clsx';
 
 function NavbarItems({ items = [] }) {
@@ -21,8 +22,12 @@ function NavbarItems({ items = [] }) {
 export default function NavbarContent() {
   const { i18n } = useDocusaurusContext();
   const { currentLocale } = i18n;
+  const isBrowser = useIsBrowser();
 
-  const isHomePage = useMemo(() => window.location.pathname === '/', [])
+  const isHomePage = useMemo(() => {
+    return isBrowser ? window.location.pathname === '/' : false;
+  }, [isBrowser]);
+  
   const { leftItems, rightItems } = getMenuItems(currentLocale, isHomePage);
 
   return (
