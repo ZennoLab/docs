@@ -32,7 +32,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'zennolab', // Usually your GitHub org/user name.
-  projectName: 'zennodroid', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -60,15 +60,8 @@ const config = {
               ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/docs/ZennoDroid/${docPath}`
               : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennodroid/current/${docPath}`;
           },
-          /*routeBasePath: '/',
-          showLastUpdateTime: true,
-            return locale === 'ru'
-              ? `https://github.com/ZennoLab/zennodroid-docs/tree/dev/${versionDocsDirPath}/${docPath}`
-              : `https://github.com/ZennoLab/zennodroid-docs/tree/dev/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;*/
         },
-        blog: {
-          showReadingTime: true,
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -136,45 +129,7 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          {
-            type: 'search',
-            position: 'left', 
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'right',
-            label: 'ZennoDroid',
-            docsPluginId: 'zennodroid',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'zennoposterSidebar',
-            position: 'right',
-            label: 'ZennoPoster',
-            docsPluginId: 'zennoposter',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'zennoproxySidebar',
-            position: 'right',
-            label: 'ZennoProxy',
-            docsPluginId: 'zennoproxy',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'zennobrowserSidebar',
-            position: 'right',
-            label: 'ZennoBrowser',
-            docsPluginId: 'zennobrowser',
-          },
-          {to: '/blog', label: 'Блог', position: 'right'},
           {type: 'localeDropdown', position: 'right'},
-          {
-            href: 'https://zennolab.com',
-            label: 'ZennoLab',
-            position: 'right',
-          },
         ],
       },
       algolia: {
@@ -187,66 +142,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'ZennoDroid',
-            items: [
-              {
-                label: 'Основные понятия',
-                to: '/zennodroid/get-started/BasicTerms',
-              },
-              {
-                label: 'Подключение реального устройства (ZDE)',
-                to: '/zennodroid/get-started/Connection',
-              },
-              {
-                label: 'Интерфейс ProjectMaker',
-                to: '/zennodroid/category/интерфейс',
-              },
-            ],
-          },
-          {
-            title: 'ZennoPoster',
-            items: [
-              {
-                label: 'Основы',
-                to: '/zennoposter/basics/getting-started',
-              },
-            ],
-          },
-          {
-            title: 'ZennoProxy',
-            items: [
-              {
-                label: 'Начало работы',
-                to: '/zennoproxy/basics/getting-started',
-              },
-            ],
-          },
-          {
-            title: 'ZennoBrowser',
-            items: [
-              {
-                label: 'Начало работы',
-                to: '/zennobrowser/basics/getting-started',
-              },
-            ],
-          },
-          {
-            title: 'Больше',
-            items: [
-              {
-                label: 'Блог',
-                to: '/blog',
-              },
-              {
-                label: 'ZennoLab',
-                href: 'https://zennolab.com',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} ZennoLab`,
+        copyright: `ZennoLab.com © 2008-${new Date().getFullYear()}`,
       },
       prism: {
         theme: prismThemes.oneLight,

@@ -1,0 +1,40 @@
+.products {
+  padding: 140px 0
+}
+
+.productsTitle {
+  text-align: center;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 60px;
+}
+
+.productsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+  .productsTitle {
+    font-size: 48px;
+    line-height: 52px;
+  }
+
+  .productsList {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .productsCard {
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productsCard > p {
+    flex: 1;
+  }
+}

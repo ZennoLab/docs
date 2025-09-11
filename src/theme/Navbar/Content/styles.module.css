@@ -1,0 +1,4 @@
+.navbarHomePage {
+  max-width: var(--ifm-container-width-xl);
+  margin: 0 auto;
+}
