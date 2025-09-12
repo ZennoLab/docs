@@ -7,7 +7,7 @@ import { ButtonType, Card } from '../Card';
 
 import styles from './styles.module.css';
 import { AnchorId } from '../../utils/constants';
-import { getImageBasePath } from '../../utils/helpers';
+import { getImageBasePath, isEnLocale } from '../../utils/helpers';
 
 /**
  * 
@@ -38,7 +38,7 @@ const getItems = (locale, defaultLocale) => {
 
   return [{
     id: 1,
-    icon: `${imagePath}/products/icon_zennoposter.png`,
+    icon: `${imagePath}/products/icon_zennoposter.svg`,
     title: productsCard1Title,
     description: productsCard1Description,
     action: {
@@ -48,7 +48,7 @@ const getItems = (locale, defaultLocale) => {
     }
   }, {
     id: 2,
-    icon: `${imagePath}/products/icon_zennodroid.png`,
+    icon: `${imagePath}/products/icon_zennodroid.svg`,
     title: productsCard2Title,
     description: productsCard2Description,
     action: {
@@ -58,17 +58,17 @@ const getItems = (locale, defaultLocale) => {
     }
   }, {
     id: 3,
-    icon: `${imagePath}/products/icon_capmonster_cloud.png`,
+    icon: `${imagePath}/products/icon_capmonster_cloud.svg`,
     title: productsCard3Title,
     description: productsCard3Description,
     action: {
       label: productsBtn,
-      link: 'https://docs.capmonster.cloud/ru/docs/getting-start/',
+      link: `https://docs.capmonster.cloud/${isEnLocale(locale) ? '' : 'ru/'}docs/getting-start/`,
       type: ButtonType.PRIMARY
     }
   }, {
     id: 4,
-    icon: `${imagePath}/products/icon_zennobrowser.png`,
+    icon: `${imagePath}/products/icon_zennobrowser.svg`,
     title: productsCard4Title,
     description: productsCard4Description,
     action: {
@@ -78,7 +78,7 @@ const getItems = (locale, defaultLocale) => {
     }
   }, {
     id: 5,
-    icon: `${imagePath}/products/icon_zennoproxy.png`,
+    icon: `${imagePath}/products/icon_zennoproxy.svg`,
     title: productsCard5Title,
     description: productsCard5Description,
     action: {
@@ -88,22 +88,22 @@ const getItems = (locale, defaultLocale) => {
     }
   }, {
     id: 6,
-    icon: `${imagePath}/products/icon_zennoproxychecker.png`,
+    icon: `${imagePath}/products/icon_zennoproxychecker.svg`,
     title: productsCard6Title,
     description: productsCard6Description,
     action: {
       label: productsBtn,
-      link: 'https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507/ZennoProxyChecker',
+      link: `https://zennolab.atlassian.net/wiki/spaces/${isEnLocale(locale) ? 'EN/pages/1822621739/ZennoProxyChecker' : 'RU/pages/475365507/ZennoProxyChecker'}`,
       type: ButtonType.PRIMARY
     }
   }, {
     id: 7,
-    icon: `${imagePath}/products/icon_cap_monster.png`,
+    icon: `${imagePath}/products/icon_cap_monster.svg`,
     title: productsCard7Title,
     description: productsCard7Description,
     action: {
       label: productsBtn,
-      link: 'https://zennolab.atlassian.net/wiki/spaces/RU/pages/475332615/CapMonster',
+      link: `https://zennolab.atlassian.net/wiki/spaces/${isEnLocale(locale) ? 'EN/pages/1821343926/CapMonster' : 'RU/pages/475332615/CapMonster'}`,
       type: ButtonType.PRIMARY
     }
   }];

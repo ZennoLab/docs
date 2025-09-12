@@ -327,6 +327,10 @@ img[alt*="-eighty"] { width: 80%; }
   .navbar__item.lk-link {
     display: none;
   }
+
+  .navbar__item.dropdown {
+    display: block;
+  }
 }
 
 /* Стили для ссылки на видео-курс */

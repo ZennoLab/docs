@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { ButtonType, Card } from '../Card';
 
 import styles from './styles.module.css';
-import { getImageBasePath } from '../../utils/helpers';
+import { getImageBasePath, isEnLocale } from '../../utils/helpers';
 
 const getItems = (locale, defaultLocale) => {
   const {
@@ -28,7 +28,7 @@ const getItems = (locale, defaultLocale) => {
     description: useFulLinksCard1Description,
     action: {
       label: useFulLinksBtnLabel,
-      link: 'https://helpdesk.zennolab.com/',
+      link: `https://helpdesk.zennolab.com/${isEnLocale(locale) ? 'en-us' : locale}`,
       type: ButtonType.GHOST,
     }
   }, {
