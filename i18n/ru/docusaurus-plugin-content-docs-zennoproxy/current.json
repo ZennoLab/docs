@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.zennoproxySidebar.category.Знакомство": {
+    "message": "Знакомство",
+    "description": "The label for category Знакомство in sidebar zennoproxySidebar"
+  },
+  "sidebar.zennoproxySidebar.category.Знакомство.link.generated-index.title": {
+    "message": "Знакомство",
+    "description": "The generated-index page title for category Знакомство in sidebar zennoproxySidebar"
+  },
+  "sidebar.zennoproxySidebar.category.Начало работы": {
+    "message": "Начало работы",
+    "description": "The label for category Начало работы in sidebar zennoproxySidebar"
+  },
+  "sidebar.zennoproxySidebar.category.Начало работы.link.generated-index.title": {
+    "message": "Начало работы",
+    "description": "The generated-index page title for category Начало работы in sidebar zennoproxySidebar"
+  }
+}

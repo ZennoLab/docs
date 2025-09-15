@@ -1,0 +1,62 @@
+.banner {
+  text-align: center;
+  padding: 32px 0 64px;
+}
+
+.bannerTitle {
+  margin-bottom: 16px;
+}
+
+.bannerDescription {
+  margin-bottom: 24px;
+}
+
+.bannerImgWrapper > svg {
+  width: 340px;
+  height: 280px;
+  margin-top: 32px;
+}
+
+@media screen and (min-width: 1024px) {
+  .banner {
+    text-align: left;
+    padding: 100px 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      ". image"
+      "title image"
+      "description image"
+      "link image"
+      ". image";
+  }
+
+  .bannerTitle {
+    grid-area: title;
+  }
+
+  .bannerDescription {
+    grid-area: description;
+    max-width: 530px;
+  }
+
+  .bannerImgWrapper {
+    grid-area: image;
+
+    width: 534px;
+    height: 440px;
+    margin-left: 100px;
+  }
+
+  .bannerImgWrapper > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .bannerLink {
+    grid-area: link;
+    max-width: 276px;
+    text-align: center;
+  }
+}

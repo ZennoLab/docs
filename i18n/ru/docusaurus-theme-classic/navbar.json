@@ -4,7 +4,7 @@
     "description": "The title in the navbar"
   },
   "item.label.toDocs": {
-    "message": "Go to docs",
+    "message": "Перейти к документации",
     "description": "Navbar item with label Блог"
   }
 }

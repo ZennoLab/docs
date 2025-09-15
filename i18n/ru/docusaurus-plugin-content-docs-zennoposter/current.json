@@ -1,0 +1,354 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.zennoposterSidebar.category.Начало работы": {
+    "message": "Начало работы",
+    "description": "The label for category Начало работы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Начало работы.link.generated-index.title": {
+    "message": "Что мне нужно знать?",
+    "description": "The generated-index page title for category Начало работы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Начало работы.link.generated-index.description": {
+    "message": "Здесь представлены самые необходимые страницы, которые понадобятся вам для изучения ZennoPoster.",
+    "description": "The generated-index page description for category Начало работы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Установка и удаление программы": {
+    "message": "Установка и удаление программы",
+    "description": "The label for category Установка и удаление программы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Установка и удаление программы.link.generated-index.title": {
+    "message": "Установка и удаление программы",
+    "description": "The generated-index page title for category Установка и удаление программы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Установка и удаление программы.link.generated-index.description": {
+    "message": "Все что нужно знать об установке, обновлении и удалении ZennoPoster.",
+    "description": "The generated-index page description for category Установка и удаление программы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker": {
+    "message": "ProjectMaker",
+    "description": "The label for category ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker.link.generated-index.title": {
+    "message": "ProjectMaker - Приложение для создания проектов для ZennoPoster",
+    "description": "The generated-index page title for category ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker.link.generated-index.description": {
+    "message": "Полное руководство по работе с ProjectMaker - мощным инструментом для создания автоматизированных проектов в ZennoPoster",
+    "description": "The generated-index page description for category ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Интерфейс программы": {
+    "message": "Интерфейс программы",
+    "description": "The label for category Интерфейс программы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Интерфейс программы.link.generated-index.title": {
+    "message": "Интерфейс программы ProjectMaker",
+    "description": "The generated-index page title for category Интерфейс программы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Интерфейс программы.link.generated-index.description": {
+    "message": "Обзор основных окон и элементов интерфейса программы ProjectMaker",
+    "description": "The generated-index page description for category Интерфейс программы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Запись и создание проектов": {
+    "message": "Запись и создание проектов",
+    "description": "The label for category Запись и создание проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Запись и создание проектов.link.generated-index.title": {
+    "message": "Запись и создание проектов",
+    "description": "The generated-index page title for category Запись и создание проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Запись и создание проектов.link.generated-index.description": {
+    "message": "Руководство по записи и созданию проектов в ProjectMaker",
+    "description": "The generated-index page description for category Запись и создание проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Общае сведения": {
+    "message": "Общае сведения",
+    "description": "The label for category Общае сведения in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Общае сведения.link.generated-index.title": {
+    "message": "Общае сведения",
+    "description": "The generated-index page title for category Общае сведения in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Общае сведения.link.generated-index.description": {
+    "message": "Общае сведения для записи и создания проектов",
+    "description": "The generated-index page description for category Общае сведения in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Редактор проектов": {
+    "message": "Редактор проектов",
+    "description": "The label for category Редактор проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Редактор проектов.link.generated-index.title": {
+    "message": "Редактор проектов",
+    "description": "The generated-index page title for category Редактор проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Редактор проектов.link.generated-index.description": {
+    "message": "Раздел, посвящённый функциям и возможностям редактора проектов ProjectMaker, включая работу с экшенами (кубиками) и категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
+    "description": "The generated-index page description for category Редактор проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\")": {
+    "message": "Действия в ProjectMaker (\"Экшены\", \"Кубики\")",
+    "description": "The label for category Действия в ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.title": {
+    "message": "Действия в ProjectMaker (\"Экшены\", \"Кубики\")",
+    "description": "The generated-index page title for category Действия в ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.description": {
+    "message": "Подраздел о работе с действиями (экшенами, кубиками) в ProjectMaker и их категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
+    "description": "The generated-index page description for category Действия в ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Данные": {
+    "message": "Данные",
+    "description": "The label for category Данные in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Данные.link.generated-index.title": {
+    "message": "Данные",
+    "description": "The generated-index page title for category Данные in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Данные.link.generated-index.description": {
+    "message": "Категория экшенов для работы с данными в ProjectMaker: операции над профилем, файлы, SMS-сервисы, директории, базы данных, генерация случайных значений, обработка текста, JSON и XML, изображений и переменных.",
+    "description": "The generated-index page description for category Данные in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Анализ содержимого": {
+    "message": "Анализ содержимого",
+    "description": "The label for category Анализ содержимого in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Анализ содержимого.link.generated-index.title": {
+    "message": "Анализ содержимого",
+    "description": "The generated-index page title for category Анализ содержимого in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Анализ содержимого.link.generated-index.description": {
+    "message": "Экшены для анализа содержимого web-страниц: извлечение статей, распознавание контекста.",
+    "description": "The generated-index page description for category Анализ содержимого in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Списки": {
+    "message": "Списки",
+    "description": "The label for category Списки in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Списки.link.generated-index.title": {
+    "message": "Списки",
+    "description": "The generated-index page title for category Списки in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Списки.link.generated-index.description": {
+    "message": "Экшены для операций со списками.",
+    "description": "The generated-index page description for category Списки in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Таблицы": {
+    "message": "Таблицы",
+    "description": "The label for category Таблицы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Таблицы.link.generated-index.title": {
+    "message": "Таблицы",
+    "description": "The generated-index page title for category Таблицы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Таблицы.link.generated-index.description": {
+    "message": "Экшены для работы с обычными и Google-таблицами.",
+    "description": "The generated-index page description for category Таблицы in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Браузер": {
+    "message": "Браузер",
+    "description": "The label for category Браузер in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Браузер.link.generated-index.title": {
+    "message": "Браузер",
+    "description": "The generated-index page title for category Браузер in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Браузер.link.generated-index.description": {
+    "message": "Экшены для работы с браузером, вкладками, cookies и расширениями.",
+    "description": "The generated-index page description for category Браузер in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Работа с Cookies": {
+    "message": "Работа с Cookies",
+    "description": "The label for category Работа с Cookies in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Работа с Cookies.link.generated-index.title": {
+    "message": "Работа с Cookies",
+    "description": "The generated-index page title for category Работа с Cookies in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Работа с Cookies.link.generated-index.description": {
+    "message": "Экшены для работы с cookies в различных форматах.",
+    "description": "The generated-index page description for category Работа с Cookies in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Табы Работа с веб-страницей": {
+    "message": "Табы Работа с веб-страницей",
+    "description": "The label for category Табы Работа с веб-страницей in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Табы Работа с веб-страницей.link.generated-index.title": {
+    "message": "Табы Работа с веб-страницей",
+    "description": "The generated-index page title for category Табы Работа с веб-страницей in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Табы Работа с веб-страницей.link.generated-index.description": {
+    "message": "Экшены для работы с веб-страницей: переход на страницу, операции с табом (установка и получение значений), выполнение событий (Touch, Swipe), проверка наличия текста, распознавание капчи (Captcha, ReCaptcha), настройки страницы и парсинг контента.",
+    "description": "The generated-index page description for category Табы Работа с веб-страницей in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Логика": {
+    "message": "Логика",
+    "description": "The label for category Логика in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Логика.link.generated-index.title": {
+    "message": "Логика",
+    "description": "The generated-index page title for category Логика in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Логика.link.generated-index.description": {
+    "message": "Actions ZennoPoster для управления ходом сценария: IF (ветвление по условию: «Если … то …», с поддержкой сложных выражений и ветки else), Switch (выбор из нескольких вариантов по значению/шаблону), Оповещение (уведомление/запись в лог для диагностики и аудита), Пауза (программная задержка выполнения на заданный интервал или до события), Ожидание действий пользователя (блокировка сценария до подтверждения/ввода/решения пользователя), BadEnd (контролируемый выход при критической ошибке или невыполнимом условии с корректной фиксацией статуса).",
+    "description": "The generated-index page description for category Логика in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Работа с почтой": {
+    "message": "Работа с почтой",
+    "description": "The label for category Работа с почтой in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Работа с почтой.link.generated-index.title": {
+    "message": "Работа с почтой",
+    "description": "The generated-index page title for category Работа с почтой in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Работа с почтой.link.generated-index.description": {
+    "message": "Actions ZennoPoster для работы с электронной почтой: отправка и приём писем, настройки SMTP/IMAP/POP3, шаблоны сообщений (HTML/Plain), вложения, фильтры и правила, ожидания и ретраи, логирование и отладка, обработка ошибок.",
+    "description": "The generated-index page description for category Работа с почтой in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Настройки подключения почтовых сервисов": {
+    "message": "Настройки подключения почтовых сервисов",
+    "description": "The label for category Настройки подключения почтовых сервисов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Настройки подключения почтовых сервисов.link.generated-index.title": {
+    "message": "Настройки подключения почтовых сервисов",
+    "description": "The generated-index page title for category Настройки подключения почтовых сервисов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Настройки подключения почтовых сервисов.link.generated-index.description": {
+    "message": "Actions ZennoPoster для конфигурации SMTP/IMAP/POP3: хост, порт, TLS/SSL, аутентификация (пароль, OAuth2 при поддержке сервиса), тест соединения, безопасное хранение данных, рекомендации по двум факторам и паролям приложений.",
+    "description": "The generated-index page description for category Настройки подключения почтовых сервисов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Эмуляция": {
+    "message": "Эмуляция",
+    "description": "The label for category Эмуляция in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Эмуляция.link.generated-index.title": {
+    "message": "Эмуляция",
+    "description": "The generated-index page title for category Эмуляция in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Эмуляция.link.generated-index.description": {
+    "message": "Actions ZennoPoster для эмуляции пользовательских действий: Эмуляция мыши (человеческие траектории, скорость/джиттер, клики Left/Right/Middle, двойной клик, колесо, drag&drop), Эмуляция клавиатуры (посимвольный ввод, задержки, модификаторы Ctrl/Alt/Shift, сочетания, вставка из буфера), Имитация просмотра страницы (естественный скролл, паузы и время чтения, переменная скорость, случайные остановки, перемещение фокуса/видимости, антидетект-поведение).",
+    "description": "The generated-index page description for category Эмуляция in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Проксичекер": {
+    "message": "Проксичекер",
+    "description": "The label for category Проксичекер in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Проксичекер.link.generated-index.title": {
+    "message": "Проксичекер",
+    "description": "The generated-index page title for category Проксичекер in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Проксичекер.link.generated-index.description": {
+    "message": "Actions ZennoPoster для работы с прокси: загрузка и проверка HTTP/HTTPS/SOCKS4/SOCKS5, таймауты и метрики (скорость/латентность), степень анонимности, авторизация (логин/пароль), определение гео-IP/ASN, фильтрация и ротация, дедупликация, логи и экспорт результатов. Контекст: «Получить прокси» — получение списка из файлов/URL/API с последующей проверкой и сортировкой.",
+    "description": "The generated-index page description for category Проксичекер in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.HTTP": {
+    "message": "HTTP",
+    "description": "The label for category HTTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.HTTP.link.generated-index.title": {
+    "message": "HTTP",
+    "description": "The generated-index page title for category HTTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.HTTP.link.generated-index.description": {
+    "message": "Actions ZennoPoster для выполнения HTTP-вызовов: GET-запрос (параметры в URL, заголовки, кэширование), POST-запрос (form-urlencoded, JSON, XML, multipart/form-data, загрузка файлов), универсальный HTTP-запрос (любой метод: GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS). Поддержка заголовков и куки, Query-параметров и тела запроса, авторизации (Basic, Bearer), прокси, редиректов, таймаутов, ретраев с бэк-оффом, проверки статус-кодов, обработки ошибок, распаковки gzip/deflate/br, кодировок, сохранения ответа на диск и парсинга JSON/XML/текста.",
+    "description": "The generated-index page description for category HTTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.FTP": {
+    "message": "FTP",
+    "description": "The label for category FTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.FTP.link.generated-index.title": {
+    "message": "FTP",
+    "description": "The generated-index page title for category FTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.FTP.link.generated-index.description": {
+    "message": "Actions ZennoPoster для работы с FTP/FTPS: Соединение FTP (хост, порт, TLS/SSL, активный/пассивный режим, кодировка, таймауты, повторные попытки, проверка доступности), Директории FTP (листинг, переход, создание, удаление, маски и фильтры), Файлы FTP (загрузка/выгрузка, возобновление, проверка существования, размер/дата изменения, удаление, перенос/переименование). Поддержка логирования операций и обработки ошибок.",
+    "description": "The generated-index page description for category FTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Проект": {
+    "message": "Проект",
+    "description": "The label for category Проект in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Проект.link.generated-index.title": {
+    "message": "Проект",
+    "description": "The generated-index page title for category Проект in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Проект.link.generated-index.description": {
+    "message": "Actions ZennoPoster для управления проектами: Проект в проекте (вложенные проекты с передачей параметров/переменных, контекстом выполнения, ожиданием результата и обработкой ошибок), Входные настройки (профили/пресеты, типы полей, значения по умолчанию, валидация), Интерфейс бота BotUI (формы, шаги диалога, кнопки, события, привязка к переменным), Шифрование проектов (защита исходников, хранение секретов/ключей, права доступа), Заметки в проекте (описание логики, changelog, теги/метаданные для поиска и сопровождения).",
+    "description": "The generated-index page description for category Проект in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Свой код": {
+    "message": "Свой код",
+    "description": "The label for category Свой код in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Свой код.link.generated-index.title": {
+    "message": "Свой код",
+    "description": "The generated-index page title for category Свой код in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Свой код.link.generated-index.description": {
+    "message": "Actions ZennoPoster для встраивания пользовательской логики и интеграции с внешними инструментами: C# код (.NET, сборка/компиляция, доступ к переменным проекта, подключение сборок и пакетов, ссылки из GAC), Код JavaScript (выполнение скриптов, обмен данными, доступ к окружению), Запуск программ (CLI/GUI, аргументы, рабочая директория, коды выхода, таймауты, перенаправление STDOUT/STDERR), Директивы using и общий код (общие сниппеты/пространства имён, реюз), Проект Visual Studio (сборка DLL, подключение к проекту, целевые фреймворки .NET, зависимости). Включены рекомендации по безопасности, изоляции, логированию и обработке ошибок.",
+    "description": "The generated-index page description for category Свой код in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Панель статических блоков": {
+    "message": "Панель статических блоков",
+    "description": "The label for category Панель статических блоков in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Панель статических блоков.link.generated-index.title": {
+    "message": "Панель статических блоков",
+    "description": "The generated-index page title for category Панель статических блоков in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Панель статических блоков.link.generated-index.description": {
+    "message": "Actions ZennoPoster: обзор и использование панели статических блоков. Включает: Общие принципы работы (структура и назначение панели), Настройки проекта (глобальные параметры и пресеты), Профиль (хранение и применение профилей), Шифрование (защита данных и секретов), Список и Таблица (структуры данных, фильтры, импорт/экспорт), Google таблица (связь и синхронизация), Входные настройки проекта (поля ввода, значения по умолчанию, валидация), Настройки FTP (доступы и переиспользование), Ссылки из GAC (подключение сборок), Using-директивы и общий код (общие пространства имён/сниппеты), Интерфейс бота (элементы BotUI, привязка к данным).",
+    "description": "The generated-index page description for category Панель статических блоков in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Отладка проектов": {
+    "message": "Отладка проектов",
+    "description": "The label for category Отладка проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Отладка проектов.link.generated-index.title": {
+    "message": "Отладка проектов",
+    "description": "The generated-index page title for category Отладка проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Отладка проектов.link.generated-index.description": {
+    "message": "Описание функций и инструментов, предназначенных для отладки проектов в программе ProjectMaker.",
+    "description": "The generated-index page description for category Отладка проектов in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Окно браузера": {
+    "message": "Окно браузера",
+    "description": "The label for category Окно браузера in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Окно браузера.link.generated-index.title": {
+    "message": "Окно браузера в интерфейсе ProjectMaker",
+    "description": "The generated-index page title for category Окно браузера in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Окно браузера.link.generated-index.description": {
+    "message": "Раздел посвящен обзору окна браузера в ProjectMaker. Здесь рассмотрены возможности просмотра и парсинга страниц, работы с XPath и выделением текста, поиска по картинке, использования инструментов web-разработчика (DevTools), а также возможности эмуляции шрифтов.",
+    "description": "The generated-index page description for category Окно браузера in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Настройки ProjectMaker": {
+    "message": "Настройки ProjectMaker",
+    "description": "The label for category Настройки ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Настройки ProjectMaker.link.generated-index.title": {
+    "message": "Настройки ProjectMaker",
+    "description": "The generated-index page title for category Настройки ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Настройки ProjectMaker.link.generated-index.description": {
+    "message": "Настройки ProjectMaker позволяют оптимизировать процесс записи Вашего проекта, настроить логи, отладить выполнение проекта, и многое другое.",
+    "description": "The generated-index page description for category Настройки ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Инструменты": {
+    "message": "Инструменты",
+    "description": "The label for category Инструменты in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Инструменты.link.generated-index.title": {
+    "message": "Инструменты",
+    "description": "The generated-index page title for category Инструменты in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Инструменты.link.generated-index.description": {
+    "message": "Описание доступных инструментов для разработки и тестирования проектов в программе ProjectMaker",
+    "description": "The generated-index page description for category Инструменты in sidebar zennoposterSidebar"
+  }
+}
