@@ -1,0 +1,9 @@
+{
+  "label": "Introduction",
+  "position": 0,
+  "link": {
+    "type": "generated-index",
+    "title": "What do I need to know?",
+    "description": "Learn the basics of working with ZennoBrowser"
+  }
+}
