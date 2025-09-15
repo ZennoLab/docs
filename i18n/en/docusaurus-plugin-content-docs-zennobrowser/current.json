@@ -3,12 +3,60 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.zennobrowserSidebar.category.Основы": {
-    "message": "Basics",
-    "description": "The label for category Основы in sidebar zennobrowserSidebar"
+  "sidebar.zennobrowserSidebar.category.Знакомство": {
+    "message": "Introduction",
+    "description": "The label for category Знакомство in sidebar zennobrowserSidebar"
   },
-  "sidebar.zennobrowserSidebar.category.Основы.link.generated-index.description": {
-    "message": "Learn the basic principles of working with ZennoBrowser",
-    "description": "The generated-index page description for category Основы in sidebar zennobrowserSidebar"
+  "sidebar.zennobrowserSidebar.category.Знакомство.link.generated-index.title": {
+    "message": "What do I need to know?",
+    "description": "The generated-index page title for category Знакомство in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Знакомство.link.generated-index.description": {
+    "message": "Learn the basics of working with ZennoBrowser",
+    "description": "The generated-index page description for category Знакомство in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Установка и настройка": {
+    "message": "Installation and setup",
+    "description": "The label for category Установка и настройка in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Установка и настройка.link.generated-index.description": {
+    "message": "Here we explain how to install and set up ZennoBrowser",
+    "description": "The generated-index page description for category Установка и настройка in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Основные возможности": {
+    "message": "Main Features",
+    "description": "The label for category Основные возможности in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Основные возможности.link.generated-index.title": {
+    "message": "Main Features",
+    "description": "The generated-index page title for category Основные возможности in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Основные возможности.link.generated-index.description": {
+    "message": "What can you do with ZennoBrowser?",
+    "description": "The generated-index page description for category Основные возможности in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Интеграция с ZennoPoster": {
+    "message": "Integration with ZennoPoster",
+    "description": "The label for category Интеграция с ZennoPoster in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Интеграция с ZennoPoster.link.generated-index.title": {
+    "message": "Integration with ZennoPoster",
+    "description": "The generated-index page title for category Интеграция с ZennoPoster in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Интеграция с ZennoPoster.link.generated-index.description": {
+    "message": "How can you scale your work by connecting ZennoBrowser to ZennoPoster?",
+    "description": "The generated-index page description for category Интеграция с ZennoPoster in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Дополнительная информация": {
+    "message": "Additional information",
+    "description": "The label for category Дополнительная информация in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Дополнительная информация.link.generated-index.title": {
+    "message": "What else should you know?",
+    "description": "The generated-index page title for category Дополнительная информация in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Дополнительная информация.link.generated-index.description": {
+    "message": "Frequently asked questions about ZennoBrowser, usage examples, and other information",
+    "description": "The generated-index page description for category Дополнительная информация in sidebar zennobrowserSidebar"
   }
 } 
