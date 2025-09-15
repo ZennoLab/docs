@@ -1,0 +1,10 @@
+{
+  "label": "Интерфейс",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Интерфейс",
+    "description": "Раздел об интерфейсе приложения: главное меню, сайд-меню и обзор таблицы проектов.",
+    "slug": "/category/zp-interface"
+  }
+}
