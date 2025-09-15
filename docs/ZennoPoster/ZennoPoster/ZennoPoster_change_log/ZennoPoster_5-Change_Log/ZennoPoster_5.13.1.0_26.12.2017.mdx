@@ -1,0 +1,34 @@
+---
+sidebar_position: 1
+title: "ZennoPoster 5.13.1.0 26.12.2017"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.13.1.0 26.12.2017.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059748/ZennoPoster+5.13.1.0+26.12.2017"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059748/ZennoPoster+5.13.1.0+26.12.2017)** — Источник данного материала
+
+_______________________________________________  
+# ZennoPoster 5.13.1.0 (26.12.2017)
+
+### Новые фичи:
+
+[+] Улучшена эмуляция шрифтов. Добавлено свойство [instance.FontsFolder](https://help.zennolab.com/en/v5/zennoposter/5.13.1.0/webframe.html#topic340.html "https://help.zennolab.com/en/v5/zennoposter/5.13.1.0/webframe.html#topic340.html"), которое позволяет добавить шрифты без установки их в систему.
+
+[+] Добавлены методы работы с часовыми поясами в формате IANA: [instance.GetIanaTimezone](https://help.zennolab.com/en/v5/zennoposter/5.13.1.0/webframe.html#topic205.html "https://help.zennolab.com/en/v5/zennoposter/5.13.1.0/webframe.html#topic205.html") и [instance.SetIanaTimezone](https://help.zennolab.com/en/v5/zennoposter/5.13.1.0/webframe.html#topic289.html "https://help.zennolab.com/en/v5/zennoposter/5.13.1.0/webframe.html#topic289.html") (работают на движках Firefox 52+).
+
+[+] Улучшен поиск активной ReCaptcha2 стандартным действием, при распознавании через сервисы распознавания.
+
+### Исправленные баги:
+
+[\] Hotfix: исправлена эмуляция часовых поясов.
+
+[\] Выключена эмуляция WebGL2 в Firefox 45, т.к. её там нет.
+
+[\] Исправлено падение ProjectMaker при обращении к BotUI на 32-битной системе.
+
+[\] Исправлено обновление свойств элемента при исследовании элемента.

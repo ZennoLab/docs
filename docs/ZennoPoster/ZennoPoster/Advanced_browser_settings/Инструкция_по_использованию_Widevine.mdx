@@ -1,0 +1,32 @@
+---
+sidebar_position: 1
+title: "Инструкция по использованию Widevine"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "Инструкция по использованию Widevine.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2104492033/Widevine"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2104492033/Widevine)** — Источник данного материала
+
+_______________________________________________  
+# Инструкция по использованию Widevine
+
+:::info Информация
+Данная инструкция применима к браузеру CEF в ZennoPoster версии 7.6.1 и выше.
+:::
+
+**Для использования компонента Widevine необходимо выполнить следующие шаги:**
+
+1. Необходимо скачать файл плагина (в обоих случаях указан вариант для x64).
+
+ 1. Скачать последнюю версию по [этому пути](http://edgedl.me.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvOGQ5QUFYTUR2NWZzUHhaQjJuZnJrYS1vQQ/4.10.2391.0_oimompecagnajdejgnnjijobebaeigek.crx "http://edgedl.me.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvOGQ5QUFYTUR2NWZzUHhaQjJuZnJrYS1vQQ/4.10.2391.0_oimompecagnajdejgnnjijobebaeigek.crx").
+ 2. Распаковать crx файл любым ZIP-архиватором (например, 7zip) в каталог с именем `WidevineCdm`
+ 3. Альтернативный вариант: можно забрать этот каталог из инсталляции Google Chrome (`Program Files\Google\Chrome\Application\X.X.X.X\WidevineCdm`). Но совместимость плагина гарантируется только для узкого набора версий, поэтому вариант (a) предпочтительнее.
+2. Далее полученный каталог `WidevineCdm` надо переместить в каталог, где лежит библиотека libcef.dll в ZennoPoster, например, `C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.6.1.0\Progs\x64`.
+3. По умолчанию в CEF отключены компоненты, поэтому для использования Widevine в аргументы запуска CEF необходимо добавить аргумент --component-updater. Рекомендуется указывать параметр аргумента initial-delay с большим числом, например: `--component-updater=initial-delay=100000` . В данном случае, initial-delay - время в секундах, по истечению которых, будет выполнена первая попытка сделать проверку обновлений компонента. Т.к. компонент уже присутствует, эта проверка не нужна, кроме того, если обновление действительно есть, оно скачает компонент в папку с профилем, что увеличит размер каждой профиль папки, для инстанса которой включен component-updater.
+
+После данных шагов Widevine будет работать в вашем браузере CEF.

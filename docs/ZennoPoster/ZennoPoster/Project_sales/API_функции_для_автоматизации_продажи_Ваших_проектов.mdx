@@ -1,0 +1,336 @@
+﻿---
+sidebar_position: 3
+title: "API функции для автоматизации продажи Ваших проектов"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "API функции для автоматизации продажи Ваших проектов.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862407/API"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862407/API)** — Источник данного материала
+
+_______________________________________________  
+# API функции для автоматизации продажи Ваших проектов
+
+WebService API расположен по адресу:  
+https://userarea.zennolab.com/BotStore.asmx
+
+Загружать Ваши проекты можно по адресу:  
+https://userarea.zennolab.com/ru/userarea/Bots.aspx
+
+Как подключить WebService к проектам написанным на ASP.NET смотрите тут:  
+[Практическое руководство. Добавление и удаление веб-ссылок](https://docs.microsoft.com/ru-ru/previous-versions/visualstudio/visual-studio-2008/d9w023sx%28v=vs.90%29?redirectedfrom=MSDN) 
+
+Как работать с WebService в PHP смотрите тут:  
+[http://php.net/manual/ru/book.soap.php](http://php.net/manual/en/book.soap.php)
+
+Как работать с WebService в Python смотрите тут:  
+https://wiki.python.org/moin/WebServices (SOAP section).
+
+### На данный момент доступны следующие функции:
+
+Получение информации о загруженных в UserArea ботах: GetBotList
+
+Работа с продажами ботов: GetSales, SaleBots, RefundSale, ChangeSubscription
+
+Работа с пользователями: GetCurrentCustomerEmail, RegisterCustomer, ResetPassword, GetCustomerBoxLink
+
+Управление ботами: CreateBot, UploadBotContent
+
+## GetBotList
+
+**Описание**:
+
+Получает список ботов, зарегистрированных в UserArea.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+**Возвращает**:
+
+Массив объектов BotInfo
+
+```csharp
+public class BotInfo
+{
+ // уникальный идентификатор бота
+ public int Id;
+ // имя бота
+ public string Name;
+ // название файла
+ public string FileName;
+ // когда создан
+ public DateTime Created;
+ // когда последний раз обновлен
+ public DateTime Modified;
+ // ваш комментарий
+ public string Comment;
+ // размер в байтах
+ public int Size;
+}
+```
+
+## GetSales
+
+**Описание**:
+
+Получает список Ваши продаж, продажи можно запросить для конкретного клиента, указав его e-mail.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+string *filterByCustomerEmail - e-mail пользователя, которому продавали, если указать пустую строку, то получите весь список продаж
+
+**Возвращает**:
+
+Массив объектов SaleInfo:
+
+```csharp
+public class SaleInfo
+{
+ // уникальный идентификатор продажи
+ public int Id;
+ // дата продажи
+ public DateTime SaleDateTime;
+ // email покупателя
+ public string CustomerEmail;
+ // id ботов через запятую
+ public string Bots;
+ // был ли Refund по данной продаже
+ public bool HasRefund;
+ // продажа является подпиской или нет
+ public bool IsSubscription;
+ // когда заканчивается подписка
+ public DateTime? SubscriptionDueDate;
+ // в каких продуктах может работать проект 
+ // 1 - только в ZennoBox, 2 - только в ZennoPoster, 3 - в ZennoBox и ZennoPoster
+ public int ForProducts;
+}
+```
+
+## SaleBots
+
+**Описание**:
+
+Продаёт указанных ботов указанному покупателю.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string  *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+string *customerEmail - e-mail покупателя
+
+string *ids - уникальные идентификаторы Ваших ботов, если нужно продать сразу несколько ботов, следует указывать id через запятую
+
+bool *isSubscription - true если это подписка и false если обычная продажа
+
+int *subscriptionDaysCount - количество дней подписки, если это обычная продажа, то следует указать 0
+
+int *forProducts - в каких продуктах может работать проект 1 - только в ZennoBox, 2 - только в ZennoPoster, 3 - в ZennoBox и ZennoPoster
+
+**Возвращает**:
+
+int id продажи
+
+## RefundSale
+
+**Описание**:
+
+Осуществляет отзыв продажи. Бот становится неработоспособным у клиента.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+int *saleId - id продажи
+
+**Возвращает**:
+
+Одну из следующих строк:
+
+*Ok - операция выполнена успешно.
+
+*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратиться в службу поддержки ZennoLab.
+
+*NoSuchSale - Вы указали неверный id продажи.
+
+*NoSuchUser - Вы указали неверные данные авторизации.
+
+*RefundTimeout - Вы пытаетесь вернуть деньги за продажу, которая была сделана до приобретения Developer license, автоматически Вы можете это сделать только в течении 30 дней, если Вам нужно сделать отзыв продажи, после 30 дней, Вы можете сделать это только через интерфейс в административной панели, комиссия ZennoLab при этом возвращена не будет.
+
+## ChangeSubscription
+
+**Описание**:
+
+Изменяет параметры подписки.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+int *saleId - id продажи
+
+int *addDays - количество дней, на которые надо продлить подписку, можно указать отрицательное число, тогда срок подписки будет уменьшен
+
+**Возвращает**:
+
+Одну из следующих строк:
+
+*Ok - операция выполнена успешно.
+
+*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратиться в службу поддержки ZennoLab.
+
+*NoSuchSale - Вы указали неверный id продажи.
+
+*NoSuchUser - Вы указали неверные данные авторизации.
+
+## GetCurrentCustomerEmail
+
+**Описание**:
+
+Функция позволяет проверить, зарегистрирован у нас уже пользователь или нет.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+string *customerEmail - e-mail Вашего клиента
+
+**Возвращает**:
+
+Возвращает актуальный (пользователь мог сменить e-mail регистрации) e-mail пользователя. Если пользователь не зарегистрирован, то Вы получаете ответ nosuchuser@zennolab.com
+
+## RegisterCustomer
+
+**Описание**:
+
+Регистрирует пользователя в личном кабинете ZennoLab.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+string *email - e-mail Вашего клиента
+
+string *lang - язык Вашего клиента, может принимать 2 значения ru и en
+
+**Возвращает**:
+
+При успешной регистрации Вы получаете запись вида: «Pass:password», где password пароль зарегистрированного пользователя от личного кабинета.
+
+## ResetPassword
+
+**Описание**:
+
+Позволяет поменять пароль пользователя ZennoLab, если Вы его зарегистрировали через API.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+string *email - e-mail Вашего клиента
+
+**Возвращает**:
+
+При успехе операции Вы получаете запись вида: «Pass:password», где password пароль пользователя от личного кабинета.
+
+## GetCustomerBoxLink
+
+**Описание**:
+
+Возвращает прямую ссылку для скачивания ZennoBox для Вашего клиента.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+string *customerEmail - e-mail Вашего клиента
+
+**Возвращает**:
+
+Ссылку вида:
+
+`https://userarea-us.zennolab.com/download/ZennoBox*.exe`
+
+где вместо \ указывается последняя версия и язык ZennoBox доступного для Вашего клиента.
+
+## CreateBot
+
+**Описание**:
+
+Регистрирует нового бота в административной панели, чтобы залить бота после регистрации используете UploadBotContent.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+string *botName - имя бота в административной нанели
+
+string *fileName - имя файла проекта, который будет создан у клиента
+
+string *comment - Ваш комментарий
+
+**Возвращает**:
+
+Одну из следующих строк:
+
+*Ok:`{bot id}` - операция выполнена успешно, возвращается id созданного бота.
+
+*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратить в службу поддержки ZennoLab.
+
+*NoSuchUser - Вы указали неверные данные авторизации.
+
+## UploadBotContent
+
+**Описание**:
+
+Загружает новое содержимое бота в административную панель.
+
+**Принимает**:
+
+string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+
+string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+
+int *botId - id бота в административной панели, id Ваших ботов можно узнать используя функцию GetBotList
+
+string *botContent - содержимое проекта, конвертированное в base64 строку
+
+string *comment - Ваш комментарий
+
+**Возвращает**:
+
+Одну из следующих строк:
+
+*Ok - операция выполнена успешно.
+
+*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратить в службу поддержки ZennoLab.
+
+*NoSuchBot - Вы указали неверный id бота.
+
+*NoSuchUser - Вы указали неверные данные авторизации.

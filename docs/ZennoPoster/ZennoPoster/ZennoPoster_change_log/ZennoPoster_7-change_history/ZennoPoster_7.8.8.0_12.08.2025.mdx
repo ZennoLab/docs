@@ -1,0 +1,37 @@
+---
+sidebar_position: 1
+title: "ZennoPoster 7.8.8.0 12.08.2025"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.8.8.0 12.08.2025.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3721428999/ZennoPoster+7.8.8.0+12.08.2025"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3721428999/ZennoPoster+7.8.8.0+12.08.2025)** — Источник данного материала
+
+_______________________________________________  
+# ZennoPoster 7.8.8.0 (12.08.2025)
+
+**Добавлено:**
+
+[+] Теперь действие "Запустить браузер" с опцией без браузера или аналогичный метод C# *instance.Launch, *instance.Stop завершает браузер и в ProjectMaker.
+При этом нажатие "С начала" на проекте без браузера не будет закрывать браузер, а лишь скрывать его, как и раньше.
+
+[+] Добавлен метод *instance.Stop(). Вызов метода завершает запущенный браузер, работает в ZennoPoster и в ProjectMaker.
+
+[+] В объект *IntegratedBrowserLaunchSettings добавлены настройки прокси для запуска браузера из ZennoBrowser с переопределением прокси через метод *instance.Launch.
+
+**Исправлено:**
+
+[\] Исправлены падения браузера Chromium на некоторых сайтах.
+
+[\] Исправлена работа метода *instance.Launch при использовании *BrowserType.WithoutBrowser.
+
+[\] Исправлена работа метода *instance.IntegrationLaunch.
+
+[\] Исправлена работа метода *instance.Reload.
+
+[\] Исправлена работа меток в ZennoPoster.
