@@ -46,5 +46,39 @@ export const getMenuItems = (locale, isHomePage) => {
     return { rightItems };
   }
 
+  // Добавляем элементы продуктов когда НЕ на лендинге
+  const productItems = [
+    {
+      type: 'docSidebar',
+      sidebarId: 'tutorialSidebar',
+      position: 'right',
+      label: 'ZennoDroid',
+      docsPluginId: 'zennodroid',
+    },
+    {
+      type: 'docSidebar',
+      sidebarId: 'zennoposterSidebar',
+      position: 'right',
+      label: 'ZennoPoster',
+      docsPluginId: 'zennoposter',
+    },
+    {
+      type: 'docSidebar',
+      sidebarId: 'zennoproxySidebar',
+      position: 'right',
+      label: 'ZennoProxy',
+      docsPluginId: 'zennoproxy',
+    },
+    {
+      type: 'docSidebar',
+      sidebarId: 'zennobrowserSidebar',
+      position: 'right',
+      label: 'ZennoBrowser',
+      docsPluginId: 'zennobrowser',
+    },
+  ];
+
+  rightItems.unshift(...productItems);
+
   return { leftItems, rightItems };
 };
