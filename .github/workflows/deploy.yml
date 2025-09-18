@@ -26,13 +26,13 @@ jobs:
           sudo update-locale LANG=ru_RU.UTF-8
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
 
       - name: Build static site
         run: |
           export LANG=ru_RU.UTF-8
           export LC_ALL=ru_RU.UTF-8
-          npm run build
+          yarn build
 
       - name: Upload static files via rsync
         uses: appleboy/ssh-action@v0.1.10

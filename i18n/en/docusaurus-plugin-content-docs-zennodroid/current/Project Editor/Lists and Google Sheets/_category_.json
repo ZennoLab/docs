@@ -1,9 +1,9 @@
 {
-    "label": "Списки и Таблицы",
+    "label": "Lists and Tables",
     "position": 3,
     "link": {
       "type": "generated-index",
-      "title": "Как работать со списками и Google таблицами"
+      "title": "How to work with lists and Google Sheets"
     }
   }
   

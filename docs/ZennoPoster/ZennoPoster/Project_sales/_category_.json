@@ -1,0 +1,10 @@
+{
+  "label": "Продажа проектов",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "title": "Продажа проектов",
+    "description": "Продажа ботов, ZennoBox и API-функции для автоматизации продаж ваших проектов.",
+    "slug": "/category/zp-sales-projects"
+  }
+}

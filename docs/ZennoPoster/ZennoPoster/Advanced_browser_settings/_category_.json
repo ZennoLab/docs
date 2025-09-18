@@ -1,0 +1,9 @@
+{
+  "label": "Тонкие настройки браузеров",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "Тонкие настройки браузеров",
+    "description": "Widevine, управление подключениями в Firefox и Chrome, а также регулировка пулов потоков для процессов Chrome и Firefox."
+  }
+}

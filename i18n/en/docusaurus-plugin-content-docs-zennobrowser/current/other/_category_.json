@@ -1,0 +1,9 @@
+{
+  "label": "Additional information",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "What else should you know?",
+    "description": "Frequently asked questions about ZennoBrowser, usage examples, and other information"
+  }
+}

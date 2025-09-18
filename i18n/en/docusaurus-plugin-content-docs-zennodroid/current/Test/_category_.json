@@ -1,8 +1,8 @@
 {
-    "label": "Тестирование справки",
+    "label": "Testing Documentation",
     "position": 13,
     "link": {
       "type": "generated-index",
-      "title": "Тестирование и отладка справки"
+      "title": "Testing and debugging documentation"
     }
 } 

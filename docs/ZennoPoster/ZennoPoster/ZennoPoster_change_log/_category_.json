@@ -1,0 +1,10 @@
+{
+  "label": "История изменений ZennoPoster",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "История изменений ZennoPoster",
+    "description": "Сводка релизов и изменений по версиям. Включает подразделы для ZennoPoster 7 и ZennoPoster 5.",
+    "slug": "/category/zp_changelog"
+  }
+}

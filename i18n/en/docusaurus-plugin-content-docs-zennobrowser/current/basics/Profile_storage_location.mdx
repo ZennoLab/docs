@@ -1,0 +1,31 @@
+---
+label: Profile Storage Location
+sidebar_position: 6
+title: Profile Storage Location
+---
+
+:::info **Please review the [*Terms of Material Use on this Resource*](../Disclaimer).**
+:::
+
+Currently, setting the profile storage path works like this:
+1. You need to create a `zp8.profilemanager.json` file in your Documents (if it doesn't already exist)
+2. Add a Paths section to the file
+Example:
+
+**To save to the TWST folder**
+```json
+{ "Paths": 
+    { "ProfilesRootPath": "C:/Users/Administrator/Desktop/TWST" } 
+}
+``` 
+
+
+**Or if you want to save profiles to the D drive in the %Name% folder, add the following:**
+```json
+{ "Paths": 
+    { "ProfilesRootPath": "D:/%Name%" } 
+}
+```
+:::warning **Please note**
+The path in Explorer is written as `D:\%Name%`, but for JSON you need to use `D:/%Name%`.
+:::

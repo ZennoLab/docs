@@ -1,0 +1,43 @@
+---
+label: Creating ZennoBrowser Profiles
+sidebar_position: 3
+title: Creating ZennoBrowser Profiles
+---
+
+:::info **Please read the [*Terms of Material Use on this Site*](../Disclaimer).**
+:::
+
+## **Creating ZennoBrowser Profiles**
+
+The "Creating ZennoBrowser Profiles" action provides two methods for creating new browser profiles:
+
+### **1. Creating Default Profiles**
+
+When you select the "Default" mode, profiles are created with optimized settings. You need to specify:
+ - Number of profiles — the number of profiles to create;
+ - Proxy settings — proxy server parameters for the profiles.
+
+ ![profile_creating_ZB1](..\zp_integr\assets\profile_creating_ZB\profile_creating_ZB1.png)
+
+### **2. Creating Profiles Based on a Donor Profile**
+
+When you select the "Use Profile Data" mode, new profiles inherit all settings from the specified existing donor profile:
+ - Enter the donor profile ID or select it from the list;
+ - The browser fingerprint settings, extensions, and other configuration parameters will be copied.
+
+**Important:** fingerprint settings are copied, but not the fingerprints themselves — each created profile will get a unique fingerprint according to the donor's settings
+
+![profile_creating_ZB2](..\zp_integr\assets\profile_creating_ZB\profile_creating_ZB2.png)
+
+### **Proxy Settings**
+
+The system supports flexible proxy server management:
+ - Specify a list of proxies — select a pre-made list from ZennoBrowser;
+ - Maximum profiles per proxy — a limit to prevent overloading the proxy;
+ - Exclude repeats — each proxy is only used once when creating profiles.
+
+**Saving Results**
+
+The data of the created profiles must be saved for future use:
+ - To a list — for working with multiple profiles;
+ - To a variable — for saving information about a single profile.
