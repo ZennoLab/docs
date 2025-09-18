@@ -51,6 +51,13 @@ export const getMenuItems = (locale) => {
       label: 'ZennoBrowser',
       docsPluginId: 'zennobrowser',
     },
+    {
+      type: 'docSidebar',
+      sidebarId: 'capmonsterSidebar',
+      position: 'right',
+      label: 'CapMonster',
+      docsPluginId: 'capmonster',
+    },
   ];
 
   rightItems.unshift(...productItems);
