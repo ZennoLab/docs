@@ -1,19 +1,5 @@
 import { DefaultNavbarItemProps } from '@theme/NavbarItem';
 
-import enNavbar from '../../../i18n/en/docusaurus-theme-classic/navbar.json';
-import ruNavbar from '../../../i18n/ru/docusaurus-theme-classic/navbar.json';
-import { AnchorId } from '../../utils/constants';
-
-const messages = {
-  en: enNavbar,
-  ru: ruNavbar,
-};
-
-const getLabel = (locale, key, fallback) => {
-  const messageSet = messages[locale];
-  return messageSet?.[key]?.message || fallback;
-};
-
 const leftItems = [
   {
     type: 'search',
@@ -23,7 +9,7 @@ const leftItems = [
   },
 ];
 
-export const getMenuItems = (locale, isHomePage) => {
+export const getMenuItems = (locale) => {
   const rightItems = [
     {
       type: 'localeDropdown',
@@ -35,18 +21,7 @@ export const getMenuItems = (locale, isHomePage) => {
     },
   ];
 
-  if (isHomePage) {
-    rightItems.unshift({
-      position: 'right',
-      label: getLabel(locale, 'item.label.toDocs', 'Docs'),
-      href: `#${AnchorId.PRODUCTS}`,
-      className: 'button button--primary',
-    })
-
-    return { rightItems };
-  }
-
-  // Добавляем элементы продуктов когда НЕ на лендинге
+  // Добавляем элементы продуктов для всех страниц
   const productItems = [
     {
       type: 'docSidebar',
