@@ -27,5 +27,14 @@ export default function Root({children}) {
     setTimeout(() => updateBodyClass(window.location.pathname), 100);
   }, []);
 
+  // TODO: вернуть если не сработает @docusaurus/plugin-client-redirects
+  // редирект страниц
+  // useEffect(() => {
+  //   const oldZennoProxyDocsPage = ['zennoproxy/basics/getting-started', 'zennoproxy/intro'];
+  //   const isNeedRedirect = oldZennoProxyDocsPage.some(pathname => location.pathname.includes(pathname));
+
+  //   if (isNeedRedirect) window.location.pathname = 'zennoproxy/category/getting-started/';
+  // }, [location.pathname]);
+
   return <>{children}</>;
 }

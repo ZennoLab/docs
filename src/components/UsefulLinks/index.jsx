@@ -50,7 +50,7 @@ const getItems = (locale, defaultLocale) => {
     description: useFulLinksCard3Description,
     action: {
       label: useFulLinksBtnLabel,
-      link: 'https://zennostore.com/',
+      link: `https://zennostore.com/${isEnLocale(locale) ? 'en' : ''}`,
       type: ButtonType.GHOST,
     }
   }];

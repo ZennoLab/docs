@@ -129,6 +129,17 @@ const config = {
         },
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/zennoproxy/category/getting-started/',
+            from: ['/zennoproxy/basics/getting-started', '/zennoproxy/intro'],
+          },
+        ],
+      }
+    ],
   ],
 
   themeConfig:
