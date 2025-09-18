@@ -115,6 +115,20 @@ const config = {
         },
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'capmonster',
+        path: 'docs/CapMonster',
+        routeBasePath: 'capmonster',
+        sidebarPath: './sidebars-capmonster.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/docs/tree/dev/docs/CapMonster/${docPath}`
+            : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-capmonster/current/${docPath}`;
+        },
+      },
+    ],
   ],
 
   themeConfig:
@@ -129,6 +143,46 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+          {
+            type: 'search',
+            position: 'left', 
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'right',
+            label: 'ZennoDroid',
+            docsPluginId: 'zennodroid',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennoposterSidebar',
+            position: 'right',
+            label: 'ZennoPoster',
+            docsPluginId: 'zennoposter',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennoproxySidebar',
+            position: 'right',
+            label: 'ZennoProxy',
+            docsPluginId: 'zennoproxy',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'zennobrowserSidebar',
+            position: 'right',
+            label: 'ZennoBrowser',
+            docsPluginId: 'zennobrowser',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'capmonsterSidebar',
+            position: 'right',
+            label: 'CapMonster',
+            docsPluginId: 'capmonster',
+          },
+          // {to: '/blog', label: 'Блог', position: 'right'}, // Временно скрыто
           {type: 'localeDropdown', position: 'right'},
         ],
       },
@@ -142,7 +196,79 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `ZennoLab.com © 2008-${new Date().getFullYear()}`,
+        links: [
+          {
+            title: 'ZennoDroid',
+            items: [
+              {
+                label: 'Основные понятия',
+                to: '/zennodroid/get-started/BasicTerms',
+              },
+              {
+                label: 'Подключение реального устройства (ZDE)',
+                to: '/zennodroid/get-started/Connection',
+              },
+              {
+                label: 'Интерфейс ProjectMaker',
+                to: '/zennodroid/category/интерфейс',
+              },
+            ],
+          },
+          {
+            title: 'ZennoPoster',
+            items: [
+              {
+                label: 'Основы',
+                to: '/zennoposter/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'ZennoProxy',
+            items: [
+              {
+                label: 'Начало работы',
+                to: '/zennoproxy/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'ZennoBrowser',
+            items: [
+              {
+                label: 'Начало работы',
+                to: '/zennobrowser/basics/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'CapMonster',
+            items: [
+              {
+                label: 'Что такое CapMonster',
+                to: '/capmonster/hello/WhatIsCapMonster',
+              },
+              {
+                label: 'Ключевые возможности',
+                to: '/capmonster/hello/KeyFeatures',
+              },
+            ],
+          },
+          {
+            title: 'Больше',
+            items: [
+              // {
+              //   label: 'Блог',
+              //   to: '/blog',
+              // }, // Временно скрыто
+              {
+                label: 'ZennoLab',
+                href: 'https://zennolab.com',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} ZennoLab`,
       },
       prism: {
         theme: prismThemes.oneLight,
