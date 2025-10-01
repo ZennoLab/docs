@@ -1,4 +1,5 @@
 import { DefaultNavbarItemProps } from '@theme/NavbarItem';
+import getLocaleStrings from '@site/src/locales';
 
 const leftItems = [
   {
@@ -10,6 +11,8 @@ const leftItems = [
 ];
 
 export const getMenuItems = (locale) => {
+  const localeStrings = getLocaleStrings(locale);
+  
   const rightItems = [
     {
       type: 'localeDropdown',
@@ -21,7 +24,6 @@ export const getMenuItems = (locale) => {
     },
   ];
 
-  // Добавляем элементы продуктов для всех страниц
   const productItems = [
     {
       type: 'docSidebar',
@@ -29,6 +31,7 @@ export const getMenuItems = (locale) => {
       position: 'right',
       label: 'ZennoDroid',
       docsPluginId: 'zennodroid',
+      title: localeStrings.tooltipZennoDroid,
     },
     {
       type: 'docSidebar',
@@ -36,6 +39,7 @@ export const getMenuItems = (locale) => {
       position: 'right',
       label: 'ZennoPoster',
       docsPluginId: 'zennoposter',
+      title: localeStrings.tooltipZennoPoster,
     },
     {
       type: 'docSidebar',
@@ -43,6 +47,7 @@ export const getMenuItems = (locale) => {
       position: 'right',
       label: 'ZennoProxy',
       docsPluginId: 'zennoproxy',
+      title: localeStrings.tooltipZennoProxy,
     },
     {
       type: 'docSidebar',
@@ -50,6 +55,7 @@ export const getMenuItems = (locale) => {
       position: 'right',
       label: 'ZennoBrowser',
       docsPluginId: 'zennobrowser',
+      title: localeStrings.tooltipZennoBrowser,
     },
     {
       type: 'docSidebar',
@@ -57,6 +63,15 @@ export const getMenuItems = (locale) => {
       position: 'right',
       label: 'CapMonster',
       docsPluginId: 'capmonster',
+      title: localeStrings.tooltipCapMonster,
+    },
+    {
+      type: 'docSidebar',
+      sidebarId: 'zennoproxycheckerSidebar',
+      position: 'right',
+      label: 'ProxyChecker',
+      docsPluginId: 'zennoproxychecker',
+      title: localeStrings.tooltipZennoProxyChecker,
     },
   ];
 

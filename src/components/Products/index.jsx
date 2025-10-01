@@ -93,7 +93,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard6Description,
     action: {
       label: productsBtn,
-      link: `https://zennolab.atlassian.net/wiki/spaces/${isEnLocale(locale) ? 'EN/pages/1822621739/ZennoProxyChecker' : 'RU/pages/475365507/ZennoProxyChecker'}`,
+      link: '/zennoproxychecker/category/proxychecker-hello',
       type: ButtonType.PRIMARY
     }
   }, {
