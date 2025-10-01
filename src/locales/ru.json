@@ -34,5 +34,10 @@
   "downloadBannerDescription": "Здесь вы можете бесплатно скачать демо-версию и ознакомиться с её функционалом.",
   "downloadBannerBtn": "Скачать бесплатно",
   "userAgreement": "Пользовательское соглашение",
-  "videoCourseLink": "📺 Видео-курс"
+  "videoCourseLink": "📺 Видео-курс",
+  "tooltipZennoDroid": "Автоматизация Android-устройств",
+  "tooltipZennoPoster": "Автоматизация браузера и SEO",
+  "tooltipZennoBrowser": "Антидетект-браузер с профилями",
+  "tooltipZennoProxy": "Анонимные прокси с ротацией",
+  "tooltipCapMonster": "Локальное распознавание капчи"
 }
