@@ -1,9 +1,9 @@
 {
-  "label": "Инструменты",
+  "label": "Утилиты ZennoPoster",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "title": "Инструменты",
+    "title": "Утилиты ZennoPoster",
     "description": "Утилиты ZennoPoster: ввод капчи вручную, ProxyChecker и диспетчер заданий. Когда использовать и как настраивать."
   }
 }
