@@ -135,6 +135,20 @@ const config = {
       },
     ],
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'zennoproxychecker',
+        path: 'docs/ZennoProxyChecker',
+        routeBasePath: 'zennoproxychecker',
+        sidebarPath: './sidebars-zennoproxychecker.js',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          return locale === 'ru'
+            ? `https://github.com/ZennoLab/docs/tree/dev/docs/ZennoProxyChecker/${docPath}`
+            : `https://github.com/ZennoLab/docs/tree/dev/i18n/en/docusaurus-plugin-content-docs-zennoproxychecker/current/${docPath}`;
+        },
+      },
+    ],
+    [
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
