@@ -65,6 +65,14 @@ export const getMenuItems = (locale) => {
       docsPluginId: 'capmonster',
       title: localeStrings.tooltipCapMonster,
     },
+    {
+      type: 'docSidebar',
+      sidebarId: 'zennoproxycheckerSidebar',
+      position: 'right',
+      label: 'ProxyChecker',
+      docsPluginId: 'zennoproxychecker',
+      title: localeStrings.tooltipZennoProxyChecker,
+    },
   ];
 
   rightItems.unshift(...productItems);
