@@ -1,0 +1,15 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Знакомство": {
+    "message": "Introduction",
+    "description": "The label for category Знакомство in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Знакомство.link.generated-index.title": {
+    "message": "Introduction",
+    "description": "The generated-index page title for category Знакомство in sidebar zennoproxycheckerSidebar"
+  }
+}
+
