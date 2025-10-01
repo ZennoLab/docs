@@ -14,7 +14,7 @@
   "productsCard4Description": "Explore the capabilities of ZennoBrowser - an anti-detection browser for safe and anonymous surfing, digital fingerprint management and bypassing blocking.",
   "productsCard5Title": "ZennoProxy",
   "productsCard5Description": "Learn how to use ZennoProxy, a reliable proxy service for anonymous and secure browsing.",
-  "productsCard6Title": "ZennoProxyChecker",
+  "productsCard6Title": "ProxyChecker",
   "productsCard6Description": "Check out ZennoProxyChecker, a tool for checking and monitoring the quality of proxy servers.",
   "productsCard7Title": "CapMonster",
   "productsCard7Description": "Learn how to use CapMonster — a powerful AI service for fast and reliable captcha recognition. Supports reCAPTCHA, Cloudflare, images and other types of captcha.",
@@ -36,5 +36,6 @@
   "tooltipZennoPoster": "Browser & SEO automation",
   "tooltipZennoBrowser": "Anti-detect browser with profiles",
   "tooltipZennoProxy": "Anonymous rotating proxies",
+  "tooltipZennoProxyChecker": "Proxy quality checker",
   "tooltipCapMonster": "Local CAPTCHA recognition"
 }
