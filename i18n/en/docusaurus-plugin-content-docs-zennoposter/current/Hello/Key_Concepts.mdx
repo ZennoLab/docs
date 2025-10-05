@@ -1,0 +1,174 @@
+﻿---
+sidebar_position: 7
+title: "Key Concepts"
+description: "Converted from HTML to MDX"
+date: "2025-07-08"
+converted: true
+originalFile: "Основные понятия.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/475693086"
+---
+:::info **Please review the [*Terms of Use for Materials on This Resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475693086)** — Source of this material
+
+_______________________________________________  
+# Key Concepts
+
+  
+
+## ProjectMaker (PM)
+
+A development environment for creating projects (templates).
+
+  
+
+## ZennoPoster (ZP)
+
+An environment for running projects. Allows you to run templates in multithreaded mode and set up a [❗→ schedule](/wiki/spaces/RU/pages/534086320 "/wiki/spaces/RU/pages/534086320") for launching.
+
+  
+
+## Thread (execution thread)
+
+A separate unit of execution, for which a separate browser and separate set of data ([❗→ variables](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872"), [❗→ lists](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375"), [❗→ tables](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776"), etc.) are allocated.
+You can think of a thread as a person performing a specific set of actions in a browser. Running multiple threads is like having several people do the actions at the same time.
+
+  
+
+## Action (block, "cube")
+
+[❗→ Action Block](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker") in ProjectMaker, used to build templates. Contains a standard instruction for automation:
+
+- get a value
+- click
+- save the value of an element
+- write text to a file, list, table, database
+- and more
+
+  
+
+## Action port
+
+Ports are used to connect one action to other actions.
+Normally, cubes have three ports.
+
+:::note Note
+An exception is the Switch action, which can have more than two outgoing ports.
+:::
+
+### Incoming port
+
+![image-20210613-141658](./assets/Key_Concepts/Key_Concepts_pic1.png)
+
+
+
+You can connect a logic arrow here from another action.
+Several other actions can be connected to a single incoming port.
+
+### Outgoing ports
+
+![image-20210613-141838](./assets/Key_Concepts/Key_Concepts_pic2.png)
+
+
+
+Green (for successful exit) and red (unsuccessful exit, exit on error)
+
+  
+
+## Logic branches (arrows)
+
+Actions are connected to each other by logic arrows. There are red and green branches.
+
+### Green arrow
+
+Actions exit through this branch when they complete successfully:
+
+- a string was retrieved from a [❗→ list](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") or a [❗→ table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776")
+- an element was found and [❗→ clicked](/wiki/spaces/RU/pages/534020211 "/wiki/spaces/RU/pages/534020211") on the website
+- the expression inside an [❗→ if action](/wiki/spaces/RU/pages/534315151 "/wiki/spaces/RU/pages/534315151") returned a true value
+- etc.
+
+### Red arrow
+
+The action goes down this path if an error occurs during the block's execution:
+
+- element not found on the web page
+- file for reading not found
+- attempt to retrieve a string that doesn't exist in the list/table
+- and so on
+
+  
+
+## Template (project)
+
+A file created in ProjectMaker and run in ZennoPoster. It contains instructions for controlling an instance. You could say it is a program or script executed by an instance.
+A template consists of actions linked together with logic arrows.
+
+  
+
+## Instance
+
+This is a separate part of the program containing a browser instance with its own cookies, cache, and proxy, which don't overlap with other instances. It looks like a small window with tabs and an address bar.
+To put it simply, an Instance is a separate browser with its own set of data.
+
+  
+
+## Cookie
+
+A small amount of information that a web service is allowed to save as a file in a strictly designated place on your computer's hard drive. Typically, it's used to recognize you when you visit the service again.
+
+  
+
+## Cache
+
+These are files (images, sounds, videos) that are downloaded and stored on your computer. When you revisit a resource, these files are not downloaded again but loaded from the cache, which speeds up loading and reduces traffic.
+
+  
+
+## Proxy
+
+With a proxy, you can hide your real IP address and, for example, access a blocked resource. Proxies can be paid or free, but the latter are usually slower and less reliable.
+In ZennoPoster, you can set a proxy using a [❗→ special action](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8"). The program also has [❗→ several integrated services](/wiki/spaces/RU/pages/809140312 "/wiki/spaces/RU/pages/809140312") for selling proxies.
+
+  
+
+## Variable
+
+This is a section of computer memory where a value is stored. A variable has a name used to access its value. The value of a variable can be changed while the template is running.
+
+  
+
+## Snippet
+
+A piece of code (for ZennoPoster, usually in C#) that performs a specific function.
+
+  
+
+## Bug
+
+An error causing the project not to work as the developer originally intended.
+
+  
+
+## Diagnostics
+
+A special program that collects diagnostic information about the current state of ZennoPoster. It's most often required when contacting support if the program is malfunctioning.
+
+Instructions on how to properly run Diagnostics: [❗→ Diagnostics (report) with detailed log](/wiki/spaces/RU/pages/870419658 "/wiki/spaces/RU/pages/870419658") 
+
+  
+
+## ProxyChecker
+
+A part of the ZennoPoster software suite designed to gather, store, filter, sort, and sequentially provide proxies for anonymous template execution.
+
+[❗→ ProxyChecker](/wiki/spaces/RU/pages/851705960 "/wiki/spaces/RU/pages/851705960") 
+
+  
+
+## Scheduler
+
+A component of the ZennoPoster application for deferred launching of templates on a schedule, at specified intervals if needed.
+
+[❗→ 📆 Schedule Planner](/wiki/spaces/RU/pages/534086320 "/wiki/spaces/RU/pages/534086320")

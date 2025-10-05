@@ -3,29 +3,29 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.zennoposterSidebar.category.Начало работы": {
+  "sidebar.zennoposterSidebar.category.Getting Started": {
     "message": "Начало работы",
-    "description": "The label for category Начало работы in sidebar zennoposterSidebar"
+    "description": "The label for category Getting Started in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Начало работы.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Getting Started.link.generated-index.title": {
     "message": "Что мне нужно знать?",
-    "description": "The generated-index page title for category Начало работы in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Getting Started in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Начало работы.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Getting Started.link.generated-index.description": {
     "message": "Здесь представлены самые необходимые страницы, которые понадобятся вам для изучения ZennoPoster.",
-    "description": "The generated-index page description for category Начало работы in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Getting Started in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Установка и удаление программы": {
+  "sidebar.zennoposterSidebar.category.Installing and Removing the Program": {
     "message": "Установка и удаление программы",
-    "description": "The label for category Установка и удаление программы in sidebar zennoposterSidebar"
+    "description": "The label for category Installing and Removing the Program in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Установка и удаление программы.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Installing and Removing the Program.link.generated-index.title": {
     "message": "Установка и удаление программы",
-    "description": "The generated-index page title for category Установка и удаление программы in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Installing and Removing the Program in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Установка и удаление программы.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Installing and Removing the Program.link.generated-index.description": {
     "message": "Все что нужно знать об установке, обновлении и удалении ZennoPoster.",
-    "description": "The generated-index page description for category Установка и удаление программы in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Installing and Removing the Program in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.ProjectMaker": {
     "message": "ProjectMaker",

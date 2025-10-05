@@ -1,0 +1,120 @@
+﻿---
+sidebar_position: 4
+title: "Silent Installation of ZennoLab Products (Installer Launch Arguments)"
+description: "Converted from HTML to MDX"
+date: "2025-07-08"
+converted: true
+originalFile: "Тихая установка продуктов ZennoLab (аргументы запуска инсталлера).txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1358397467/ZennoLab"
+---
+:::info **Please take a moment to read the [*Terms of Use for Materials on this Resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1358397467/ZennoLab)** — Source for this material
+
+_______________________________________________  
+
+# Why is this needed?
+
+By running commands with special arguments in the console, you can automatically install and update ZennoLab products.
+
+This is particularly useful when you're administering multiple servers with ZennoLab products.
+
+# Windows Command Line Examples
+
+The following command installs ZennoPoster on the current computer (or updates it if an older version is found).
+
+### Automatic installation (with UI shown): 
+
+``` 
+start /wait ZennoPosterPro-RU-v7.5.1.0.exe --silent --accept-license-agreement="https://zennolab.com/terms-of-service/"
+```
+
+Here, **ZennoPosterPro-RU-v7.5.1.0.exe** is the name of the build you want to install.
+
+### Silent installation (without UI):
+
+``` 
+start /wait ZennoPosterPro-RU-v7.5.1.0.exe --silent --hidden --accept-license-agreement="https://zennolab.com/terms-of-service/"
+```
+
+You can save and run this code as part of a `.bat` file.
+
+:::info Information
+You can find more examples with different arguments at the end of this article.
+:::
+
+# PowerShell Example
+
+Sometimes you need to remotely manage computers to install/update ZennoPoster. To do this:
+
+1. Connect to the remote computer via SSH
+2. Run the PowerShell script
+
+``` powershell
+$pathToInstaller = "C:\Work\ZennoPosterPro-RU-v7.5.1.0.exe" #Path to the build you want to launch
+$installerArguments = "--silent --accept-license-agreement=https://zennolab.com/terms-of-service/" #Installer command line arguments
+
+Start-Process -Wait -FilePath "$pathToInstaller" -ArgumentList "$installerArguments"
+```
+
+# Detailed Description of Commands and Arguments
+
+:::warning Attention
+General requirements for running an automatic installation: All arguments must start with double dashes and be separated by spaces. Argument values must be enclosed in double quotes. You must add the "start /wait" commands before the installer launch command. This is necessary for proper error reporting and for the console to wait until the installation is finished.
+:::
+
+### Required arguments
+
+| **Argument Name** | **Argument Value** | **Description** | **Logic** |
+| --- | --- | --- | --- |
+| **--silent** | Not required | Required flag enabling silent installation mode | - |
+| **--accept-license-agreement=** | "https://zennolab.com/terms-of-service/" | License agreement acceptance flag. | If the URL doesn't match or the flag is missing, the installer will require manual license acceptance. |
+| **--installType=""** | "**Default**" or argument can be omitted | Standard installation type | • No other versions - installs<br/>• Same version exists - reinstalls<br/>• Only one other version - updates<br/>• Two or more other versions - error |
+|  | "**UpdateOldest**" | Updates the oldest version or does a standard install | • No other versions - installs<br/>• Same version exists - reinstalls<br/>• Other versions exist - updates the oldest one |
+|  | "**StandAlone**" | Standalone installation | • Same version exists - reinstalls<br/>• All other cases - installs |
+|  | "**UpdateByVersion**" | Update specified version.<br/><br/>Requires the **--updateVersion=**"X.X.X.X" argument, where X.X.X.X is the product version you want to update | • Updatable version exists - updates to the specified version<br/>• Same version exists - reinstalls<br/>• No updatable version - error |
+
+:::info Information
+In one of the launch arguments described below, the product license id is used as the value. You can find it in your user account under hardware, or for installed products via the registry.  
+Example of obtaining SaleID via cmd for ZennoPoster Pro V7 v. 7.3.1.0:  
+reg query "HKCU\SOFTWARE\ZennoLab\RU\ZennoPoster Pro V7\7.3.1.0" /v SaleID
+:::
+
+### Optional arguments
+
+| **Argument Name** | **Value** | **Logic** |
+| --- | --- | --- |
+| **--hidden** | Not required | Silent install flag. Hides the installer UI and removes it from the taskbar. **Incompatible with --waitUserAction.** |
+| **--login** | Username and password under which to perform the installation. | If only one of the username or password arguments is provided, the other will be discarded. |
+| **--password** |  | By default, authorization info is taken from the system registry. |
+| **--saleID** | License ID used for installation and searching for installed products. | For all installation types, at the license selection step, the license with the provided SaleID will be chosen.<br/><br/>For installation types "**Default**" and "**UpdateByVersion**", on the selection action step, only products with the given SaleID will be considered among installed products. |
+| **--installPath** | Installation path | The product will be installed at the path specified by this argument.<br/><br/>Also used when reinstalling from the default directory and for updates. |
+| **--waitUserAction** | Not required | Wait for user action flag. Instead of ending the process when an error occurs, the installer will await user input and continue automatic installation after a successful next step. |
+| **--activateHardware** | true or false | Computer license activation flag. Default is true. If set to false, ProjectMaker will work, but ZennoPoster will not. |
+
+### Mapping table for automatic installation types and behavior causes
+
+| **installType argument value** | **Install** | **Update** | **Reinstall** | **Error** |
+| --- | --- | --- | --- | --- |
+| "**Default**" | No other versions | One other version exists | Same version already installed | Two or more versions exist |
+| "**Default**" with **--saleID** | No other versions with this SaleID | One other version with this SaleID exists | Same version already installed, regardless of SaleID **\*** | Two or more versions with this SaleID |
+| "**StandAlone**"**\*** | Standard logic | - | Same version already installed | - |
+| "**UpdateOldest**" | No other versions | Other versions exist - updates the oldest | Same version already installed | - |
+| "**UpdateOldest**" with **--saleID** | No other versions with this SaleID | Other versions with this SaleID exist - update the oldest | Same version already installed, regardless of SaleID **\*** | - |
+| "**UpdateByVersion**"**\*** | - | Product with specified version is installed - update it | Same version already installed | Product with specified version not installed |
+
+**\*** The **--saleID** argument can only be used for license selection, since you can't have two identical versions with the same license on one computer.
+
+# Examples
+
+### Examples
+
+| **Launch command** | **Installer behavior** |
+| --- | --- |
+| start /wait Installer.exe --**silent** --**accept-license-agreement**="https://zennolab.com/terms-of-service/" --hidden | • Automatic installation type "**Default**"<br/>• Authorization info - from registry<br/>• Search among installed products - all<br/>• License selection - any<br/>• Installation path - default<br/>• On error - process ends<br/>• Silent install - no installer UI shown |
+| start /wait Installer.exe --**silent** --**accept-license-agreement**="https://zennolab.com/terms-of-service/" --**saleID**="SALE\_ID" | • Automatic installation type "**Default**"<br/>• Authorization info - from registry<br/>• Search among installed products - by SaleID<br/>• License selection - SaleID<br/>• Installation path - default<br/>• On error - process ends |
+| start /wait Installer.exe --**silent** --**accept-license-agreement**="https://zennolab.com/terms-of-service/" --**installType**="**StandAlone**" --**login**="userareaLogin" --**password**="userareaPassword" --**saleID**="SALE\_ID" --**installPath**="D:/ZennoLab/" --**waitUserAction** | • Automatic installation type "**StandAlone**"<br/>• Authorization info - provided in arguments<br/>• Search among installed products - all<br/>• License selection - SaleID<br/>• Installation path - "D:/ZennoLab/"<br/>• On error - waits for user action |
+| start /wait Installer.exe --**silent** --**accept-license-agreement**="https://zennolab.com/terms-of-service/" --**installType**="**UpdateOldest**" --**login**="userareaLogin" --**password**="userareaPassword" | • Automatic installation type "**UpdateOldest**"<br/>• Authorization info - from registry<br/>• Search among installed products - all<br/>• License selection - SaleID<br/>• Installation path - default<br/>• On error - process ends |
+| start /wait Installer.exe --**silent** --**accept-license-agreement**="https://zennolab.com/terms-of-service/" --**installType**="**UpdateOldest**" --**login**="userareaLogin" --**password**="userareaPassword" --**saleID**="SALE\_ID" --**installPath**="D:/ZennoLab/" --**waitUserAction** | • Automatic installation type "**UpdateOldest**"<br/>• Authorization info - provided in arguments<br/>• Search among installed products - by SaleID<br/>• License selection - SaleID<br/>• Installation path - "D:/ZennoLab/"<br/>• On error - waits for user action |
+| start /wait Installer.exe --**silent** --**accept-license-agreement**="https://zennolab.com/terms-of-service/" --**installType**="**UpdateByVersion**" --**updateVersion**="X.X.X.X" --**login**="userareaLogin" --**password**="userareaPassword" --**saleID**="SALE\_ID" --**installPath**="D:/ZennoLab/" | • Automatic installation type "**UpdateByVersion**"<br/>• Authorization info - provided in arguments<br/>• Search among installed products - by version, regardless of SaleID<br/>• License selection - SaleID<br/>• Installation path - "D:/ZennoLab/"<br/>• On error - process ends |

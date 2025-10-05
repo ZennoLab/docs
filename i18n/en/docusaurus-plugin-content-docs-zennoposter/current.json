@@ -3,12 +3,28 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.zennoposterSidebar.category.Основы": {
-    "message": "Basics",
-    "description": "The label for category Основы in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category Getting Started in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Основы.link.generated-index.description": {
-    "message": "Learn the basic principles of working with ZennoPoster",
-    "description": "The generated-index page description for category Основы in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.Getting Started.link.generated-index.title": {
+    "message": "What do I need to know?",
+    "description": "The generated-index page title for category Getting Started in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Getting Started.link.generated-index.description": {
+    "message": "Here you'll find the most essential pages you'll need to learn ZennoPoster.",
+    "description": "The generated-index page description for category Getting Started in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Installing and Removing the Program": {
+    "message": "Installing and Removing the Program",
+    "description": "The label for category Installing and Removing the Program in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Installing and Removing the Program.link.generated-index.title": {
+    "message": "Installing and Removing the Program",
+    "description": "The generated-index page title for category Installing and Removing the Program in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Installing and Removing the Program.link.generated-index.description": {
+    "message": "Everything you need to know about installing, updating, and uninstalling ZennoPoster.",
+    "description": "The generated-index page description for category Installing and Removing the Program in sidebar zennoposterSidebar"
   }
 }
