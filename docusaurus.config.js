@@ -136,7 +136,7 @@ const config = {
       {
         redirects: [
           {
-            to: '/zennoproxy/category/getting-started/',
+            to: '/zennoproxy/category/getting-started',
             from: ['/zennoproxy/basics/getting-started', '/zennoproxy/intro'],
           },
           {
