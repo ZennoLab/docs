@@ -1,0 +1,174 @@
+﻿---
+sidebar_position: 5
+title: "Переменные окружения ZennoPoster"
+description: ""
+date: "2025-07-20"
+converted: true
+originalFile: "Переменные окружения ZennoPoster.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1976762378/ZennoPoster"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1976762378/ZennoPoster)** — Источник данного материала
+
+_______________________________________________  
+## Описание
+
+Помимо [❗→ пользовательских переменных](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922") существуют так же переменные окружения. В них хранятся различные параметры страницы (URL, DOM, текст, домен, текст нотификаций и алертов и т. д.), переменные времени и даты, переменные проекта (имя, папка, правила прокси, id последней ошибки и т. д.) , многочисленные переменные профиля (почта, пол, имя, юзерагент и т. д.).
+
+Ниже Вы можете ознакомится со списком доступных переменных и описанием того, что хранится в каждой из них.
+
+  
+
+## Переменные текущей активной вкладки
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+| **Имя** | **Описание** |
+| --- | --- |
+| `{ -Page.Url- }` | Текущий URL страницы |
+| `{ -Page.Source- }` | Исходный код текущей веб-страницы |
+| `{ -Page.Dom- }` | DOM-модель текущей веб-страницы |
+| `{ -Page.Text- }` | Текст текущей веб-страницы без HTML тегов |
+| `{ -Page.FullDomain- }` | Полный домен текущей веб-страницы.<br />С учётом поддоменов. |
+| `{ -Page.Domain- }` | Основной домен текущей веб-страницы.<br />Без учёта поддоменов. |
+| `{ -Page.LastAlertTitle- }` | Заголовок алерта, выводимого на сайтах с помощью JS функции alert() |
+| `{ -Page.LastAlertText- }` | Текст алерта, выводимого на сайтах с помощью JS функции alert() |
+| `{ -Page.LastNotificationTitle- }` | Заголовок последнего уведомления от сайта<br /><br /><br />Речь о сообщениях, которые приходят после того, как Вы разрешаете сайту присылать Вам уведомления. |
+| `{ -Page.LastNotificationText- }` | Текст последнего уведомления от сайта<br /><br /><br />Речь о сообщениях, которые приходят после того, как Вы разрешаете сайту присылать Вам уведомления. |
+| `{ -Page.LastDownloadedFile- }` | Полный путь последнего скачанного файла |
+
+</details>
+## Время и дата
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+| **Имя** | **Описание** |
+| --- | --- |
+| `{ -TimeNow.Date- }` | Текущие дата и время в формате `ММ/ДД/ГГГГ чч:мм:сс` (пример - `01/25/2020 14:41:18`).<br /><br /><br /><br />Вы можете менять формат выводимой строки! Для этого перед закрывающей скобкой надо добавить шаблон формата. <br /><br />Пример: `{-TimeNow.Date dd.MM.yyyy HH.mm-}`, после выполнения получим такую строку - `25.01.2020 14.41`<br /><br />Подробнее о форматировании можно прочитать [тут](https://msdn.microsoft.com/ru-ru/library/8kb3ddd4%28v=vs.100%29.aspx "https://msdn.microsoft.com/ru-ru/library/8kb3ddd4(v=vs.100).aspx") и [тут](https://msdn.microsoft.com/ru-ru/library/az4se3k1%28v=vs.100%29.aspx "https://msdn.microsoft.com/ru-ru/library/az4se3k1(v=vs.100).aspx"). |
+| `{ -TimeNow.Day- }` | День месяца |
+| `{ -TimeNow.Month- }` | Текущий месяц (числом) |
+| `{ -TimeNow.Year- }` | Текущий год |
+| `{ -TimeNow.DayOfWeek- }` | День недели, на английском. |
+| `{ -TimeNow.Hour- }` | Текущий час (в 24 часовом формате) |
+| `{ -TimeNow.Minute- }` | Текущая минута |
+| `{ -TimeNow.Second- }` | Текущая секунда |
+| `{ -TimeNow.Millisecond- }` | Текущая миллисекунда |
+| `{ -TimeNow.TimeNow- }` | Текущие дата и время в формате `ГГГГ-ММ-ДД чч-мм-сс--миллисекунды` (`2020-01-25 14-41-59--834`)<br /><br /><br />**Не** поддерживает форматирование! |
+| `{ -TimeNow.UnixTime- }` | [Unix-время](https://ru.wikipedia.org/wiki/Unix-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F "https://ru.wikipedia.org/wiki/Unix-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F"). Формат - `1629891362.23929` |
+
+</details>
+## Переменные проекта
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+| **Имя** | **Описание** |
+| --- | --- |
+| `{ -Project.BrowserProfileFolder- }` | Полный путь к [❗→ профиль-папке](/wiki/spaces/RU/pages/1251475485 "/wiki/spaces/RU/pages/1251475485") (или пустая строка, если профиль-папка не используется). |
+| `{ -Project.Directory- }` | Директория шаблона |
+| `{ -Project.PluginDirectory- }` | Директория плагина (если выполняемый шаблон - [❗→ плагин](/wiki/spaces/RU/pages/475365697 "/wiki/spaces/RU/pages/475365697")) |
+| `{ -Project.Name- }` | Название шаблона |
+| `{ -Project.Proxy- }` | Текущий прокси проекта. |
+| `{ -Project.ProxyRules- }` | Используемое [❗→ правило](/wiki/spaces/RU/pages/848560252 "/wiki/spaces/RU/pages/848560252") из [❗→ ProxyChecker](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507")'a |
+| `{ -Project.LastExecutedActionElapsedTime- }` | Время затраченное на работу последнего выполненного [❗→ экшена](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker") |
+| `{ -Project.LastExecutedActionId- }` | ID последнего выполненного действия |
+| `{ -Project.LastErrorComment- }` | Текст последнего [❗→ экшена](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker") завершившегося с ошибкой<br /><br /><br />Если у экшена не был задан пользовательский комментарий (**ПКМ по экшену =&gt; Комментарий**), то вернётся пустая строка. |
+
+</details>
+## Профиль
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+| **Имя** | **Описание** |
+| --- | --- |
+| `{ -Profile.Age- }` | Возраст |
+| `{ -Profile.BornDay- }` | День рождения |
+| `{ -Profile.BornYear- }` | Год рождения |
+| `{ -Profile.BornMonth- }` | Месяц рождения |
+| `{ -Profile.Name- }` | Имя |
+| `{ -Profile.Surname- }` | Фамилия |
+| `{ -Profile.NickName- }` | Никнейм |
+| `{ -Profile.Email- }` | E-mail адрес |
+| `{ -Profile.EmailPassword- }` | Пароль от почтового ящика |
+| `{ -Profile.Login- }` | Логин |
+| `{ -Profile.Password- }` | Пароль |
+| `{ -Profile.Sex- }` | Пол |
+| `{ -Profile.Language- }` | Язык |
+| `{ -Profile.Country- }` | Страна |
+| `{ -Profile.Town- }` | Город |
+| `{ -Profile.Region- }` | Регион |
+| `{ -Profile.ZipCode- }` | Индекс |
+| `{ -Profile.SecretQuestionAnswer1- }` | Ответ на секретный вопрос #1 |
+| `{ -Profile.SecretQuestionAnswer2- }` | Ответ на секретный вопрос #2 |
+| `{ -Profile.AvailScreenHeight- }` | Высота сгенерированного экрана (за исключением панели задач)<br /><br /><br />Если не включена эмуляция [❗→ Screen](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") и параметр не изменён через [❗→ C# код](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") или через экшен [❗→ Операции над профилем](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") , то будет возвращено значение 50505 |
+| `{ -Profile.AvailScreenWidth- }` | Ширина сгенерированного экрана (за исключением панели задач)<br /><br /><br />Если не включена эмуляция [❗→ Screen](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") и параметр не изменён через [❗→ C# код](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") или через экшен [❗→ Операции над профилем](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") , то будет возвращено значение 50505 |
+| `{ -Profile.ScreenSizeHeight- }` | Высота сгенерированного экрана<br /><br /><br />Если не включена эмуляция [❗→ Screen](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") и параметр не изменён через [❗→ C# код](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") или через экшен [❗→ Операции над профилем](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") , то будет возвращено значение 50505 |
+| `{ -Profile.ScreenSizeWidth- }` | Ширина сгенерированного экрана<br /><br /><br />Если не включена эмуляция [❗→ Screen](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") и параметр не изменён через [❗→ C# код](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") или через экшен [❗→ Операции над профилем](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") , то будет возвращено значение 50505 |
+| `{ -Profile.ScreenLeft- }` | Расстояние в пикселях от левого края экрана до окна браузера. <br /><br /><br />Можно изменить с помощью экшена [❗→ Операции над профилем](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") |
+| `{ -Profile.ScreenTop- }` | Расстояние в пикселях от верхнего края экрана до окна браузера. <br /><br /><br />Можно изменить с помощью экшена [❗→ Операции над профилем](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") |
+| `{ -Profile.OuterHeight- }` | Устаревшие переменные. |
+| `{ -Profile.OuterWidth- }` | Устаревшие переменные.
+| `{ -Profile.OuterHeightShift- }` | Устаревшие переменные.
+| `{ -Profile.OuterWidthShift- }` | Устаревшие переменные.
+| `{ -Profile.HTTPAccept- }` | HTTP заголовок `Accept`<br />Указывает, какие типы контента, выраженные как MIME типы, клиент (браузер) может понять. |
+| `{ -Profile.AcceptCharset- }` | HTTP заголовок `Accept-Charset`<br />Сообщает кодировку символов, которую готов принять браузер. |
+| `{ -Profile.AcceptLanguage- }` | HTTP заголовок `Accept-Language`<br />Сообщает серверу обо всех языках, которые нам предпочтительны при чтении веб-страницы. |
+| `{ -Profile.AcceptEncoding- }` | HTTP заголовок `Accept-Encoding`<br />Перечень поддерживаемых способов кодирования содержимого сущности при передаче. |
+| `{ -Profile.UserAgent- }` | Строка [User-Agent](https://ru.wikipedia.org/wiki/User_agent "https://ru.wikipedia.org/wiki/User_agent") сгенерированного браузера |
+| `{ -Profile.UserAgentAppCodeName- }` | Отдельные элементы сгенерированной строки User-Agent |
+| `{ -Profile.UserAgentAppName- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentAppVersion- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentBrowserLanguage- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentCpuClass- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentLanguage- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentOsCpu- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentPlatform- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentProduct- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.UserAgentProductSub- }` | Отдельные элементы сгенерированной строки User-Agent
+| `{ -Profile.None- }` | Устаревшая переменная |
+
+</details>
+## Системные переменные (Environment)
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+| **Имя** | **Описание** |
+| --- | --- |
+| `{ -Environment.CurrentUser- }` | ID пользователя ZennoPoster, из личного кабинета, работающего с шаблоном. |
+| `{ -Environment.TickCount- }` | Количество миллисекунд прошедших с момента включения компьютера.<br /><br /><br />Эта переменная основана на [Environment.TickCount из C#](https://docs.microsoft.com/en-us/dotnet/api/system.environment.tickcount "https://docs.microsoft.com/en-us/dotnet/api/system.environment.tickcount"), поэтому ей присуща одна особенность: если компьютер будет долго и беспрерывно работать, то через ~24,9 дней эта переменная достигнет максимального положительного значения - `2147483647`. После этого перепрыгнет к минимально возможному значению - `-2147483648` и начнёт отсчёт к нулю (достигнет его через ~24,9 дней). После достижения нуля снова начнётся увеличение счётчика до максимально возможного значения (`2147483647`) и так по кругу. |
+
+</details>
+## Строковые символы (String)
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+| **Имя** | **Описание** |
+| --- | --- |
+| `{ -String.Enter- }` | Переход на новую строку |
+| `{ -String.Space- }` | Пробел |
+| `{ -String.Tab- }` | Символ табуляции |
+
+</details>
+## Другое
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+| **Имя** | **Описание** |
+| --- | --- |
+| `{ -//- }` | Путь к директории куда установлен ZennoPoster.<br /><br />Пример для русской версии 7.5.0.0 - `C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.5.0.0\Progs\` |
+
+</details>
+  
+
+## Полезные ссылки
+
+- [❗→ Окно переменных](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872")
+- [❗→ Обработка переменных](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922")

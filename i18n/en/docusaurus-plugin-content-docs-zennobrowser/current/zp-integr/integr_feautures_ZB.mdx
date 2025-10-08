@@ -1,0 +1,38 @@
+---
+label: ZennoBrowser Integration Features
+sidebar_position: 5
+title: ZennoBrowser Integration Features
+---
+
+:::info **Please review the [*Terms of Use for Materials on this Resource*](../Disclaimer).**
+:::
+
+## **ZennoBrowser Integration Features**
+
+### **Working with the Browser**
+
+The integrated browser in ZennoPoster7 functions similarly to others, so actions involving web pages and browser elements work natively.  
+If you haven’t installed ZennoBrowser, launching an instance will prompt you to apply for testing the new product so you can install it.
+
+![integr_feautures_ZB](..\zp-integr\assets\integr_feautures_ZB\integr_feautures_ZB.png)
+
+### **Launching and Connecting**
+
+You don't need to have ZennoBrowser running to use the integration. ZennoPoster7 can start it in the background automatically, without showing the ZennoBrowser window. However, if ZennoBrowser is already running, retrieving profiles or launching a new browser will be faster.  
+If ZB is already open and you see its interface window, when you launch a profile from ZennoPoster, ZennoBrowser will display its status and provide a Stop button. You can stop the browser and free up the profile at any time, but this may cause errors in your ZennoPoster7 project.
+
+When profiles are started in the background via the integration, the ZB window does not open, but you can launch the browser using a shortcut to see the current profile status.
+
+If ZennoPoster7 is unable to connect to ZennoBrowser, new actions will return an error. Also, ZennoBrowser can reject the browser launch for some reasons: for example, if the profile is already in use, this will also result in an action error.
+
+### **Differences in ProjectMaker and ZennoPoster**
+
+When launching a new browser in ProjectMaker, the browser is natively embedded in the UI and you can use all available ProjectMaker tools. Like in Chromium browser, GPU usage is disabled for ProjectMaker.
+
+### **Working with Profiles**
+
+When using the new browser, ZennoBrowser profiles and emulations are applied. All emulation and browser settings for ZP7, as well as working with ZP7 profiles, are ignored. These corresponding actions will complete without errors but will not make any changes. Any actions that could affect the profile are ignored.
+
+### **Managing the Browser Window**
+
+In ZennoPoster7, when you show an instance, the built-in browser is displayed. The minimize/close buttons function as standard window buttons and can lead to unexpected browser behavior, so it’s not recommended to use them. To make working with the real browser easier in ZennoPoster, the instance preview window’s context menu has been expanded. There are also plans to make the minimize/close buttons work the same way as they do for other types of browsers in ZennoPoster7 in the future.

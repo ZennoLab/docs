@@ -1,0 +1,90 @@
+---
+label: Launch and setup
+sidebar_position: 1
+title: Launch and setup
+---
+
+:::info **Please see the [*Usage Rules for Materials on This Resource*](../Disclaimer).**
+:::
+
+## **Launch and setup**
+
+
+**ZennoPoster7** opens up new possibilities for automation thanks to its integration with **ZennoBrowser** — a professional anti-detect browser.
+
+### **Key integration benefits**
+
+**Main features:**
+
+ - Real-time profile management;
+ - Advanced proxy handling;
+ - Isolated environments for each process;
+ - Fingerprint control.
+
+**Core functions:**
+
+ - Creating profiles with unique settings;
+ - Launching and managing browser instances;
+ - Deleting profiles without data loss.
+
+
+**The integration process provides:**
+
+ - Seamless interaction between products;
+ - Preserved ZennoPoster7 interface;
+ - Expanded features through ZennoBrowser capabilities.
+
+
+### **Setup process**
+
+**Step 1.** Launch ProjectMaker:
+
+![launch_and_settings1](..\zp-integr\assets\launch_and_settings\launch_and_settings1.png)
+
+**Step 2.** In the “Actions” window search bar, enter “Integration.” You’ll see available actions:
+
+![launch_and_settings2](..\zp-integr\assets\launch_and_settings\launch_and_settings2.png)
+
+**Step 3.** Start a ZennoBrowser instance and get to work.
+
+![launch_and_settings3](..\zp-integr\assets\launch_and_settings\launch_and_settings3.png)
+
+
+### **What does integration offer?**
+
+#### **1. Retrieving ZennoBrowser profiles**
+
+The “Retrieve ZennoBrowser Profiles” action is designed to extract information about existing browser profiles from the ZennoBrowser system.
+
+![launch_and_settings4](..\zp-integr\assets\launch_and_settings\launch_and_settings4.png)
+
+**How it works**
+
+The action sends a request to ZennoBrowser and returns complete information about all available profiles as structured data.
+
+**Result format**
+
+The result is a JSON array of objects, each containing detailed information about a single profile:
+ - Profile ID;
+ - Profile name;
+ - Browser settings;
+ - Profile status;
+ - Proxy data;
+ - Other metadata.
+
+#### **2. Handling results**
+
+To work correctly with the retrieved data, we recommend using the "Parse JSON" action, which lets you:
+ - Extract specific profile parameters;
+ - Filter profiles by specified criteria;
+ - Convert data into a convenient working format.
+
+#### **3. Error handling**
+
+If there’s a problem connecting to ZennoBrowser (such as service unavailability or incorrect connection settings), the action will return an appropriate error, which you should handle in your project logic.
+
+#### **4. Saving the result**
+
+Specify a variable to save the JSON response in the “Put in variable” field for further use in the project.
+
+**For your convenience, we’ve prepared a [sample project](https://drive.google.com/drive/u/0/folders/1JsWGyuzFng-E61bDG7FleagolyB4pDRT) with prebuilt blocks that will give you a list of profiles as the output.**

@@ -1,0 +1,134 @@
+﻿---
+sidebar_position: 2
+title: "Switch (выбор из нескольких вариантов)"
+description: ""
+date: "2025-08-04"
+converted: true
+originalFile: "Switch (выбор из нескольких вариантов).txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085864/Switch"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085864/Switch)** — Источник данного материала
+
+_______________________________________________  
+## Описание
+
+Оператор Switch представляет собой расширенную версию [❗→ IF (условие "Если ... то ...")](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315151 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315151") .
+
+Если оператор *IF* имеет всего два исхода - *True* или *False* (зеленая или красная ветви), то *Switch* имеет возможность выбора нескольких вариантов. В случае отсутствия нужного варианта, кубик выйдет по ветке "Default".
+
+  
+
+## Как добавить действие в проект?
+
+Через контекстное меню **Добавить действие** → **Логика** → **Switch**
+
+![image-20200806-162559](./assets/Switch_(выбор_из_нескольких_вариантов)/Switch_(выбор_из_нескольких_вариантов)_pic1.png)
+
+
+
+Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+  
+
+## Для чего это используется?
+
+- Выбор варианта из перечня
+- Проверка на определенное вхождение (соответствие)
+
+  
+
+## Как пользоваться экшеном?
+
+![image-20210619-063301](./assets/Switch_(выбор_из_нескольких_вариантов)/Switch_(выбор_из_нескольких_вариантов)_pic2.png)
+
+
+
+### Переменная 
+
+Здесь необходимо указать переменную, которую мы будем проверять
+
+:::info Информация
+Начиная с версии 7.4.0.0 из этого поля сразу можно и создать переменную (до этого можно было только выбрать из уже существующих).
+:::
+
+### Список условий
+
+Здесь необходимо указать условия выхода. Значение из *переменной* будут сравниваться с каждым из условий и при нахождении совпадения выйдет по соответствующей ветке.
+
+В качестве условия для выхода можно использовать не только жестко заданный текст, но и [❗→ переменные](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872"):
+
+![image-20210302-133501](./assets/Switch_(выбор_из_нескольких_вариантов)/Switch_(выбор_из_нескольких_вариантов)_pic3.png)
+
+
+
+### Default
+
+Если не будет найдено ни одного совпадения, то экшен выйдет по ветке *Default.
+
+:::note На заметку
+Если ветка Default не соединена ни с одним из экшнов и выполнение попадает на неё, то экшен завершит работу ошибкой.
+:::
+
+### Пример
+
+![image-20200806-172100](./assets/Switch_(выбор_из_нескольких_вариантов)/Switch_(выбор_из_нескольких_вариантов)_pic4.png)
+
+
+
+  
+
+## Пример использования
+
+Представим ситуацию, в которой у нас существует какое-либо значение у переменной **switch\_test**.
+
+Далее создадим операции [❗→ Оповещение (Notification/Запись в лог)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053050 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053050") для каждого из вариантов.
+
+Видео с примером использования
+
+
+
+**📹 Здесь было видео**
+
+<details>
+<summary>Для тех, кто хочет поработать с C# кодом</summary>
+
+Вы можете реализовать подобный функционал через C# [❗→ C# код (Си шарп код .net)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596") 
+
+Пример кода для варианта выше
+
+```csharp
+string switch_var = project.Variables["switch_test"].Value;
+switch(switch_var){
+case "A": 
+	project.SendInfoToLog("В переменной заключена буква A", true);
+	break;
+case "B": 
+	project.SendInfoToLog("В переменной заключена буква B", true);
+	break;
+case "C": 
+	project.SendInfoToLog("В переменной заключена буква C", true);
+	break;
+case "D": 
+	project.SendInfoToLog("В переменной заключена буква B", true);
+	break;
+case "E": 
+	project.SendInfoToLog("В переменной заключена буква E", true);
+	break;
+default:
+	project.SendInfoToLog("Не обнаружено нужное соответствие, значение переменной: " + project.Variables["switch_test"].Value, true);
+	break;
+}
+```
+
+</details>
+  
+
+## Полезные ссылки
+
+- [❗→ Обработка переменных](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922")
+- [❗→ Окно переменных](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872")
+- [❗→ IF (условие "Если ... то ...")](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315151 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315151")
+- [❗→ Оповещение (Notification/Запись в лог)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053050 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053050")
