@@ -139,17 +139,19 @@ const config = {
             to: '/zennoproxy/category/getting-started',
             from: ['/zennoproxy/basics/getting-started', '/zennoproxy/intro'],
           },
-          {
-            to: '/',
-            from: ['/index', '/index/'],
-          }
         ],
-        createRedirects(existingPath) {
-          return [
-            existingPath.replace('/?', '/'),
-            existingPath.replace('//////', '/'),
-          ]
-        }
+        // FIXME: createRedirects function creates circular redirects (path -> same path)
+        // This causes 100+ warnings and build failures because:
+        // - replace('/?', '/') only works if literal '?' exists in path (rarely true)
+        // - replace('//////', '/') only works if 6 slashes exist (almost never true)
+        // Result: returns [existingPath, existingPath] for most paths -> circular redirect
+        // Commented out until proper implementation is needed
+        // createRedirects(existingPath) {
+        //   return [
+        //     existingPath.replace('/?', '/'),
+        //     existingPath.replace('//////', '/'),
+        //   ]
+        // }
       }
     ],
   ],
