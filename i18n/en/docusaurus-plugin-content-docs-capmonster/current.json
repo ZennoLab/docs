@@ -3,15 +3,15 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.capmonsterSidebar.category.Знакомство": {
+  "sidebar.capmonsterSidebar.category.Introduction": {
     "message": "Introduction",
     "description": "The label for category Знакомство in sidebar capmonsterSidebar"
   },
-  "sidebar.capmonsterSidebar.category.Знакомство.link.generated-index.title": {
+  "sidebar.capmonsterSidebar.category.Introduction.link.generated-index.title": {
     "message": "What do I need to know?",
     "description": "The generated-index page title for category Знакомство in sidebar capmonsterSidebar"
   },
-  "sidebar.capmonsterSidebar.category.Знакомство.link.generated-index.description": {
+  "sidebar.capmonsterSidebar.category.Introduction.link.generated-index.description": {
     "message": "Here are the most essential pages you'll need to learn CapMonster.",
     "description": "The generated-index page description for category Знакомство in sidebar capmonsterSidebar"
   }

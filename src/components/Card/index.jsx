@@ -34,7 +34,7 @@ export const Card = ({ classNames, icon, image, title, titleIcon, description, a
     <div className={clsx(styles.card, classNames, { [styles.cardWithImage]: hasImage })}>
       {hasIcon && <img src={icon} className={styles.icon} />}
       {hasImage && <img src={image} className={styles.image} />}
-      <Heading as='h4' className={clsx(styles.title, { [styles.titleWithIcon]: hasTitleIcon })}>
+      <Heading as='h3' className={clsx(styles.title, { [styles.titleWithIcon]: hasTitleIcon })}>
         {hasTitleIcon && <img src={titleIcon} />}
         {title}
       </Heading>

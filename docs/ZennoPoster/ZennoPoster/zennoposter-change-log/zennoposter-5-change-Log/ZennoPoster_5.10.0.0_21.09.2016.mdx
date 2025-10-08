@@ -1,0 +1,192 @@
+---
+sidebar_position: 1
+title: "ZennoPoster 5.10.0.0 21.09.2016"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.10.0.0 21.09.2016.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502857794/ZennoPoster+5.10.0.0+21.09.2016"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502857794/ZennoPoster+5.10.0.0+21.09.2016)** — Источник данного материала
+
+_______________________________________________  
+### Новые фичи:
+
+[+] Обновлён движок браузера до версии 45 ESR.
+
+[+] Добавлены политики трафика и монитор трафика. Можно разрешить трафик с белого списка адресов или доменов, или можно наоборот организовать чёрный список запросов. Это позволит сократить потребление ресурсов, увеличить скорость и стабильность работы Ваших проектов. Теперь можно просматривать все запросы браузера без использования внешних инструментов типа Fiddler.
+
+[+] В ProjectMaker браузер вынесен в отдельный процесс, процесс ProjectMaker на 64 битных системах теперь работает как 64 битное приложение.
+
+[+] Добавлены инструменты и макросы для работы с JSON и XML.
+
+[+] В ZennoPoster добавлена возможность трассировки выполнения проектов.
+
+[+] Добавлена возможность установить паузу после действия с элементом в дополнительных настройках действия.
+
+[+] Улучшения в вёрстке свойств действий и статических блоков для маленьких экранов.
+
+[+] Добавлять списки, таблицы и т.п. теперь можно из контекстного меню контрола “Статические блоки”.
+
+[+] Добавлена возможность менять местами статические блоки при помощи Drag&Drop.
+
+[+] Добавлено отображение управляющих символов при просмотре списков и таблиц.
+
+[+] Добавлена возможность очистить список или таблицу из контекстного меню статических блоков.
+
+[+] Добавлена возможность использовать массив символов в качестве разделителя для таблиц (можно выбрать вариант несколько разделителей и указать набор символов, которые будут являться разделителями).
+
+[+] Улучшена загрузка и сохранение профилей.
+
+[+] При создании bat-файла опции теперь можно комбинировать.
+
+[+] Появилась возможность открывать проекты в ProjectMaker из ZennoPoster. А также отправлять задания в ZennoPoster из ProjectMaker (из контекстного меню на вкладке проекта в ProjectMaker или из контекстного меню проекта в ZennoPoster).
+
+[+] Добавлены уровни оповещения (сообщение, предупреждение, ошибка) для действия “Оповещение”.
+
+[+] При двойном клике на сообщении в логе ProjectMaker, курсор перемещается на действие и во вложенном проекте, если он открыт.
+
+[+] Добавлена возможность задавать комментарии для переменных проекта. В контекстном меню по шапке в таблице с переменными можно выбрать какие столбцы показывать.
+
+[+] В окне входных настроек добавлена кнопка “По умолчанию”, которая сбрасывает все входные настройки на значения по умолчанию.
+
+[+] В кубик настроек браузера добавлено новое действие “Canvas”. Действие может устанавливать режимы обработки Canvas fingerprint: “Разрешить”, “Эмулировать”, “Блокировать”. Если установлен режим “Разрешить”, Canvas работает в стандартном режиме. Если установлен режим “Блокировать”, то запрещается выполнение некоторых основных методов объекта Canvas. Если установлен режим “Эмулировать”, то используется специальный ключ, уникальный для каждого инстанса, который будет сохраняться в профиль и с помощью которого Canvas fingerprint становиться уникальным для каждого инстанса.
+
+[+] Доработан DropDownMultiSelect во входящих настройках, теперь его можно настраивать так же, как и обычный DropDown.
+
+[+] Улучшено закрытие баз в ZennoPoster.
+
+[+] Добавлена возможность использования нескольких значений в поле “тэг” в действиях работы с HTML элементами. Разделитель между тэгами “;” (пример div;span;td).
+
+[+] Добавлен макрос `{ -TimeNow.Day- }`.
+
+[+] Добавлено прерывание действия распознавания каптчи при остановке отладки.
+
+[+] В список заданий ZennoPoster добавлены новые колонки “Использование инстанса” и “Показ инстансов”.
+
+[+] Оптимизирован менеджер потоков ZennoPoster, теперь количество потоков регулируется динамически до выставленного максимума потоков.
+
+[+] В действии распознавания каптч добавлена возможность сохранить ответ и исходное изображение в указанную папку для последующего обучения модулей CapMoster2.
+
+[+] Небольшие улучшения в поиске по проекту.
+
+[+] Добавлены методы работы с JSON и XML в С# [project.Json](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic717.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic717.html") и [project.Xml](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic729.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic729.html").
+
+[+] Добавлена частичная отладка кода в действии “Свой код C#”. Доступно использование точек останова, отладки по шагам, просмотра и установки значений локальных переменных, быстрой проверки и получение сообщений об исключениях.
+
+[+] Для функций перевода добавлена возможность указать доп.параметры. Например, подменить ключ (key=Ваш ключ). Аналогично и для С# функций. Если создавались собственные модули перевода, то изменился интерфейс ZennoLab.InterfacesLibrary.ICommonTranslateServiceInterface, модули придётся доработать.
+
+[+] Добавлена возможность кодогенерации для действия “Обработка текста”.
+
+[+] Добавлена опция “Перенос строк” в редакторе кода для действия “Свой код C#”.
+
+[+] Добавлены методы для класса [ZennoLab.Macros.TextProcessing](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic1157.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic1157.html"):
+
+- String PrepToJavaScriptEval(String)
+- String ToChar(String)
+- String ToLower(String, String)
+- String ToUpper(String, String)
+- String Trim(String, String)
+- String Trim(String, String, String)
+- void ToList(String, String, String, IZennoPosterProjectModel, IZennoList)
+- void ToTable(String, String, String, String, String, IZennoPosterProjectModel, IZennoTable)
+- String Replace(String, String, String, String, String, String)
+
+[+] Добавлен метод [instance.SetCookie(String)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic239.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic239.html").
+
+[+] Редактирование стилей ячеек в Excel-подобных таблицах через C# код:
+
+- [table.SetCellStyle](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic756.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic756.html")
+- [table.SetColumnStyle](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic757.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic757.html")
+- [table.SetRowStyle](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic758.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic758.html")
+- [table.GetCellStyle](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic746.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic746.html")
+- [table.GetColumnStyle](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic748.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic748.html")
+- [table.GetRowStyle](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic752.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic752.html")
+
+[+] Добавлены методы получения случайного элемента/элементов у списка и таблицы, используя [❗→ фильтр с форматом](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137"):
+
+- IZennoList:
+
+ - [String GetItem(String filter, bool removeItem = false)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic694.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic694.html")
+ - [IEnumerable&lt;String&gt; GetItems(String filter, bool removeItems = false)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic695.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic695.html")
+- IZennoTable:
+
+ - [IEnumerable&lt;String&gt; GetItem(String filter, bool removeItem = false)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic749.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic749.html")
+ - [IEnumerable&lt;IEnumerable&lt;String&gt;&gt; GetItems(String filter, bool removeItems = false)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic750.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic750.html")
+
+[+] В действиях очистки кеша и куки появилась настройка “Удалить для доменов, удовлетворяющих регулярному выражению”. Если настройка включена, и регулярное выражение не пустое, то очистка выполняется только для тех доменов, которые удовлетворяют регулярному выражению. Так же в соответствующих методах C# кода появился необязательный аргумент:
+
+- [instance.ClearCache(string domainFilter = null)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic188.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic188.html")
+- [instance.ClearCookie(string domainFilter = null)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic189.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic189.html")
+
+[+] Метод project.GetLastError() теперь также возвращает Exception произошедший в действии.
+
+[+] В настройках ProxyChecker добавлен флаг «Подробный лог работы автопоиска», при включении которого работа автопоиска логируется в файл autoSearchLog.txt в папку с логами.
+
+[+] Объекту project в C# коде добавлено свойство [project.Environment](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic674.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic674.html"), которое содержит информацию о компьютере.
+
+[+] Добавлен дополнительный опциональный параметр considerScroll в методы ZennoLab.CommandCenter.Tab:
+
+- [MouseClick](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic375.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic375.html")
+- [MouseMove](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic376.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic376.html")
+
+При установке параметру значения true, соответствующие методы учитывают скролл на странице и используют координаты с учётом скролла.
+
+[+] Обновлён набор полей объекта Navigator, доступных для показа/скрытия. Также обновлена автоматическая настройка полей в зависимости от UserAgent.
+
+[+] В эмуляцию плагинов добавлены mime типы. В [ZennoLab.CommandCenter.PluginItem](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic322.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic322.html") добавлено свойство List&lt;PluginMimeType&gt; MimeTypes `{ get; set; }`. Добавлен тип [ZennoLab.CommandCenter.PluginMimeType](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic346.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic346.html"), описывающий mime тип. Кроме того, изменена выдача метода ZennoLab.CommandCenter.PluginItem.ToString(), если Вы использовали его в своих проектах, просьба проверить работоспособность.
+
+[+] В ZennoLab.CommandCenter.Tab добавлен метод [MouseWheel(int x, int y, double deltaX, double deltaY, bool considerScroll = false)](https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic380.html "https://help.zennolab.com/en/v5/zennoposter/5.10/webframe.html#topic380.html"). Метод эмулирует горизонтальные и вертикальные скроллы мыши, работает только для браузера с отображением содержимого.
+
+### Исправленные баги:
+
+[\] Исправлена ошибка загрузки списка файлов на FTP, из списка загружался только первый файл.
+
+[\] Исправлена работа эмуляции клавиатуры при переключении вкладок.
+
+[\] Исправлен баг интерфейса, когда невозможно было установить переменные для сохранения результата запроса к БД.
+
+[\] Исправлены ошибки открытия проектов.
+
+[\] В редакторе ProjectMaker исправлен так называемый “Камрип”, когда шрифты могли становиться нечёткими.
+
+[\] Исправлена работа горизонтального скролла в окне редактирования проектов.
+
+[\] Исправлено масштабирование в окне браузера.
+
+[\] Исправлена обработка модальных попапов.
+
+[\] Исправлено отображение прицела при эмуляции мыши в ProjectMaker.
+
+[\] Исправлено появление множества окошек авторизации в ProjectMaker при работе с HTTP прокси.
+
+[\] Исправлено копирование переменных при переносе действия JavaScript в другой проект.
+
+[\] Исправлены проблемы, приводившие к зависанию проверки прокси.
+
+[\] Исправлена установка количества потоков через bat файл с использованием имени задания.
+
+[\] В тестере регулярных выражений возвращена обработка каретки и добавлен чекбокс “Показывать специальные символы”.
+
+[\] В действии HTTP GET/POST исправлен режим “Выполненные” для поля “Cookie”.
+
+[\] Отображение значения атрибута class в окне свойств элемента сделано многострочным.
+
+[\] Исправлен баг сохранения кук в инстансе от прошлого выполнения.
+
+[\] Исправлена работа метода String ZennoLab.Emulation.Emulator.MouseClick(String, MouseButton, MouseButtonEvent, int, int, bool).
+
+[\] Исправлена сортировка столбцов в списке заданий ZennoPoster.
+
+[\] Исправлено редактирование правила “Источник” в ProxyChecker.
+
+[\] Исправлена работа комбинации клавиш Ctrl + Z.
+
+[\] Исправлены баги в приём почты через шифрованные соединения.
+
+[\] Устранено зависание редактора в действии “Свой код С#” при наборе кода.
+
+[\] Исправлен парсинг источников ProxyChecker с обработкой JavaScript.

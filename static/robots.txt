@@ -1,3 +1,11 @@
-# Запрет индексации для всех поисковых роботов
+User-agent: Googlebot
+Disallow: /*?
+
+User-agent: Yandex
+Disallow: /*?
+
+User-agent: Bingbot
+Disallow: /*?
+
 User-agent: *
-Disallow: /
+Disallow: /*?
