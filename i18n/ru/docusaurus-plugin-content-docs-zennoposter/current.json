@@ -39,17 +39,17 @@
     "message": "Полное руководство по работе с ProjectMaker - мощным инструментом для создания автоматизированных проектов в ZennoPoster",
     "description": "The generated-index page description for category ProjectMaker in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Интерфейс программы": {
+  "sidebar.zennoposterSidebar.category.Program Interface": {
     "message": "Интерфейс программы",
-    "description": "The label for category Интерфейс программы in sidebar zennoposterSidebar"
+    "description": "The label for category Program Interface in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Интерфейс программы.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Program Interface.link.generated-index.title": {
     "message": "Интерфейс программы ProjectMaker",
-    "description": "The generated-index page title for category Интерфейс программы in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Program Interface in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Интерфейс программы.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Program Interface.link.generated-index.description": {
     "message": "Обзор основных окон и элементов интерфейса программы ProjectMaker",
-    "description": "The generated-index page description for category Интерфейс программы in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Program Interface in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Запись и создание проектов": {
     "message": "Запись и создание проектов",

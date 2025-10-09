@@ -26,5 +26,17 @@
   "sidebar.zennoposterSidebar.category.Installing and Removing the Program.link.generated-index.description": {
     "message": "Everything you need to know about installing, updating, and uninstalling ZennoPoster.",
     "description": "The generated-index page description for category Installing and Removing the Program in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Program Interface": {
+    "message": "Program Interface",
+    "description": "The label for category Program Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Program Interface.link.generated-index.title": {
+    "message": "ProjectMaker Program Interface",
+    "description": "The generated-index page title for category Program Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Program Interface.link.generated-index.description": {
+    "message": "Overview of the main windows and interface elements of the ProjectMaker program",
+    "description": "The generated-index page description for category Program Interface in sidebar zennoposterSidebar"
   }
 }

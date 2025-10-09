@@ -1,0 +1,372 @@
+﻿---
+sidebar_position: 7
+title: "Traffic Window"
+description: ""
+date: "2025-07-19"
+converted: true
+originalFile: "Окно трафика.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465"
+---
+:::info **Please review the [*Rules for Using Materials on This Resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465)** — Source of this material
+
+_______________________________________________  
+# Traffic Window
+
+## Description
+
+The traffic window displays all requests made by the ProjectMaker browser. It also shows requests made using actions like [❗→ GET request](/wiki/spaces/RU/pages/534315165 "/wiki/spaces/RU/pages/534315165"), [❗→ POST request](/wiki/spaces/RU/pages/534315180 "/wiki/spaces/RU/pages/534315180"), [❗→ HTTP requests](/wiki/spaces/RU/pages/489259052 "/wiki/spaces/RU/pages/489259052").
+
+![View of the traffic window after navigating to https://lessons.zennolab.com/ru/advanced](./assets/Traffic_Window/Traffic_Window_pic1.png)
+
+| ![View of the traffic window after navigating to https://lessons.zennolab.com/ru/advanced](./assets/Traffic_Window/Traffic_Window_pic1.png) |
+| :--: |
+| View of the traffic window after navigating to https://lessons.zennolab.com/ru/advanced |
+
+
+
+  
+
+## How do I use the traffic window?
+
+### Enabling
+
+In the top menu, find *Window and choose *Traffic from the dropdown list.
+
+![image-20200811-082058](./assets/Traffic_Window/Traffic_Window_pic2.png)
+
+
+
+<details>
+<summary>What to do if the window doesn't appear</summary>
+
+Sometimes the window doesn't show up even if the checkbox next to it is ticked in the settings (as shown in the screenshot above), indicating it's enabled. If you've tried turning it on several times and it still doesn't appear, you can reset all window settings in ProjectMaker.
+
+**ATTENTION!** The following steps will reset your window settings—which means if you've set up the program’s interface to your liking, arranging its windows conveniently, all those settings will be lost and restored to default.
+
+Go to settings (*Edit-Settings), open the *Debug tab**, and at the very bottom of the window, look for the *Reset Panels button. Once you click this button and restart ProjectMaker, all window settings will be reset, but the traffic window should now appear and work correctly.
+
+![image-20200808-071052](./assets/Traffic_Window/Traffic_Window_pic3.png)
+
+
+
+</details>
+
+  
+
+### Window appearance
+
+![image-20210607-135243](./assets/Traffic_Window/Traffic_Window_pic4.png)
+
+
+
+#### List of requests
+
+![image-20210607-135422](./assets/Traffic_Window/Traffic_Window_pic5.png)
+
+
+
+It contains the following columns:
+
+- Response status (can be 200, 403, 404, 407, 503, etc.)
+- Request method ([❗→ GET request](/wiki/spaces/RU/pages/534315165 "/wiki/spaces/RU/pages/534315165"), [❗→ POST request](/wiki/spaces/RU/pages/534315180 "/wiki/spaces/RU/pages/534315180"), [❗→ PUT, DELETE, etc.](/wiki/spaces/RU/pages/489259052 "/wiki/spaces/RU/pages/489259052"))
+- The URL for the request
+- [❗→ Proxy](/wiki/spaces/RU/pages/492208129 "/wiki/spaces/RU/pages/492208129") (if used)
+- Time (ms) — the time in milliseconds spent on the request
+
+#### Content policy settings
+
+This is described further down in the article.
+
+![image-20210607-135515](./assets/Traffic_Window/Traffic_Window_pic6.png)
+
+
+
+#### Group by domain
+
+![image-20210607-135548](./assets/Traffic_Window/Traffic_Window_pic7.png)
+
+
+
+A separate tab with its requests will be created for each domain (every subdomain gets its own tab):
+
+<details>
+<summary>Example</summary>
+
+![image-20210608-115211](./assets/Traffic_Window/Traffic_Window_pic8.png)
+
+
+
+</details>
+#### Search panel
+
+![image-20210607-135717](./assets/Traffic_Window/Traffic_Window_pic9.png)
+
+
+
+You can use this together with "Grouping".
+
+<details>
+<summary>Example</summary>
+
+The screenshot shows an example of searching for loaded JavaScript files for the http://yandex.ru domain.
+
+![image-20200810-152031](./assets/Traffic_Window/Traffic_Window_pic10.png)
+
+
+
+</details>
+#### Default sorting
+
+![image-20210607-135916](./assets/Traffic_Window/Traffic_Window_pic11.png)
+
+
+
+If you click any column header, the requests will be sorted alphabetically by that column. The *Default sorting option lets you restore the original order—by the time the requests were sent.
+
+#### Autoscroll
+
+![image-20210607-140037](./assets/Traffic_Window/Traffic_Window_pic12.png)
+
+
+
+When this option is enabled, the traffic window will automatically scroll as new requests come in. This way, the most recent request will always be visible.
+
+#### Clear
+
+![image-20210607-140058](./assets/Traffic_Window/Traffic_Window_pic13.png)
+
+
+
+Deletes all requests from the window.
+
+#### Enable/disable columns
+
+If you right-click on any column header, a context menu will appear where you can show/hide columns.
+
+![image-20200811-083606](./assets/Traffic_Window/Traffic_Window_pic14.png)
+
+
+
+#### Request details
+
+Double-clicking any request in the traffic window opens its detailed information. This window contains four tabs. Here’s a quick overview:
+
+**Headers**
+
+![image-20200811-083835](./assets/Traffic_Window/Traffic_Window_pic15.png)
+
+
+
+This tab shows the main information about the request:
+
+- URL
+- Method
+- Response status
+- Proxy (if used)
+- Request and response headers
+
+**Cookies**
+
+![image-20200811-083955](./assets/Traffic_Window/Traffic_Window_pic16.png)
+
+
+
+Sent and received cookies
+
+**Parameters**
+
+![image-20200811-084451](./assets/Traffic_Window/Traffic_Window_pic17.png)
+
+
+
+Parameters sent in the request:
+
+- *Query string — parameters sent as part of the URL (for the request in this screenshot, the URL was `https://httpbin.org/post?urlparam1=val1&urlparam2=ProjectMaker`)
+- *Request data — parameters sent in the request body.
+
+**Response**
+
+![image-20200811-085717](./assets/Traffic_Window/Traffic_Window_pic18.png)
+
+
+
+The screenshot shows the server’s response after a [❗→ POST request](/wiki/spaces/RU/pages/534315180 "/wiki/spaces/RU/pages/534315180") to https://httpbin.org/post.
+
+  
+
+## What is this used for?
+
+- Analyzing requests made by the browser:
+
+ - for creating your own requests using actions like [❗→ GET request](/wiki/spaces/RU/pages/534315165 "/wiki/spaces/RU/pages/534315165"), [❗→ POST request](/wiki/spaces/RU/pages/534315180 "/wiki/spaces/RU/pages/534315180"), [❗→ HTTP requests](/wiki/spaces/RU/pages/489259052 "/wiki/spaces/RU/pages/489259052")
+- Blocking unwanted requests (using whitelist or blacklist)
+
+
+
+## Request context menu
+
+If you right-click any request in the traffic window, a context menu with extra options appears.
+
+### Copying request data
+
+![image-20200811-085937](./assets/Traffic_Window/Traffic_Window_pic19.png)
+
+
+
+You can easily copy a request’s URL, headers (both request and response), and the server’s response.
+
+### Auto-creating requests
+
+![image-20200811-090043](./assets/Traffic_Window/Traffic_Window_pic20.png)
+
+
+
+ProjectMaker will automatically create an action with the required request type. It will insert the headers, parameters, and proxy (if used).
+
+:::note Note
+After creating an action, it’s still a good idea to manually check the data that was included.
+:::
+
+### Content policy: Whitelist and blacklist
+
+With the *content policy, you can allow or block ProjectMaker from loading specific domains or URLs. You can also use [❗→ regular expressions](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111") for this.
+
+There are three possible states:
+
+![image-20200812-142258](./assets/Traffic_Window/Traffic_Window_pic21.png)
+
+
+
+:::warning Attention
+Only one list—whitelist or blacklist—can be active at a time.
+:::
+
+1. *No restrictions — all addresses are loaded without exceptions.
+2. *Whitelist — only the domains and addresses specified in the whitelist will be loaded.
+3. Blacklist — all addresses will be loaded except those in the blacklist.
+
+#### Why might you need this?
+
+- ProjectMaker waits for the page to finish loading before performing any action. But sometimes a page is stuck loading forever or takes veeery loooong to load, slowing template execution. This can happen if the browser is trying to load a script from a third-party site but can't for some reason. The *Content Policy* can help—add the script address to the blacklist, switch the policy to *Blacklist, and that unresponsive script will stop bothering you.
+- By blocking unwanted addresses, you can:
+
+ - speed up page loading
+ - improve template stability
+ - reduce data usage (especially important for proxies with traffic limits)
+
+#### How does it work?
+
+There are several ways to enable blacklists/whitelists.
+
+**Method #1** (the easiest)
+
+Right-click the required request in the *Traffic Window and add the domain or address from that request to one of the lists. If there is no *Content Policy action in the project, one will be automatically added (the mode in the new action will depend on which list you added the domain/address to—whitelist or blacklist).
+
+You can manually edit the elements you've added in the action later.
+
+![image-20200811-090145](./assets/Traffic_Window/Traffic_Window_pic22.png)
+
+
+
+**Method #2** (through the context menu)
+
+**Add Action** → **Browser** → **Settings**
+
+![image-20200812-152846](./assets/Traffic_Window/Traffic_Window_pic23.png)
+
+
+
+In the action settings (dropdown menu), find *Content Policy
+
+![image-20200812-153033](./assets/Traffic_Window/Traffic_Window_pic24.png)
+
+
+
+![image-20200812-153600](./assets/Traffic_Window/Traffic_Window_pic25.png)
+
+
+
+1. Choose the operating mode.
+2. Address to filter (domain or [❗→ regular expression](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111"))
+3. How to handle the address from step 2
+4. Use this button to remove a condition (alternative: select the condition and press DELETE on your keyboard)
+
+**Method #3** (via [❗→ *Profile window](/wiki/spaces/RU/pages/735903758 "/wiki/spaces/RU/pages/735903758"))
+
+First, click the *Profile icon in the main ProjectMaker window^(1)^ — the *Current Profile window will open, then open the *Browser tab^(2)^ in it. At the bottom of this tab, activate *Content^(3)^. Here you can manually add new filtering conditions for requests.
+
+![image-20200812-162721](./assets/Traffic_Window/Traffic_Window_pic26.png)
+
+
+
+<details>
+<summary>Adding a new rule</summary>
+
+In version 7.1.6.0 with the standard theme (*Interface - Light, *Editor - Modern2), it may not be obvious how to add new rules manually (this applies to both profile and action methods).
+
+Immediately after adding an action and selecting a mode (Whitelist or Blacklist), the top row is highlighted.
+
+![image-20200812-163630](./assets/Traffic_Window/Traffic_Window_pic27.png)
+
+
+
+After you add a new condition and select how it should be handled, the cursor does not move to a new row and there is no "Add" button.
+
+![image-20200812-163752](./assets/Traffic_Window/Traffic_Window_pic28.png)
+
+
+
+To add a new rule, you need to click several times below the newly added condition—then you’ll be able to create another one.
+
+![image-20200812-164110](./assets/Traffic_Window/Traffic_Window_pic29.png)
+
+
+
+Below is a GIF showing the whole process (adding via profile works the same way).
+
+![76T4GCMyua](./assets/Traffic_Window/Traffic_Window_pic30.gif)
+
+
+
+</details>
+
+  
+
+## Usage example
+
+Let's look at an example using the forum https://zennolab.com/discussion/
+
+Open the traffic window and go to the URL above. You’ll see lots of requests made by the browser — to VK, Facebook, Yandex, Google, CloudFlare, and other resources besides https://zennolab.com/discussion/.
+
+![The screenshot shows just a small portion of the requests.](./assets/Traffic_Window/Traffic_Window_pic31.png)
+
+| ![The screenshot shows just a small portion of the requests.](./assets/Traffic_Window/Traffic_Window_pic31.png) |
+| :--: |
+| The screenshot shows just a small portion of the requests. |
+
+
+
+Imagine you want to block requests to VK, Facebook, and Yandex. Additionally, you want to block any address containing the word *analytics (anywhere in the URL). Here’s what the *Content Policy action might look like for this:
+
+![image-20200812-173638](./assets/Traffic_Window/Traffic_Window_pic32.png)
+
+
+
+Here’s what the *Traffic Window looks like after applying the rules in the above screenshot and visiting https://zennolab.com/discussion/ again.
+
+![image-20200812-173923](./assets/Traffic_Window/Traffic_Window_pic33.png)
+
+
+
+  
+
+## Useful links
+
+- [❗→ GET request](/wiki/spaces/RU/pages/534315165 "/wiki/spaces/RU/pages/534315165")
+- [❗→ POST request](/wiki/spaces/RU/pages/534315180 "/wiki/spaces/RU/pages/534315180")
+- [❗→ HTTP requests](/wiki/spaces/RU/pages/489259052 "/wiki/spaces/RU/pages/489259052")
+- [❗→ Regular Expression Tester](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+- [❗→ Web Developer Tools (DevTools)](/wiki/spaces/RU/pages/1331134465 "/wiki/spaces/RU/pages/1331134465")
