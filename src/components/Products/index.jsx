@@ -53,7 +53,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard2Description,
     action: {
       label: productsBtn,
-      link: '/zennodroid/category/знакомство',
+      link: '/zennodroid/introduction',
       type: ButtonType.PRIMARY
     }
   }, {
@@ -73,7 +73,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard4Description,
     action: {
       label: productsBtn,
-      link: '/zennobrowser/category/знакомство',
+      link: '/zennobrowser/introduction',
       type: ButtonType.PRIMARY
     }
   }, {

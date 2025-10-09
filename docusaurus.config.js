@@ -139,10 +139,6 @@ const config = {
             to: '/zennoproxy/category/getting-started',
             from: ['/zennoproxy/basics/getting-started', '/zennoproxy/intro'],
           },
-          {
-            to: '/',
-            from: ['/index', '/index/'],
-          }
         ],
         // FIXME: createRedirects function creates circular redirects (path -> same path)
         // This causes 100+ warnings and build failures because:
