@@ -38,5 +38,29 @@
   "sidebar.zennoposterSidebar.category.Program Interface.link.generated-index.description": {
     "message": "Overview of the main windows and interface elements of the ProjectMaker program",
     "description": "The generated-index page description for category Program Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Recording and Creating Projects": {
+    "message": "Recording and Creating Projects",
+    "description": "The label for category Recording and Creating Projects in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Recording and Creating Projects.link.generated-index.title": {
+    "message": "Recording and Creating Projects",
+    "description": "The generated-index page title for category Recording and Creating Projects in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Recording and Creating Projects.link.generated-index.description": {
+    "message": "A guide to recording and creating projects in ProjectMaker",
+    "description": "The generated-index page description for category Recording and Creating Projects in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.General Information": {
+    "message": "General Information",
+    "description": "The label for category General Information in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.General Information.link.generated-index.title": {
+    "message": "General Information",
+    "description": "The generated-index page title for category General Information in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.General Information.link.generated-index.description": {
+    "message": "General information for recording and creating projects",
+    "description": "The generated-index page description for category General Information in sidebar zennoposterSidebar"
   }
 }

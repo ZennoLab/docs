@@ -1,0 +1,176 @@
+﻿---
+sidebar_position: 5
+title: "ZennoPoster Environment Variables"
+description: ""
+date: "2025-07-20"
+converted: true
+originalFile: "Переменные окружения ZennoPoster.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1976762378/ZennoPoster"
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1976762378/ZennoPoster)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster Environment Variables
+
+## Description
+
+In addition to [❗→ user variables](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922"), there are also environment variables. These store various parameters of the page (URL, DOM, text, domain, notification and alert text, etc.), time and date variables, project variables (name, folder, proxy rules, last error id, etc.), and many profile variables (email, gender, name, user agent, etc.).
+
+Below, you can find a list of available variables and a description of what each stores.
+
+  
+
+## Current Active Tab Variables
+
+<details>
+<summary>Click here to expand</summary>
+
+| **Name** | **Description** |
+| --- | --- |
+| `{ -Page.Url- }` | Current page URL |
+| `{ -Page.Source- }` | Source code of the current web page |
+| `{ -Page.Dom- }` | DOM model of the current web page |
+| `{ -Page.Text- }` | Text of the current web page without HTML tags |
+| `{ -Page.FullDomain- }` | Full domain of the current web page.<br />Including subdomains. |
+| `{ -Page.Domain- }` | Main domain of the current web page.<br />Excluding subdomains. |
+| `{ -Page.LastAlertTitle- }` | Title of the alert shown on the site using the JS alert() function |
+| `{ -Page.LastAlertText- }` | Text of the alert shown on the site using the JS alert() function |
+| `{ -Page.LastNotificationTitle- }` | Title of the most recent notification from the site<br /><br /><br />This refers to messages you receive after you allow the site to send notifications. |
+| `{ -Page.LastNotificationText- }` | Text of the most recent notification from the site<br /><br /><br />This refers to messages you receive after you allow the site to send notifications. |
+| `{ -Page.LastDownloadedFile- }` | Full path to the last downloaded file |
+
+</details>
+## Time and Date
+
+<details>
+<summary>Click here to expand</summary>
+
+| **Name** | **Description** |
+| --- | --- |
+| `{ -TimeNow.Date- }` | Current date and time in `MM/DD/YYYY hh:mm:ss` format (example - `01/25/2020 14:41:18`).<br /><br /><br /><br />You can change the output string format! To do this, add a format template before the closing bracket. <br /><br />Example: `{-TimeNow.Date dd.MM.yyyy HH.mm-}`, after running you'll get a string like `25.01.2020 14.41`<br /><br />You can read more about formatting [here](https://msdn.microsoft.com/ru-ru/library/8kb3ddd4%28v=vs.100%29.aspx "https://msdn.microsoft.com/ru-ru/library/8kb3ddd4(v=vs.100).aspx") and [here](https://msdn.microsoft.com/ru-ru/library/az4se3k1%28v=vs.100%29.aspx "https://msdn.microsoft.com/ru-ru/library/az4se3k1(v=vs.100).aspx"). |
+| `{ -TimeNow.Day- }` | Day of the month |
+| `{ -TimeNow.Month- }` | Current month (as a number) |
+| `{ -TimeNow.Year- }` | Current year |
+| `{ -TimeNow.DayOfWeek- }` | Day of the week, in English. |
+| `{ -TimeNow.Hour- }` | Current hour (24-hour format) |
+| `{ -TimeNow.Minute- }` | Current minute |
+| `{ -TimeNow.Second- }` | Current second |
+| `{ -TimeNow.Millisecond- }` | Current millisecond |
+| `{ -TimeNow.TimeNow- }` | Current date and time in `YYYY-MM-DD hh-mm-ss--milliseconds` format (`2020-01-25 14-41-59--834`)<br /><br /><br />**Does NOT** support formatting! |
+| `{ -TimeNow.UnixTime- }` | [Unix time](https://ru.wikipedia.org/wiki/Unix-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F "https://ru.wikipedia.org/wiki/Unix-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F"). Format: `1629891362.23929` |
+
+</details>
+## Project Variables
+
+<details>
+<summary>Click here to expand</summary>
+
+| **Name** | **Description** |
+| --- | --- |
+| `{ -Project.BrowserProfileFolder- }` | Full path to the [❗→ profile folder](/wiki/spaces/RU/pages/1251475485 "/wiki/spaces/RU/pages/1251475485") (or an empty string if no profile folder is used). |
+| `{ -Project.Directory- }` | Template directory |
+| `{ -Project.PluginDirectory- }` | Plugin directory (if the running template is a [❗→ plugin](/wiki/spaces/RU/pages/475365697 "/wiki/spaces/RU/pages/475365697")) |
+| `{ -Project.Name- }` | Template name |
+| `{ -Project.Proxy- }` | Current project proxy. |
+| `{ -Project.ProxyRules- }` | The [❗→ rule](/wiki/spaces/RU/pages/848560252 "/wiki/spaces/RU/pages/848560252") used from [❗→ ProxyChecker](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/475365507") |
+| `{ -Project.LastExecutedActionElapsedTime- }` | Time spent on the last executed [❗→ action](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker") |
+| `{ -Project.LastExecutedActionId- }` | ID of the last executed action |
+| `{ -Project.LastErrorComment- }` | Text of the last [❗→ action](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706/ProjectMaker") that ended with an error<br /><br /><br />If the action didn't have a user comment (**Right-click on the action =&gt; Comment**), an empty string will be returned. |
+
+</details>
+## Profile
+
+<details>
+<summary>Click here to expand</summary>
+
+| **Name** | **Description** |
+| --- | --- |
+| `{ -Profile.Age- }` | Age |
+| `{ -Profile.BornDay- }` | Date of birth (day) |
+| `{ -Profile.BornYear- }` | Year of birth |
+| `{ -Profile.BornMonth- }` | Month of birth |
+| `{ -Profile.Name- }` | First name |
+| `{ -Profile.Surname- }` | Last name |
+| `{ -Profile.NickName- }` | Nickname |
+| `{ -Profile.Email- }` | E-mail address |
+| `{ -Profile.EmailPassword- }` | Email password |
+| `{ -Profile.Login- }` | Login |
+| `{ -Profile.Password- }` | Password |
+| `{ -Profile.Sex- }` | Gender |
+| `{ -Profile.Language- }` | Language |
+| `{ -Profile.Country- }` | Country |
+| `{ -Profile.Town- }` | City |
+| `{ -Profile.Region- }` | Region |
+| `{ -Profile.ZipCode- }` | Zip code |
+| `{ -Profile.SecretQuestionAnswer1- }` | Answer to secret question #1 |
+| `{ -Profile.SecretQuestionAnswer2- }` | Answer to secret question #2 |
+| `{ -Profile.AvailScreenHeight- }` | Height of the generated screen (excluding the taskbar)<br /><br /><br />If [❗→ Screen emulation](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") is not enabled and the parameter isn't changed with [❗→ C# code](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") or via the [❗→ Profile operations](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") action, the value 50505 will be returned. |
+| `{ -Profile.AvailScreenWidth- }` | Width of the generated screen (excluding the taskbar)<br /><br /><br />If [❗→ Screen emulation](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") is not enabled and the parameter isn't changed with [❗→ C# code](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") or via the [❗→ Profile operations](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") action, the value 50505 will be returned. |
+| `{ -Profile.ScreenSizeHeight- }` | Height of the generated screen<br /><br /><br />If [❗→ Screen emulation](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") is not enabled and the parameter isn't changed with [❗→ C# code](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") or via the [❗→ Profile operations](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") action, the value 50505 will be returned. |
+| `{ -Profile.ScreenSizeWidth- }` | Width of the generated screen<br /><br /><br />If [❗→ Screen emulation](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308#Screen") is not enabled and the parameter isn't changed with [❗→ C# code](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net") or via the [❗→ Profile operations](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") action, the value 50505 will be returned. |
+| `{ -Profile.ScreenLeft- }` | Distance in pixels from the left edge of the screen to the browser window. <br /><br /><br />Can be changed using the [❗→ Profile operations](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") action. |
+| `{ -Profile.ScreenTop- }` | Distance in pixels from the top edge of the screen to the browser window. <br /><br /><br />Can be changed using the [❗→ Profile operations](/wiki/spaces/RU/pages/486539291 "/wiki/spaces/RU/pages/486539291") action. |
+| `{ -Profile.OuterHeight- }` | Deprecated variables. |
+| `{ -Profile.OuterWidth- }` | Deprecated variables.
+| `{ -Profile.OuterHeightShift- }` | Deprecated variables.
+| `{ -Profile.OuterWidthShift- }` | Deprecated variables.
+| `{ -Profile.HTTPAccept- }` | HTTP `Accept` header<br />Specifies which content types (as MIME types) the client (browser) understands. |
+| `{ -Profile.AcceptCharset- }` | HTTP `Accept-Charset` header<br />Indicates the character encodings the browser is ready to accept. |
+| `{ -Profile.AcceptLanguage- }` | HTTP `Accept-Language` header<br />Lets the server know which languages you prefer to read the web page in. |
+| `{ -Profile.AcceptEncoding- }` | HTTP `Accept-Encoding` header<br />Lists the supported content encoding methods for entity transfer. |
+| `{ -Profile.UserAgent- }` | [User-Agent](https://ru.wikipedia.org/wiki/User_agent "https://ru.wikipedia.org/wiki/User_agent") string of the generated browser |
+| `{ -Profile.UserAgentAppCodeName- }` | Individual elements of the generated User-Agent string |
+| `{ -Profile.UserAgentAppName- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentAppVersion- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentBrowserLanguage- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentCpuClass- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentLanguage- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentOsCpu- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentPlatform- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentProduct- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.UserAgentProductSub- }` | Individual elements of the generated User-Agent string
+| `{ -Profile.None- }` | Deprecated variable |
+
+</details>
+## System Variables (Environment)
+
+<details>
+<summary>Click here to expand</summary>
+
+| **Name** | **Description** |
+| --- | --- |
+| `{ -Environment.CurrentUser- }` | ZennoPoster user ID from your personal account, working with the template. |
+| `{ -Environment.TickCount- }` | Number of milliseconds since the computer was turned on.<br /><br /><br />This variable is based on [Environment.TickCount in C#](https://docs.microsoft.com/en-us/dotnet/api/system.environment.tickcount "https://docs.microsoft.com/en-us/dotnet/api/system.environment.tickcount"), so it has a peculiarity: if your computer runs continuously for a long time, after about 24.9 days this variable reaches its maximum positive value - `2147483647`. Then it wraps around to the minimum possible value - `-2147483648` and begins counting up to zero (which it reaches after ~24.9 days). After reaching zero, the counter increases back up to the maximum value (`2147483647`) and so on in a loop. |
+
+</details>
+## String Characters
+
+<details>
+<summary>Click here to expand</summary>
+
+| **Name** | **Description** |
+| --- | --- |
+| `{ -String.Enter- }` | New line |
+| `{ -String.Space- }` | Space |
+| `{ -String.Tab- }` | Tab character |
+
+</details>
+## Other
+
+<details>
+<summary>Click here to expand</summary>
+
+| **Name** | **Description** |
+| --- | --- |
+| `{ -//- }` | The directory path where ZennoPoster is installed.<br /><br />Example for Russian version 7.5.0.0 - `C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.5.0.0\Progs\` |
+
+</details>
+  
+
+## Useful Links
+
+- [❗→ Variables window](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872")
+- [❗→ Working with variables](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922")

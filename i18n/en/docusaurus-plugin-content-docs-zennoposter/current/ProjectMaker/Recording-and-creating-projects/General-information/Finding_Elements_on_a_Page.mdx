@@ -1,0 +1,99 @@
+﻿---
+sidebar_position: 4
+title: "Finding Elements on a Page"
+description: ""
+date: "2025-07-20"
+converted: true
+originalFile: "Поиск элементов на странице.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1741750301"
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1741750301)** — Source of this material
+
+_______________________________________________  
+# Finding Elements on a Page
+
+Before you interact with an element on a page, you need to find it. In the actions [❗→ Get Value](/wiki/spaces/RU/pages/534315124 "/wiki/spaces/RU/pages/534315124") , [❗→ Set Value](/wiki/spaces/RU/pages/534315117 "/wiki/spaces/RU/pages/534315117") , [❗→ Trigger Event](/wiki/spaces/RU/pages/534020211 "/wiki/spaces/RU/pages/534020211") , [❗→ Touch Event](/wiki/spaces/RU/pages/735674386 "/wiki/spaces/RU/pages/735674386") , [❗→ Swipe Event](/wiki/spaces/RU/pages/735739970 "/wiki/spaces/RU/pages/735739970"), there are two ways to search for elements – the classic method and using XPath.
+
+  
+
+**Classic Method** – Search by HTML element parameters: tag, attribute, and its value.
+
+![image-20200805-202115](./assets/Finding_Elements_on_a_Page/Finding_Elements_on_a_Page_pic1.png)
+
+
+
+**XPath** – search using [❗→ XPath expressions](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/"). This method lets you implement a more universal and layout-change-resistant way to search for data compared to classic search or regular expressions.
+
+![image-20200805-202209](./assets/Finding_Elements_on_a_Page/Finding_Elements_on_a_Page_pic2.png)
+
+
+
+### **Which Tab**
+
+Select the tab where the element will be searched for.
+Possible options:
+
+- Active tab
+- First
+- By name – when you choose this option, a field to enter the tab name will appear.
+- By number – in the input field, you will need to enter the tab’s sequential number (numbering starts from zero!)
+
+### **Document**
+
+It’s recommended to set the value to **-1** (search in all documents on the page).
+
+### **Form**
+
+Also best to set **-1** (search in all forms on the page). Using this value makes your template more versatile.
+
+<details>
+<summary>Why it’s better to set "-1"</summary>
+
+Example: There are 3 forms on the page – search, registration, and order. You need to click a button in the order form, and selected **2** (two) as the value for the “Form” field (counting from zero). After a while, a new login form appears on the site, inserted before the order form. Now, number 2 will point to the login form, and your template will either give an error saying the button was not found, or (worse) click a button in the wrong form.
+
+</details>
+:::note Tip
+In the program settings, you can tick two checkboxes – Search in all forms on the page and Search in all documents on the page. Then, whenever you add an element in the Action Constructor, -1 will be set by default for document and form numbers.
+:::
+
+### **Tag (classic search only)**
+
+![image-20210525-095347](./assets/Finding_Elements_on_a_Page/Finding_Elements_on_a_Page_pic3.png)
+
+
+
+The actual HTML tag you want to get the value from.
+
+:::tip Advice
+You can specify several tags at once, separated by ; (semicolon)
+:::
+
+### **Conditions (classic search only)**
+
+![image-20210525-100053](./assets/Finding_Elements_on_a_Page/Finding_Elements_on_a_Page_pic4.png)
+
+
+
+1. **Group** – priority of this condition. The higher the number, the lower the priority. If the element is not found with the highest priority condition, the search goes to the next priority, and so on, until the element is found or no conditions remain. You can add multiple conditions with the same priority; in this case, the search will check all conditions of the same priority at once.
+2. **Attribute** – the HTML tag attribute used for the search.
+3. **Search type**:
+
+ 1. text – search by full or partial text match;
+ 2. notext – search for elements that do not contain the specified text;
+ 3. regexp – search using [❗→ regular expressions](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111") 
+By default, the search is case-insensitive. To make the regular expression search case-sensitive, add `(?-i)` at the beginning of the expression (this disables case-insensitive search).
+4. **Value** – the value of the HTML tag attribute
+5. **Match No.** – the sequential number of the found element (numbering starts from zero!). This field supports [❗→ using ranges](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137") and macros [❗→ for variables](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922").
+
+:::note Tip
+To delete a search condition, left-click the field to its left (highlighted in blue on the screenshot) and press the delete key on your keyboard.
+:::
+
+:::note Tip
+Multiple conditions can be used to search for the desired element.
+:::
+
+It’s always important to try to set search conditions so that only one element remains, i.e., the match number is 0 (numbering starts from zero).

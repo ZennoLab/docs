@@ -51,29 +51,29 @@
     "message": "Обзор основных окон и элементов интерфейса программы ProjectMaker",
     "description": "The generated-index page description for category Program Interface in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Запись и создание проектов": {
+  "sidebar.zennoposterSidebar.category.Recording and Creating Projects": {
     "message": "Запись и создание проектов",
-    "description": "The label for category Запись и создание проектов in sidebar zennoposterSidebar"
+    "description": "The label for category Recording and Creating Projects in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Запись и создание проектов.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Recording and Creating Projects.link.generated-index.title": {
     "message": "Запись и создание проектов",
-    "description": "The generated-index page title for category Запись и создание проектов in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Recording and Creating Projects in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Запись и создание проектов.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Recording and Creating Projects.link.generated-index.description": {
     "message": "Руководство по записи и созданию проектов в ProjectMaker",
-    "description": "The generated-index page description for category Запись и создание проектов in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Recording and Creating Projects in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Общае сведения": {
-    "message": "Общае сведения",
-    "description": "The label for category Общае сведения in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.General Information": {
+    "message": "Общие сведения",
+    "description": "The label for category General Information in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Общае сведения.link.generated-index.title": {
-    "message": "Общае сведения",
-    "description": "The generated-index page title for category Общае сведения in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.General Information.link.generated-index.title": {
+    "message": "Общие сведения",
+    "description": "The generated-index page title for category General Information in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Общае сведения.link.generated-index.description": {
-    "message": "Общае сведения для записи и создания проектов",
-    "description": "The generated-index page description for category Общае сведения in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.General Information.link.generated-index.description": {
+    "message": "Общие сведения для записи и создания проектов",
+    "description": "The generated-index page description for category General Information in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Редактор проектов": {
     "message": "Редактор проектов",
