@@ -75,17 +75,17 @@
     "message": "Общие сведения для записи и создания проектов",
     "description": "The generated-index page description for category General Information in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Редактор проектов": {
+  "sidebar.zennoposterSidebar.category.Project Editor": {
     "message": "Редактор проектов",
-    "description": "The label for category Редактор проектов in sidebar zennoposterSidebar"
+    "description": "The label for category Project Editor in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Редактор проектов.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Project Editor.link.generated-index.title": {
     "message": "Редактор проектов",
-    "description": "The generated-index page title for category Редактор проектов in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Project Editor in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Редактор проектов.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Project Editor.link.generated-index.description": {
     "message": "Раздел, посвящённый функциям и возможностям редактора проектов ProjectMaker, включая работу с экшенами (кубиками) и категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
-    "description": "The generated-index page description for category Редактор проектов in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Project Editor in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\")": {
     "message": "Действия в ProjectMaker (\"Экшены\", \"Кубики\")",
@@ -98,6 +98,18 @@
   "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.description": {
     "message": "Подраздел о работе с действиями (экшенами, кубиками) в ProjectMaker и их категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
     "description": "The generated-index page description for category Действия в ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Static Blocks Panel": {
+    "message": "Панель статических блоков",
+    "description": "The label for category Static Blocks Panel in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Static Blocks Panel.link.generated-index.title": {
+    "message": "Панель статических блоков",
+    "description": "The generated-index page title for category Static Blocks Panel in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Static Blocks Panel.link.generated-index.description": {
+    "message": "Actions ZennoPoster: обзор и использование панели статических блоков. Включает: Общие принципы работы (структура и назначение панели), Настройки проекта (глобальные параметры и пресеты), Профиль (хранение и применение профилей), Шифрование (защита данных и секретов), Список и Таблица (структуры данных, фильтры, импорт/экспорт), Google таблица (связь и синхронизация), Входные настройки проекта (поля ввода, значения по умолчанию, валидация), Настройки FTP (доступы и переиспользование), Ссылки из GAC (подключение сборок), Using-директивы и общий код (общие пространства имён/сниппеты), Интерфейс бота (элементы BotUI, привязка к данным).",
+    "description": "The generated-index page description for category Static Blocks Panel in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Данные": {
     "message": "Данные",

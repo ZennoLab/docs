@@ -62,5 +62,29 @@
   "sidebar.zennoposterSidebar.category.General Information.link.generated-index.description": {
     "message": "General information for recording and creating projects",
     "description": "The generated-index page description for category General Information in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Editor": {
+    "message": "Project Editor",
+    "description": "The label for category Project Editor in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Editor.link.generated-index.title": {
+    "message": "Project Editor",
+    "description": "The generated-index page title for category Project Editor in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Editor.link.generated-index.description": {
+    "message": "A section dedicated to the features and capabilities of the ProjectMaker project editor, including working with actions (cubes) and categories: Data, Content Analysis, Lists, Tables, Browser, Tabs (working with web pages), Logic, Mail Operations, Emulation, Proxy Checker, HTTP, FTP, Project, Custom Code, Plugins, ZennoPoster and ZennoBrowser Integration.",
+    "description": "The generated-index page description for category Project Editor in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Static Blocks Panel": {
+    "message": "Static Blocks Panel",
+    "description": "The label for category Static Blocks Panel in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Static Blocks Panel.link.generated-index.title": {
+    "message": "Static Blocks Panel",
+    "description": "The generated-index page title for category Static Blocks Panel in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Static Blocks Panel.link.generated-index.description": {
+    "message": "Actions ZennoPoster: Overview and usage of the static blocks panel. Includes: General Principles of Operation (panel structure and purpose), Project Settings (global parameters and presets), Profile (storing and applying profiles), Encryption (data and secrets protection), List and Table (data structures, filters, import/export), Google Spreadsheet (connection and synchronization), Project Input Settings (input fields, default values, validation), FTP Settings (access and reuse), References from GAC (assembly connections), Using Directives and Shared Code (common namespaces/snippets), Bot Interface (BotUI elements, data binding).",
+    "description": "The generated-index page description for category Static Blocks Panel in sidebar zennoposterSidebar"
   }
 }
