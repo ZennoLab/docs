@@ -315,17 +315,17 @@
     "message": "Actions ZennoPoster: обзор и использование панели статических блоков. Включает: Общие принципы работы (структура и назначение панели), Настройки проекта (глобальные параметры и пресеты), Профиль (хранение и применение профилей), Шифрование (защита данных и секретов), Список и Таблица (структуры данных, фильтры, импорт/экспорт), Google таблица (связь и синхронизация), Входные настройки проекта (поля ввода, значения по умолчанию, валидация), Настройки FTP (доступы и переиспользование), Ссылки из GAC (подключение сборок), Using-директивы и общий код (общие пространства имён/сниппеты), Интерфейс бота (элементы BotUI, привязка к данным).",
     "description": "The generated-index page description for category Панель статических блоков in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Отладка проектов": {
+  "sidebar.zennoposterSidebar.category.Project Debugging": {
     "message": "Отладка проектов",
-    "description": "The label for category Отладка проектов in sidebar zennoposterSidebar"
+    "description": "The label for category Project Debugging in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Отладка проектов.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Project Debugging.link.generated-index.title": {
     "message": "Отладка проектов",
-    "description": "The generated-index page title for category Отладка проектов in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Project Debugging in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Отладка проектов.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Project Debugging.link.generated-index.description": {
     "message": "Описание функций и инструментов, предназначенных для отладки проектов в программе ProjectMaker.",
-    "description": "The generated-index page description for category Отладка проектов in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Project Debugging in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Окно браузера": {
     "message": "Окно браузера",
