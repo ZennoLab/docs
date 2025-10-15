@@ -1,9 +1,0 @@
-{
-  "label": "Установка и настройка",
-  "position": 1,
-  "link": {
-    "type": "generated-index",
-    "description": "Рассказываем, как установить и настроить ZennoBrowser",
-    "slug": "/basic"
-  }
-} 

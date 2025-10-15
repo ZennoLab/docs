@@ -17,13 +17,13 @@ _______________________________________________
 ZennoPoster - сложная программа с огромным количеством функций и тысячами сценариев использования. Мы стараемся тестировать большинство из них, но 100% достигнуть непросто. Если у вас случилась ситуация, что программа начинает тормознить через некоторое время, нам очень поможет подробный отчет об ошибочном поведении программы в лично вашем случае. Эта информация поможет команде разработки устранить причину возникновения ошибки.
 :::
 
-### Ссылки на софт используемый в статье
+## Ссылки на софт используемый в статье
 
 [**Process Explorer**](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer "https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer")
 
 [**dotMemory**](https://www.jetbrains.com/dotmemory/download/#section=web-installer "https://www.jetbrains.com/dotmemory/download/#section=web-installer")
 
-### Алгоритм записи утечки памяти (на примере ZennoPoster)
+## Алгоритм записи утечки памяти (на примере ZennoPoster)
 
 - Нужно проверить у какого из процессов утекает память, например через Process Explorer удобно смотреть в древовидном виде. В ZP7 два процесса ZennoPoster, отличить можно по наличию аргумента -ZennoPosterCore.
 - Нужно запустить dotMemory, запустить ZennoPoster, в dotMemory сделать Attach к процессу с параметром -ZennoPosterCore если жрет память Core процесс или без этого аргумента если UI процесс.
