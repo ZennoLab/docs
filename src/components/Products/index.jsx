@@ -53,7 +53,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard2Description,
     action: {
       label: productsBtn,
-      link: '/zennodroid/category/знакомство',
+      link: '/zennodroid/introduction',
       type: ButtonType.PRIMARY
     }
   }, {
@@ -73,7 +73,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard4Description,
     action: {
       label: productsBtn,
-      link: '/zennobrowser/category/знакомство',
+      link: '/zennobrowser/introduction',
       type: ButtonType.PRIMARY
     }
   }, {
@@ -83,7 +83,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard5Description,
     action: {
       label: productsBtn,
-      link: '/zennoproxy/category/hello',
+      link: '/zennoproxy/introduction',
       type: ButtonType.PRIMARY
     }
   }, {
@@ -93,7 +93,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard6Description,
     action: {
       label: productsBtn,
-      link: '/zennoproxychecker/category/proxychecker-hello',
+      link: '/zennoproxychecker/introduction',
       type: ButtonType.PRIMARY
     }
   }, {

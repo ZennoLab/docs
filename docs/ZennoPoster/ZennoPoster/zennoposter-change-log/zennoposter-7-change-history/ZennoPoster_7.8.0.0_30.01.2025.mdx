@@ -1,0 +1,34 @@
+---
+sidebar_position: 1
+title: "ZennoPoster 7.8.0.0 30.01.2025"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.8.0.0 30.01.2025.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3274473475/ZennoPoster+7.8.0.0+30.01.2025"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3274473475/ZennoPoster+7.8.0.0+30.01.2025)** — Источник данного материала
+
+_______________________________________________  
+## **Добавлено:**
+
+[+] Добавлена интеграция с новым продуктом ZennoBrowser.
+Теперь вы можете запускать браузер Chromium с продвинутыми эмуляциями ZennoBrowser прямо из ZennoPoster7 и пользоваться всеми его преимуществами и удобствами автоматизации.
+Для работы интеграции добавлен новый кубик "Интеграция с ZennoBrowser", который включает в себя два действия: "Получить профили ZennoBrowser" и "Запустить инстанс ZennoBrowser". Так же опция запуска нового типа браузера была добавлена в классическое действие "Запустить инстанс".
+Полная инструкция по интеграции ZennoBrowser [<u data-renderer-mark="true">здесь</u>](https://drive.google.com/file/d/1ia9r-aIqUmeDg95Ud1Kbw_R46nWMYkuf/view?usp=sharing&amp;roistat_visit=1024986 "https://drive.google.com/file/d/1ia9r-aIqUmeDg95Ud1Kbw_R46nWMYkuf/view?usp=sharing&amp;roistat_visit=1024986").
+Если у вас еще нет ZennoBrowser, вы можете [<u data-renderer-mark="true">подать заявку</u>](https://zenno.link/1XKwl?roistat_visit=1024986 "https://zenno.link/1XKwl?roistat_visit=1024986") на его тестирование.
+
+[+] В ZennoPoster при показе браузера Chromium из ZennoBrowser отображается реальный браузер. На данный момент кнопки свернуть, развернуть на весь экран и закрыть у окна браузера работают как у стандартных окон, поэтому не рекомендуется ими пользоваться. Как альтернатива этому во вкладке Инстансы в ZennoPoster расширено контектстное меню, добавлены пункты Показать, Скрыть окно браузера и пункт Продолжить для Ожидания действий пользователя.
+
+[+] Добавлена возможность запуска Chromium из ZennoBrowser используя C# код. Для этого в объект instance добавлены методы IntegrationLaunch(string profileId), IntegrationLaunch(string profileId, string workspaceId), а так же Launch(BrowserLaunchSettings launchSettings). Старые методы Launch могут запустить только встроенные в ZennoPoster7 браузеры, новый метод Launch принимающий объект настроек способен запустить любой браузер, для запуска встроенных браузеров необходимо использовать экземпляр класса BuiltInBrowserLaunchSettings, а для запуска браузера из ZennoBrowser необходимо использовать экземпляр класса IntegratedBrowserLaunchSettings.
+
+[+] Добавлена перегрузка метода tab.GetTraffic(GetTrafficSettings settings) принимающая объект с настройками. В классе GetTrafficSettings помимо коллекций регулярных выражений добавлена настройка GatherAllTraffic. Если выставить GatherAllTraffic в true, метод GetTraffic будет возвращать все запросы, даже уже полученные через GetTraffic.
+
+## **Исправлено:**
+
+[\] Исправлено отображение URL сайта в ProjectMaker. Ранее в адресной строке мог отображаться URL второстепенного запроса.
+
+[\] Исправлена загрузка и обновление гео базы данных.

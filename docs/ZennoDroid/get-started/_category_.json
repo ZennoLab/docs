@@ -3,7 +3,8 @@
     "position": 5,
     "link": {
       "type": "generated-index",
-      "title": "Как начать работу?"
+      "title": "Как начать работу?",
+      "slug": "/get-started"
     }
   }
   

@@ -1,0 +1,94 @@
+---
+sidebar_position: 1
+title: "ZennoPoster 5.9.3.1 16.09.2015"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.9.3.1 16.09.2015.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993917/ZennoPoster+5.9.3.1+16.09.2015"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993917/ZennoPoster+5.9.3.1+16.09.2015)** — Источник данного материала
+
+_______________________________________________  
+## Новые фичи:
+
+[+] Расширены возможности работы с [❗→ диапазонами](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137").
+
+[+] Добавлена поддержка прозрачных изображений, используемых в качестве водяного знака, в действии “Обработка изображений”. Прозрачные части изображения больше не заливаются белым цветом.
+
+[+] Улучшена плавность ввода символов при эмуляции клавиатуры с большими задержками.
+
+[+] Добавлена настройка “Запоминать количество последних открытых проектов”, позволяет регулировать количество последних открытых проектов на стартовой странице.
+
+[+] Убрана анимация для скрытия/показа окон в ProjectMaker в записи проектов.
+
+[+] В действии “Выделение подсписка” добавлен параметр “Выходить по ошибке, если список пуст”.
+
+[+] Пункт меню “Конвертировать в C#” учитывает теперь макросы переменных.
+
+[+] При выключенном режиме записи в ProjectMaker данные из профиля, переменных и IntelliSearch теперь вставляются в поля.
+
+[+] Улучшена обработка ошибок, в лог пишутся более понятные сообщения об ошибках.
+
+[+] При неправильных авторизационных данных действие “Работа с почтой” завершается после первой попытки.
+
+[+] Обновлен GeoIP в ProxyChecker.
+
+[+] Добавлен вывод сообщений об ошибке действия «If» в ZennoPoster.
+
+[+] Добавлена поддержка сервиса BypassCaptcha.
+
+[+] Ускорена обработка источников прокси с JavaScript.
+
+[+] Добавлен C# метод [ZennoPoster.InterruptTask](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~InterruptTask.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~InterruptTask.html") для прерывания заданий.
+
+[+] Добавлено свойство в C# [project.Path](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Path.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Path.html"), то же самое, что и [project.Directory](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Directory.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Directory.html"), только с терминирующим \ в конце.
+
+[+] Добавлен C# метод [HtmlElement.Reload](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.HtmlElement~Reload.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.HtmlElement~Reload.html") для решения проблем неработающих Flash объектов.
+
+[+] Добавлен C# метод [ZennoPoster.ValidateEmail](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ValidateEmail.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ValidateEmail.html") для проверки валидности почтового ящика.
+
+[+] Добавили поддержку прокси сервиса [luminati.io](http://luminati.io/?affiliate=email/darkdiver@zennolab.com "http://luminati.io/?affiliate=email/darkdiver@zennolab.com").
+
+## Исправленные баги:
+
+[\] Исправлено отключение CSS.
+
+[\] Исправлено заполнение некоторых полей (логин, имя и т.п.) при полной эмуляции.
+
+[\] Исправлена авторизация в социальных сетях.
+
+[\] Исправлено взятие текста элемента, теперь не берётся мусор в тексте.
+
+[\] Исправлено скачивание файлов.
+
+[\] Исправлена вставка через Ctrl+V.
+
+[\] Исправлены некоторые утечки памяти.
+
+[\] Исправлено отключение звука.
+
+[\] Исправлена поддержка socks5 с авторизацией.
+
+[\] Исправлено получение instance.ActiveTab.Handle.
+
+[\] Обращение к свойству instance.ActiveTab.Title больше не вызывает зависание.
+
+[\] Исправлена работа cookie.
+
+[\] Исправлено именование файлов при загрузке их HTTP-запросами.
+
+[\] Исправлена работа отключения рекламы.
+
+[\] Исправлена обработка событий HTML элементов, не входящих в текущий список событий (например paste).
+
+[\] Исправлена ошибка в ProjectMaker, когда при вырезании и вставке нескольких групп не происходило их удаление.
+
+[\] Исправлена проблема отвязки списков и таблиц от заданий.
+
+[\] Исправлена очистка неиспользуемых переменных при наличии в проекте действия “Проект в проекте”.
+
+[\] Исправлено сохранение списков при изменении их через C# код через индексатор.

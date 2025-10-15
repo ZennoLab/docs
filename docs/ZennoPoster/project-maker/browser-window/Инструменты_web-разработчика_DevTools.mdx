@@ -1,0 +1,93 @@
+﻿---
+sidebar_position: 6
+title: "Инструменты web-разработчика (DevTools)"
+description: ""
+date: "2025-08-18"
+converted: true
+originalFile: "Инструменты web-разработчика (DevTools).txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1331134465/web-+DevTools"
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1331134465/web-+DevTools)** — Источник данного материала
+
+_______________________________________________  
+## Описание
+
+DevTools - очень мощный инструмент для работы с HTML страницей, анализа запросов, отладки JavaScript.
+
+:::warning Внимание
+Инструменты web-разработчика доступны только для Chrome движка.
+:::
+
+![image-20210601-124831](./assets/Инструменты_web-разработчика_(DevTools)/Инструменты_web-разработчика_(DevTools)_pic1.png)
+
+
+
+  
+
+## Как открыть окно?
+
+Отобразить окно можно кликнув по соответствующей кнопке справа от адресной строки [❗→ браузера](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373") ProjectMaker
+
+![image-20211226-161922](./assets/Инструменты_web-разработчика_(DevTools)/Инструменты_web-разработчика_(DevTools)_pic2.png)
+
+
+
+  
+
+## Для чего это используется?
+
+- Взаимодействие с DOM моделью страницы (поиск элементов, удаление, модификация)
+- Анализ сделанных страницей [❗→ запросов](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085713 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085713")
+
+  
+
+## Как пользоваться
+
+### Кнопка Inspect
+
+![image-20210601-130008](./assets/Инструменты_web-разработчика_(DevTools)/Инструменты_web-разработчика_(DevTools)_pic3.png)
+
+
+
+Нажмите эту кнопку и наведите курсор мыши на любой элемент в окне браузере и этот элемент тут же будет подсвечен во вкладке *Elements.
+
+### Вкладка Elements
+
+![image-20210601-125200](./assets/Инструменты_web-разработчика_(DevTools)/Инструменты_web-разработчика_(DevTools)_pic4.png)
+
+
+
+В данной вкладке можно проанализировать и модифицировать DOM текущей вкладки - изменить HTML код элементов (удалить или добавить атрибуты), можно вырезать часть элементов.
+
+#### Поиск по XPath
+
+Данное окно можно использовать для тестирования [❗→ XPath](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419") запросов: открываете вкладку *Elements, нажимаете комбинацию клавиш `Ctrl+F`, внизу окна появится поле для ввода поисковой фразы (1) (можно вводить простой текст, XPath, CSS Selector'ы).
+Найденные элементы сразу будут подсвечиваться (2).
+
+![image-20210601-124547](./assets/Инструменты_web-разработчика_(DevTools)/Инструменты_web-разработчика_(DevTools)_pic5.png)
+
+
+
+### Вкладка Console
+
+Тут можно составить и отладить JavaScript код. Весь код выполняется в контексте текущей вкладки, т.е. тут доступны все модули, библиотеки, объекты, которые загружены на текущей странице.
+Когда код будет готов его можно будет запустить с помощью экшена [❗→ Код JavaScript](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489259137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489259137") 
+
+### Вкладка Network
+
+![image-20210601-130903](./assets/Инструменты_web-разработчика_(DevTools)/Инструменты_web-разработчика_(DevTools)_pic6.png)
+
+
+
+Здесь будут отображены все запросы, которые были отправлены при загрузке данной страницы. Это может очень помочь при написании собственных [❗→ запросов](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085713 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085713").
+
+  
+
+## Полезные ссылки
+
+- [Официальная документация](https://developer.chrome.com/docs/devtools/ "https://developer.chrome.com/docs/devtools/") (на английском)
+- [Обзор всех инструментов разработчика Chrome DevTools](https://habr.com/ru/company/simbirsoft/blog/337116/ "https://habr.com/ru/company/simbirsoft/blog/337116/") (Хабр)
+- [❗→ Окно траффика](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465")

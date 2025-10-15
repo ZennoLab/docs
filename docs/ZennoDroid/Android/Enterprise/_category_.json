@@ -3,7 +3,8 @@
     "position": 2,
     "link": {
       "type": "generated-index",
-      "title": "Версия Enterprise"
+      "title": "Версия Enterprise",
+      "slug": "/android/enterprise"
     }
   }
   
