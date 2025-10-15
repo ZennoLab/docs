@@ -6,3 +6,6 @@
 /build
 .vs/
 docusaurus.config.js
+.*/
+!.github/
+!.vscode/
