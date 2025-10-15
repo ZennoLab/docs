@@ -93,7 +93,7 @@ const getItems = (locale, defaultLocale) => {
     description: productsCard6Description,
     action: {
       label: productsBtn,
-      link: '/zennoproxychecker/intoduction',
+      link: '/zennoproxychecker/introduction',
       type: ButtonType.PRIMARY
     }
   }, {
