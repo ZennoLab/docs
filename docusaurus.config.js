@@ -136,7 +136,7 @@ const config = {
       {
         redirects: [
           {
-            to: '/zennoproxy/category/getting-started',
+            to: '/zennoproxy/getting-started',
             from: ['/zennoproxy/basics/getting-started', '/zennoproxy/intro'],
           },
         ],
@@ -253,7 +253,7 @@ const config = {
             items: [
               {
                 label: 'Начало работы',
-                to: '/zennoproxy/basics/getting-started',
+                to: '/zennoproxy/getting-started',
               },
             ],
           },
@@ -262,7 +262,7 @@ const config = {
             items: [
               {
                 label: 'Начало работы',
-                to: '/zennobrowser/basics/getting-started',
+                to: '/zennobrowser/install-and-setting/getting_started',
               },
             ],
           },
