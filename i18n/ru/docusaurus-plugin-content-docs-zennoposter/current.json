@@ -351,16 +351,16 @@
     "message": "Настройки ProjectMaker позволяют оптимизировать процесс записи Вашего проекта, настроить логи, отладить выполнение проекта, и многое другое.",
     "description": "The generated-index page description for category ProjectMaker Settings in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Инструменты": {
-    "message": "Инструменты",
-    "description": "The label for category Инструменты in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.ProjectMaker Tools": {
+    "message": "Инструменты ProjectMaker",
+    "description": "The label for category ProjectMaker Tools in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Инструменты.link.generated-index.title": {
-    "message": "Инструменты",
-    "description": "The generated-index page title for category Инструменты in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.ProjectMaker Tools.link.generated-index.title": {
+    "message": "Инструменты ProjectMaker",
+    "description": "The generated-index page title for category ProjectMaker Tools in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Инструменты.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.ProjectMaker Tools.link.generated-index.description": {
     "message": "Описание доступных инструментов для разработки и тестирования проектов в программе ProjectMaker",
-    "description": "The generated-index page description for category Инструменты in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category ProjectMaker Tools in sidebar zennoposterSidebar"
   }
 }

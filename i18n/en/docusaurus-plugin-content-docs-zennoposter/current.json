@@ -326,5 +326,17 @@
   "sidebar.zennoposterSidebar.category.ProjectMaker Settings.link.generated-index.description": {
     "message": "ProjectMaker settings let you optimize your project recording process, configure logs, debug your project, and much more.",
     "description": "The generated-index page description for category ProjectMaker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker Tools": {
+    "message": "ProjectMaker Tools",
+    "description": "The label for category ProjectMaker Tools in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker Tools.link.generated-index.title": {
+    "message": "ProjectMaker Tools",
+    "description": "The generated-index page title for category ProjectMaker Tools in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker Tools.link.generated-index.description": {
+    "message": "Description of the available tools for developing and testing projects in ProjectMaker",
+    "description": "The generated-index page description for category ProjectMaker Tools in sidebar zennoposterSidebar"
   }
 }

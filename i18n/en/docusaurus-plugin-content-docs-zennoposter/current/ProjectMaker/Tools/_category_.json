@@ -1,0 +1,10 @@
+{
+  "label": "ProjectMaker Tools",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "title": "ProjectMaker Tools",
+    "description": "Description of the available tools for developing and testing projects in ProjectMaker",
+    "slug": "/category/tools"
+  }
+}
