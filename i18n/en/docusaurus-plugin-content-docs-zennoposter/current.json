@@ -314,5 +314,17 @@
   "sidebar.zennoposterSidebar.category.Browser Window.link.generated-index.description": {
     "message": "This section covers the browser window in ProjectMaker. It discusses the capabilities for viewing and parsing pages, working with XPath and text selection, image search, using web developer tools (DevTools), and font emulation features.",
     "description": "The generated-index page description for category Browser Window in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker Settings": {
+    "message": "ProjectMaker Settings",
+    "description": "The label for category ProjectMaker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker Settings.link.generated-index.title": {
+    "message": "ProjectMaker Settings",
+    "description": "The generated-index page title for category ProjectMaker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker Settings.link.generated-index.description": {
+    "message": "ProjectMaker settings let you optimize your project recording process, configure logs, debug your project, and much more.",
+    "description": "The generated-index page description for category ProjectMaker Settings in sidebar zennoposterSidebar"
   }
 }

@@ -339,17 +339,17 @@
     "message": "Раздел посвящен обзору окна браузера в ProjectMaker. Здесь рассмотрены возможности просмотра и парсинга страниц, работы с XPath и выделением текста, поиска по картинке, использования инструментов web-разработчика (DevTools), а также возможности эмуляции шрифтов.",
     "description": "The generated-index page description for category Browser Window in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Настройки ProjectMaker": {
+  "sidebar.zennoposterSidebar.category.ProjectMaker Settings": {
     "message": "Настройки ProjectMaker",
-    "description": "The label for category Настройки ProjectMaker in sidebar zennoposterSidebar"
+    "description": "The label for category ProjectMaker Settings in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Настройки ProjectMaker.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.ProjectMaker Settings.link.generated-index.title": {
     "message": "Настройки ProjectMaker",
-    "description": "The generated-index page title for category Настройки ProjectMaker in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category ProjectMaker Settings in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Настройки ProjectMaker.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.ProjectMaker Settings.link.generated-index.description": {
     "message": "Настройки ProjectMaker позволяют оптимизировать процесс записи Вашего проекта, настроить логи, отладить выполнение проекта, и многое другое.",
-    "description": "The generated-index page description for category Настройки ProjectMaker in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category ProjectMaker Settings in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Инструменты": {
     "message": "Инструменты",
