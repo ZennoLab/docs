@@ -1,0 +1,122 @@
+﻿---
+sidebar_position: 5
+title: "Image Search"
+description: ""
+date: "2025-08-18"
+converted: true
+originalFile: "Поиск по картинке.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304"
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304)** — Source of this material
+
+_______________________________________________  
+# Image Search
+  
+## Description
+
+Allows you to click an element using visual search. It’s recommended to use this when it’s not possible to locate the element by other means, or if the element is drawn with Flash or [canvas](https://developer.mozilla.org/ru/docs/Web/API/Canvas_API "https://developer.mozilla.org/ru/docs/Web/API/Canvas_API").
+
+:::warning Attention
+This operation uses a lot of computer resources.
+:::
+
+![image-20200813-211635](./assets/Image_Search/Image_Search_pic1.png)
+
+  
+
+## How to add to your project?
+
+Hover your mouse over the element and call the context menu with the right mouse button.
+
+![image-20200813-211831](./assets/Image_Search/Image_Search_pic2.png)
+
+  
+
+## What is it used for?
+
+- Clicking an element that can’t be accessed using the [❗→ Run Event](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211") action.
+
+  
+
+## How does the window work?
+
+![image-20200814-180030](./assets/Image_Search/Image_Search_pic3.png)
+
+1. **Adjustable search area** – select a unique part of the element. If you’re selecting a button, you don’t need to select the entire thing, since it may contain a lot of uniform color.
+2. **Click target** – sets the click location inside the search area, and can be moved.
+3. **Match accuracy**.
+4. **Search** – search for the element in the browser window.
+
+![image-20210613-082930](./assets/Image_Search/Image_Search_pic4.png)
+
+:::info Info
+After you click the Search button, the found element in the browser window will be highlighted with a red frame.
+:::
+
+5. **Yes** – if the element is found according to your criteria.
+
+6. **No** – the search was incorrect, change the search parameters.
+
+When the element is correctly detected, proceed to click settings.
+
+![image-20200814-180412](./assets/Image_Search/Image_Search_pic5.png)
+
+1. Choose the *click type*.
+2. Test execution in the browser window.
+3. Add the configured action to your project.
+
+<details>
+<summary>Example</summary>
+
+You need to click a button using image search.
+
+![image-20200814-180819](./assets/Image_Search/Image_Search_pic6.png)
+
+In the browser window, open the search window and set a unique area.
+
+**Unique area**
+
+![image-20200814-181437](./assets/Image_Search/Image_Search_pic7.png)
+
+**Non-unique area**
+
+![image-20200814-181200](./assets/Image_Search/Image_Search_pic8.png)
+
+The button contains a lot of solid color.
+
+Set the click type—in this case, left mouse button—and test it in the browser window.
+
+![image-20200814-181604](./assets/Image_Search/Image_Search_pic9.png)
+
+The click was successfully performed in the browser window—add the action to the project canvas.
+
+![image-20200814-181704](./assets/Image_Search/Image_Search_pic10.png)
+
+All done, you can continue working with your project.
+
+![image-20200814-181851](./assets/Image_Search/Image_Search_pic11.png)
+
+</details>
+  
+
+## Example use case
+
+This can be useful in Flash games or applications, since there’s no way to access specific elements. For example, if you need to click a button in a Flash application, the algorithm will be as follows:
+
+![image-20200814-182208](./assets/Image_Search/Image_Search_pic12.png)
+
+1. Go to the page and wait for it to fully load.
+2. Hover your mouse over the element, open the context menu and select “Image Search”.
+3. Set a unique image search area and specify click parameters.
+4. Test in the browser window.
+5. Add the action to your project.
+
+  
+
+## Useful links
+
+- [❗→ Mouse Emulation](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315158 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315158")
+- [❗→ Browser Window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373")

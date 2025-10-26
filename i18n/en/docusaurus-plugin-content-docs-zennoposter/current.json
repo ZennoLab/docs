@@ -302,5 +302,17 @@
   "sidebar.zennoposterSidebar.category.Project Debugging.link.generated-index.description": {
     "message": "Description of features and tools designed for debugging projects in ProjectMaker.",
     "description": "The generated-index page description for category Project Debugging in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Browser Window": {
+    "message": "Browser Window",
+    "description": "The label for category Browser Window in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Browser Window.link.generated-index.title": {
+    "message": "Browser Window in the ProjectMaker Interface",
+    "description": "The generated-index page title for category Browser Window in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Browser Window.link.generated-index.description": {
+    "message": "This section covers the browser window in ProjectMaker. It discusses the capabilities for viewing and parsing pages, working with XPath and text selection, image search, using web developer tools (DevTools), and font emulation features.",
+    "description": "The generated-index page description for category Browser Window in sidebar zennoposterSidebar"
   }
 }

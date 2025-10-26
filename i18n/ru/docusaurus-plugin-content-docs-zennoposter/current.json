@@ -327,17 +327,17 @@
     "message": "Описание функций и инструментов, предназначенных для отладки проектов в программе ProjectMaker.",
     "description": "The generated-index page description for category Project Debugging in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Окно браузера": {
+  "sidebar.zennoposterSidebar.category.Browser Window": {
     "message": "Окно браузера",
-    "description": "The label for category Окно браузера in sidebar zennoposterSidebar"
+    "description": "The label for category Browser Window in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Окно браузера.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Browser Window.link.generated-index.title": {
     "message": "Окно браузера в интерфейсе ProjectMaker",
-    "description": "The generated-index page title for category Окно браузера in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Browser Window in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Окно браузера.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Browser Window.link.generated-index.description": {
     "message": "Раздел посвящен обзору окна браузера в ProjectMaker. Здесь рассмотрены возможности просмотра и парсинга страниц, работы с XPath и выделением текста, поиска по картинке, использования инструментов web-разработчика (DevTools), а также возможности эмуляции шрифтов.",
-    "description": "The generated-index page description for category Окно браузера in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Browser Window in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Настройки ProjectMaker": {
     "message": "Настройки ProjectMaker",
