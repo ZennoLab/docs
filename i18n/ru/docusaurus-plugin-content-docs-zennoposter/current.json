@@ -362,5 +362,77 @@
   "sidebar.zennoposterSidebar.category.ProjectMaker Tools.link.generated-index.description": {
     "message": "Описание доступных инструментов для разработки и тестирования проектов в программе ProjectMaker",
     "description": "The generated-index page description for category ProjectMaker Tools in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Interface": {
+    "message": "Интерфейс",
+    "description": "The label for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Interface.link.generated-index.title": {
+    "message": "Интерфейс",
+    "description": "The generated-index page title for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Interface.link.generated-index.description": {
+    "message": "Раздел об интерфейсе приложения: главное меню, сайд-меню и обзор таблицы проектов.",
+    "description": "The generated-index page description for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings": {
+    "message": "Настройки ZennoPoster и ProxyChecker",
+    "description": "The label for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.title": {
+    "message": "Настройки ZennoPoster и ProxyChecker",
+    "description": "The generated-index page title for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.description": {
+    "message": "Глобальный раздел настроек: включает подраздел «Настройки ZennoPoster» и статью «Настройки ProxyChecker».",
+    "description": "The generated-index page description for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings": {
+    "message": "Настройки ZennoPoster",
+    "description": "The label for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.title": {
+    "message": "Настройки ZennoPoster",
+    "description": "The generated-index page title for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.description": {
+    "message": "Параметры работы ZennoPoster: общие настройки, потоки постера, выполнение проектов, инстансы, капчи, SMS-сервисы, переводчики, прокси-сервисы, модули контента, Google-таблицы, горячие клавиши, настройки плагинов, прочие настройки и почта.",
+    "description": "The generated-index page description for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery": {
+    "message": "Выполнение проектов",
+    "description": "The label for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.title": {
+    "message": "Выполнение проектов",
+    "description": "The generated-index page title for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.description": {
+    "message": "Запуск и управление выполнением проектов: параметры проекта, контекстное меню, создание BAT-файла, входные настройки ZennoPoster.",
+    "description": "The generated-index page description for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings": {
+    "message": "Параметры проекта",
+    "description": "The label for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.title": {
+    "message": "Параметры проекта",
+    "description": "The generated-index page title for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.description": {
+    "message": "Основные параметры выполнения: настройки, остановка, лог, планировщик расписания, инстансы.",
+    "description": "The generated-index page description for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner": {
+    "message": "Планировщик расписания",
+    "description": "The label for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.title": {
+    "message": "Планировщик расписания",
+    "description": "The generated-index page title for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.description": {
+    "message": "Общая информация, возможности планировщика и отладчик расписания для автоматизации запусков.",
+    "description": "The generated-index page description for category Schedule Planner in sidebar zennoposterSidebar"
   }
 }

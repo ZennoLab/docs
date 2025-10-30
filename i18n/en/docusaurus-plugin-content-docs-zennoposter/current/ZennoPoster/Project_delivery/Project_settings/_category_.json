@@ -1,0 +1,9 @@
+{
+  "label": "Project parameters",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Project parameters",
+    "description": "Main execution parameters: settings, stop, log, schedule planner, instances."
+  }
+}

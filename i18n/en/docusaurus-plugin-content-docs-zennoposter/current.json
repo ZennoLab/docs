@@ -338,5 +338,77 @@
   "sidebar.zennoposterSidebar.category.ProjectMaker Tools.link.generated-index.description": {
     "message": "Description of the available tools for developing and testing projects in ProjectMaker",
     "description": "The generated-index page description for category ProjectMaker Tools in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Interface": {
+    "message": "Interface",
+    "description": "The label for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Interface.link.generated-index.title": {
+    "message": "Interface",
+    "description": "The generated-index page title for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Interface.link.generated-index.description": {
+    "message": "A section about the application interface: the main menu, side menu, and an overview of the project table.",
+    "description": "The generated-index page description for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings": {
+    "message": "ZennoPoster and ProxyChecker Settings",
+    "description": "The label for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.title": {
+    "message": "ZennoPoster and ProxyChecker Settings",
+    "description": "The generated-index page title for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.description": {
+    "message": "Global settings section: includes the 'ZennoPoster settings' subsection and the 'ProxyChecker Settings' article.",
+    "description": "The generated-index page description for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings": {
+    "message": "ZennoPoster settings",
+    "description": "The label for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.title": {
+    "message": "ZennoPoster settings",
+    "description": "The generated-index page title for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.description": {
+    "message": "ZennoPoster operating parameters: general settings, poster threads, project execution, instances, captchas, SMS services, translators, proxy services, content modules, Google Sheets, hotkeys, plugin settings, other settings and mail.",
+    "description": "The generated-index page description for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery": {
+    "message": "Project Delivery",
+    "description": "The label for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.title": {
+    "message": "Executing projects",
+    "description": "The generated-index page title for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.description": {
+    "message": "Starting and managing project execution: project parameters, context menu, creating a BAT file, ZennoPoster input settings.",
+    "description": "The generated-index page description for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings": {
+    "message": "Project Settings",
+    "description": "The label for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.title": {
+    "message": "Project parameters",
+    "description": "The generated-index page title for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.description": {
+    "message": "Main execution parameters: settings, stop, log, schedule planner, instances.",
+    "description": "The generated-index page description for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner": {
+    "message": "Schedule Planner",
+    "description": "The label for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.title": {
+    "message": "Schedule Planner",
+    "description": "The generated-index page title for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.description": {
+    "message": "General information, scheduler features, and the schedule debugger for automating launches.",
+    "description": "The generated-index page description for category Schedule Planner in sidebar zennoposterSidebar"
   }
 }

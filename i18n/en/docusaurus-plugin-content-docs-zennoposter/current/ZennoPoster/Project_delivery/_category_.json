@@ -1,0 +1,9 @@
+{
+  "label": "Project Delivery",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Executing projects",
+    "description": "Starting and managing project execution: project parameters, context menu, creating a BAT file, ZennoPoster input settings."
+  }
+}

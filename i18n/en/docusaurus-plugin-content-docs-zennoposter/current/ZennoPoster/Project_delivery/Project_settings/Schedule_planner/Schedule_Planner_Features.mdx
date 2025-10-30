@@ -1,0 +1,116 @@
+﻿---
+sidebar_position: 2
+title: "Description of Scheduler Features"
+description: ""
+date: "2025-09-10"
+converted: true
+originalFile: "Описание возможностей планировщика.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/547258378"
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/547258378)** — Source of this material
+
+_______________________________________________  
+# Description of Scheduler Features
+
+# Main functions
+
+## 1. How to execute
+
+![1](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic1.png)
+
+
+
+This section is responsible for setting the frequency of the task. There are 5 available execution options:
+
+- **Once** — the task will be executed exactly one time.
+- **Every day** — the task will be executed every day from Mon to Sun.
+- **Every week** — the task will be executed on selected days of the week. Check the needed days with the checkboxes.
+
+![image-20200413-110433](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic2.png)
+
+
+
+- **Every month** — the task will be executed on specific dates. List individual days of the month separated by commas, and use a dash for date ranges. Example: 1-5, 10, 20 (the project will run from the 1st to the 5th of the month, and also on the 10th and 20th).
+
+![image-20200413-110514](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic3.png)
+
+
+
+- **By signal** — the task will start when an uploaded file appears. If you want the file to be deleted after the task starts, check the “Delete file” checkbox.
+
+## 2. Start
+
+![2](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic4.png)
+
+
+
+This section sets how and when the task will start.
+
+- **Immediately** — the task will start as soon as the scheduler is enabled.
+- **By date** — the task will start at the specified date and time.
+
+## 3. How many to run
+
+![3](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic5.png)
+
+
+
+In this field, specify how many times you want the project to run for this task. You can enter an exact number or a range, from which the number of runs will be chosen randomly. To add a range, click the “Set range” link.
+
+The “Reset successes” checkbox resets the success counter from the “Stop” tab.
+
+## 4. When to repeat
+
+![4](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic6.png)
+
+
+
+This section defines time intervals when the project should run. To add an interval, click the “Add interval” button ** and in the popup enter the time frame. To add another interval, just click the button again. The number of intervals is unlimited.
+
+![Screenshot_2](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic7.png)
+
+
+
+If no intervals are set, the project will run 24/7. This feature is available in the “Every day,” “Every week,” and “Every month” modes.
+
+## 5. How to repeat
+
+![5](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic8.png)
+
+
+
+This function controls the type of repetition for the project. It is activated in the “Every day”, “Every week,” and “Every month” execution modes.
+
+There are 4 available ways to repeat the task:
+
+- **In a row** — the task will start again as soon as the previous repetition finishes.
+- **In a row with a pause** — works the same as “In a row,” but adds a pause between repetitions. You can specify the pause as an exact number or a range, and a random value will be chosen from the range. To add a range, click the “Set range” link. The time is specified in minutes.
+
+![image-20200413-111001](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic9.png)
+
+
+
+- **Regularly** — the task will start again after the specified time, regardless of when the previous run finished, similar to the “In a row with a pause” mode.
+- **Distribute across interval** — repeats of the task will be automatically distributed across the intervals set in “When to repeat” (section 4).
+
+## 6. Finish
+
+![6](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic10.png)
+
+
+
+This section sets the conditions for completing the task. This feature is available in “Every day,” “Every week,” and “Every month” modes.
+
+There are 3 available ways to complete the task:
+
+- **By date** — the project will run until the specified date and time.
+- **After N repetitions** — the project will finish after exactly the number of repetitions specified, or any number within a set range. To add a range, click the “Set range” link.
+
+![image-20200413-111113](./assets/Schedule_Planner_Features/Schedule_Planner_Features_pic11.png)
+
+
+
+- **No end** — the project will run an unlimited number of times, until you stop it manually.

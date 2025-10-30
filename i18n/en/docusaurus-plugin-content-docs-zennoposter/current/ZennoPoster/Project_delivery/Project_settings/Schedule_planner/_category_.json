@@ -1,0 +1,9 @@
+{
+  "label": "Schedule Planner",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Schedule Planner",
+    "description": "General information, scheduler features, and the schedule debugger for automating launches."
+  }
+}
