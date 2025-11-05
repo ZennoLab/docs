@@ -1,0 +1,9 @@
+{
+  "label": "ZennoPoster settings",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "ZennoPoster settings",
+    "description": "ZennoPoster parameters: general settings, poster threads, project execution, instances, captchas, SMS services, translators, proxy services, content modules, Google Sheets, hotkeys, plugin settings, other settings, and mail."
+  }
+}

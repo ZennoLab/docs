@@ -350,6 +350,30 @@
   "sidebar.zennoposterSidebar.category.Interface.link.generated-index.description": {
     "message": "A section about the application interface: the main menu, side menu, and an overview of the project table.",
     "description": "The generated-index page description for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings": {
+    "message": "ZennoPoster and ProxyChecker Settings",
+    "description": "The label for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.title": {
+    "message": "ZennoPoster and ProxyChecker Settings",
+    "description": "The generated-index page title for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.description": {
+    "message": "Global settings section: includes the 'ZennoPoster settings' subsection and the 'ProxyChecker Settings' article.",
+    "description": "The generated-index page description for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings": {
+    "message": "ZennoPoster settings",
+    "description": "The label for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.title": {
+    "message": "ZennoPoster settings",
+    "description": "The generated-index page title for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.description": {
+    "message": "ZennoPoster operating parameters: general settings, poster threads, project execution, instances, captchas, SMS services, translators, proxy services, content modules, Google Sheets, hotkeys, plugin settings, other settings and mail.",
+    "description": "The generated-index page description for category ZennoPoster settings in sidebar zennoposterSidebar"
   }
 }
 

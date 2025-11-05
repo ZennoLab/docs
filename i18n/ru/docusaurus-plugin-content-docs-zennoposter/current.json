@@ -386,6 +386,30 @@
   "sidebar.zennoposterSidebar.category.Interface.link.generated-index.description": {
     "message": "Раздел об интерфейсе приложения: главное меню, сайд-меню и обзор таблицы проектов.",
     "description": "The generated-index page description for category Interface in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings": {
+    "message": "Настройки ZennoPoster и ProxyChecker",
+    "description": "The label for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.title": {
+    "message": "Настройки ZennoPoster и ProxyChecker",
+    "description": "The generated-index page title for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster and ProxyChecker Settings.link.generated-index.description": {
+    "message": "Глобальный раздел настроек: включает подраздел «Настройки ZennoPoster» и статью «Настройки ProxyChecker».",
+    "description": "The generated-index page description for category ZennoPoster and ProxyChecker Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings": {
+    "message": "Настройки ZennoPoster",
+    "description": "The label for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.title": {
+    "message": "Настройки ZennoPoster",
+    "description": "The generated-index page title for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.description": {
+    "message": "Параметры работы ZennoPoster: общие настройки, потоки постера, выполнение проектов, инстансы, капчи, SMS-сервисы, переводчики, прокси-сервисы, модули контента, Google-таблицы, горячие клавиши, настройки плагинов, прочие настройки и почта.",
+    "description": "The generated-index page description for category ZennoPoster settings in sidebar zennoposterSidebar"
   }
 }
 
