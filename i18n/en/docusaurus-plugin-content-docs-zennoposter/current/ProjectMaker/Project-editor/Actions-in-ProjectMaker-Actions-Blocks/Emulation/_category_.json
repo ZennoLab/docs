@@ -1,0 +1,10 @@
+{
+  "label": "Emulation",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "title": "Emulation",
+    "description": "ZennoPoster Actions for emulating user behaviors: Mouse emulation (human-like paths, speed/jitter, Left/Right/Middle clicks, double-click, wheel, drag & drop), Keyboard emulation (character-by-character input, delays, Ctrl/Alt/Shift modifiers, combinations, paste from clipboard), Page view simulation (natural scrolling, pauses and reading time, variable speed, random stops, moving focus/visibility, anti-detection behavior).",
+    "slug": "/category/zp_actions-emulation"
+  }
+}

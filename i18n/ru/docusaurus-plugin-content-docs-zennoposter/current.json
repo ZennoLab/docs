@@ -243,17 +243,17 @@
     "message": "Actions ZennoPoster для конфигурации SMTP/IMAP/POP3: хост, порт, TLS/SSL, аутентификация (пароль, OAuth2 при поддержке сервиса), тест соединения, безопасное хранение данных, рекомендации по двум факторам и паролям приложений.",
     "description": "The generated-index page description for category Mail Service Connection Settings in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Эмуляция": {
+  "sidebar.zennoposterSidebar.category.Emulation": {
     "message": "Эмуляция",
-    "description": "The label for category Эмуляция in sidebar zennoposterSidebar"
+    "description": "The label for category Emulation in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Эмуляция.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Emulation.link.generated-index.title": {
     "message": "Эмуляция",
-    "description": "The generated-index page title for category Эмуляция in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Emulation in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Эмуляция.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Emulation.link.generated-index.description": {
     "message": "Actions ZennoPoster для эмуляции пользовательских действий: Эмуляция мыши (человеческие траектории, скорость/джиттер, клики Left/Right/Middle, двойной клик, колесо, drag&drop), Эмуляция клавиатуры (посимвольный ввод, задержки, модификаторы Ctrl/Alt/Shift, сочетания, вставка из буфера), Имитация просмотра страницы (естественный скролл, паузы и время чтения, переменная скорость, случайные остановки, перемещение фокуса/видимости, антидетект-поведение).",
-    "description": "The generated-index page description for category Эмуляция in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Emulation in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Проксичекер": {
     "message": "Проксичекер",

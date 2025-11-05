@@ -206,5 +206,17 @@
   "sidebar.zennoposterSidebar.category.Mail Service Connection Settings.link.generated-index.description": {
     "message": "ZennoPoster actions for configuring SMTP/IMAP/POP3: host, port, TLS/SSL, authentication (password, OAuth2 if supported by the service), connection test, secure data storage, recommendations for two-factor authentication and app-specific passwords.",
     "description": "The generated-index page description for category Mail Service Connection Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Emulation": {
+    "message": "Emulation",
+    "description": "The label for category Emulation in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Emulation.link.generated-index.title": {
+    "message": "Emulation",
+    "description": "The generated-index page title for category Emulation in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Emulation.link.generated-index.description": {
+    "message": "ZennoPoster Actions for emulating user behaviors: Mouse emulation (human-like paths, speed/jitter, Left/Right/Middle clicks, double-click, wheel, drag & drop), Keyboard emulation (character-by-character input, delays, Ctrl/Alt/Shift modifiers, combinations, paste from clipboard), Page view simulation (natural scrolling, pauses and reading time, variable speed, random stops, moving focus/visibility, anti-detection behavior).",
+    "description": "The generated-index page description for category Emulation in sidebar zennoposterSidebar"
   }
 }
