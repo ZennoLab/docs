@@ -291,17 +291,17 @@
     "message": "Actions ZennoPoster для работы с FTP/FTPS: Соединение FTP (хост, порт, TLS/SSL, активный/пассивный режим, кодировка, таймауты, повторные попытки, проверка доступности), Директории FTP (листинг, переход, создание, удаление, маски и фильтры), Файлы FTP (загрузка/выгрузка, возобновление, проверка существования, размер/дата изменения, удаление, перенос/переименование). Поддержка логирования операций и обработки ошибок.",
     "description": "The generated-index page description for category FTP in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Проект": {
+  "sidebar.zennoposterSidebar.category.Project": {
     "message": "Проект",
-    "description": "The label for category Проект in sidebar zennoposterSidebar"
+    "description": "The label for category Project in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Проект.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Project.link.generated-index.title": {
     "message": "Проект",
-    "description": "The generated-index page title for category Проект in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Project in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Проект.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Project.link.generated-index.description": {
     "message": "Actions ZennoPoster для управления проектами: Проект в проекте (вложенные проекты с передачей параметров/переменных, контекстом выполнения, ожиданием результата и обработкой ошибок), Входные настройки (профили/пресеты, типы полей, значения по умолчанию, валидация), Интерфейс бота BotUI (формы, шаги диалога, кнопки, события, привязка к переменным), Шифрование проектов (защита исходников, хранение секретов/ключей, права доступа), Заметки в проекте (описание логики, changelog, теги/метаданные для поиска и сопровождения).",
-    "description": "The generated-index page description for category Проект in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Project in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Свой код": {
     "message": "Свой код",

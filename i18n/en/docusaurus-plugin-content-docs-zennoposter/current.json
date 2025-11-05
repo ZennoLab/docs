@@ -254,5 +254,17 @@
   "sidebar.zennoposterSidebar.category.FTP.link.generated-index.description": {
     "message": "ZennoPoster actions for working with FTP/FTPS: FTP connection (host, port, TLS/SSL, active/passive mode, encoding, timeouts, retries, availability check), FTP directories (listing, navigation, creation, deletion, masks and filters), FTP files (upload/download, resume, existence check, size/modified date, delete, move/rename). Supports operation logging and error handling.",
     "description": "The generated-index page description for category FTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project": {
+    "message": "Project",
+    "description": "The label for category Project in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project.link.generated-index.title": {
+    "message": "Project",
+    "description": "The generated-index page title for category Project in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project.link.generated-index.description": {
+    "message": "ZennoPoster Actions for project management: Project in Project (nested projects with parameter/variable passing, execution context, result waiting, and error handling), Input settings (profiles/presets, field types, default values, validation), BotUI Bot Interface (forms, dialog steps, buttons, events, variable binding), Project Encryption (source protection, secrets/keys storage, access rights), Project Notes (logic description, changelog, tags/metadata for search and maintenance).",
+    "description": "The generated-index page description for category Project in sidebar zennoposterSidebar"
   }
 }
