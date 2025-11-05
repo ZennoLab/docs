@@ -87,17 +87,17 @@
     "message": "Раздел, посвящённый функциям и возможностям редактора проектов ProjectMaker, включая работу с экшенами (кубиками) и категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
     "description": "The generated-index page description for category Project Editor in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\")": {
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Экшены\", \"Кубики\")": {
     "message": "Действия в ProjectMaker (\"Экшены\", \"Кубики\")",
-    "description": "The label for category Действия в ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+    "description": "The label for category Actions in ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.title": {
     "message": "Действия в ProjectMaker (\"Экшены\", \"Кубики\")",
-    "description": "The generated-index page title for category Действия в ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Actions in ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Действия в ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.description": {
     "message": "Подраздел о работе с действиями (экшенами, кубиками) в ProjectMaker и их категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
-    "description": "The generated-index page description for category Действия в ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Actions in ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Static Blocks Panel": {
     "message": "Панель статических блоков",
@@ -448,3 +448,4 @@
     "description": "The generated-index page description for category Schedule Planner in sidebar zennoposterSidebar"
   }
 }
+

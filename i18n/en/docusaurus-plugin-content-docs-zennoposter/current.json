@@ -278,5 +278,18 @@
   "sidebar.zennoposterSidebar.category.Custom code.link.generated-index.description": {
     "message": "ZennoPoster actions for embedding custom logic and integrating with external tools: C# code (.NET, build/compile, access to project variables, referencing assemblies and packages, GAC references), JavaScript code (script execution, data exchange, access to the environment), Program launch (CLI/GUI, arguments, working directory, exit codes, timeouts, STDOUT/STDERR redirection), Using directives and shared code (shared snippets/namespaces, reuse), Visual Studio project (DLL build, project connection, .NET target frameworks, dependencies). Includes best practices for security, isolation, logging, and error handling.",
     "description": "The generated-index page description for category Custom code in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Actions\", \"Blocks\")": {
+    "message": "Actions in ProjectMaker (\"Actions\", \"Blocks\")",
+    "description": "The label for category Actions in ProjectMaker (\"Actions\", \"Blocks\") in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Actions\", \"Blocks\").link.generated-index.title": {
+    "message": "Actions in ProjectMaker (\"Actions\", \"Blocks\")",
+    "description": "The generated-index page title for category Actions in ProjectMaker (\"Actions\", \"Blocks\") in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Actions\", \"Blocks\").link.generated-index.description": {
+    "message": "A subsection about working with actions (actions, blocks) in ProjectMaker and their categories: Data, Content Analysis, Lists, Tables, Browser, Tabs (working with web pages), Logic, Mail Handling, Emulation, Proxy Checker, HTTP, FTP, Project, Custom Code, Plugins, Integrating ZennoPoster with ZennoBrowser.",
+    "description": "The generated-index page description for category Actions in ProjectMaker (\"Actions\", \"Blocks\") in sidebar zennoposterSidebar"
   }
 }
+
