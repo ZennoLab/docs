@@ -1,0 +1,175 @@
+---
+sidebar_position: 6
+title: "Touch Event"
+description: ""
+date: "2025-07-30"
+converted: true
+originalFile: "Событие Touch.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch"
+---
+:::info **Please familiarize yourself with the [*Rules for using materials on this resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch)** — Source of this material
+
+_______________________________________________  
+# Swipe Event
+
+<details>
+<summary>Click here to expand the table of contents</summary>
+
+- 1 Description
+- 2 How do I add an action to my project?
+- 3 Where can this be used?
+- 4 How do I work with the action?
+ - 4.1 Selecting the event
+ - 4.2 Finding an element
+ - 4.3 The “Advanced” tab
+- 5 Usage example
+- 6 Useful links
+
+</details>
+  
+
+## Description
+
+This action allows you to emulate finger movements on the screen (swipe).
+
+
+## How do I add an action to my project?
+
+Through the context menu **Add action** → **Tabs** → **Swipe event**
+
+![image-20200816-113705](./assets/Swipe_Event/Swipe_Event_pic1.png)
+
+Or use the [❗→ smart search](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+
+## Where can this be used?
+
+- In cases when you need to emulate a phone or any other touchscreen device
+- When you want to make all actions as close to human-like as possible.
+
+
+## How do I work with the action?
+
+You need to enable “Recording” and [❗→ Input mode](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373#%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC-%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373#%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC-%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0") “Touch” in the browser window so that all actions performed in the browser will be automatically recorded as Touch events.
+
+![image-20200816-113838](./assets/Swipe_Event/Swipe_Event_pic2.png)
+
+
+
+### Selecting the event
+
+- **Swipe to element** — scrolls the page until the element becomes visible.
+- **Simple swipe** — Up / Down / Left / Right.
+
+
+### Finding an element
+
+Before you can interact with an element on the page, you need to find it. In actions like [❗→ Get value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124"), [❗→ Set value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117"), [❗→ Trigger event](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211"), [❗→ Touch event](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386"), [❗→ Swipe event](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735739970 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735739970") there are two ways to search for elements — classic and XPath.
+
+**Classic** — Search by HTML element parameters: tag, attribute, and value.
+
+![image-20200805-202115](./assets/Swipe_Event/Swipe_Event_pic3.png)
+
+
+
+**XPath** — searching with [❗→ XPath expressions](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/"). This allows you to implement a more flexible and robust way to find data compared to classic search or regular expressions.
+
+![image-20200805-202209](./assets/Swipe_Event/Swipe_Event_pic4.png)
+
+
+
+### **Which tab**
+
+Select the tab where the element will be searched for.
+Possible values:
+
+- Active tab
+- First tab
+- By name — when you select this option, an input field for the tab name will appear.
+- By number — you’ll need to enter the tab number in the input field (numbering starts from zero!)
+
+### **Document**
+
+It’s recommended to set the value to **-1** (search in all documents on the page).
+
+### **Form**
+
+It’s also best to set this to **-1** (search in all forms on the page). Choosing this value makes your template more universal.
+
+<details>
+<summary>Why is it better to set &amp;quot;-1&amp;quot;?</summary>
+
+For example: there are 3 forms on a page — search, registration, product order. Suppose you need to click a button in the order form and you set the “Form” field to **2** (numbering starts from zero). Later, a new login form is added to the site before the order form. Now, number 2 will refer to the login form, and your template will either throw an error that the button wasn’t found, or (even worse) click another button in the wrong form.
+
+</details>
+:::note Note
+In the program’s settings, you can check two boxes — Search in all forms on the page and Search in all documents on the page — and then, when adding an element in the Action Builder, the document and form number will always be set to -1.
+:::
+
+### **Tag (classic search only)**
+
+![image-20210525-095347](./assets/Swipe_Event/Swipe_Event_pic5.png)
+
+This is the actual HTML tag from which you want to get the value.
+
+:::tip Tip
+You can specify several tags at once, separated by a semicolon (;)
+:::
+
+### **Conditions (classic search only)**
+
+![image-20210525-100053](./assets/Swipe_Event/Swipe_Event_pic6.png)
+
+1. **Group** — priority of this condition. The higher the number, the lower the priority. If you can’t find an element with the highest-priority condition, move to the next, and so on, until the element is found or all conditions run out. You can add several conditions with the same priority; in that case, the search will be performed using all those conditions at once.
+2. **Attribute** — HTML tag attribute to search by.
+3. **Type of search**:
+
+ 1. text — search by full or partial text match;
+ 2. notext — search for elements that do NOT have the specified text;
+ 3. regexp — search with [❗→ regular expressions](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111").  
+By default, searches are case-insensitive. If you want the regex search to be case-sensitive, add `(?-i)` at the very beginning of the expression (this disables case-insensitive search).
+4. **Value** — value of the HTML tag attribute.
+5. **Match #** — index number of the found element (starts from zero!). In this field, you can [❗→ use ranges](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137") and macros from [❗→ variables](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922").
+
+:::note Note
+To delete a search condition, left-click the field to the left of it (highlighted in blue in the screenshot) and press the delete button on your keyboard.
+:::
+
+:::note Note
+You can use several conditions to locate the desired element.
+:::
+
+It’s always important to choose search conditions in such a way that only one element remains — i.e., the index should be 0 (indexing starts from zero).
+
+### The “Advanced” tab
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcFVPV1pNFphRP380crVoUvtNHh12VjWMcSMmxJthEDPhJz7NGftLYiRiM_eSrkLzbLtlwl-Up4GDr8tCJOuKNkZWeLpbF3hvRgsQRd2mxVM2gnlfzzVhNACeus1EyqeuDskgUf6M-FuCgjDJ4iDzmRXMmE?key=Pz9vAiE2TGLNZQWdw8hHgQ)
+
+**“Wait before executing”.**
+
+How long the action should wait before running.
+
+**“Wait for element no more than”.**
+
+If the element doesn’t appear on the page within the specified time, the action will finish with an error.
+
+
+## Usage example
+
+Works great together with [❗→ Touch](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386"). First, perform a Swipe to the element, then Touch.
+
+It’s also useful for emulating live page scrolling or “flipping” through photos.
+
+The article about Touch also contains [❗→ swipe examples in C#](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch#%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D0%BD%D0%B0-C%23 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch#%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D0%BD%D0%B0-C%23").
+
+
+## Useful links
+
+- [❗→ Action Builder and XPath search](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337")
+- [❗→ Touch Event](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386")
+- [❗→ C# code (.NET C# code)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596")
+- [❗→ Trigger event](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211")
+- [❗→ Value ranges](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137")

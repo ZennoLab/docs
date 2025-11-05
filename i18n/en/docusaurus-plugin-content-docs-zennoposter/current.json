@@ -146,5 +146,17 @@
   "sidebar.zennoposterSidebar.category.Working with Cookies.link.generated-index.description": {
     "message": "Actions for working with cookies in various formats.",
     "description": "The generated-index page description for category Working with Cookies in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tabs (Working with Web Pages)": {
+    "message": "Tabs (Working with Web Pages)",
+    "description": "The label for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tabs (Working with Web Pages).link.generated-index.title": {
+    "message": "Tabs (Working with Web Pages)",
+    "description": "The generated-index page title for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tabs (Working with Web Pages).link.generated-index.description": {
+    "message": "Actions for working with web pages: navigate to page, tab operations (set and get values), perform events (Touch, Swipe), text presence check, captcha recognition (Captcha, ReCaptcha, hCaptcha), page settings, and content parsing.",
+    "description": "The generated-index page description for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
   }
 }

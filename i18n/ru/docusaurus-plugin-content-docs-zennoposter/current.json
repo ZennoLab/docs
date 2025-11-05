@@ -183,17 +183,17 @@
     "message": "Экшены для работы с cookies в различных форматах.",
     "description": "The generated-index page description for category Working with Cookies in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Табы Работа с веб-страницей": {
-    "message": "Табы Работа с веб-страницей",
-    "description": "The label for category Табы Работа с веб-страницей in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.Tabs (Working with Web Pages)": {
+    "message": "Табы (Работа с веб-страницей)",
+    "description": "The label for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Табы Работа с веб-страницей.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Tabs (Working with Web Pages).link.generated-index.title": {
     "message": "Табы Работа с веб-страницей",
-    "description": "The generated-index page title for category Табы Работа с веб-страницей in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Табы Работа с веб-страницей.link.generated-index.description": {
-    "message": "Экшены для работы с веб-страницей: переход на страницу, операции с табом (установка и получение значений), выполнение событий (Touch, Swipe), проверка наличия текста, распознавание капчи (Captcha, ReCaptcha), настройки страницы и парсинг контента.",
-    "description": "The generated-index page description for category Табы Работа с веб-страницей in sidebar zennoposterSidebar"
+  "sidebar.zennoposterSidebar.category.Tabs (Working with Web Pages).link.generated-index.description": {
+    "message": "Экшены для работы с веб-страницей: переход на страницу, операции с табом (установка и получение значений), выполнение событий (Touch, Swipe), проверка наличия текста, распознавание капчи (Captcha, ReCaptcha, hCaptcha), настройки страницы и парсинг контента.",
+    "description": "The generated-index page description for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Логика": {
     "message": "Логика",
