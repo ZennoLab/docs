@@ -1,0 +1,697 @@
+﻿---
+sidebar_position: 1
+title: "Table Operations"
+description: "Converted from HTML to MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Операции над таблицами.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972"
+---
+:::info **Please read the [*Terms of Use for the materials on this resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972)** — Source of this material
+
+_______________________________________________  
+  
+## Description
+
+Tables are used to handle more complex data than [❗→ lists](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375"), for example, a catalog for an online store where each row contains different data: name, price, description, etc.
+
+:::note Note
+The same action is used when working with Tables and with Google Sheets, but Google Sheets has a few unique actions that are covered in the article Operations with Google Sheets.
+:::
+
+  
+
+## How do I add a Table to a project?
+
+:::info Info
+Before you start, you need to create either a Table or a Google Sheet.
+:::
+
+![image-20200815-214108](./assets/Operations_on_Tables/Operations_on_Tables_pic1.png)
+
+
+
+## How do I add an action to a project?
+
+From the context menu, select **Add action** → **Tables** → **Table Operations**
+
+![image-20200814-184112](./assets/Operations_on_Tables/Operations_on_Tables_pic2.png)
+
+
+
+Or use the [❗→ smart search](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+## What is this used for?
+
+- Working with sets of data
+- Adding and retrieving table elements
+- Deleting rows, columns, and duplicates
+- Linking to a file
+- Getting the number of rows and columns
+
+## How does the action work?
+
+:::note Note
+You can specify the column number as either a number (starting from zero!) or, like in Excel, as an uppercase Latin letter!
+:::
+
+### Get column
+
+Put the values of a specific column into a [❗→ list](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")
+
+![image-20200814-190232](./assets/Operations_on_Tables/Operations_on_Tables_pic3.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Set the column or variable.
+4. The [❗→ list](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") where all column values will be saved.
+
+<details>
+<summary>Example</summary>
+
+Put all values from column B of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 into [❗→ List](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200814-191359](./assets/Operations_on_Tables/Operations_on_Tables_pic4.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![image-20200814-191010](./assets/Operations_on_Tables/Operations_on_Tables_pic5.png)
+
+
+
+After processing
+
+![image-20200814-191015](./assets/Operations_on_Tables/Operations_on_Tables_pic6.png)
+
+
+
+The values of the specified column are not deleted after processing
+
+[❗→ List](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200814-191239](./assets/Operations_on_Tables/Operations_on_Tables_pic7.png)
+
+
+
+</details>
+  
+
+### Get rows
+
+Get rows optionally deleting them from the table, and write them into a [❗→ list](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") or [❗→ variables](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872").
+
+![image-20200814-192818](./assets/Operations_on_Tables/Operations_on_Tables_pic8.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Row criteria (can use a variable): 
+a) All
+b) Does not contain text
+c) Does not match a [❗→ regular expression](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+d) First
+e) [❗→ By index](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137") (indexing from zero!)
+f) Random
+g) Contains text
+h) Matches a [❗→ regular expression](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+4. Should the rows be deleted after processing?
+5. Save the result to a [❗→ list](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") or variables.
+
+<details>
+<summary>Example</summary>
+
+Take random rows from [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 and put them into variables, deleting them after.
+
+![image-20200814-193546](./assets/Operations_on_Tables/Operations_on_Tables_pic9.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![image-20200814-193736](./assets/Operations_on_Tables/Operations_on_Tables_pic10.png)
+
+
+
+After processing
+
+![image-20200814-193830](./assets/Operations_on_Tables/Operations_on_Tables_pic11.png)
+
+
+
+Variables
+
+![image-20200814-194704](./assets/Operations_on_Tables/Operations_on_Tables_pic12.png)
+
+
+
+The variable *peremennay\_3 is empty because the table only contains columns A and B
+
+</details>
+  
+
+### Add list
+
+Put the values from a list into a specific column.
+
+![image-20200814-194954](./assets/Operations_on_Tables/Operations_on_Tables_pic13.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Set the column or variable.
+4. [❗→ List](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") with the values.
+
+<details>
+<summary>Example</summary>
+
+Take values from [❗→ List](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 and put them into column D of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-195131](./assets/Operations_on_Tables/Operations_on_Tables_pic14.png)
+
+
+
+[❗→ List](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200814-195254](./assets/Operations_on_Tables/Operations_on_Tables_pic15.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![image-20200814-195341](./assets/Operations_on_Tables/Operations_on_Tables_pic16.png)
+
+
+
+After processing
+
+![image-20200814-200051](./assets/Operations_on_Tables/Operations_on_Tables_pic17.png)
+
+
+
+List values are not deleted
+
+</details>
+  
+
+### Add row
+
+Add a row to the table.
+
+![image-20200814-200623](./assets/Operations_on_Tables/Operations_on_Tables_pic18.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Enter static text or a variable.
+4. Important note
+
+:::note Note
+The row will be added to the end of the table
+:::
+
+:::tip Tip
+If you want to add several rows at once, use the Text Processing-to Table action.
+:::
+
+<details>
+<summary>Example</summary>
+
+Add a custom text row to different columns.
+
+![image-20200814-200401](./assets/Operations_on_Tables/Operations_on_Tables_pic19.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![image-20200814-200750](./assets/Operations_on_Tables/Operations_on_Tables_pic20.png)
+
+
+
+After processing
+
+![image-20200814-201211](./assets/Operations_on_Tables/Operations_on_Tables_pic21.png)
+
+
+
+</details>
+  
+
+### Write to cell
+
+Add text to a specific cell.
+
+![image-20200814-201841](./assets/Operations_on_Tables/Operations_on_Tables_pic22.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Specify cell coordinates as static values or using [❗→ variables](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872").
+4. Enter static text or a variable.
+
+<details>
+<summary>Example</summary>
+
+Add text to a specific cell
+
+![image-20200814-202026](./assets/Operations_on_Tables/Operations_on_Tables_pic23.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![image-20200814-202516](./assets/Operations_on_Tables/Operations_on_Tables_pic24.png)
+
+
+
+After processing
+
+![image-20200814-202820](./assets/Operations_on_Tables/Operations_on_Tables_pic25.png)
+
+
+
+Rows are always added to the end of the table
+
+</details>
+  
+
+### Get number of columns
+
+How many columns the table contains
+
+![image-20200814-202916](./assets/Operations_on_Tables/Operations_on_Tables_pic26.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Variable for the result.
+
+:::note Note
+The variable will always contain only a numeric value
+:::
+
+<details>
+<summary>Example</summary>
+
+Get the number of columns in [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 and save to a variable
+
+![image-20200814-203017](./assets/Operations_on_Tables/Operations_on_Tables_pic27.png)
+
+
+
+Contents of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-203218](./assets/Operations_on_Tables/Operations_on_Tables_pic28.png)
+
+
+
+Result saved to variable *kolichestvo\_strok
+
+![image-20200814-203321](./assets/Operations_on_Tables/Operations_on_Tables_pic29.png)
+
+
+
+</details>
+  
+
+### Get number of rows
+
+How many rows the table contains
+
+![image-20200814-203431](./assets/Operations_on_Tables/Operations_on_Tables_pic30.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Variable for the result.
+
+:::note Note
+The variable will always contain only a numeric value
+:::
+
+<details>
+<summary>Example</summary>
+
+Get the number of rows in [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 and save to a variable
+
+![image-20200814-203759](./assets/Operations_on_Tables/Operations_on_Tables_pic31.png)
+
+
+
+Contents of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-203916](./assets/Operations_on_Tables/Operations_on_Tables_pic32.png)
+
+
+
+Result saved to variable *kolichestvo\_strok
+
+![image-20200814-205216](./assets/Operations_on_Tables/Operations_on_Tables_pic33.png)
+
+
+
+</details>
+  
+
+### Link to file
+
+Link the table to a file during project execution.
+
+This action should be used when the file path is not known at template start but will be determined while the project runs.
+
+![image-20200814-205851](./assets/Operations_on_Tables/Operations_on_Tables_pic34.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Select the file or specify a variable containing the file path.
+4. If there’s no file at the specified path, **Zennoposter** will automatically create it.
+
+<details>
+<summary>Example</summary>
+
+Link [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 to a specific file
+
+![image-20200814-205718](./assets/Operations_on_Tables/Operations_on_Tables_pic35.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 will be linked to the corresponding file
+
+</details>
+  
+
+### Read cell
+
+Get the value from a specific cell
+
+![image-20200814-205922](./assets/Operations_on_Tables/Operations_on_Tables_pic36.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Specify cell coordinates as static values or via variables.
+4. Variable for the result.
+
+<details>
+<summary>Example</summary>
+
+Save the value from cell B2 of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 to a variable
+
+![image-20200814-210356](./assets/Operations_on_Tables/Operations_on_Tables_pic37.png)
+
+
+
+Contents of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-211524](./assets/Operations_on_Tables/Operations_on_Tables_pic38.png)
+
+
+
+After running the action, the result is saved to variable *yacheika
+
+![image-20200814-210857](./assets/Operations_on_Tables/Operations_on_Tables_pic39.png)
+
+
+
+</details>
+  
+
+### Sort table
+
+Sort table elements in ascending or descending order.
+
+![image-20200814-212049](./assets/Operations_on_Tables/Operations_on_Tables_pic40.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. **Zennoposter** will automatically detect columns that have values and offer a selection.
+4. Use number comparing logic (this works when the column only has integers. If there are floating-point values, the column is sorted as strings).
+5. Set the sort type: *descending or *ascending.
+
+<details>
+<summary>Example</summary>
+
+Sort all columns of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 in descending order
+
+![image-20200814-212913](./assets/Operations_on_Tables/Operations_on_Tables_pic41.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![image-20200814-214045](./assets/Operations_on_Tables/Operations_on_Tables_pic42.png)
+
+
+
+After processing
+
+![image-20200814-214156](./assets/Operations_on_Tables/Operations_on_Tables_pic43.png)
+
+
+
+</details>
+  
+
+### Save to file
+
+Save the table to a file during project execution
+
+![image-20200814-214404](./assets/Operations_on_Tables/Operations_on_Tables_pic44.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Select the file or specify a variable containing the file path.
+
+:::warning Warning
+The function only overwrites files
+:::
+
+<details>
+<summary>Example</summary>
+
+Save the values of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 to a file
+
+![image-20200814-214710](./assets/Operations_on_Tables/Operations_on_Tables_pic45.png)
+
+
+
+Contents of [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-214822](./assets/Operations_on_Tables/Operations_on_Tables_pic46.png)
+
+
+
+After execution, all values will be saved to the file
+
+![image-20200814-214959](./assets/Operations_on_Tables/Operations_on_Tables_pic47.png)
+
+
+
+</details>
+  
+
+### Remove duplicates
+
+Remove duplicate values from the table
+
+![image-20200814-215041](./assets/Operations_on_Tables/Operations_on_Tables_pic48.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. **Zennoposter** will automatically detect columns with values and offer a choice.
+
+<details>
+<summary>Example</summary>
+
+Remove all duplicates in [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-215349](./assets/Operations_on_Tables/Operations_on_Tables_pic49.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 
+
+Before processing
+
+![image-20200814-215602](./assets/Operations_on_Tables/Operations_on_Tables_pic50.png)
+
+
+
+After processing
+
+![image-20200814-215736](./assets/Operations_on_Tables/Operations_on_Tables_pic51.png)
+
+
+
+</details>
+  
+
+### Delete column
+
+Completely removes the specified column from the table
+
+![image-20200814-215817](./assets/Operations_on_Tables/Operations_on_Tables_pic52.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Specify the column or variable.
+
+:::warning Warning
+The column will be deleted with all its values
+:::
+
+<details>
+<summary>Example</summary>
+
+Delete column B from [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776")1
+
+![image-20200815-211121](./assets/Operations_on_Tables/Operations_on_Tables_pic53.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![image-20200815-211536](./assets/Operations_on_Tables/Operations_on_Tables_pic54.png)
+
+
+
+After processing
+
+![image-20200815-211711](./assets/Operations_on_Tables/Operations_on_Tables_pic55.png)
+
+
+
+</details>
+  
+
+### Delete rows
+
+Deletes the specified rows from all columns
+
+![image-20200815-213422](./assets/Operations_on_Tables/Operations_on_Tables_pic56.png)
+
+
+
+1. Select the table you'll work with.
+2. Choose the function.
+3. Row criteria (can use a variable): 
+a) All
+b) Does not contain text
+c) Does not match a [❗→ regular expression](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+d) First
+e) [❗→ By index](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137") (indexing from zero!)
+f) Random
+g) Contains text
+h) Contains only whitespace
+i) Matches a [❗→ regular expression](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+
+:::warning Warning
+The specified row will be deleted in all columns
+:::
+
+<details>
+<summary>Example</summary>
+
+Delete the third row from [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![1NFJfjUKn7](./assets/Operations_on_Tables/Operations_on_Tables_pic57.png)
+
+
+
+[❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+Before processing
+
+![2020-07-25_13-31-21](./assets/Operations_on_Tables/Operations_on_Tables_pic58.png)
+
+
+
+After processing
+
+![2020-08-03_20-40-14](./assets/Operations_on_Tables/Operations_on_Tables_pic59.png)
+
+
+
+The third row was removed entirely
+
+</details>
+  
+
+### Recommendations for working with tables
+
+:::note Note
+Follow these rules to ensure your projects work correctly
+:::
+
+- Avoid linking very large files (hundreds of megabytes) to a table without the “[❗→ Save table changes to file](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB")” option, especially if you have little RAM.
+- When you use a table linked to one file in several templates, use the same delimiter. If in one template your columns are separated by `;` and in another by `-`, you will get an error.
+- If you run your template in multithreaded mode and want each thread to work with its own row, enable the “[❗→ Save table changes to file](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB")” option and take data from the table with [❗→ deletion after fetching](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972#%D0%92%D0%B7%D1%8F%D1%82%D1%8C-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972#%D0%92%D0%B7%D1%8F%D1%82%D1%8C-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8").
+- If all projects are only reading from the file, there shouldn’t be any issues. When you sync with the file, there’s one table for all threads and all changes in any thread are reflected in the table.
+- If you don’t use file syncing, then a separate table copy is created for each thread. In this case, deleting a row in one thread won’t affect the table in others.
+- Keep in mind that tables in RAM take up much more space than the original file on disk. For example, a table based on a 10 MB CSV file in 100 threads <u data-renderer-mark="true">without file syncing</u> can take up 5 GB in RAM. Try not to use lists and tables in “without syncing” mode unless absolutely necessary.
+
+  
+
+## Usage example
+
+Collect the names of needed products from web pages into a list and add them from the list to a table for further use.
+
+![2020-08-03_20-54-19](./assets/Operations_on_Tables/Operations_on_Tables_pic60.png)
+
+
+
+1. Load the pages.
+2. Collect the required values into a list.
+3. Create a table.
+4. Add the action and specify Add list.
+5. Specify the list and column to save values to.
+
+  
+
+## Useful links
+
+1. [❗→ Table](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776")
+2. [❗→ Google Sheets](/wiki/spaces/RU/pages/735576090 "/wiki/spaces/RU/pages/735576090")
+3. [❗→ List](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")
+4. [❗→ List operations](/wiki/spaces/RU/pages/534085798 "/wiki/spaces/RU/pages/534085798")
+5. [❗→ Project variables](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872")
+6. [❗→ Regex tester](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+7. [❗→ Value ranges](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137")

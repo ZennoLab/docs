@@ -1,0 +1,10 @@
+{
+  "label": "Tables",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Tables",
+    "description": "Actions for working with regular and Google Sheets.",
+    "slug": "/category/actions-tables"
+  }
+}
