@@ -266,5 +266,17 @@
   "sidebar.zennoposterSidebar.category.Project.link.generated-index.description": {
     "message": "ZennoPoster Actions for project management: Project in Project (nested projects with parameter/variable passing, execution context, result waiting, and error handling), Input settings (profiles/presets, field types, default values, validation), BotUI Bot Interface (forms, dialog steps, buttons, events, variable binding), Project Encryption (source protection, secrets/keys storage, access rights), Project Notes (logic description, changelog, tags/metadata for search and maintenance).",
     "description": "The generated-index page description for category Project in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Custom code": {
+    "message": "Custom code",
+    "description": "The label for category Custom code in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Custom code.link.generated-index.title": {
+    "message": "Custom code",
+    "description": "The generated-index page title for category Custom code in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Custom code.link.generated-index.description": {
+    "message": "ZennoPoster actions for embedding custom logic and integrating with external tools: C# code (.NET, build/compile, access to project variables, referencing assemblies and packages, GAC references), JavaScript code (script execution, data exchange, access to the environment), Program launch (CLI/GUI, arguments, working directory, exit codes, timeouts, STDOUT/STDERR redirection), Using directives and shared code (shared snippets/namespaces, reuse), Visual Studio project (DLL build, project connection, .NET target frameworks, dependencies). Includes best practices for security, isolation, logging, and error handling.",
+    "description": "The generated-index page description for category Custom code in sidebar zennoposterSidebar"
   }
 }

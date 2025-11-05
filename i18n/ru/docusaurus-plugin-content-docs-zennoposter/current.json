@@ -303,17 +303,17 @@
     "message": "Actions ZennoPoster для управления проектами: Проект в проекте (вложенные проекты с передачей параметров/переменных, контекстом выполнения, ожиданием результата и обработкой ошибок), Входные настройки (профили/пресеты, типы полей, значения по умолчанию, валидация), Интерфейс бота BotUI (формы, шаги диалога, кнопки, события, привязка к переменным), Шифрование проектов (защита исходников, хранение секретов/ключей, права доступа), Заметки в проекте (описание логики, changelog, теги/метаданные для поиска и сопровождения).",
     "description": "The generated-index page description for category Project in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Свой код": {
+  "sidebar.zennoposterSidebar.category.Custom code": {
     "message": "Свой код",
-    "description": "The label for category Свой код in sidebar zennoposterSidebar"
+    "description": "The label for category Custom code in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Свой код.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Custom code.link.generated-index.title": {
     "message": "Свой код",
-    "description": "The generated-index page title for category Свой код in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Custom code in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Свой код.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Custom code.link.generated-index.description": {
     "message": "Actions ZennoPoster для встраивания пользовательской логики и интеграции с внешними инструментами: C# код (.NET, сборка/компиляция, доступ к переменным проекта, подключение сборок и пакетов, ссылки из GAC), Код JavaScript (выполнение скриптов, обмен данными, доступ к окружению), Запуск программ (CLI/GUI, аргументы, рабочая директория, коды выхода, таймауты, перенаправление STDOUT/STDERR), Директивы using и общий код (общие сниппеты/пространства имён, реюз), Проект Visual Studio (сборка DLL, подключение к проекту, целевые фреймворки .NET, зависимости). Включены рекомендации по безопасности, изоляции, логированию и обработке ошибок.",
-    "description": "The generated-index page description for category Свой код in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Custom code in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Панель статических блоков": {
     "message": "Панель статических блоков",

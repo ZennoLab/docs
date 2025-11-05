@@ -1,0 +1,66 @@
+﻿---
+sidebar_position: 4
+title: "References from the Global Assembly Cache (GAC)"
+description: ""
+date: "2025-08-04"
+converted: true
+originalFile: "Ссылки из Global Assembly Cache (GAC).txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492175442/Global+Assembly+Cache+GAC"
+---
+:::info **Please review the [*Terms of Use for Materials on this Resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492175442/Global+Assembly+Cache+GAC)** — Source of this material
+
+_______________________________________________  
+# References from the Global Assembly Cache (GAC)
+
+:::info Information
+This article has been copied from the ZennoPoster documentation, since these steps are identical in both programs. The original is References from GAC. Within this article, you may encounter screenshots, internal documentation links, and other elements that pertain to ZennoPoster.
+:::
+
+## Description
+
+When using C# snippets, you have access to all the features of the C# language. It includes an extensive library of classes and methods that cover most tasks you might encounter. You can learn about the classes and their capabilities on the page [.NET Framework Class Library](http://msdn.microsoft.com/ru-ru/library/gg145045%28v=vs.110%29.aspx "http://msdn.microsoft.com/ru-ru/library/gg145045(v=vs.110).aspx")
+
+If you can't find a class that solves your problem, you can connect an external class library. To do this, you need to add the **References from GAC** element to the panel, where you can add your library.
+
+## How to use it?
+
+If you can't find a class that solves your problem when using C# snippets, you can connect an external class library. To do this, add the **References from GAC** element to the static blocks panel.
+
+![image-20200817-105211](./assets/References_from_GAC/References_from_GAC_pic1.png)
+
+
+
+A new element will appear on the static blocks panel:
+
+![image-20200817-105241](./assets/References_from_GAC/References_from_GAC_pic2.png)
+
+
+
+When you open this element, a window will appear listing the currently connected libraries.
+
+![image-20200817-105308](./assets/References_from_GAC/References_from_GAC_pic3.png)
+
+
+
+Use the “Add” button to add your library, either by selecting it from the list or uploading it from a file.
+
+![image-20200817-105344](./assets/References_from_GAC/References_from_GAC_pic4.png)
+
+
+
+You can also set a filter to search for the data you need.
+
+![image-20200817-105411](./assets/References_from_GAC/References_from_GAC_pic5.png)
+
+
+
+Once you've added the required library, you need to specify a new namespace using the block [❗→ using Directives and Shared Code](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086229/Using- "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086229/Using-").
+
+![image-20220211-163401](./assets/References_from_GAC/References_from_GAC_pic6.png)
+
+
+
+When using either the standard .NET Framework class library or a third-party library, to access classes without specifying the namespace and to keep your code neat, it's recommended to use [❗→ using Directives and Shared Code](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086229/Using- "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086229/Using-").

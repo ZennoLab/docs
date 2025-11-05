@@ -1,0 +1,10 @@
+{
+  "label": "Custom code",
+  "position": 13,
+  "link": {
+    "type": "generated-index",
+    "title": "Custom code",
+    "description": "ZennoPoster actions for embedding custom logic and integrating with external tools: C# code (.NET, build/compile, access to project variables, referencing assemblies and packages, GAC references), JavaScript code (script execution, data exchange, access to the environment), Program launch (CLI/GUI, arguments, working directory, exit codes, timeouts, STDOUT/STDERR redirection), Using directives and shared code (shared snippets/namespaces, reuse), Visual Studio project (DLL build, project connection, .NET target frameworks, dependencies). Includes best practices for security, isolation, logging, and error handling.",
+    "slug": "/category/actions-custom-code"
+  }
+}
