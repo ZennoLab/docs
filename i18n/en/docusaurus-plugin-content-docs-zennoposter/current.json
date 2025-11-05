@@ -122,5 +122,29 @@
   "sidebar.zennoposterSidebar.category.Lists.link.generated-index.description": {
     "message": "Actions for working with lists.",
     "description": "The generated-index page description for category Lists in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Browser": {
+    "message": "Browser",
+    "description": "The label for category Browser in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Browser.link.generated-index.title": {
+    "message": "Browser",
+    "description": "The generated-index page title for category Browser in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Browser.link.generated-index.description": {
+    "message": "Actions for working with the browser, tabs, cookies and extensions.",
+    "description": "The generated-index page description for category Browser in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Working with Cookies": {
+    "message": "Working with Cookies",
+    "description": "The label for category Working with Cookies in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Working with Cookies.link.generated-index.title": {
+    "message": "Working with Cookies",
+    "description": "The generated-index page title for category Working with Cookies in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Working with Cookies.link.generated-index.description": {
+    "message": "Actions for working with cookies in various formats.",
+    "description": "The generated-index page description for category Working with Cookies in sidebar zennoposterSidebar"
   }
 }

@@ -159,29 +159,29 @@
     "message": "Экшены для работы с обычными и Google-таблицами.",
     "description": "The generated-index page description for category Таблицы in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Браузер": {
+  "sidebar.zennoposterSidebar.category.Browser": {
     "message": "Браузер",
-    "description": "The label for category Браузер in sidebar zennoposterSidebar"
+    "description": "The label for category Browser in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Браузер.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Browser.link.generated-index.title": {
     "message": "Браузер",
-    "description": "The generated-index page title for category Браузер in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Browser in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Браузер.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Browser.link.generated-index.description": {
     "message": "Экшены для работы с браузером, вкладками, cookies и расширениями.",
-    "description": "The generated-index page description for category Браузер in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Browser in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Работа с Cookies": {
+  "sidebar.zennoposterSidebar.category.Working with Cookies": {
     "message": "Работа с Cookies",
-    "description": "The label for category Работа с Cookies in sidebar zennoposterSidebar"
+    "description": "The label for category Working with Cookies in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Работа с Cookies.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Working with Cookies.link.generated-index.title": {
     "message": "Работа с Cookies",
-    "description": "The generated-index page title for category Работа с Cookies in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Working with Cookies in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Работа с Cookies.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Working with Cookies.link.generated-index.description": {
     "message": "Экшены для работы с cookies в различных форматах.",
-    "description": "The generated-index page description for category Работа с Cookies in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Working with Cookies in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Табы Работа с веб-страницей": {
     "message": "Табы Работа с веб-страницей",
