@@ -111,17 +111,17 @@
     "message": "Actions ZennoPoster: обзор и использование панели статических блоков. Включает: Общие принципы работы (структура и назначение панели), Настройки проекта (глобальные параметры и пресеты), Профиль (хранение и применение профилей), Шифрование (защита данных и секретов), Список и Таблица (структуры данных, фильтры, импорт/экспорт), Google таблица (связь и синхронизация), Входные настройки проекта (поля ввода, значения по умолчанию, валидация), Настройки FTP (доступы и переиспользование), Ссылки из GAC (подключение сборок), Using-директивы и общий код (общие пространства имён/сниппеты), Интерфейс бота (элементы BotUI, привязка к данным).",
     "description": "The generated-index page description for category Static Blocks Panel in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Данные": {
+  "sidebar.zennoposterSidebar.category.Data": {
     "message": "Данные",
-    "description": "The label for category Данные in sidebar zennoposterSidebar"
+    "description": "The label for category Data in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Данные.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Data.link.generated-index.title": {
     "message": "Данные",
-    "description": "The generated-index page title for category Данные in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Data in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Данные.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Data.link.generated-index.description": {
     "message": "Категория экшенов для работы с данными в ProjectMaker: операции над профилем, файлы, SMS-сервисы, директории, базы данных, генерация случайных значений, обработка текста, JSON и XML, изображений и переменных.",
-    "description": "The generated-index page description for category Данные in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Data in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Анализ содержимого": {
     "message": "Анализ содержимого",
