@@ -1,0 +1,10 @@
+{
+  "label": "Proxy Checker",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "title": "Proxy Checker",
+    "description": "ZennoPoster actions for working with proxies: loading and checking HTTP/HTTPS/SOCKS4/SOCKS5, timeouts and metrics (speed/latency), degree of anonymity, authentication (login/password), geo-IP/ASN detection, filtering and rotation, deduplication, logs, and result export. Context: “Get proxy” — retrieving a list from files/URLs/APIs with subsequent checking and sorting.",
+    "slug": "/category/actions-proxy-checker"
+  }
+}

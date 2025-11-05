@@ -255,17 +255,17 @@
     "message": "Actions ZennoPoster для эмуляции пользовательских действий: Эмуляция мыши (человеческие траектории, скорость/джиттер, клики Left/Right/Middle, двойной клик, колесо, drag&drop), Эмуляция клавиатуры (посимвольный ввод, задержки, модификаторы Ctrl/Alt/Shift, сочетания, вставка из буфера), Имитация просмотра страницы (естественный скролл, паузы и время чтения, переменная скорость, случайные остановки, перемещение фокуса/видимости, антидетект-поведение).",
     "description": "The generated-index page description for category Emulation in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Проксичекер": {
+  "sidebar.zennoposterSidebar.category.Proxy Checker": {
     "message": "Проксичекер",
-    "description": "The label for category Проксичекер in sidebar zennoposterSidebar"
+    "description": "The label for category Proxy Checker in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Проксичекер.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Proxy Checker.link.generated-index.title": {
     "message": "Проксичекер",
-    "description": "The generated-index page title for category Проксичекер in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Proxy Checker in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Проксичекер.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Proxy Checker.link.generated-index.description": {
     "message": "Actions ZennoPoster для работы с прокси: загрузка и проверка HTTP/HTTPS/SOCKS4/SOCKS5, таймауты и метрики (скорость/латентность), степень анонимности, авторизация (логин/пароль), определение гео-IP/ASN, фильтрация и ротация, дедупликация, логи и экспорт результатов. Контекст: «Получить прокси» — получение списка из файлов/URL/API с последующей проверкой и сортировкой.",
-    "description": "The generated-index page description for category Проксичекер in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Proxy Checker in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.HTTP": {
     "message": "HTTP",

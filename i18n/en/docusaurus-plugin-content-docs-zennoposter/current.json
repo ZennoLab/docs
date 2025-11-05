@@ -218,5 +218,17 @@
   "sidebar.zennoposterSidebar.category.Emulation.link.generated-index.description": {
     "message": "ZennoPoster Actions for emulating user behaviors: Mouse emulation (human-like paths, speed/jitter, Left/Right/Middle clicks, double-click, wheel, drag & drop), Keyboard emulation (character-by-character input, delays, Ctrl/Alt/Shift modifiers, combinations, paste from clipboard), Page view simulation (natural scrolling, pauses and reading time, variable speed, random stops, moving focus/visibility, anti-detection behavior).",
     "description": "The generated-index page description for category Emulation in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Proxy Checker": {
+    "message": "Proxy Checker",
+    "description": "The label for category Proxy Checker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Proxy Checker.link.generated-index.title": {
+    "message": "Proxy Checker",
+    "description": "The generated-index page title for category Proxy Checker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Proxy Checker.link.generated-index.description": {
+    "message": "ZennoPoster actions for working with proxies: loading and checking HTTP/HTTPS/SOCKS4/SOCKS5, timeouts and metrics (speed/latency), degree of anonymity, authentication (login/password), geo-IP/ASN detection, filtering and rotation, deduplication, logs, and result export. Context: 'Get proxy' — retrieving a list from files/URLs/APIs with subsequent checking and sorting.",
+    "description": "The generated-index page description for category Proxy Checker in sidebar zennoposterSidebar"
   }
 }
