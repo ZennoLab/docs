@@ -230,5 +230,17 @@
   "sidebar.zennoposterSidebar.category.Proxy Checker.link.generated-index.description": {
     "message": "ZennoPoster actions for working with proxies: loading and checking HTTP/HTTPS/SOCKS4/SOCKS5, timeouts and metrics (speed/latency), degree of anonymity, authentication (login/password), geo-IP/ASN detection, filtering and rotation, deduplication, logs, and result export. Context: 'Get proxy' — retrieving a list from files/URLs/APIs with subsequent checking and sorting.",
     "description": "The generated-index page description for category Proxy Checker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.HTTP": {
+    "message": "HTTP",
+    "description": "The label for category HTTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.HTTP.link.generated-index.title": {
+    "message": "HTTP",
+    "description": "The generated-index page title for category HTTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.HTTP.link.generated-index.description": {
+    "message": "ZennoPoster actions for performing HTTP calls: GET request (URL parameters, headers, caching), POST request (form-urlencoded, JSON, XML, multipart/form-data, file upload), a universal HTTP request (any method: GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS). Support for headers and cookies, query parameters and request body, authentication (Basic, Bearer), proxies, redirects, timeouts, retries with backoff, status code checking, error handling, unpacking gzip/deflate/br, encoding, saving responses to disk, and parsing JSON/XML/text.",
+    "description": "The generated-index page description for category HTTP in sidebar zennoposterSidebar"
   }
 }
