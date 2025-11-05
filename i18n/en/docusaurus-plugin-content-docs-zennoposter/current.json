@@ -110,5 +110,17 @@
   "sidebar.zennoposterSidebar.category.Content Analysis.link.generated-index.description": {
     "message": "Actions for analyzing web page content: article extraction, context recognition.",
     "description": "The generated-index page description for category Content Analysis in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Lists": {
+    "message": "Lists",
+    "description": "The label for category Lists in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Lists.link.generated-index.title": {
+    "message": "Lists",
+    "description": "The generated-index page title for category Lists in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Lists.link.generated-index.description": {
+    "message": "Actions for working with lists.",
+    "description": "The generated-index page description for category Lists in sidebar zennoposterSidebar"
   }
 }

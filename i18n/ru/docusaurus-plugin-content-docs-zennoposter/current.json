@@ -135,17 +135,17 @@
     "message": "Экшены для анализа содержимого web-страниц: извлечение статей, распознавание контекста.",
     "description": "The generated-index page description for category Content Analysis in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Списки": {
+  "sidebar.zennoposterSidebar.category.Lists": {
     "message": "Списки",
-    "description": "The label for category Списки in sidebar zennoposterSidebar"
+    "description": "The label for category Lists in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Списки.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Lists.link.generated-index.title": {
     "message": "Списки",
-    "description": "The generated-index page title for category Списки in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Lists in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Списки.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Lists.link.generated-index.description": {
     "message": "Экшены для операций со списками.",
-    "description": "The generated-index page description for category Списки in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Lists in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Таблицы": {
     "message": "Таблицы",

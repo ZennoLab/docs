@@ -3,8 +3,8 @@
   "position": 3,
   "link": {
     "type": "generated-index",
-    "title": "Списки",
-    "description": "Экшены для операций со списками.",
+    "title": "Lists",
+    "description": "Actions for working with lists.",
     "slug": "/category/actions-lists"
   }
 }
