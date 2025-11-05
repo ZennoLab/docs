@@ -98,5 +98,17 @@
   "sidebar.zennoposterSidebar.category.Data.link.generated-index.description": {
     "message": "A category of actions for working with data in ProjectMaker: profile operations, files, SMS services, directories, databases, generating random values, text processing, JSON and XML, images, and variables.",
     "description": "The generated-index page description for category Data in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Content Analysis": {
+    "message": "Content Analysis",
+    "description": "The label for category Content Analysis in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Content Analysis.link.generated-index.title": {
+    "message": "Content Analysis",
+    "description": "The generated-index page title for category Content Analysis in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Content Analysis.link.generated-index.description": {
+    "message": "Actions for analyzing web page content: article extraction, context recognition.",
+    "description": "The generated-index page description for category Content Analysis in sidebar zennoposterSidebar"
   }
 }

@@ -123,17 +123,17 @@
     "message": "Категория экшенов для работы с данными в ProjectMaker: операции над профилем, файлы, SMS-сервисы, директории, базы данных, генерация случайных значений, обработка текста, JSON и XML, изображений и переменных.",
     "description": "The generated-index page description for category Data in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Анализ содержимого": {
+  "sidebar.zennoposterSidebar.category.Content Analysis": {
     "message": "Анализ содержимого",
-    "description": "The label for category Анализ содержимого in sidebar zennoposterSidebar"
+    "description": "The label for category Content Analysis in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Анализ содержимого.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Content Analysis.link.generated-index.title": {
     "message": "Анализ содержимого",
-    "description": "The generated-index page title for category Анализ содержимого in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Content Analysis in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Анализ содержимого.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Content Analysis.link.generated-index.description": {
     "message": "Экшены для анализа содержимого web-страниц: извлечение статей, распознавание контекста.",
-    "description": "The generated-index page description for category Анализ содержимого in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Content Analysis in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Списки": {
     "message": "Списки",
