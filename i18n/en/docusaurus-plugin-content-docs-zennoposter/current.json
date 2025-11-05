@@ -242,5 +242,17 @@
   "sidebar.zennoposterSidebar.category.HTTP.link.generated-index.description": {
     "message": "ZennoPoster actions for performing HTTP calls: GET request (URL parameters, headers, caching), POST request (form-urlencoded, JSON, XML, multipart/form-data, file upload), a universal HTTP request (any method: GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS). Support for headers and cookies, query parameters and request body, authentication (Basic, Bearer), proxies, redirects, timeouts, retries with backoff, status code checking, error handling, unpacking gzip/deflate/br, encoding, saving responses to disk, and parsing JSON/XML/text.",
     "description": "The generated-index page description for category HTTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.FTP": {
+    "message": "FTP",
+    "description": "The label for category FTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.FTP.link.generated-index.title": {
+    "message": "FTP",
+    "description": "The generated-index page title for category FTP in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.FTP.link.generated-index.description": {
+    "message": "ZennoPoster actions for working with FTP/FTPS: FTP connection (host, port, TLS/SSL, active/passive mode, encoding, timeouts, retries, availability check), FTP directories (listing, navigation, creation, deletion, masks and filters), FTP files (upload/download, resume, existence check, size/modified date, delete, move/rename). Supports operation logging and error handling.",
+    "description": "The generated-index page description for category FTP in sidebar zennoposterSidebar"
   }
 }

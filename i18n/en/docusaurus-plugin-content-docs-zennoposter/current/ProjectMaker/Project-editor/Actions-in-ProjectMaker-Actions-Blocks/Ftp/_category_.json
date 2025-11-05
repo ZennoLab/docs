@@ -1,0 +1,10 @@
+{
+  "label": "FTP",
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "title": "FTP",
+    "description": "ZennoPoster actions for working with FTP/FTPS: FTP connection (host, port, TLS/SSL, active/passive mode, encoding, timeouts, retries, availability check), FTP directories (listing, navigation, creation, deletion, masks and filters), FTP files (upload/download, resume, existence check, size/modified date, delete, move/rename). Supports operation logging and error handling.",
+    "slug": "/category/actions-ftp"
+  }
+}
