@@ -170,5 +170,41 @@
   "sidebar.zennoposterSidebar.category.Logic.link.generated-index.description": {
     "message": "ZennoPoster Actions for controlling script flow: IF (conditional branching: 'If ... then ...', with support for complex expressions and else branch), Switch (selecting from multiple options by value/pattern), Notification (notification/log entry for diagnostics and audit), Pause (programmatic execution delay for a specified interval or event), Wait for user action (script blocking until user confirmation/input/decision), BadEnd (controlled exit on critical error or unfulfillable condition with proper status recording).",
     "description": "The generated-index page description for category Logic in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Working with Email": {
+    "message": "Working with Email",
+    "description": "The label for category Working with Email in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Working with Email.link.generated-index.title": {
+    "message": "Working with Email",
+    "description": "The generated-index page title for category Working with Email in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Working with Email.link.generated-index.description": {
+    "message": "ZennoPoster actions for working with email: sending and receiving messages, SMTP/IMAP/POP3 settings, message templates (HTML/Plain), attachments, filters and rules, waits and retries, logging and debugging, error handling.",
+    "description": "The generated-index page description for category Working with Email in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Sending Mail": {
+    "message": "Sending Mail",
+    "description": "The label for category Sending Mail in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Sending Mail.link.generated-index.title": {
+    "message": "Sending Mail",
+    "description": "The generated-index page title for category Sending Mail in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Sending Mail.link.generated-index.description": {
+    "message": "ZennoPoster actions for sending email: SMTP settings, message templates (HTML/Plain), attachments, logging and debugging, error handling.",
+    "description": "The generated-index page description for category Sending Mail in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Mail Service Connection Settings": {
+    "message": "Mail Service Connection Settings",
+    "description": "The label for category Mail Service Connection Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Mail Service Connection Settings.link.generated-index.title": {
+    "message": "Mail Service Connection Settings",
+    "description": "The generated-index page title for category Mail Service Connection Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Mail Service Connection Settings.link.generated-index.description": {
+    "message": "ZennoPoster actions for configuring SMTP/IMAP/POP3: host, port, TLS/SSL, authentication (password, OAuth2 if supported by the service), connection test, secure data storage, recommendations for two-factor authentication and app-specific passwords.",
+    "description": "The generated-index page description for category Mail Service Connection Settings in sidebar zennoposterSidebar"
   }
 }

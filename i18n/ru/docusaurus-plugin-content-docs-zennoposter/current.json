@@ -207,29 +207,41 @@
     "message": "Actions ZennoPoster для управления ходом сценария: IF (ветвление по условию: «Если … то …», с поддержкой сложных выражений и ветки else), Switch (выбор из нескольких вариантов по значению/шаблону), Оповещение (уведомление/запись в лог для диагностики и аудита), Пауза (программная задержка выполнения на заданный интервал или до события), Ожидание действий пользователя (блокировка сценария до подтверждения/ввода/решения пользователя), BadEnd (контролируемый выход при критической ошибке или невыполнимом условии с корректной фиксацией статуса).",
     "description": "The generated-index page description for category Logic in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Работа с почтой": {
+  "sidebar.zennoposterSidebar.category.Working with Email": {
     "message": "Работа с почтой",
-    "description": "The label for category Работа с почтой in sidebar zennoposterSidebar"
+    "description": "The label for category Working with Email in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Работа с почтой.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Working with Email.link.generated-index.title": {
     "message": "Работа с почтой",
-    "description": "The generated-index page title for category Работа с почтой in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Working with Email in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Работа с почтой.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Working with Email.link.generated-index.description": {
     "message": "Actions ZennoPoster для работы с электронной почтой: отправка и приём писем, настройки SMTP/IMAP/POP3, шаблоны сообщений (HTML/Plain), вложения, фильтры и правила, ожидания и ретраи, логирование и отладка, обработка ошибок.",
-    "description": "The generated-index page description for category Работа с почтой in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Working with Email in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Настройки подключения почтовых сервисов": {
+  "sidebar.zennoposterSidebar.category.Sending Mail": {
+    "message": "Отправка почты",
+    "description": "The label for category Sending Mail in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Sending Mail.link.generated-index.title": {
+    "message": "Отправка почты",
+    "description": "The generated-index page title for category Sending Mail in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Sending Mail.link.generated-index.description": {
+    "message": "Actions ZennoPoster для отправки электронной почты: настройки SMTP, шаблоны сообщений (HTML/Plain), вложения, логирование и отладка, обработка ошибок.",
+    "description": "The generated-index page description for category Sending Mail in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Mail Service Connection Settings": {
     "message": "Настройки подключения почтовых сервисов",
-    "description": "The label for category Настройки подключения почтовых сервисов in sidebar zennoposterSidebar"
+    "description": "The label for category Mail Service Connection Settings in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Настройки подключения почтовых сервисов.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Mail Service Connection Settings.link.generated-index.title": {
     "message": "Настройки подключения почтовых сервисов",
-    "description": "The generated-index page title for category Настройки подключения почтовых сервисов in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Mail Service Connection Settings in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Настройки подключения почтовых сервисов.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Mail Service Connection Settings.link.generated-index.description": {
     "message": "Actions ZennoPoster для конфигурации SMTP/IMAP/POP3: хост, порт, TLS/SSL, аутентификация (пароль, OAuth2 при поддержке сервиса), тест соединения, безопасное хранение данных, рекомендации по двум факторам и паролям приложений.",
-    "description": "The generated-index page description for category Настройки подключения почтовых сервисов in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Mail Service Connection Settings in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Эмуляция": {
     "message": "Эмуляция",
