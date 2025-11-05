@@ -195,17 +195,17 @@
     "message": "Экшены для работы с веб-страницей: переход на страницу, операции с табом (установка и получение значений), выполнение событий (Touch, Swipe), проверка наличия текста, распознавание капчи (Captcha, ReCaptcha, hCaptcha), настройки страницы и парсинг контента.",
     "description": "The generated-index page description for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Логика": {
+  "sidebar.zennoposterSidebar.category.Logic": {
     "message": "Логика",
-    "description": "The label for category Логика in sidebar zennoposterSidebar"
+    "description": "The label for category Logic in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Логика.link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Logic.link.generated-index.title": {
     "message": "Логика",
-    "description": "The generated-index page title for category Логика in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Logic in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Логика.link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Logic.link.generated-index.description": {
     "message": "Actions ZennoPoster для управления ходом сценария: IF (ветвление по условию: «Если … то …», с поддержкой сложных выражений и ветки else), Switch (выбор из нескольких вариантов по значению/шаблону), Оповещение (уведомление/запись в лог для диагностики и аудита), Пауза (программная задержка выполнения на заданный интервал или до события), Ожидание действий пользователя (блокировка сценария до подтверждения/ввода/решения пользователя), BadEnd (контролируемый выход при критической ошибке или невыполнимом условии с корректной фиксацией статуса).",
-    "description": "The generated-index page description for category Логика in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Logic in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Работа с почтой": {
     "message": "Работа с почтой",

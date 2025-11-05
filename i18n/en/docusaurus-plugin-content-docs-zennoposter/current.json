@@ -158,5 +158,17 @@
   "sidebar.zennoposterSidebar.category.Tabs (Working with Web Pages).link.generated-index.description": {
     "message": "Actions for working with web pages: navigate to page, tab operations (set and get values), perform events (Touch, Swipe), text presence check, captcha recognition (Captcha, ReCaptcha, hCaptcha), page settings, and content parsing.",
     "description": "The generated-index page description for category Tabs (Working with Web Pages) in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Logic": {
+    "message": "Logic",
+    "description": "The label for category Logic in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Logic.link.generated-index.title": {
+    "message": "Logic",
+    "description": "The generated-index page title for category Logic in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Logic.link.generated-index.description": {
+    "message": "ZennoPoster Actions for controlling script flow: IF (conditional branching: 'If ... then ...', with support for complex expressions and else branch), Switch (selecting from multiple options by value/pattern), Notification (notification/log entry for diagnostics and audit), Pause (programmatic execution delay for a specified interval or event), Wait for user action (script blocking until user confirmation/input/decision), BadEnd (controlled exit on critical error or unfulfillable condition with proper status recording).",
+    "description": "The generated-index page description for category Logic in sidebar zennoposterSidebar"
   }
 }
