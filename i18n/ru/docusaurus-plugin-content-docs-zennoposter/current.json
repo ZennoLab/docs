@@ -435,6 +435,18 @@
     "message": "Продажа ботов, ZennoBox и API-функции для автоматизации продаж ваших проектов.",
     "description": "The generated-index page description for category Project Sales in sidebar zennoposterSidebar"
   },
+  "sidebar.zennoposterSidebar.category.Advanced browser settings": {
+    "message": "Тонкие настройки браузеров",
+    "description": "The label for category Advanced browser settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Advanced browser settings.link.generated-index.title": {
+    "message": "Тонкие настройки браузеров",
+    "description": "The generated-index page title for category Advanced browser settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Advanced browser settings.link.generated-index.description": {
+    "message": "Widevine, управление подключениями в Firefox и Chrome, а также регулировка пулов потоков для процессов Chrome и Firefox.",
+    "description": "The generated-index page description for category Advanced browser settings in sidebar zennoposterSidebar"
+  },
   "sidebar.zennoposterSidebar.category.Troubleshooting": {
     "message": "Решение проблем",
     "description": "The label for category Troubleshooting in sidebar zennoposterSidebar"

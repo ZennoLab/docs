@@ -1,0 +1,62 @@
+---
+sidebar_position: 2
+title: "Managing Connections in Mozilla Firefox"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "Управление подключениями в Mozilla Firefox.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993515/Mozilla+Firefox"
+---
+:::info **Please read the [*Terms of Use for materials on this resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993515/Mozilla+Firefox)** — Source of this material
+
+_______________________________________________  
+# Managing Connections in Mozilla Firefox
+
+## Process-Level Connection Management
+
+For various reasons, you may need to change the default behavior of our Firefox browser, restrict its operation, or, conversely, speed it up. One of the important components of the browser's operation is its management of connections.
+
+Firefox has several connection-related settings, such as:
+
+- **network.http.max-connections** – the maximum number of simultaneous active HTTP connections per process;
+- **network.http.max-persistent-connections-per-proxy** – the maximum number of simultaneous connections through an HTTP proxy per domain;
+- **network.http.max-persistent-connections-per-server** – the maximum number of simultaneous connections without a proxy, or through a SOCKS proxy per domain;
+- **network.http.pipelining** – enables pipelining without a proxy. If the server supports pipelining, your computer can process several server requests simultaneously over one connection;
+- **network.http.proxy.pipelining** – similarly, this enables pipelining when using a proxy;
+- **network.http.pipelining.maxrequests** – the maximum number of pipelined requests.
+
+Depending on your computer's performance and your internet bandwidth, you can adjust these limits either up or down.
+
+In ZennoPoster, the default browser configuration looks like this:
+
+```csharp
+pref("network.http.max-connections", 16);
+pref("network.http.max-persistent-connections-per-proxy", 8);
+pref("network.http.max-persistent-connections-per-server", 8);
+pref("network.http.pipelining", false);
+pref("network.http.proxy.pipelining", false);
+pref("network.http.pipelining.maxrequests", 1);
+```
+
+## Instance-Level Connection Management
+
+ZennoPoster splits a process into instances, and in this case, the standard connection limits apply collectively to all instances at once. Therefore, starting from version 5.11.2.0, special settings have been introduced that work alongside the standard ones:
+
+- **network.http.max-connections-per-instance** – the maximum number of simultaneous active HTTP connections per instance;
+- **network.http.max-persistent-connections-per-proxy-per-instance** – the maximum number of simultaneous HTTP proxy connections per instance;
+- **network.http.max-persistent-connections-per-server-per-instance** – the maximum number of simultaneous connections without a proxy, or through a SOCKS proxy per instance.
+
+By default, these settings are set to 0, which means they are ignored.
+
+If you want to change these settings in your template, use the following C# snippet:
+
+```csharp
+instance.SetBrowserPreference("network.http.max-connections-per-instance", 2 );
+instance.SetBrowserPreference("network.http.max-persistent-connections-per-proxy-per-instance", 2 );
+instance.SetBrowserPreference("network.http.max-persistent-connections-per-server-per-instance", 2 );
+```
+
+This way, you can now fine-tune the way the Firefox browser works in ZennoPoster.

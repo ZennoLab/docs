@@ -1,0 +1,45 @@
+---
+sidebar_position: 5
+title: "Adjusting the Thread Pool for the Firefox Process"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "Регулировка пул потоков процесса Firefox.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1490911246/Firefox"
+---
+:::info **Please read the [*Terms of Use for Materials on this Resource*](../Disclaimer).**
+:::
+
+> 🔗 **[Original Page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1490911246/Firefox)** — Source of this material
+
+_______________________________________________  
+# Adjusting the Thread Pool for the Firefox Process
+
+:::warning Attention
+Caution! These settings are intended for advanced users, as they can also make things worse. Be sure to test on each machine individually.
+:::
+
+:::info Information
+This article may help you optimize your browser's performance. For example, if your system starts slowing down even though your computer's resources are not yet exhausted, the reason could be too many threads. Using the settings described in this article, you can reduce the number of threads for the browser process.
+:::
+
+The Firefox browser runs as a single process, and depending on the browser version, its settings are stored at the following paths:
+
+- Firefox45 - program_folder\XulRunner45\defaults\pref\xulrunner.js
+- Firefox52 - program_folder\XulRunner52\greprefs.js
+- Firefox52x64 - program_folder\XulRunner52x64\greprefs.js
+
+There are several preferences you can use to adjust thread pools within the browser:
+
+**media.wmf.decoder.thread-count** — default value: -1
+
+**image.multithreaded_decoding.limit** — default value: -1
+
+You can change these preferences in the settings file, or if they are missing, add the lines manually.
+
+For example, to decrease the number of threads, try the following settings:
+
+```csharp
+pref("media.wmf.decoder.thread-count", 1); 
+pref("image.multithreaded_decoding.limit", 1);
+```
