@@ -1,0 +1,10 @@
+{
+  "label": "Project Sales",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "title": "Project Sales",
+    "description": "Bot sales, ZennoBox, and API functions to help you automate selling your projects.",
+    "slug": "/category/zp-sales-projects"
+  }
+}

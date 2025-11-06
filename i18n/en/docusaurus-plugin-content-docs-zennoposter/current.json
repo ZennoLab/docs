@@ -386,6 +386,18 @@
   "sidebar.zennoposterSidebar.category.ZennoPoster Utilities.link.generated-index.description": {
     "message": "ZennoPoster utilities: manual captcha input, ProxyChecker and task manager. When to use them and how to configure them.",
     "description": "The generated-index page description for category ZennoPoster Utilities in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Sales": {
+    "message": "Project Sales",
+    "description": "The label for category Project Sales in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Sales.link.generated-index.title": {
+    "message": "Project Sales",
+    "description": "The generated-index page title for category Project Sales in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Sales.link.generated-index.description": {
+    "message": "Bot sales, ZennoBox, and API functions to help you automate selling your projects.",
+    "description": "The generated-index page description for category Project Sales in sidebar zennoposterSidebar"
   }
 }
 

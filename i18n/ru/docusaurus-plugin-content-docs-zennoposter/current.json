@@ -422,6 +422,18 @@
   "sidebar.zennoposterSidebar.category.ZennoPoster Utilities.link.generated-index.description": {
     "message": "Утилиты ZennoPoster: ввод капчи вручную, ProxyChecker и диспетчер заданий. Когда использовать и как настраивать.",
     "description": "The generated-index page description for category ZennoPoster Utilities in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Sales": {
+    "message": "Продажа проектов",
+    "description": "The label for category Project Sales in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Sales.link.generated-index.title": {
+    "message": "Продажа проектов",
+    "description": "The generated-index page title for category Project Sales in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Sales.link.generated-index.description": {
+    "message": "Продажа ботов, ZennoBox и API-функции для автоматизации продаж ваших проектов.",
+    "description": "The generated-index page description for category Project Sales in sidebar zennoposterSidebar"
   }
 }
 
