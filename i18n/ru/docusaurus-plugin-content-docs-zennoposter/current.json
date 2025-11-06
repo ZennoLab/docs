@@ -434,6 +434,18 @@
   "sidebar.zennoposterSidebar.category.Project Sales.link.generated-index.description": {
     "message": "Продажа ботов, ZennoBox и API-функции для автоматизации продаж ваших проектов.",
     "description": "The generated-index page description for category Project Sales in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Troubleshooting": {
+    "message": "Решение проблем",
+    "description": "The label for category Troubleshooting in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Troubleshooting.link.generated-index.title": {
+    "message": "Решение проблем",
+    "description": "The generated-index page title for category Troubleshooting in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Troubleshooting.link.generated-index.description": {
+    "message": "Диагностика с подробным логом, поиск утечек памяти и устранение проблем с загрузкой geo-базы.",
+    "description": "The generated-index page description for category Troubleshooting in sidebar zennoposterSidebar"
   }
 }
 
