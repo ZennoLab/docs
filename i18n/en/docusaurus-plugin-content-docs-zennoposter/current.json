@@ -374,6 +374,18 @@
   "sidebar.zennoposterSidebar.category.ZennoPoster settings.link.generated-index.description": {
     "message": "ZennoPoster operating parameters: general settings, poster threads, project execution, instances, captchas, SMS services, translators, proxy services, content modules, Google Sheets, hotkeys, plugin settings, other settings and mail.",
     "description": "The generated-index page description for category ZennoPoster settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster Utilities": {
+    "message": "ZennoPoster Utilities",
+    "description": "The label for category ZennoPoster Utilities in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster Utilities.link.generated-index.title": {
+    "message": "ZennoPoster Utilities",
+    "description": "The generated-index page title for category ZennoPoster Utilities in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster Utilities.link.generated-index.description": {
+    "message": "ZennoPoster utilities: manual captcha input, ProxyChecker and task manager. When to use them and how to configure them.",
+    "description": "The generated-index page description for category ZennoPoster Utilities in sidebar zennoposterSidebar"
   }
 }
 
