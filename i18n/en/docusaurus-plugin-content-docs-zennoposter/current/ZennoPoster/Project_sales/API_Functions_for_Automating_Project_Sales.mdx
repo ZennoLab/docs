@@ -48,9 +48,9 @@ Retrieves a list of bots registered in the UserArea.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
 **Returns**:
 
@@ -84,11 +84,11 @@ Gets a list of your sales; sales can be queried for a specific customer by provi
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-string *filterByCustomerEmail - the email address of the customer you sold to; if you specify an empty string, you will receive the complete list of sales
+string *filterByCustomerEmail* - the email address of the customer you sold to; if you specify an empty string, you will receive the complete list of sales
 
 **Returns**:
 
@@ -125,19 +125,19 @@ Sells the specified bots to the specified customer.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string  *password - md5 hash of your password for http://userarea.zennolab.com
+string  *password* - md5 hash of your password for http://userarea.zennolab.com
 
-string *customerEmail - customer's email address
+string *customerEmail* - customer's email address
 
-string *ids - unique IDs of your bots; if you want to sell several bots at once, specify the IDs separated by commas
+string *ids* - unique IDs of your bots; if you want to sell several bots at once, specify the IDs separated by commas
 
-bool *isSubscription - true for a subscription sale and false for a regular sale
+bool *isSubscription* - true for a subscription sale and false for a regular sale
 
-int *subscriptionDaysCount - number of days for the subscription; enter 0 for a regular sale
+int *subscriptionDaysCount* - number of days for the subscription; enter 0 for a regular sale
 
-int *forProducts - in which products the project can run: 1 - ZennoBox only, 2 - ZennoPoster only, 3 - in both ZennoBox and ZennoPoster
+int *forProducts* - in which products the project can run: 1 - ZennoBox only, 2 - ZennoPoster only, 3 - in both ZennoBox and ZennoPoster
 
 **Returns**:
 
@@ -151,25 +151,25 @@ Cancels a sale. The bot becomes unusable for the client.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-int *saleId - sale ID
+int *saleId* - sale ID
 
 **Returns**:
 
 One of the following strings:
 
-*Ok - operation completed successfully.
+*Ok* - operation completed successfully.
 
-*Exception - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
 
-*NoSuchSale - you specified an invalid sale ID.
+*NoSuchSale* - you specified an invalid sale ID.
 
-*NoSuchUser - you provided invalid authorization details.
+*NoSuchUser* - you provided invalid authorization details.
 
-*RefundTimeout - you are trying to refund a sale that was made before you acquired the Developer license; you can do this automatically only within 30 days. If you need to refund a sale after 30 days, you can only do so through the interface in the admin panel; in that case ZennoLab's commission will not be returned.
+*RefundTimeout* - you are trying to refund a sale that was made before you acquired the Developer license; you can do this automatically only within 30 days. If you need to refund a sale after 30 days, you can only do so through the interface in the admin panel; in that case ZennoLab's commission will not be returned.
 
 ## ChangeSubscription
 
@@ -179,25 +179,25 @@ Changes subscription parameters.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-int *saleId - sale ID
+int *saleId* - sale ID
 
-int *addDays - number of days to extend the subscription; you can specify a negative number to reduce the subscription period
+int *addDays* - number of days to extend the subscription; you can specify a negative number to reduce the subscription period
 
 **Returns**:
 
 One of the following strings:
 
-*Ok - operation completed successfully.
+*Ok* - operation completed successfully.
 
-*Exception - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
 
-*NoSuchSale - you specified an invalid sale ID.
+*NoSuchSale* - you specified an invalid sale ID.
 
-*NoSuchUser - you provided invalid authorization details.
+*NoSuchUser* - you provided invalid authorization details.
 
 ## GetCurrentCustomerEmail
 
@@ -207,11 +207,11 @@ Allows you to check whether a user is already registered with us.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-string *customerEmail - your client's email address
+string *customerEmail* - your client's email address
 
 **Returns**:
 
@@ -225,13 +225,13 @@ Registers a user in the ZennoLab control panel.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-string *email - your client's email address
+string *email* - your client's email address
 
-string *lang - your client's language; can be either ru or en
+string *lang* - your client's language; can be either ru or en
 
 **Returns**:
 
@@ -245,11 +245,11 @@ Allows you to reset the password for a ZennoLab user, if you registered them via
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-string *email - your client's email address
+string *email* - your client's email address
 
 **Returns**:
 
@@ -263,11 +263,11 @@ Returns a direct ZennoBox download link for your client.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-string *customerEmail - your client's email address
+string *customerEmail* - your client's email address
 
 **Returns**:
 
@@ -285,25 +285,25 @@ Registers a new bot in the admin panel. To upload a bot after registration, use 
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-string *botName - bot name in the admin panel
+string *botName* - bot name in the admin panel
 
-string *fileName - project file name that will be created for the client
+string *fileName* - project file name that will be created for the client
 
-string *comment - your comment
+string *comment* - your comment
 
 **Returns**:
 
 One of the following strings:
 
-*Ok:`{bot id}` - operation completed successfully, returns the created bot’s ID.
+*Ok:`{bot id}`* - operation completed successfully, returns the created bot’s ID.
 
-*Exception - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
 
-*NoSuchUser - you provided invalid authorization details.
+*NoSuchUser* - you provided invalid authorization details.
 
 ## UploadBotContent
 
@@ -313,24 +313,24 @@ Uploads new bot content to the admin panel.
 
 **Takes**:
 
-string *login - Your email address for logging in to http://userarea.zennolab.com
+string *login* - Your email address for logging in to http://userarea.zennolab.com
 
-string *password - md5 hash of your password for http://userarea.zennolab.com
+string *password* - md5 hash of your password for http://userarea.zennolab.com
 
-int *botId - bot ID in the admin panel; you can get your bot IDs using GetBotList function
+int *botId* - bot ID in the admin panel; you can get your bot IDs using GetBotList function
 
-string *botContent - project content, converted to a base64 string
+string *botContent* - project content, converted to a base64 string
 
-string *comment - your comment
+string *comment* - your comment
 
 **Returns**:
 
 One of the following strings:
 
-*Ok - operation completed successfully.
+*Ok* - operation completed successfully.
 
-*Exception - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
 
-*NoSuchBot - you specified an invalid bot ID.
+*NoSuchBot* - you specified an invalid bot ID.
 
-*NoSuchUser - you provided invalid authorization details.
+*NoSuchUser* - you provided invalid authorization details.

@@ -48,9 +48,9 @@ https://wiki.python.org/moin/WebServices (SOAP section).
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
 **Возвращает**:
 
@@ -84,11 +84,11 @@ public class BotInfo
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-string *filterByCustomerEmail - e-mail пользователя, которому продавали, если указать пустую строку, то получите весь список продаж
+string *filterByCustomerEmail* - e-mail пользователя, которому продавали, если указать пустую строку, то получите весь список продаж
 
 **Возвращает**:
 
@@ -125,19 +125,19 @@ public class SaleInfo
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string  *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string  *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-string *customerEmail - e-mail покупателя
+string *customerEmail* - e-mail покупателя
 
-string *ids - уникальные идентификаторы Ваших ботов, если нужно продать сразу несколько ботов, следует указывать id через запятую
+string *ids* - уникальные идентификаторы Ваших ботов, если нужно продать сразу несколько ботов, следует указывать id через запятую
 
-bool *isSubscription - true если это подписка и false если обычная продажа
+bool *isSubscription* - true если это подписка и false если обычная продажа
 
-int *subscriptionDaysCount - количество дней подписки, если это обычная продажа, то следует указать 0
+int *subscriptionDaysCount* - количество дней подписки, если это обычная продажа, то следует указать 0
 
-int *forProducts - в каких продуктах может работать проект 1 - только в ZennoBox, 2 - только в ZennoPoster, 3 - в ZennoBox и ZennoPoster
+int *forProducts* - в каких продуктах может работать проект 1 - только в ZennoBox, 2 - только в ZennoPoster, 3 - в ZennoBox и ZennoPoster
 
 **Возвращает**:
 
@@ -151,25 +151,25 @@ int id продажи
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-int *saleId - id продажи
+int *saleId* - id продажи
 
 **Возвращает**:
 
 Одну из следующих строк:
 
-*Ok - операция выполнена успешно.
+*Ok* - операция выполнена успешно.
 
-*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратиться в службу поддержки ZennoLab.
+*Exception* - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратиться в службу поддержки ZennoLab.
 
-*NoSuchSale - Вы указали неверный id продажи.
+*NoSuchSale* - Вы указали неверный id продажи.
 
-*NoSuchUser - Вы указали неверные данные авторизации.
+*NoSuchUser* - Вы указали неверные данные авторизации.
 
-*RefundTimeout - Вы пытаетесь вернуть деньги за продажу, которая была сделана до приобретения Developer license, автоматически Вы можете это сделать только в течении 30 дней, если Вам нужно сделать отзыв продажи, после 30 дней, Вы можете сделать это только через интерфейс в административной панели, комиссия ZennoLab при этом возвращена не будет.
+*RefundTimeout* - Вы пытаетесь вернуть деньги за продажу, которая была сделана до приобретения Developer license, автоматически Вы можете это сделать только в течении 30 дней, если Вам нужно сделать отзыв продажи, после 30 дней, Вы можете сделать это только через интерфейс в административной панели, комиссия ZennoLab при этом возвращена не будет.
 
 ## ChangeSubscription
 
@@ -179,25 +179,25 @@ int *saleId - id продажи
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-int *saleId - id продажи
+int *saleId* - id продажи
 
-int *addDays - количество дней, на которые надо продлить подписку, можно указать отрицательное число, тогда срок подписки будет уменьшен
+int *addDays* - количество дней, на которые надо продлить подписку, можно указать отрицательное число, тогда срок подписки будет уменьшен
 
 **Возвращает**:
 
 Одну из следующих строк:
 
-*Ok - операция выполнена успешно.
+*Ok* - операция выполнена успешно.
 
-*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратиться в службу поддержки ZennoLab.
+*Exception* - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратиться в службу поддержки ZennoLab.
 
-*NoSuchSale - Вы указали неверный id продажи.
+*NoSuchSale* - Вы указали неверный id продажи.
 
-*NoSuchUser - Вы указали неверные данные авторизации.
+*NoSuchUser* - Вы указали неверные данные авторизации.
 
 ## GetCurrentCustomerEmail
 
@@ -207,11 +207,11 @@ int *addDays - количество дней, на которые надо пр�
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-string *customerEmail - e-mail Вашего клиента
+string *customerEmail* - e-mail Вашего клиента
 
 **Возвращает**:
 
@@ -225,13 +225,13 @@ string *customerEmail - e-mail Вашего клиента
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-string *email - e-mail Вашего клиента
+string *email* - e-mail Вашего клиента
 
-string *lang - язык Вашего клиента, может принимать 2 значения ru и en
+string *lang* - язык Вашего клиента, может принимать 2 значения ru и en
 
 **Возвращает**:
 
@@ -245,11 +245,11 @@ string *lang - язык Вашего клиента, может принимат
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-string *email - e-mail Вашего клиента
+string *email* - e-mail Вашего клиента
 
 **Возвращает**:
 
@@ -263,11 +263,11 @@ string *email - e-mail Вашего клиента
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-string *customerEmail - e-mail Вашего клиента
+string *customerEmail* - e-mail Вашего клиента
 
 **Возвращает**:
 
@@ -285,15 +285,15 @@ string *customerEmail - e-mail Вашего клиента
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-string *botName - имя бота в административной нанели
+string *botName* - имя бота в административной нанели
 
-string *fileName - имя файла проекта, который будет создан у клиента
+string *fileName* - имя файла проекта, который будет создан у клиента
 
-string *comment - Ваш комментарий
+string *comment* - Ваш комментарий
 
 **Возвращает**:
 
@@ -301,9 +301,9 @@ string *comment - Ваш комментарий
 
 *Ok:`{bot id}` - операция выполнена успешно, возвращается id созданного бота.
 
-*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратить в службу поддержки ZennoLab.
+*Exception* - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратить в службу поддержки ZennoLab.
 
-*NoSuchUser - Вы указали неверные данные авторизации.
+*NoSuchUser* - Вы указали неверные данные авторизации.
 
 ## UploadBotContent
 
@@ -313,24 +313,24 @@ string *comment - Ваш комментарий
 
 **Принимает**:
 
-string *login - Ваш e-mail для входа в http://userarea.zennolab.com
+string *login* - Ваш e-mail для входа в http://userarea.zennolab.com
 
-string *password - md5 хэш от Вашего пароля для http://userarea.zennolab.com
+string *password* - md5 хэш от Вашего пароля для http://userarea.zennolab.com
 
-int *botId - id бота в административной панели, id Ваших ботов можно узнать используя функцию GetBotList
+int *botId/ - id бота в административной панели, id Ваших ботов можно узнать используя функцию GetBotList
 
-string *botContent - содержимое проекта, конвертированное в base64 строку
+string *botContent* - содержимое проекта, конвертированное в base64 строку
 
-string *comment - Ваш комментарий
+string *comment* - Ваш комментарий
 
 **Возвращает**:
 
 Одну из следующих строк:
 
-*Ok - операция выполнена успешно.
+*Ok* - операция выполнена успешно.
 
-*Exception - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратить в службу поддержки ZennoLab.
+*Exception* - произошла внутренняя ошибка, если ошибка повторяется, Вам следует обратить в службу поддержки ZennoLab.
 
-*NoSuchBot - Вы указали неверный id бота.
+*NoSuchBot* - Вы указали неверный id бота.
 
-*NoSuchUser - Вы указали неверные данные авторизации.
+*NoSuchUser* - Вы указали неверные данные авторизации.
