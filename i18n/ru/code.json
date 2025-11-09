@@ -452,5 +452,13 @@
   "theme.tags.tagsPageTitle": {
     "message": "Теги",
     "description": "The title of the tag list page"
+  },
+  "disclaimer.notice.prefix": {
+    "message": "Пожалуйста, ознакомьтесь с",
+    "description": "Text before link in disclaimer notice"
+  },
+  "disclaimer.notice.linkText": {
+    "message": "Правилами использования материалов на данном ресурсе",
+    "description": "Link text for disclaimer notice"
   }
 }
