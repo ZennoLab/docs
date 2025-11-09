@@ -37,5 +37,7 @@
   "tooltipZennoBrowser": "Anti-detect browser with profiles",
   "tooltipZennoProxy": "Anonymous rotating proxies",
   "tooltipZennoProxyChecker": "Proxy quality checker",
-  "tooltipCapMonster": "Local CAPTCHA recognition"
+  "tooltipCapMonster": "Local CAPTCHA recognition",
+  "disclaimer.notice.prefix": "Please read the",
+  "disclaimer.notice.linkText": "Material Usage Rules on this site"
 }
