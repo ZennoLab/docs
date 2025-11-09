@@ -1,0 +1,10 @@
+{
+  "label": "Content Analysis",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Content Analysis",
+    "description": "Actions for analyzing web page content: article extraction, context recognition.",
+    "slug": "/category/actions-content-analysis"
+  }
+}

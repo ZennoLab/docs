@@ -1,0 +1,57 @@
+﻿---
+sidebar_position: 1
+title: "Web Page Content Analysis"
+description: "Converted from HTML to MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Анализ содержимого web-страницы.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489193483/web-"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original Page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489193483/web-)** — Source of this material
+
+_______________________________________________  
+
+## Context Recognizer and the Google Zoo
+
+As you know, Google has unleashed its animals on SEO sites around the world. One of the main (and probably most important and complex) criteria they've been trained on is the irrelevance of the sites your site is associated with via incoming and outgoing links.
+
+To protect your sites from these rampaging animals, we've come up with a new feature — **Context Recognizer**.
+
+**Context Recognizer** will help you determine the topic of a web page’s text or any text you specify. Instead of spamming your links everywhere, you can first determine the topic of the page where you want to leave a link. If the text on that page doesn’t match your site’s topic, you shouldn’t leave links there.
+
+Similarly, you can find links on your own site and check the topics of the pages they lead to.
+
+Let’s say you have a database of links for posting. With the new **Context Recognizer** feature, you can split your database into several by context. Later, when you need to promote a site, you’ll use only the database that matches the site’s topic. For example, you can post an article about car insurance to a car-themed blog, not to a blog that posts movie announcements.
+
+You can also parse a site (like a blog) and find the pages that suit your advertising topic best. By leaving relevant comments and posts, you’ll get not only themed links but also a better chance of passing moderation — which is important on quality resources.
+
+**Context Recognizer** is currently in beta testing, but it already has a good recognition rate and we’ll keep improving it.
+
+## Usage
+
+When configuring, specify the text to analyze. Note that instead of searching for the text on the web page yourself, you can use the main text selection feature, located in the "Extract Main Article" action.
+
+You can determine either the general topic of the text (about 20 options) or a more specific subtopic (about 250) — the latter will be available a bit later.
+
+Next, set up two filters:
+
+- Specify the maximum number of topics the analyzer should return;
+- Set the minimum relevance threshold after which a topic will be considered unsuitable. This parameter ranges from 0 to 100.
+
+### Text Topic
+
+For example, you could set three topics and a minimum 30 percent match. In this case, no more than 3 suitable topics will be given, each matching your text by at least 30 percent.
+
+Keep in mind that fewer than three topics, or even none, may be given if the analyzer doesn’t find enough similarity between your text and any known topics.
+
+The matched topics will be placed into a variable, separated by commas.
+
+## Testing
+
+In the project editor's toolbar, there’s a button to test **Context Recognizer**.
+
+Please note, Context Recognizer currently works only with English texts.

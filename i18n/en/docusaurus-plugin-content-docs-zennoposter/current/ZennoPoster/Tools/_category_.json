@@ -1,0 +1,9 @@
+{
+  "label": "ZennoPoster Utilities",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "ZennoPoster Utilities",
+    "description": "ZennoPoster utilities: manual captcha input, ProxyChecker and task manager. When to use them and how to configure them."
+  }
+}

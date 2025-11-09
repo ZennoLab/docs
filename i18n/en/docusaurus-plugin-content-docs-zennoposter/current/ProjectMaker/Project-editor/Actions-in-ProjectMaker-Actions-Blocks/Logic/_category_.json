@@ -1,0 +1,10 @@
+{
+  "label": "Logic",
+  "position": 6,
+  "link": {
+    "type": "generated-index",
+    "title": "Logic",
+    "description": "ZennoPoster Actions for controlling script flow: IF (conditional branching: 'If ... then ...', with support for complex expressions and else branch), Switch (selecting from multiple options by value/pattern), Notification (notification/log entry for diagnostics and audit), Pause (programmatic execution delay for a specified interval or event), Wait for user action (script blocking until user confirmation/input/decision), BadEnd (controlled exit on critical error or unfulfillable condition with proper status recording).",
+    "slug": "/category/actions-logic"
+  }
+}

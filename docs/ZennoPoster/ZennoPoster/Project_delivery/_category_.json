@@ -1,0 +1,9 @@
+{
+  "label": "Project Delivery",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Выполнение проектов",
+    "description": "Запуск и управление выполнением проектов: параметры проекта, контекстное меню, создание BAT-файла, входные настройки ZennoPoster."
+  }
+}

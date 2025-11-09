@@ -1,0 +1,336 @@
+﻿---
+sidebar_position: 3
+title: "API functions for automating the sale of your projects"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "API функции для автоматизации продажи Ваших проектов.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862407/API"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862407/API)** — Material source
+
+_______________________________________________  
+
+The WebService API is available at:  
+https://userarea.zennolab.com/BotStore.asmx
+
+You can upload your projects here:  
+https://userarea.zennolab.com/ru/userarea/Bots.aspx
+
+To learn how to connect the WebService to projects written in ASP.NET see:  
+[Practical guide. Adding and removing web references](https://docs.microsoft.com/ru-ru/previous-versions/visualstudio/visual-studio-2008/d9w023sx%28v=vs.90%29?redirectedfrom=MSDN) 
+
+For working with the WebService in PHP, see:  
+[http://php.net/manual/ru/book.soap.php](http://php.net/manual/en/book.soap.php)
+
+For working with the WebService in Python, see:  
+https://wiki.python.org/moin/WebServices (SOAP section).
+
+### The following functions are currently available:
+
+Getting information about bots uploaded to the UserArea: GetBotList
+
+Working with bot sales: GetSales, SaleBots, RefundSale, ChangeSubscription
+
+Working with users: GetCurrentCustomerEmail, RegisterCustomer, ResetPassword, GetCustomerBoxLink
+
+Managing bots: CreateBot, UploadBotContent
+
+## GetBotList
+
+**Description**:
+
+Retrieves a list of bots registered in the UserArea.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+**Returns**:
+
+An array of BotInfo objects
+
+```csharp
+public class BotInfo
+{
+ // unique bot ID
+ public int Id;
+ // bot name
+ public string Name;
+ // file name
+ public string FileName;
+ // creation date
+ public DateTime Created;
+ // last modification date
+ public DateTime Modified;
+ // your comment
+ public string Comment;
+ // size in bytes
+ public int Size;
+}
+```
+
+## GetSales
+
+**Description**:
+
+Gets a list of your sales; sales can be queried for a specific customer by providing their email address.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+string *filterByCustomerEmail* - the email address of the customer you sold to; if you specify an empty string, you will receive the complete list of sales
+
+**Returns**:
+
+An array of SaleInfo objects:
+
+```csharp
+public class SaleInfo
+{
+ // unique sale ID
+ public int Id;
+ // sale date
+ public DateTime SaleDateTime;
+ // customer email
+ public string CustomerEmail;
+ // comma-separated IDs of bots
+ public string Bots;
+ // whether this sale has been refunded
+ public bool HasRefund;
+ // is this a subscription sale
+ public bool IsSubscription;
+ // subscription end date
+ public DateTime? SubscriptionDueDate;
+ // in which products the project can run 
+ // 1 - ZennoBox only, 2 - ZennoPoster only, 3 - in both ZennoBox and ZennoPoster
+ public int ForProducts;
+}
+```
+
+## SaleBots
+
+**Description**:
+
+Sells the specified bots to the specified customer.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string  *password* - md5 hash of your password for http://userarea.zennolab.com
+
+string *customerEmail* - customer's email address
+
+string *ids* - unique IDs of your bots; if you want to sell several bots at once, specify the IDs separated by commas
+
+bool *isSubscription* - true for a subscription sale and false for a regular sale
+
+int *subscriptionDaysCount* - number of days for the subscription; enter 0 for a regular sale
+
+int *forProducts* - in which products the project can run: 1 - ZennoBox only, 2 - ZennoPoster only, 3 - in both ZennoBox and ZennoPoster
+
+**Returns**:
+
+The sale ID (int)
+
+## RefundSale
+
+**Description**:
+
+Cancels a sale. The bot becomes unusable for the client.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+int *saleId* - sale ID
+
+**Returns**:
+
+One of the following strings:
+
+*Ok* - operation completed successfully.
+
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+
+*NoSuchSale* - you specified an invalid sale ID.
+
+*NoSuchUser* - you provided invalid authorization details.
+
+*RefundTimeout* - you are trying to refund a sale that was made before you acquired the Developer license; you can do this automatically only within 30 days. If you need to refund a sale after 30 days, you can only do so through the interface in the admin panel; in that case ZennoLab's commission will not be returned.
+
+## ChangeSubscription
+
+**Description**:
+
+Changes subscription parameters.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+int *saleId* - sale ID
+
+int *addDays* - number of days to extend the subscription; you can specify a negative number to reduce the subscription period
+
+**Returns**:
+
+One of the following strings:
+
+*Ok* - operation completed successfully.
+
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+
+*NoSuchSale* - you specified an invalid sale ID.
+
+*NoSuchUser* - you provided invalid authorization details.
+
+## GetCurrentCustomerEmail
+
+**Description**:
+
+Allows you to check whether a user is already registered with us.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+string *customerEmail* - your client's email address
+
+**Returns**:
+
+Returns the current email (the user may have changed their registration email). If the user is not registered, you will receive the response nosuchuser@zennolab.com
+
+## RegisterCustomer
+
+**Description**:
+
+Registers a user in the ZennoLab control panel.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+string *email* - your client's email address
+
+string *lang* - your client's language; can be either ru or en
+
+**Returns**:
+
+If registration is successful, you will receive a record like: “Pass:password”, where password is the password for the registered user's account.
+
+## ResetPassword
+
+**Description**:
+
+Allows you to reset the password for a ZennoLab user, if you registered them via the API.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+string *email* - your client's email address
+
+**Returns**:
+
+If the operation is successful, you will receive a record like: “Pass:password”, where password is the account password.
+
+## GetCustomerBoxLink
+
+**Description**:
+
+Returns a direct ZennoBox download link for your client.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+string *customerEmail* - your client's email address
+
+**Returns**:
+
+A link in the following form:
+
+`https://userarea-us.zennolab.com/download/ZennoBox*.exe`
+
+where * is replaced with the latest version and language of ZennoBox available for your client.
+
+## CreateBot
+
+**Description**:
+
+Registers a new bot in the admin panel. To upload a bot after registration, use UploadBotContent.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+string *botName* - bot name in the admin panel
+
+string *fileName* - project file name that will be created for the client
+
+string *comment* - your comment
+
+**Returns**:
+
+One of the following strings:
+
+*Ok:`{bot id}`* - operation completed successfully, returns the created bot’s ID.
+
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+
+*NoSuchUser* - you provided invalid authorization details.
+
+## UploadBotContent
+
+**Description**:
+
+Uploads new bot content to the admin panel.
+
+**Takes**:
+
+string *login* - Your email address for logging in to http://userarea.zennolab.com
+
+string *password* - md5 hash of your password for http://userarea.zennolab.com
+
+int *botId* - bot ID in the admin panel; you can get your bot IDs using GetBotList function
+
+string *botContent* - project content, converted to a base64 string
+
+string *comment* - your comment
+
+**Returns**:
+
+One of the following strings:
+
+*Ok* - operation completed successfully.
+
+*Exception* - an internal error occurred; if the error repeats, you should contact ZennoLab support.
+
+*NoSuchBot* - you specified an invalid bot ID.
+
+*NoSuchUser* - you provided invalid authorization details.

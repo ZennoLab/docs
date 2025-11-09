@@ -1,0 +1,10 @@
+{
+  "label": "Mail Service Connection Settings",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Mail Service Connection Settings",
+    "description": "ZennoPoster actions for configuring SMTP/IMAP/POP3: host, port, TLS/SSL, authentication (password, OAuth2 if supported by the service), connection test, secure data storage, recommendations for two-factor authentication and app-specific passwords.",
+    "slug": "/category/actions-mail-connection-settings"
+  }
+}

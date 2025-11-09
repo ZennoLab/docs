@@ -1,0 +1,70 @@
+﻿---
+sidebar_position: 2
+title: "JSON file cookie format"
+description: "Converted from HTML to MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Json формат файла cookie.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2155479041/Json+cookie"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2155479041/Json+cookie)** — Source of this material
+
+_______________________________________________  
+
+## List of parameters
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| domain | string | Cookie file domain (for example, www.google.com, example.com). |
+| expirationDate | double? | Cookie expiration date. Calculated as the number of seconds since the start of the *Unix epoch (01.01.1970 00:00:00). If the value is missing or very low (&lt;0.01), the cookie will be considered session-only `session=true`. |
+| hostOnly | bool? | Reserved. Not used. |
+| httpOnly | bool? | True if the cookie is marked as HttpOnly (i.e., the cookie is not accessible to client-side scripts). Default value is False. |
+| name | string | Cookie file name |
+| path | string | Cookie file path |
+| sameSite | string | SameSite status for the cookie (i.e., whether the cookie is sent with cross-site requests). Values: `lax`, `strict`, `unspecified`. Default value is `unspecified` |
+| secure | bool? | True if the cookie is marked as secure (i.e., its scope is limited to secure channels, usually HTTPS). Default value is False. |
+| session | bool? | Reserved. Not used. Set via the expirationDate parameter.|
+| storeId | string | Reserved. Not used. |
+| value | string | Cookie value. |
+| id | int? | Reserved. Not used. |
+
+## Export example
+
+```json
+[
+  {
+    "domain": "some.host.io",
+    "expirationDate": -1.0,
+    "httpOnly": true,
+    "name": "cookie-name-1",
+    "path": "/",
+    "sameSite": "strict",
+    "secure": true,
+    "value": "cookie-value-1",
+  },
+  {
+    "domain": "some.host.io",
+    "expirationDate": 1672520400.0,
+    "httpOnly": true,
+    "name": "cookie-name-2",
+    "path": "/",
+    "sameSite": "Unspecified",
+    "secure": true,
+    "value": "cookie-value-2",
+  },
+  {
+    "domain": "some.host.io",
+    "expirationDate": 1704056400.0,
+    "httpOnly": false,
+    "name": "cookie-name-3",
+    "path": "/",
+    "sameSite": "Unspecified",
+    "secure": true,
+    "value": "cookie-value-3",
+  }
+]
+```

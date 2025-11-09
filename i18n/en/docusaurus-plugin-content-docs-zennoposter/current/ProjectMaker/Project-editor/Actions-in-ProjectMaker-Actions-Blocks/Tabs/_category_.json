@@ -1,0 +1,10 @@
+{
+  "label": "Tabs (Working with Web Pages)",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Tabs (Working with Web Pages)",
+    "description": "Actions for working with web pages: navigate to page, tab operations (set and get values), perform events (Touch, Swipe), text presence check, captcha recognition (Captcha, ReCaptcha, hCaptcha), page settings, and content parsing.",
+    "slug": "/category/actions-tabs-web-pages"
+  }
+}

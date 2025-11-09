@@ -42,5 +42,7 @@
   "tooltipZennoBrowser": "Антидетект-браузер с профилями",
   "tooltipZennoProxy": "Анонимные прокси с ротацией",
   "tooltipZennoProxyChecker": "Проверка качества прокси",
-  "tooltipCapMonster": "Локальное распознавание капчи"
+  "tooltipCapMonster": "Локальное распознавание капчи",
+  "disclaimer.notice.prefix": "Пожалуйста, прочитайте",
+  "disclaimer.notice.linkText": "Правила использования материалов на этом ресурсе"
 }

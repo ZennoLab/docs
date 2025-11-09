@@ -1,0 +1,49 @@
+﻿---
+sidebar_position: 10
+title: "Device Emulation (Hardware Emulation)"
+description: ""
+date: "2025-07-20"
+converted: true
+originalFile: "Имитация устройств (Эмуляция оборудования).txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1378910220"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1378910220)** — Source of this material
+
+_______________________________________________  
+
+## Description
+
+:::info Information
+This feature is available starting from version 7.3.2.0
+:::
+
+ZennoPoster provides an API for emulating webrtc media devices through C# methods:
+
+&gt; 
+&gt; **instance.GetWebRTCDevices()**
+&gt; 
+&gt; **instance.ShowWebRTCDevice(WebRtcDeviceItem device)**
+&gt; 
+&gt; **instance.HideWebRTCDevice(WebRtcDeviceItem device)**
+
+These methods allow you to set up a list of devices that will be available to scripts on the page.
+
+Starting with ZennoPoster version 7.3.2.0, an alternative way to emulate webrtc media devices was introduced for the Chrome browser. It is based on the browser's built-in fake devices, which means the page can interact with the devices fully.
+
+To use fake devices, add the following Chrome launch arguments:
+
+:::info Information
+--use-file-for-fake-video-capture="path\_to\_video\_in\_y4m\_format" --use-fake-ui-for-media-stream --use-fake-device-for-media-stream --zl-default-audioutput-device-name="audioutput\_device\_name" --zl-default-audioinput-device-name="audioinput\_device\_name" --zl-default-videoinput-device-name="videoinput\_device\_name"
+:::
+
+You can configure three fake devices: one videooutput device, one audiououtput device, and one audioinput device. You need to enter your own data in the highlighted sections. To use a videooutput device correctly, you must provide a video file in **.y4m** format.
+
+:::info Information
+If you need an audio file to emulate a microphone stream, use the additional argument --use-file-for-fake-audio-capture=”path\_to\_audio\_file”
+:::
+
+Audio files in **.wav** format are supported. By default, the audio file will play in a loop. To play the file only once, add **%noloop** to the argument, for example: --use-file-for-fake-audio-capture=”path\_to\_audio\_file%noloop”.

@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 1
+title: "Netscape cookie file format"
+description: "Converted from HTML to MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Netscape формат файла cookie.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2155872263/Netscape+cookie"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2155872263/Netscape+cookie)** — Source of this material
+
+_______________________________________________  
+
+## List of parameters
+
+| **#** | **Name** | **Type** | **Description** |
+| --- | --- | --- | --- |
+| 0 | domain | string | Cookie file domain (for example, www.google.com, example.com). |
+| 1 | isDomain | boolean | Reserved. Not used. However, you must still provide a value. |
+| 2 | path | string | Cookie file path. |
+| 3 | secure | boolean | TRUE if the cookie is marked as secure (i.e., its scope is limited to secure channels, usually HTTPS). |
+| 4 | expirationDate | DateTime | Format: `mm/dd/yyyy hh:mm:ss`. This value is optional. However, it only makes sense if `session=true`.<br/><br/>You can also specify the Unix format — number of seconds since `1970.1.1 0:0:0` |
+| 5 | name | string | Cookie file name. |
+| 6 | value | string | Cookie file value. |
+| 7\* | httpOnly | boolean | TRUE if the cookie is marked as HttpOnly (i.e., it is inaccessible to client scripts). Default value is FALSE. |
+| 8\* | session | boolean | TRUE if the cookie is marked as a session cookie (i.e., it will be deleted after the browser is closed). Default value is FALSE. |
+| 9\*\* | sameSite | enum | SameSite status for the cookie (i.e., whether the cookie is sent with cross-site requests). Values: `Lax`, `Strict`, `None`, `Extended`, `Unspecified`. Default is `Unspecified` |
+| 10\*\*\* | priority | enum | Sets the priority for deleting cookies when the storage is full. Values: `Low`, `Medium`, `High`. Default is `Medium` |
+
+:::info Information
+You may omit the values marked with an asterisk. Values with the same number of asterisks must be specified together (i.e., if you provide the httpOnly parameter, you must also provide the session parameter).
+:::
+
+## Sample export
+
+```
+some.host.io	TRUE	/	TRUE cookie-name-1	cookie-value-1	TRUE	TRUE	None	Strict
+some.host.io	TRUE	/	TRUE	01/01/2023 00:00:00	cookie-name-2	cookie-value-2	TRUE	FALSE
+some.host.io	TRUE	/	TRUE	01/01/2024 00:00:00	cookie-name-3	cookie-value-3
+```
+
+:::info Information
+Parameters should be separated by the tab character (\t). Each cookie file should be separated by EOL (end of line — \r\n)
+:::

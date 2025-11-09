@@ -1,0 +1,10 @@
+{
+  "label": "Working with Email",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "Working with Email",
+    "description": "ZennoPoster actions for working with email: sending and receiving messages, SMTP/IMAP/POP3 settings, message templates (HTML/Plain), attachments, filters and rules, waits and retries, logging and debugging, error handling.",
+    "slug": "/category/actions-mail"
+  }
+}
