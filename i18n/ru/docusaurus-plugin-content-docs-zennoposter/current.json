@@ -87,17 +87,17 @@
     "message": "Раздел, посвящённый функциям и возможностям редактора проектов ProjectMaker, включая работу с экшенами (кубиками) и категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
     "description": "The generated-index page description for category Project Editor in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Экшены\", \"Кубики\")": {
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Actions\", \"Blocks\")": {
     "message": "Действия в ProjectMaker (\"Экшены\", \"Кубики\")",
-    "description": "The label for category Actions in ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+    "description": "The label for category Actions in ProjectMaker (\"Actions\", \"Blocks\") in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.title": {
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Actions\", \"Blocks\").link.generated-index.title": {
     "message": "Действия в ProjectMaker (\"Экшены\", \"Кубики\")",
-    "description": "The generated-index page title for category Actions in ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+    "description": "The generated-index page title for category Actions in ProjectMaker (\"Actions\", \"Blocks\") in sidebar zennoposterSidebar"
   },
-  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Экшены\", \"Кубики\").link.generated-index.description": {
+  "sidebar.zennoposterSidebar.category.Actions in ProjectMaker (\"Actions\", \"Blocks\").link.generated-index.description": {
     "message": "Подраздел о работе с действиями (экшенами, кубиками) в ProjectMaker и их категориями: Данные, Анализ содержимого, Списки, Таблицы, Браузер, Табы (работа с веб-страницей), Логика, Работа с почтой, Эмуляция, Проксичекер, HTTP, FTP, Проект, Свой код, Плагины, Интеграция ZennoPoster с ZennoBrowser.",
-    "description": "The generated-index page description for category Actions in ProjectMaker (\"Экшены\", \"Кубики\") in sidebar zennoposterSidebar"
+    "description": "The generated-index page description for category Actions in ProjectMaker (\"Actions\", \"Blocks\") in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Static Blocks Panel": {
     "message": "Панель статических блоков",
@@ -146,6 +146,18 @@
   "sidebar.zennoposterSidebar.category.Lists.link.generated-index.description": {
     "message": "Экшены для операций со списками.",
     "description": "The generated-index page description for category Lists in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tables": {
+    "message": "Таблицы",
+    "description": "The label for category Tables in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tables.link.generated-index.title": {
+    "message": "Таблицы",
+    "description": "The generated-index page title for category Tables in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tables.link.generated-index.description": {
+    "message": "Экшены для работы с обычными и Google-таблицами.",
+    "description": "The generated-index page description for category Tables in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Таблицы": {
     "message": "Таблицы",
@@ -374,6 +386,42 @@
   "sidebar.zennoposterSidebar.category.ProjectMaker Tools.link.generated-index.description": {
     "message": "Описание доступных инструментов для разработки и тестирования проектов в программе ProjectMaker",
     "description": "The generated-index page description for category ProjectMaker Tools in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery": {
+    "message": "Выполнение проектов",
+    "description": "The label for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.title": {
+    "message": "Выполнение проектов",
+    "description": "The generated-index page title for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.description": {
+    "message": "Запуск и управление выполнением проектов: параметры проекта, контекстное меню, создание BAT-файла, входные настройки ZennoPoster.",
+    "description": "The generated-index page description for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings": {
+    "message": "Параметры проекта",
+    "description": "The label for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.title": {
+    "message": "Параметры проекта",
+    "description": "The generated-index page title for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.description": {
+    "message": "Основные параметры выполнения: настройки, остановка, лог, планировщик расписания, инстансы.",
+    "description": "The generated-index page description for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner": {
+    "message": "Планировщик расписания",
+    "description": "The label for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.title": {
+    "message": "Планировщик расписания",
+    "description": "The generated-index page title for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.description": {
+    "message": "Общая информация, возможности планировщика и отладчик расписания для автоматизации запусков.",
+    "description": "The generated-index page description for category Schedule Planner in sidebar zennoposterSidebar"
   },
   "sidebar.zennoposterSidebar.category.Interface": {
     "message": "Интерфейс",
