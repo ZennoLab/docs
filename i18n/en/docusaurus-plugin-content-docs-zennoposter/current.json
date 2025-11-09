@@ -422,6 +422,18 @@
   "sidebar.zennoposterSidebar.category.Troubleshooting.link.generated-index.description": {
     "message": "Detailed log diagnostics, memory leak detection, and fixing geo-database loading issues.",
     "description": "The generated-index page description for category Troubleshooting in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.История изменений ZennoPoster": {
+    "message": "Change Log",
+    "description": "The label for category Change Log in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster 7 — история изменений": {
+    "message": "ZennoPoster 7 — Change History",
+    "description": "The label for category ZennoPoster 7 — Change History in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster 5 — история изменений": {
+    "message": "ZennoPoster 5 — Change History",
+    "description": "The label for category ZennoPoster 5 — Change History in sidebar zennoposterSidebar"
   }
 }
 
