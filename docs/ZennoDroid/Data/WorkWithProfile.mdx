@@ -4,6 +4,8 @@ sidebar_label: Операции над профилем
 title: Операции над профилем | Документация ZennoDroid | ZennoLab
 description: Операции над профилем - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
 ---  
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
 export const VideoSample = ({source}) => (
   <video controls playsInline muted preload="auto" className='docsVideo'>
     <source src={source} type="video/mp4" />
@@ -11,8 +13,7 @@ export const VideoSample = ({source}) => (
 );  
 
 # Операции над профилем
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
-:::
+<DisclaimerNotice />
 
 ## Описание.  
 Для работы в интернете ZennoDroid имеет специальную сущность — **Профиль проекта**. Его можно сохранять и загружать в шаблон, а затем использовать отличающиеся личности для работы на различных ресурсах. В профиле хранятся многие часто используемые параметры. Например:  
