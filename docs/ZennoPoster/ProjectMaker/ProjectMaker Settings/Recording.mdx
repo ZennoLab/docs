@@ -1,0 +1,67 @@
+﻿---
+sidebar_position: 3
+title: "Запись"
+description: ""
+date: "2025-08-25"
+converted: true
+originalFile: "Запись.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777290"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777290)** — Источник данного материала
+
+_______________________________________________  
+# Запись
+
+![image-20200811-030423](./assets/Recording/Recording_pic1.png)
+
+## Настройки записи проектов
+
+### Очищать cookie автоматически
+
+Вначале проекта автоматически будет производиться очистка Сookie. Данная настройка является эквивалентом действия [❗→ Очистить Cookie](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572").
+
+### Искать во всех формах на странице
+
+Включает поиск элементов во всех формах на странице. Актуально для [❗→ конструктора действий](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337").
+
+![image-20200811-033102](./assets/Recording/Recording_pic2.png)
+
+
+
+### Искать во всех документах на странице
+
+Включает поиск элементов во всех документах на странице. Актуально для [❗→ конструктора действий](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337").
+
+![image-20200811-033226](./assets/Recording/Recording_pic3.png)
+
+
+
+### Автоматически вставлять макрос директории проекта
+
+При указании пути к файлу, макрос директории `{ -Project.Directory- }` проекта будет вставляться автоматически. Например, в свойствах списка или таблицы, при выборе файла с жесткого диска, если файл лежит в папке шаблона или ниже, в одной из подпапок.
+
+### Выделять текущий элемент в браузере
+
+:::info Информация
+Для применения настройки необходимо перезапустить программу.
+:::
+
+Данная настройка отвечает за выделение HTML-элементов синей рамкой в окне браузера. 
+
+![image-20200811-031040](./assets/Recording/Recording_pic4.png)
+
+
+
+Она модернизирует DOM-дерево страницы сайта, добавляя в конец:
+
+```
+<div id="zp_fr_hl_top_hl" style="visiblity:hidden"></div><div id="zp_fr_hl_left_hl" style="visiblity:hidden"></div><div id="zp_fr_hl_right_hl" style="visiblity:hidden"></div><div id="zp_fr_hl_bottom_hl" style="visiblity:hidden"></div><font id="zp_fr_hl_label" style="visiblity:hidden"></font>
+```
+
+:::note На заметку
+Если Вы считаете, что подобная модификация деанонимизирует Вас, отключите её, сняв галочку.
+:::

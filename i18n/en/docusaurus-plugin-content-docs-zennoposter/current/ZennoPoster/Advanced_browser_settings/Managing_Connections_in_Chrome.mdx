@@ -1,0 +1,39 @@
+﻿---
+sidebar_position: 3
+title: "Managing Connections in Chrome"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "Управление подключениями в Chrome.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862427/Chrome"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862427/Chrome)** — Source of this material
+
+_______________________________________________  
+
+Connection settings for the Chrome browser are different from those for Firefox. Chrome's settings are stored in the program folder in configuration files:
+
+- **base\_cr.exe.config** for ZennoPoster;
+- **pminstance\_cr.exe.config** for ProjectMaker and CodeCreator.
+
+The files are in \.xml format (see the image below), and the connection settings are located in the appSettings block.
+
+![](https://zennolab.kayako.com/base/media/url/4WafdoMDHZ1VAqiYkoNldazAAnL2kAib)
+
+Below is a description of the connection settings:
+
+- **zl-max-sockets-per-pool** - number of connections per pool (the browser uses several pools, shared across all tabs);
+- **zl-max-sockets-per-group** - number of connections per domain;
+- **zl-max-sockets-per-proxy** - number of connections per proxy;
+- **zl-max-sockets-per-pool-ws** - number of WebSocket connections per pool;
+- **zl-max-sockets-per-group-ws** - number of WebSocket connections per domain;
+- **zl-max-sockets-per-proxy-ws** - number of WebSocket connections per proxy;
+- **zl-used-idle-socket-timeout-s** - lifespan of an inactive used socket (seconds);
+- **zl-unused-idle-socket-timeout-s** - lifespan of an inactive unused socket (seconds);
+- **zl-close-idle-connection-interval-s** - interval for cleaning up inactive sockets (seconds).
+
+You need to change the connection settings in the configuration file before starting the program.

@@ -1,0 +1,97 @@
+﻿---
+sidebar_position: 5
+title: "Effective Resource Usage When Working with ZennoPoster"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "Эффективное использование ресурсов при работе с ZennoPoster.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494960696/ZennoPoster"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494960696/ZennoPoster)** — Source of this material
+
+_______________________________________________  
+
+ZennoPoster is a multi-threaded program and processes a lot of information in each thread, requiring significant computing resources. This article will help you set up the program for your computer, allowing you to use its resources as effectively as possible.
+
+## User time
+
+The most important resource. CPU time is cheap, RAM is even cheaper. The only thing that really matters is your personal time.
+
+When we created the program, our main goal was to save this resource.
+
+## RAM
+
+Each thread in ZennoPoster is an isolated browser with its own cookies (about 13 types), cache, proxy, User Agent, and other data needed to fully emulate a user.
+
+When calculating how much RAM you need for smooth program operation, keep in mind several factors:
+
+1. **The site** you're working with. All sites are very different and their RAM requirements can vary by an order of magnitude. For example, automation on one site may work with 100 threads, while another might only handle 20 on the same machine. Try to disable Flash, images, and other resources if they aren't needed for the site to function.
+2. **Files**. Files are kept in RAM to speed up operation (otherwise you’ll run into issues accessing the hard drive). If you use a separate file copy for each thread (this happens when using [❗→ lists](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053375 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053375") and [❗→ tables](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776") without file synchronization), then each thread requires additional memory to hold that file in RAM. Keep in mind, tables in memory take up much more space than the original file on disk. Lists aren’t as demanding as tables, but they also take up more space in memory. For example, a table based on a 10 MB .csv file can take up 5 GB of RAM in 100 threads with no file sync. Try not to use lists and tables in “no sync” mode unless necessary.
+3. See point (2) in the “Processor” section.
+4. [❗→ Image search](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304"). This feature uses a lot of RAM. But it’s very useful.
+
+## Processor
+
+Each thread in ZennoPoster builds the DOM model, renders images, runs JavaScript, handles events, processes animations, etc.—all of which require CPU resources. The processor is also loaded when instances are periodically reloaded. Here are some ways to save CPU resources:
+
+1. Disable unneeded elements: Flash, images, scripts, and anything you don’t need. Note: if a site has strong protection, this might trigger account bans. Registration may succeed, but your account could still seem suspicious and be banned later.
+2. **(This point is only relevant when using the Firefox 45 engine)** The program settings allow you to adjust the [❗→ number of threads per base](https://zennolab.atlassian.net/wiki/spaces/RU/pages/808812646#%D0%9A%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%B2-%D0%B2-%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B5 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/808812646#%D0%9A%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%B2-%D0%B2-%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B5"). Increasing this parameter will save you a bit of memory and CPU, but you’ll get extra delays during mouse and keyboard emulation. More on emulation below.
+3. Mouse and keyboard emulation slightly increases CPU usage and creates the effect described in (2). But sometimes you just can’t create an account without it. Also, emulation during account registration lowers the chance of your account being banned later.
+4. CAPTCHA recognition by software, when using modules from [❗→ CapMonster](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475332615 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/475332615"), also uses CPU. CapMonster shows how much CPU core time is needed when testing a module. In reality, even if you spent 10 seconds of CPU time per CAPTCHA (which almost never happens—it’s usually under a quarter of a second), it’s still cheaper than sending a CAPTCHA to manual solving services.
+5. [❗→ Image search](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304") also uses CPU resources. Still, it's a very handy feature.
+
+## Thread Time
+
+Pay attention to this parameter. While [❗→ recognizing a CAPTCHA](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053026 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053026") via manual solving services, your project will wait about 15 seconds (while workers process your CAPTCHA).
+
+During this time, the CPU is almost idle for that thread.
+
+Thanks to this (if your project does this action), the total number of threads you can run on one machine increases dramatically. For example, you can run 30 threads where your project just opens web pages without any CAPTCHA recognition (like a regular parser). This will use up all your CPU resources.
+
+Or you can run 150 threads with a project (account registration) that includes CAPTCHA solving [❗→ via external services](https://zennolab.atlassian.net/wiki/spaces/RU/pages/808845385 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/808845385"). This will use up all your RAM.
+
+The same goes for [❗→ email registration confirmation](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735576144 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735576144"), when a thread is waiting for an email. In that case, the thread is also idle.
+
+## Internet connection
+
+This one's simple. When you open a web page, you’re downloading it from the server along with all images, Flash, scripts, etc., it contains. If you clear the cache, everything is downloaded again every time the project runs; if not, resource consumption drops significantly.
+
+Usually, you should clear the cache. Without clearing it, the web resource will know you’ve already visited it, even if you’re using a proxy.
+
+You might have a wide bandwidth connection, but the program might still be limited by the number of allowed open connections—more on that below.
+
+## Open connections
+
+What this is can be found via Google, and how many such connections your network supports can be checked in [❗→ ZennoProxyChecker](https://zennolab.atlassian.net/wiki/spaces/RU/pages/532480133 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/532480133"). It has a channel test and online monitoring.
+
+Each thread with a proxy uses 2 connections. Without a proxy—up to 32.
+
+Usually, home ISPs limit connections, but more often it’s the modem—usually about 300 connections are available. After that, the modem just stops responding, whereas dedicated servers support thousands (15,000 at servers from http://hetzner.de).
+
+Keep in mind that ProxyChecker uses connections too: from 1 connection per ProxyChecker thread.
+
+## Bottom line
+
+Every project may require a different amount of resources. One could use 15 MB of RAM per thread, another 1 GB; same with CPU—it all depends on the task.
+
+When creating the program, our priority was to save you time—everything else is easy to configure and scale.
+
+## Setting default thread count
+
+In ZennoPoster’s settings, you can set the [❗→ maximum number of threads](https://zennolab.atlassian.net/wiki/spaces/RU/pages/808812646#%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D0%BA%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%B2 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/808812646#%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D0%BA%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%B2") that can be run simultaneously.
+
+If you read the previous sections, you already know that the number of threads strongly depends on your project and should be manually set for your specific needs. To do this, just gradually increase the number of threads until one of your computer’s resources maxes out.
+
+There’s one nuance to remember: CPU usage can be slightly exceeded; if your CPU is already at 100% utilization, increasing the number of threads by 10–15% will hardly change anything or make things worse—threads will just wait a bit for resources to free up.
+
+RAM, on the other hand, should not be completely filled—always leave 10–30% free. If memory runs out, this can crash ZennoPoster and all other programs on your computer.
+
+## Socket-like speed
+
+Our less scrupulous competitors (let’s not name names :) claim their program can work at socket speed if you disable loading Flash, scripts, images, etc.
+
+In reality, this isn’t true. The browser will never operate as fast as direct HTTP requests. Direct requests are 50–100 times faster. You can see this yourself by running our [❗→ ZennoProxyChecker](https://zennolab.atlassian.net/wiki/spaces/RU/pages/532480133 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/532480133") on a dedicated server with 15,000 threads. In tests on http://hetzner.de servers with 15,000 threads, we ran out of available connections—the network equipment supports no more, even though there was enough CPU and RAM for 50,000.

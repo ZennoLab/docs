@@ -1,0 +1,10 @@
+{
+  "label": "Project Editor",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Project Editor",
+    "description": "A section dedicated to the features and capabilities of the ProjectMaker project editor, including working with actions (cubes) and categories: Data, Content Analysis, Lists, Tables, Browser, Tabs (working with web pages), Logic, Mail Operations, Emulation, Proxy Checker, HTTP, FTP, Project, Custom Code, Plugins, ZennoPoster and ZennoBrowser Integration.",
+    "slug": "/category/project-editor"
+  }
+}

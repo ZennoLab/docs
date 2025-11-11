@@ -1,0 +1,10 @@
+{
+  "label": "Interface",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Interface",
+    "description": "A section about the application interface: the main menu, side menu, and an overview of the project table.",
+    "slug": "/category/zp-interface"
+  }
+}

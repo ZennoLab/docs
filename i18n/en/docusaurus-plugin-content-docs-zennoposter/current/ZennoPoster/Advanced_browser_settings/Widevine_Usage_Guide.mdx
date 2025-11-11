@@ -1,0 +1,32 @@
+﻿---
+sidebar_position: 1
+title: "Widevine Usage Guide"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "Инструкция по использованию Widevine.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2104492033/Widevine"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2104492033/Widevine)** — Source of this material
+
+_______________________________________________  
+
+:::info Info
+This guide applies to the CEF browser in ZennoPoster version 7.6.1 and higher.
+:::
+
+**To use the Widevine component, please follow these steps:**
+
+1. You need to download the plugin file (in both cases, the x64 option is shown).
+
+ 1. Download the latest version from [this path](http://edgedl.me.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvOGQ5QUFYTUR2NWZzUHhaQjJuZnJrYS1vQQ/4.10.2391.0_oimompecagnajdejgnnjijobebaeigek.crx "http://edgedl.me.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvOGQ5QUFYTUR2NWZzUHhaQjJuZnJrYS1vQQ/4.10.2391.0_oimompecagnajdejgnnjijobebaeigek.crx").
+ 2. Extract the crx file using any ZIP archiver (for example, 7zip) to a folder named `WidevineCdm`
+ 3. Alternatively, you can get this folder from a Google Chrome installation (`Program Files\Google\Chrome\Application\X.X.X.X\WidevineCdm`). However, plugin compatibility is guaranteed only for a narrow range of versions, so option (a) is preferred.
+2. Next, move the resulting `WidevineCdm` folder to the directory where the libcef.dll library is located in ZennoPoster, for example, `C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.6.1.0\Progs\x64`.
+3. By default, components are disabled in CEF, so to use Widevine, you need to add the --component-updater argument to the CEF launch arguments. It's recommended to specify the initial-delay argument parameter with a large number, for example: `--component-updater=initial-delay=100000`. In this case, initial-delay is the time in seconds after which the first attempt to check for component updates will be made. Since the component is already present, this check isn’t needed. Also, if an update is available, it will download the component to the profile folder, increasing the size of each profile folder for the instance with component-updater enabled.
+
+After these steps, Widevine will work in your CEF browser.

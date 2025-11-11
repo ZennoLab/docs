@@ -1,0 +1,95 @@
+﻿---
+sidebar_position: 2
+title: "Извлечение статьи (Article Extraction)"
+description: "Конвертировано из HTML в MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Извлечение статьи (Article Extraction).txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315067/Article+Extraction"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315067/Article+Extraction)** — Источник данного материала
+
+_______________________________________________  
+
+## Описание
+
+Позволяет получить основную статью на странице ресурса.
+
+![image-20200816-163409](./assets/Article_Extraction/Article_Extraction_pic1.png)
+
+
+
+## Где можно применить: 
+
+- Парсинг контента с ресурсов
+- Работа к текстом
+
+## Как добавить действие в проект?
+
+Через контекстное меню **Добавить действие** → **Анализ** **содержимого**→ **Article Extraction**
+
+![image-20200816-163601](./assets/Article_Extraction/Article_Extraction_pic2.png)
+
+
+
+Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+## Как работать с экшеном?
+
+![image-20200816-164002](./assets/Article_Extraction/Article_Extraction_pic3.png)
+
+
+
+1. Вкладка с загруженной страницей : 
+a) **Активная** - таб, который у вас в данный момент перед глазами.
+b) **Первая** - первое окно слева.
+c) **По имени** - указать имя таба или переменную учитывая регистр букв.
+d) **По номеру** - задаём номер вкладки. Нумерация идёт слева направо начиная с 0. Если необходимо закрыть самую первую вкладку, то в поле указываем ноль , последующие вкладки идут по счету 1, 2, 3….
+2. Переменная для результата.
+
+<details>
+<summary>Пример</summary>
+
+Нужно получить основную статью с главной странице https://zennolab.com/ru/
+
+![image-20200816-164644](./assets/Article_Extraction/Article_Extraction_pic4.png)
+
+
+
+Так как мы работаем в одной вкладке, то указываем *Активная
+
+После выполнения экшена статья будет помещена в переменную *text
+
+![image-20200816-164847](./assets/Article_Extraction/Article_Extraction_pic5.png)
+
+
+
+</details>
+  
+
+## Пример использования: 
+
+Перейти на страницу и получить текст. Полученный контент складываем в список для дальнейшей работы.
+
+![image-20200816-165140](./assets/Article_Extraction/Article_Extraction_pic6.png)
+
+
+
+1. Переходим на страницу.
+2. Получаем основную статью и кладём в переменную.
+3. Записываем в список.
+
+Позволит максимально быстро парсить текст, не прибегая к использованию множества инструментов.
+
+  
+
+## Полезные ссылки
+
+1. [❗→ Создание контента](/wiki/spaces/RU/pages/489095179 "/wiki/spaces/RU/pages/489095179")
+2. [❗→ Распознавание контекста](/wiki/spaces/RU/pages/534315397 "/wiki/spaces/RU/pages/534315397")
+3. [❗→ Окно переменных](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872")
+4. [❗→ Управление табом](/wiki/spaces/RU/pages/534020201 "/wiki/spaces/RU/pages/534020201")

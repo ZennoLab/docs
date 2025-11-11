@@ -1,0 +1,9 @@
+{
+  "label": "ZennoPoster",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "ZennoPoster - an application for running projects",
+    "description": "A software suite from ZennoLab for automating browser actions and SEO tasks: record and replay scripts with no coding, multithreading, work with proxies and captchas. This section includes materials on the interface, project table, and settings (including ProxyChecker)."
+  }
+}

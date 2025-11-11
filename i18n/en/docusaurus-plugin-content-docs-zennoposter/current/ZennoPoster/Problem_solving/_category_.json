@@ -1,0 +1,9 @@
+{
+  "label": "Troubleshooting",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "title": "Troubleshooting",
+    "description": "Detailed log diagnostics, memory leak detection, and fixing geo-database loading issues."
+  }
+}

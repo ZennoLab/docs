@@ -1,0 +1,10 @@
+{
+  "label": "Sending Mail",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "Sending Mail",
+    "description": "ZennoPoster actions for sending email: SMTP settings, message templates (HTML/Plain), attachments, logging and debugging, error handling.",
+    "slug": "/category/actions-send-mail"
+  }
+}

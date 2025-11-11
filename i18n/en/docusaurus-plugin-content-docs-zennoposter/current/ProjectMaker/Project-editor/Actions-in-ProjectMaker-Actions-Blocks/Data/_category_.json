@@ -1,0 +1,10 @@
+{
+  "label": "Data",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Data",
+    "description": "A category of actions for working with data in ProjectMaker: profile operations, files, SMS services, directories, databases, generating random values, text processing, JSON and XML, images, and variables.",
+    "slug": "/category/actions-data"
+  }
+}

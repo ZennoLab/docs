@@ -1,0 +1,10 @@
+{
+  "label": "Static Blocks Panel",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Static Blocks Panel",
+    "description": "Actions ZennoPoster: Overview and usage of the static blocks panel. Includes: General Principles of Operation (panel structure and purpose), Project Settings (global parameters and presets), Profile (storing and applying profiles), Encryption (data and secrets protection), List and Table (data structures, filters, import/export), Google Spreadsheet (connection and synchronization), Project Input Settings (input fields, default values, validation), FTP Settings (access and reuse), References from GAC (assembly connections), Using Directives and Shared Code (common namespaces/snippets), Bot Interface (BotUI elements, data binding).",
+    "slug": "/category/actions-static-blocks-panel"
+  }
+}

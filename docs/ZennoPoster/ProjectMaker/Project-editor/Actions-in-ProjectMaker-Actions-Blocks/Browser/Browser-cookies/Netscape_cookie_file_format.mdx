@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 1
+title: "Netscape формат файла cookie"
+description: "Конвертировано из HTML в MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Netscape формат файла cookie.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2155872263/Netscape+cookie"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2155872263/Netscape+cookie)** — Источник данного материала
+
+_______________________________________________  
+
+## Список параметров
+
+| **#** | **Имя** | **Тип** | **Описание** |
+| --- | --- | --- | --- |
+| 0 | domain | string | Домен файла cookie (например, www.google.com, example.com). |
+| 1 | isDomain | boolean | Зарезервировано. Не используется. Однако значение обязательно надо указывать. |
+| 2 | path | string | Путь файла cookie. |
+| 3 | secure | boolean | TRUE, если файл cookie помечен как безопасный (т.е. его область действия ограничена защищенными каналами, обычно HTTPS). |
+| 4 | expirationDate | DateTime | Формат: `mm/dd/yyyy hh:mm:ss`. Значение указывать необязательно. Однако это имеет смысл, только если `session=true`.<br/><br/>Также можно указать в формате Unix - кол-во секунд с момента `1970.1.1 0:0:0` |
+| 5 | name | string | Имя файла cookie. |
+| 6 | value | string | Значение файла cookie. |
+| 7\* | httpOnly | boolean | TRUE, если файл cookie помечен как HttpOnly (т.е. файл cookie недоступен для клиентских скриптов). Дефолтное значение - FALSE. |
+| 8\* | session | boolean | TRUE, если файл cookie помечен как сессионный (т.е. файл куки удалится после закрытия браузера). Дефолтное значение - FALSE. |
+| 9\*\* | sameSite | enum | Статус файла cookie на том же сайте (т.е. отправляется ли файл cookie с межсайтовыми запросами). Значения: `Lax`, `Strict`, `None`, `Extended`, `Unspecified`. Дефолтное значение - `Unspecified` |
+| 10\*\*\* | priority | enum | Устанавливает порядок удаления файлов cookies при перезаполнении хранилища. Значения: `Low`, `Medium`, `High`. Дефолтное значение - `Medium` |
+
+:::info Информация
+Значения со звездочками можно не указывать. Значения с одинаковым кол-вом звездочек необходимо указывать вместе (т.е. при указании параметра httpOnly, также необходимо указать значение параметра session).
+:::
+
+## Пример для экспорта
+
+```
+some.host.io	TRUE	/	TRUE cookie-name-1	cookie-value-1	TRUE	TRUE	None	Strict
+some.host.io	TRUE	/	TRUE	01/01/2023 00:00:00	cookie-name-2	cookie-value-2	TRUE	FALSE
+some.host.io	TRUE	/	TRUE	01/01/2024 00:00:00	cookie-name-3	cookie-value-3
+```
+
+:::info Информация
+Параметры между собой должны разделяться символом табуляции (\t). Каждый файл cookie между собой разделяется EOL (end of line - \r\n)
+:::

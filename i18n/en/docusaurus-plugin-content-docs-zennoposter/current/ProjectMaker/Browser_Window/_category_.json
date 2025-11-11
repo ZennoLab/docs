@@ -1,0 +1,10 @@
+{
+  "label": "Browser Window",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "Browser Window in the ProjectMaker Interface",
+    "description": "This section covers the browser window in ProjectMaker. It discusses the capabilities for viewing and parsing pages, working with XPath and text selection, image search, using web developer tools (DevTools), and font emulation features.",
+    "slug": "/category/browser-window"
+  }
+}

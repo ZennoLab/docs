@@ -1,0 +1,455 @@
+﻿---
+sidebar_position: 9
+title: "Распознать каптчу"
+description: "Конвертировано из HTML в MDX"
+date: "2025-07-30"
+converted: true
+originalFile: "Распознать каптчу.txt"
+targetUrl: "https://example.com/target-page"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://example.com/target-page)** — Источник данного материала
+
+_______________________________________________  
+# Распознать каптчу
+
+  
+
+## Описание
+
+Экшен используется для автоматического решения каптчи через [❗→ сервисы](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385") или [❗→ вручную](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215").
+
+Каптча (от CAPTCHA — англ. **C**ompletely **A**utomated **P**ublic **T**uring test to tell **C**omputers and **H**umans **A**part — полностью автоматизированный публичный тест Тьюринга для различения компьютеров и людей) - компьютерный тест, используемый для того, чтобы определить, кем является пользователь системы: человеком или компьютером.
+
+| ![Некоторые виды капчи](./assets/Captcha_Recognition/Captcha_Recognition_pic1.png) |
+| :--: |
+| Некоторые виды капчи |
+
+
+
+## Как добавить действие в проект?
+
+Существует несколько способов добавления экшена в проект.
+
+### Через контекстное меню БРАУЗЕРА
+
+Для добавления экшена распознавания с помощью контекстного меню [❗→ браузера](/wiki/spaces/RU/pages/534315373 "/wiki/spaces/RU/pages/534315373")ProjectMaker Вы должны кликнуть ПКМ по картинке на сайте и выбрать пункт *Это каптча!
+
+![image-20200819-180955](./assets/Captcha_Recognition/Captcha_Recognition_pic2.png)
+
+
+
+После добавления экшена сразу же откроется окно [❗→ распознавания каптчи вручную](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215"), которое пока можно закрыть и перейти к настройкам экшена.
+
+### Через контекстное меню **ПРОЕКТА**
+
+**Добавить действие** → **Табы** → **Распознать капчу**
+
+![image-20200819-175851](./assets/Captcha_Recognition/Captcha_Recognition_pic3.png)
+
+
+
+Минус данного способа заключается в том, что Вам предварительно надо скачать изображение на компьютер и потом указать путь к файлу в экшене.
+
+Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+## Настройки экшена распознавания капчи. 
+
+### Основное
+
+![image-20210531-140331](./assets/Captcha_Recognition/Captcha_Recognition_pic4.png)
+
+
+
+#### Модуль распознавания
+
+Выбор модуля (каптча-сервиса) через который будет распознана каптча. 
+
+Из выпадающего списка необходимо выбрать желаемый сервис распознавания каптчи (предварительно надо указать его [❗→ API ключ в настройках](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385")). По умолчанию стоит *MonkeyEnter.dll* - [❗→ ручной ввод](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215"). 
+
+:::note На заметку
+В данном поле можно использовать переменные проекта.
+:::
+
+#### Настройки
+
+При клике по кнопке *Настройки Вы попадёте в настройки программы, на [❗→ вкладку каптча сервисов](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385").
+
+#### Поиск элемента
+
+Прежде чем провзаимодействовать с элементом на странице его надо найти. В экшенах [❗→ Получение значения](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124") , [❗→ Установка значения](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117") , [❗→ Выполнить событие](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211") , [❗→ Событие Touch](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386") , [❗→ Событие Swipe](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735739970 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735739970") существует два способа поиска элементов - классический и с помощью XPath.
+
+  
+
+**Классический** - Поиск по параметрам HTML элемента: тэг, атрибут и его значение.
+
+![image-20200805-202115](./assets/Captcha_Recognition/Captcha_Recognition_pic5.png)
+
+
+
+**XPath** - поиск с помощью [❗→ XPath выражений](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/"). С помощью него Вы можете реализовать более универсальный и устойчивый к изменениям вёрстки способ поиска данных в сравнении с классическим поиском или регулярными выражениями.
+
+![image-20200805-202209](./assets/Captcha_Recognition/Captcha_Recognition_pic6.png)
+
+
+
+### **Какая вкладка**
+
+Выбираем вкладку, на которой будет производиться поиск элемента.
+Возможные значения:
+
+- Активная вкладка
+- Первая
+- По имени - при выборе данного пункта появится поле ввода для названия вкладки.
+- По номеру - в поле ввода надо будет ввести порядковый номер вкладки (нумерация начинается с нуля!)
+
+### **Документ**
+
+Рекомендуется ставить значение **-1** (поиск во всех документах на странице). 
+
+### **Форма**
+
+Тоже лучше ставить **-1** (поиск по всем формам на странице). При выборе такого значения шаблон будет более универсальным.
+
+<details>
+<summary>Почему лучше ставить "-1"?</summary>
+
+Пример: на странице 3 формы - поиск, регистрация, заказ товара. Нам надо кликнуть в форме заказа по кнопке и мы выбрали в качестве значения поля “Форма” - **2** (два) (нумерация с нуля). Спустя какое-то время на сайте появляется новая форма, для входа, и вставлена она перед формой заказа. Под номером 2 теперь будет форма входа и наш шаблон либо выдаст ошибку о том, что кнопка не найдена, либо (что гораздо хуже) будет кликать в другой форме по другой кнопке.
+
+</details>
+:::note На заметку
+В настройках программы можно отметить два чекбокса - Искать во всех формах на странице и Искать во всех документах на странице  и тогда всегда при добавлении элемента в Конструктор действий для номера документа и формы будет стоять -1.
+:::
+
+### **Тэг (только классический поиск)**
+
+![image-20210525-095347](./assets/Captcha_Recognition/Captcha_Recognition_pic7.png)
+
+
+
+Собственно HTML тэг у которого нужно получить  значение.
+
+:::tip Совет
+Можно указать сразу несколько тегов, разделитель - ; (точка с запятой)
+:::
+
+### **Условия (только классический поиск)**
+
+![image-20210525-100053](./assets/Captcha_Recognition/Captcha_Recognition_pic8.png)
+
+
+
+1. **Группа** - приоритет данного условия. Чем выше это число тем приоритет ниже. Если не смогли найти элемент по условию  с наивысшим приоритетом, то переходим к условию со следующим приоритетом и так пока элемент не будет найден, либо пока не закончатся условия поиска. Можно добавлять несколько условий с одним приоритетом, тогда поиск будет производиться по всем условиям с одинаковым приоритетом одновременно.
+2. **Атрибут** ** - атрибут HTML тэга по которому производится поиск.
+3. **Тип поиска**:
+
+ 1. text - поиск по полному либо частичному вхождению текста;
+ 2. notext - поиск элементов в которых не будет указанного текста;
+ 3. regexp - поиск с помощью [❗→ регулярных выражений](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111") 
+По умолчанию поиск регистронезависимый. Чтобы при поиске с помощью регулярного выражения учитывался регистр добавьте в самом начале выражения `(?-i)`(это означает отключение регистронезависимого поиска)
+4. **Значение** - значение атрибута HTML тега
+5. **№ совпадения** - порядковый номер найденного элемента (нумерация с нуля!). В этом поле можно [❗→ использовать диапазоны](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137") и макросы [❗→ переменных](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922").
+
+:::note На заметку
+Чтобы удалить условие поиска необходимо кликнуть ЛКМ по полю слева от него (на скриншоте выделено синим цветом) и нажать кнопку delete на клавиатуре.
+:::
+
+:::note На заметку
+Для поиска нужного элемента может использоваться несколько условий.
+:::
+
+Всегда важно стараться подбирать условия поиска таким образом, чтоб оставался только один элемент, т.е. порядковый номер был 0 (нумерация с нуля).
+
+#### Положить результат в переменную
+
+Результат распознавания будет сохранён в указанную здесь [❗→ переменную проекта](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922").
+
+  
+
+### Дополнительно
+
+![image-20200819-184415](./assets/Captcha_Recognition/Captcha_Recognition_pic9.png)
+
+
+
+#### Ожидание
+
+![image-20200819-184609](./assets/Captcha_Recognition/Captcha_Recognition_pic10.png)
+
+
+
+*Подождать перед выполнением
+Если в полях *ОТ и *ДО указаны положительные числа, то экшен будет делать паузу перед тем как начать работу (время будет выбрано случайно исходя из указанного диапазона).
+
+*Ждать элемент не более
+Если по истечении указанного здесь времени элемент не будет найден, то экшен выйдет по красной ветке (с ошибкой).
+
+#### Параметры модуля
+
+![image-20200819-185149](./assets/Captcha_Recognition/Captcha_Recognition_pic11.png)
+
+
+
+В данном поле можно ввести дополнительные параметры (условия) для разгадывания капчи - чувствительна к регистру, только русские символы, математическая капча, несколько слов и др. 
+
+Формат: `название_параметра=значение_параметра` Несколько параметров разделяются символом ***&*** (амперсанд)
+
+Пример (основан на API RuCaptcha) `phrase=1&numeric=2&regsense=1`
+- капча состоит из двух и более слов, только из букв, чувствительна к регистру
+
+![image-20200819-193201](./assets/Captcha_Recognition/Captcha_Recognition_pic12.png)
+
+
+
+<details>
+<summary>Примеры параметров с разных сервисов</summary>
+
+:::warning Внимание
+Дополнительные параметры и значение, которые эти параметры могут принимать, индивидуальны для каждого сервиса.
+:::
+
+Рассмотрим несколько примеров на основе двух популярных сервисов для разгадывания каптчи.
+
+*RuCaptcha* - при переходе на страницу с описанием API https://rucaptcha.com/api-rucaptcha#solving_normal_captcha пролистав ниже можно найти таблицу, где указаны параметры, которые можно указать
+
+| ![тут только часть из возможных параметров](./assets/Captcha_Recognition/Captcha_Recognition_pic13.png) |
+| :--: |
+| тут только часть из возможных параметров |
+
+
+
+*Anti-Captcha* - на [❗→ странице документации](https://anticaptcha.atlassian.net/wiki/spaces/API/pages/4227078/ImageToTextTask "https://anticaptcha.atlassian.net/wiki/spaces/API/pages/4227078/ImageToTextTask") по решению простых текстовых каптч тоже есть таблица с допустимыми параметрами
+
+![image-20200819-191315](./assets/Captcha_Recognition/Captcha_Recognition_pic14.png)
+
+
+
+Даже на основе только этих двух сервисов и только небольшой части их параметров можно увидеть, что 
+
+- некоторые параметры, которые отвечают за одно и то же называются по-разному (чувствительность к регистру - *case и *regesense)
+- другие имеют одно и тоже название, отвечают за одно и тоже, но принимают разные типы значений (*phrase)
+- есть параметры, которые совпадают по имени, назначению, принимаемым значениям, но в одном сервисе можно передать чуть больше значений, чем в другом (*numeric)
+
+Будьте крайне внимательны, когда пишите проект под несколько каптча сервисов с использованием дополнительных параметров.
+
+</details>
+#### Параметры каптчи
+
+![image-20200820-181121](./assets/Captcha_Recognition/Captcha_Recognition_pic15.png)
+
+
+
+*Масштаб*
+С помощью данной настройки Вы можете уменьшить или увеличить размер отправляемой картинки-каптчи.
+
+*Склеивать каптчи*
+Бывает, что каптча состоит из нескольких картинок, тогда их можно объединить, чтобы не тратиться на распознавание отдельных частей. Для объединения каптч, если вы не объединили их при записи шаблона, нужно в окне свойств первого элемента каптчи установить флаг «Склеивать каптчи». Потом кликаете ПКМ по следующему элементу и в контекстном меню появится новый пункт *Приклеить к каптче. 
+
+![image-20200820-193749](./assets/Captcha_Recognition/Captcha_Recognition_pic16.png)
+
+
+
+При каждом клике будет создаваться новый экшен, у последнего будет ставиться чекбокс *Последняя каптча (у предыдущих данный чекбокс снимается).
+
+#### Асинхронное распознавание
+
+![image-20200820-181817](./assets/Captcha_Recognition/Captcha_Recognition_pic17.png)
+
+
+
+Данная настройка позволяет не ждать ответа от сервиса, а продолжить выполнение шаблона.
+
+При включении данной опции создаётся новый экшен *Ожидание распознавания капчи. Настроек у него нет, только кнопка *В начало распознавания при клике которой Вы будете перенаправлены на основной экшен (очень удобно, когда в шаблоне данные экшены находятся в разных краях холста экшенов). В основном экшене есть обратная кнопка - *В конец распознавания.
+
+![image-20200820-182040](./assets/Captcha_Recognition/Captcha_Recognition_pic18.png)
+
+
+
+После того, как шаблон дойдёт до основного экшена *Распознавание капчти, то он отправит каптчу на сервис и продолжит работу, пока не наткнётся на экшен *Ожидание… , на этом действии он остановится и будет ждать ответа от сервиса. После получения ответа можно использовать переменные, которые были указаны в основном экшене.
+
+#### URL для жалобы
+
+![image-20200820-182859](./assets/Captcha_Recognition/Captcha_Recognition_pic19.png)
+
+
+
+Капчту на сервисе разгадывают люди, а людям, как известно, свойственно ошибаться. Иногда работники ошибаются, либо невнимательно читают задание и вместо того, чтобы написать ответ на выражение 
+`3+88=?`
+, пишут само выражение, хотя в настройках было указано, что это каптча где надо решить математическую задачку.
+
+Для таких случаев и служит данная настройка - если каптча была разгадана неверно, то отправив запрос по данному урлу, Вы пожалуетесь на это конкретное распознавание и сервис вернёт Вам деньги.
+
+:::warning Внимание
+Не злоупотребляйте данной возможностью и используйте только тогда, когда работник действительно ошибся и неверно разгадал каптчу. Если же Вы будете жаловаться и возвращать деньги за правильно разгаданные капчи Вас очень быстро забанят.
+:::
+
+#### Сохранение
+
+![image-20200820-185127](./assets/Captcha_Recognition/Captcha_Recognition_pic20.png)
+
+
+
+С помощью данных настроек Вы можете сохранить картинку с каптчей и ответ в указанный каталог. 
+
+- *Каталог -* директория, в которую будут сохраняться картинки (можно использовать [❗→ переменные](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922"))
+- *Ответы -* куда сохранять ответы на каптчи:
+
+ - *В названии файла -* удобно, но не всегда подходит, т.к. в каптчах могут встречаться символы, которые в Windows нельзя использовать в именах файлов.
+
+![image-20200820-190103](./assets/Captcha_Recognition/Captcha_Recognition_pic21.png)
+
+
+ - *В файл -* при выборе данной настройки в указанной директории будет сохранятся картинка каптчи с именем *captcha(X)**.png**,* где *X -* это порядковый номер каптчи. Так же будет создан файл *captcha(X)**.txt*** в котором будет ответ на эту каптчу. В данном случае уже будут нестрашны ограничения системы на именование файлов.
+- *Игнорировать ответ “sorry” -* при некоторых ошибках экшен *Распознать каптчу* возвращает *sorry* вместо ответа на каптчу. При включении данной опции программа не будет сохранять каптчи с таким ответом.
+
+##### Где это может быть полезным:
+
+- если Вы захотите [создать свой модуль](https://zennolab.atlassian.net/wiki/pages/createpage.action?spaceKey=APIS&amp;title=%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F "https://zennolab.atlassian.net/wiki/pages/createpage.action?spaceKey=APIS&amp;title=%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F") для сервиса [CapMonster Cloud](https://capmonster.cloud/ "https://capmonster.cloud/").
+- при использовании [❗→ CapMonster 2](/wiki/spaces/RU/pages/475332615 "/wiki/spaces/RU/pages/475332615") (программа для автоматического распознавания каптч) - у данного софта много каптч, которые он поддерживает, как говорится, из коробки, но бывают и такие для которых надо [❗→ создавать модули самостоятельно](/wiki/spaces/RU/pages/515932198 "/wiki/spaces/RU/pages/515932198"). А для создания модуля нужна база правильно разгаданных каптч, вот тут-то и приходят на помощь данные настройки экшена - Вы распознаете каптчу вручную или с помощью сервисов, сохраняете каптчи и ответы, а потом на их основе обучаете CapMonster 2.
+
+* * *
+
+## Дополнительная информация
+
+### Текстовые каптчи
+
+Довольно часто, особенно на слабозащищенных ресурсах, встречается текстовая каптча. Отличается она от простой (графической) каптчи тем, что не нарисована на картинке, а просто написана текстом. Такую каптчу, отсылать, в принципе, никуда не нужно, ее можно взять (выпарсить) прямо из текста страницы. Чтобы выпарсить каптчу из текста страницы нужно взять текст страницы с помощью действия [❗→ Данные](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840/- "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840/-") , выбрать текст страницы и, отметив «парсить результат», в параметры вписать [❗→ регулярное выражение](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111") для парсинга страницы.
+
+### Математическа каптча
+
+Также встречается математическая текстовая каптча. Эта та же текстовая каптча, только на ней обычно пишут математическое выражение типа 58+63. Можно превратить этот текст в картинку и отправить на распознавание, а можно использовать JavaScript. Для решения каптчи можно использовать действие [❗→ JavaScript](/wiki/spaces/RU/pages/489259137 "/wiki/spaces/RU/pages/489259137") из категории «Свой код». В поле для кода можно вставить ссылку на переменную, в которой содержится выпарсенное выражение, например 58+63 и после выполнения действие вернет результат 121.
+
+### Flash каптча и каптча из любого другого элемента
+
+Если вам встретится flash каптча, ее можно превратить (отрендерить) в обычную картинку и также отправить на распознавание. Найдите этот элемент в [❗→ дереве элементов](/wiki/spaces/RU/pages/727777355 "/wiki/spaces/RU/pages/727777355"), правой кнопкой мыши вызовите меню для выбора действий над этим элементом. Выберите там пункт «Это каптча»… все!
+
+### Как обрабатывать ошибки распознавания CAPTCHA
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z1uLzCEUcZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+:::warning Внимание
+Видео записано для устаревшей версии ZennoPoster, на сам алгоритм обработки остался таким же и не зависит от версии программы.
+:::
+
+### Как сделать скриншот браузера с помощью экшена Распознать капчу?
+
+Иногда возникает необходимость сделать скриншот либо определённого HTML элемента, либо всего сайта (даже тех его частей, который находятся вне зоны видимости).
+
+:::warning Внимание
+Если Вам нужен скриншот только окна браузера (видимой области сайта), то лучше воспользоваться экшеном Обработка изображений
+:::
+
+Для этого 
+
+- добавьте в проект экшен Распознавания каптчи (обязательно через контекстное меню браузера ![Warning](https://pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net/atlassian/productivityEmojis/exclamation-32px.png), для этого можно кликнуть ПКМ по любой картинке на сайте).
+- в качестве модуля распознавания выберите *CaptchaSaver.dll*
+- внесите критерии поиска элемента, для которого надо сделать скриншот
+- во вкладке *Дополнительно* в *Параметрах модуля* укажите полный путь для сохранения изображения (можно использовать [❗→ макросы переменных](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922"))
+
+<details>
+<summary>Пример настроек экшена для скриншота всего сайта</summary>
+
+![image-20210531-144132](./assets/Captcha_Recognition/Captcha_Recognition_pic22.png)
+
+
+
+![image-20210531-144213](./assets/Captcha_Recognition/Captcha_Recognition_pic23.png)
+
+
+
+</details>
+* * *
+
+## Пример использования
+
+### Типичный случай
+
+- кликаете правой кнопкой мыши (ПКМ) по изображению капчи и из контекстного меню выбираете *Это каптча!* 
+
+ - сразу после добавления этого экшена откроется [❗→ окно ручного распознавания](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215"), его можно закрыть
+- выбираете необходимый модуль распознавания (по умолчанию стоит *MonkeyEnter.dll* - ввод вручную)
+
+ - убедитесь, что Вы указали API ключ в [❗→ настройках](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385") и на сервисе есть средства
+- После этого кликаете ПКМ в поле, куда надо ввести ответ на капчу и выбираете пункт *Поле для результата распознавания каптчи*, после чего будет добавлен ещё один [❗→ экшен](/wiki/spaces/RU/pages/486342706 "/wiki/spaces/RU/pages/486342706") для ввода ответа капчи (для этого должна быть включена *Запись* в проекте)
+
+ - либо Вы можете вручную найти поле с помощью [❗→ Конструктора действий](/wiki/spaces/RU/pages/483426337 "/wiki/spaces/RU/pages/483426337") и ввести ответ при помощи экшена [❗→ Установка значения](/wiki/spaces/RU/pages/534315117 "/wiki/spaces/RU/pages/534315117")
+
+### Склеивание
+
+Для данного примера будет использоваться страница следующего содержания:
+
+<details>
+<summary>Исходный код тестовой страницы.</summary>
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CAPTCHA Test</title>
+</head>
+<body>
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACp0lEQVRYR+2XzWsTURDA54WkybbS9qAWLAY9mCoVxFTwD/CgePOgJz0JIlgP0oM3vXgSP6mH6sGL3pSAB/EgVUOhCJIliSWtH02qxMQ2SbObTbIfbt5zNmBrm232I4KXzLKwMPPe/HbmvXnzCPxnITb927Uzm46187HlxGF//zghnosMWIgQ4rMJ2mrGQAZgMzqjlxOq9HmzgSmA4Xw/t23yys7dsC/AgZd4gASHwXvyGDQ+JIAVis1vMzH0NJZYU6mUwkuxCPdWsileEUZtAYwFBuemgiOjB7i+Nft1gDgClNoAxBEg2cJ2ajEJ2Wp91zzU838rzSMQGNCmQ4d9PvzzfyH5XyqczaSqJbm8/SuAagkwxg2yaCi8wfeCUoOIUHDMo2AK+LqkV3R9nFfFh/ZSYALwTirDtXya9zBy3wlFg7J6Q9PeJ0HOmo0zTYFZBAyA6/n085gsnnYCYGXbBehGwFEEcBcUgJGU1cJa17M6IfBGlMXJzfv/j41tAEHXYUnDsu5AZKwBL7AMz1aFx7winu9oGzrwu8FUpg048SWuxBSxFxUtJ6PtCLgFWMYyfCYzV8T6saOjCHzTFJipCo44jBRMV1ZZTtMmeFW42xFAsxLm0p9wkohdCox3jRL6Ni5Ls1uNsZ2CbinuRqAbgWZHlEvPEyDP7G5Dw44BpbgdM6pSieAhUnXdki2pMkQdFiLDWdM7niFRqbxYU+jRBZBKlk1pODCgvgod6ukjXic/29b29vJ3PJgKV3lZvGkJgPeCjzeCew8e4frBD3gpwce9MOzDKTxZ/QlPV/J3YmplwhIAb0aX9nC9D84NDcGw30BwL8bxl9c0mMr9YDlVOx5XxdeWAIaBAQEecgFX0QgQ0uMagTGKY9P43sKe4JGtRejamYuBvwERl60wi4JyjQAAAABJRU5ErkJggg==" id="1">
+	<img src="data:image/png;base64,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" id="2">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAChklEQVRYR2NkGGDAOMD2M1DPASoq7JwsfMv+MzL4MPxnePb////8nzfPbyLkQao5gF3DaAqfgX22ZHwdw8+ndxgeTyn8/u39W2WGh9ef43MEVRzApmkUyC4stVa+bA4jMycP2L7ni1oYPp3enfDjxtmFNHUAm7qOHgsb72HZ/El8HPKacLteb5jG8HbvytKfN8720MwBrKoGBixsbDuAwS7Oa+iAYs/rDdMZ3u9dUfqdVg7gUDOMY+TgnKqUUM3DomuP4UmaOYBV3dCEmZGxk0NG1Sk4v5ah3VWTIffCT4Ybn//RNgRYNXSNmRlYW1gFxdxlvYCeN/NmmGfGzTDxzi+Gs+//MjAyoqZnqoYAu6ZRNiuv0ERhz0TmhGA/hgJ1boaoU98Znv34z/Dr5SOGZ/PrGYRcohj4TFyREiEV0wCnhvEbxcaVwqxCEgyqPIwMH34zMLz68Y/h4/GtDK/XT/727+f3ZxJRFSr8Fl40coCm8XullvUCLHxCYAt+vX7C8Gr1BIZv10+d+fuXIY6JmaFUIroikWYO4FA3buJQ0Kjlt/Rm+H7vMsOXc/ve/f39u/nnzXOTge75y6FhNI+mDgBawsihaRjL8J/R5v+/fxd+/vuyhOHOnU+w8KaHA/DWKaMOGA2B0RAYDYHREBicIbB+KsP7fato1yZErhw4NI3mSkSUJfFb+cCFXy3vZHh3fFv2z+tnp9GsVQyvDdWNm0Uc/GqEfTMYGNi4GBi+vWd4MrOK4eP9K45/blw4QHMHsGkY67Lx8J6TDk5n4RCTZvhy5xrDs41zb3+/dhrUUfhLcweALGDTMAxmYmBsB7ZOFRj+/z/z7y9D8q/b567TrW9IyCJc8gD2DJUwgibfBwAAAABJRU5ErkJggg==" id="3">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAELklEQVRYR8WXe2xTVRzHf7eP+4COdXVsbHVt1831AbJ1VSYkoxiN/xEDQ2KiMQEExCyIOiSgGCTEGmROE1j2YHEIgzjDY/iMbMKUuBFcW2BztXOMdY/KHp1rKPf2tr3Hu5ote8A6Q6+cv27uOed+P+d3fq+LwUMe2EPWh5gBEDrTNhEmeh8BUvCHauKCoUK283prtAPGBGBMnEhWlyq3WkGqWAR32n4Fz7H9ffRwKAv6W+7OBvHAAJKMnBWEXH5JVVQhxRNTJ7T6q/bCqKOxgHXazggH8KhRQcZRduUWq0q2ZMUUncFzpTDScKqIdtqLhQLAKH1uXeKzL65OW/s6+MNTZQbPl8FI/clddLvtoCAAhN709rz0JYeOlpWDNyyGw53BqRYQEoDKXPqUKP6RRvU7lfjOZWlQfpMFn3cIpPKFExDCWUD1eAI5H7fn77CqX3rOAiV/BsF7sRZ8Td+CZs8x4QEog/lcyjPrn79gLYLPu1movdIGPSWFYXyhUiw4AGHIfZNSGz/5oqICwiIJ7LV5wX1wM2KGevdRKdoPBAWQZmUvw2XyXwo/rcY35ajg5as0dFXtA1/LT6VIHC6lkjNbhQPQ5MhJUmxLffVAusVigYEAgtb6Ohj4sthB08PL8XnxGYICEPrcM4pV69YkFWyPOFmgvxO6i7fd4Vi/OeC85sKN2YsFA+Dz/HZKY/hMteMIYBIpcAEa3Ie28hBdrzAu+/ExIMEApDrTE/j8BZdVOyuJ8Tz/V81HMNr8XTXjtG0YjzlhALTmeBIHW+qm/dq4HEtEy3f1R/AcP9DOeENPwu3rfkEB+Hs/rVhZsDbphTciOuyAG7o/3kKHGDqPdbbcmJx3Y24BUmfaSKr0Vaq3SiP3jkJBcBe/BkxvRyPC4KvpxQVDSEmkaHfPDMNTdYjjvsYAOek/HE38Pm7G3ntVKlJv7lQXlWlJtSEyPeZ4Q98c5R+mlbxJm6VJaZBgKZh443fZwH/tZ+CCAQj0dgDT4/qNYbz5cOsWM1nzng0JaTCzWSUNUkwsma2Szn0OIeir2AO+1svrWKf99FwAmvkmI296kzF3xZkrPSc+BN+VHzbw0VMdHUBvsogo2feKVespQqWL+AFE6V8lCxRApGonvh0aHYaApwtQOMRfgQu8F0747nppA/TY+6MCjC0g9NlZGBJtRJhoMYZxxKynR5gMT1YvT38vkpciY/A836jU13Tw4B2IQy6EguWs64ZzTk74X00d8zCMCUAd3xM2CNgTTobEM01GSqlu07zLXwH2b2ANnj0MIxdrhWtKp1hJY1wkS0z2ZOyuAohL5NMmDbdrrPC349Jmpt3BJ5D7jwf+MRn/NJ87mpOeXpOXkLsSmIE+6K09wvp93sfg5u/u/wdAtzQdRJJKQJDPC3ZzHOxiXbaz0fwpZhaIJnS/+X8AFD8VP30FZWcAAAAASUVORK5CYII=" id="4">
+</body>
+</html>
+```
+
+</details>
+Каждый символ - отдельный HTML элемент. Кликаем по первой картинке ПКМ-*Это каптча!,* в настройках выбираем *Склеивать каптчи,* кликаем ПКМ по остальным картинкам и у них выбираем из контекстного меню *Приклеить к каптче.* В итоге должно получиться четыре экшена:
+
+![image-20200820-200754](./assets/Captcha_Recognition/Captcha_Recognition_pic24.png)
+
+
+
+После запуска первые три экшена будут только собирать картинки и приклеивать друг к другу и только последний экшен приклеит заключительную часть и отправит на сервис для распознавания полной каптчи.
+
+### Дополнительные параметры при отправке
+
+Представим, что есть подобная капча:
+
+![image-20200820-201350](./assets/Captcha_Recognition/Captcha_Recognition_pic25.png)
+
+
+
+Она состоит из отдельных частей и надо написать результат выражения (в конкретном случае - сложение).
+
+<details>
+<summary>Исходный код страницы с каптчей</summary>
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CAPTCHA Test</title>
+</head>
+<body>
+	<img src="data:image/png;base64,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" id="2">
+	<img src="data:image/png;base64,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" id="1">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAChklEQVRYR2NkGGDAOMD2M1DPASoq7JwsfMv+MzL4MPxnePb////8nzfPbyLkQao5gF3DaAqfgX22ZHwdw8+ndxgeTyn8/u39W2WGh9ef43MEVRzApmkUyC4stVa+bA4jMycP2L7ni1oYPp3enfDjxtmFNHUAm7qOHgsb72HZ/El8HPKacLteb5jG8HbvytKfN8720MwBrKoGBixsbDuAwS7Oa+iAYs/rDdMZ3u9dUfqdVg7gUDOMY+TgnKqUUM3DomuP4UmaOYBV3dCEmZGxk0NG1Sk4v5ah3VWTIffCT4Ybn//RNgRYNXSNmRlYW1gFxdxlvYCeN/NmmGfGzTDxzi+Gs+//MjAyoqZnqoYAu6ZRNiuv0ERhz0TmhGA/hgJ1boaoU98Znv34z/Dr5SOGZ/PrGYRcohj4TFyREiEV0wCnhvEbxcaVwqxCEgyqPIwMH34zMLz68Y/h4/GtDK/XT/727+f3ZxJRFSr8Fl40coCm8XullvUCLHxCYAt+vX7C8Gr1BIZv10+d+fuXIY6JmaFUIroikWYO4FA3buJQ0Kjlt/Rm+H7vMsOXc/ve/f39u/nnzXOTge75y6FhNI+mDgBawsihaRjL8J/R5v+/fxd+/vuyhOHOnU+w8KaHA/DWKaMOGA2B0RAYDYHREBicIbB+KsP7fato1yZErhw4NI3mSkSUJfFb+cCFXy3vZHh3fFv2z+tnp9GsVQyvDdWNm0Uc/GqEfTMYGNi4GBi+vWd4MrOK4eP9K45/blw4QHMHsGkY67Lx8J6TDk5n4RCTZvhy5xrDs41zb3+/dhrUUfhLcweALGDTMAxmYmBsB7ZOFRj+/z/z7y9D8q/b567TrW9IyCJc8gD2DJUwgibfBwAAAABJRU5ErkJggg==" id="3">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAELklEQVRYR8WXe2xTVRzHf7eP+4COdXVsbHVt1831AbJ1VSYkoxiN/xEDQ2KiMQEExCyIOiSgGCTEGmROE1j2YHEIgzjDY/iMbMKUuBFcW2BztXOMdY/KHp1rKPf2tr3Hu5ote8A6Q6+cv27uOed+P+d3fq+LwUMe2EPWh5gBEDrTNhEmeh8BUvCHauKCoUK283prtAPGBGBMnEhWlyq3WkGqWAR32n4Fz7H9ffRwKAv6W+7OBvHAAJKMnBWEXH5JVVQhxRNTJ7T6q/bCqKOxgHXazggH8KhRQcZRduUWq0q2ZMUUncFzpTDScKqIdtqLhQLAKH1uXeKzL65OW/s6+MNTZQbPl8FI/clddLvtoCAAhN709rz0JYeOlpWDNyyGw53BqRYQEoDKXPqUKP6RRvU7lfjOZWlQfpMFn3cIpPKFExDCWUD1eAI5H7fn77CqX3rOAiV/BsF7sRZ8Td+CZs8x4QEog/lcyjPrn79gLYLPu1movdIGPSWFYXyhUiw4AGHIfZNSGz/5oqICwiIJ7LV5wX1wM2KGevdRKdoPBAWQZmUvw2XyXwo/rcY35ajg5as0dFXtA1/LT6VIHC6lkjNbhQPQ5MhJUmxLffVAusVigYEAgtb6Ohj4sthB08PL8XnxGYICEPrcM4pV69YkFWyPOFmgvxO6i7fd4Vi/OeC85sKN2YsFA+Dz/HZKY/hMteMIYBIpcAEa3Ie28hBdrzAu+/ExIMEApDrTE/j8BZdVOyuJ8Tz/V81HMNr8XTXjtG0YjzlhALTmeBIHW+qm/dq4HEtEy3f1R/AcP9DOeENPwu3rfkEB+Hs/rVhZsDbphTciOuyAG7o/3kKHGDqPdbbcmJx3Y24BUmfaSKr0Vaq3SiP3jkJBcBe/BkxvRyPC4KvpxQVDSEmkaHfPDMNTdYjjvsYAOek/HE38Pm7G3ntVKlJv7lQXlWlJtSEyPeZ4Q98c5R+mlbxJm6VJaZBgKZh443fZwH/tZ+CCAQj0dgDT4/qNYbz5cOsWM1nzng0JaTCzWSUNUkwsma2Szn0OIeir2AO+1svrWKf99FwAmvkmI296kzF3xZkrPSc+BN+VHzbw0VMdHUBvsogo2feKVespQqWL+AFE6V8lCxRApGonvh0aHYaApwtQOMRfgQu8F0747nppA/TY+6MCjC0g9NlZGBJtRJhoMYZxxKynR5gMT1YvT38vkpciY/A836jU13Tw4B2IQy6EguWs64ZzTk74X00d8zCMCUAd3xM2CNgTTobEM01GSqlu07zLXwH2b2ANnj0MIxdrhWtKp1hJY1wkS0z2ZOyuAohL5NMmDbdrrPC349Jmpt3BJ5D7jwf+MRn/NJ87mpOeXpOXkLsSmIE+6K09wvp93sfg5u/u/wdAtzQdRJJKQJDPC3ZzHOxiXbaz0fwpZhaIJnS/+X8AFD8VP30FZWcAAAAASUVORK5CYII=" id="4">
+</body>
+</html>
+```
+
+</details>
+Для начала надо склеить все отдельные картинки в одну. Затем у последнего экшена выбираем необходимый сервис (в этом примере - RuCaptcha) и в *Параметрах* на вкладке *Дополнительно* указать, что тут надо произвести математическое действие (для RuCaptcha - 
+```calc=1`)
+
+![image-20200820-202611](./assets/Captcha_Recognition/Captcha_Recognition_pic26.png)
+
+
+
+  
+
+## Полезные ссылки
+
+- [❗→ Экшен ReCaptcha2](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053033/ReCaptcha "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053033/ReCaptcha")
+- [❗→ Настройки каптча сервисов](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385")
+- [Страниц с разными видами каптч](https://lessons.zennolab.com/captchas/ "https://lessons.zennolab.com/captchas/")
+- [❗→ Браузер](/wiki/spaces/RU/pages/534315373 "/wiki/spaces/RU/pages/534315373")
+- [❗→ Тестер регулярных выражений](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")

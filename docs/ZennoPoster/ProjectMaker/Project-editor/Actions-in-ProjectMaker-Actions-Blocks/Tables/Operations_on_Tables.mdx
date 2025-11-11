@@ -1,0 +1,698 @@
+﻿---
+sidebar_position: 1
+title: "Операции над таблицами"
+description: "Конвертировано из HTML в MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Операции над таблицами.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972)** — Источник данного материала
+
+_______________________________________________  
+  
+## Описание
+
+Таблицы используются для получения более сложно организованных данных, чем [❗→ списки](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375"), (например, список товаров для интернет-магазина, где построчно представлены разные данные: название, цена, описание и тд.).
+
+:::note На заметку
+Экшен используется как при работе с Таблицами так и с Google Таблицами, но у Google Таблиц есть несколько уникальных действий, которые описаны в статье Операции над Google-таблицами
+:::
+
+  
+
+## Как добавить Таблицу в проект?
+
+:::info Информация
+Перед началом работы необходимо создать Таблицу или Google таблицу.
+:::
+
+![image-20200815-214108](./assets/Operations_on_Tables/Operations_on_Tables_pic1.png)
+
+
+
+## Как добавить экшен в проект?
+
+Через контекстное меню **Добавить действие** → **Таблицы** → **Операции над таблицей**
+
+![image-20200814-184112](./assets/Operations_on_Tables/Operations_on_Tables_pic2.png)
+
+
+
+Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+## Для чего это используется?
+
+- Работа с комплексом данных
+- Добавление и получение элементов таблицы
+- Удаление строк, столбцов и дублей
+- Привязка к файлу
+- Получение количества строк и столбцов
+
+## Как работать с экшеном?
+
+:::note На заметку
+В качестве номера столбца можно использовать либо числа (нумерация с нуля!), либо, как в Excel, буквы латинского алфавита в верхнем регистре!
+:::
+
+### Взять столбец
+
+Положить значения заданного столбца в [❗→ список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")
+
+![image-20200814-190232](./assets/Operations_on_Tables/Operations_on_Tables_pic3.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Задаём столбец или переменную.
+4. [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") в который сохраним все значения столбца.
+
+<details>
+<summary>Пример</summary>
+
+Положить все значения столбца B из [❗→ Таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 в [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200814-191359](./assets/Operations_on_Tables/Operations_on_Tables_pic4.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![image-20200814-191010](./assets/Operations_on_Tables/Operations_on_Tables_pic5.png)
+
+
+
+После обработки
+
+![image-20200814-191015](./assets/Operations_on_Tables/Operations_on_Tables_pic6.png)
+
+
+
+Значения заданного столбца не удаляются после обработки
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200814-191239](./assets/Operations_on_Tables/Operations_on_Tables_pic7.png)
+
+
+
+</details>
+  
+
+### Взять строки
+
+Получение строк с возможностью удаления из таблицы и записью в [❗→ список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375"), [❗→ переменные](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872").
+
+![image-20200814-192818](./assets/Operations_on_Tables/Operations_on_Tables_pic8.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Критерии строк (можно указать переменную) : 
+a) Все
+b) Не содержит текст
+c) Неудовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+d) Первую
+e) [❗→ Под номерами](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137") (нумерация с нуля!)
+f) Случайную
+g) Содержит текст
+h) Удовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+4. Стоит ли удалять строки после обработки?
+5. Положить результат в [❗→ список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") или переменные.
+
+<details>
+<summary>Пример</summary>
+
+Взять случайные строки из [❗→ Таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 и положить в переменные с удалением.
+
+![image-20200814-193546](./assets/Operations_on_Tables/Operations_on_Tables_pic9.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![image-20200814-193736](./assets/Operations_on_Tables/Operations_on_Tables_pic10.png)
+
+
+
+После обработки
+
+![image-20200814-193830](./assets/Operations_on_Tables/Operations_on_Tables_pic11.png)
+
+
+
+Переменные
+
+![image-20200814-194704](./assets/Operations_on_Tables/Operations_on_Tables_pic12.png)
+
+
+
+Переменная *peremennay\_3 пустая так как таблица содержит только столбцы A и B
+
+</details>
+  
+
+### Добавить список
+
+Положить значения из списка в заданный столбец.
+
+![image-20200814-194954](./assets/Operations_on_Tables/Operations_on_Tables_pic13.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Задаём столбец или переменную.
+4. [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") со значениями.
+
+<details>
+<summary>Пример</summary>
+
+Взять значения из [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 и положить в столбец D [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-195131](./assets/Operations_on_Tables/Operations_on_Tables_pic14.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200814-195254](./assets/Operations_on_Tables/Operations_on_Tables_pic15.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![image-20200814-195341](./assets/Operations_on_Tables/Operations_on_Tables_pic16.png)
+
+
+
+После обработки
+
+![image-20200814-200051](./assets/Operations_on_Tables/Operations_on_Tables_pic17.png)
+
+
+
+Значения из списка не удаляются
+
+</details>
+  
+
+### Добавить строку
+
+Добавляем строку в таблицу.
+
+![image-20200814-200623](./assets/Operations_on_Tables/Operations_on_Tables_pic18.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Вставляем статический текст или переменную.
+4. Важное примечание
+
+:::note На заметку
+Строка будет добавлена в конец таблицы
+:::
+
+:::tip Совет
+Если нужно добавить сразу несколько строк в таблицу, то стоит воспользоваться экшеном Обработка текста-В таблицу.
+:::
+
+<details>
+<summary>Пример</summary>
+
+Добавить строку своего текста в разные столбцы.
+
+![image-20200814-200401](./assets/Operations_on_Tables/Operations_on_Tables_pic19.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![image-20200814-200750](./assets/Operations_on_Tables/Operations_on_Tables_pic20.png)
+
+
+
+После обработки
+
+![image-20200814-201211](./assets/Operations_on_Tables/Operations_on_Tables_pic21.png)
+
+
+
+</details>
+  
+
+### Записать ячейку
+
+Добавить текст в конкретную ячейку.
+
+![image-20200814-201841](./assets/Operations_on_Tables/Operations_on_Tables_pic22.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Задаём статические координаты ячейки или через [❗→ переменные](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872").
+4. Вставляем статический текст или переменную.
+
+<details>
+<summary>Пример</summary>
+
+Добавить текст и заданную ячейку
+
+![image-20200814-202026](./assets/Operations_on_Tables/Operations_on_Tables_pic23.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![image-20200814-202516](./assets/Operations_on_Tables/Operations_on_Tables_pic24.png)
+
+
+
+После обработки
+
+![image-20200814-202820](./assets/Operations_on_Tables/Operations_on_Tables_pic25.png)
+
+
+
+Строки всегда добавляются в конец таблицы
+
+</details>
+  
+
+### Получить количество столбцов
+
+Сколько столбцов содержит таблица
+
+![image-20200814-202916](./assets/Operations_on_Tables/Operations_on_Tables_pic26.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Переменная для получения результата.
+
+:::note На заметку
+Переменная всегда будет содержать только цифровое значение
+:::
+
+<details>
+<summary>Пример</summary>
+
+Получить количество столбцов [❗→ Таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 в переменную
+
+![image-20200814-203017](./assets/Operations_on_Tables/Operations_on_Tables_pic27.png)
+
+
+
+Содержание [❗→ Таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-203218](./assets/Operations_on_Tables/Operations_on_Tables_pic28.png)
+
+
+
+Получаем результат в переменную *kolichestvo\_strok
+
+![image-20200814-203321](./assets/Operations_on_Tables/Operations_on_Tables_pic29.png)
+
+
+
+</details>
+  
+
+### Получить количество строк
+
+Сколько строк содержит таблица
+
+![image-20200814-203431](./assets/Operations_on_Tables/Operations_on_Tables_pic30.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Переменная для получения результата.
+
+:::note На заметку
+Переменная всегда будет содержать только цифровое значение
+:::
+
+<details>
+<summary>Пример</summary>
+
+Получить количество строк [❗→ Таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 в переменную
+
+![image-20200814-203759](./assets/Operations_on_Tables/Operations_on_Tables_pic31.png)
+
+
+
+Содержание [❗→ Таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-203916](./assets/Operations_on_Tables/Operations_on_Tables_pic32.png)
+
+
+
+Получаем результат в переменную *kolichestvo\_strok
+
+![image-20200814-205216](./assets/Operations_on_Tables/Operations_on_Tables_pic33.png)
+
+
+
+</details>
+  
+
+### Привязать к файлу
+
+Привязка таблицы к файлу в ходе выполнения проекта.
+
+Этот экшен стоит использовать когда путь файла не известен на момент старта шаблона и будет вычислен только во время выполнения проекта.
+
+![image-20200814-205851](./assets/Operations_on_Tables/Operations_on_Tables_pic34.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Выбираем файл или указываем переменную, содержащую путь к файлу.
+4. Если файл отсутствует по указанному пути, **Zennoposter** автоматически создаст его.
+
+<details>
+<summary>Пример</summary>
+
+Привязать [❗→ таблицу](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 к заданному файлу
+
+![image-20200814-205718](./assets/Operations_on_Tables/Operations_on_Tables_pic35.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 будет привязана к соответствующему файлу
+
+</details>
+  
+
+### Прочитать ячейку
+
+Получить значения из заданной ячейки
+
+![image-20200814-205922](./assets/Operations_on_Tables/Operations_on_Tables_pic36.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Задаём статические координаты ячейки или через переменные.
+4. Переменная для результата.
+
+<details>
+<summary>Пример</summary>
+
+Получить в переменную значение из ячейки B2 [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-210356](./assets/Operations_on_Tables/Operations_on_Tables_pic37.png)
+
+
+
+Содержание [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-211524](./assets/Operations_on_Tables/Operations_on_Tables_pic38.png)
+
+
+
+После выполнения экшена получаем результат в переменную *yacheika
+
+![image-20200814-210857](./assets/Operations_on_Tables/Operations_on_Tables_pic39.png)
+
+
+
+</details>
+  
+
+### Сортировать таблицу
+
+Сортировка элементов таблицы по убыванию или возрастанию.
+
+![image-20200814-212049](./assets/Operations_on_Tables/Operations_on_Tables_pic40.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. **Zennoposter** автоматически определит столбцы, содержащие значения и предложит выбор.
+4. Использовать принцип как у чисел (данная опция сработает, если в столбце находятся только целочисленные значения. Если же там присутствуют дробные числа, то столбец будет сортирован по принципу строк).
+5. Задаём тип сортировки *по убыванию или *возрастанию.
+
+<details>
+<summary>Пример</summary>
+
+Отсортировать по убыванию значения всех столбцов [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-212913](./assets/Operations_on_Tables/Operations_on_Tables_pic41.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![image-20200814-214045](./assets/Operations_on_Tables/Operations_on_Tables_pic42.png)
+
+
+
+После обработки
+
+![image-20200814-214156](./assets/Operations_on_Tables/Operations_on_Tables_pic43.png)
+
+
+
+</details>
+  
+
+### Сохранить в файл
+
+Сохранение таблицы в файл в ходе выполнения проекта
+
+![image-20200814-214404](./assets/Operations_on_Tables/Operations_on_Tables_pic44.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Выбираем файл или указываем переменную, содержащую путь к файлу.
+
+:::warning Внимание
+Функция имеет опцию только перезаписи файла
+:::
+
+<details>
+<summary>Пример</summary>
+
+Сохранить значения [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 в файл
+
+![image-20200814-214710](./assets/Operations_on_Tables/Operations_on_Tables_pic45.png)
+
+
+
+Содержание [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-214822](./assets/Operations_on_Tables/Operations_on_Tables_pic46.png)
+
+
+
+После выполнения в файл будут записаны все значения
+
+![image-20200814-214959](./assets/Operations_on_Tables/Operations_on_Tables_pic47.png)
+
+
+
+</details>
+  
+
+### Удалить дубли
+
+Удаляем повторяющиеся значения в таблице
+
+![image-20200814-215041](./assets/Operations_on_Tables/Operations_on_Tables_pic48.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. **Zennoposter** автоматически определит столбцы, содержащие значения и предложит выбор.
+
+<details>
+<summary>Пример</summary>
+
+Удалить все дубли в [❗→ таблице](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![image-20200814-215349](./assets/Operations_on_Tables/Operations_on_Tables_pic49.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1 
+
+До обработки
+
+![image-20200814-215602](./assets/Operations_on_Tables/Operations_on_Tables_pic50.png)
+
+
+
+После обработки
+
+![image-20200814-215736](./assets/Operations_on_Tables/Operations_on_Tables_pic51.png)
+
+
+
+</details>
+  
+
+### Удалить столбец
+
+Целиком удаляет заданный столбец таблицы
+
+![image-20200814-215817](./assets/Operations_on_Tables/Operations_on_Tables_pic52.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Задаём столбец или переменную.
+
+:::warning Внимание
+Столбец будет удалён со всеми значениями
+:::
+
+<details>
+<summary>Пример</summary>
+
+Удалить столбец B из [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776")1
+
+![image-20200815-211121](./assets/Operations_on_Tables/Operations_on_Tables_pic53.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![image-20200815-211536](./assets/Operations_on_Tables/Operations_on_Tables_pic54.png)
+
+
+
+После обработки
+
+![image-20200815-211711](./assets/Operations_on_Tables/Operations_on_Tables_pic55.png)
+
+
+
+</details>
+  
+
+### Удалить строки
+
+Удаляет заданные строки во всех столбцах
+
+![image-20200815-213422](./assets/Operations_on_Tables/Operations_on_Tables_pic56.png)
+
+
+
+1. Выбираем таблицу с которой будем работать.
+2. Указываем функцию.
+3. Критерии строк (можно указать переменную) : 
+a) Все
+b) Не содержит текст
+c) Неудовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+d) Первую
+e) [❗→ Под номерами](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137") (нумерация с нуля!)
+f) Случайную
+g) Содержит текст
+h) Содержащие только пробельные символы
+i) Удовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+
+:::warning Внимание
+Заданная строка будет удалена во всех столбцах
+:::
+
+<details>
+<summary>Пример</summary>
+
+Удалить третью строчку из [❗→ таблицы](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+![1NFJfjUKn7](./assets/Operations_on_Tables/Operations_on_Tables_pic57.png)
+
+
+
+[❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776") 1
+
+До обработки
+
+![2020-07-25_13-31-21](./assets/Operations_on_Tables/Operations_on_Tables_pic58.png)
+
+
+
+После обработки
+
+![2020-08-03_20-40-14](./assets/Operations_on_Tables/Operations_on_Tables_pic59.png)
+
+
+
+Третья строка была удалена целиком
+
+</details>
+  
+
+### Рекомендации при работе с таблицами
+
+:::note На заметку
+Необходимо строго соблюдать для корректной работы проектов
+:::
+
+- Не привязывайте к таблице очень большие файлы в сотни мегабайт без опции «[❗→ Сохранять изменения таблицы в файл](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB")», особенно если у Вас мало оперативной памяти.
+- При использовании таблицы, привязанной к одному файлу в нескольких шаблонах, используйте один разделитель. Если в одном шаблоне столбцы разделены через `;`, а в другом через `-` то произойдет ошибка.
+- Если шаблон работает в многопоточном режиме и Вам нужно, чтобы каждый поток работал со своей строкой, включите опцию «[❗→ Сохранять изменения таблицы в файл](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903776#%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB")» и берите данные из таблицы с [❗→ удалением после взятия](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972#%D0%92%D0%B7%D1%8F%D1%82%D1%8C-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052972#%D0%92%D0%B7%D1%8F%D1%82%D1%8C-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8").
+- Если все проекты только читают файл, то проблем никаких не будет. Когда Вы используете синхронизацию с файлом, то таблица для всех потоков одна и все изменения в любом потоке отображаются в таблице.
+- Если Вы не используете синхронизацию с файлом, то для каждого потока будет создаваться своя копия таблицы. В этом случае при удалении строки таблицы в одном потоке в других потоках таблица не изменится.
+- Учитывайте, что таблицы в оперативной памяти занимают намного больше места чем исходный файл на жестком диске. Например, в оперативной памяти таблица на основе файла CSV в 10 MB в 100 потоков <u data-renderer-mark="true">без синхронизации</u> с файлом, может занять 5 GB. Старайтесь не использовать списки и таблицы в режиме «без синхронизации» с файлом без необходимости.
+
+  
+
+## Пример использования
+
+Собрать со страниц название нужных товаров в список и добавить их из списка в таблицу для дальнейшего использования.
+
+![2020-08-03_20-54-19](./assets/Operations_on_Tables/Operations_on_Tables_pic60.png)
+
+
+
+1. Загружаем страницы.
+2. Собираем необходимые значения в список.
+3. Создаём таблицу.
+4. Добавляем экшен и указываем функцию добавить список.
+5. Указываем список и столбец в который сохраним значения.
+
+  
+
+## Полезные ссылки
+
+1. [❗→ Таблица](/wiki/spaces/RU/pages/735903776 "/wiki/spaces/RU/pages/735903776")
+2. [❗→ Google таблицы](/wiki/spaces/RU/pages/735576090 "/wiki/spaces/RU/pages/735576090")
+3. [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")
+4. [❗→ Операции над списком](/wiki/spaces/RU/pages/534085798 "/wiki/spaces/RU/pages/534085798")
+5. [❗→ Переменные проекта](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872")
+6. [❗→ Тестер регулярных выражений](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+7. [❗→ Диапазоны значений](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137")

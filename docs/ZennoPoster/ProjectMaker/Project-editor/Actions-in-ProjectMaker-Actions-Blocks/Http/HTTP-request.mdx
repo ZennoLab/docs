@@ -1,0 +1,357 @@
+﻿---
+sidebar_position: 3
+title: "HTTP-запрос"
+description: ""
+date: "2025-08-04"
+converted: true
+originalFile: "HTTP-запрос.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489259052/HTTP-"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489259052/HTTP-)** — Источник данного материала
+
+_______________________________________________  
+# HTTP-запрос
+
+## Описание
+
+Можно создать любой тип HTTP-запроса : **Put**, **Delete**, **Head**, **Options**, **Patch**, **Trace**.
+Для POST и GET запросов есть отдельные экшены - [POST-запрос](/wiki/pages/resumedraft.action?draftId=534315180 "/wiki/pages/resumedraft.action?draftId=534315180") и [❗→ GET-запрос](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315165 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315165") 
+
+![image-20210529-152542](./assets/HTTP-request/HTTP-request_pic1.png)
+
+
+
+## Как добавить экшен в проект?
+
+Через контекстное меню **Добавить действие** → **HTTP** → **HTTP-запрос**
+
+![image-20200810-110205](./assets/HTTP-request/HTTP-request_pic2.png)
+
+
+
+Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+## Для чего это используется?
+
+- Работа проекта без браузера
+- Передача данных ресурсу
+- Загрузка файлов на сервер
+- Получение данных от сайта
+- Работа с API сервисов
+
+## Как работать с экшеном: Вкладка “Основные”
+
+![image-20210529-152902](./assets/HTTP-request/HTTP-request_pic3.png)
+
+
+
+### Тип запроса
+
+![image-20210529-152929](./assets/HTTP-request/HTTP-request_pic4.png)
+
+
+
+Выбираем необходимый запрос из списка : 
+
+**Put**    **Delete**    **Head**  
+**Options**  **Patch**    **Trace**
+
+### URL
+
+Адрес сайта, по которому будет отправлен запрос, можно использовать [❗→ переменную](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922").
+
+### Referer
+
+Заголовок запроса [*Referer](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer "https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Referer") содержит URL исходной страницы, с которой был осуществлён переход на текущую страницу. Заголовок *Referer позволяет серверу узнать откуда был осуществлён переход на запрашиваемую страницу. 
+Можно использовать [❗→ макросы переменных](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922").
+
+### Кодировка
+
+Кодировка, в которой будет отправлен запрос.
+
+### Таймаут
+
+Максимальное время ожидания ответа от сайта в секундах. При достижении установленного времени, действие будет завершено ошибкой и выйдет по красной ветке.
+Можно использовать [❗→ макросы переменных](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922").
+
+### Данные
+
+Содержимое запроса.
+
+### Тип данных
+
+Здесь надо выбрать какие данные отправляются с помощью данного запроса. Выбранное здесь значение передаётся как заголовок [Content-Type](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type "https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type").
+
+#### urlencoded
+
+Стоит использовать когда на сервер отсылается текстовая информация, которая в поле *Данные указывается в формате `имяпараметра1=значение1&имяпараметра2=значение2`
+
+:::note На заметку
+`Content-Type: application/x-www-form-urlencoded`
+:::
+
+#### multipart
+
+Этот тип стоит выбирать, когда Вы с помощью запроса отправляете двоичные данные (файлы) на сервер.
+
+:::note На заметку
+`Content-Type: multipart/form-data`
+:::
+
+#### Другой
+
+Вы можете указать другой тип данных, если описанные выше не подходят.
+
+Например, для взаимодействия с API [CapMonster Cloud](https://zennolab.atlassian.net/wiki/pages/createpage.action?spaceKey=APIS&amp;title=%F0%9F%94%B5%20%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8 "https://zennolab.atlassian.net/wiki/pages/createpage.action?spaceKey=APIS&amp;title=%F0%9F%94%B5%20%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8") данные надо отправлять POST запросом в виде JSON. Чтобы этого достичь из выпадающего списка выбираем *Другой и в появившееся поле вписываем `application/json`
+
+![image-20210529-144909](./assets/HTTP-request/HTTP-request_pic5.png)
+
+
+
+### Загружать
+
+#### Только содержимое
+
+В переменную будет сохранено только тело ответа
+
+#### Только заголовки
+
+Будут сохранены только заголовки ответа
+
+#### Заголовки и содержимое
+
+В переменную будут сохранены и заголовок ответа, и его тело. Разделены они будут двумя пустыми строками.
+
+#### Как файл
+
+В переменную сохранится путь к файлу.
+
+:::note На заметку
+По умолчанию файлы скачиваются в папку `Trash` в директории установленного ZennoPoster. Путь к ней может выглядеть так - `C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo\_color\_92x30dp.png`. Изменить этот путь можно в настройках, глобально для всех проектов. Или с помощью экшена во время выполнения шаблона.
+:::
+
+#### Как файл + заголовки
+
+В переменную сохранятся заголовки ответа и путь к скачанному файлу.
+
+#### Положить в переменную
+
+Здесь надо выбрать (или создать новую) переменную, в которую будет сохранён результат запроса.
+
+  
+
+## Как работать с экшеном: Вкладка "Дополнительно"
+
+![image-20210525-142622](./assets/HTTP-request/HTTP-request_pic6.png)
+
+
+
+### Редирект
+
+Установить перенаправление - если ответ на запрос будет содержать код редиректа (пример. ответа 301, 302), Zennoposter используя заголовок *Location, перейдёт к следующей странице. Цифрами указываем максимальное количество переходов: 0 - остаться на исходной странице , 5 - количество переходов до конечного url.
+
+### Использовать оригинальный URL
+
+Отмена кодирования URL из вкладки "Основное" в urlencode.  
+Пример:  
+*Оригинальный url*: `https://ru.wikipedia.org/wiki/Приветствие`  
+*По умолчанию*: `https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5`  
+
+### Заголовки
+
+#### Использовать по умолчанию
+
+В запрос будут подставлены заголовки по умолчанию. Вот как они выглядят (на примере запроса к `https://httpbin.org/get`, заголовок `Host` будет меняться в зависимости от URL адреса в запросе)
+
+```text
+Host: httpbin.org
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.5
+```
+
+#### Текущий профиль
+
+Будут подставлены заголовки из текущего [❗→ профиля проекта](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308").
+
+#### Загрузить из профиля
+
+Необходимо выбрать файл или указать [❗→ переменную](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922") содержащую путь до [❗→ профиля](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308") из которого будут загружены заголовки для запроса.
+
+#### Пользовательские настройки
+
+Позволяет самостоятельно указать каждый параметр заголовка запроса.
+
+##### **Заголовки запроса**
+
+:::warning Внимание
+Первой всегда (⚠) указывается строка User-Agent! И только потом все остальные заголовки.
+:::
+
+- Каждый заголовок начинается с новой строчки.
+- Можно указать *статичные значения, свои [❗→ *переменные](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922") или [❗→ *переменные профиля](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872#%D0%9F%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872#%D0%9F%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C").
+
+##### **Cookie**
+
+![image-20210525-151513](./assets/HTTP-request/HTTP-request_pic7.png)
+
+
+
+Можно указать готовые куки или из [❗→ переменной](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922").
+
+Формат: `имя=значение` , несколько разделяются с помощью `;`(точка с запятой). Пример:
+
+```text
+user=1992103;session=f79fcadd847b80f9df78ba4fb276c867;id=889
+```
+
+
+:::note На заметку
+Начиная с версии 7.1.6.0 (5.45.0.0) данное поле ввода отображается только в том случае, если вЫключена настройка Использовать CookieContainer (описан далее).
+:::
+
+##### **Использовать CookieContainer**
+
+CookieContainer позволяет синхронизировать куки как с браузером, так и между отдельными запросами, без необходимости их ручного парсинга и подстановки.
+
+<details>
+<summary>Пример</summary>
+
+Проект работает с сайтом используя запросы, но для работы нужно быть авторизованным. Представим, что процесс авторизации очень сложный, чтоб его повторить на запросах, поэтому, для входа на сайт используем браузерный режим.
+
+Затем [❗→ отключаем браузер](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C-%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%81 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C-%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%81") и начинаем работать с сайтом используя запросы. Включив настройку *Использовать CookieContainer куки будут автоматически синхронизированы между браузером и запросами, Вам не надо ничего вручную делать - cookies будут подставлены автоматически.
+И если при одном из запросов сайт вернёт новое значение для одной или нескольких кук, то эти новые значения будут автоматически синхронизированы. И при выполнении следующего запроса (или при открытии сайта через встроенный браузер) будет использовано обновлённое значение.
+
+</details>
+### Пример Пользовательских настроек
+
+Используя переменные профиля для заголовков и ручную подстановку кук.
+
+![image-20210529-091044](./assets/HTTP-request/HTTP-request_pic8.png)
+
+
+
+  
+
+## Как работать с экшеном: Вкладка "Прокси"
+
+![image-20210529-084701](./assets/HTTP-request/HTTP-request_pic9.png)
+
+
+
+### Без прокси
+
+Работа экшена происходит используя реальный ip компьютера\сервера.
+
+### Текущий прокси проекта
+
+Используется [❗→ установленный в проекте прокси](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8").
+
+### Строка формата
+
+![image-20210529-084950](./assets/HTTP-request/HTTP-request_pic10.png)
+
+
+
+Указываем прокси в формате (можно указать [❗→ переменную](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922")):  
+a) *С авторизацией* - `socks5://логин:пароль@ip:port` или `http://логин:пароль@ip:port`  
+b) *Без авторизации* - `socks5://ip:port` или `http://ip:port`  
+c) *Без указания протокола* (по умолчанию будет использован http://)- `логин:пароль@ip:port` или `ip:port`  
+
+### Другой
+
+![image-20210529-085221](./assets/HTTP-request/HTTP-request_pic11.png)
+
+
+
+Выбираем если необходимо указать детальные настройки прокси. Тип прокси, данные авторизации, адрес и порт. Информацию уточняйте у своего поставщика услуг.
+
+:::note На заметку
+Во всех полях ввода можно использовать переменные.
+:::
+
+:::warning Внимание
+Если не указан протокол прокси, то по умолчанию будет использоваться http://
+:::
+
+## Создание экшенов из запросов монитора трафика
+
+:::info Информация
+Добавлено в ZennoPoster 7.1.5.0 (5.44.0.0)
+:::
+
+Готовый HTTP-запрос можно создать прямо из [❗→ Окна Трафика](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465").
+
+![image-20200810-163348](./assets/HTTP-request/HTTP-request_pic12.png)
+
+
+
+1. Наводим курсор на нужный запрос и правой кнопкой мыши вызываем контекстное меню.
+2. Нажимаем *Создать действие из запроса*.
+
+На холсте проекта появится полностью заполненный экшен HTTP-запроса.
+
+![image-20200810-163642](./assets/HTTP-request/HTTP-request_pic13.png)
+
+
+
+![image-20200810-163654](./assets/HTTP-request/HTTP-request_pic14.png)
+
+
+
+Измените статические значение или замените на перемененные - экшен полностью готов к работе.
+
+* * *
+
+## Выключение браузера
+
+Если Вы работаете исключительно с помощью запросов, то можно отключить браузер, тем самым сэкономив ресурсы компьютера; сделать это можно либо в [❗→ настройках проекта](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477#%D0%9D%D0%B5-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477#%D0%9D%D0%B5-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80"), либо используя экшен [❗→ Настройки браузера](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C-%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%81 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C-%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%81").
+
+![image-20200810-112931](./assets/HTTP-request/HTTP-request_pic15.png)
+
+
+
+* * *
+
+## Способ передачи запроса
+
+В ZennoPoster есть два метода работы с запросами - сторонняя разработка (стандартный метод, библиотека Chilkat) и собственная (альтернативный метод). Если при работе с HTTP-запросами с использованием стандартного метода у Вас что-то работает не так, то попробуйте переключиться на альтернативный метод.
+
+Изменить способ передачи запросов можно в [❗→ настройках программы](https://zennolab.atlassian.net/wiki/spaces/RU/pages/809074766#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D0%BB%D1%8C%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8-HTTP-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/809074766#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D0%BB%D1%8C%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8-HTTP-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2") (глобально для всех проектов) или в [❗→ настройках конкретного проекта](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477#%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8-HTTP "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477#%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8-HTTP").
+
+![image-20200808-214404](./assets/HTTP-request/HTTP-request_pic16.png)
+
+
+
+* * *
+
+## Пример использования
+
+Загрузить файл в Mail облако
+
+![image-20200812-201715](./assets/HTTP-request/HTTP-request_pic17.png)
+
+
+
+1. Выбираем файл.
+2. Добавляем экшен HTTP-запрос.
+3. Указываем метод передачи Options.
+4. Заполняем поля и вкладки кубика.
+5. Передаём файл на сервер.
+
+* * *
+
+## Полезные ссылки
+
+- [❗→ Настройки проекта](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477")
+- [❗→ GET-запрос](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315165/GET- "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315165/GET-")
+- [❗→ POST-запрос](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315180/POST- "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315180/POST-")
+- [❗→ Обработка JSON и XML](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964124 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964124")
+- [❗→ Обработка текста](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793")
+- [❗→ Окно траффика](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735805465")
+- [❗→ Инструменты web-разработчика (DevTools)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1331134465 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1331134465")

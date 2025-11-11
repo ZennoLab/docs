@@ -416,5 +416,13 @@
   "theme.unlistedContent.message": {
     "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
     "description": "The unlisted content banner message"
+  },
+  "disclaimer.notice.prefix": {
+    "description": "Text before link in disclaimer notice",
+    "message": "Please read the"
+  },
+  "disclaimer.notice.linkText": {
+    "description": "Link text for disclaimer notice",
+    "message": "Material Usage Rules on this site"
   }
 }

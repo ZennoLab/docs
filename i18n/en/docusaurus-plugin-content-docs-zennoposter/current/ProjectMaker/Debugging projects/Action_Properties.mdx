@@ -1,0 +1,141 @@
+﻿---
+sidebar_position: 2
+title: "Action Properties"
+description: ""
+date: "2025-08-18"
+converted: true
+originalFile: "Свойства действия.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494731280"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494731280)** — Source of this material
+
+_______________________________________________  
+
+## Description
+
+While editing and debugging your project, you can modify any previously saved parameters of actions.
+
+  
+
+## How to open the window?
+
+It depends on the mode in which your project is open.
+
+- with browser:
+
+ - you need to enable the display of this window via the *Window =&gt; *Action Properties* menu. This window will show the settings of the selected action.
+
+![image-20210221-163159](./assets/Action_Properties/Action_Properties_pic1.png)
+
+
+- without browser:
+
+ - you need to double-click the action, and the properties window will open. In this mode, you can open the window for several actions at once:
+
+![image-20210221-164336](./assets/Action_Properties/Action_Properties_pic2.png)
+
+
+
+“With browser” mode
+
+![image-20210221-163324](./assets/Action_Properties/Action_Properties_pic3.png)
+
+
+
+“Without browser” mode
+
+![image-20210221-163606](./assets/Action_Properties/Action_Properties_pic4.png)
+
+
+
+:::note Tip
+In "With browser" mode, you can also open the properties window for several actions at once. To do this, go to Edit =&gt; Settings =&gt; Editor tab, and enable the option to Open multiple action settings in "With browser" mode.
+:::
+
+  
+
+## The “Completed” Button
+
+If you encounter an error while debugging an action, you can make real-time corrections to various parameters. The feature that lets you see what values variables had when the action ran will help you with this:
+
+![image-20210221-165031](./assets/Action_Properties/Action_Properties_pic5.png)
+
+
+
+Once you activate this feature, [❗→ variables](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872") will be replaced with their stored values.
+
+:::warning Attention
+This will only work after the action has been executed.
+:::
+
+**Before activation**
+
+![image-20210615-164459](./assets/Action_Properties/Action_Properties_pic6.png)
+
+
+
+**After activation**
+
+![image-20210615-164511](./assets/Action_Properties/Action_Properties_pic7.png)
+
+
+
+## Comment
+
+For easier navigation within your project, you can add a comment to any action:
+
+![image-20210221-165248](./assets/Action_Properties/Action_Properties_pic8.png)
+
+
+
+You can also change this text by right-clicking the action and selecting *Comment* from the context menu:
+
+![image-20210221-165428](./assets/Action_Properties/Action_Properties_pic9.png)
+
+
+
+## Breakpoint
+
+Allows you to pause the project at the selected action. This is very useful for debugging when you need to analyze the contents of variables or the page at a specific moment during the project's execution.
+
+There are two ways to enable it: through the context menu, or from the action properties.
+
+Context menu
+
+![image-20210222-194754](./assets/Action_Properties/Action_Properties_pic10.png)
+
+
+
+Action properties
+
+![image-20210222-194929](./assets/Action_Properties/Action_Properties_pic11.png)
+
+
+
+Once enabled, a red circle icon will appear on the action:
+
+![image-20210222-195052](./assets/Action_Properties/Action_Properties_pic12.png)
+
+
+
+## Optional
+
+When this option is enabled, the action will always follow the successful (green) branch, even if an error actually occurred.
+
+Just like with the breakpoint, you can make an action optional in two ways: via the context menu or action properties.
+
+![image-20210222-195919](./assets/Action_Properties/Action_Properties_pic13.png)
+
+
+
+![image-20210222-195755](./assets/Action_Properties/Action_Properties_pic14.png)
+
+
+
+How it looks on the action:
+
+![image-20210222-200119](./assets/Action_Properties/Action_Properties_pic15.png)

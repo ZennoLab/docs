@@ -1,0 +1,10 @@
+{
+  "label": "HTTP",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "HTTP",
+    "description": "ZennoPoster actions for performing HTTP calls: GET request (URL parameters, headers, caching), POST request (form-urlencoded, JSON, XML, multipart/form-data, file upload), a universal HTTP request (any method: GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS). Support for headers and cookies, query parameters and request body, authentication (Basic, Bearer), proxies, redirects, timeouts, retries with backoff, status code checking, error handling, unpacking gzip/deflate/br, encoding, saving responses to disk, and parsing JSON/XML/text.",
+    "slug": "/category/actions-http"
+  }
+}

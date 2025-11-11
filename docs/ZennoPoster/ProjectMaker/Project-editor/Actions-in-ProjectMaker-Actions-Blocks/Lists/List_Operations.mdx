@@ -1,0 +1,640 @@
+﻿---
+sidebar_position: 1
+title: "Операции над списком"
+description: "Конвертировано из HTML в MDX"
+date: "2025-07-24"
+converted: true
+originalFile: "Операции над списком.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085798"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085798)** — Источник данного материала
+
+_______________________________________________  
+
+## Описание
+
+[❗→ Списки](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") в основном используются для получения строк данных из текстового документа или записей данных в файл. Например, у Вас есть файл со списком URL и нужно на них по очереди зайти, или Вы парсите какие-то значения с сайта и нужно их отсортировать, удалить дубли и сохранить в файл (к примеру, спарсенные e-mail адреса).
+
+  
+
+## Как добавить список в проект?
+
+:::note На заметку
+Перед началом работы необходимо создать Список
+:::
+
+![image-20200807-164347](./assets/List_Operations/List_Operations_pic1.png)
+
+
+
+  
+
+## Как добавить экшен в проект?
+
+Через контекстное меню **Добавить действие** → **Списки** → **Операции над списком**
+
+![image-20200820-111456](./assets/List_Operations/List_Operations_pic2.png)
+
+
+
+Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
+
+  
+
+## Для чего это используется?
+
+- Добавление и получение элементов списка
+- Удаление строк и дублей
+- Привязка к файлу
+- Получение количества строк
+- Перемешивание
+- Сортировка значений
+
+  
+
+## Как работать с экшеном?
+
+### Выделить подсписок
+
+Выделение части строк из списка.
+
+![image-20200807-170447](./assets/List_Operations/List_Operations_pic3.png)
+
+
+
+1. Выбираем список с которым будем работать.
+2. Указываем функцию.
+3. Указываем куда будет сохранён результат.
+4. Способ фильтрации подсписка
+a) [❗→ Диапазон](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137") - задаём интервал строк, которые нужно выделить. 
+b) Элементы, не содержащие текст - выберет все строки которые не содержат заданный текст, можно использовать переменные.
+c) Элементы, не удовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111") - критерии поиска с помощью [❗→ регулярки](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111").
+d) Элементы, содержащие текст - выберет значения, которые содержат необходимый текст, можно использовать переменные.
+e) Элементы, удовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111") - критерии поиска с помощью [❗→ регулярки](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111").
+5. В этом поле указывается значение, соответствующее пункту из шага 4.
+6. Будут удалены строки, которые попали под критерии поиска.
+7. Если [❗→ список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") пустой, то **Zennoposter** пойдёт по красной ветке.
+
+<details>
+<summary>Пример</summary>
+
+Берём из [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") первые пять строк (нумерация с нуля!) и сохраняем в [❗→ список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 2
+
+![image-20200813-195131](./assets/List_Operations/List_Operations_pic4.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки 
+
+![image-20200813-193740](./assets/List_Operations/List_Operations_pic5.png)
+
+
+
+После отработки
+
+![image-20200813-194139](./assets/List_Operations/List_Operations_pic6.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 2
+
+![image-20200813-194235](./assets/List_Operations/List_Operations_pic7.png)
+
+
+
+</details>
+  
+
+### Добавить данные из списка
+
+Добавление данных из одного списка в другой.
+
+![image-20200807-172333](./assets/List_Operations/List_Operations_pic8.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Указываем откуда будет перенесены строки.
+4. В какую позицию помещен результат - *в конец, *в начало, *в позицию.
+5. Если выбрали *в позицию, то указываем номер строки или переменную.
+
+:::note На заметку
+Строки копируются, но не удаляются из исходного списка.
+:::
+
+<details>
+<summary>Пример</summary>
+
+Добавим строки из [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 2 в конец [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-194752](./assets/List_Operations/List_Operations_pic9.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 2
+
+![image-20200813-194658](./assets/List_Operations/List_Operations_pic10.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки
+
+![image-20200813-194906](./assets/List_Operations/List_Operations_pic11.png)
+
+
+
+После обработки
+
+![image-20200813-195020](./assets/List_Operations/List_Operations_pic12.png)
+
+
+
+Элементы списка 2 остаются на месте
+
+</details>
+  
+
+### Добавить строку
+
+Добавление строки в список.
+
+![image-20200807-174114](./assets/List_Operations/List_Operations_pic13.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Вносим значение или переменную.
+4. В какую позицию поместить результат - *в конец, *в начало, *в позицию.
+5. Если выбрали *в позицию, то указываем номер строки или переменную.
+
+<details>
+<summary>Пример</summary>
+
+Положим значение в конец [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-195500](./assets/List_Operations/List_Operations_pic14.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки
+
+![image-20200813-195623](./assets/List_Operations/List_Operations_pic15.png)
+
+
+
+После обработки
+
+![image-20200807-175124](./assets/List_Operations/List_Operations_pic16.png)
+
+
+
+</details>
+  
+
+### Добавить текст
+
+Добавление текста в список.
+
+![image-20200813-201231](./assets/List_Operations/List_Operations_pic17.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Текст или набор символов для добавления в список, можно указать переменную.
+4. В какую позицию помещен результат - *в конец, *в начало, *в позицию.
+5. Добавлять пустые строки в случае отсутствия текста.
+
+<details>
+<summary>Пример</summary>
+
+Добавим текст в [❗→ список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-201439](./assets/List_Operations/List_Operations_pic18.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки
+
+![image-20200807-175812](./assets/List_Operations/List_Operations_pic19.png)
+
+
+
+После обработки
+
+![image-20200813-201746](./assets/List_Operations/List_Operations_pic20.png)
+
+
+
+Текст имел разделитель - новая строка, поэтому в список он добавлен построчно
+
+</details>
+  
+
+### Объединить элементы списка
+
+Объединение элементов списка с указанием разделителя и возможностью записи в переменную.
+
+![image-20200813-201948](./assets/List_Operations/List_Operations_pic21.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Разделитель строк 
+a) *Новая строка - каждый элемент списка будет записан с новой строки.
+b) *Свой - указываем свой текст или символы, которые будут вставлены между элементами списка.
+c) *Указанный в списке - используется разделитель из [❗→ настроек списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375").
+4. Переменная для записи данных после обработки.
+
+<details>
+<summary>Пример</summary>
+
+Объединить элементы [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1, используя свой разделить “-;“
+
+![image-20200807-180540](./assets/List_Operations/List_Operations_pic22.png)
+
+
+
+Содержание [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-202132](./assets/List_Operations/List_Operations_pic23.png)
+
+
+
+Результат обработки списка будет в переменной *stroka
+
+![image-20200813-202258](./assets/List_Operations/List_Operations_pic24.png)
+
+
+
+</details>
+  
+
+### Перемешать элементы списка
+
+Расположение элементов в списке в случайном порядке.
+
+![image-20200807-181123](./assets/List_Operations/List_Operations_pic25.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+
+:::note На заметку
+Изменение позиции не влечет за собой потери значений строки.
+:::
+
+<details>
+<summary>Пример</summary>
+
+Перемешать элементы [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-202620](./assets/List_Operations/List_Operations_pic26.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки
+
+![image-20200813-202802](./assets/List_Operations/List_Operations_pic27.png)
+
+
+
+После обработки
+
+![image-20200807-182605](./assets/List_Operations/List_Operations_pic28.png)
+
+
+
+</details>
+  
+
+### Получить количество строк
+
+Получение количества строк в списке.
+
+![image-20200813-203208](./assets/List_Operations/List_Operations_pic29.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Критерии для поиска (можно указать переменную) : 
+a) Все
+b) Не содержат текст
+c) Не удовлетворяет [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+d) Со значением
+e) Содержат текст
+f) Удовлетворяет [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+4. Переменная для записи данных после обработки.
+
+:::note На заметку
+Переменная всегда будет содержать только цифровое значение
+:::
+
+<details>
+<summary>Пример</summary>
+
+Посчитать количество строк [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 и положить в переменную
+
+![image-20200813-203317](./assets/List_Operations/List_Operations_pic30.png)
+
+
+
+Содержание [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200807-183243](./assets/List_Operations/List_Operations_pic31.png)
+
+
+
+Результат обработки списка будет в переменной kolichestvo\_strok
+
+![image-20200813-203602](./assets/List_Operations/List_Operations_pic32.png)
+
+
+
+</details>
+  
+
+### Получить строку
+
+Получение строки с возможностью удаления из списка и записью в переменную.
+
+![image-20200807-184600](./assets/List_Operations/List_Operations_pic33.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Критерии строки (можно указать переменную) : 
+a) Не содержит текст
+b) Не удовлетворяет [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+c) Первую
+d) По номеру
+e) Случайную
+f) Удовлетворяет [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+4. Удалить строку после взятия
+5. Переменная для записи значения.
+
+<details>
+<summary>Пример</summary>
+
+Получить случайную строку из [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 в переменную
+
+![image-20200813-204726](./assets/List_Operations/List_Operations_pic34.png)
+
+
+
+Содержание [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-204845](./assets/List_Operations/List_Operations_pic35.png)
+
+
+
+Результат обработки списка будет в переменной stroka
+
+![image-20200813-204934](./assets/List_Operations/List_Operations_pic36.png)
+
+
+
+</details>
+  
+
+### Привязать к файлу
+
+Привязка списка к файлу в ходе выполнения проекта.
+
+![image-20200807-185422](./assets/List_Operations/List_Operations_pic37.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Выбираем файл или указываем переменную, содержащую путь к файлу.
+4. Если файл отсутствует по указанному пути, **ZennoPoster** автоматически создаст его.
+
+<details>
+<summary>Пример</summary>
+
+Привязать файл к [❗→ списку](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-205126](./assets/List_Operations/List_Operations_pic38.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 будет привязан к соответствующему файлу
+
+</details>
+  
+
+### Сортировать
+
+Сортировка элементов списка по убыванию или возрастанию.
+
+![image-20200813-205247](./assets/List_Operations/List_Operations_pic39.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Использовать принцип как у чисел.
+4. Задаём тип сортировки *по убыванию или *возрастанию.
+
+:::info Информация
+Не всегда буквенные и символьные строки можно упорядочить
+:::
+
+<details>
+<summary>Пример</summary>
+
+Сортировать значения [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 по убыванию
+
+![image-20200813-205419](./assets/List_Operations/List_Operations_pic40.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки
+
+![image-20200807-185836](./assets/List_Operations/List_Operations_pic41.png)
+
+
+
+После обработки
+
+![image-20200813-205535](./assets/List_Operations/List_Operations_pic42.png)
+
+
+
+</details>
+  
+
+### Сохранить в файл
+
+![image-20200813-205723](./assets/List_Operations/List_Operations_pic43.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Устанавливаем разделитель (можно использовать переменные) : 
+a) *Новая строка
+b) *Свой
+c) *Указанный в списке
+4. Выбираем файл или указываем переменную, содержащую путь к файлу.
+5. Чек-бокс позволяет записывать новые данные в файл или перезаписывать его полностью.
+
+<details>
+<summary>Пример</summary>
+
+Сохранить значения [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 в файл
+
+![image-20200813-205753](./assets/List_Operations/List_Operations_pic44.png)
+
+
+
+Содержание [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200807-190441](./assets/List_Operations/List_Operations_pic45.png)
+
+
+
+После выполнения в файл будут записаны все значения
+
+![image-20200813-210051](./assets/List_Operations/List_Operations_pic46.png)
+
+
+
+</details>
+  
+
+### Удалить дубли
+
+Удаление повторяющихся строк в списке.
+
+![image-20200813-210234](./assets/List_Operations/List_Operations_pic47.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+
+:::note На заметку
+Для обработки файла с большим количеством строк может потребоваться время.
+:::
+
+<details>
+<summary>Пример</summary>
+
+Удалить все дубли в [❗→ списке](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+![image-20200813-210423](./assets/List_Operations/List_Operations_pic48.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки
+
+![image-20200813-183938](./assets/List_Operations/List_Operations_pic49.png)
+
+
+
+После обработки
+
+![1NFJfjUKn7](./assets/List_Operations/List_Operations_pic50.png)
+
+
+
+</details>
+  
+
+### Удалить строки
+
+Удаление строк из списка с заданными критериями
+
+![2020-07-25_13-31-21](./assets/List_Operations/List_Operations_pic51.png)
+
+
+
+1. Выбираем список с которым будем работать
+2. Устанавливаем функцию.
+3. Критерии удаления строк (можно использовать переменные) :
+a) Все
+b) Не содержащие текст
+c) Не удовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+d) Первую
+e) Под номерами (можно использовать [❗→ диапазоны](/wiki/spaces/RU/pages/488964137 "/wiki/spaces/RU/pages/488964137"))
+f) Со значением
+g) Содержащие текст
+h) Содержащие только пробельные символы
+i) Удовлетворяющие [❗→ регулярному выражению](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+
+<details>
+<summary>Пример</summary>
+
+Удалить из [❗→ списка](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1 строки содержащие символ @ 
+
+![2020-08-03_20-40-14](./assets/List_Operations/List_Operations_pic52.png)
+
+
+
+[❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") 1
+
+До обработки
+
+![2020-08-03_20-54-19](./assets/List_Operations/List_Operations_pic53.png)
+
+
+
+После обработки
+
+![2020-08-03_20-58-11](./assets/List_Operations/List_Operations_pic54.png)
+
+
+
+</details>
+
+  
+
+## Пример использования
+
+Представим, что Вам необходимо перейти по всем страницам из списка, собрать их названия и положить в другой список.
+
+![2020-08-03_21-07-09](./assets/List_Operations/List_Operations_pic55.png)
+
+
+
+1. Создаём [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")\_1 со страницами предварительно привязав его к файлу.
+2. Удаляем дубли, чтобы не переходить на страницу дважды.
+3. Создаём и привязываем к файлу [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")\_2.
+4. Парсим необходимую информацию со страниц в [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")\_2.
+5. Удаляем дубли.
+
+Таким образом, вы можете формировать списки нужной информации для дальнейшей обработки их или использования.
+
+  
+
+## Полезные ссылки
+
+1. [❗→ Окно переменных](/wiki/spaces/RU/pages/735608872 "/wiki/spaces/RU/pages/735608872")
+2. [❗→ Тестер регулярных выражений](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+3. [❗→ Список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375")

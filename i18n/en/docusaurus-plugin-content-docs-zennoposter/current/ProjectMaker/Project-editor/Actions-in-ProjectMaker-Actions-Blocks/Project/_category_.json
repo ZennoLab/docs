@@ -1,0 +1,10 @@
+{
+  "label": "Project",
+  "position": 12,
+  "link": {
+    "type": "generated-index",
+    "title": "Project",
+    "description": "ZennoPoster Actions for project management: Project in Project (nested projects with parameter/variable passing, execution context, result waiting, and error handling), Input settings (profiles/presets, field types, default values, validation), BotUI Bot Interface (forms, dialog steps, buttons, events, variable binding), Project Encryption (source protection, secrets/keys storage, access rights), Project Notes (logic description, changelog, tags/metadata for search and maintenance).",
+    "slug": "/category/actions-project"
+  }
+}

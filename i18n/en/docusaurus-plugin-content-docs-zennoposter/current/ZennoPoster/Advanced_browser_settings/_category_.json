@@ -1,0 +1,9 @@
+{
+  "label": "Advanced browser settings",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "Advanced browser settings",
+    "description": "Widevine, managing connections in Firefox and Chrome, and adjusting thread pools for Chrome and Firefox processes."
+  }
+}

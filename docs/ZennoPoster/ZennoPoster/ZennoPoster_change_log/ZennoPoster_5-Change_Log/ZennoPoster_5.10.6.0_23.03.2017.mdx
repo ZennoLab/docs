@@ -1,0 +1,61 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.10.6.0 23.03.2017"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.10.6.0 23.03.2017.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/503087117/ZennoPoster+5.10.6.0+23.03.2017"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/503087117/ZennoPoster+5.10.6.0+23.03.2017)** — Источник данного материала
+
+_______________________________________________  
+# ZennoPoster 5.10.6.0 (23.03.2017)
+
+### Новые фичи:
+
+[+] Добавлена поддержка изображений с прозрачностью для работы ZennoPoster при повороте.
+
+[+] Добавлена поддержка SMS-сервиса http://give-sms.com.
+
+[+] Добавлен метод [GetTraffic](https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic398.html "https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic398.html") для получения последних URL, на которые был navigate.
+
+[+] Добавлен метод [PageScale](https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic437.html "https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic437.html") для установки из кода масштаба страницы.
+
+[+] Добавлены методы [GetBrowserPreference](https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic200.html "https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic200.html") и [SetBrowserPreference](https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic245.html "https://help.zennolab.com/en/v5/zennoposter/5.10.6.0/webframe.html#topic245.html") управления настройками браузера.
+
+[+] Улучшения в автоматической эмуляции системного времени.
+
+### Исправленные баги:
+
+[\] Исправлена ошибка открытия некоторых сайтов.
+
+[\] Исправлена ошибка при установке дефолтного часового пояса через кубики.
+
+[\] Исправлено открытие страниц в Яндекс.Вебмастере при эмуляции часового пояса.
+
+[\] Исправлена эмуляция мыши на вкладке созданной автоматически.
+
+[\] Исправлена эмуляция мыши уползающей за экран (бесконечный скроллинг).
+
+[\] Исправлена работа HTTP GET/POST при редиректах.
+
+[\] При отправке элемента в Конструктор не отображались его свойства и фокус в дереве элементов.
+
+[\] Исправлена ошибка в C# коде instance.SetProxy не менял свойство project.Proxy.
+
+[\] Исправлена ошибка загрузка профиля без прокси. Эта загрузка не очищала существующий прокси.
+
+[\] project.Proxy не обновлялся после возврата из вложенного проекта.
+
+[\] Не обрабатывалась папка Спам при скачивании почты из Gmail.
+
+[\] Опция «Удалять прежние прокси» источника прокси не удаляла прокси из живого списка.
+
+[\] Правки в документации.
+
+[\] Исправлены мелкие баги в UI.
