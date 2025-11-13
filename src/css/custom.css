@@ -63,6 +63,33 @@ html {
   color: #4fddbf;
 }
 
+/* Универсальные иконки для всех продуктов */
+.theme-doc-sidebar-item-category .menu__list-item-collapsible .menu__link::before {
+  content: '';
+  background: url('/img/folder-icon.svg') no-repeat center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin-right: 12px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.theme-doc-sidebar-item-link .menu__link::before {
+  content: '';
+  background: url('/img/document-icon.svg') no-repeat center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin-right: 12px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .navbar__link--active {
   font-weight: bold;
 }
