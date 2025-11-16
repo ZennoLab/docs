@@ -10,16 +10,25 @@ export default function SearchNavbarItemWrapper(props) {
   const { i18n } = useDocusaurusContext();
   const { currentLocale } = i18n;
   const localeStrings = getLocaleStrings(currentLocale);
-  
-  // Проверяем, находимся ли мы в разделе ZennoDroid
+
+  // Проверяем, находимся ли мы в разделе ZennoDroid или ZennoPoster
   const isZennoDroidSection = location.pathname.includes('/zennodroid/');
-  
+  const isZennoPosterSection = location.pathname.includes('/zennoposter/');
+
+  // Определяем URL для кнопки видео-курса
+  let videoCourseUrl = null;
+  if (isZennoDroidSection) {
+    videoCourseUrl = '/zennodroid/video-course';
+  } else if (isZennoPosterSection) {
+    videoCourseUrl = '/zennoposter/hello/zennoposter-video-course';
+  }
+
   return (
     <>
-      {isZennoDroidSection && (
+      {videoCourseUrl && (
         <div className="navbar__item video-course-link-container">
           <Link
-            to="/zennodroid/video-course"
+            to={videoCourseUrl}
             className="navbar__link video-course-link"
           >
             {localeStrings.videoCourseLink}
