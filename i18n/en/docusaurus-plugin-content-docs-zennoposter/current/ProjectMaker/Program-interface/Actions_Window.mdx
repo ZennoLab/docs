@@ -13,6 +13,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777324)** — Source of this material
 
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+); 
+
+
 _______________________________________________  
 
 ## Description
@@ -107,7 +114,7 @@ Enter keywords to find the function you need:
 
 
 
-**📹 There was a video here**
+<VideoSample source={require("@site/static/video/action_window_en.mp4").default}/>
 
 You can find a reference for available actions here: [❗→ Actions](/wiki/spaces/RU/pages/486342706 "/wiki/spaces/RU/pages/486342706")
 
