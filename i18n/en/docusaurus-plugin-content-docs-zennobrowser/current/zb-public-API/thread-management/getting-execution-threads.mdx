@@ -1,0 +1,100 @@
+﻿---
+sidebar_position: 1
+sidebar_label: Getting Execution Threads
+title: Getting Execution Threads
+description: Retrieve the list of execution threads - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method retrieves the list of execution threads for the specified workspace.  
+Threads can be filtered by token or type, limited by number of results, and sorted optionally.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| start | integer | int32 | 0 | Starting index for pagination. |
+| total | integer | int32 | 1000 | Maximum number of threads to return. |
+| thread_token | string |  | (empty) | Filter by certain thread token (optional). |
+| type | string enum |  | (empty) | Filter by token type (`Manual`, `BrowserInstance`) (optional). |
+| sorting | string |  | (empty) | Sorting parameters: CreatedAt, ThreadToken, Type, WorkspaceId (optional). |
+
+#### **Example request:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/threads?workspaceId=&start=0&total=1000&thread_token=&type=&sorting=' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/threads?workspaceId=&start=0&total=1000&thread_token=&type=&sorting="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/threads?workspaceId=&start=&total=&thread_token=&=&sorting=
+```
+
+![](../assets/image33.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+```json
+{
+  "totalCount": 1,
+  "items": [
+    {
+      "workspaceId": 1,
+      "threadToken": null,
+      "type": "Manual",
+      "createdAt": "2025-07-25T09:34:29.768Z"
+    }
+  ]
+}
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

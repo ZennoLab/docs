@@ -1,0 +1,109 @@
+﻿---
+sidebar_position: 5
+sidebar_label: Updating Threads (Bulk)
+title: Updating Multiple Threads
+description: Update multiple execution threads at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method is used to update the specified execution threads allowing them to continue working. The threadTokens parameter should contain the array of valid tokens with existing workspace ID’s.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| body | JSON-Array |  |  | The array of thread tokens to update execution threads. Cannot be null or empty. Example: `["uuid1", "uuid2"]` |
+
+:::note
+The list of thread tokens to update should be specified as an array in the request body using the following format:
+
+```json
+[
+  "threadToken1",
+  "threadToken2"
+]
+```
+:::
+
+#### **Example request:**
+
+**PUT**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/threads/use_bulk?workspaceId=-1' \
+  --request PUT \
+  --header 'Content-Type: application/json' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --data '[
+    "threadToken1",
+    "threadToken2"
+  ]'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Put,
+    RequestUri = new Uri("http://localhost:8160/v1/threads/use_bulk?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+    Content = new StringContent("[\n  \"threadToken1\",\n  \"threadToken2\"\n]")
+    {
+        Headers =
+        {
+            ContentType = new MediaTypeHeaderValue("application/json")
+        }
+    }
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/threads/use_bulk?workspaceId=-1
+```  
+**Data:**   
+`["threadToken1", "threadToken2"]`
+
+![](../assets/image37.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No content returned on successful update.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
