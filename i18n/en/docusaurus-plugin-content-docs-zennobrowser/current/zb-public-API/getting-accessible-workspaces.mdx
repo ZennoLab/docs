@@ -1,0 +1,94 @@
+﻿---
+sidebar_position: 2
+sidebar_label: Getting Accessible Workspaces
+title: Getting Accessible Workspaces
+description: Retrieve the list of workspaces accessible to the current user - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** The operation retrieves the list of workspaces accessible to the current user. This information is required to execute most subsequent queries.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :-----: |
+| start | integer | int32 | 0 | Start index for pagination |
+| total | integer | int32 | 1000 | Maximum number of results to return |
+| id | integer | int64 | (empty) | Optional workspace ID filter |
+| name | string |  | (empty) | Optional workspace name filter |
+| roles | string |  | (empty) | Optional roles filter |
+
+#### 
+
+#### **Example request:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles=' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri( "http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:** `http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles=`  
+![](./assets/image7.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+![](./assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+```json
+{
+  "totalCount": 1,
+  "items": [
+    {
+      "workspaceId": 1,
+      "name": null,
+      "role": "Owner"
+    }
+  ]
+}
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
