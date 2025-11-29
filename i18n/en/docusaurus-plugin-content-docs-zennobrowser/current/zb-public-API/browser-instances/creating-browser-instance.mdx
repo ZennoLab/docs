@@ -1,0 +1,92 @@
+﻿---
+sidebar_position: 2
+sidebar_label: Creating Browser Instance
+title: Creating Browser Instance
+description: Create a new browser instance from an existing profile - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method creates the new browser instance using the specified profile with optional workspace and desktop settings.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Unique identifier of the profile to associate with the browser instance. |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| desktopName | string |  | (empty) | The name of the desktop environment (optional). |
+| threadToken | string |  | (empty) | Thread token for the browser instance. To create a new execution thread (optional) pass empty string (default). |
+
+#### **Example request:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/browser_instances/create?profileId=PROFILE_ID&workspaceId=-1&desktopName=&threadToken=' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create?profileId=PROFILE_ID&workspaceId=-1&desktopName=&threadToken="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/browser_instances/create?profileId=PROFILE_ID&workspaceId=-1&desktopName=&threadToken=
+```
+
+![](../assets/image29.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+```json
+{
+  "profileId": "123e4567-e89b-12d3-a456-426614174000",
+  "processId": 1,
+  "connectionString": null
+}
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

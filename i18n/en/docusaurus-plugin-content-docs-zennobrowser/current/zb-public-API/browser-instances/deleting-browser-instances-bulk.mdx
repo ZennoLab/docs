@@ -1,0 +1,116 @@
+﻿---
+sidebar_position: 5
+sidebar_label: Deleting Instances (Bulk)
+title: Deleting Browser Instances (Bulk)
+description: Delete multiple browser instances at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+### **Deleting browser instances (bulk)**
+
+**Description:** This method deletes multiple existing browser instances associated with the specified profiles.  
+This operation permanently closes all specified browser instances and releases their resources.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| body | JSON-Array |  |  | The array of profile UUIDs of those browser instances which should be deleted. For example: `["uuid1", "uuid2"]` |
+
+:::note
+The list of profile IDs for browser instances to delete should be specified as an array in the request body using the following format:
+
+```json
+[
+  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
+  "d24eba34-12d6-4412-ab20-80fae618c264"
+]
+```
+:::
+
+#### **Example request:**
+
+**DELETE**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/browser_instances/delete_bulk?workspaceId=-1' \
+  --request DELETE \
+  --header 'Content-Type: application/json' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --data '[
+    "uuid1",
+    "uuid2"
+  ]'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/delete_bulk?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+    Content = new StringContent("[\n  " +
+                                "\"uuid1\"," +
+                                "\"uuid2\"," +
+                                "\n]")
+    {
+        Headers =
+        {
+            ContentType = new MediaTypeHeaderValue("application/json")
+        }
+    }
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/browser_instances/delete_bulk?workspaceId=-1
+```
+**Data:**   
+`["uuid1", "uuid2"]`  
+
+![](../assets/image32.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.  
+
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No content returned on successful deletion.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
