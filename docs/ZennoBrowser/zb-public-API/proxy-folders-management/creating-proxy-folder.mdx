@@ -1,0 +1,90 @@
+﻿---
+sidebar_position: 2
+sidebar_label: Создание папки прокси
+title: Создание папки прокси
+description: Создайте новую папку для организации прокси-серверов — подробное руководство по публичному API ZennoBrowser. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод создает новую папку прокси. 
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| ----- | ----- | ----- | ----- | ----- |
+| name | string |  | (empty) | Имя новой папки (обязательно) |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
+| location | string (enum) |  | Local | Место хранения (Local или Cloud) |
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxy_folders?name=&workspaceId=&=' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders?name=&workspaceId=&="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**   
+```
+http://localhost:8160/v1/proxy_folders?name=&workspaceId=&=
+``` 
+
+![](../assets/image25.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Токен из **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успех |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Возвращает ID вновь созданной папки прокси:
+
+```
+123e4567-e89b-12d3-a456-426614174000
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
