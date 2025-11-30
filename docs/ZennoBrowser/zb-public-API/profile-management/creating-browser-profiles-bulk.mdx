@@ -1,0 +1,112 @@
+﻿---
+sidebar_position: 3
+sidebar_label: Создание профилей (массово)
+title: Массовое создание браузерных профилей
+description: Массовое создание нескольких браузерных профилей с кастомными настройками — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод используется для массового создания новых браузерных профилей в указанном рабочем пространстве и папке.  
+Каждый профиль может иметь собственную конфигурацию, включая размер экрана, эмуляцию железа, язык, часовой пояс, прокси и другие параметры.  
+Все поля являются необязательными, если не указано иное.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| count | integer | int32 |  | Количество создаваемых профилей |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
+| folderId | string | uuid | (empty) | Идентификатор папки (необязательно). |
+| screen | string |  | (empty) | Настройки экрана. Допустимые значения: “auto” — использовать значение из отпечатка, “ignore” — использовать системное значение или “width x height” — использовать собственное разрешение экрана (`auto, ignore, or width x height)` |
+| cpu | string |  | (empty) | Настройки CPU. Допустимые значения: “auto” — использовать значение из отпечатка, “ignore” — использовать системное значение или целое число — собственное количество ядер процессора (auto, ignore, or number of cores) |
+| memory | string |  | (empty) | Настройки памяти. Допустимые значения: “auto” — использовать значение из отпечатка, “ignore” — использовать системное значение или целое число — собственный размер памяти в мегабайтах (auto, ignore or memory size in MB) |
+| language | string |  | (empty) | Настройки языка браузера. Допустимые значения: “auto” — использовать значение из отпечатка, “ignore” — использовать системное значение или собственное значение языка (auto, ignore, or locale Russian \- ru English (United States) \- en-US German \- de French \- fr Spanish \- es English (United Kingdom) \- en-GB |
+| geoLocation | string |  | (empty) | Настройки геолокации. Допустимые значения: “auto” — использовать значение из отпечатка, “ignore” — использовать системное значение. Можно также указать от одного до семи чисел с плавающей точкой, которые представляют следующие гео-координаты: Latitude, Longitude, Altitude, Accuracy, AltitudeAccuracy, Heading, Speed, Radius. Некоторые координаты можно пропускать. Например, последовательность 10, , 40, , 60, 70 валидна и означает: Latitude \= 10, Longitude \= random, Altitude \= 40, Accuracy \= random, AltitudeAccuracy \= 60, Heading \= 70, Speed \= random, Radius \= random (auto, ignore or coordinates (latitude, longitude, etc.)) |
+| timeZone | string |  | (empty) | Настройки часового пояса. Допустимые значения: “auto” — использовать значение из отпечатка, “ignore” — использовать системное значение или собственное значение таймзоны (auto, ignore, or specific value (e.g. Europe/Moscow)) |
+| webGl | string |  | (empty) | Настройки WebGL. Допустимые значения: “auto” — использовать значение из отпечатка, “ignore” — использовать системное значение. (auto or ignore) |
+| webGpu | string |  | (empty) | Настройки WebGPU. Допустимые значения: on — включить или off — отключить функцию. (on or off) |
+| webRtc | string |  | (empty) | Настройки WebRTC. Допустимые значения: ‘Emulate’ — использовать значение из отпечатка, ‘Real’ — использовать системное значение или “Hide” — отключить функцию. (Emulate, Real or Hide) |
+| domRect | string |  | (empty) | Настройки DOM Rectangle. Допустимые значения: “Ignore” — отключить функцию или “Noise” — использовать зашумление DOM Rect. (Ignore or Noise) |
+| audio | string |  | (empty) | Настройки звука. Допустимые значения: “on” — включить или “off” — отключить функцию. (on or off) |
+| fonts | string |  | (empty) | Настройки шрифтов. Допустимые значения: “on” — включить или “off” — отключить функцию. (on or off) |
+| battery | string |  | (empty) | Настройки батареи. Допустимые значения: “on” — включить или “off” — отключить функцию. (on or off) |
+| plugins | string |  | (empty) | Настройки плагинов браузера. Допустимые значения: “on” — включить или “off” — отключить функцию. (on or off) |
+| proxyServerId | string | uuid | (empty) | Идентификатор прокси-сервера (необязательно). |
+| speechVoices | string |  | (empty) | Настройки голосов синтеза речи. Допустимые значения: “on” — включить или “off” — отключить функцию. (on or off) |
+| tags | string |  | (empty) | Теги профиля, разделённые пробелами или запятыми (например, `1 2 3 4`). |
+
+#### 
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/create_bulk?count=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&tags=' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/create_bulk?count=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&tags="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/profiles/create_bulk?count=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&tags=
+```
+
+![](../assets/image15.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Возвращает массив идентификаторов для вновь созданных профилей:
+
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
+
+**Ответ об ошибке (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
