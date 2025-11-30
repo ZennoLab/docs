@@ -58,5 +58,65 @@
   "sidebar.zennobrowserSidebar.category.Дополнительная информация.link.generated-index.description": {
     "message": "Frequently asked questions about ZennoBrowser, usage examples, and other information",
     "description": "The generated-index page description for category Дополнительная информация in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.ZennoBrowser API": {
+    "message": "ZennoBrowser API",
+    "description": "The label for category ZennoBrowser API in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.ZennoBrowser API.link.generated-index.title": {
+    "message": "ZennoBrowser API",
+    "description": "The generated-index page title for category ZennoBrowser API in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.ZennoBrowser API.link.generated-index.description": {
+    "message": "Public API documentation for ZennoBrowser automation and programmatic control",
+    "description": "The generated-index page description for category ZennoBrowser API in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками": {
+    "message": "Folder Management",
+    "description": "The label for category Управление папками in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками.link.generated-index.title": {
+    "message": "Folder Management",
+    "description": "The generated-index page title for category Управление папками in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление профилем": {
+    "message": "Profile Management",
+    "description": "The label for category Управление профилем in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление профилем.link.generated-index.title": {
+    "message": "Profile Management",
+    "description": "The generated-index page title for category Управление профилем in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление прокси": {
+    "message": "Proxy Management",
+    "description": "The label for category Управление прокси in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление прокси.link.generated-index.title": {
+    "message": "Proxy Management",
+    "description": "The generated-index page title for category Управление прокси in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление прокси-папками": {
+    "message": "Proxy Folders Management",
+    "description": "The label for category Управление прокси-папками in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление прокси-папками.link.generated-index.title": {
+    "message": "Proxy Folders Management",
+    "description": "The generated-index page title for category Управление прокси-папками in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Экземпляры браузера": {
+    "message": "Browser Instances",
+    "description": "The label for category Экземпляры браузера in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Экземпляры браузера.link.generated-index.title": {
+    "message": "Browser Instances",
+    "description": "The generated-index page title for category Экземпляры браузера in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление потоками": {
+    "message": "Thread Management",
+    "description": "The label for category Управление потоками in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление потоками.link.generated-index.title": {
+    "message": "Thread Management",
+    "description": "The generated-index page title for category Управление потоками in sidebar zennobrowserSidebar"
   }
 } 
