@@ -1,0 +1,85 @@
+﻿---
+sidebar_position: 4
+sidebar_label: Удаление экземпляра браузера
+title: Удаление экземпляра браузера
+description: Удаление одного экземпляра браузера — подробное руководство по публичному API ZennoBrowser. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод удаляет существующий экземпляр браузера, связанный с указанным профилем.  
+Эта операция безвозвратно закрывает экземпляр браузера и освобождает все связанные ресурсы.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Идентификатор целевого экземпляра браузера |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. | 
+
+#### **Пример запроса:**
+
+**DELETE**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/browser_instances/{profileId}?workspaceId=-1' \
+  --request DELETE \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```  
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/{profileId}?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/browser_instances/{profileId}?workspaceId=-1
+```
+
+![](../assets/image31.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+При успешном удалении тело ответа не возвращается.
+
+**Ответ об ошибке (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
