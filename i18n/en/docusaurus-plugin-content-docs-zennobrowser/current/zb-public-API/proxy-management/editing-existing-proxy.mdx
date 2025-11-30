@@ -1,0 +1,93 @@
+﻿---
+sidebar_position: 3
+sidebar_label: Editing Existing Proxy
+title: Editing Existing Proxy
+description: Update an existing proxy server's configuration and parameters - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method modifies configuration of an existing proxy server based on specified parameters. 
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| proxyId | string | uuid | (empty) |  Unique identifier of the proxy (Required) |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| folderId | string | uuid | (empty) | New folder for the proxy. Set to empty to leave the current value unchanged. |
+| name | string |  | (empty) | New name for the proxy. Set to null to retain the current name. |
+| proxyUrl | string |  | (empty) | Nnew URL for the proxy. |
+| ipChangeUrl | string |  | (empty) | New URL for IP rotation. |
+
+:::note
+The ID of the proxy to edit should be specified inside curly braces `{ }` in the URL path.
+:::
+
+#### **Example request:**
+
+**PUT**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxies/{proxyId}?workspaceId=&folderId=&name=&proxyUri=&ipChangeUrl=' \
+  --request PUT \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Put,
+    RequestUri = new Uri("http://localhost:8160/v1/proxies/{proxyId}?workspaceId=&folderId=&name=&proxyUri=&ipChangeUrl="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:** 
+```
+http://localhost:8160/v1/proxies/{proxyId}?workspaceId=&folderId=&name=&proxyUri=&ipChangeUrl=
+``` 
+
+![](../assets/image21.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No content returned on successful update.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

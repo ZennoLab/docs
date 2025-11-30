@@ -1,0 +1,103 @@
+﻿---
+sidebar_position: 1
+sidebar_label: Получение папок прокси
+title: Получение списка папок прокси
+description: Получение списка папок прокси в рабочем пространстве — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод используется для получения списка папок прокси. Поддерживается фильтрация, сортировка и разбиение результатов на страницы. Дополнительные параметры запроса позволяют уточнить набор возвращаемых данных. Если параметры не указаны, метод возвращает первую страницу папок прокси в порядке сортировки по умолчанию.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
+| start | integer | int32 | 0 | Индекс первой папки для возврата (отсчёт с нуля) |
+| total | integer | int32 | 1000 | Максимальное количество возвращаемых результатов |
+| id | string | uuid | (empty) | Фильтрация по определённому идентификатору папки |
+| name | string |  | (empty) | Фильтрация по имени папки |
+| sorting | string |  | (empty) | Условие сортировки результатов |
+| location | string (enum) |  | (empty) | Фильтр по типу прокси (Local или Cloud) |
+
+#### 
+
+#### **Пример запроса:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxy_folders?workspaceId=&start=&total=&id=&name=&sorting=&=' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders?workspaceId=&start=&total=&id=&name=&sorting=&="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**   
+```
+http://localhost:8160/v1/proxy_folders?workspaceId=&start=&total=&id=&name=&sorting=&=
+```
+
+![](../assets/image24.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+```json
+{
+  "totalCount": 1,
+  "items": [
+    {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "name": null,
+      "location": "Local",
+      "quantity": 1
+    }
+  ]
+}
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

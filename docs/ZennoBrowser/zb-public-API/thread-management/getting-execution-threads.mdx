@@ -1,0 +1,100 @@
+﻿---
+sidebar_position: 1
+sidebar_label: Получение потоков выполнения
+title: Получение потоков выполнения
+description: Получение списка потоков выполнения — подробное руководство по публичному API ZennoBrowser. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод получает список потоков выполнения для указанного рабочего пространства.  
+Потоки можно фильтровать по токену или типу, ограничивать по количеству результатов и при необходимости сортировать.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+| start | integer | int32 | 0 | Начальный индекс для пагинации. |
+| total | integer | int32 | 1000 | Максимальное количество возвращаемых потоков. |
+| thread_token | string |  | (empty) | Фильтр по определённому токену потока (необязательно). |
+| type | string enum |  | (empty) | Фильтр по типу токена (`Manual`, `BrowserInstance`) (необязательно). |
+| sorting | string |  | (empty) | Параметры сортировки: CreatedAt, ThreadToken, Type, WorkspaceId (необязательно). |
+
+#### **Пример запроса:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/threads?workspaceId=&start=0&total=1000&thread_token=&type=&sorting=' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/threads?workspaceId=&start=0&total=1000&thread_token=&type=&sorting="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/threads?workspaceId=&start=&total=&thread_token=&=&sorting=
+```
+
+![](../assets/image33.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+```json
+{
+  "totalCount": 1,
+  "items": [
+    {
+      "workspaceId": 1,
+      "threadToken": null,
+      "type": "Manual",
+      "createdAt": "2025-07-25T09:34:29.768Z"
+    }
+  ]
+}
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

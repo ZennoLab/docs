@@ -1,0 +1,135 @@
+﻿---
+sidebar_position: 1
+sidebar_label: Получение профилей браузера
+title: Получение доступных профилей браузера
+description: Получение списка профилей браузера, доступных в рабочем пространстве — подробное руководство по ZennoBrowser Public API. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод получает список профилей с их атрибутами из указанного рабочего пространства и [папки.](http://folder.It) Можно дополнительно фильтровать результаты по ID, имени, тегам и параметрам сортировки.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+| start | integer | int32 | 0 | Индекс (с нуля) первой папки с профилем, которую нужно получить. По умолчанию 0\. |
+| total | integer | int32 | 1000 | Максимальное количество результатов для возврата |
+| folderId | string | uuid | (empty) | Идентификатор папки для фильтрации (необязательно). |
+| id | string | uuid | (empty) | Идентификатор профиля для фильтрации (необязательно). |
+| name | string |  | (empty) | Имя профиля для фильтрации (необязательно). |
+| tags | string |  | (empty) | Теги для фильтрации (необязательно). Несколько тегов можно разделять пробелами. |
+| sorting | string |  | (empty) | Параметры сортировки (необязательно). Id, ContainerId, Name, CreationTime, User.Sex, User.Name, User.Surname, User.Age, User.Country, OperationSystem.Name, OperationSystem.Version, Brand.Name, Brand.Version, Proxy, Proxy.Name, ProfileState.DisplayStatus, ProfileState.Description, Status, OperationalState.OperationStatus, OperationalState.CanChangeOperationStatus, UsedTime, LastStartTime, LastErrorMessage, Tags, Tags.Id, Notes |
+
+#### 
+
+#### **Пример запроса:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=&id=&name=&tags=&sorting=' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=&id=&name=&tags=&sorting="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=&id=&name=&tags=&sorting=
+```
+
+![](../assets/image13.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+```json
+{
+  "totalCount": 1,
+  "items": [
+    {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "name": null,
+      "folderId": "123e4567-e89b-12d3-a456-426614174000",
+      "creationTime": "2025-07-25T09:34:29.768Z",
+      "user": {
+        "sex": "Male",
+        "name": null,
+        "surname": null,
+        "age": 1,
+        "country": null
+      },
+      "browser": {
+        "operationSystem": {
+          "name": null,
+          "version": null
+        },
+        "brand": {
+          "name": null,
+          "version": null
+        }
+      },
+      "proxy": {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "name": null
+      },
+      "status": null,
+      "usedTimeSeconds": null,
+      "lastStartTime": null,
+      "lastErrorMessage": null,
+      "tags": [
+        {
+          "name": null,
+          "color": null
+        }
+      ],
+      "notes": null
+    }
+  ]
+}
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

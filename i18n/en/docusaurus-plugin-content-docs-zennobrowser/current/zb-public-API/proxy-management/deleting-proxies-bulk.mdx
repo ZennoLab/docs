@@ -1,0 +1,106 @@
+﻿---
+sidebar_position: 5
+sidebar_label: Deleting Proxies (Bulk)
+title: Deleting Proxies (Bulk)
+description: Delete multiple proxy servers at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method sends a bulk delete request to the API to remove specified proxies.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| body | JSON array | GUID\[\] |  | The array of UUIDs containing the proxies to be deleted. |
+
+:::note
+The list of proxies to delete should be specified as an array in the request body using the following format:
+
+```json
+[
+  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
+  "d24eba34-12d6-4412-ab20-80fae618c264"
+]
+```
+:::
+
+#### **Example request:**
+
+**DELETE**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxies/delete_bulk?workspaceId=' \
+  --request DELETE \
+  --header 'Content-Type: application/json' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --data '[
+  ""
+]'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:8160/v1/proxies/delete_bulk?workspaceId="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+    Content = new StringContent("[\n  \"\"\n]")
+    {
+        Headers =
+        {
+            ContentType = new MediaTypeHeaderValue("application/json")
+        }
+    }
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**   
+```
+http://localhost:8160/v1/proxies/delete_bulk?workspaceId=
+```
+
+![](../assets/image23.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No content returned on successful deletion.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

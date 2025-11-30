@@ -1,0 +1,106 @@
+﻿---
+sidebar_position: 1
+sidebar_label: Получение списка прокси
+title: Получение списка прокси с параметрами
+description: Получение списка прокси‑серверов с опциями фильтрации и пагинации — подробное руководство по публичному API ZennoBrowser. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод предоставляет функциональность для фильтрации, сортировки и постраничного вывода прокси. Он используется для настройки результата с помощью доступных параметров. Если параметры не указаны, в ответе будет возвращена страница по умолчанию с результатами в стандартном порядке.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | По умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+| start | integer | int32 | 0 | Начальный индекс списка прокси для выборки. |
+| total | integer | int32 | 1000 | Максимальное количество прокси для выборки. |
+| folderId | string | uuid | (пусто) | Необязательный идентификатор папки для фильтрации прокси. Передайте null, чтобы игнорировать этот фильтр. |
+| id | string | uuid | (пусто) | Необязательный идентификатор прокси для фильтрации. Передайте null, чтобы игнорировать этот фильтр. |
+| name | string |  | (пусто) | Необязательное имя для фильтрации прокси. Передайте null, чтобы игнорировать этот фильтр. |
+| sorting | string |  | (пусто) | Необязательная строка сортировки, определяющая порядок возвращаемых прокси. Передайте null, чтобы игнорировать этот фильтр. |
+
+#### 
+
+#### **Пример запроса:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxies?workspaceId=&start=&total=&folderId=&id=&name=&sorting=' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/proxies?workspaceId=&start=&total=&folderId=&id=&name=&sorting="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:** 
+```
+http://localhost:8160/v1/proxies?workspaceId=&start=&total=&folderId=&id=&name=&sorting=
+``` 
+
+![](../assets/image19.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Успех |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+```json
+{
+  "totalCount": 1,
+  "items": [
+    {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "folderId": "123e4567-e89b-12d3-a456-426614174000",
+      "name": null,
+      "proxyUri": null,
+      "checkStatus": "Unknown",
+      "checkStatusLastUpdateTime": null,
+      "ipChangeUrl": null
+    }
+  ]
+}
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

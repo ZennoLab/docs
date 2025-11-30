@@ -1,0 +1,93 @@
+﻿---
+sidebar_position: 2
+sidebar_label: Добавление нового прокси
+title: Добавление нового прокси
+description: Добавьте новый прокси‑сервер в рабочее пространство с пользовательской конфигурацией — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод используется для добавления новой записи прокси с использованием заданных параметров конфигурации. Возвращает сгенерированный уникальный идентификатор.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| name | string |  | (empty) | Имя добавляемого прокси. Значение не может быть null или пустым. |
+| proxyUrl | string |  | (empty) | URL‑адрес прокси. Значение должно быть корректным URL (не может быть null или пустым, например `http://login:pass@host:port`). |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+| folderId | string | uuid | (empty) | Необязательный идентификатор папки, с которой будет связан прокси. Может иметь значение null. |
+| ipChangeUrl | string |  | (empty) | Необязательный URL для инициирования смены IP для прокси. По умолчанию — пустая строка, если не задан. |
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxies/create?name=&proxyUri=&workspaceId=&folderId=&ipChangeUrl=' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/proxies/create?name=&proxyUri=&workspaceId=&folderId=&ipChangeUrl="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:** 
+```
+http://localhost:8160/v1/proxies/create?name=&proxyUri=&workspaceId=&folderId=&ipChangeUrl=
+```   
+![](../assets/image20.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успех |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Возвращает массив, содержащий ID вновь созданного прокси:
+
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

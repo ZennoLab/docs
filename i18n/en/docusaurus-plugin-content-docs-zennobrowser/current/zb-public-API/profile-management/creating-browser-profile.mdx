@@ -1,0 +1,112 @@
+﻿---
+sidebar_position: 2
+sidebar_label: Creating Browser Profile
+title: Creating Browser Profile
+description: Create a new browser profile with custom fingerprint and configuration settings - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method creates a new browser profile in the specified workspace and the folder.   
+It is possible to customize various parameters such as screen size, hardware emulation, language, timezone, proxy, etc..  
+All parameters are optional if another is not specified.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| name | string |  |  | The profile name. |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| folderId | string | uuid | (empty) | The folder identifier (optional). |
+| screen | string |  | (empty) | Screen configuration settings. The allowed values are: “auto” to use value from fingerprint, “ignore” to use system value or “width x height” to set custom screen resolution (`auto`, `ignore`, or `width x height`) |
+| cpu | string |  | (empty) | CPU configuration settings. The allowed values are: “auto” to use value from fingerprint, “ignore” to use system value or integer number to set custom processor core count (`auto`, `ignore`, or number of cores) |
+| memory | string |  | (empty) | Memory configuration settings. The allowed values are: “auto” to use value from fingerprint, “ignore” to use system value or integer number to set custom memory size in megabytes (`auto`, `ignorate` or memory size in MB) |
+| language | string |  | (empty) | Browser language settings. The allowed values are: “auto” to use value from fingerprint, “ignore” to use system value or language locale value (`auto`, `ignorate`, or locale: Russian \- ru English (United States) \- en-US German \- de French \- fr Spanish \- es English (United Kingdom) \- en-GB |
+| geoLocation | string |  | (empty) | Geographic location settings. The allowed values are: “auto” to use value from fingerprint, “ignore” to use system value. It is also possible to specify from one to seven floating point numbers that represent the following geo coordinates: Latitude, Longitude, Altitude, Accuracy, AltitudeAccuracy, Heading, Speed, Radius. Some coordinates can be skipped. For example, the following value sequence is valid: 10, , 40, , 60, 70 \- means Latitude \= 10, Longitude \= random, Altitude \= 40, Accuracy \= random, AltitudeAccuracy \= 60, Heading \= 70, Speed \= random, Radius \= random (`auto`, `ignore` or coordinates (latitude, longitude, etc.)) |
+| timeZone | string |  | (empty) | Timezone settings. The allowed values are: “auto” to use value from fingerprint, “ignore” to use system value or custom timezone value (`auto`, `ignore`, or specific value (e.g. `Europe/Moscow`)) |
+| webGl | string |  | (empty) | WebGL configuration settings. The allowed values are: “auto: to use value from fingerprint, “ignore” to use system value. (`auto` or `ignore)` |
+| webGpu | string |  | (empty) | WebGPU configuration settings. The allowed values are: “on” to enable or “off” to disable this feature.(`on` or `off)` |
+| webRtc | string |  | (empty) | WebRTC configuration settings. The allowed values are: “Emulate” to use value from fingerprint, “Real” to use system value or “Hide” to disable this feature.(`Emulate`, `Real` or `Hide)` |
+| domRect | string |  | (empty) | DOM Rectangle configuration settings. The allowed values are: “Ignore” to disable this feature or “Noise” to use dom rect noising.(`Ignore` or `Noise)` |
+| audio | string |  | (empty) | Audio configuration settings. The allowed values are: “on” to enable or “off” to disable this feature. (`on` or `off)` |
+| fonts | string |  | (empty) | Font configuration settings. The allowed values are: “on” to enable or “off” to disable this feature. `(on` or `off)` |
+| battery | string |  | (empty) | Battery configuration settings. The allowed values are: “on” to enable or “off” to disable this feature. (`on` or `off)` |
+| plugins | string |  | (empty) | Browser plugins configuration. The allowed values are: “on” to enable or “off” to disable this feature. (`on` or `off)` |
+| proxyServerId | string | uuid | (empty) | Proxy server identifier (optional). |
+| speechVoices | string |  | (empty) | Speech voices configuration. The allowed values are: “on” to enable or “off” to disable this feature. (`on` or `off)` |
+| cookies | string |  | (empty) | Cookies configuration |
+| notes | string |  | (empty) | Additional notes for the profile. |
+| tags | string |  | (empty) | Profile tags separated by spaces. (e.g. `1 2 3 4`) |
+
+#### 
+
+#### **Example request:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/create?name=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&cookies=&notes=&tags=' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/create?name=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&cookies=&notes=&tags="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/profiles/create?name=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&cookies=&notes=&tags=
+```
+
+![](../assets/image14.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**  
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+Returns the ID of the newly created profile:
+
+```
+123e4567-e89b-12d3-a456-426614174000
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

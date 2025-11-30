@@ -1,0 +1,92 @@
+﻿---
+sidebar_position: 4
+sidebar_label: Обновление профиля браузера
+title: Обновление профиля браузера
+description: Обновление настроек и параметров отпечатка существующего профиля браузера — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод обновляет существующий профиль браузера.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Уникальный идентификатор редактируемого профиля (**обязательный**). |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
+| folderId | string | uuid | (empty) | Новая папка, в которую будет перемещён профиль (необязательно). |
+| name | string |  | (empty) | Новое имя профиля. |
+| notes | string |  | (empty) | Новые заметки к профилю (необязательно). |
+| tags | string |  | (empty) | Новые теги профиля, разделённые пробелами (необязательно). |
+
+:::note
+ID профиля для обновления должен быть указан в фигурных скобках `{ }` в пути URL.
+:::
+
+#### **Пример запроса:**
+
+**PUT**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2' \
+  --request PUT \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Put,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2
+```
+
+![](../assets/image16.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+При успешном обновлении содержимое не возвращается.
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

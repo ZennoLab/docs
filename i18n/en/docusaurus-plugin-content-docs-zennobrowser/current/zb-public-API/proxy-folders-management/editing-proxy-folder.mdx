@@ -1,0 +1,92 @@
+﻿---
+sidebar_position: 3
+sidebar_label: Editing Proxy Folder
+title: Editing Proxy Folder
+description: Update an existing proxy folder's properties - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+### **Editing proxy folder**
+
+**Description:** This method updates the name of the specified proxy folder. This is the only editable property.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| proxyFolderId | string | uuid | (empty) | The folder identifier (Required) |
+| name | string |  | (empty) | The new folder name |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+
+**Note:**
+
+The ID of the edited proxy list should be specified inside curly braces {} in the URL path.
+
+#### **Example request:**
+
+**PUT**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxy_folders/{proxyFolderId}?name=&workspaceId=' \
+  --request PUT \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Put,
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders/{proxyFolderId}?name=&workspaceId="),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**   
+```
+http://localhost:8160/v1/proxy_folders/{proxyFolderId}?name=&workspaceId=
+```  
+
+![](../assets/image26.png)   
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+![](../assets/image8.png) 
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No content returned on successful update.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

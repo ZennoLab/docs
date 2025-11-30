@@ -1,0 +1,92 @@
+﻿---
+sidebar_position: 4
+sidebar_label: Updating Browser Profile
+title: Updating Browser Profile
+description: Update an existing browser profile's settings and fingerprint parameters - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method updates an existing browser profile.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Unique identifier of the edited profile (**required**). |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| folderId | string | uuid | (empty) | New folder which the profile will be moved to (optional). |
+| name | string |  | (empty) | New profile name. |
+| notes | string |  | (empty) | New profile notes (optional). |
+| tags | string |  | (empty) | New profile tags separated by spaces (optional). |
+
+:::note
+The ID of the profile to update should be specified inside curly braces `{ }` in the URL path.
+:::
+
+#### **Example request:**
+
+**PUT**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2' \
+  --request PUT \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Put,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2
+```
+
+![](../assets/image16.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No content returned on successful update.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

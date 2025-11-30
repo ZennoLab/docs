@@ -1,0 +1,124 @@
+﻿---
+sidebar_position: 3
+sidebar_label: Creating Instances (Bulk)
+title: Creating Multiple Browser Instances
+description: Create multiple browser instances at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method is used to create browser instances in bulk for the specified profiles. Please ensure that the provided profile IDs are valid and the specified workspace ID exists.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| desktopName | string |  | (empty) | The name of the desktop environment (optional). |
+| keepAlive | логическое значение |  | true | This value indicates if the browser instances should remain active after creation. Set ”true” to keep the instances active; otherwise, false. Defaults to true (`true` или `false`). |
+| body | JSON-Array  |  |  | The array of profile UUIDs to create browser instances for. Example: `["uuid1", "uuid2"]` |
+
+:::note
+The list of profile IDs for browser instances to create should be passed as an array in the request body using the following format:
+
+```json
+[
+  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
+  "d24eba34-12d6-4412-ab20-80fae618c264"
+]
+```
+:::
+
+#### **Example request:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true' \
+  --request POST \
+  --header 'Content-Type: application/json' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --data '[
+    "uuid1",
+    "uuid2"
+  ]'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+    Content = new StringContent("[\n  " +
+                                "\"uuid1\"," +
+                                "\"uuid2\"," +
+                                "\n]")
+    {
+        Headers =
+        {
+            ContentType = new MediaTypeHeaderValue("application/json")
+        }
+    }
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**`Cube:`**  
+```
+http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true
+```
+**Data:**   
+`["uuid1", "uuid2"]`
+
+![](../assets/image30.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+Returns an array of created browser instances:
+
+```json
+[
+  {
+    "profileId": "123e4567-e89b-12d3-a456-426614174000",
+    "processId": 1,
+    "connectionString": null
+  }
+]
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

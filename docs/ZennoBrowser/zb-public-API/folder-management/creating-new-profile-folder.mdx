@@ -1,0 +1,91 @@
+﻿---
+sidebar_position: 2
+sidebar_label: Создание папки профилей
+title: Создание новой папки профилей
+description: Создание папки профилей в указанном рабочем пространстве и местоположении — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод создает папку профилей. Вызывающей стороне необходимо убедиться, что указанные ID рабочего пространства и местоположение являются корректными.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| name | string |  |  | Имя папки профилей. Не может быть null или пустым. |
+| workspaceId | integer | int64 | \-1 | ID рабочего пространства, в котором будет создана папка профилей. По умолчанию \-1, если не указано. |
+| location | string (enum) |  | Local | Местоположение, где будет создана папка профилей. Варианты местоположения папки: `"Local"` или `"Cloud"`. |
+
+#### 
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profile_folders?name=&workspaceId=-1&location=Local' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profile_folders?name=&workspaceId=-1&location=Local"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/profile_folders?name=&workspaceId=-1&location=Local
+```
+
+![](../assets/image10.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Возвращает ID вновь созданной папки профилей:
+
+```
+123e4567-e89b-12d3-a456-426614174000
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
