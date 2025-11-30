@@ -1,0 +1,109 @@
+﻿---
+sidebar_position: 7
+sidebar_label: Удаление потоков (пакетно)
+title: Удаление нескольких потоков
+description: Удаление нескольких потоков выполнения за один раз — подробное руководство по ZennoBrowser Public API. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод удаляет несколько потоков выполнения.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+| body | JSON-Array |  |  | Целевые токены потоков выполнения. Пример: `["uuid1", "uuid2"]` |
+
+:::note
+Список токенов потоков для удаления нужно указать в теле запроса в виде массива в следующем формате:
+
+```json
+[
+  "threadToken1",
+  "threadToken2"
+]
+```
+:::
+
+#### **Пример запроса:**
+
+**DELETE**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/threads/delete_bulk?workspaceId=-1' \
+  --request DELETE \
+  --header 'Content-Type: application/json' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --data '[
+    "threadToken1",
+    "threadToken2"
+  ]'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:8160/v1/threads/delete_bulk?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+    Content = new StringContent("[\n  \"threadToken1\",\n  \"threadToken2\"\n]")
+    {
+        Headers =
+        {
+            ContentType = new MediaTypeHeaderValue("application/json")
+        }
+    }
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/threads/delete_bulk?workspaceId=-1
+```  
+**Body:**  
+`["threadToken1", "threadToken2"]`
+
+![](../assets/image39.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+При успешном удалении содержимое в ответе не возвращается.
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

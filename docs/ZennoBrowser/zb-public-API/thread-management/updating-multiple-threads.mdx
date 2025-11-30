@@ -1,0 +1,109 @@
+﻿---
+sidebar_position: 5
+sidebar_label: Обновление потоков (массовое)
+title: Обновление нескольких потоков
+description: Массовое обновление нескольких потоков выполнения — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод используется для обновления указанных потоков выполнения, позволяя им продолжить работу. Параметр threadTokens должен содержать массив действительных токенов с существующими ID рабочих пространств.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+| body | JSON-Array |  |  | Массив токенов потоков для обновления потоков выполнения. Не может быть null или пустым. Пример: `["uuid1", "uuid2"]` |
+
+:::note
+Список токенов потоков для обновления должен быть указан в теле запроса в виде массива в следующем формате:
+
+```json
+[
+  "threadToken1",
+  "threadToken2"
+]
+```
+:::
+
+#### **Пример запроса:**
+
+**PUT**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/threads/use_bulk?workspaceId=-1' \
+  --request PUT \
+  --header 'Content-Type: application/json' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --data '[
+    "threadToken1",
+    "threadToken2"
+  ]'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Put,
+    RequestUri = new Uri("http://localhost:8160/v1/threads/use_bulk?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+    Content = new StringContent("[\n  \"threadToken1\",\n  \"threadToken2\"\n]")
+    {
+        Headers =
+        {
+            ContentType = new MediaTypeHeaderValue("application/json")
+        }
+    }
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/threads/use_bulk?workspaceId=-1
+```  
+**Data:**   
+`["threadToken1", "threadToken2"]`
+
+![](../assets/image37.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Токен из **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+При успешном обновлении никакого содержимого не возвращается.
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

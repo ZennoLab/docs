@@ -1,0 +1,100 @@
+﻿---
+sidebar_position: 3
+sidebar_label: Запуск потоков (пакетно)
+title: Запуск нескольких потоков
+description: Одновременный запуск нескольких потоков выполнения — подробное руководство по публичному API ZennoBrowser. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод можно использовать для пакетного запуска потоков выполнения.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| count | integer | int32 |  | Количество потоков для запуска. |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочей области. `-1` означает рабочую область по умолчанию. |
+
+:::note
+Количество потоков для запуска следует указывать как параметр пути в URL.
+:::
+
+#### **Пример запроса:**
+
+**POST**
+
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/threads/create_bulk?count=5&workspaceId=-1' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/threads/create_bulk?count=5&workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+```
+http://localhost:8160/v1/threads/create_bulk?count=5&workspaceId=-1
+```
+
+![](../assets/image35.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.  
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Возвращает массив созданных объектов потоков:
+
+```json
+[
+  {
+    "workspaceId": 1,
+    "threadToken": null,
+    "type": "Manual",
+    "createdAt": "2025-07-25T09:34:29.768Z"
+  }
+]
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
