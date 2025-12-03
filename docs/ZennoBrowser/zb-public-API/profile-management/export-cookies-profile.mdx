@@ -1,0 +1,84 @@
+---
+sidebar_position: 7
+sidebar_label: Экспорт cookies из профиля
+title: Экспорт cookies из профиля
+description: Экспорт cookies из существующего профиля браузера в формате JSON — подробное руководство по публичному API ZennoBrowser. Пошаговые инструкции, примеры использования и справочник по параметрам запроса
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+### **Экспорт cookies из профиля**
+
+**Описание:** Этот метод позволяет экспортировать cookies из существующего профиля в формате JSON.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
+| profileId | string | uuid | (required) | Уникальный идентификатор профиля, из которого нужно экспортировать cookies (**обязательный**). |
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/{profileId}/cookies/export' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}/cookies/export"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+`http://localhost:8160/v1/profiles/{profileId}/cookies/export`   
+![](../assets/image17-1.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Токен из **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `500 Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Возвращает экспортированные cookies в формате JSON.
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
