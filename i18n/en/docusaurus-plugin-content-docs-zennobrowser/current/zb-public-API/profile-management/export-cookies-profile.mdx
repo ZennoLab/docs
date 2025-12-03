@@ -1,0 +1,84 @@
+---
+sidebar_position: 7
+sidebar_label: Exporting cookies from a profile
+title: Exporting cookies from a profile
+description: Exporting cookies from an existing browser profile in JSON format — a detailed guide to the ZennoBrowser Public API. Step-by-step instructions, usage examples, and a reference for request parameters
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+### **Export cookies from a profile**
+
+**Description:** This method allows exporting cookies from an existing profile in JSON format.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| profileId | string | uuid | (required) | The unique identifier of the profile from which to export cookies (**required**). |
+
+#### **Example request:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/{profileId}/cookies/export' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}/cookies/export"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**  
+`http://localhost:8160/v1/profiles/{profileId}/cookies/export`   
+![](../assets/image17-1.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+Returns exported cookies in JSON format.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

@@ -1,0 +1,94 @@
+---
+sidebar_position: 8
+sidebar_label: Импорт файлов cookie в профиль
+title: Импорт файлов cookie в профиль
+description: Импорт файлов cookie в существующий профиль браузера в формате JSON — подробное руководство по публичному API ZennoBrowser. Пошаговые инструкции, примеры использования и справка по параметрам запроса
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+### **Импорт файлов cookie в профиль**
+
+**Описание:** Этот метод позволяет импортировать файлы cookie в существующий профиль в формате JSON.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
+| profileId | string | uuid | (required) | Уникальный идентификатор целевого профиля для импорта файлов cookie (**обязательный**). |
+| body | JSON-Array | UUID profiles |  | Файлы cookie в формате JSON `[cookie]`  |
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/{profileId}/cookies/import' \
+  --request POST \
+  --header 'Content-Type: application/json' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --data '{}'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http.Headers;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}/cookies/import"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+    Content = new StringContent("{}")
+    {
+        Headers =
+        {
+            ContentType = new MediaTypeHeaderValue("application/json")
+        }
+    }
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Куб:**  
+`http://localhost:8160/v1/profiles/{profileId}/cookies/import`   
+![](../assets/image11-1.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+![](../assets/image8.png)
+
+#### **Ответ API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Success |
+| `500 Error` | Internal Server Error |
+
+**Успешный ответ (200 OK):**
+
+При успешном импорте тело ответа не возвращается.
+
+**Ответ об ошибке (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
