@@ -299,9 +299,6 @@ These options let you save the captcha image and answer to the specified folder.
 
  - *In the filename -* handy, but may not always work since captchas might contain characters that cannot be used in Windows filenames.
 
-![image-20200820-190103](./assets/Captcha_Recognition/Captcha_Recognition_pic21.png)
-
-
  - *To a file -* in this case the captcha image will be saved as *captcha(X)**.png** in the chosen directory, where *X* is the captcha number. A file *captcha(X)**.txt*** will also be created containing the answer. Here, filename restrictions won’t be a problem.
 - *Ignore “sorry” answer -* for some errors, the *Recognize captcha* action returns *sorry* instead of a captcha answer. If this option is enabled, the program will not save captchas with such a response.
 
@@ -325,14 +322,6 @@ You might also encounter math text captchas. These are just like text captchas, 
 ### Flash captcha or captcha from any other element
 
 If you come across a flash captcha, you can render it as a regular image and also send it for recognition. Find this element in the [❗→ elements tree](/wiki/spaces/RU/pages/727777355 "/wiki/spaces/RU/pages/727777355"), right-click to open the action menu, and choose “This is a captcha” — that’s it!
-
-### How to handle CAPTCHA recognition errors
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/z1uLzCEUcZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-:::warning Warning
-The video was recorded for an older version of ZennoPoster, but the error handling algorithm remains the same and is not dependent on the program version.
-:::
 
 ### How to take a browser screenshot using the Recognize Captcha action?
 
