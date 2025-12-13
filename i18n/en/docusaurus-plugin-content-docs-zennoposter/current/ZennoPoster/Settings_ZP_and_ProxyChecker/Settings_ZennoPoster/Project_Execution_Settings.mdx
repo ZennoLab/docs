@@ -59,26 +59,6 @@ When enabled, conditions will be checked in order, following the numbering in th
 
 ![image-20200817-143705](./assets/Project_Execution_Settings/Project_Execution_Settings_pic2.png)
 
-### Use updated element search method
-
-:::info Information
-This setting is available only in ZennoDroid. Added in 2.4.2.0
-:::
-
-<details>
-<summary>Classic element search</summary>
-
-![image-20250521-073511.png](./assets/Project_Execution_Settings/Project_Execution_Settings_pic3.png)
-
-</details>
-Relevant for actions using classic search: “Get value”, “Set value”, “Trigger event”.
-
-Before version 2.4.2, the first condition in the list was ignored during classic element search if there were two or more conditions. The action could succeed even if the first condition was not met.
-
-Turning on this setting fixes the issue—the first condition will be considered.
-
-Use with caution. It may change the logic of old templates.
-
 ### Save files safely
 
 Helps prevent corruption of lists and files during unexpected server reboots.

@@ -13,6 +13,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 > 🔗 **[Original Page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052914)** — Source of this material
 
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+); 
+
+
 _______________________________________________  
 
 The Project Editor in ProjectMaker is the main place where you work with your projects.
@@ -38,17 +45,17 @@ When you open several projects, all of them appear as tabs in the editor panel. 
 
 
 
-## Actions Panel
+## Action bar
 
 :::tip Tip
-The Actions Panel contains the full functionality of the program—over a hundred features in total. You can find all available actions here: Actions
+The Action bar contains the full functionality of the program—over a hundred features in total. You can find all available actions here: Actions
 :::
 
 Take a look at how you can add an action to your project:
 
 
 
-**📹 There was a video here**
+<VideoSample source={require("@site/static/video/action_bar_en.mp4").default}/>
 
 Additionally, you can pin the Actions Panel so it doesn't get hidden.
 

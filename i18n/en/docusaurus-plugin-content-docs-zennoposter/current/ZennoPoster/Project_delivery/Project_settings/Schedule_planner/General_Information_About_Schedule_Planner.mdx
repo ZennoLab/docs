@@ -13,6 +13,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1959329865)** — Source of this material
 
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+); 
+
+
 _______________________________________________  
 
 :::tip Tip
@@ -21,7 +28,7 @@ The schedule planner is an updated tool in ZennoPoster 7 that lets you finely co
 
 
 
-**📹 There was a video here**
+<VideoSample source={require("@site/static/video/about_scheduler_en.mp4").default}/>
 
 ## **Scheduler Features:**
 
