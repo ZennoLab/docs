@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 6
 title: "Событие Touch"
 description: ""
@@ -11,39 +11,19 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch)** — Источник данного материала
-
-_______________________________________________  
-# Событие Swipe
-
-<details>
-<summary>Нажмите здесь, чтобы развернуть оглавление</summary>
-
-- 1 Описание
-- 2 Как добавить действие в проект?
-- 3 Где это можно применить?
-- 4 Как работать с экшеном?
- - 4.1 Выбор события
- - 4.2 Поиск элемента
- - 4.3 Вкладка “Дополнительно”
-- 5 Пример использования
-- 6 Полезные ссылки
-
-</details>
-  
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch)** — Источник данного материала 
 
 ## Описание
 
-Данный экшен позволяет эмулировать движения пальцем по экрану (свайп). 
+Данный экшен позволяет эмулировать Touch-событие (нажатие пальцем). 
 
   
 
 ## Как добавить действие в проект?
 
-Через контекстное меню **Добавить действие** → **Табы** → **Событие Swipe**
+Через контекстное меню **Добавить действие** → **Табы** → **Событие Touch**
 
-![image-20200816-113705](./assets/Swipe_Event/Swipe_Event_pic1.png)
-
+![image-20200816-104117](./assets/Touch_Event/Touch_Event_pic1.png)  
 
 
 Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
@@ -59,18 +39,16 @@ _______________________________________________
 
 ## Как работать с экшеном?
 
-Необходимо включить “Запись“ и [❗→ режим ввода](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373#%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC-%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373#%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC-%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0") “Touch“ в окне браузера, чтобы все действия, выполненные в браузере, автоматически записывались, как Touch-события. 
+Необходимо включить "Запись" и [❗→ режим ввода](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373#%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC-%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373#%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC-%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0") "Touch" в окне браузера, чтобы все действия, выполненные в браузере, автоматически записывались, как Touch-события. 
 
-![image-20200816-113838](./assets/Swipe_Event/Swipe_Event_pic2.png)
+![image-20200816-104449](./assets/Touch_Event/Touch_Event_pic2.png)
 
 
 
 ### Выбор события
 
-- **Свайп до элемента** - листать страницу, пока элемент не станет видимым.
-- **Простой свайп** - Вверх / Вниз / Влево / Вправо.
-
-  
+- Touch - нажатие (клик/прикосновение);
+- Long Touch - длительное зажатие (ПКМ)
 
 ### Поиск элемента
 
@@ -80,13 +58,13 @@ _______________________________________________
 
 **Классический** - Поиск по параметрам HTML элемента: тэг, атрибут и его значение.
 
-![image-20200805-202115](./assets/Swipe_Event/Swipe_Event_pic3.png)
+![image-20200805-202115](./assets/Touch_Event/Touch_Event_pic3.png)
 
 
 
 **XPath** - поиск с помощью [❗→ XPath выражений](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/"). С помощью него Вы можете реализовать более универсальный и устойчивый к изменениям вёрстки способ поиска данных в сравнении с классическим поиском или регулярными выражениями.
 
-![image-20200805-202209](./assets/Swipe_Event/Swipe_Event_pic4.png)
+![image-20200805-202209](./assets/Touch_Event/Touch_Event_pic4.png)
 
 
 
@@ -109,18 +87,18 @@ _______________________________________________
 Тоже лучше ставить **-1** (поиск по всем формам на странице). При выборе такого значения шаблон будет более универсальным.
 
 <details>
-<summary>Почему лучше ставить &amp;quot;-1&amp;quot;?</summary>
+<summary>Почему лучше ставить -1?</summary>
 
-Пример: на странице 3 формы - поиск, регистрация, заказ товара. Нам надо кликнуть в форме заказа по кнопке и мы выбрали в качестве значения поля “Форма” - **2** (два) (нумерация с нуля). Спустя какое-то время на сайте появляется новая форма, для входа, и вставлена она перед формой заказа. Под номером 2 теперь будет форма входа и наш шаблон либо выдаст ошибку о том, что кнопка не найдена, либо (что гораздо хуже) будет кликать в другой форме по другой кнопке.
+Пример: на странице 3 формы - поиск, регистрация, заказ товара. Нам надо кликнуть в форме заказа по кнопке и мы выбрали в качестве значения поля "Форма" - **2** (два) (нумерация с нуля). Спустя какое-то время на сайте появляется новая форма, для входа, и вставлена она перед формой заказа. Под номером 2 теперь будет форма входа и наш шаблон либо выдаст ошибку о том, что кнопка не найдена, либо (что гораздо хуже) будет кликать в другой форме по другой кнопке.
 
 </details>
 :::note На заметку
 В настройках программы можно отметить два чекбокса - Искать во всех формах на странице и Искать во всех документах на странице  и тогда всегда при добавлении элемента в Конструктор действий для номера документа и формы будет стоять -1.
 :::
 
-### **Тэг (только классический поиск)**
+### Тэг (только классический поиск)**
 
-![image-20210525-095347](./assets/Swipe_Event/Swipe_Event_pic5.png)
+![image-20210525-095347](./assets/Touch_Event/Touch_Event_pic5.png)
 
 
 
@@ -130,14 +108,14 @@ _______________________________________________
 Можно указать сразу несколько тегов, разделитель - ; (точка с запятой)
 :::
 
-### **Условия (только классический поиск)**
+### Условия (только классический поиск)**
 
-![image-20210525-100053](./assets/Swipe_Event/Swipe_Event_pic6.png)
+![image-20210525-100053](./assets/Touch_Event/Touch_Event_pic6.png)
 
 
 
 1. **Группа** - приоритет данного условия. Чем выше это число тем приоритет ниже. Если не смогли найти элемент по условию  с наивысшим приоритетом, то переходим к условию со следующим приоритетом и так пока элемент не будет найден, либо пока не закончатся условия поиска. Можно добавлять несколько условий с одним приоритетом, тогда поиск будет производиться по всем условиям с одинаковым приоритетом одновременно.
-2. **Атрибут** ** - атрибут HTML тэга по которому производится поиск.
+2. **Атрибут** - атрибут HTML тэга по которому производится поиск.
 3. **Тип поиска**:
 
  1. text - поиск по полному либо частичному вхождению текста;
@@ -157,15 +135,27 @@ _______________________________________________
 
 Всегда важно стараться подбирать условия поиска таким образом, чтоб оставался только один элемент, т.е. порядковый номер был 0 (нумерация с нуля).
 
-### Вкладка “Дополнительно”
+### Координаты
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcFVPV1pNFphRP380crVoUvtNHh12VjWMcSMmxJthEDPhJz7NGftLYiRiM_eSrkLzbLtlwl-Up4GDr8tCJOuKNkZWeLpbF3hvRgsQRd2mxVM2gnlfzzVhNACeus1EyqeuDskgUf6M-FuCgjDJ4iDzmRXMmE?key=Pz9vAiE2TGLNZQWdw8hHgQ)
+Выполнить событие Touch в рамках указанных координат
 
-**“Подождать перед выполнением”.**
+![image-20200816-110654](./assets/Touch_Event/Touch_Event_pic7.png)
+
+
+
+1. **Какая вкладка** - Активная / Первая / По имени / По номеру
+2. **Координаты** - необходимо вписать диапазон координат X и Y. Можно использовать [❗→ переменные](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922") проекта - `{ -Variable.example_var- }`
+.
+
+### Вкладка "Дополнительно"
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcC9j921QCoAiX9v8dslInFCa-0tH12iTQM3z_062cd1y8hr87hEV_S719MEBBSXgNZsPkAi87iRXEn388tX_bMhOhY9dBqSqazWrAyTra254kQGO5et4Mt6DICCs2Fv8Nvd2ZUmEsW5jlPmNGXvmV3z5cu?key=Pz9vAiE2TGLNZQWdw8hHgQ)
+
+**"Подождать перед выполнением".**
 
 Сколько времени экшен будет ожидать перед выполнением.
 
-**“Ждать элемент не более”.**
+**"Ждать элемент не более".**
 
 Если по истечении указанного времени элемент не появился на странице, то экшен завершит работу с ошибкой.
 
@@ -173,18 +163,139 @@ _______________________________________________
 
 ## Пример использования
 
-Отлично сочетается с [❗→ Touch](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386") . Сначала выполняете Swipe до элемента, потом Touch.
+Возьмем за пример наш ресурс, где можно потренироваться делать простые клики - https://lessons.zennolab.com/ru/index. Для реализации воспользуемся [❗→ Конструктором действий](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337").
 
-Также, может пригодиться для эмуляции живого скроллинга страницы или “пролистывания” фотографий. 
+Переходим на страницу в ProjectMaker’e.
 
-В статье о Touch есть [❗→ примеры свайпа на C#](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch#%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D0%BD%D0%B0-C%23 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch#%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D0%BD%D0%B0-C%23").
+![image-20200816-111725](./assets/Touch_Event/Touch_Event_pic8.png)
+
+
+
+Опускаемся ниже и находим поле для нажатия и выбора ОС. Нажимаем на место для "галочки" правой кнопкой мыши и выбираем "В конструктор действий".
+
+![image-20200816-111849](./assets/Touch_Event/Touch_Event_pic9.png)
+
+
+
+Выбираем действие **Rise** , Событие **touch**. Нажимаем на кнопку **Тестировать** для проверки.
+
+![image-20200816-111948](./assets/Touch_Event/Touch_Event_pic10.png)
+
+
+
+Если клик совершился успешно, то нажимаем **Добавить в проект**
 
   
+
+### Примеры работы на C#
+
+Начиная с версии 7.1.4.0, в CommandCenter.Tab добавлено свойство Touch с набором методов. В свойстве Touch есть базовые методы: [<u data-renderer-mark="true">TouchStart</u>](https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic693.html "https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic693.html"), [<u data-renderer-mark="true">TouchEnd</u>](https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic691.html "https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic691.html"), [<u data-renderer-mark="true">TouchMove</u>](https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic692.html "https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic692.html"), [<u data-renderer-mark="true">TouchCancel</u>](https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic690.html "https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic690.html"), а также комплексные методы с перегрузками [<u data-renderer-mark="true">Touch</u>](https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic685.html "https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic685.html"), [<u data-renderer-mark="true">SwipeIntoView</u>](https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic683.html "https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic683.html"), [<u data-renderer-mark="true">SwipeBetween</u>](https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic679.html "https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic679.html") и другие.
+
+#### Эмуляция тач-нажатия
+
+![touch_click](./assets/Touch_Event/Touch_Event_pic11.gif)
+
+```csharp
+var tab = instance.ActiveTab;
+var init = tab.FindElementByXPath("/html/body/button", 0); // Ищем HTML элемент через XPath
+tab.Touch.Touch(init); // Жмём по нему
+```
+
+* * *
+
+#### Скролл
+
+![scroll](./assets/Touch_Event/Touch_Event_pic12.gif)
+
+```csharp
+var tab = instance.ActiveTab;
+HtmlElement init = tab.FindElementByXPath(".//button", 0); // Ищем HTML элемент через XPath
+tab.Touch.SwipeIntoView(init); // Скроллим экран тачами до нужного HTML элемента
+```
+
+
+#### Свайп вправо
+
+![swipes](./assets/Touch_Event/Touch_Event_pic13.gif)
+
+```csharp
+var tab = instance.ActiveTab;
+
+// Будем делать свайп внутри HTML элемента. Составим XPath выражение.
+var canvas = tab.FindElementByXPath(@"//*[@id=""canvas""]", 0);
+
+// Получаем его размеры: ширину и высоту
+var width = canvas.BoundingClientWidth;
+var height = canvas.BoundingClientHeight;
+
+// Определяем координаты первого касания по оси X, и последнего - когда отпускаем палец
+var offsetX = width / 4;
+var minX = canvas.DisplacementInBrowser.X + offsetX;
+var maxX = minX + width - 2*offsetX;
+
+// Определяем координаты первого касания по оси Y, и последнего - когда отпускаем палец
+var offsetY = height / 4;
+var minY = canvas.DisplacementInBrowser.Y + offsetY;
+var maxY = minY;
+
+// Делаем свайп вправо
+tab.Touch.SwipeBetween(minX, minY, maxX, maxY);
+```
+
+* * *
+
+#### Настройки
+
+Тут отображена только часть настроек. Полный список Вы можете найти в [❗→ документации](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495058994 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495058994").
+
+<details>
+<summary>Нажмите здесь, чтобы развернуть</summary>
+
+По умолчанию учитывается и рандомизируется ряд параметров: скорость, ускорение, кривая движения и другие. Все перемещения будут максимально естественными уже из «коробки», но если вам потребуется внести коррективы в поведение тач-событий – такая возможность тоже есть.
+
+
+```csharp
+var tab = instance.ActiveTab;
+var parameters = tab.Touch.GetCopyOfTouchEmulationParameters(); // Получаем текущие настройки тача
+// Дальше пишем "parameters." и после точки syntax editor подскажет доступны поля этого объекта.
+
+////////////////////////
+// Некоторые примеры
+////////////////////////
+parameters.Acceleration = 1.2f; // Поставим ускорение посильнее
+
+parameters.MinCurvature = 0; // Пусть минимальная кривизна - прямая линия
+parameters.MaxCurvature = 1; // А максимальная кривизна - очень сильный изгиб
+
+// Изгиб кривой ближе к начальной точке
+parameters.MinCurvePeakShift = 0f;
+parameters.MaxCurvePeakShift = 0.2f;
+
+parameters.MinStep = 1; // Начальная скорость пониже
+parameters.MaxStep = 60; // А финальная - выше
+
+parameters.RightThumbProbability = 0.7f; // В 70% случаев будет использоваться правый палец, а в 30% - левый.
+
+tab.Touch.SetTouchEmulationParameters(parameters); // ВАЖНО: ПРИМЕНЯЕМ НАСТРОЙКИ - ИНАЧЕ НИЧЕГО НЕ ИЗМЕНИТСЯ
+
+// Ещё больше настроек здесь: https://help.zennolab.com/en/v7/zennoposter/7.1.4/webframe.html#topic951.html
+// instance.ActiveTab.Touch.SetTouchEmulationParameters(new TouchEmulationParameters()); // Устанавливаем настройки по умолчанию
+```
+
+</details>
+  
+
+####  Демонстрационный проект
+
+![cat1](./assets/Touch_Event/Touch_Event_pic14.gif)
+
+
+❗→ touch-sample-project.zp 25 May 2021
 
 ## Полезные ссылки
 
 - [❗→ Конструктор действий и Поиск по XPath](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337")
-- [❗→ Событие Touch](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386")
+- [❗→ Событие Swipe](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735739970 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735739970")
 - [❗→ C# код (Си шарп код .net)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596")
 - [❗→ Выполнить событие](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211")
 - [❗→ Диапазоны значений](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137")

@@ -13,6 +13,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 > 🔗 **[Original Page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090)** — Source of this material
 
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+); 
+
 _______________________________________________  
 
 The ProjectMaker 7 interface meets the highest standards for modern software designed for project creation and development.
@@ -39,7 +45,7 @@ Minimalism, clarity, and clean shapes make the interface accessible to any user 
 
 
 
-**📹 Video was here**
+<VideoSample source={require("@site/static/video/modern_look_en.mp4").default}/>
 
 Bright, easily recognizable buttons, grouped where you need them, make navigating the program quick and intuitive. Clear icon images help you understand the purpose of menu items.
 
@@ -74,57 +80,45 @@ In addition to the classic menu, there’s a toolbar you can customize as you wi
 Main and supporting windows—like “Project,” “Browser,” “Action Properties,” “Execution Log,” and others—have a dedicated and familiar look for functional tool windows.
 
 ## 2.4. Using 2 Monitors
-
 In ProjectMaker 7, you can move any tool window—even the browser—onto a different monitor whenever you’d like.
 
+![Using 2 Monitors](./assets/Advantages_of_ProjectMaker_7_Interface/Advantages_of_ProjectMaker_7_Interface_pic21.gif)
 
-
-**📹 Video was here**
-
-## 2.5. Smart Action Panel (Toolbox for blocks)
-
+## 2.5. Smart Action Bar (Toolbox for blocks)
 In ProjectMaker 7, you can use the Action Panel wherever you want:
 
 1. In “hide browser” mode (Advanced Editor Mode in ZP5)
 2. In “show browser” mode (Recording and Debugging Mode in ZP5)
 3. Hide and call up the panel quickly with the Ctrl + T hotkey
 
-
-
-**📹 Video was here**
+<VideoSample source={require("@site/static/video/smart_action_bar_en.mp4").default}/>
 
 ### Smart Action Search
-
 :::note Note
 Now you no longer need to remember where an action (block) was located or what it was called—the new Action Panel features truly “smart search.”
 :::
 
 
+![Smart Action Search](./assets/Advantages_of_ProjectMaker_7_Interface/Advantages_of_ProjectMaker_7_Interface_pic22.gif)
 
-**📹 Video was here**
+## 2.6. Quick navigation in the project
 
-## 2.6. Fast Project Navigation
-
-:::warning Attention
-Anyone who has worked on large projects has surely asked themselves: “Where does this line go?”
+:::warning Anyone who has worked on large projects has surely asked themselves: 
+**“Where does this line go?”**
 :::
 
 ProjectMaker 7 can answer that! Now, when you hover over a node connection point, you’ll see a preview of the action the line leads to.
 
 **Take a look at how this works:**
 
+<VideoSample source={require("@site/static/video/quick_navigation_en.mp4").default}/>  
 
-
-**📹 Video was here**
-
-  
 
 # 3. Customization (Personalize to Your Taste)
 
 ## 3.1. Interface Theme
 
-:::tip Tip
-There are 2 themes—light and dark.
+:::tip There are 2 themes — *light* and *dark*.
 :::
 
 The light theme is great for those who prefer the classic program look. The dark theme has become very popular among some users; it’s perfect if you like something a bit different, or if you work at night and want to reduce eye strain.
@@ -132,9 +126,7 @@ The light theme is great for those who prefer the classic program look. The dark
 ![изображение-20200401-164930](./assets/Advantages_of_ProjectMaker_7_Interface/Advantages_of_ProjectMaker_7_Interface_pic4.png)
 
 
-
 ![изображение-20200401-165250](./assets/Advantages_of_ProjectMaker_7_Interface/Advantages_of_ProjectMaker_7_Interface_pic5.png)
-
 
 
 <details>
@@ -214,15 +206,13 @@ On the right tab you can customize the buttons for showing the main menu:
 
 You can also open the menu settings to fully personalize your toolbar:
 
-:::info Information
-Window → Menu View → Customize…
+:::info Window → Menu View → Customize
 :::
 
 Here you can set up any buttons on the panel, and their order—just drag and drop items with your mouse:
 
 
-
-**📹 Video was here**
+![Fully Personalized Toolbar](./assets/Advantages_of_ProjectMaker_7_Interface/Advantages_of_ProjectMaker_7_Interface_pic23.gif)
 
 ## 3.3. Tool Window Management
 
@@ -235,15 +225,13 @@ Each tool window can be in 4 states:
 
 
 
-**📹 Video was here**
+<VideoSample source={require("@site/static/video/tool_window_management_en.mp4").default}/> 
 
 **In addition, action settings can also be in a special fifth state:**
 
 5. Shown in the editor window.
 
-
-
-**📹 Video was here**
+<VideoSample source={require("@site/static/video/fifth_state.mp4").default}/>
 
 ## 3.4. Project Theme
 

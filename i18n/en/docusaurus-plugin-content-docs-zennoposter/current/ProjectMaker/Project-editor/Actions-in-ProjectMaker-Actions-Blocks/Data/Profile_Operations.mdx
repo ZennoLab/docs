@@ -1,7 +1,7 @@
 ﻿---
 sidebar_position: 1
 title: "Profile Operations"
-description: "Converted from HTML to MDX"
+description: " "
 date: "2025-07-24"
 converted: true
 originalFile: "Операции над профилем.txt"
@@ -12,6 +12,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 <DisclaimerNotice />
 
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486539291)** — Source of this material
+
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+); 
 
 _______________________________________________  
 
@@ -30,7 +36,7 @@ A profile is regenerated every time you click the “Start Over” button in Pro
 
 
 
-**📹 There was a video here**
+<VideoSample source={require("@site/static/video/profile_operations_en.mp4").default}/>
 
 To configure the initial profile generation, you need to set it up in the [❗→ static block](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053179 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053179") → [❗→ Profile](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426308"). Here you can specify the profile language, gender, desired regions, as well as browser settings.
 
