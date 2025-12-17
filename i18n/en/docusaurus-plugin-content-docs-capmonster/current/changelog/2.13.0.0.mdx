@@ -1,0 +1,29 @@
+﻿---
+sidebar_position: 4
+title: CapMonster 2.13.0.0 (26.07.2021)
+description: The browser engine has been updated and CPU usage has been reduced.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: The browser engine has been updated. CPU usage has been reduced — you can run up to one and a half times more threads.  
+:zap: Built-in proxies — integration with hit-proxy.com. Up to 1000 connections and unlimited traffic; you can purchase them in your personal account. Price: $50 per month.    
+:zap: Program (service) startup has been sped up by accelerating the “initialization” step.  
+
+:heavy_plus_sign: Added support for recognizing mathematical CAPTCHAs (for example, an image “2 + 7 = ” — the answer will be 9). To use this, you need to pass the parameters `CapMonsterModule=ZennoLab.universal&calc=1`  
+:heavy_plus_sign: Ability to disable image logging, which significantly improves GUI responsiveness and reduces CPU and RAM usage under very high loads.  
+:heavy_plus_sign: Optimizations to the ReCaptcha task queue, improving performance under very high loads.  
+:heavy_plus_sign: Fixes to the Chrome ReCaptcha2 recognition module, slightly increasing token acceptance and reducing average solve time.    
+
+
+### Bug fixes:  
+:white_check_mark: Fixed automatic module updates.    
+:white_check_mark: Fixed the method of resizing images before sending them for recognition by the universal module (previously, differences in resizing methods led to a significant drop in recognition accuracy for this module).  
+:white_check_mark: After an update, invalid-sitekey errors in the ReCaptcha API were no longer being returned correctly and timeouts were returned instead — fixed.    
+:white_check_mark: Fixed importing of cookies passed along with requests when solving ReCaptcha.  
+:white_check_mark: Fixed a memory leak in the task queue that over time led to reduced program performance.  
+:white_check_mark: If a network failure occurs while updating the proxy list via a link, CapMonster will continue using the previously loaded list (instead of using an empty proxy list as before).  
+:white_check_mark: Fixed a rare case where the program could not restart correctly when updating license files.  
+_______________________________________________

@@ -1,0 +1,30 @@
+﻿---
+sidebar_position: 3
+title: CapMonster 2.13.11.0 (14.09.2022)
+description: Improved reCAPTCHA success rate for the browserless method (Http).
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: Improved reCAPTCHA success rate for the browserless method (Http).  
+:zap: Updated the CEF browser engine to version **105.3**.    
+:zap: Tasks with the `ERROR_PROXY_FORMAT` error will be added to the list of invalid tasks on the main screen of the application.  
+  
+:heavy_plus_sign: To pass information about the captcha recognition module to the program, you can send its name as a suffix in the protection key using a double underscore.  
+For example: `00f87cb0f01330d33709ce3339ad0c8c__solvemedia`  
+:heavy_plus_sign: Added a help link to the IP setup menu: **“I can’t see my IP!”**.  
+:heavy_plus_sign: Added a button to generate a protection key (in GUID format).  
+:heavy_plus_sign: The **“Clear”** button allows you to permanently delete banned proxies, and **“Restore”** returns all proxies to the active list that are in the banned list at the moment the button is pressed.    
+:heavy_plus_sign: Added the ability to hide the danger warning window when starting the service without a protection key on a public IP address. The service now starts correctly and after automatic restarts. The message will appear after you agree to enable the service without protection.    
+
+
+### Fixed bugs:  
+:white_check_mark: Removed accidentally retained delays in the code for local complex modules.    
+:white_check_mark: Application settings are now saved when adding and removing modules. Previously, they were saved only when closing the application and did not trigger on abnormal process termination. Because of this, it was necessary to restart the program after adding new modules to force settings to be saved. This is no longer required.  
+:white_check_mark: Corrected the error message shown when a recognition module is missing. Now the suggestion to add the “ZennoLab” prefix will appear only if a module with that prefix exists. In other cases, a message about a possible typo will be shown.    
+:white_check_mark: The RuCaptcha and 2Captcha APIs on the res.php page now support not only GET but also POST requests.  
+:white_check_mark: Fixed the default directory for profiles. Previously, it defaulted to C:\Users\admin\Documents\ZennoLab\CapMonster\GeneratedProfiles regardless of the current user name.  
+:white_check_mark: The limit on the number of simultaneously solved http process tasks now works correctly.  
+_______________________________________________

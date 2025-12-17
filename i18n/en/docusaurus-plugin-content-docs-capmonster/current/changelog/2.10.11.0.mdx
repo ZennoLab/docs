@@ -1,0 +1,27 @@
+﻿---
+sidebar_position: 13
+title: CapMonster 2.10.11.0 (04.09.2019)
+description: Added the ability to recognize captchas with different letter cases and captchas consisting only of digits.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: Added the ability to recognize captchas with letters in different cases by specifying the appropriate value of the `casesensitive` parameter in the request.  
+:zap: Added the ability to recognize captchas consisting only of digits by specifying the appropriate value of the `numeric` parameter in the request.  
+:zap: Improved acceptance of ReCaptcha tokens for ReCaptchaSiteKeyAddon.  
+:heavy_plus_sign: Now, when there are insufficient system resources (CPU, RAM), an appropriate message is displayed to handle incoming load.    
+
+### Improved recognition modules:  
+:rocket: *universal* with support for numeric-only captchas — **83%**.  
+:rocket: *universal* with support for mixed-case captchas — **42%**.  
+:rocket: *facebook* — **64%**.  
+:rocket: *3D captcha* — **90%**.  
+
+### Fixed bugs:  
+:white_check_mark: Fixed an issue where proxies from a request were added to the global banned proxy list and then returned from it to the general list.      
+:white_check_mark: Fixed an issue where the diagnostics button was not displayed.    
+:white_check_mark: Fixed an issue where ReCaptcha3 could not be solved due to broken slashes.    
+:white_check_mark: Fixed an issue where truncated entries were sometimes added during service emulation.        
+_______________________________________________

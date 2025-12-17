@@ -1,0 +1,31 @@
+---
+sidebar_position: 33
+title: CapMonster 2.5.8.0 (04.05.2016)
+description: Увеличена скорость распознавания обычных и аудиокаптч в параллельном режиме на CPU и GPU.
+---
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../../Disclaimer).**
+:::
+_______________________________________________
+## Описание.
+### Новые фичи:  
+:zap: Увеличена скорость распознавания обычных и аудиокаптч в параллельном режиме на CPU и GPU.  
+:zap: Добавлена эмуляция web-форм imacros2.rucaptcha.com, imacros2.2captcha.com, imacros2.rucaptcha.com/new/, imacros2.2captcha.com/new/.   
+:zap: Добавлены поля `Task` во все web-формы для Imacros.
+
+### :rocket: Улучшены модули распознавания:  
+- Bitrix1 - 91%.
+- Bitrix2 - 99%.
+- Bitrix3 - 99%.
+- ArticleMS2 - 68%.
+- ClubFoto - 100%.
+- Numeral11 - 98%.
+- LiveInternetRus - 61%.
+- ExBB - 46%.
+- FluxBB - 99%.
+
+### Исправленные баги:  
+:white_check_mark: Исправлены ошибки работы сервиса CapMonster через web-формы antigate.com/imacros.html и rucaptcha.com/imacros.html в браузерах Firefox и Internet Explorer.  
+:white_check_mark: Исправлены утечки памяти.  
+:white_check_mark: При возникновении технических ошибок во время работы сервиса CapMonster (к примеру: `Task_Not_Decode`) посылается ответ о невозможности распознания данной каптчи в соответствии с правилами эмулируемого сервиса.  
+:white_check_mark: Исправлены некоторые ошибки перехвата запросов сервисом CapMonster.  
+_______________________________________________

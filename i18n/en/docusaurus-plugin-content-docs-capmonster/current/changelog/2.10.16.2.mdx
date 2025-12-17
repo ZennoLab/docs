@@ -1,0 +1,28 @@
+﻿---
+sidebar_position: 6
+title: CapMonster 2.10.16.2 (10.06.2020)
+description: Reduced memory consumption under high loads on CapMonster.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: Support for the data-s parameter in the RuCaptcha and Anti-Capthca APIs for solving reCAPTCHA v2 on Google Search and other Google services.  
+:zap: Reduced memory consumption under high loads on CapMonster.    
+:zap: Improved UI responsiveness under high load.   
+
+:heavy_plus_sign: Changes made to improve acceptance of reCAPTCHA v2 tokens. If you used profiles, delete them and start warming up again.  
+:heavy_plus_sign: Added a tooltip for the “Proxy protocol” selection in the Sitekey Addon settings, as it wasn’t clear what “automatic” meant.    
+:heavy_plus_sign: Retrieval of program operation statistics via the API. Values for all labels from the main application form are available in JSON format.  
+Usage example: `curl «http://127.0.0.3:80/getRecognitionStatistics» –data «key=sampleKey»`      
+
+### Fixed bugs:  
+:white_check_mark: Using profiles and the HTTP method for reCAPTCHA recognition led to reduced performance and cluttered log files.      
+:white_check_mark: Found and fixed a memory leak during reCAPTCHA recognition that appeared only under high load.    
+:white_check_mark: Fixed an issue where some reCAPTCHAs were not solved when they were sent in batches (almost instantly one after another).    
+:white_check_mark: When loading proxies from a list, fully clearing the list in the UI did not clear the actually used proxy set.  
+:white_check_mark: Loading proxies from a link did not work for some sites when an https link was used.  
+:white_check_mark: Loading proxies from a file or a link ignored proxies specified with a host instead of an IP address.  
+:white_check_mark: Service processes were launched using a relative path instead of an absolute one, which could cause them to work incorrectly if CapMonster was launched by a script without specifying a working directory.  
+_______________________________________________

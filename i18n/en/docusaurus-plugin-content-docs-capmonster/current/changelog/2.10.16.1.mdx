@@ -1,0 +1,18 @@
+﻿---
+sidebar_position: 7
+title: CapMonster 2.10.16.1 (25.03.2020)
+description: The Odnoklassniki captcha recognition module has been updated — support for special characters has been added.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: The Odnoklassniki captcha recognition module has been updated — support for special characters has been added.  
+:zap: Error handling has been improved: If a captcha is sent to a non-existent module, CapMonster2 will return an error instead of `<Empty response>`.         
+
+### Bug fixes:  
+:white_check_mark: Fixed an issue where banned proxies were not being moved to the ban list.      
+:white_check_mark: Fixed an issue where the Sitekey Addon was being disabled on some systems.    
+:white_check_mark: Fixed a mass `<Empty response>` error in the HttpRequest method. You need to update the module via Settings → Updates → Update now.    
+_______________________________________________

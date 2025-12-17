@@ -1,0 +1,27 @@
+﻿---
+sidebar_position: 8
+title: CapMonster 2.10.16.0 (19.03.2020)
+description: Added the ability to specify separate proxies for ReCaptcha v3.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: Added the ability to specify separate proxies for ReCaptcha v3. For ReCaptcha v3, it is critically important to have very high‑quality IPs, preferably residential.  
+:zap: Implemented new logic for taking proxies from the source in CapMonster to extend proxy “lifespan” — now, for solving, the least-used proxies from the list are selected first.  
+:zap: Significantly reduced disk space usage by ReCaptcha profiles.  
+
+:heavy_plus_sign: Added the ability to automatically archive ReCaptcha profiles (this will reduce disk usage by roughly three times more).  
+:heavy_plus_sign: Improved the algorithm for validating proxy format correctness.  
+:heavy_plus_sign: If the program cannot access system performance counters, it will automatically attempt recovery. If recovery fails, the program will still start, but the counters will be unavailable.  
+
+### Bug fixes:  
+:white_check_mark: Fixed a bug where ReCaptcha would no longer be solved after restarting the service.      
+:white_check_mark: Fixed an issue with assigning proxies to an instance when the instance solves more than one task, profiles are disabled, and the option for increased priority of proxies from the CapMonster list is enabled.    
+:white_check_mark: Fixed a bug in the HttpRequest method where the first captcha (one per CapMonster launch) was always solved without a proxy.    
+:white_check_mark: Fixed the FireFox method when solving ReCaptcha.      
+:white_check_mark: Fixed an issue where the sitekey addon was disabled on some systems.    
+:white_check_mark: Fixed the appearance of an error about the Trial version ending after 86,400 days.    
+:white_check_mark: Improved integration for solving ReCaptcha v3 with third‑party software.   
+_______________________________________________

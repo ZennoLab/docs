@@ -1,0 +1,29 @@
+﻿---
+sidebar_position: 5
+title: CapMonster 2.11.0.0 (10.09.2020)
+description: Removal of thread limits — instead, a daily volume limit for captchas has been introduced.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: Removal of thread limits — instead, a limit on the daily volume of solved captchas has now been introduced. The volume depends on the program version and the type of captcha.  
+:zap: Pingback API for RuCaptcha and Anti-Captcha has been implemented, so CapMonster can notify you on its own when a captcha is ready. There is no need to pre-register domains anywhere for pingback.    
+_______________________________________________
+:zap: Control over the number of incoming reCAPTCHAs.  
+By default, if the instance limit is set to X and there are 2×X ReCaptcha tasks waiting in the queue for solving (but not yet being processed), then attempting to add a new task will return an error: `ERROR_NO_SLOT_AVAILABLE`  
+
+If needed, you can change this behavior. To do so, manually set the maximum queue size in the file: `{директория_капмонстра}/Settings/globalsettings.settings.json`. In the parameters block, find and change the value of the `MaxRcTasksInQueue` field.
+_______________________________________________
+:heavy_plus_sign: Before solving a reCAPTCHA, proxy availability is now checked by a lightweight process, which helps save resources on launching the browser if the proxy is dead. A successful result is remembered to avoid excessive checks. You can disable these checks in the settings.  
+:heavy_plus_sign: Added support for the recaptcha.net domain in reCAPTCHA recognition — for proper operation in countries where Google is banned or unavailable (China, Arab countries, etc.).  
+:heavy_plus_sign: If an incorrect sitekey or domain is specified when solving a reCAPTCHA, CapMonster will immediately return an error (`ERROR_RECAPTCHA_INVALID_SITEKEY` and `ERROR_RECAPTCHA_INVALID_DOMAIN`, respectively).  
+:heavy_plus_sign: Minor tweaks to the ReCaptcha2 solving algorithm via Chrome, improving recognition success.      
+
+### Fixed bugs:  
+:white_check_mark: Sometimes after a crash, CapMonster could not automatically restart correctly and would return an error.    
+:white_check_mark: Fixed an excessive number of timeouts when solving reCAPTCHA v3 via Chrome through slow proxies.    
+:white_check_mark: Fixed an issue where, due to an unstable internet connection, ReCaptchaSitekeyAddon could briefly disconnect.    
+:white_check_mark: The getcmstatus command now correctly supports passing the key in POST parameters in JSON format.  
+_______________________________________________
