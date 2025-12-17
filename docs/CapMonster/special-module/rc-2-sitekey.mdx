@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_position: 2
 title: Решение ReCaptcha2 через Sitekey
 description: Распознавание ReCaptchaV2 без браузера.
 ---
-:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
-:::
-_______________________________________________
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
 ## Описание.  
 CapMonster может распознавать ReCaptchaV2 без запуска браузера. Это позволяет подключать его к сторонним программам, которые отправляют капчу на сервисы распознавания методом sitekey.
 
@@ -18,7 +18,7 @@ _______________________________________________
 
 | Сообщение о том, что аддон успешно подключён | 
 | -------- | 
-| ![ReCaptchaV2](./assets/RC2_Sitekey/RC2_Sitekey_pic1.png)  | 
+| ![ReCaptchaV2](./assets/rc-2-sitekey/RC2_Sitekey_pic1.png)  | 
 
 ### Системные требования.  
 #### Минимальные:
@@ -31,22 +31,22 @@ _______________________________________________
 ### В ZennoPoster.  
 Сначала нужно выбрать в Project Maker специальное действие для решения ReCaptchaV2.  
 
-![ReCaptchaV2](./assets/RC2_Sitekey/RC2_Sitekey_pic2.png)
+![ReCaptchaV2](./assets/rc-2-sitekey/RC2_Sitekey_pic2.png)
 
 Затем в настройках экшена выбираем способ **Во вкладке**. В этом случае нужный Sitekey определиться автоматически.  
 
-![ReCaptchaV2](./assets/RC2_Sitekey/RC2_Sitekey_pic3.png)
+![ReCaptchaV2](./assets/rc-2-sitekey/RC2_Sitekey_pic3.png)
 
 На большинстве сайтов после выбора всех нужных картинок срабатывает событие **autosubmit**, которое автоматически отправляет решение капчи. В ZennoPoster для этого предусмотрена настройка **«Выполнять autosubmit»**.  
 
 Если у ZennoPoster не получается автоматически определить нужный Sitekey, тогда выберите режим **«Через SiteKey»** вместо *«Во вкладке»*. Для этого способа потребуется вручную указать **Sitekey целевого сайта** и его **URL-адрес**.  
 
-![ReCaptchaV2](./assets/RC2_Sitekey/RC2_Sitekey_pic4.png)
+![ReCaptchaV2](./assets/rc-2-sitekey/RC2_Sitekey_pic4.png)
 
 :::tip **Найти Sitekey на странице можно с помощью DevTools (или через F12).**  
 В содержимом страницы ищите строку с `sitekey`. Она может выглядеть примерно так:  
 
-![ReCaptchaV2](./assets/RC2_Sitekey/RC2_Sitekey_pic5.png)
+![ReCaptchaV2](./assets/rc-2-sitekey/RC2_Sitekey_pic5.png)
 :::
 _______________________________________________
 ### Из других программ.  
