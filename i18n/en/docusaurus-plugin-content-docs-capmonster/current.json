@@ -14,5 +14,57 @@
   "sidebar.capmonsterSidebar.category.Introduction.link.generated-index.description": {
     "message": "Here are the most essential pages you'll need to learn CapMonster.",
     "description": "The generated-index page description for category Знакомство in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Начало работы": {
+    "message": "Getting Started",
+    "description": "The label for category Начало работы in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Начало работы.link.generated-index.title": {
+    "message": "Where to Start?",
+    "description": "The generated-index page title for category Начало работы in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Начало работы.link.generated-index.description": {
+    "message": "Here are the most essential pages you'll need to learn CapMonster.",
+    "description": "The generated-index page description for category Начало работы in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Настройки программы": {
+    "message": "Program Settings",
+    "description": "The label for category Настройки программы in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Настройки программы.link.generated-index.title": {
+    "message": "Description of available settings",
+    "description": "The generated-index page title for category Настройки программы in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Специальные модули": {
+    "message": "Special Modules",
+    "description": "The label for category Специальные модули in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Специальные модули.link.generated-index.title": {
+    "message": "Various recognition modules",
+    "description": "The generated-index page title for category Специальные модули in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Module Creation Studio": {
+    "message": "Module Creation Studio",
+    "description": "The label for category Module Creation Studio in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Module Creation Studio.link.generated-index.title": {
+    "message": "Creating Your Own Modules",
+    "description": "The generated-index page title for category Module Creation Studio in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.История изменений": {
+    "message": "Change History",
+    "description": "The label for category История изменений in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.История изменений.link.generated-index.title": {
+    "message": "Description of changes across versions",
+    "description": "The generated-index page title for category История изменений in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Legacy": {
+    "message": "Legacy",
+    "description": "The label for category Legacy in sidebar capmonsterSidebar"
+  },
+  "sidebar.capmonsterSidebar.category.Legacy.link.generated-index.title": {
+    "message": "Older versions",
+    "description": "The generated-index page title for category Legacy in sidebar capmonsterSidebar"
   }
 }
