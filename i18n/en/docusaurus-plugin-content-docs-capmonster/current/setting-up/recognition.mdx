@@ -1,0 +1,74 @@
+﻿---
+sidebar_position: 2
+title: Recognition
+description: Captcha recognition settings.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+All settings that affect the captcha solving process are collected here.  
+
+![settings that affect the captcha solving process](./assets/recognition.png)   
+_______________________________________________
+### Send captchas to the service if automatic recognition fails.  
+If the program fails to recognize a captcha, it will be sent to a third-party recognition service.  
+
+### Recognize automatically when the probability is not lower than.
+Each captcha is recognized with a certain confidence level of the module in the correctness of the answer. This setting defines the minimum threshold at which CapMonster returns a result.  
+
+If a task does not meet the specified threshold, the program will return an empty response. However, if the previous setting is enabled, the captcha will be sent to a third-party service.  
+
+### Recognize captchas in the order they are received.
+When this setting is enabled, captchas are recognized in the order they are sent to the service; if the setting is disabled, the most recently received captchas are processed first.  
+_______________________________________________
+### Time a captcha stays in the processing queue.  
+After this time (in minutes) expires, the captcha will be removed from the queue and not recognized.  
+
+### Processing queue length.  
+The maximum number of captchas in the processing queue.  
+
+:::info When the queue overflows, all requests will return the error `Капча не отправлена` or `CAPTCHA was not sent`.
+:::  
+_______________________________________________
+### Recognize on GPU.
+This option allows you to use the graphics processor (GPU) of the video card for captcha recognition, which significantly speeds up the process. Available only for Nvidia video cards and applies only to local captchas created by you in Module Creation Studio.  
+
+:::warning Restarting CapMonster is required for this setting to take effect.
+::: 
+_______________________________________________
+### Recognize captchas for all modules in parallel mode.
+Enables parallel operation mode for all recognition modules, allowing them to process multiple captchas simultaneously and thereby speeding up the overall workflow.  
+
+This setting increases the number of captcha recognition threads for each loaded module. The maximum number of threads depends on the number of CPU cores.  
+
+When the setting is disabled, each module has only one recognition thread.  
+
+#### Degree of parallelism.
+Here you can specify how many captchas a module can process simultaneously when parallel mode is enabled. **Minimum: 1**, **Maximum: 12**.  
+
+The higher the value, the more tasks are processed in parallel and the higher the overall speed, but **CPU load increases**.  
+
+#### Use an adaptive system for setting the degree of parallelism.
+A special system will automatically calculate the load on the module and set the optimal degree of parallelism for it. This allows program resources to be used optimally.  
+
+:::warning It is not recommended to enable this setting if
+You constantly recognize one or two types of captchas under a stable load: in this situation, the adaptive system may instead reduce speed and overall performance.
+:::
+_______________________________________________
+### Do not re-recognize captchas with complaints.  
+When a complaint is received, the program temporarily remembers the specified captcha, and then, on a repeated recognition attempt, returns a message stating that it cannot be processed, in accordance with the service rules.  
+
+### Receive the response with a delay if the captcha is not ready yet.  
+Activates a mode that waits for the captcha result to be ready if, at the time of the request, the result has not yet been obtained.
+
+When the option is enabled, the request will wait for a solution for some time instead of returning the message **`CAPCHA_NOT_READY`**.
+
+:::info Works only with services that support this feature.
+::: 
+
+### Take additional parameters into account for recognition services.  
+Processing of additional captcha-solving parameters. Each service has its own; for example, for the Antigate API these are `regsense`, `numeric`, `calc`, `min_len`, `max_len`, `is_russian`
+
+### Use the universal module for captchas whose type is not defined.  
+Send unknown captcha types for recognition to the universal module (**Universal**).

@@ -1,0 +1,271 @@
+﻿---
+sidebar_position: 6
+title: ReCaptcha Sitekey Addon
+description: Special settings for this add-on.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+This section contains the settings responsible for the operation of the add-on.  
+
+:::tip **ReCaptchaSiteKey Addon is an additional module for CapMonster.**  
+It allows you to solve reCAPTCHAv2 without launching a browser, simply by using the provided **Sitekey** (site key).  
+
+It includes the ability to integrate CapMonster with external programs or scripts that use the captcha submission method specifically via sitekey.
+:::
+
+![Special settings for this add-on](./assets/sitekey.png)
+_______________________________________________
+## General settings.  
+### Maximum number of RC2Instance processes.  
+Set the maximum number of processes for recognizing reCAPTCHAv2.  
+
+:::info **When a sitekey is passed to CapMonster, the built-in browser is launched to load ReCaptcha.**
+Then the images are sent to our servers, where they are recognized and clicks on the correct answers are simulated.
+:::  
+
+### Run processes with low priority.  
+ReCaptcha solving tasks will be executed with below-average priority, which helps save PC resources.  
+
+### Monitor system resources.
+The program will analyze the current load on your PC and start solving ReCaptcha only if system resources are available.  
+
+### Safe solving mode.
+The number of attempts and timeouts will be configured to minimize the risk of IP or proxy blocking as much as possible.  
+
+:::warning **For stable operation of safe mode.**
+We recommend using 2–3 times more proxies than the number of captchas being solved simultaneously. This way, each proxy will have enough time to “rest.”
+:::   
+_______________________________________________
+### Use profiles during solving.  
+Using “warmed-up” profiles (that is, profiles that imitate a real person) when solving ReCaptcha. You can use both ZennoPoster profiles and profiles created directly in CapMonster.  
+
+:::info **Profiles are not used when using HttpRequest.**
+They work only with solving methods via **Chrome** or **Firefox**.
+::: 
+
+#### Path to the ZennoPoster profiles folder.  
+ZennoPoster profiles in the `.zpprofile` format are used.  
+
+`{-StartupPath-}` — a macro that inserts the path to the ZennoPoster working folder.  
+
+#### Path to the folder with generated profiles.  
+After successfully solving a ReCaptcha, the profile used—whether it is a ZennoPoster profile or one automatically created by CapMonster—is **saved for reuse**.  
+
+Using such profiles **reduces the risk of bans** and **improves the quality of the resulting tokens**. For example, a profile that has worked with ReCaptchaV2 for several days will later provide more reliable tokens for **ReCaptchaV3** as well.  
+
+#### Maximum recaptchas per profile per day.  
+Specify the maximum number of ReCaptcha solves per profile per day.  
+
+#### Do not bind a profile to a specific proxy.  
+This setting disables binding a profile to a specific proxy.  
+
+#### Archive profiles.  
+Enabling this option compresses profiles, allowing you to store about three times more data on your hard drive, but it increases CPU load.  
+
+:::info **This setting is applied only when saving or re-saving profiles.**
+Existing profiles will be compressed only after they are reused.
+::: 
+
+_______________________________________________  
+### ReCaptcha2 solving method.  
+Here you can choose the method by which this captcha will be solved:  
+- **Chrome**;  
+- **HttpRequest**;  
+- **Firefox** *(available only up to version 2.11.2.0 inclusive)*.  
+_______________________________________________   
+## Solving settings (Chrome).  
+:::warning **Recommended settings are already set by default.**
+Change them only if you are sure it is necessary.
+::: 
+
+### Number of captcha solving attempts.
+The maximum number of attempts to solve a ReCaptcha. Each attempt ends with clicking the **“Confirm”** button.  
+
+### Element load wait timeout.
+The time (in milliseconds) allocated for the captcha to load. If the element does not appear after all attempts *(default is 50)*, solving will be aborted.  
+
+The total wait time is calculated as:  
+**800 ms** *(timeout)* **× 50** *(number of attempts)* **= 40 seconds**.  
+
+### Number of attempts to load the element. 
+Specify how many times the program will try to load the captcha *(related to the previous setting)*. When the attempt limit is reached, the solving process stops.  
+
+### Timeout between clicks on elements.  
+The interval (in milliseconds) between clicks on captcha elements during solving.  
+
+### Number of dynamically changing captchas.  
+The maximum number of image changes in a dynamic ReCaptcha. When this limit is reached, the system will automatically click **“Confirm”**.  
+
+### Number of attempts to get a response.
+The maximum number of requests to CapMonster to obtain a result.  
+
+If a response is not received, the error *“Element load timeout exceeded”* or `ERROR_RECAPTCHA_TIMEOUT` is returned.  
+
+### Captcha solving timeout.
+The total time (in seconds) after which the solving process is stopped.  
+
+### Task wait timeout.
+The time (in seconds) during which a running instance waits for a new ReCaptcha solving request. If no tasks arrive, the **RC2Instance.exe** process terminates.  
+
+### Path to the profiles folder.
+In this folder, subfolders with random names are created, where instance settings will then be stored.  
+
+`{-StartupPath-}` — a macro that inserts the path to the CapMonster working folder.  
+
+### Maximum memory usage.  
+The maximum amount of memory allocated per instance.  
+
+### Show browser.
+Enables displaying the browser window, where you can observe the process of clicking images during captcha solving. 
+
+:::tip **You can also see the current proxy in the browser window title.**
+:::  
+
+### Maximum number of connections to p2oxy.  
+:::warning **Available only for Chrome.**
+::: 
+
+The number of simultaneous connections to p2oxy *(used for socks5 proxies)*.  
+
+_______________________________________________  
+## Settings for the HttpRequest method.  
+:::warning **Recommended settings are already set by default.**
+Change them only if you are sure it is necessary.
+::: 
+
+### Number of captcha solving attempts.  
+The maximum number of attempts to solve a ReCaptcha. Each attempt ends with clicking the **“Confirm”** button.  
+
+### Number of attempts to find a task.
+The number of attempts to find a task (for example, images with cars or traffic lights). If a task is not found, ReCaptcha 2 is refreshed. When the limit is reached, the solving process starts over.
+
+### Number of dynamically changing captchas.  
+The maximum number of image changes in a dynamic ReCaptcha 2. When this limit is reached, the system will automatically click **“Confirm”**.
+
+### Request timeout. 
+The maximum time to wait for a request to complete, in seconds.
+
+### Timeout between requests.
+The wait interval between requests, in milliseconds.
+
+### Captcha solving timeout. 
+The total time (in seconds) after which the solving process is stopped.  
+
+### Task wait timeout.  
+The time (in seconds) during which a running instance waits for a new ReCaptcha 2 solving request. If no new tasks arrive, the **Rc2Http.exe** process automatically terminates.
+
+### Number of tasks per process.  
+The number of tasks that can be processed simultaneously in a single **Rc2Http.exe** process.  
+
+### Thread limit when solving via HttpRequest.
+The thread limit depends on the **Maximum number of RC2Instance processes** parameter and is calculated using the formula:  
+`Maximum number of RC2Instance processes × 3 = HttpRequest thread limit`  
+
+#### Example.  
+If the value of **Maximum number of RC2Instance processes** is *100*, then the HttpRequest thread limit will be **300** *(100 × 3)*.
+_______________________________________________  
+## Solving delay settings. 
+### Pause between checking for available tasks.
+The time in milliseconds that determines how long the process will remain idle between checks for available captcha-solving tasks.  
+
+:::danger **Low values reduce delay when solving captchas, but increase CPU load.**
+::: 
+
+### Pause between RC2Instance launches.
+The minimum delay between RC2Instance launches, in milliseconds.
+
+:::danger Low values will reduce response time *(especially if new processes are launched frequently)*.
+But they can lead to sharp spikes in CPU usage.
+::: 
+
+### Reset solving settings.
+Restores the default settings.
+_______________________________________________  
+## Proxy settings. 
+### Use a separate proxy set for RC3.
+Allows you to specify a separate proxy list specifically for ReCaptcha 3. High-quality proxies, preferably residential ones, are critically important for successfully solving this captcha.  
+
+### Check proxies before launching instances.
+Before starting ReCaptcha recognition, proxies are checked by a lightweight background process. This helps avoid launching the browser with non-working proxies and saves resources.  
+
+Successful check results are cached to avoid unnecessary repeated tests.
+
+### Use an alternative address.
+Enables the use of the recaptcha.net domain instead of google.com. Useful for regions where access to Google is limited or blocked (for example, China or some Arab countries).  
+
+### ReCaptchaV2\ReCaptchaV3 tabs.
+:::info The ReCaptchaV3 tab becomes active
+Only when the **Use a separate proxy set for RC3** setting is enabled.
+::: 
+
+#### Proxy acquisition method:
+- **No proxy** — proxies are not used in the CapMonster2 browser for solving ReCaptcha;  
+- **From list** — proxies are specified as a list;  
+- **From file** — proxies are added from a file;  
+- **By link** — the proxy file is downloaded via a link;  
+- **Built-in** — integration in partnership with Hit.proxy Service.  
+
+#### Proxy platform type.  
+:::info **The choice of UserAgent also depends on the proxy type**
+If you did not set it manually.  
+::: 
+
+- **Desktop** *(desktop UserAgent)*;  
+- **Mobile** *(mobile UserAgent)*.
+
+#### Proxy protocol.  
+Here you need to specify the protocol your proxies use:  
+- **socks4**;  
+- **socks5**;  
+- **http**;  
+- **automatic** — *this mode is specified only if the protocol is already defined in the loaded proxy list*.  
+
+:::warning If the protocol is not specified, requests will be sent via HTTP by default.
+::: 
+
+#### Path to the proxy list file.  
+:::info The field appears when selecting the *From file* option in the “Proxy acquisition method” setting.
+:::  
+
+Specify the path to the proxy file and add them to the program using the **Load** button.  
+
+#### Link for downloading the proxy list.
+:::info Displayed when selecting the *By link* option in the “Proxy acquisition method” setting.
+:::  
+
+Specify the URL from which the proxy list will be downloaded.  
+
+#### Update proxies from sources at intervals (in minutes).  
+The frequency with which proxies are automatically loaded for the **From file** or **By link** methods.
+
+#### Use proxies from the CapMonster list even if other proxies are specified in the request.
+When this option is enabled, if custom proxies are passed in a ReCaptcha Sitekey task, proxies from CapMonster’s internal list will be used instead.
+
+:::info This setting is shared for ReCaptchaV2 and ReCaptchaV3.
+::: 
+
+#### Current list of used proxies.
+Displays all proxies that are currently loaded and in use.
+
+#### Check proxy format.
+Allows you to verify that all loaded proxies have the correct format:  
+- `protocol://login:password@ip:port` — for proxies with authentication;  
+- `protocol://ip:port` — for proxies without authentication.  
+
+:::tip Specifying the protocol is not required
+If it is not set, HTTP is used by default.
+::: 
+
+#### Remove proxies from the current list with the `ERROR_PROXY_BANNED` error.
+Proxies that receive a ban are automatically excluded from use and moved to the *Banned proxy list*.  
+
+#### Remove proxies from the current list with the ERROR_RECAPTCHA_TIMEOUT error.  
+Invalid proxies that cause the `ERROR_RECAPTCHA_TIMEOUT` error are also removed from the active list and sent to the *Banned proxy list*.  
+
+#### Keep proxies in the banned list for no more than.  
+The time (in minutes) during which banned or invalid proxies remain in the **Banned proxy list** and do not participate in CapMonster’s operation.
+
+#### Banned proxy list.
+A list of proxies temporarily excluded from use due to errors or bans.
