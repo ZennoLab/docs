@@ -1,0 +1,66 @@
+﻿---
+sidebar_position: 5
+title: Step 4. Defining centers of mass
+description: Setting up locations for symbol detection.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.  
+**Finding centers of mass** is one of the key stages in creating the module. On the captcha, potential points for symbol detection will be highlighted in color (green by default).  
+
+At this stage, you can also set the size of the recognition window.  
+
+### Configuration goal.  
+You need to achieve the following:  
+- points pass through the **centers of letters** (or as close to them as possible);  
+- the number of points is **minimally sufficient** (without excess);  
+- **computation time** remains reasonable and doesn’t grow unnecessarily.  
+_______________________________________________
+## How to configure it correctly?
+#### Symbol recognition window.  
+Set the size so that the largest symbol in the set fits inside it.  
+
+Click on the captcha to see the window frame. Choose the required size by adjusting the width/height of this frame.  
+
+#### Mass calculation area.  
+Increasing the width of this area smooths the centers-of-mass line, while decreasing it, on the contrary, makes it more uneven.  
+
+You need to tune it so that the line passes through the center of each letter but does not jitter inside the symbol.  
+
+And choose the height so that there is only one line on each letter.  
+
+#### Recognition threshold.
+Increase the threshold until the line becomes shorter and cleaner, but does not disappear at the centers of the symbols.  
+
+:::warning **Symbol threshold.**
+Do not change this parameter.
+:::
+
+#### Check point frequency (step by width/height).  
+**By width**, it’s not necessary to check every pixel:  
+- for small captchas, you can do it **every 2 points**,  
+- for enlarged ones — every **3–4 points**.  
+
+**By height**, set a value slightly larger than the tallest letter (for single-line captchas, it can be larger).  
+
+If you add too many points, recognition speed will slow down. And if you overdo the spacing, there will be too many errors.  
+
+#### Additional points.
+You can add a few points with a **small vertical offset** to increase the chance of detecting symbols.  
+
+Again, don’t add too many points: an excess slows things down and increases the likelihood of errors.  
+_______________________________________________
+### Types of captchas.  
+Captchas can differ in how symbols are arranged within them. Accordingly, a successful result is determined differently. For example:  
+- Symbols **close to each other**.  
+Then, after configuration, you will see a *continuous green line* passing through the centers of all symbols.  
+- Symbols **spaced apart**.  
+In this case, you will get *separate points* at the centers of each symbol.  
+_______________________________________________
+### When the core is already trained.  
+On this tab, you can click (or move the mouse while holding the left mouse button) on the captcha and observe the core’s response at different locations. This helps you understand where errors come from and what else should be fine-tuned.  
+_______________________________________________  
+### Useful practice.  
+When changing any parameter, scroll through several different captchas instead of tuning everything on a single example. This way, you’ll get stable settings for the entire dataset.  
+_______________________________________________

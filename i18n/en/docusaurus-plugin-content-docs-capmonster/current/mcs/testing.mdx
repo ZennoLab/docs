@@ -1,0 +1,96 @@
+﻿---
+sidebar_position: 7
+title: Step 6. Test and Improve
+description: Checking how the module works after training.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.  
+After training the module, you need to test it.  
+
+In the **Module Testing** window, you will not only learn its recognition rate and processing speed, but also be able to see the results of its work.  
+
+This is important information that helps you understand how to improve recognition quality and reduce the module’s processing time.  
+_______________________________________________
+## Testing settings.
+In this section, you can change testing parameters and run several trial launches. Changing the settings may affect the recognition rate.
+
+At the same time, retraining the core is not required — after testing, it is enough to simply save the module.
+
+![Testing settings](./assets/testing.png)  
+
+### Available parameters:  
+#### Number of threads for testing.  
+Determines how many processes will run simultaneously.  
+
+#### Threshold filter value.  
+Affects recognition sensitivity.  
+
+#### Minimum distance between characters.  
+:::tip **Key parameter!**
+:::  
+
+- If extra characters appear in the results, try increasing the value.  
+- If, on the contrary, some characters disappear, try decreasing it.  
+
+#### Comparison type.  
+- *Exact match*.  
+The answer must fully match the correct captcha result.  
+- *Substring match (partial match)*.  
+Used when a site accepts incomplete but partially correct answers. In this case, the module will consider answers that match only partially as correct.  
+
+#### Match range (for substring mode).  
+Specifies how many consecutive characters must be correctly recognized for the answer to be considered successful.  
+
+#### Fast recognition.  
+An option that can affect the final accuracy. Try enabling or disabling it to compare results.  
+_______________________________________________
+## Improving recognition.  
+Improving the module’s accuracy comes down to finding the optimal balance between three types of character recognition errors. Ideally, the module should allow them in roughly equal proportions — this indicates a good “understanding” of the captcha structure and stable algorithm performance.  
+
+### Character recognition errors.  
+Before analyzing errors, let’s recall the types that occur when recognizing individual characters:  
+- **Incorrect recognition**.  
+The character is present but identified incorrectly. The module sees the letter `a` as `c`. For example, instead of `captcha` you get `ccptchc`.  
+- **Missing character**.  
+The character is there, but the module does not detect it. For example, instead of `captcha` you get `aptcha`.  
+- **False positive**.  
+The module adds a character that is not present in the image (for example, in the gap between two letters). For example, instead of `caputcha` you get `captcha`.
+
+Maintaining a balance between these types of errors allows you to achieve the highest recognition success rate without needing to retrain the core.  
+_______________________________________________
+### The module outputs too few characters or none at all.  
+At the same time, training was successful — the green graph is close to the maximum, while the red and yellow approach zero.  
+
+#### Possible causes and solutions:  
+- **The minimum distance between characters is too large.**  
+Try decreasing this parameter. If the value is too large, the module recognizes only rare characters, but does so correctly.  
+**For example:** instead of `amcaptchatext` you get `aathet`.   
+ 
+- **Filter or scale mismatch.**  
+Make sure the same filters are applied to both the characters and the captcha. If a filter changes the size of the captcha but is not applied to the characters, the module is trained on small letters but sees large ones in the real captcha and cannot match them.  
+
+- **Shift of centers of mass.**  
+The centers of mass may be determined in different locations than where the characters were collected during training.  
+    - Check the centers of mass test — by clicking on characters, see whether the response areas match.  
+    - If they do not match, try increasing the center-of-mass spread and the number of additional points to cover the required area.  
+    - An alternative is to retrain the module with an increased character center spread (instead of or together with increasing the center-of-mass spread).  
+_______________________________________________
+### The number of letters is normal, but almost all are recognized incorrectly.  
+In the centers-of-mass test, when you click exactly on a character, the module produces the correct answer, but when you click nearby (close to the center of mass), it outputs many random characters.  
+
+Most likely, false positives (type 3) dominate. Try retraining the module by increasing the parameter responsible for preventing false positives.  
+
+### Too many characters.  
+All are incorrect, some are repeated several times in a row.  
+
+This is the same error as above (false positives). In addition, the minimum distance between characters is too small — increase this parameter.  
+
+### The correct result is visible in the module text, but it is mixed with incorrect characters.  
+#### Possible causes:  
+- **The minimum distance between characters is too small**;  
+- **Too many false positives (type 3)**;  
+- **The character acceptance threshold is too low**;  
+- **A combination of several of the above factors**.
+_______________________________________________

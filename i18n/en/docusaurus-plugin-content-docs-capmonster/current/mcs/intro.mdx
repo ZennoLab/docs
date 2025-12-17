@@ -1,0 +1,76 @@
+﻿---
+sidebar_position: 1
+title: Introduction
+description: A brief overview of the module creation process.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+**Module Creation Studio (MCS)** helps you create your own CAPTCHA recognition modules that can be used immediately in **CapMonster**.  
+
+Some steps of creating a module may seem complicated at first glance. That’s why in the following articles we’ll break everything down in detail, step by step. If you still have questions after reading, feel free to ask them via [our support](https://helpdesk.zennolab.com/ru).  
+
+[**Download the latest version of CapMonster MCS x64**](https://static.zenno.services/release/ZennoLabCapMonsterMCSx64-RU-v2.8.3.0.exe).  
+_______________________________________________
+## Module creation process.  
+Creating a recognition module is divided into several steps. Below, we provide a brief description of each step along with a link to a more detailed explanation.  
+
+:::tip **Ask for help from support or on the forum**  
+If something doesn’t work out. Otherwise, you risk wasting valuable time for nothing.
+:::  
+_______________________________________________
+### [Step 1. Collecting CAPTCHAs](./collect)  
+Open the program and create a new project, giving it a clear and meaningful name.  
+
+Then add to the project the CAPTCHAs for which you plan to create a recognition module, and save your changes.  
+
+For further work, it’s important that these CAPTCHAs are recognized correctly — preferably with the highest possible (close to 100%) accuracy.  
+_______________________________________________
+### [Step 2. Collecting symbols](./symbols) 
+CAPTCHA recognition is essentially recognition of the symbols shown in them. For the module to learn this, it first needs to be shown examples of the corresponding symbols.  
+
+These examples are collected manually: simply click with the mouse on the center of each symbol in the image.  
+_______________________________________________
+### [Step 3. Configuring filtering](./filters)
+You can significantly improve recognition quality by applying simple graphic filters to the CAPTCHA.  
+
+For example:
+- *increase contrast*,
+- *highlight a specific color*,
+- *resize the image*.
+
+Thus, CAPTCHAs with **small symbols** should be **enlarged** for more accurate recognition, while CAPTCHAs with **large symbols** should наоборот be **reduced** to speed up the module’s operation.  
+_______________________________________________
+### [Step 4. Defining centers of mass](./centers)
+As we’ve already learned, CAPTCHA recognition happens through the symbols in the image. But before a symbol can be recognized, it must be **found**. The search is performed in so-called **potential centers** of symbols — special points where they may be located.  
+
+At this stage, the **recognition window size** is also defined — a rectangular area that must fit the largest symbol from the set.  
+_______________________________________________
+### [Step 5. Starting training](./training)
+When all resources are prepared and the main parameters are configured, you can proceed to training the module.  
+
+First, the **kernel complexity** is set — it determines how well the module will handle distorted symbols:  
+- **Complex kernel** — provides a **high recognition rate**, but training and operation of such a module take more time.  
+- **Simple kernel** — trains faster and works more quickly, but its accuracy is lower.  
+
+After that, the training process itself is configured. **Remember:** the faster the training runs, the worse the quality of the final module.  
+
+The training stage is the longest part of creating a module. Depending on the complexity of the CAPTCHA, it can take **several hours or even a full day**.  
+_______________________________________________
+### [Step 6. Testing and improving](./testing)  
+After training is complete, it’s important to test the finished module.  
+
+During training, the system already runs tests automatically, and the recognition rate is displayed in real time. However, at this stage the goal is different — to select optimal parameters and check whether it’s possible to improve the recognition accuracy of an already trained module.  
+
+In addition, this is where you can identify the main causes of errors and try to eliminate them to improve the final quality of the module’s performance.  
+_______________________________________________
+### [Step 7. Saving the result](./saving)
+**Module Creation Studio (MCS)** is used only for training modules and storing them together with CAPTCHAs and auxiliary data that are not needed during recognition itself.  
+
+Therefore, once the module is trained, it needs to be saved in a special format supported by CapMonster. This format is what allows the program to recognize CAPTCHAs automatically, without involving manual services.  
+
+When training is complete and you’re satisfied with the accuracy, switch to **“Module testing”** mode, click **“Save”**, and specify the folder where your finished module should be exported.  
+
+As a result, you’ll get a fully ready recognition module that can be added to CapMonster and used in your work.
+_______________________________________________
