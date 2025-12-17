@@ -1,0 +1,68 @@
+﻿---
+sidebar_position: 3
+title: Solving ReCaptcha2 with images
+description: Solving ReCaptcha2 with images.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.  
+In addition to the Sitekey, you can also solve ReCaptchaV2 in CapMonster using the method of clicking on images.  
+
+:::info **This method is supported only on `/in.php` via multipart (not supported on `/createTask`).**
+:::
+_______________________________________________
+## How it works.  
+Recognition of individual ReCaptchaV2 images in CapMonster is performed the same way as regular captchas. The only difference is the additional parameters.  
+
+In the request, you need to specify:  
+- **Module name** — `CapMonsterModule=ZennoLab.ReCaptcha2`;  
+- **ReCaptchaV2 task** — the `Task` or `TaskDef` parameter.  
+_______________________________________________
+### Task.  
+In this parameter, you pass a verbal description of the task.  
+
+:::warning **Not recommended.**
+:::
+
+#### Example values.  
+- `Task=traffic lights`  
+- `Task=Select all images where there are pedestrian crossings`  
+- `Task=Select all images with bicycles`
+_______________________________________________
+### TaskDef.  
+In this case, instead of a description, you specify the **task code**, which can be parsed from the browser traffic.  
+
+:::tip **Preferred option.**
+:::
+
+To find out which values to use, open the file at the following path:  
+`Директория_CapMonster\Progs\Modules\ZennoLab.ReCaptcha2new.cm\synonymscodes.cdb`  
+
+The file `ZennoLab.ReCaptcha2new.cm` opens as a **.zip** archive, and `synonymscodes.cdb` can be viewed in a regular text editor or in something like **Notepad++**.  
+
+The `synonymscodes.cdb` file contains mappings between the task name and its code.
+
+#### Example values.  
+- `TaskDef=/m/014xcs;crosswalk`  
+- `TaskDef=/m/01bjv;bus`  
+- `TaskDef=/m/01lynh`  
+- `TaskDef=/m/01pns0`  
+- `TaskDef=/m/015qff`  
+_______________________________________________
+## Additional parameters.  
+### IsNotDynamic.  
+You need to set **True** when recognizing ReCaptchaV2 of size **4x4**, and **False** in all other cases.  
+
+Like this: `IsNotDynamic=True`  
+
+### CropOnePicture.  
+This parameter specifies how images that are split into multiple parts are processed:  
+- **True** – the image is sent as a whole (not split). Used for standard ReCaptchaV2 in the **3×3** format.  
+- **False** – the image was split into individual tiles. This option is used for tasks where, after the first clicks, single images start loading. In that case, it’s more convenient to send only the new tiles instead of resending the entire grid.  
+
+This parameter also affects the response format:  
+- With `CropOnePicture=True`, CapMonster will return the numbers of the images you need to click, separated by commas. Counting starts from **1**.  
+Example: `3,5,9`  
+- With `CropOnePicture=False`, the response will be in binary form: `0` – object found, `1` – object not found. 
+_______________________________________________
