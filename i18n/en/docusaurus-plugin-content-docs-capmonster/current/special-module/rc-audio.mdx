@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 6
+title: ReCaptcha Audio
+description: Recognition of audio ReCaptcha.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.  
+CapMonster has the ability to solve audio ReCaptcha. For this, the `ZennoLab.AudioReCaptcha` module is used.  
+
+**How it works:** on the page with ReCaptcha, you select the audio recognition option and send it to CapMonster for processing.  
+
+![How it works](./assets/RC_Audio.png)
+
+## Solving via ZennoPoster.  
+We have prepared a snippet for you that helps send audio ReCaptcha from ZennoPoster to CapMonster:  
+
+[**Snippet for solving ReCaptcha Audio**](./assets/Snippet_audioRC.cs)  
+
+### Note.  
+The snippet guarantees stable operation regardless of the User-Agent used in the browser *(even mobile or outdated ones)*.  
+
+However, a mandatory condition for correct operation is **the use of a proxy server**. This requirement is due to ReCaptcha’s behavior: after 3–5 successful captcha recognitions from a single IP address, the service blocks access to the audio file.  
+
+To increase reliability, the snippet is programmed to retry in case of failure.  
+
+You can fine-tune the snippet’s behavior by changing the following variables:  
+- **Number of attempts to load elements: `var tryLoadElement`**;  
+- **Wait time: `var waitTime`**;  
+- **Number of attempts to recognize the captcha: `var tryRecognize`**;  
+- **Whether to check the correctness of the answer: `var needToCheck = true`**;  
+- **Display recognition progress messages: `var needShowMessages = false`**.
+
+:::info **The function for sending the captcha to the service looks as follows:**
+```
+ZennoPoster.CaptchaRecognition("CapMonster2.dll", str, "CapMonsterModule=ZennoLab.AudioReCaptcha&ParallelMode=true");
+```  
+
+After the `&` sign, additional recognition parameters are listed: *Module name* and *enabling Parallel mode*.
+:::
+_______________________________________________

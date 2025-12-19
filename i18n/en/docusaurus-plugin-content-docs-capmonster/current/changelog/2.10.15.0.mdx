@@ -1,0 +1,30 @@
+﻿---
+sidebar_position: 9
+title: CapMonster 2.10.15.0 (13.12.2019)
+description: Added the ability to save reCAPTCHA profiles on the Chrome engine.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.
+### New features:  
+:zap: Added the ability to save reCAPTCHA profiles on the Chrome engine.  
+
+When reCAPTCHA is successfully solved, the profile is saved for later reuse. This reduces the likelihood of bans and increases token pass rates. Profiles are shared between versions 2 and 3.  
+
+A profile that has been working for several days solving reCAPTCHA 2 provides higher-quality tokens for reCAPTCHA 3.  
+_______________________________________________
+:zap: Optimized CPU usage for reCAPTCHA on the Chrome engine.  
+:zap: Improved acceptance of reCAPTCHA tokens.  
+
+:heavy_plus_sign: Implemented support for the Anti-Captcha protocol for solving reCAPTCHA 3.  
+:heavy_plus_sign: Added a display of the number of reCAPTCHA currently being solved.  
+:heavy_plus_sign: Added a method to retrieve information about CapMonster load: `http://127.0.0.3:80/getcmstatus`  
+
+Returns **JSON** in the following format:  
+```
+{«CpuLoad»:3, «RemoteRunningSlots»:0, «RemoteTotalSlots»:80, «Rc2TasksWaitingInQueue»:0, «Rc2InstancesRunning»:0, «Rc2InstancesWithTask»:0}  
+```
+:::info **If protection is enabled, you need to pass the key `getcmstatus?key=blablabla`**
+:::
+_______________________________________________

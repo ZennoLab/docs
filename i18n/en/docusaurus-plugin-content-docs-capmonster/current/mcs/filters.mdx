@@ -1,0 +1,45 @@
+﻿---
+sidebar_position: 4
+title: Step 3. Set up filtering
+description: Bring CAPTCHAs to a unified format.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Description.  
+Graphic filters help prepare a CAPTCHA for training: bring the image to the required color, remove noise, and—most importantly—scale it correctly.  
+
+### What should a CAPTCHA look like after processing?  
+Ideally, after applying filters, your CAPTCHA should be:  
+- **black and white** — no shades of gray (letters are black, background is white);  
+- **free of noise** — without lines, dots, circles, or spots;  
+- **medium-sized** — for simple CAPTCHAs, or enlarged by about 1.5–2× for complex ones.  
+_______________________________________________
+## Types of filters.  
+### Two sets.
+There are two types of filters:  
+**1.** ***CAPTCHA filters*** — applied to the entire image.  
+**2.** ***Character filters*** — used when processing already extracted characters.  
+
+After filtering, the CAPTCHA and the characters should look the same, so the filter sets usually almost match.  
+
+But there are exceptions:  
+- the **edge cropping** filter is needed only for CAPTCHAs;  
+- a filter that **removes part of the image** (for example, in numeric ReCaptcha—the background with the house number) is also applied only to the CAPTCHA, not to the characters.  
+
+That’s why the filters are divided into two groups.  
+_______________________________________________
+### The most important filters.  
+#### Threshold.  
+*Makes the image completely black and white.*  
+
+Each pixel becomes either black or white depending on the selected threshold value, which you can set in the filter settings.  
+
+#### Resize.  
+*Changes the image size.*  
+
+Remember: increasing the scale makes characters larger, which means it increases the size of the character recognition window and the load on the core. As a result, CAPTCHA recognition time increases.  
+_______________________________________________  
+:::warning **We do not recommend overusing filters.**
+In trying to completely remove all noise, you risk actually making the training results worse.
+:::

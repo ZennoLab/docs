@@ -1,0 +1,74 @@
+﻿---
+sidebar_position: 3
+title: Step 2. Collecting Symbols
+description: Collecting examples of how different symbols are written.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+## Let’s get started.  
+In the **“Symbol Collection”** section, there are two tables:  
+- **on the left (1)** — a list of all symbols, showing how many variants have already been collected and how many are still needed,  
+- **on the right (2)** — a table with captcha images from which these symbols can be extracted.
+
+![Symbol collection](./assets/Symbols.jpg)
+
+### How the process works:  
+#### 1. Choosing a symbol.  
+Click the required row in the symbol table — after that, the captchas on the right will be automatically sorted, and the selected symbol will appear most often in the first images.  
+
+#### 2. Marking symbol centers.  
+On each captcha, click the center of the symbol until you have collected enough examples of the selected character.  
+
+The captcha table is split into pages — use the arrows at the bottom to navigate between them.  
+
+#### 3. Adding symbols.  
+Click **“Add selected”** to include the collected symbols in the collection.
+
+Before adding, a preview window will appear — make sure there is no *junk* (incorrect selections) among the symbols. Unnecessary items can be selected and deleted.  
+
+#### 4. Repeat steps 1–3 for each symbol.  
+_______________________________________________
+### Tip.  
+**Collect symbols in small batches.**  
+
+It’s better to add a little several times than to collect the entire set in one go — this way, you won’t lose a lot of work in case of a crash or power outage.  
+
+If needed, symbols can be added later — collection is available at any time.  
+_______________________________________________
+## Symbol processing.
+### How many variants of each symbol should you collect?  
+The required number of examples depends on the complexity and distortion of the symbols:  
+- for **simple** (stencil-like) captchas, **5 variants or more** of each symbol are sufficient,  
+- for **complex** ones (for example, KCaptcha) — **up to 200 variants**.  
+
+Try to keep all symbols represented in roughly equal amounts.  
+
+:::warning **Don’t rush to collect too many at once.**  
+Start with a small set — it may already be enough. If not, you can always **add the missing variants later**.
+:::
+_______________________________________________
+### Visual hints.  
+- **Collected but not yet added** to the collection symbols are marked with a *colored dot*.  
+- **Already added** ones are marked with a *dot of a different color*.  
+
+:::tip *For convenience, you can change the colors in the settings.*  
+:::
+
+You can also **zoom** the captcha display to make selecting symbols easier — this **does not affect the result** in any way.  
+
+:::info **Remember that the captcha table is split into pages.**  
+:::
+_______________________________________________
+### Deleting symbols.  
+Sometimes you need to delete symbols that were collected or added by mistake.  
+
+To do this:  
+**1.** Go to the **“Filters”** section.  
+**2.** Switch to displaying symbols (instead of captchas).  
+**3.** In the dropdown list, select the symbol whose images you want to delete.  
+**4.** Select the required images with the left mouse button (while holding CTRL) and open the context menu with the right mouse button.  
+**5.** Click **“Delete”**.  
+
+![Deletion](./assets/Symbols_1.jpg)
+_______________________________________________
