@@ -14,6 +14,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 > 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/908197929)** — Источник данного материала
 
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+); 
+
 _______________________________________________  
 На форуме есть разделы, которые доступны только клиентам ZennoLab:
 
@@ -37,7 +43,8 @@ _______________________________________________
 
 
 
-**📹 Здесь было видео**
+<VideoSample source={require("@site/static/video/SetClientStatusFinal.mp4").default}/> 
+
 4. Убедитесь, что Вам был присвоен статус клиента на форуме
 
 Если что-то пошло не так, обратитесь в [службу поддержки](https://helpdesk.zennolab.com/ru "https://helpdesk.zennolab.com/ru").
