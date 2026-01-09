@@ -80,6 +80,27 @@ _________________
 :::tip **Можно закрывать приложения и до подмены.**
 Но тогда некоторые системные приложения тут же перезапускаются, поэтому могут считать старые параметры.
 :::  
+
+## **API для управления LSPosed**
+
+В версии ZennoDroid 2.4.0 был добавлен API для управления LSPosed.
+
+Функционал:
+
+* включить и выключить нужный модуль;  
+* задать приложения в списке подмены нужного модуля, добавить и удалить приложения из списка;  
+* создать и восстановить бэкап настроек (поддерживается сохранение как на телефон, так и на компьютер);  
+* получить информацию о LSPosed.
+
+Примеры работы API приведены в [LSPosedAPI.zip](https://www.dropbox.com/scl/fi/xsw5q8ej1wtmhpg5695we/LSPosedAPI.zip?rlkey=menqd2q7a0g6qnmc1l3omq4fr&st=0byf2hwb&dl=0&roistat_visit=1429674) и на [видео](https://www.dropbox.com/scl/fi/ah1uooq2my56fdjis4nqb/LSPosedAPI.mp4?rlkey=pbcdkpev7c6d72jm1n5y4o2gv&st=zlcijuio&dl=0&roistat_visit=1429674) (настройка модуля ZennoDroid и модуля FLAG\_SECURE, позволяющего просматривать защищенные страницы)  
+Для работы API необходимо использовать [LSPosed\_CLI 1.10.2](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/latest?roistat_visit=1429674). После установки дополнительно включать ничего не требуется. Специально для использования в ZennoDroid в форк добавлен CLI с автоматическим включением; подходит для актуальных версий Android.  
+
+
+## **Управление LSPosed с помощью экшенов**
+
+В версии 2.4.6 была добавлена возможность удобного [управления LSPosed с помощью группы экшенов](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3919183873).
+
+
 _________________
 ## Полезные ссылки.  
 - Шаблон для подмены параметров устройства с помощью экшенов и API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)  
