@@ -1,0 +1,10 @@
+{
+    "label": "Устаревшие статьи",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "title": "Информация для прошлых версий",
+      "slug": "/legacy"
+    }
+  }
+  
