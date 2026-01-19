@@ -20,7 +20,7 @@ Via the context menu: **Add Action → Android → LSPosed Management**
 ![Add](./assets/LSPosed_Control/LSPosed_Control_pic1.png)  
 _________________ 
 ## How it works
-### LSPosed information
+### LSPosed info
 With this action, you can obtain various service information about the installed LSPosed version, as well as check that it is working properly.  
 
 ![LSPosed information](./assets/LSPosed_Control/LSPosed_Control_pic2.png)  
@@ -39,7 +39,7 @@ Response example:
 }
 ```  
 
-### LSPosed module configuration
+### LSPosed module settings
 Here you can specify the list of applications for which parameter spoofing should be applied.  
 
 ![LSPosed module configuration](./assets/LSPosed_Control/LSPosed_Control_pic3.png) 
@@ -49,12 +49,12 @@ By default, the standard ZennoModule (`com.zennolab.zennodroid`) is specified, b
 #### Available parameters  
 - **Module name**.  
 Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
-- **Enable module**.  
+- **Enable LSPosed module**.  
 Determines the module status. When disabled, no spoofing is performed.  
 - **Applications**.  
 The list of applications for which spoofing is applied. At least one application must be specified. If there are several, separate them with commas or line breaks. Identifiers, again, can be obtained via [Installed Applications](../Tools/Installed_App).  
 
-### Save module settings  
+### Save LSPosed module settings  
 This saves the module settings (or the settings of all modules) so that you can restore them later.   
 
 ![Save module settings](./assets/LSPosed_Control/LSPosed_Control_pic4.png) 
@@ -64,10 +64,10 @@ This saves the module settings (or the settings of all modules) so that you can 
 Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
 - **Save settings of all modules**.  
 The settings of all installed modules will be saved, not just a specific one.  
-- **Path to the archive file**.  
+- **Path to archive file**.  
 Here you specify the path where the application data will be saved in a `.gz` archive. You can specify a path on a computer or a smartphone (for example: `/sdcard/com.zennolab.zennodroid.gz`).  
 
-### Restore module settings  
+### Restore LSPosed module settings  
 This same action restores previous settings from the selected file.  
 
 ![Restore module settings](./assets/LSPosed_Control/LSPosed_Control_pic5.png)  
@@ -75,9 +75,9 @@ This same action restores previous settings from the selected file.
 #### Available parameters  
 - **Module name**.  
 Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
-- **Restore settings of all modules**.  
+- **Restore the settings of all modules**.  
 The settings of all installed modules will be restored, not just a specific one.  
-- **Path to the archive file**.  
+- **Path to archive file**.  
 Here you specify the path to the `.gz` archive from which the application data will be restored. You can specify a path on a computer or a smartphone (for example: `/sdcard/com.zennolab.zennodroid.gz`).  
 
 ### Open LSPosed
@@ -86,7 +86,7 @@ Opens LSPosed for manual configuration or visual verification of the installed p
 ![Open LSPosed](./assets/LSPosed_Control/LSPosed_Control_pic6.png) 
 
 #### Available parameter  
-- **Force terminate the current process**.  
+- **Force stop the current process**.  
 We recommend enabling this option if a module was previously enabled or disabled. Otherwise, a visual bug may occur: the checkbox will not reflect the actual module status. 
 _________________
 ## Useful links.  

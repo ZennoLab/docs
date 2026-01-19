@@ -30,17 +30,17 @@ _________________
 | :--------: | :-------: |
 | *Magisk Setting*  | *Turn On Zygisk*    |
  
- 
 </details>
-:::tip Use the *zygisk* version. *riru* is no longer supported.
-:::
-<details>
-<summary>Download the [**latest version of LSPosed**](https://github.com/LSPosed/LSPosed/releases/tag/v1.9.2) to your phone in the **sdcard/Download/** folder and install it using the standard menu.</summary>  
 
-|   ![LSposed](./assets/LSPosed/LSPosed_pic4.png)   | ![Select from storage](./assets/LSPosed/LSPosed_pic3.png) |
-| :--------: | :-------: |
-| [*Latest version of LSPosed*](https://github.com/LSPosed/LSPosed/releases/tag/v1.9.2)  | *Installing module*    |
- 
+The official version of LSPosed has not been updated for a long time and does not work on modern versions of Android. Therefore, we recommend using a special build of the LSPosed Framework with API support, prepared for use with ZennoDroid.  
+
+> [**Special build v1.10.2**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto)
+
+<details>
+<summary>Download this build to your phone in the *sdcard/Download/* folder and install it using the standard menu.</summary>  
+
+ ![Select from storage](./assets/LSPosed/LSPosed_pic3.png) 
+
 </details>
 :::warning **By default, LSPosed Framework has no icon and opens through a notification.**
 ![Notification panel](./assets/LSPosed/LSPosed_pic5.png)
@@ -87,6 +87,27 @@ When you remove an app, it disappears from the spoof list. If you reinstall it, 
 :::tip You can close apps before spoofing.
 But some system apps will restart themselves right after, so they might see the old parameters.
 :::
+_________________
+## API for managing LSPosed
+In **ZennoDroid 2.4.0**, we added an API for managing LSPosed.
+
+Main functions:
+- enable and disable the required module;   
+- select apps in the replacement list of the required module, and also add or remove them from the list;     
+- create and restore a settings backup (saving to both the phone and a computer is supported);    
+- get information about LSPosed.
+
+### Video tutorial   
+> Setting up the ZennoDroid and the `FLAG_SECURE` modules, which allows viewing secured pages.  
+
+<VideoSample source={require("@site/static/video/LSPosedAPI.mp4").default}/>  
+
+Examples of working with the API are also included in the archive [LSPosedAPI.zip](https://www.dropbox.com/scl/fi/xsw5q8ej1wtmhpg5695we/LSPosedAPI.zip?rlkey=menqd2q7a0g6qnmc1l3omq4fr&st=0byf2hwb&dl=0&roistat_visit=1429674).  
+
+To use this, you need to work with our [**Special build v1.10.2**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto).After installation, no additional setup is required. For use with ZennoDroid, a CLI with automatic enabling has been added to the fork; *it’s compatible with current Android versions*. 
+_________________
+## **Managing LSPosed using actions**
+In version 2.4.6, a convenient way [**to manage LSPosed**](./LSPosed_Control) was added through a group of actions.
 _________________
 ## Useful Links
 - Template for spoofing device parameters via actions and API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)

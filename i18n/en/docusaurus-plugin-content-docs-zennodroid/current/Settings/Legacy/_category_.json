@@ -1,9 +1,9 @@
 {
-    "label": "Устаревшие статьи",
+    "label": "Outdated articles",
     "position": 1,
     "link": {
       "type": "generated-index",
-      "title": "Информация для прошлых версий",
+      "title": "Information for previous versions",
       "slug": "/legacy"
     }
   }

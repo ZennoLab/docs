@@ -104,6 +104,75 @@ _______________________________________________
 Set whatever you want: **year, month, day, hour, minute, and second**.  
 ![Time](../assets/setting/Android_Setting_pic17.png)    
 If you leave all fields empty, the time will sync automatically with the current time.  
+_______________________________________________ 
+## **Access to WebView**
+:::info **Added in ZennoDroid v2.4.6.0.**
+:::
+
+Provides the ability to execute JavaScript in applications containing WebView.
+
+![Access to WebView](../assets/setting/Android_Setting_pic27.png)
+
+By default, access to WebView in non-browser applications is always disabled. This setting allows access to HTML markup not only in browsers, but also in applications that use WebView. To do this, the `android.webkit.WebView` element must be present in the element tree.  
+
+**Example of implementation JavaScript:**
+| Access to WebView is disabled      | ![image2](../assets/setting/image-20251115-161200.png) |
+| :-----------: | ----------- |
+|  **Enabled**   | ![image3](../assets/setting/image-20251115-161937.png)      |
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+::: 
+
+_______________________________________________ 
+## **Generate a device**
+:::info **Added in ZennoDroid v2.4.6.0.**
+:::
+
+Allows you to create a device based on specified filters or preconfigured parameters in JSON format.
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+::: 
+
+### **Random**
+Creating and using a random device based on specified filters and settings.
+
+![Access to WebView](../assets/setting/Android_Setting_pic28.png)
+
+#### Tab «Filter»
+- **Country**. Used to generate the mobile operator and related settings.     
+The country can be specified in ISO format:     
+  - two characters, for example, `ru`, `fr`, `us`   
+  - or in full: `Russia`, `France`, `United States of America`    
+  - also supports the format specified in the profile field **Country** (Russia, France, USA)  
+:::tip **Preferably use the two-letter ISO format**
+You can view the codes and names of countries on the website [http://www.mcc-mnc.com/](http://www.mcc-mnc.com/)
+:::
+
+- **Manufacturer**. You can specify several manufacturers: `google|samsung`.  
+- **Brand**. Used if the manufacturer has multiple brands and a specific brand is required.    
+For example, the manufacturer Xiaomi has the brands Poco and Redmi.  
+- **Model**. Required to identify a specific set of models.  
+Like, `Pixel [7|8]` means only Google Pixel 7 or 8.
+- **Android version**. To select specific versions of Android: `12|13|14|15`
+
+#### Tab «More»  
+![Access to WebView](../assets/setting/Android_Setting_pic29.png)
+
+- **Add noise to canvas fingerprint** — adds noise in applications and browsers.  
+- **Generate GPU** — allows you to specify **GPU Vendor** and **GPU Renderer** in applications. And in browsers, it changes the WebGL settings: **Unmasked Vendor** and **Unmasked Renderer**.  
+- **GPU Vendor** — lets you set a filter for *GPU Vendor* (`Qualcomm|ARM`).  
+Some devices powered by Qualcomm or ARM may experience display issues (**white screen**). You may apply a filter to use only the vendor that works. If you encounter issues with both vendors, we recommend **disabling GPU rendering**.  
+- **Save the result to a variable** — the generated device will be saved to a variable in JSON format. You can reuse the generated device later.  
+
+After setting up the filters, we recommend checking them by performing an action. If the values are set incorrectly or models with the required specifications are not available in the device database, then a warning will appear indicating that it is not possible to create the device.
+
+### **Use JSON**
+Allows you to set up the device using predefined parameters in JSON format.
+
+![Access to WebView](../assets/setting/Android_Setting_pic30.png)
+
+**Input setting** — requires a string in JSON format, *you can specify a variable*.    
+> To obtain the string and check its format, generate a random device.    
 _______________________________________________  
 ## How to set up a proxy:  
 This setting lets you set a proxy for all connected devices.  
@@ -192,6 +261,20 @@ You can find an app's identifier using the [Installed Apps](../../Tools/Installe
 :::warning **You can use either whitelist or blacklist, not both.**
 If both are filled in, only the whitelist will be used.
 ::: 
+
+#### Rules.  
+You have the option to set your own rules for proxying. They should be separated by a semicolon `;` or a line break.    
+
+| Examples of rules: | Description|
+| :-----------: | ----------- |
+| `DOMAIN-REGEX,^abc,DIRECT`     | Do not proxy if domain name begins with **abc**     |
+| `DOMAIN-SUFFIX,google.com,REJECT`  | Block traffic to the domain **google.com**        |
+| `DOMAIN-KEYWORD,instagram,PROXY`  | Proxy traffic if the domain name is **instagram**      |
+| `IP-CIDR,1.1.1.1/32,DIRECT`  | Do not proxy traffic to the address **1.1.1.1**  |
+| `AND,((NETWORK,TCP),(DST-PORT,5228-5230)),DIRECT`  | Do not proxy traffic to ports **TCP 5228-5230**    |
+| `MATCH,DIRECT`  | Do not proxy all traffic    |
+| `MATCH,PROXY`  | Proxy all traffic    |
+| `DOMAIN-SUFFIX,speedtest.net,PROXY;MATCH,DIRECT`  | Only traffic to **speedtest.net** is proxied     |
 ___________________________________________  
 ## Useful links.   
 - [**How to get Root access**](../../Enterprise/Root).     

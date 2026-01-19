@@ -17,7 +17,7 @@ _______________________________________________
 
 ![Add to project](../assets/Files/Files_pic1.png)
 _______________________________________________
-### Sending a file
+### Push file
 This function is used to copy a file from your computer to a device.
 
 ![Sending a file](../assets/Files/Files_pic2.png)
@@ -31,8 +31,10 @@ To send files to folders that require superuser (root) access, you'll first need
 
 For example:  `su -c cp /data/local/tmp/myfile /data/data/app/myfile`
 :::
+- *Run as Root*. This setting is needed to send files to folders that require superuser access.  
+When sending a file to such folders, a message containing `Permission denied` is displayed. However, if the file is sent without errors even when this setting is disabled, it is strongly **not recommended** to enable this setting.
 
-### Getting a file
+### Pull file
 This action lets you do the opposite: copy a file from your device to your computer.
 
 ![Getting a file](../assets/Files/Files_pic3.png)
@@ -40,7 +42,9 @@ This action lets you do the opposite: copy a file from your device to your compu
 #### Available parameters:
 - *File path*. The full path to the file on your device.
 - *New path*. The place on your computer where the file will be saved.
-You can specify a full path with the filename, like `c:\Images\pic.png`, or just a folder, like `/sdcard/Pictures/`. In the second case, the file will be copied with its current name.
+You can specify a full path with the filename, like `c:\Images\pic.png`, or just a folder, like `/sdcard/Pictures/`. In the second case, the file will be copied with its current name.  
+- *Run as Root*. This setting is needed to send files to folders that require superuser access.  
+When sending a file to such folders, a message containing `Permission denied` or `No such file or directory` is displayed. However, if the file is sent without errors even when this setting is disabled, it is strongly **not recommended** to enable this setting.
 _______________________________________________
 ## Useful links
-- [**Getting Root Access**](../../Enterprise/Root)
+- [**Getting Root Access**](../../Enterprise/Root)CA
