@@ -62,7 +62,13 @@ Here you’ll see all running processes on the device.
 - **Refresh**: Updates the list of running processes. Use this after launching or stopping apps.  
 - **Topmost**: Selects the main process of the app currently visible on your device.  
 - **Connect**: Connects to the selected process. Once you connect, you can load or create scripts.  
-- **Disconnect**: Disconnects from the process. If the app has closed, you’ll be automatically disconnected.  
+- **Disconnect**: Disconnects from the process. If the app has closed, you’ll be automatically disconnected.   
+
+:::warning **If an error occurs when trying to refresh the process list**
+***Enumerate Processes failed: Cannot read properties of undefined (reading ‘getRunningAppProcesses’)***
+
+In this case, run the **Adb Shell** action: `pm uninstall com.google.android.art` and reboot the device.
+:::
 _________________  
 ### Script (4):  
 The script management window. Supports macros.  
@@ -190,6 +196,21 @@ _________________
 1. Click **“Unload”** in the *Script* panel.  
 2. Click **“Disconnect”** in the *Processes* panel.  
 3. Run the *Disable traffic forwarding to Burp* action.  
+
+_________________
+### **Updated video tutorial for ZennoDroid 2.4.7.0 and later**
+:::info **All the necessary files can be downloaded via the link**
+[Frida\_Burp\_HttpToolkit.zip](https://www.dropbox.com/scl/fi/1vp7g23me9ekr34aacsfh/Frida_Burp_HttpToolkit.zip?rlkey=8ykdpi0jve6aplqpfpoh0rcoq&st=lac44ugj&dl=0)
+:::  
+
+<VideoSample source={require("./assets/Frida/Frida_SSL_Pinning_Demo.mp4").default}/>
+
+> Download [android-ssl-pinning-demo](https://github.com/httptoolkit/android-ssl-pinning-demo)
+
+#### Installing a custom certificate for traffic interception in Chrome 
+> *The initial setup of Burp Suite is shown in the previous video* 
+
+<VideoSample source={require("./assets/Frida/FridaChrome.mp4").default}/>
 _________________
 ## Useful links  
 - Official [**Frida scripts source**](https://codeshare.frida.re/)  

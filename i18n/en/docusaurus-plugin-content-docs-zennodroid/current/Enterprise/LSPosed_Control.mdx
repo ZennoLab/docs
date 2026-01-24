@@ -1,0 +1,96 @@
+---
+sidebar_position: 5
+sidebar_label: LSPosed Management
+title: LSPosed Management | ZennoDroid Documentation | ZennoLab
+description: LSPosed Management — a section of the official ZennoDroid documentation by ZennoLab. Detailed instructions, usage examples, and setup guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# LSPosed Management
+<DisclaimerNotice />
+
+## Description 
+This action is used to manage various LSPosed modules that are used to spoof parameters on devices.  
+
+> To work, you need to use our [**Special build v1.10.2**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto).  
+
+### How to add it to a project? 
+Via the context menu: **Add Action → Android → LSPosed Management**  
+
+![Add](./assets/LSPosed_Control/LSPosed_Control_pic1.png)  
+_________________ 
+## How it works
+### LSPosed info
+With this action, you can obtain various service information about the installed LSPosed version, as well as check that it is working properly.  
+
+![LSPosed information](./assets/LSPosed_Control/LSPosed_Control_pic2.png)  
+
+The data is returned in JSON format and can be processed using the [JSON and XML Processing](../Data/JSON_XML) action.  
+
+Response example:  
+```json
+{
+  "API version": "100",
+  "Injection Interface": "Zygisk",
+  "Framework version": ".1.10.2_cli_auto(7201)",
+  "System version": "1а5 (API 35)",
+  "Device": "Realme RMX3834",
+  "System ABI": "arm64-v8a"
+}
+```  
+
+### LSPosed module settings
+Here you can specify the list of applications for which parameter spoofing should be applied.  
+
+![LSPosed module configuration](./assets/LSPosed_Control/LSPosed_Control_pic3.png) 
+
+By default, the standard ZennoModule (`com.zennolab.zennodroid`) is specified, but you can set any other one. For example, if a black screen is displayed instead of content, you can install the **FLAG_SECURE** module (`com.varuns2002.disable_flag_secure`), which allows you to view protected pages.  
+
+#### Available parameters  
+- **Module name**.  
+Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
+- **Enable LSPosed module**.  
+Determines the module status. When disabled, no spoofing is performed.  
+- **Applications**.  
+The list of applications for which spoofing is applied. At least one application must be specified. If there are several, separate them with commas or line breaks. Identifiers, again, can be obtained via [Installed Applications](../Tools/Installed_App).  
+
+### Save LSPosed module settings  
+This saves the module settings (or the settings of all modules) so that you can restore them later.   
+
+![Save module settings](./assets/LSPosed_Control/LSPosed_Control_pic4.png) 
+
+#### Available parameters  
+- **Module name**.  
+Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
+- **Save settings of all modules**.  
+The settings of all installed modules will be saved, not just a specific one.  
+- **Path to archive file**.  
+Here you specify the path where the application data will be saved in a `.gz` archive. You can specify a path on a computer or a smartphone (for example: `/sdcard/com.zennolab.zennodroid.gz`).  
+
+### Restore LSPosed module settings  
+This same action restores previous settings from the selected file.  
+
+![Restore module settings](./assets/LSPosed_Control/LSPosed_Control_pic5.png)  
+
+#### Available parameters  
+- **Module name**.  
+Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
+- **Restore the settings of all modules**.  
+The settings of all installed modules will be restored, not just a specific one.  
+- **Path to archive file**.  
+Here you specify the path to the `.gz` archive from which the application data will be restored. You can specify a path on a computer or a smartphone (for example: `/sdcard/com.zennolab.zennodroid.gz`).  
+
+### Open LSPosed
+Opens LSPosed for manual configuration or visual verification of the installed parameters.  
+
+![Open LSPosed](./assets/LSPosed_Control/LSPosed_Control_pic6.png) 
+
+#### Available parameter  
+- **Force stop the current process**.  
+We recommend enabling this option if a module was previously enabled or disabled. Otherwise, a visual bug may occur: the checkbox will not reflect the actual module status. 
+_________________
+## Useful links.  
+- Template for spoofing device parameters using actions and API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)  
+- [**Latest version of LSPosed Framework**](https://github.com/LSPosed/LSPosed/releases/tag/v1.9.2)  
+- [**Connecting a real device to ZennoDroid**](./Connection).  
+- [**Device settings**](../Settings/Settings_for_Enterprise).
