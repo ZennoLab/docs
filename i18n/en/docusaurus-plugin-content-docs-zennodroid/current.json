@@ -198,5 +198,13 @@
   "sidebar.tutorialSidebar.category.API.link.generated-index.title": {
     "message": "ZennoDroid API methods",
     "description": "The generated-index page title for category API in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Устаревшие статьи": {
+    "message": "Outdated articles",
+    "description": "The label for category Устаревшие статьи in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Устаревшие статьи.link.generated-index.title": {
+    "message": "Information for previous versions",
+    "description": "The generated-index page title for category Устаревшие статьи in sidebar tutorialSidebar"
   }
 }
