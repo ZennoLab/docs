@@ -47,3 +47,52 @@ The API Token is required to execute all requests. It can obtained as follows:
 1. After deleting the token, it will continue functioning within 1.5-2 hours;  
 2. After token has expired, it will cease to function;  
 3. If you have lost a previously created token, you can create a new one.
+
+## **Parameter Encoding (URL Encoding)**
+
+### **Important: Passing special characters in parameter values**
+
+If you construct HTTP requests manually (using `HttpClient`, `fetch`, `curl`, etc.), you **must URL-encode parameter values**.
+
+This is especially important for parameters like `screen=HD+`.  
+If the `+` character is not encoded, the server will interpret it as a **space**, which will result in an error.
+
+**Example for `screen=HD+`**
+
+* **Incorrect:** `.../create?screen=HD+`  
+* **Correct:** `.../create?screen=HD%2B`
+
+### Commonly Used Characters
+
+For the API to work correctly, the following characters **must be encoded when they are part of parameter values**.
+
+Encode these characters **only if they are part of the actual data (values)**, not as URL syntax.
+
+| Character | Description | Encoded |
+| ----- | ----- | ----- |
+| `+` | Plus sign (e.g. `HD+`) | `%2B` |
+| (space) | Space | `%20` |
+| `&` | Ampersand (parameter separator) | `%26` |
+| `=` | Equals sign | `%3D` |
+| `?` | Question mark | `%3F` |
+| `/` | Slash | `%2F` |
+| `:` | Colon | `%3A` |
+
+### Implementation Examples
+
+**C# (HttpClient)**
+
+Instead of manually concatenating strings, use `Uri.EscapeDataString()` for parameter values that may contain special characters.
+``` csharp
+string screen = "HD+";
+string url = $"http://localhost:8160/v1/profiles/create?name=ApiProfile&workspaceId=-1&screen={Uri.EscapeDataString(screen)}";
+// Result: ...?screen=HD%2B
+```
+**Python (Requests)**
+
+The `requests` library automatically handles URL encoding when parameters are passed as a dictionary.
+``` Python
+params = {'screen': 'HD+'}
+response = requests.get('http://localhost:8160/v1/profiles/create',params=params)
+# The library automatically converts this to HD%2B
+```
