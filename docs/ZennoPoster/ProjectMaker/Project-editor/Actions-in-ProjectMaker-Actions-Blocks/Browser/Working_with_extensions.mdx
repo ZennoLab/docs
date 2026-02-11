@@ -14,55 +14,33 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2081423361)** — Источник данного материала
 
 _______________________________________________   
-
 ## Описание
+С помощью данного действия можно управлять расширениями в браузере.
 
-:::info Информация
-Добавлено в ZennoPoster 7.6.0.0 в статусе “Beta“
-:::
-
-С помощью данного действия вы сможете управлять расширениями в браузере.
-
-  
-
-## Как добавить действие в проект?
-
-Через контекстное меню **Добавить действие** → **Браузер** → **Работа с расширениями**
+### Как добавить действие в проект?
+Через контекстное меню: **Добавить действие → Браузер → Работа с расширениями**
 
 ![image-20211205-055017](./assets/Working_with_extensions/Working_with_extensions_pic1.png)
 
-
-
-Либо воспользуйтесь [❗→ умным поиском](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200090/ProjectMaker+7#%D0%A3%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B9").
-
-  
-
-## Где это можно применить?
-
+### Где это можно использовать?
 - Блокировка рекламы на сайтах
-- Использование крипто-кошельков и различные взаимодействия с блокчейном
-- Подключение к VPN
-- Любые другие функции, которые дают расширения браузера
-
-  
-
-## Как работать с экшеном?
-
-### Активировать расширение
+- Для криптокошельков и различных взаимодействий с блокчейном
+- Подключение к виртуальным частным сетям
+- И прочие функции, которые дают расширения браузера
+_______________________________________________
+## Принцип работы
+### Активировать расширение  
+> *Активация расширения — это открытие его всплывающего окна (Popup), если оно есть.*  
 
 ![image-20211205-055144](./assets/Working_with_extensions/Working_with_extensions_pic2.png)
 
+Этот кубик активирует расширение по его имени или ID (аналог клика по иконке расширения в обычном браузере).  
 
+- **Имя или ID расширения** — каким способом искать.  
+- **Значение** — по нему будет искаться расширение для активации.
 
-Активация расширения - это открытие его всплывающего окна (Popup), если оно есть.
-
-Кубик активирует расширение по его имени или id (аналог клика по иконке расширения в обычном браузере)
-
-- *Имя или ID расширения - по какому значению искать.
-- *Значение - значение, по которому будет искаться расширение для активации.
-
-:::info Информация
-Чтобы получить Id или Название расширения, используйте опцию Получить список расширений
+:::tip Как узнать ID или Название расширения?
+Используйте опцию **Получить список расширений** (описана ниже).
 :::
 
 <details>
@@ -73,50 +51,36 @@ var extension1 = instance.GetExtensionById("EXTENSION_ID");
 extension1 = instance.GetExtensionByName("EXTENSION_NAME");
 extension1.Activate();
 ```
+</details>  
 
-
-</details>
 ### Установить расширение
+Устанавливает расширение из CRX файла.  
 
 ![image-20220111-112323](./assets/Working_with_extensions/Working_with_extensions_pic3.png)
 
+> *О способе скачивания расширения в виде CRX файла рассказано ниже.*
 
-
-Устанавливает расширение по CRX файлу.
-
-О том как скачать расширение в виде CRX файла описано ниже в данной статье, абзац *Как скачать crx файл расширения.
-
-- **Путь к файлу** - путь к crx файлу
-
-:::info Информация
-“Пауза” была добавлена в 7.7.0.0
-:::
-
-- **Пауза (сек.)** - пауза может понадобиться при установке некоторых расширений, чтобы гарантировать, что оно корректно установится, перед тем, как с ним начнут работать.
+- **Путь к файлу** — место, где лежит `.crx` расширения.
+- **Пауза (сек.)** — может понадобиться для некоторых расширений. Гарантирует корректную установку перед стартом работы.
 
 <details>
 <summary>Аналог на C#</summary>
-
 
 ```csharp
 instance.InstallCrxExtension("PATH_TO_CRX_FILE");
 ```
 
-
 </details>
 ### Удалить расширение
+Удаляет расширение по его имени или id (аналог клика по кнопке в обычном браузере).  
 
 ![image-20211205-055444](./assets/Working_with_extensions/Working_with_extensions_pic4.png)
 
+- **Имя или ID расширения** — каким способом искать.  
+- **Значение** — по нему будет искаться расширение для удаления.
 
-
-Удаляет расширение по его имени или id (аналог клика по иконке расширения в обычном браузере)
-
-- *Имя или ID расширения* - по какому значению искать.
-- *Значение* - значение, по которому будет искаться расширение для активации.
-
-:::info Информация
-Чтобы получить Id или Название расширения, используйте опцию Получить список расширений
+:::tip Как узнать ID или Название расширения?
+Используйте опцию **Получить список расширений** (описана далее).
 :::
 
 <details>
@@ -133,15 +97,12 @@ instance.UninstallExtension("EXTENSION_ID");
 
 </details>
 ### Получить список расширений
+Возвращает в виде списка информацию о всех установленных расширениях.  
 
 ![image-20211205-055553](./assets/Working_with_extensions/Working_with_extensions_pic5.png)
 
-
-
-Возвращает в список информацию о всех установленных расширениях
-
-- **В каком формате возвращать** - формат, в котором информация будет сохранена в список (*Название, *ID или *Название и ID)
-- **Поместить результат в список** - в какой [❗→ список](/wiki/spaces/RU/pages/534053375 "/wiki/spaces/RU/pages/534053375") будут возвращены данные о расширениях
+- **В каком формате возвращать** — `Название, ID` или `Название` и `ID`
+- **Поместить результат в список** — указываем *Список*, в котором хотим сохранить данные о расширениях
 
 <details>
 <summary>Аналог на C#</summary>
@@ -153,43 +114,33 @@ var allExtensions = instance.GetAllExtensions();
 ```
 
 </details>
-* * *
 
-## Как сохранить состояние расширения между запусками проекта?
-
-Для этого нужно использовать [❗→ профиль-папки](/wiki/spaces/RU/pages/1251475485 "/wiki/spaces/RU/pages/1251475485"). Все установленные расширения и их состояние автоматически будет сохраняться в неё.
-
-* * *
-
-## Как скачать crx файл расширения
-
+### Сохранение состояния расширений
+Для этого нужно использовать [Профиль-папку](../../../Recording-and-creating-projects/Using_a_Profile_Folder). Все установленные расширения и их состояния будут автоматически сохраняться в неё.
+_______________________________________________
+## Получение CRX-файла
 ### Подготовка браузера
+Сначала подготовим ваш домашний браузер Chrome.
+1. Перейдите в [магазин расширений](https://chrome.google.com/webstore/category/extensions)
+2. Найдите одно из расширений, которое может скачивать CRX-файлы и установите его в свой браузер.
 
-Вначале необходимо подготовить ваш домашний браузер Chrome.
-
-1. Перейдите в [магазин расширений](https://chrome.google.com/webstore/category/extensions "https://chrome.google.com/webstore/category/extensions")
-2. Найдите одно из расширений, которое может скачивать crx файлы со страниц расширений и установите его в свой браузер.
-Примеры таких расширений:
-
- 1. [CRX Extractor/Downloader](https://chrome.google.com/webstore/detail/crx-extractordownloader/ajkhmmldknmfjnmeedkbkkojgobmljda "https://chrome.google.com/webstore/detail/crx-extractordownloader/ajkhmmldknmfjnmeedkbkkojgobmljda") - он в дальнейшем будет использоваться для примера.
- 2. [Get CRX](https://chrome.google.com/webstore/detail/get-crx/dijpllakibenlejkbajahncialkbdkjc "https://chrome.google.com/webstore/detail/get-crx/dijpllakibenlejkbajahncialkbdkjc")
- 3. [Extension Source Downloader](https://chrome.google.com/webstore/detail/extension-source-download/dlbdalfhhfecaekoakmanjflmdhmgpea "https://chrome.google.com/webstore/detail/extension-source-download/dlbdalfhhfecaekoakmanjflmdhmgpea")
+:::tip Примеры таких расширений:
+- [CRX Extractor/Downloader](https://chrome.google.com/webstore/detail/crx-extractordownloader/ajkhmmldknmfjnmeedkbkkojgobmljda) — далее используется для примера
+- [Get CRX](https://chrome.google.com/webstore/detail/get-crx/dijpllakibenlejkbajahncialkbdkjc)
+- [Extension Source Downloader](https://chrome.google.com/webstore/detail/extension-source-download/dlbdalfhhfecaekoakmanjflmdhmgpea)
+:::
 
 ### Скачивание файла расширения
+Скачиваем файл нужного расширения с помощью [CRX Extractor/Downloader](https://chrome.google.com/webstore/detail/crx-extractordownloader/ajkhmmldknmfjnmeedkbkkojgobmljda)
 
-Скачивание crx-файла на примере [CRX Extractor/Downloader](https://chrome.google.com/webstore/detail/crx-extractordownloader/ajkhmmldknmfjnmeedkbkkojgobmljda "https://chrome.google.com/webstore/detail/crx-extractordownloader/ajkhmmldknmfjnmeedkbkkojgobmljda")
-
-1. Перейдите на страницу нужного вам расширения. Например - [Google Translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb "https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb")
-2. Активируйте расширение и нажмите на кнопку скачивания расширения
+1. Переходим на страницу расширения в Chrome Web Store. Например — [CapMonster Cloud](https://chromewebstore.google.com/detail/pabjfbciaedomjjfelfafejkppknjleh?utm_source=item-share-cb)
+2. Активируем CRX Extractor и жмём на кнопку скачивания расширения:
 
 ![image-20211109-113058](./assets/Working_with_extensions/Working_with_extensions_pic6.png)
 
 
-3. Выберите куда сохранить файл
-
-* * *
-
+3. Выбираем место для сохранения файла
+_______________________________________________
 ## Полезные ссылки
-
 - [❗→ Окно браузера](/wiki/spaces/RU/pages/534315373 "/wiki/spaces/RU/pages/534315373")
 - [❗→ Использование профиль-папки](/wiki/spaces/RU/pages/1251475485 "/wiki/spaces/RU/pages/1251475485")
