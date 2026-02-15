@@ -24,14 +24,9 @@ This function is used to copy a file from your computer to a device.
 
 #### Available parameters:
 - *File path*. The full path to the file on your computer.
-- *New path*. The location where the copied file will be saved.
-You can specify a full path with the filename right away, like `/sdcard/Pictures/pic.png`, or just a folder, like `/sdcard/Pictures/`. In the second case, the file will be copied with its original name. Media files will automatically update in the Gallery after being sent.
-:::info Note
-To send files to folders that require superuser (root) access, you'll first need to send the file to the `/data/local/tmp/` folder on the device. After that, use the [**Console Command (ADB Shell)**](./Utilities_Ent#console-command-adb-shell) action to move the file to the desired location.
-
-For example:  `su -c cp /data/local/tmp/myfile /data/data/app/myfile`
-:::
-- *Run as Root*. This setting is needed to send files to folders that require superuser access.  
+- *New path*. The location where the copied file will be saved.  
+You can specify a full path with the filename right away, like `/sdcard/Pictures/pic.png`, or just a folder, like `/sdcard/Pictures/`. In the second case, the file will be copied with its original name. Media files will automatically update in the Gallery after being sent.  
+- *Run as Root*. This setting is needed to send files to folders that require superuser access.
 When sending a file to such folders, a message containing `Permission denied` is displayed. However, if the file is sent without errors even when this setting is disabled, it is strongly **not recommended** to enable this setting.
 
 ### Pull file
@@ -41,10 +36,10 @@ This action lets you do the opposite: copy a file from your device to your compu
 
 #### Available parameters:
 - *File path*. The full path to the file on your device.
-- *New path*. The place on your computer where the file will be saved.
-You can specify a full path with the filename, like `c:\Images\pic.png`, or just a folder, like `/sdcard/Pictures/`. In the second case, the file will be copied with its current name.  
-- *Run as Root*. This setting is needed to send files to folders that require superuser access.  
-When sending a file to such folders, a message containing `Permission denied` or `No such file or directory` is displayed. However, if the file is sent without errors even when this setting is disabled, it is strongly **not recommended** to enable this setting.
+- *New path*. The place on your computer where the file will be saved.  
+You can specify a full path with the filename, like `c:\Images\pic.png`, or just a folder, like `c:\Images\`. In the second case, the file will be copied with its current name.
+- *Run as Root*. This setting is needed to receive files from folders that require superuser access.  
+When receiving a file from such folders, a message containing `Permission denied` or `No such file or directory` is displayed. However, if the file is received without errors even when this setting is disabled, it is strongly **not recommended** to enable this setting.
 _______________________________________________
 ## Useful links
-- [**Getting Root Access**](../../Enterprise/Root)CA
+- [**Getting Root Access**](../../Enterprise/Root)
