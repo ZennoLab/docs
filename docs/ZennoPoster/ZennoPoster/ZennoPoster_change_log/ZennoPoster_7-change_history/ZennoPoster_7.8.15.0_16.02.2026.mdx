@@ -1,0 +1,44 @@
+---
+sidebar_position: 94
+title: "ZennoPoster 7.8.15.0 16.02.2026"
+description: ""
+date: "2026-02-16"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.8.15.0 (16.02.2026)
+
+**Добавлено:**
+
+[+] Обновлен встроенный браузер Chromium до версии 144.0.7559.110.
+
+[+] В API браузера добавлено свойство instance.WsConnectionString, с помощью которого можно получить строку подключения DevTools для запущенного браузера Chromium и ChromiumFromZB.
+
+[+] Настройка «Альтернативная отрисовка браузера Chromium» теперь работает и в ProjectMaker, и в ZennoPoster. Используется новый метод рисования: GPU не отключается, контент страниц отображается (вместо черного экрана), что улучшает анонимность, в том числе при записи проектов.
+Распространяется на:
+— Chromium в ZennoPoster (контент теперь виден вместо черного экрана);
+— Chromium и ChromiumFromZB в ProjectMaker (сайты при записи проектов работают корректнее).
+
+[+] Улучшена обработка пользовательских аргументов командной строки для Chromium:
+для `--enable-features, --disable-features, --enable-blink-features, --disable-blink-features` выполняется слияние пользовательских и встроенных ключей;
+для остальных повторяющихся опций применяется последнее значение;
+поддерживаются аргументы без -- (после отдельного --).
+Пример:
+пользователь указывает: `--enable-features="A1,A2" --disable-features="B1,B2" --testSwitch --testSwitch2=value1 --testSwitch2=value2 -- testArg1`
+итоговая строка запуска: `<встроенные опции> --enable-features="<встроенные>,A1,A2" --disable-features="<встроенные>,B1,B2" --testSwitch --testSwitch2=value2 -- <встроенные аргументы> testArg1`
+
+**Исправлено:**
+
+[\] Для браузера Chromium исправлено заполнение `{-Page.LastNotificationTitle-}` и `{-Page.LastNotificationText-}` в Chromium при запрете нотификаций.
+
+[\] Исправлена работа менеджера HTTP-запросов: ранее были возможны зависания при перезапусках процессов HttpExecutor.
+
+[\] Исправлена загрузка профиль файлов при наличии символа & в пароле или других полях.
+
+[\] Исправлена кодировка логирования в project.LogOptions.LogFile.
+
+[\] Исправлена работа с потоками ZennoBrowser: теперь ZennoPoster7 освобождает поток ZB непосредственно перед завершением попытки, а не после нее.
