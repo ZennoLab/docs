@@ -206,5 +206,13 @@
   "sidebar.tutorialSidebar.category.Устаревшие статьи.link.generated-index.title": {
     "message": "Information for previous versions",
     "description": "The generated-index page title for category Устаревшие статьи in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.История изменений ZennoDroid": {
+    "message": "Change Log",
+    "description": "The label for category История изменений ZennoDroid in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.История изменений ZennoDroid.link.generated-index.title": {
+    "message": "ZennoDroid Change Log",
+    "description": "The generated-index page title for category История изменений ZennoDroid in sidebar tutorialSidebar"
   }
 }

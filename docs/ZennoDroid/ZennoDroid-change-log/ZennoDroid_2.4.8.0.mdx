@@ -1,0 +1,92 @@
+---
+sidebar_position: 98
+title: "ZennoDroid 2.4.8.0"
+description: ""
+date: "2026-02-18"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+18.02.26
+
+**Добавлено:**
+
+[+] **ZD ENTERPRISE.** Добавлен **экшен для эмуляции наличия включенного WiFi**. Используется для прошивок, которые не видят наличия интернет-подключения при отключенном WiFi. В API C# добавлен параметр AddWiFiEmulation для включения эмуляции WiFi.
+
+```csharp
+var filter = new DeviceFilter();
+filter.Country = "us";
+var options = new DeviceOptions();
+options.AddWiFiEmulation = true;
+
+var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options);
+instance.DroidInstance.Settings.SetLSPosedSettings(json);
+```
+
+[+] В API C# добавлен **метод для быстрой смены качества захвата изображения**. Можно выполнять как до подключения к устройству, так и после.
+
+```csharp
+// 0 - Очень низкое качество, 5 - Низкое 10 - Высокое
+instance.DroidInstance.Screen.SetCaptureScreenQuality(10);
+```
+
+[+] **ZD ENTERPRISE.** В API C# добавлен **метод для патча библиотеки Flutter** (ReFlutter), с целью дальнейшего перехвата и анализа трафика в Burp Suite.
+
+```csharp
+// Патч библиотеки
+instance.DroidInstance.App.PatchFlutterLib("tech.httptoolkit.pinning_demo", "10.0.2.2:8083");
+// Восстановление исходной библиотеки
+instance.DroidInstance.App.RestoreFlutterLib("tech.httptoolkit.pinning_demo");
+```
+
+[Пример](https://www.dropbox.com/scl/fi/qck8cl7eiuqy61u508goe/Flutter_Patch_Restore.mp4?rlkey=xfavaqx4twy0atd49sdz4l26b&st=qfbcx200&dl=0) использования. [Приложение](https://github.com/httptoolkit/android-ssl-pinning-demo/releases/latest) для проверки перехвата запросов через Flutter
+
+[+] В API C# добавлен **метод для получения пути к папке установленной программы** (Путь меняющийся при переустановке, имеет формат: `/data/app/~~y085wNyYQQpQwtJ1jpUYOg==/com.android.chrome-rD8qfdRUT680QgUrsaftWQ==`)
+
+```csharp
+return instance.DroidInstance.App.AppDir("com.android.chrome");
+```
+
+[+] Улучшения для **сокрытия использования Frida** на устройстве:
+- Frida заменена на анти-детект форк Florida
+- Изменено имя процесса frida-server
+- Изменено имя вспомогательного процесса re.frida.helper
+- Изменен используемый порт
+
+[+] **Frida** обновлена до 17.5.2 (Florida).
+
+[+] **AdbClient** обновлен до 3.6.16.
+
+[+] **Scrcpy** обновлен до 3.3.4.
+
+[+] **Appium Settings** обновлен до 7.0.13. Для автоматического обновления необходимо удалить установленную версию (io.appium.settings).
+
+[+] **UIAutomator2** обновлен до 9.10.0.
+
+[+] **Adb** обновлен до 36.0.2.
+
+[+] **Clash** обновлен до 1.19.18. Для автоматического обновления необходимо предварительно [удалить](/zennodroid/Android/Enterprise/Clash#автоматическое-обновление) текущую версию.
+
+**Исправлено:**
+
+[\] Исправлена **утечка DNS** при использовании белого и черного списка в режиме проксирования Clash.
+
+[\] Исправлена ошибка **Invalid virtual disk** (InvalidMedium) при запуске LDPlayer.
+
+[\] Устранена ошибка **Не удалось исправить оператора**.
+
+[\] **ZD ENTERPRISE.** Исправлена **работа экшенов** Получить буфер обмена, Задать буфер обмена, а также ввод символов в режиме Native Input на нестандартных прошивках.
+
+[\] **ZD ENTERPRISE.** **Добавлен обход защиты** от получения Root всеми прежними способами в эмуляторе BlueStacks версии 5.22.140 и выше. Обновленный скрипт для получения Root: [BlueStacks 5 Root ver.6.zip](https://www.dropbox.com/scl/fi/h1j1ug2fdlz82pgno3fev/BlueStacks-5-Root-ver.6.zip?rlkey=efh177rcbt336kua1il9tdc49&st=40ys0wun&dl=0) [Инструкция](https://www.dropbox.com/scl/fi/882sb3y4pqbvv681bb0l1/BlueStacks-Root-Magisk-Android-13.mp4?rlkey=6m6tdmt9s71529vh5mqimgg0j&st=yssk1a3h&dl=0).
+
+[\] **ZD ENTERPRISE.** Исправлен **запуск эмулятора BlueStacks** версии 5.22.140 и выше через API C#:
+
+```csharp
+string name = new BlueStacks5Manager().TitleToNameConverter("BlueStacks App Player 17");
+new BlueStacks5(name).Start();
+```
+
+[\] **ZD ENTERPRISE.** Исправлена **неправильная работа фильтра** по Brand в экшене Сгенерировать устройство.
