@@ -1,0 +1,175 @@
+---
+sidebar_position: 136
+title: "ZennoPoster 7.5.0.0 01.09.2021"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.5.0.0 01.09.2021.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1983447063/ZennoPoster+7.5.0.0+01.09.2021"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1983447063/ZennoPoster+7.5.0.0+01.09.2021)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.5.0.0 (01.09.2021)
+
+### New features for Chromium:
+
+[+] Chromium engine version 91 integrated.
+
+[+] Optimized the Chromium engine, reducing resource consumption.
+
+[+] Implemented the argument --ignore-certificate-errors=false (other arguments are currently ignored).
+
+[+] Added native header spoofing.
+
+[+] Implemented instance resizing (SetWindowSize).
+
+[+] Configured Chromium engine logging.
+
+[+] Adapted the Chromium engine for embedding.
+
+[+] Implemented preview thumbnails of Chromium instances in ZennoPoster.
+
+[+] Added user action waiting for the Chromium engine.
+
+[+] Configured proper instance shutdown for Chromium.
+
+[+] Optimized instance tab handling, reducing their load.
+
+[+] Configured instance initialization for Chromium.
+
+[+] Configured hidden operation of Chromium instances.
+
+[+] Implemented viewing of Chromium-based instances in ZennoPoster.
+
+[+] Implemented support for JavaScript dialogs.
+
+[+] Implemented support for browser pop-up windows.
+
+[+] Improved handling of documents/frames.
+
+[+] Implemented browser initialization and cleanup methods when working in ZennoPoster.
+
+[+] Added the ability to select the Chromium engine in project settings.
+
+[+] Implemented support for all proxy types.
+
+[+] Implemented Chromium cache clearing.
+
+[+] Implemented proxy setup in Chromium.
+
+[+] Implemented element search in Chromium.
+
+[+] Implemented tab handling in Chromium.
+
+[+] Implemented JavaScript execution.
+
+[+] Implemented captcha recognition.
+
+[+] Executing events with HTML elements on the page.
+
+[+] Working with tab data (Source/Text/URL/DOM).
+
+[+] Clearing cookies/localStorage/HSTS.
+
+[+] Implemented JS emulations (Headers, Screen Maximize, Audio, Client Rect, WebRTC).
+
+[+] Navigator emulation.
+
+[+] Timezone emulation.
+
+[+] Geolocation emulation.
+
+[+] WebRTC emulation.
+
+[+] Screen emulation.
+
+[+] Headers emulation.
+
+[+] Navigator Plugins emulation.
+
+[+] SpeechSynthesis emulation.
+
+[+] Embedding the Chromium engine into ZennoPoster.
+
+[+] Keyboard emulation.
+
+[+] Mouse emulation.
+
+[+] Support for FullEmulationMouse methods.
+
+[+] Support for all input emulation levels.
+
+[+] Getting values of HTML element attributes.
+
+[+] Setting values of HTML element attributes.
+
+[+] Downloading files through the browser.
+
+[+] Applied profile settings during instance initialization.
+
+[+] Saving and loading the profile folder.
+
+[+] Working with page load state.
+
+[+] Waiting for parts of the page to load.
+
+[+] Debugged stable operation of the Chromium engine.
+
+[+] Eliminated causes of Chromium engine freezes.
+
+[+] Implemented SpeechSynthesis emulation.
+
+### New features:
+
+[+] We significantly improved the program’s automated testing system. Each build is tested for the functionality of all engines (including Chromium), as well as anonymity and performance testing. This will improve the quality of every new release.
+
+[+] Accelerated CEF browser startup.
+
+[+] Added a new “hCaptcha Recognition” cube.
+
+[+] Improved Geolocation emulation in CEF (Chrome).
+
+[+] Added the ability to copy an action ID from the context menu in the ProjectMaker editor.
+
+[+] The CEF browser now natively supports socks5 proxies with authentication. There is no longer a need for the additional p2oxy process.
+
+[+] Improved JS emulation in the CEF (Chrome) browser.
+
+[+] Improved local storage cleanup in the CEF (Chrome) browser.
+
+[+] If ProjectMaker fails to obtain a profile, a clear message is now shown in the log.
+
+[+] JS dialogs in ProjectMaker are now displayed in the tray (fixes the issue when a dialog appears behind ProjectMaker).
+
+### Bug fixes:
+
+[\] Fixed an issue where ZennoPoster could pass geodata different from real browsers.
+
+[\] Fixed JS Features emulation.
+
+[\] Fixed the tooltip in the Random action for the “Custom characters” field.
+
+[\] Fixed an issue where ZennoPoster/ProjectMaker settings could reset unexpectedly.
+
+[\] Fixed issues that caused the Chrome engine to be detected on http://pixelscan.net.
+
+[\] Fixed gzip data handling in the alternative HTTP request method.
+
+[\] Removed unnecessary warnings about a dedicated process when using WebRTC for Firefox52 and Chrome browsers.
+
+[\] Fixed navigator.mimeTypes emulation in the CEF (Chrome) browser.
+
+[\] Fixed navigator.doNotTrack emulation in the CEF (Chrome) browser.
+
+[\] Fixed reCaptcha solving on some websites.
+
+[\] Fixed sending of sec-ch headers in the CEF (Chrome) browser.
+
+[\] Fixed several causes of render process crashes in the CEF (Chrome) browser.
+
+[\] Now, when a project is stopped due to a timeout, the browser remains available for executing BadEnd.

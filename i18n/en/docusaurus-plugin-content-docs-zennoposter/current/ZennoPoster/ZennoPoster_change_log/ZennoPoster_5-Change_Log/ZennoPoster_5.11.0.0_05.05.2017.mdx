@@ -1,0 +1,55 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.11.0.0 05.05.2017"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.11.0.0 05.05.2017.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502988810/ZennoPoster+5.11.0.0+05.05.2017"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502988810/ZennoPoster+5.11.0.0+05.05.2017)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.11.0.0 (05.05.2017)
+
+### New features:
+
+[+] Added a new static BotUI block.
+
+[+] Added an option to execute JavaScript at all times “on all tabs”.
+
+[+] Added the setting “Do not take focus from other processes (some sites may not work correctly)”. This setting helps prevent screen flickering and loss of active application focus while ZennoPoster is running, but you should make sure your projects still work properly, as some websites require correct browser focus switching during operation (for example, VK).
+
+[+] Added the “Open browser if required” option for the C# “Project in Project” method.
+
+[+] Improved handling of network connections.
+
+[+] Added a filter for “Cloudflare proxy” in ProxyChecker. If websites are not behind Cloudflare, Cloudflare IPs will not work as HTTP proxies. This filter helps avoid attempts to work with such sites.
+
+[+] Minor UI improvements.
+
+### Bug fixes:
+
+[\] Fixed sending an empty image instead of a captcha in browser-without-display mode in ProjectMaker.
+
+[\] Fixed right mouse button behavior in the dropdown list.
+
+[\] Fixed instance reload in ProjectMaker.
+
+[\] Fixed some cases where the context menu did not close.
+
+[\] Fixed incorrect exit through the red branch when executing a nested project.
+
+[\] Fixed profile updating in the CodeCreator interface.
+
+[\] Fixed an issue where the first item from the list was not added to the first column of the table.
+
+[\] Fixed an issue where, in ProjectMaker, two empty lines appeared when viewing a list instead of one, even though the source file contained only one empty final line.
+
+[\] Fixed select behavior when choosing the year of birth during registration on some websites when setting the year of birth via a macro.
+
+[\] Fixed an issue where, when loading a profile from a file using the “Load” button in the “Current Profile” window under the “Person” tab, the data was loaded, but under the “Profile” tab the data did not change.

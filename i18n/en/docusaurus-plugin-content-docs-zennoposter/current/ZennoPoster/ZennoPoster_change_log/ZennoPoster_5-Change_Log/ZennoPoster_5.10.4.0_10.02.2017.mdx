@@ -1,0 +1,73 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.10.4.0 10.02.2017"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.10.4.0 10.02.2017.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/503152669/ZennoPoster+5.10.4.0+10.02.2017"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/503152669/ZennoPoster+5.10.4.0+10.02.2017)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.10.4.0 (10.02.2017)
+
+With the new ZennoPoster release, we have prepared two important pieces of news for you!
+
+At your many requests, we have added a virtual mouse to ZennoPoster. It will help you better emulate human behavior on a website—for example, making realistic cursor movements, simulating reading headlines, articles, or images. In this initial release, these features are available via C# snippets.
+
+Here’s how it looks in WebVisor [see here](https://help.zennolab.com/upload/Mojfe0.gif "https://help.zennolab.com/upload/Mojfe0.gif").
+
+Virtual mouse movement methods [❗→ read in the article](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489291804#%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%B4%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%BC%D1%8B%D1%88%D0%B8%3A "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489291804#%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%B4%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%BC%D1%8B%D1%88%D0%B8%3A").
+
+In upcoming releases, we plan to continue developing the virtual mouse features to make it smarter and more convenient for you to use.
+
+We look forward to your suggestions and feedback.
+
+Also, in the current version 5.10.4.0, we have migrated the program to a new .NET Framework. This will allow us to develop our product faster and with higher quality! The program now requires .NET Framework 4.5.2 or higher to run correctly. This means that new versions of the program will not work on Windows XP and Windows Server 2003, as Microsoft ended support for them a year ago and no longer updates their toolsets.
+
+### New features:
+
+[+] Advanced mouse movement emulation added.
+
+[+] Ability to pin projects on the start page added.
+
+[+] Working with JSON and XML now consumes significantly less memory.
+
+[+] CPU usage during project execution optimized.
+
+[+] Log display optimized.
+
+[+] The SetTimeZone method improved; it now enables time zone emulation by default. You can always revert to the default value using the TimezoneWorkMode property.
+
+[+] The instance.Reload() method implemented to restart an instance from code.
+
+### Bug fixes:
+
+[\] Browser window activation fixed; keyboard emulation is handled better.
+
+[\] Errors in project display fixed.
+
+[\] Blurry display of actions in the editor fixed.
+
+[\] Time zone emulation improved; websites (e.g., http://instagram.com, http://textnow.com) now work correctly when time zone emulation is enabled.
+
+[\] Errors when loading a profile and subsequently manipulating it via code fixed.
+
+[\] Opening input settings no longer blocks the UI.
+
+[\] ProjectMaker freezing while working in the Action Builder and selecting a file upload field fixed.
+
+[\] Fixed an issue where start and stop did not always trigger during bulk project selection.
+
+[\] Fixed an issue where the address field was inactive when adding a Proxy source.
+
+[\] The hardwareConcurrency field now has the correct default value.
+
+[\] Fixed a bug where the old profile was displayed in ProjectMaker under the Browser / Human tabs after loading a new profile.
+
+[\] Minor UI bugs fixed.

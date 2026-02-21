@@ -1,0 +1,87 @@
+---
+sidebar_position: 145
+title: "ZennoPoster 7.1.7.0 20.08.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.1.7.0 20.08.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/991494157/ZennoPoster+7.1.7.0+20.08.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/991494157/ZennoPoster+7.1.7.0+20.08.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.1.7.0 (20.08.2020)
+
+### New features:
+
+[+] The profile generation system has been completely revamped. Numerous issues that could cause profiles to be generated with incorrect parameters have been resolved.
+
+[+] The instance viewing system in ZennoPoster has been completely rewritten. The "Show instances" button has been removed. Now each project has an "Instances" tab that displays images of all running project threads in real time, along with their execution status — Preparation, Running, Waiting for user action, Error, Success. To view a specific instance, double-click it; to hide it, click the cross icon. The "Show instances" window has also been rebuilt with the new functionality. Unlike regular instance windows, windows waiting for user action can now be properly minimized and restored from the tray.
+
+[+] The ZennoPoster scheduler now allows you to run a project only within specific time ranges. Enable this option if you want the template not to run outside the desired time range — in that case, after the specified time, attempts will be reset.
+
+[+] You can now hide the project author ID in the encryption block settings.
+
+[+] The Email tool now allows you to edit and delete regular expressions used to search for emails.
+
+[+] A search function has been added to the xPath/JsonPath tester.
+
+[+] The "IF (condition)" and "Custom JS code" actions now include detailed usage tips.
+
+[+] The data input field in the Json operation action has been expanded.
+
+[+] The manual captcha recognition window now includes usage tips.
+
+[+] The Random action for generating random numbers now includes a note that the upper bound is not included in the generated range.
+
+[+] Improved animation of action ports in the ProjectMaker editor.
+
+[+] A new help article has been added: "[❗→ Multithreaded work with Google Sheets (Version 7.1.7.0 and above)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/851673094)".
+
+[+] You can now interrupt a long-running "Run program" action; the launched process will be closed.
+
+[+] The "Check entered data consistency" setting has been disabled and removed.
+
+[+] The log now displays the plugin name and its ID when errors occur.
+
+### Bug fixes:
+
+[\] Fixed an issue in the ProjectMaker editor where empty space could appear inside an action group.
+
+[\] Improved performance when adding a large number of entries to Google Sheets.
+
+[\] Fixed data sorting in Google Sheets.
+
+[\] Fixed errors in Google Sheets where the wrong row could be deleted.
+
+[\] Fixed an issue in the Text Processing action where spaces were handled differently in ProjectMaker and ZennoPoster.
+
+[\] Fixed an issue where enabling the scheduler in ZennoPoster could add extra attempts.
+
+[\] Fixed an issue where the scheduler ignored allowed working time intervals when launching a project.
+
+[\] Fixed scheduler behavior when starting at 00:00.
+
+[\] The scheduler now has a dark background when using the dark theme.
+
+[\] Fixed manual profile saving (Profile -&gt; Save). All profile settings are now saved.
+
+[\] All captcha-related blocks now send the correct Content-Type.
+
+[\] Fixed disappearing variables when editing the "Project in project" action.
+
+[\] Added a note that a program restart is required to apply the "Use GPU" option.
+
+[\] The notification about project version mismatch with the program is now displayed correctly.
+
+[\] When attempting to load a profile from a non-existent path, a more detailed error message is now shown explaining the issue.
+
+[\] The "Deferred rendering of execution process" option has been removed from ProjectMaker settings, as it duplicates the functionality of the "Deferred rendering" button.
+
+[\] Fixed an issue on some websites where they would not load when using an alternative HTTP method and proxy.
+
+[\] Other fixes and improvements.

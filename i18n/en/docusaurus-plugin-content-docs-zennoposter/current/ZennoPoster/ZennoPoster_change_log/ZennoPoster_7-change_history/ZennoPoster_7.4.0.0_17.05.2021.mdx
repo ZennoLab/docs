@@ -1,0 +1,117 @@
+---
+sidebar_position: 137
+title: "ZennoPoster 7.4.0.0 17.05.2021"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.4.0.0 17.05.2021.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1713569803/ZennoPoster+7.4.0.0+17.05.2021"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1713569803/ZennoPoster+7.4.0.0+17.05.2021)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.4.0.0 (17.05.2021)
+
+### New features:
+
+[+] Chrome engine updated to version 88.
+
+[+] The installer’s license selection page now displays the name of the computer where the hardware is currently active.
+
+[+] Added the option “Activate hardware on the current computer” to the installer. It is selected by default, but you can uncheck it if needed — this way, the license activation will remain on the previous machine.
+
+[+] Instance preview updates have been significantly sped up and are now more accurate.
+
+[+] Reduced CPU usage.
+
+[+] Increased project execution speed.
+
+[+] Reduced memory usage.
+
+[+] Faster launch of ProjectMaker and ZennoPoster on some machines.
+
+[+] Improved thread execution stability in ZennoPoster.
+
+[+] In ProjectMaker, the Regular Expression Builder now allows inserting content from a variable.
+
+[+] In ProjectMaker settings, under the Execution tab, added a checkbox: Search for a project with the .zp extension when executing the “Project in project” action. If the “Project in project” action uses an old-format project with the .xmlz extension and it is not found, a project with the same name but the new .zp extension will be searched for.
+
+[+] Added the ability to create a variable in the Switch action in ProjectMaker.
+
+[+] In ProjectMaker and ZennoPoster settings, the descriptions of the settings save/restore processes now include the path where the settings are saved and from where they are restored.
+
+[+] In ProjectMaker settings, under the Appearance tab, added a checkbox: Draw rounded corners for actions and groups.
+
+[+] The ReCaptcha recognition cube now supports ReCaptcha3 recognition via CapMonsterCloud.
+
+[+] Refactoring has been carried out to eliminate defects (renaming classes to comply with unified standards as part of quality improvements). The declared public API has not changed. However, if you have ever used undocumented ZP library references in your project code, you may encounter issues.
+
+### Fixed bugs:
+
+[\] Fixed one of the issues that could cause ProjectMaker to slow down during prolonged use (memory leak when opening/closing a large number of projects).
+
+[\] Added recommendations to resolve ZennoPoster and Windows OS UI lag when running a large number of threads with sufficient device resources:
+[❗→ Adjusting the Chrome process thread pool](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1490812931 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1490812931")​
+[❗→ Adjusting the Firefox process thread pool](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1490911246/Firefox "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1490911246/Firefox")​
+
+[\] Fixed an issue where a Lock System notification appeared on some systems when restarting ZennoPoster.
+
+[\] Fixed Google and other services authorization reset.
+
+[\] Fixed an issue where User-Agent spoofing was detected in the ZennoPoster browser.
+
+[\] Fixed an issue where the --proxy-bypass-list argument did not work in the Chrome engine.
+
+[\] Fixed an issue where element resizing did not work on https://sites.google.com/ in the ProjectMaker browser.
+
+[\] Fixed an issue where element coordinates were calculated incorrectly when emulating ClientRect.
+
+[\] Fixed http://tinder.com functionality in the Chrome browser.
+
+[\] Fixed an issue where AvailHeight and InnerHeight had the same value when emulating ScreenMaximize in Chrome desktop.
+
+[\] Fixed an issue where an email was not found in the Accept Mail action.
+
+[\] Fixed an issue where the incoming port did not appear on an action when moving the arrow from the bottom action in a group to the top one.
+
+[\] Now in ProjectMaker, when adding actions to the canvas using hotkeys, the action will be placed under the cursor instead of the top-left corner of the canvas.
+
+[\] Fixed an issue where the alternative request did not pass all cookies.
+
+[\] Fixed an issue where cookies were not displayed in the alternative request in ProjectMaker.
+
+[\] Fixed an issue where a non-existent birth date could be generated in the Profile (for example, February 30, April 31, etc.).
+
+[\] Fixed an issue where images broke in the Chrome engine when spoofing unrelated data.
+
+[\] Fixed an issue where the traffic monitor did not capture all requests in the Chrome engine (and in C#).
+
+[\] In ProjectMaker settings, under the Debug tab, restored the “Reset panels” button that disappeared in ZennoPoster 7.3.0.0.
+
+[\] Fixed the option to execute JS code in all tabs when creating a window and loading a page document in Chrome.
+
+[\] Fixed task execution in the task manager when the “Stop execution outside specified intervals” setting is enabled.
+
+[\] Fixed an issue where ZennoPoster task execution threads did not start when a task was running and the “How many times to run” value was greater than zero.
+
+[\] The insufficient resources notification in ZennoPoster now appears faster and disappears faster when enough resources become available.
+
+[\] Fixed causes of Chrome browser freezes and crashes.
+
+[\] Fixed BatteryManager.level emulation in Chrome.
+
+[\] Fixed an issue where profiles stopped loading after a profile loading error.
+
+[\] Fixed issues with solving ReCaptcha2 on some websites.
+
+[\] VisualStudio: Fixed FullEmulation methods.
+
+[\] VisualStudio: Fixed proxy setup in a project.
+
+[\] VisualStudio: Fixed project.SendToLog.
+
+[\] Fixed sending multipart/report requests via the alternative method.

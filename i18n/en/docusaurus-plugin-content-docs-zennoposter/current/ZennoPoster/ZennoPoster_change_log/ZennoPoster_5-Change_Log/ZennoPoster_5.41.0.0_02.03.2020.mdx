@@ -1,0 +1,85 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.41.0.0 02.03.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.41.0.0 02.03.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494829714/ZennoPoster+5.41.0.0+02.03.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494829714/ZennoPoster+5.41.0.0+02.03.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.41.0.0 (02.03.2020)
+
+### New features:
+
+[+] Chrome Developer Tools have been added to ProjectMaker.
+
+[+] Now, when a ZennoPoster task ends due to a timeout, the instance process is closed if it was used to prevent browser freezes.
+
+[+] The ZennoPoster scheduler now starts only after the program has fully loaded.
+
+[+] Added Instance.FrameRate and Instance.AnimationFrameRate properties. With these new properties, you can control your computer’s resource usage on websites with heavy animations.
+
+[+] Added support for SameSite and Priority cookie parameters in CookieContainer and Chrome. The parameters are saved and loaded in the profile and are also used in all cookie retrieval methods.
+
+[+] A new setting “Limit maximum log file entry size” has been added under Settings → Other. By default, this setting is disabled. Users who work with large amounts of data and do not need a full log are recommended to enable this limit, as it will improve ZennoPoster performance and reduce memory usage.
+
+### Bug fixes:
+
+[\] Fixed multiple causes of Chrome browser freezes and crashes; the browser now runs stably.
+
+[\] Chrome has become more anonymous; many websites such as LinkedIn no longer detect ZennoPoster.
+
+[\] Fixed IndexedDB functionality in Chrome. Now authorization on some websites, such as Tinder, will no longer be lost.
+
+[\] Google authorization now works more reliably.
+
+[\] Fixed full mouse emulation. This resulted in correct display in Yandex Metrica on some websites.
+
+[\] Fixed text selection on a page using FullEmulationMouseClick and FullEmulationMouseMove.
+
+[\] Fixed WebRTC mediaDevices generation for Chrome.
+
+[\] Fixed Chrome freezing on websites with chat bots.
+
+[\] Fixed file uploads on some websites in Chrome.
+
+[\] Fixed referer passing via the page navigation cube in Chrome.
+
+[\] Fixed date emulation; some problematic websites, such as http://smule.com, now work properly.
+
+[\] Fixed issues that caused captchas on websites protected by CloudFlare.
+
+[\] Fixed issues that caused websites protected by Variti not to load.
+
+[\] Fixed page display during combobox redraws in Chrome on some websites.
+
+[\] Now, if there is no connection to the server or similar issues occur, ZennoPoster settings are saved correctly.
+
+[\] Fixed a data loss issue when saving a profile. Now, if problems occur while retrieving data from the browser during profile saving, the action will end with an error. When re-saving the profile, data will not be lost.
+
+[\] Fixed manual file uploads while waiting for user actions in the browser in ZennoPoster.
+
+[\] Fixed dragging arrows in a ProjectMaker project; the project now correctly saves states and responds properly to project changes.
+
+[\] The alternative HTTP request method can now handle malformed cookies.
+
+[\] Fixed multipart handling in the alternative HTTP request method.
+
+[\] Fixed GeoIP database loading.
+
+[\] The Host header for HTTP requests in the traffic monitor is now displayed correctly.
+
+[\] Now, when making HTTP requests via code using the standard method, proxy validity is checked; if the proxy is invalid, the request will not be sent.
+
+[\] Fixed handling of HTTP requests with incorrect Content-Type.
+
+[\] Fixed the advanced log auto-filter for tasks in ZennoPoster.
+
+[\] Other fixes and improvements.

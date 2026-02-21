@@ -1,0 +1,84 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.27.0.0 28.01.2019"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.27.0.0 28.01.2019.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059304/ZennoPoster+5.27.0.0+28.01.2019"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059304/ZennoPoster+5.27.0.0+28.01.2019)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.27.0.0 (28.01.2019)
+
+### New features:
+
+[+] Optimized HTTP request handling: reuse of connections, encryption sessions, etc., where possible. This significantly reduced CPU usage and improved stability (the “Use HTTP Connection Pool” setting is enabled by default. If you experience issues with the new mode in your templates, disable this setting to revert to the previous behavior).
+
+[+] Added the ability to recognize the classic KeyCaptcha type (with rectangles):
+ZennoPoster.CaptchaSpecialRecognition(«KeyCaptchaRects», instance, false);
+
+[+] The “Recognize captcha” action now allows you to send a captcha from a file.
+
+[+] Improved Canvas and WebGL emulation and performance.
+
+[+] Improved ProjectMaker anonymity by allowing you to disable the layer with invisible elements (for example, the “Inspect element” frame).
+
+[+] Added the “Get column” action from a table to a list.
+
+[+] Added the [tab.GoBack()](https://help.zennolab.com/en/v5/zennoposter/5.27.0.0/webframe.html#topic533.html "https://help.zennolab.com/en/v5/zennoposter/5.27.0.0/webframe.html#topic533.html") method for C# code.
+
+[+] Added the [project.GetProxy()](https://help.zennolab.com/en/v5/zennoposter/5.27.0.0/webframe.html#topic1011.html "https://help.zennolab.com/en/v5/zennoposter/5.27.0.0/webframe.html#topic1011.html") method for C# code.
+
+[+] An optional parameter storeCookie has been added to the [instance.ClearCache](https://help.zennolab.com/en/v5/zennoposter/5.27.0.0/webframe.html#topic229.html "https://help.zennolab.com/en/v5/zennoposter/5.27.0.0/webframe.html#topic229.html") method, defaulting to true. If set to false, the method call will also clear cookies. Instead of calling two commands instance.ClearCache(); instance.ClearCookie(), you can now write instance.ClearCache(false). Less code, faster and more reliable.
+
+[+] The “Clear cookies” action will now fail if the cookies are not completely cleared for any reason.
+
+[+] Interface improvements.
+
+### Bug fixes:
+
+[\] Chrome Edition: Fixed an issue with passing the referrer.
+
+[\] Chrome Edition: Fixed an issue with entering digits into fields.
+
+[\] Chrome Edition: Fixed an issue with restoring cookies from a profile.
+
+[\] Chrome Edition: Fixed HTML element search by attributes containing only digits.
+
+[\] Chrome Edition: Restored thumbnails for actions created by the Action Builder.
+
+[\] Chrome Edition: Fixed element search errors.
+
+[\] Chrome Edition: Fixed handling of the \n character.
+
+[\] Fixed an issue where a proxy was not set in a nested project in ZennoPoster.
+
+[\] Fixed a case where the context menu in the ProjectMaker browser might not open.
+
+[\] Interface fixes.
+
+[\] Fixed issues with launching Firefox on some systems.
+
+[\] Fixed some Parsing Assistant errors.
+
+[\] Fixed errors when loading cookies with #HttpOnly\_.
+
+[\] A warning is now logged when attempting to move a non-existent directory.
+
+[\] Fixed cookie clearing behavior for CookieContainer when clearing cookies in the browser.
+
+[\] The GET/POST request action now fails if the proxy is specified incorrectly.
+
+[\] Fixed handling of GET requests with parameters like ?v=&s=1.
+
+[\] Fixed the `{ -Profile.HTTPAccept- }`, `{ -Profile.AcceptLanguage- }`, `{ -Profile.AcceptEncoding- }` macros in GET/POST requests.
+
+[\] Optimized the Action Builder for large pages.
+
+[\] Other fixes.

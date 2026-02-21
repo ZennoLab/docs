@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.15.0.0 24.01.2018"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.15.0.0 24.01.2018.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495386906/ZennoPoster+5.15.0.0+24.01.2018"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495386906/ZennoPoster+5.15.0.0+24.01.2018)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.15.0.0 (24.01.2018)
+
+### New features:
+
+[+] Added extended support for WebGL parameter emulation. See [instance.WebGLPreferences](https://help.zennolab.com/en/v5/zennoposter/5.15.0.0/webframe.html#topic542.html "https://help.zennolab.com/en/v5/zennoposter/5.15.0.0/webframe.html#topic542.html").
+
+[+] Added emulation of the toString() method for JavaScript objects depending on the UserAgent of the emulated browser. Added property bool Instance.UseToStringEmulation `{ get;set; }`.
+
+[+] Added functionality to clear proxies by time if the proxies are initially considered alive. Option in the proxy source settings — “Remove old proxies from the live list on load”.
+
+[+] Added SMS service http://smska.net.
+
+[+] Added SMS service http://5sim.net.
+
+[+] Improvements to logging.
+
+### Bug fixes:
+
+[\] Fixed Firefox 45 startup on some systems.
+
+[\] Fixed cleanup of unused variables.
+
+[\] Fixed browser startup issues in the Demo version.
+
+[\] Fixed the file upload dialog during manual actions in Firefox 52.
+
+[\] Fixed an issue where the ReCaptcha2 action would break the project.
+
+[\] Fixed minor issues when executing JavaScript.
+
+[\] Fixed file deletion when an incorrect FTP server directory was specified.
+
+[\] Fixed freezing during debugging in ProjectMaker.
+
+[\] Minor UI fixes.

@@ -1,0 +1,67 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.29.5.0 28.05.2019"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.29.5.0 28.05.2019.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059211/ZennoPoster+5.29.5.0+28.05.2019"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059211/ZennoPoster+5.29.5.0+28.05.2019)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.29.5.0 (28.05.2019)
+
+### New features:
+
+[+] Added ad blocking in the Chrome engine.
+
+[+] Optimized log performance under a heavy stream of messages.
+
+[+] The log now displays the action ID where the project execution was interrupted due to a timeout.
+
+[+] Added the ability to use DirectX for rendering the ProjectMaker and ZennoPoster interface (to use this feature, add the startup parameter -UseDirectX).
+
+[+] Other performance and interface improvements.
+
+### Bug fixes:
+
+[\] Fixed notext search in Chrome.
+
+[\] Fixed element search by regex in Chrome (now works the same as in Firefox).
+
+[\] Fixed the display of the “Continue execution” button for the WaitForUserAction method in Chrome.
+
+[\] Fixed Speech Recognition preferences in Firefox.
+
+[\] Fixed the GetAllMembersList method (XML and JSON) in ZennoPoster.
+
+[\] Fixed the ZennoPoster.HideInstance method.
+
+[\] Fixed an issue where BotUI was cleared when renaming variables.
+
+[\] Fixed crashes in the template editor in ProjectMaker caused by long text in a note.
+
+[\] Fixed the IF action when quotes are present in the content.
+
+[\] Fixed tables with a large number of columns (more than 701).
+
+[\] Fixed sending empty multipart requests in the ZennoPoster.HTTP.Request POST method.
+
+[\] Fixed a possible incorrect text replacement when a macro does not exist.
+
+[\] Fixed incorrect encoding in the traffic window response.
+
+[\] Fixed working with profiles in CodeCreator.
+
+[\] Fixed generation of the downloaded file name (Page.LastDownloadFile).
+
+[\] Fixed proxy checking against DNSBL lists.
+
+[\] Fixed the ability to remove your own ID from the encryption block in a project.
+
+[\] Other fixes.

@@ -1,0 +1,44 @@
+---
+sidebar_position: 94
+title: "ZennoPoster 7.8.15.0 16.02.2026"
+description: ""
+date: "2026-02-16"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.8.15.0 (16.02.2026)
+
+**Added:**
+
+[+] The built-in Chromium browser has been updated to version 144.0.7559.110.
+
+[+] The browser API now includes the instance.WsConnectionString property, which allows you to obtain the DevTools connection string for a running Chromium and ChromiumFromZB browser.
+
+[+] The “Alternative Chromium browser rendering” setting now works in both ProjectMaker and ZennoPoster. A new rendering method is used: the GPU is not disabled, page content is displayed (instead of a black screen), which improves anonymity, including during project recording.
+Applies to:
+— Chromium in ZennoPoster (content is now visible instead of a black screen);
+— Chromium and ChromiumFromZB in ProjectMaker (websites work more correctly during project recording).
+
+[+] Improved handling of custom Chromium command-line arguments:
+for `--enable-features, --disable-features, --enable-blink-features, --disable-blink-features`, user and built-in flags are merged;
+for other repeated options, the last value is applied;
+arguments without -- are supported (after a separate --).
+Example:
+the user specifies: `--enable-features="A1,A2" --disable-features="B1,B2" --testSwitch --testSwitch2=value1 --testSwitch2=value2 -- testArg1`
+resulting launch string: `<built-in options> --enable-features="<built-in>,A1,A2" --disable-features="<built-in>,B1,B2" --testSwitch --testSwitch2=value2 -- <built-in arguments> testArg1`
+
+**Fixed:**
+
+[\] Fixed filling of `{-Page.LastNotificationTitle-}` and `{-Page.LastNotificationText-}` in Chromium when notifications are blocked.
+
+[\] Fixed the HTTP request manager: previously, freezes could occur when restarting HttpExecutor processes.
+
+[\] Fixed profile file loading when the password or other fields contain the & character.
+
+[\] Fixed logging encoding in project.LogOptions.LogFile.
+
+[\] Fixed handling of ZennoBrowser threads: ZennoPoster7 now releases the ZB thread immediately before the attempt ends, rather than after it.

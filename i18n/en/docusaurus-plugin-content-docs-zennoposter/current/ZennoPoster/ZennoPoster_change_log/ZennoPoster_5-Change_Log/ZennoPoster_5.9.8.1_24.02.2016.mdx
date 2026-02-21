@@ -1,0 +1,45 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.9.8.1 24.02.2016"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.9.8.1 24.02.2016.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502890600/ZennoPoster+5.9.8.1+24.02.2016"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502890600/ZennoPoster+5.9.8.1+24.02.2016)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.9.8.1 (24.02.2016)
+
+### New features:
+
+[+] Added a “Media” action to the browser settings that enables or disables media content (tags &lt;video&gt;, &lt;audio&gt;).
+
+[+] Added a “Use original URL” option to the HTTP GET and POST actions. When enabled, escaped characters are guaranteed to remain unchanged.
+
+[+] Added a “Save local storage” option to profile saving. Also added the methods instance.LoadLocalStorage(string path) and instance.SaveLocalStorage(string path) to load and save local storage to a text file respectively.
+
+[+] Added filters to the “Select sublist” list processing action, similar to the filters in the “Delete lines” action.
+
+[+] Added the ability to use the “Files to upload to server” action for Flash components in a separate process. When recording a template, the “Files to upload to server” action will be created automatically with the “Separate process” flag enabled.
+
+### Bug fixes:
+
+[\] Fixed an issue with installing and running the program when Kaspersky Anti-Virus is present on the system.
+
+[\] Fixed issues with long URLs and file names when downloading files via HTTP requests.
+
+[\] Fixed synchronization of file name generation for HTTP requests.
+
+[\] Fixed certificate handling in ZennoPoster.
+
+[\] Fixed exclusion of columns when saving regex parsing results to a table.
+
+[\] Fixed an issue where Proxifier errors appeared when its profile was updated frequently.
+
+[\] Fixed handling of the %2F character in page URLs.

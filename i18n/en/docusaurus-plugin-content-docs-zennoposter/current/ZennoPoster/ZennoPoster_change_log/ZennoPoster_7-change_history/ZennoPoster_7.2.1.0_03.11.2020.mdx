@@ -1,0 +1,119 @@
+---
+sidebar_position: 143
+title: "ZennoPoster 7.2.1.0 03.11.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.2.1.0 03.11.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1089470469/ZennoPoster+7.2.1.0+03.11.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1089470469/ZennoPoster+7.2.1.0+03.11.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.2.1.0 (03.11.2020)
+
+### New features:
+
+[+] The code editor component has been updated. This improved stability, fixed many minor issues, and enhanced usability.
+
+[+] In ProjectMaker, the Profile window now includes a Cookie tab with the ability to view, filter, edit, and delete entries.
+
+[+] Added the ability to manually sort variables in ProjectMaker: using the cursor or the "Up" and "Down" buttons. Custom order works when column sorting is disabled (click the "Clear sorting" button).
+
+[+] Added the ability to lock profiles when loading them if the profiles were created using a browser engine different from the project engine. To do this, enable the checkbox "Show error when loading incompatible profile" in the Profile Load action. In this case, the project will terminate with an error.
+
+[+] Added the ability to forcibly stop an instance. To do this, right-click the instance, select "Abort", and click "Yes" in the warning window.
+
+[+] The "Notification" action now allows you to specify the message color. Log filtering by color has been added.
+
+[+] Added compatibility checking of C# code with older versions of ZennoPoster. When opening the Encryption block in ProjectMaker, the C# code is compiled, and all compatible ZennoPoster versions are displayed.
+
+[+] You can now add your own SMS services based on common APIs.
+
+[+] Added the ability to disable an action in ProjectMaker via the context menu. The action will be grayed out and will not participate in project execution, including in ZennoPoster.
+
+[+] Swipe has been improved: screen touches are now performed at random locations, not just in the center as before.
+
+[+] Improved anonymity when working with the Chrome engine.
+
+[+] Improved locale and timezone emulation in the Chrome engine.
+
+[+] Faster initial task launch in ZennoPoster.
+
+[+] Reduced CPU and memory usage when starting Chrome.
+
+[+] Added the ability to customize code editor color themes yourself. The SyntaxEditorColors.json configuration file is located in: %AppData%\ZennoLab\ZennoPoster\7\ProjectMaker. Colors for light and dark themes are configured separately, in RGB format or by name.
+
+[+] Added a button for auto-formatting code in ProjectMaker in the context menu, similar to Visual Studio. Hotkey: Ctrl+M.
+
+[+] Now in ProjectMaker, the Action Builder and Element Properties display all attributes for elements.
+
+[+] When creating a variable in an action in ProjectMaker, a window appears: "This variable already exists, would you like to choose another one?" Now, when selecting "No", the variable is set instead of being reset as before.
+
+[+] In ProjectMaker, when resaving a project from the old \.xmlz format to the new \.zp format, if this project is open in ZennoPoster in \.xmlz format, you will be prompted to replace it with \.zp. All input settings and schedule settings for this project will be preserved.
+
+[+] Now, when changing the IP address and it is not in the list of trusted IPs in your Personal Account, instead of a generic error like: "A critical error has occurred. Operation cannot continue and the program will be closed", you will see a specific message: "Add the IP address to the trusted list in the admin panel at [https://userarea.zennolab.com/](https://userarea.zennolab.com/%5B/URL%5D%22. "https://userarea.zennolab.com/%5B/URL%5D%22.")".
+
+[+] The Action Builder now stretches to full width without leaving empty margins on the sides. This allows more useful information to fit on the screen.
+
+[+] Improved visibility of the active tab in the dark theme.
+
+[+] Restored information about the next scheduled project run in ZennoPoster Schedule settings.
+
+[+] Copying the contents of the ExternalAssemblies folder during installation, reinstallation, and updates of ZennoPoster. During installation, if other versions of ZennoPoster are installed and their ExternalAssemblies folders are not empty, you will be prompted to choose which version to copy the contents from.
+
+[+] Added restoration of default fonts if using custom fonts causes the error "Error creating the main ProjectMaker window".
+
+[+] Added a "Login" field for AWM Proxy in the "Proxy services" settings section due to an API update of the proxy service. Now, for proper operation, you must provide not only the API key but also the Login.
+
+### Fixed bugs:
+
+[\] Fixed an issue with JS code execution (Intl.NumberFormat) that caused errors on some websites, such as http://nike.com and Airbnb.
+
+[\] Fixed an issue that caused instance crashes when opening Yandex Mail, the mobile version of VK, and Tinder.
+
+[\] Restored functionality of http://gmx.net and http://mail.com.
+
+[\] Fixed SSL Fingerprint generation for profiles. You can check it here: http://ja3er.com and http://browserleaks.com/ssl
+
+[\] Fixed an issue that could cause infinite scrolling to an element in ZennoPoster.
+
+[\] Fixed regular expressions in the IF action for comparing strings with escaped characters. That is, in most cases, preliminary JavaScript preparation is no longer required when working with the updated IF action.
+
+[\] Fixed coordinate detection when capturing images (DrawAsBitmap and "This is captcha!") in the Chrome browser.
+
+[\] Fixed an issue with duplicate cookies in the traffic monitor when loading a page on some websites.
+
+[\] Fixed ZennoPoster Schedule logic: now, if a scheduled execution time was missed, projects will not run immediately after launching ZennoPoster but will wait until the next scheduled time.
+
+[\] Fixed an issue where new project threads could start while the checkbox "Stop execution outside specified intervals" was enabled in ZennoPoster Schedule.
+
+[\] Fixed line numbering in the error log during code compilation.
+
+[\] Fixed an issue where the code editor worked incorrectly with collapsed regions/classes/methods during step-by-step debugging.
+
+[\] Improved the error message for C# code from the uninformative "Sequence contains no matching element" to "No such variable/Table/Spreadsheet/List".
+
+[\] Fixed an issue when working with databases that caused session accumulation.
+
+[\] Fixed an issue preventing large files from being uploaded.
+
+[\] Fixed an issue that could cause incorrect results for the IF ELSE action under high ZennoPoster load.
+
+[\] Fixed an issue that caused ProjectMaker to freeze when trying to open a new tab using "+".
+
+[\] Fixed an issue that caused ProjectMaker to crash when searching for an email using an incorrect regular expression.
+
+[\] Fixed a freeze occurring during project debugging in ProjectMaker when using project.Profile.CookieContainer.
+
+[\] Fixed an issue where scrollbars remained in tabs for mobile profiles.
+
+[\] Fixed an issue where changing lines associated with the Switch action did not update the Undo/Redo state and the project was not marked as modified.
+
+[\] Restored linking between actions using double-clicks on input/output points.
+
+[\] Fixed an issue where an incorrect data type was sent in a POST request when using an alternative request method.

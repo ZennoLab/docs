@@ -1,0 +1,75 @@
+---
+sidebar_position: 147
+title: "ZennoPoster 7.1.5.0 11.06.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.1.5.0 11.06.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/724566039/ZennoPoster+7.1.5.0+11.06.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/724566039/ZennoPoster+7.1.5.0+11.06.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.1.5.0 (11.06.2020)
+
+### New features:
+
+[+] Added a new action Touch event (new cube). Touch and LongTouch options are available. Classic search, xpath, and coordinate-based calls are supported.
+
+[+] Touch and LongTouch events have been added to the action builder.
+
+[+] In the ProjectMaker browser, a new input mode switch has been added next to the devtools button: send mouse events or touch events. If touch input mode is enabled, touch event cubes will be recorded automatically when project recording is active.
+
+[+] Added Tab.Touch.LongTouch methods in C#.
+
+[+] Improved the performance of existing Touch methods.
+
+[+] Smart Search now works across all functions in ProjectMaker! Search results now display not only cubes but also their options. When selected, a cube with the chosen option will be added to the project. You can do this using Enter, double-click, or drag & drop.
+
+[+] Added a new action — HTTP request. You can choose any request type: Put, Delete, Head, Options, Patch, Trace.
+
+[+] The traffic window now allows you to create actions based on executed requests. A new context menu item “Create action from request” has been added for this purpose.
+
+[+] Significantly improved ProjectMaker interface responsiveness.
+
+[+] Updated the built-in template examples in ProjectMaker — now with comments.
+
+[+] Added a setting Other → Disable project settings recovery dialog.
+
+### Bug fixes:
+
+[\] Fixed issues where the Set Value and Click actions were outlined with a red dashed line when xpath search was specified.
+
+[\] Fixed touch functionality for certain elements.
+
+[\] Fixed the display of the action List operations → Get row → Contains text in ProjectMaker.
+
+[\] Restoring the task list in ZennoPoster now also restores input settings.
+
+[\] ZennoPoster now closes databases more efficiently, reducing RAM usage.
+
+[\] Fixed browser startup and synchronization in ProjectMaker.
+
+[\] Fixed execution of the Plugin action when the project is not saved.
+
+[\] Fixed layout of Select fields in InputSettings.
+
+[\] Fixed ZennoPoster.GetTaskInfo — the method now always returns up-to-date data.
+
+[\] Changed the plugin download folder for purchased templates. The folder named after the template will no longer be deleted.
+
+[\] Fixed profile and CookieContainer handling when switching projects in ProjectMaker.
+
+[\] In the Project in Project action, variables are no longer deleted when renamed.
+
+[\] ProjectMaker now reports project changes when editing the Profile Processing action.
+
+[\] Fixed opening of the browser context menu when executing the “oncontextmenu” call.
+
+[\] Fixed full mouse emulation when working with small elements.
+
+[\] Other fixes and improvements.

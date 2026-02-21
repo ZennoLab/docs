@@ -1,0 +1,49 @@
+---
+sidebar_position: 117
+title: "ZennoPoster 7.7.16.0 01.07.2024"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.7.16.0 01.07.2024.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2743435265/ZennoPoster+7.7.16.0+01.07.2024"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2743435265/ZennoPoster+7.7.16.0+01.07.2024)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.7.16.0 (01.07.2024)
+
+**New features:**
+
+[+] Chromium browser updated to version 126.
+
+[+] In ZennoPoster, a drop-down menu with installed extensions has been added to the user action wait mode for the Chromium browser. Clicking a menu option opens the selected extension window.
+
+[+] Reduced the number of service requests created by ZennoPoster and Chromium browser processes.
+
+[+] The "operAndCountryMode" mode has been added to SMS service settings.  
+In the "SMS Services" cube, a single field is used to configure the operator and country; inside the handlers for this field, one of the following modes is selected: *OnlyOper, OnlyCountry, OperAndCountry, Nothing.  
+Now, for the services SmsActivate, FiveSms, GetSmsOnline, SmsHub, VakSms, VirtualSms, you can override the processing mode of this field via the config in %appdata%\ZennoLab\Configs.  
+Example of a completed line: &lt;add key="operAndCountryMode" value="OperAndCountry" /&gt;  
+For the "OperAndCountry" mode, the format *country [operator] is used, meaning you first specify the country and then the optional "operator" parameter, which is entered after the country separated by a space.
+
+**Bug fixes:**
+
+[\] Improved the stability of the "Navigate" cube in the Chromium browser when navigating within a page.
+
+[\] Improved the stability of project execution in ZennoPoster.
+
+[\] Fixed many causes of errors when retrieving cookies from the Chromium browser and other instance access errors.
+
+[\] Improved the stability of the "Activate Extension" cube.
+
+[\] Improved the menu display in the Chromium browser devtools window.
+
+[\] Now, in the Chromium browser, when executing "Navigate", any open extension popup is closed.
+
+[\] Fixed a significant reduction in browser window size when opening it in ZennoPoster or when creating a new tab in an already open browser window.
+
+[\] The "Save", "Restore", and "Reset Settings" buttons located in "Settings -&gt; Other" now work correctly.

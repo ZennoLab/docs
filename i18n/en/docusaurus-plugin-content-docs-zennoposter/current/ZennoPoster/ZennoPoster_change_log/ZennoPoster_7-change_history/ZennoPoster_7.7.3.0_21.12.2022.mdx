@@ -1,0 +1,85 @@
+---
+sidebar_position: 130
+title: "ZennoPoster 7.7.3.0 21.12.2022"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.7.3.0 21.12.2022.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2253127681/ZennoPoster+7.7.3.0+21.12.2022"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2253127681/ZennoPoster+7.7.3.0+21.12.2022)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.7.3.0 (21.12.2022)
+
+**New features:**
+
+[+] Chromium updated to version 106.
+
+[+] Full support for isolated frames in Chromium has been implemented. You can enable it using the `--enable-site-isolation-trials` argument.
+
+[+] Added the “Site Isolation (beta)” option to the project settings for convenient enabling of browser isolation mode.
+
+[+] Handling of external protocols in Chromium, such as mailto, has been disabled.
+
+[+] Improved emulation of local WebRTC addresses.
+
+[+] Changes made to IP emulation in WebRTC candidate output. Chromium’s port now shows the port it generated itself; IP addresses are substituted with those you entered or those obtained when setting up a proxy. The candidate output no longer contains discrepancies compared to the original Chromium.
+
+[+] The “View Page” action for mobile profiles is now performed using touch events.
+
+[+] Added support for IPv6 proxies for automatic outgoing IP detection in the “Set Proxy” action, and corresponding services have been added to the default ProxyChecker settings.
+
+[+] The `{ -Project.Directory- }` macro has been re-added as the default value in appropriate action settings fields.
+
+**Bug fixes:**
+
+[\] CloudFlare, SoundCloud, and FunCaptcha now work correctly in standard mode without isolation.
+
+[\] Fixed Chromium operation on the website [<u data-renderer-mark="true">nike.com</u>](http://nike.com/ "http://nike.com/").
+
+[\] Fixed Chromium crashes on some websites, for example [<u data-renderer-mark="true">gmx.com</u>](http://gmx.com/ "http://gmx.com/").
+
+[\] Fixed in-document navigation handling. Text verification now works correctly on Gmail.
+
+[\] Fixed handling of service worker crashes that caused page loading to hang, for example on [<u data-renderer-mark="true">coinmarket</u>](https://coinmarketcap.com/ "https://coinmarketcap.com/").
+
+[\] Fixed file upload handling on some websites, for example [<u data-renderer-mark="true">www.photopea.com</u>](http://www.photopea.com/ "http://www.photopea.com/").
+
+[\] Fixed causes of the original browser header appearing when zoom levels differ from 100%.
+
+[\] Fixed a Chromium memory leak when working with [<u data-renderer-mark="true">web.telegram.org</u>](http://web.telegram.org/ "http://web.telegram.org/").
+
+[\] Fixed virtual mouse display. Previously, the cursor position could be inaccurate.
+
+[\] Fixed FullEmulation input methods when PageScale is not equal to one.
+
+[\] Fixed Delete key emulation in Chromium. Example usage: instance.ActiveTab.KeyEvent("Delete", "press","").
+
+[\] Fixed English and Chinese interface translations.
+
+[\] The “Clear Cache” action now also clears browsing history in Chromium.
+
+[\] Fixed the virtual cursor position in ProjectMaker when using full mouse emulation actions.
+
+[\] Fixed touch event handling in isolated frames in Chromium.
+
+[\] When emulating mobile devices, all scrolling on the page and in all frames is now displayed as mobile in Chromium.
+
+[\] Fixed browser display with a mobile profile.
+
+[\] Fixed the “Update Profile” action. The action will now reliably return a profile with a suitable device and updated browser, or return nothing.
+
+[\] Fixed super Canvas emulation on some websites.
+
+[\] Fixed ProjectMaker freezing when working with the extended settings view of the “Accept Mail” action.
+
+[\] Fixed the quick navigation window for actions in large projects.
+
+[\] Fixed an issue where launching the browser in ProjectMaker would cause the program window to shrink significantly.
+
+[\] Fixed debugging of C# code in actions.

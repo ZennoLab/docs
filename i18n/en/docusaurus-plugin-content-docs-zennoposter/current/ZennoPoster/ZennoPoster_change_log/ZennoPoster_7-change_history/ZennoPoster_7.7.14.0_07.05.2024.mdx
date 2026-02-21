@@ -1,0 +1,40 @@
+---
+sidebar_position: 119
+title: "ZennoPoster 7.7.14.0 07.05.2024"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.7.14.0 07.05.2024.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2627108866/ZennoPoster+7.7.14.0+07.05.2024"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2627108866/ZennoPoster+7.7.14.0+07.05.2024)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.7.14.0 (07.05.2024)
+
+**New features:**
+
+[+] Chromium browser updated to version 124.
+
+[+] Added the “Alternative Chromium browser rendering” option in Settings -&gt; Instance.  
+The option applies to ZennoPoster only. When enabled, Chromium switches its rendering mode. In this mode, the thumbnail rendering in the Instances tab changes, and browser rendering in windows is disabled (black windows).  
+Alternative rendering should fix the following issues:
+
+- System crashes/reboots/BSODs or memory leaks related to the combination of DWM and drivers.
+- GPU usage for rendering Canvas and WebGL (in the standard rendering mode, a software renderer is used regardless of whether a graphics card is present).
+
+**Bug fixes:**
+
+[\] Fixed setting the characters &, &lt;, &gt;, ', \ in profile values in the “Profile Operations” cube.
+
+[\] Fixed the display of the context menu for the Chromium browser devtools window.
+
+[\] Fixed setting multiple files at once for upload via the “Files for upload to server” cube in the Chromium browser.
+
+[\] Now, when adding a plugin to ProjectMaker via the project publishing interface, it becomes immediately available in the list under Settings -&gt; Plugins.
+
+[\] In ProjectMaker, fixed the display of plugin cube settings when switching to it after deleting another cube.

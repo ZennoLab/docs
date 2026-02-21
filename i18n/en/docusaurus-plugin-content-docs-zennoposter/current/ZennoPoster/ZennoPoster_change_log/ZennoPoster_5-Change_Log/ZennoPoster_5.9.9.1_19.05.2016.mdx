@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.9.9.1 19.05.2016"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.9.9.1 19.05.2016.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502988859/ZennoPoster+5.9.9.1+19.05.2016"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502988859/ZennoPoster+5.9.9.1+19.05.2016)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.9.9.1 (19.05.2016)
+
+### New features:
+
+[+] A new “Hotkeys” tab has been added to the program settings. All available key combinations can now be edited.
+
+[+] A new “Imap Folders” field has been added to the “Confirm Email” action. If the field is empty, the action works as before, downloading email from the Inbox and Spam folders. If folders are selected in the field, emails will be downloaded from the selected folders. A corresponding optional field “imapFolderNames” has been added to the ZennoPoster.MailConfirm method.
+
+[+] A new execution option, “Run on page load,” has been added to the “JavaScript code” action. With this option, the script runs during the DOMContentLoaded event. There are three script execution modes: once, every time on a specific domain, or always.
+
+[+] A “Do not return a value” flag has been added to the “Custom C# code” action.
+
+### Bug fixes:
+
+[\] Fixed the size of the SMS Services action settings window — all elements are now displayed correctly.
+
+[\] Waiting for an HTML element (in the GET, SET, RISE, Captcha actions) is no longer performed if there is an exit via the red branch or if the action is optional.
+
+[\] Improved program stability.
+
+[\] Fixed clearing of HTTP authentication.

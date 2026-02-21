@@ -1,0 +1,49 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.11.4.0 29.06.2017"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.11.4.0 29.06.2017.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502890500/ZennoPoster+5.11.4.0+29.06.2017"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502890500/ZennoPoster+5.11.4.0+29.06.2017)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.11.4.0 (29.06.2017)
+
+### New features:
+
+[+] Added localization support in BotUI. Now you can create bot interfaces in different languages without having to make multiple projects.
+
+[+] The ReCaptcha2 recognition action now supports captchas with auto-submit.
+
+[+] The ReCaptcha2 recognition action now supports working on pages with multiple captchas — only the visible one will be solved.
+
+[+] Added the ability to emulate a list of audio/video devices in WebRTC. To emulate devices, set the Instance.WebRTCWorkMode property to WebRTCMode.Emulate. To get the list of devices, use the Instance.GetWebRTCDevices() method, which returns a collection of WebRtcDeviceItem objects. You can add devices using the Instance.ShowWebRTCDevice method and hide them using Instance.HideWebRTCDevice. To configure a device, you need to fill in the WebRtcDeviceItem fields: type, name, and device ID. The device ID usually has the format `{0.0.0.00000000}``{00000000-0000-0000-0000-000000000000}`. All WebRTC settings, including work mode, devices, and addresses, can now be saved to a profile. If you physically change the list of devices, you need to click “From the beginning” in ProjectMaker or start a new task in ZennoPoster.
+
+[+] Added the ability to manage the fonts available to the browser (Flash font emulation is not supported yet). To get the list of fonts, use the Instance.GetFonts() method. You can add fonts using Instance.ShowFont and hide them using Instance.HideFont. If you add a font that is not installed on your computer, it will not be displayed, but it will remain saved in the current instance’s font list. If that font later appears on your computer, it will be shown in the browser. The font list can be saved to a profile; if you have not changed the list, the default font list will be used. To emulate fonts, you must use a “Dedicated process,” since the emulated list is not shared between instances.
+
+[+] Minor UI improvements (action search added; in ProjectMaker you can configure hotkeys for quickly creating actions).
+
+[+] Added an option Settings → Execution → Safely save files (enabled by default). Now lists and tables will not get corrupted during unexpected server reboots. This option slightly slows down data operations; if you prefer speed over safety, you can disable it.
+
+### Bug fixes:
+
+[\] Fixed incorrect behavior of instance.AddToTitle.
+
+[\] Fixed the behavior of ChangeRequest and ChangeResponse in ZennoPoster and ProjectMaker when the traffic view window is disabled.
+
+[\] Fixed issues with incorrect display of \r and \r\n in the regular expression builder.
+
+[\] Fixed an issue with corruption of the Proxifier profile.
+
+[\] Fixed a false error message when applying a watermark.
+
+[\] Fixed the Chinese JsdatiCaptcha captcha recognition service.
+
+[\] Fixed issues where the advanced mail action editor would crash.

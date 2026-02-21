@@ -1,0 +1,77 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.10.1.0 10.11.2016"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.10.1.0 10.11.2016.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502857775/ZennoPoster+5.10.1.0+10.11.2016"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502857775/ZennoPoster+5.10.1.0+10.11.2016)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.10.1.0 (10.11.2016)
+
+### New features:
+
+[+] Added geolocation emulation.
+
+[+] Added proxy support in mail.
+
+[+] Improved connection handling in the browser.
+
+[+] Improved responsiveness of the ProjectMaker interface.
+
+[+] Improved browser anonymity (better clearing of ETag, HTTP Auth, and TLS Ticket).
+
+[+] UI improvement in ProjectMaker. You can drag arrows when multiple arrows connect to one action at the same point.
+
+[+] UI improvement in ProjectMaker. The resulting variable/list/table is displayed more clearly on the action.
+
+[+] UI improvement in ProjectMaker. Do not return a value in the Own Code → C# action enabled by default.
+
+[+] The availability of ProxyChecker functionality in ZennoPoster is now determined by the ZennoPoster version release date. If ProxyChecker updates are paid for and the update expiration date is later than the ZennoPoster release date, then ProxyChecker functionality will be available in ZennoPoster.
+
+[+] The instance restart action now works in ProjectMaker the same way as in ZennoPoster.
+
+### Bug fixes:
+
+[\] Fixed some issues with mail.
+
+[\] Fixed issues with launching ProjectMaker on slow computers.
+
+[\] Fixed an error when exporting input settings. The help field was lost during export.
+
+[\] Fixed the launch of Flash processes and other plugins when they are not needed.
+
+[\] Fixed instance crashes on some websites.
+
+[\] Fixed saving credentials for HTTP Auth.
+
+[\] Fixed some ProjectMaker freezing issues.
+
+[\] Fixed issues with slow keyboard emulation in ProjectMaker.
+
+[\] Fixed element inspection when the browser zoom is less than 100%.
+
+[\] Fixed issues that caused blurry action display.
+
+[\] Fixed proxy setup via the “Browser” menu; now the macro `{ -Project.Proxy- }` returns the correct proxy after setting it manually.
+
+[\] Fixed switch display issues.
+
+[\] Fixed an issue where traffic monitoring stopped working after restarting the instance.
+
+[\] Fixed character escaping issues in advanced spintax.
+
+[\] Fixed a bug where the last element was not taken when selecting a random element via Text Processing → Regexp.
+
+[\] Fixed an error when copying actions from other projects with non-existent variables.
+
+[\] Fixed C# debugging when project.Json and project.Xml blocks are present.
+
+[\] Fixed proxying of child instance processes when using Proxifier.

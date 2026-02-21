@@ -1,0 +1,103 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.42.0.0 16.04.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.42.0.0 16.04.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/566624271/ZennoPoster+5.42.0.0+16.04.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/566624271/ZennoPoster+5.42.0.0+16.04.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.42.0.0 (16.04.2020)
+
+### New features:
+
+[+] Added the ability to stop C# code execution. When you press Stop, if execution does not finish within 5 seconds, a dialog window will appear prompting you to abort the C# code.
+
+[+] Coordinate calculations for full emulation are now based on coordinates relative to the tab rather than the entire page, which resolves many issues with full emulation.
+
+[+] Added the Tab.FullEmulationMouseTabPosition property, which provides the coordinates of the virtual mouse relative to the tab, i.e., the visible area of the page.
+
+[+] In case of a ZennoPoster crash or other issues with the saved task list, a task list recovery form is now displayed.
+
+[+] Added brotli support for the alternative HTTP request mode.
+
+[+] Added navigator.deviceMemory emulation in Chrome.
+
+### Bug fixes:
+
+[\] Fixed Accept-Language emulation in Chrome.
+
+[\] Fixed action recording in ProjectMaker when using the Chrome browser.
+
+[\] Fixed hiding and displaying fonts in Chrome.
+
+[\] Fixed localStorage behavior in Chrome. The issue caused Telegram authorization to reset.
+
+[\] Fixed POST request handling when using the alternative HTTP request method.
+
+[\] Fixed the issue of tasks disappearing in ZennoPoster.
+
+[\] Fixed freezing of the alternative HTTP request method in some cases.
+
+[\] Fixed header order in the alternative HTTP request method. Also fixed header order when displayed in the traffic monitor.
+
+[\] Now, if Headers is enabled in the browser profile but Navigator is disabled, the UserAgent field is emulated. This is required for HTTP requests to work.
+
+[\] The Developer Tools button is hidden for Firefox.
+
+[\] Now, when there are server connection errors at ProjectMaker startup, an appropriate message is shown instead of a main window creation error.
+
+[\] Fixed an error when opening the file selection dialog in action settings if the field contains an empty variable.
+
+[\] Fixed ZennoPoster UI freezing during task list autosave.
+
+[\] It is no longer possible to create a list or table with a trailing space.
+
+[\] Now, tasks from the Task Manager in ZennoPoster no longer disappear from the general task list.
+
+[\] Fixed Instance.FormTitle behavior for Chrome and Firefox.
+
+[\] Fixed debugging of C# code when using the Table methods: Clear, DeleteColumn, DeleteRow, DeleteRows, Bind, and List.SetItem.
+
+[\] Removed the “Reduce memory usage for C#” setting, which caused issues with C# code debugging.
+
+[\] Added the missing scroll bar in the Run Program action in ProjectMaker.
+
+[\] Now the line number with an error in C# code is determined correctly.
+
+[\] Fixed the disappearance of the virtual mouse cursor in some cases.
+
+[\] Fixed causes of hotkeys stopping working.
+
+[\] When loading a profile from an incompatible browser, a warning is now shown in the log. For example, when loading a Firefox profile in Chrome and vice versa.
+
+[\] Added the missing file selection button in the “Solve captcha” action.
+
+[\] Fixed default values of the window.screenLeft and window.screenTop parameters for Chrome.
+
+[\] Now the HTTP request method selection also affects C# code.
+
+[\] Fixed full emulation methods in headless mode for Chrome.
+
+[\] Fixed browser tab synchronization issues that caused websites to load in the wrong tab.
+
+[\] Fixed instance and ProjectMaker synchronization issues.
+
+[\] Text search now finds text in the “Switch” action.
+
+[\] Fixed typos in the ZennoPoster task XML format.
+
+[\] Fixed project renaming in ZennoPoster.
+
+[\] Fixed the text translation action using GoogleTranslateViaWebInterface.dll.
+
+[\] Fixed possible causes of ProjectMaker freezing when closing projects or the program.
+
+[\] Other fixes and improvements.

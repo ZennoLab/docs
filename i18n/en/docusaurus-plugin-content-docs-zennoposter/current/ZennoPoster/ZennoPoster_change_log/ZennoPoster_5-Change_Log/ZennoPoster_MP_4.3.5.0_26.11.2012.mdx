@@ -1,0 +1,93 @@
+---
+sidebar_position: 1
+title: "ZennoPoster MP 4.3.5.0 26.11.2012"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster MP 4.3.5.0 26.11.2012.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506036290/ZennoPoster+MP+4.3.5.0+26.11.2012"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506036290/ZennoPoster+MP+4.3.5.0+26.11.2012)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster MP 4.3.5.0 (26.11.2012)
+
+### New features:
+
+[+] Windows 8 compatibility (experimental).
+
+[+] Faster instance loading and debugging.
+
+[+] Reduced memory usage for instances and ProxyChecker.
+
+[+] Copying lists, tables, and input settings.
+
+[+] File downloads via the HTTP GET action.
+
+[+] tasks.dat rotation — the last 30 task setting changes are now available, so you can roll back to a previous version if the settings are corrupted for some reason.
+
+[+] Adjusted training algorithm in CapMonster.
+
+[+] Download multiple emails at once for further processing (ZennoPoster.BulkMailDownload).
+
+[+] Upload a directory via FTP without creating the root directory (ZennoPoster.FtpUploadDirectory).
+
+[+] Ability to create a directory on FTP (ZennoPoster.FtpCreateDirectory).
+
+[+] Change access permissions for FTP items (ZennoPoster.FtpChmode).
+
+[+] Updated C# macro functions FileGetLines and FileGetBlocks — they can now return more than one line, for example, 10 random lines from a file.
+
+[+] C# function for generating random text: TextProcessing.RandomText, аналог старого Random.Text.
+
+[+] Added a “Cancel” button to the dialog when closing ZennoPoster.
+
+### Bug fixes:
+
+[\] When selecting Russia in the profile, some browser headers remained in English.
+
+[\] Image flickering on some resources.
+
+[\] Saving website authorization data when working through a proxy with authentication.
+
+[\] Fixed table handling with empty cells.
+
+[\] Fixed the ZennoPoster.GetNewInstance function.
+
+[\] Fixed several mail-related bugs.
+
+[\] Removed several possible causes of instance freezes.
+
+[\] Fixed false InternalProtection error & Debuger found errors.
+
+[\] You can now set the execution count to 1 for instance restart.
+
+[\] Fixed keystrokes emulation when the text contains line breaks.
+
+[\] February 30 is no longer generated.
+
+[\] ZennoBox failed to load large projects.
+
+[\] Action properties windows did not respond to close attempts during debugging.
+
+[\] Changes from some lists and tables were not loaded.
+
+[\] When creating a variable in a table action, it was not auto-selected.
+
+[\] In the editor, settings not in focus closed only on the second attempt.
+
+[\] Executing a bat file created in ZennoPoster returned result 1 on success instead of 0.
+
+[\] Action screenshots were not deleted when the actions were removed from the project.
+
+[\] The Name did not change after loading a profile from a file.
+
+[\] Fixed row count detection in lists and tables with empty rows.
+
+[\] Fixed causes of CheckingProcessor.exe crashes on some machines.
+
+[\] Minor fixes.
