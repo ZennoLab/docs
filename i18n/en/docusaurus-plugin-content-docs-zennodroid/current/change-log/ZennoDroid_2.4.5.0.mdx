@@ -1,0 +1,58 @@
+﻿---
+sidebar_position: 101
+title: "ZennoDroid 2.4.5.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.5.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3867934732/ZennoDroid+2.4.5.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3867934732/ZennoDroid+2.4.5.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.4.5.0
+
+### Added:
+
+[+] **ZD ENTERPRISE.** The ZennoDroid module has been updated to version 1.11.1. Device TAC spoofing has been added. TAC is a unique mobile device model code. It is part of the IMEI (the first 8 digits) that can be requested by regular (non-system) applications.
+
+[+] **ZD PRO.** Added the ability to change the emulator type in use without restarting Project Maker and ZennoDroid.
+
+[+] The Install Apk action now supports caching installation files. Caching is available for apk and bundle apk (apks, xapk, apkm). If you need to reinstall applications, this allows you not to send the file to the device each time, significantly reducing network load. If a file has not been used for more than 3 days, it is automatically deleted.
+
+[+] **ZD ENTERPRISE.** The “Install Apk” action now allows installing files with superuser rights. Installation of apk and bundle apk (apks, xapk, apkm) is supported. This feature can be used to install applications on phones with MIUI firmware to avoid the pop-up installation prompt.
+
+[+] Added the ability to choose the display format (landscape/portrait) on the Instances and Instance Preview tabs.
+
+[+] Added the ability to save a project as a plugin.
+
+[+] Updated the component responsible for text fields in Project Maker. The new component supports a larger number of characters, including emoji. It also supports C# syntax up to version 13 of the language. Please note that the C# compiler currently supports only language version 7.3, which may cause some inconvenience.
+
+[+] ScrCpy updated to version 3.3.2.
+
+[+] Clash updated to version 1.19.13.
+
+[+] BoxForRoot updated to version 1.10.2 (scripts for Clash).
+
+### Fixed:
+
+- **ZD ENTERPRISE.** Fixed an issue with setting and retrieving the clipboard on some Samsung phones (S9, S10);
+- **ZD PRO.** Fixed an issue where changing the emulator type did not work on the first program launch;
+- **ZD PRO.** Fixed an issue where, after changing the emulator type, the Frida and Installed Applications menus were inactive;
+- Fixed an error when restoring a backup: RestoreAppData The input string had an incorrect format;
+- Fixed an issue that caused the ADB server to crash when installing large applications;
+- Fixed errors in the device model database;
+- Fixed instance display when switching between the Instance Preview and Instances tabs;
+- Fixed parsing of negative coordinates in the Element Tree;
+- Fixed a bug that caused the program to crash when using very low screen resolution on the device;
+- Fixed display of instance previews when changing the format after launching a template;
+- Fixed incorrect conversion of the "Swipe Emulation" action into C# code.
+
+### Press releases published on our forum:
+
+- ZD ENTERPRISE
+- ZD PRO

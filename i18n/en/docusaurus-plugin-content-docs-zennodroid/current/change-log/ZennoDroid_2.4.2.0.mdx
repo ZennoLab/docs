@@ -1,0 +1,65 @@
+﻿---
+sidebar_position: 104
+title: "ZennoDroid 2.4.2.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.2.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3831267329/ZennoDroid+2.4.2.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3831267329/ZennoDroid+2.4.2.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.4.2.0
+
+### Added:
+
+[+] A new traffic proxying method has been added: Clash.
+
+[+] A new method — Clash — has been added to the Android settings tab under traffic proxying. Additional proxy settings (DNS, IP address) have been moved to the "Set Proxy" action.
+
+[+] The "Set Proxy" action now allows you to choose the traffic proxying method:
+
+- Default (uses the method specified on the settings page).
+- Proxifier.
+- Redsocks.
+- Clash.
+
+[+] When using Clash in the "Set Proxy" action, you can specify:
+
+- Local IP address.
+- Local IPv6 address.
+- DNS server addresses (comma-separated).
+- Application whitelist (comma-separated). Only the apps listed will be proxied; the rest will use a direct connection.
+- Application blacklist (comma-separated). The listed apps will use a direct connection; the rest will be proxied.
+
+You can use either a whitelist or a blacklist at a time.
+
+[+] When using Clash, IPv6 proxies are supported.
+
+[+] In Clash mode, when using a SOCKS proxy, all UDP traffic is automatically proxied (provided the proxy supports UDP). When checking for IP leaks via WebRTC, either the proxy address or an undefined address will be displayed (if the proxy does not support UDP or when using an HTTP proxy).
+
+[+] New API methods have been added for setting a proxy with the ability to specify additional settings (proxying method, DNS, IP addresses, application lists).
+You can view usage examples of these settings by converting the "Set Proxy" action to C# code (via the context menu).
+*instance.DroidInstance.Proxy.SetProxy(string proxy, IDroidProxySettings settings);
+
+### Fixed:
+
+[\] Fixed a bug that could cause the connected devices monitor to stop working and device status information to stop updating.
+
+[\] A new option, "Use updated element search method," has been added to the project execution settings.
+This option fixes a bug where, in classic element search mode, the first condition in the list was not taken into account (when two or more conditions were present). The action could complete successfully even if the first condition was not met. Use with caution. The logic of older templates may change.
+
+[\] Fixed C# conversion for the "Delete Accounts" action.
+
+[\] Fixed C# conversion for the "Get Accounts" action.
+
+[\] Fixed an error when executing JavaScript in Microsoft Bing Search.
+
+[\] Fixed the "Set Proxy" action when an empty string was specified as the proxy address.
+
+[\] Fixed freezing of ProjectMaker and ZennoDroid when closing the application.

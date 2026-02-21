@@ -1,0 +1,92 @@
+---
+sidebar_position: 98
+title: "ZennoDroid 2.4.8.0"
+description: ""
+date: "2026-02-18"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+18.02.26
+
+**Added:**
+
+[+] **ZD ENTERPRISE.** Added an **action to emulate enabled WiFi**. Used for firmware that does not detect an internet connection when WiFi is disabled. In the C# API, the AddWiFiEmulation parameter has been added to enable WiFi emulation.
+
+```csharp
+var filter = new DeviceFilter();
+filter.Country = "us";
+var options = new DeviceOptions();
+options.AddWiFiEmulation = true;
+
+var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options);
+instance.DroidInstance.Settings.SetLSPosedSettings(json);
+```
+
+[+] Added a **method in the C# API for quickly changing image capture quality**. You can use it both before connecting to the device and after.
+
+```csharp
+// 0 - Very low quality, 5 - Low, 10 - High
+instance.DroidInstance.Screen.SetCaptureScreenQuality(10);
+```
+
+[+] **ZD ENTERPRISE.** Added a **method in the C# API to patch the Flutter library** (ReFlutter) for further interception and analysis of traffic in Burp Suite.
+
+```csharp
+// Patch the library
+instance.DroidInstance.App.PatchFlutterLib("tech.httptoolkit.pinning_demo", "10.0.2.2:8083");
+// Restore the original library
+instance.DroidInstance.App.RestoreFlutterLib("tech.httptoolkit.pinning_demo");
+```
+
+[Example](https://www.dropbox.com/scl/fi/qck8cl7eiuqy61u508goe/Flutter_Patch_Restore.mp4?rlkey=xfavaqx4twy0atd49sdz4l26b&st=qfbcx200&dl=0) of usage. [Application](https://github.com/httptoolkit/android-ssl-pinning-demo/releases/latest) to test request interception via Flutter
+
+[+] Added a **method in the C# API to get the path to the installed app folder** (The path changes upon reinstallation and has the format: `/data/app/~~y085wNyYQQpQwtJ1jpUYOg==/com.android.chrome-rD8qfdRUT680QgUrsaftWQ==`)
+
+```csharp
+return instance.DroidInstance.App.AppDir("com.android.chrome");
+```
+
+[+] Improvements for **hiding Frida usage** on the device:
+- Frida replaced with the anti-detect fork Florida
+- Changed the frida-server process name
+- Changed the re.frida.helper helper process name
+- Changed the port used
+
+[+] **Frida** updated to 17.5.2 (Florida).
+
+[+] **AdbClient** updated to 3.6.16.
+
+[+] **Scrcpy** updated to 3.3.4.
+
+[+] **Appium Settings** updated to 7.0.13. For automatic update, you need to remove the installed version (io.appium.settings).
+
+[+] **UIAutomator2** updated to 9.10.0.
+
+[+] **Adb** updated to 36.0.2.
+
+[+] **Clash** updated to 1.19.18. For automatic update, you must first [remove](/zennodroid/Android/Enterprise/Clash#автоматическое-обновление) the current version.
+
+**Fixed:**
+
+[\] Fixed **DNS leak** when using whitelist and blacklist in Clash proxy mode.
+
+[\] Fixed the **Invalid virtual disk** (InvalidMedium) error when launching LDPlayer.
+
+[\] Fixed the **Failed to fix operator** error.
+
+[\] **ZD ENTERPRISE.** Fixed the **actions** Get Clipboard, Set Clipboard, as well as character input in Native Input mode on non-standard firmware.
+
+[\] **ZD ENTERPRISE.** **Added a bypass for protection** against obtaining Root by all previous methods in the BlueStacks emulator version 5.22.140 and above. Updated script for obtaining Root: [BlueStacks 5 Root ver.6.zip](https://www.dropbox.com/scl/fi/h1j1ug2fdlz82pgno3fev/BlueStacks-5-Root-ver.6.zip?rlkey=efh177rcbt336kua1il9tdc49&st=40ys0wun&dl=0) [Instructions](https://www.dropbox.com/scl/fi/882sb3y4pqbvv681bb0l1/BlueStacks-Root-Magisk-Android-13.mp4?rlkey=6m6tdmt9s71529vh5mqimgg0j&st=yssk1a3h&dl=0).
+
+[\] **ZD ENTERPRISE.** Fixed **launching the BlueStacks emulator** version 5.22.140 and above via the C# API:
+
+```csharp
+string name = new BlueStacks5Manager().TitleToNameConverter("BlueStacks App Player 17");
+new BlueStacks5(name).Start();
+```
+
+[\] **ZD ENTERPRISE.** Fixed **incorrect Brand filter behavior** in the Generate Device action.

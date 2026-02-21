@@ -1,0 +1,72 @@
+---
+sidebar_position: 107
+title: "ZennoDroid 2.3.11.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.11.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636625437/ZennoDroid+2.3.11.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636625437/ZennoDroid+2.3.11.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.11.0
+
+### Added:
+
+[+] Added the ability to select the LDPlayer 9 emulator.
+
+[+] Automatic switching on first launch to the installed emulator (if only MEmu or only LDPlayer is installed).
+
+[+] Added the option to specify the startup activity in the "Open Application" action.
+
+[+] Added the "Open URL" action.
+
+[+] Added the ability to specify the image capture type before starting the device (Custom C# code).
+
+[+] Added the ability to search by pixel color (Custom C# code).  
+You can get the pixel color via the context menu by right-clicking the desired location on the device screen.  
+Parameters: color, search area, deviation (tolerance) from the specified color, search time.  
+`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime);`
+
+[+] FFMpeg updated to 7.0.0.
+
+[+] UIAutomator updated to 7.0.28.
+
+[+] Appium Settings updated to 5.12.14.
+
+[+] Adb updated to 35.0.2.
+
+[+] Frida updated to 16.5.2.
+
+[+] When using ZennoDroid Pro (Memu / LDPlayer) and ZennoDroid Enterprise on the same computer, all parameters on the Android tab are independent.
+
+### Fixed:
+
+[\] Fixed serious delays (single-threading) when searching by image during template execution.
+
+[\] Fixed an error when capturing a device with Root disabled on MEmu 9.0.x versions.
+
+[\] Fixed Recaptcha2 solving via clicks.
+
+[\] Fixed JavaScript execution in WebView when the Chrome browser is running.
+
+[\] Improved geolocation setting accuracy.
+
+[\] Fixed freezes when displaying the device screen. Improved responsiveness when controlling the device.
+
+[\] Improved detection of the active application name (during JavaScript execution and when opening the "Installed Applications" menu).
+
+[\] Improved JavaScript execution (added repeated socket address search and command re-execution in case of an error).
+
+[\] Fixed errors when setting a proxy via Proxifier in multithreaded mode with a large number of threads and a large number of proxy addresses in use.
+
+[\] Fixed an error when setting a very large number of different proxy addresses via Proxifier (Error: Too many sibling nodes).
+
+[\] Fixed an error that caused empty windows to appear during template execution (when device information could not be obtained via adb).
+
+[\] Fixed an issue where ZennoDroid did not detect the installed MEmu.

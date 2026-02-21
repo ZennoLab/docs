@@ -1,0 +1,132 @@
+---
+sidebar_position: 117
+title: "ZennoDroid 2.3.2.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.2.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331017217/ZennoDroid+2.3.2.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331017217/ZennoDroid+2.3.2.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.2.0
+
+### New features:
+
+[+] Added the “Wait for user actions” action (Logic menu group).
+
+[+] Added the ability to set an execution timeout for the “Console command” action.
+
+[+] Added support for installing applications in .apks, .apkm, and .xapk formats (often labeled on websites as Apk bundle format).
+
+[+] Added support for Android 9.0 (starting from MEmu 8.0.6).
+
+[+] Added the “Text check” action, which allows you to verify the presence of specific text on the screen.
+
+[+] Added a setting to the “Set value” action to adjust the typing speed. The delay adjustment range for character input has been increased.
+
+[+] Added an action to retrieve notifications from the notification shade in JSON format (date, app, title, message).
+
+[+] Added an action to change the time zone.
+
+[+] The global setting “Apply profile settings on launch” has been moved to the “Launch/Restart” action. Now you can apply (or not apply) profile settings at the project level.
+
+[+] Added an action to emulate incoming SMS messages.
+
+[+] Application actions (Open, Close, Install, etc.) have been moved from the “Utilities” group into a separate group.
+
+[+] Device settings have been moved from the “Device actions” group into a separate group.
+
+[+] Added the ability to select a random free device by mask (using a Regex expression). In **ZennoDroid Pro**, you can group devices by setting prefixes in their names (OK\_1, OK\_2, VK\_1, VK\_2) and randomly select them by specifying a mask (OK or VK).
+
+[+] Added a button for installing applications to the “Installed applications” window.
+
+[+] Added settings to adjust random delays when simulating character input.
+
+[+] Added a setting to adjust random click offset (used in the “Search by image” and “Execute event” actions).
+
+[+] Expanded recording settings. Added:
+
+- *Default color mode and search area. Image search will be automatically recorded into the project in the selected mode.
+- *Default character input delay.
+- *Default element wait time.
+- *Default element search time.
+
+### New API features:
+
+[+] Added the ability to press the “Scan QR code” button, set the viewfinder position and size, place an image under it, and close it.
+
+```csharp
+var qr = new QRCodeManager();
+qr.PressQRCodeScanButton();
+qr.SetViewfinderPosition(new Rectangle(0,0,500,500));
+qr.DrawImage("qrCode.png", new Rectangle(100,150,100,100), new Rectangle(0,50,500,450));
+qr.CloseViewfinderWindow();
+qr.CloseQRCodeScanWindow();
+```
+
+[+] Added the ability to get and set the device clipboard value.
+
+```csharp
+droid.Input.SetClipboard("Hello!");
+droid.Input.GetClipboard();
+```
+
+[+] Added the ability to take a screenshot of a selected screen area.
+
+```csharp
+var data = instance.DroidInstance.Screen.ScreenshotAsArray(new Rectangle(100,100,250,250));
+var data = instance.DroidInstance.Screen.ScreenshotAsBase64String(new Rectangle(100,100,250,250));
+```
+
+[+] Added the ability to back up and restore application data.
+
+```csharp
+droid.App.BackupAppData("com.android.browser", "backup.tar.gz");
+droid.App.RestoreAppData("com.android.browser", "backup.tar.gz");
+```
+
+[+] Added the ability to perform a long tap and swipe (LongTap and Swipe — аналог Drag&Drop).
+
+```csharp
+droid.Input.LongTapAndSwipe(500, 200, 500, 400, 1000);
+```
+
+You can find the full up-to-date list of API methods [here](https://zennolab.com/discussion/attachments/api-2-3-2-11-2022-droid.102727/ "https://zennolab.com/discussion/attachments/api-2-3-2-11-2022-droid.102727/").
+
+### Bug fixes:
+
+[\] In Task Manager, processes are now displayed as ProjectMakerZD.exe and ZennoDroid.exe.
+
+[\] Device selection now works if the full name contains only digits.
+
+[\] Added a notification when running a project in case of issues with the installed Proxifier.
+
+[\] After installing an application, shortcuts now appear on the desktop.
+
+[\] Fixed a memory leak during operation.
+
+[\] The template size increased significantly during operation with each save.
+
+[\] Fixed the Proxifier error “Cannot load Proxifier profile. Incorrect port number”.
+
+[\] Fixed the error “Index was outside the bounds of the array” when selecting a device.
+
+[\] Fixed the use of proxies from the proxy checker in ZennoDroid via the “Settings” tab.
+
+[\] Fixed the “Get proxy” action.
+
+[\] Fixed the display of successful exits for Android actions in the project.
+
+[\] Added ad blocking in MEmu 8.0.6.
+
+[\] Fixed application backup creation for large data sizes.
+
+[\] Fixed the Proxifier error “Infinite Connection Loop Detection”.
+
+[\] Fixed the phone number not being displayed in the MEmu multi-manager when changing the number in ZennoDroid.

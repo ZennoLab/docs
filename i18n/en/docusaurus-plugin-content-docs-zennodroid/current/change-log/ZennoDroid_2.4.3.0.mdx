@@ -1,0 +1,55 @@
+---
+sidebar_position: 103
+title: "ZennoDroid 2.4.3.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.3.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3831791618/ZennoDroid+2.4.3.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3831791618/ZennoDroid+2.4.3.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.4.3.0
+
+### Added:
+
+[+] Added the "Appium Settings" action.
+
+[+] Added the ability to set custom proxy rules in the "Set Proxy" action for Clash mode.
+
+[+] Added the ability to capture an element screenshot (in Base64 format) in the "Get Value" action.
+
+[+] Added the ability in the API to capture a screenshot of an element or the entire screen (in Base64 format) (Custom C# code).
+
+[+] Added the ability in the "Swipe Emulation" action to specify the swipe curve strength and direction. From -1.0 to +1.0. The curve will change randomly each time within the specified range. The sign of the number affects the curve direction.
+
+[+] Added new API methods to specify curve strength.
+
+[+] Clash updated to 1.19.10.
+
+[+] UIAutomator2 updated to 7.6.2
+
+[+] FFmpeg updated to 7.1.1
+
+[+] Adb updated to 36.0.0
+
+[+] Scrcpy updated to 3.3.1
+
+[+] Frida updated to 16.7.19
+
+### Fixed:
+
+[\] Improved ad disabling when launching MEmu.
+
+[\] Fixed an issue where expanding the emulator from the bottom panel displayed the window minimized as a small rectangle.
+
+[\] Fixed the API method `instance.DroidInstance.AppiumDriver.ScrollToElementByAccessibilityId(string id, int maxSwipes)`
+
+[\] Fixed a bug where BotUI settings would not open in ZennoDroid.
+
+[\] Fixed project display when selecting tags.

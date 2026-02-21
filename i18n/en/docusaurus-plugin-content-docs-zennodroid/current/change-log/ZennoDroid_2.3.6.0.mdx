@@ -1,0 +1,130 @@
+---
+sidebar_position: 113
+title: "ZennoDroid 2.3.6.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.6.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3608772623/ZennoDroid+2.3.6.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3608772623/ZennoDroid+2.3.6.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.6.0
+
+### Added:
+
+[+] The “Get Device List” action now includes device filtering by status: running, stopped, free, busy.
+
+[+] Added the “Get Application List” action with the ability to filter applications by type: all, system, user.
+
+[+] Added an action to get the name of the currently active application on the device screen.
+
+[+] Added the “Get Android Clipboard” action.
+
+[+] Added the “Set Android Clipboard” action.
+
+[+] Added the “Set Date and Time” action.
+
+[+] Added the “Execute Sqlite3 Query” action.
+
+[+] Added the “Execute Frida Script” action.
+
+[+] Added the “Clear Notification Shade” action.
+
+[+] Added an action that allows you to check whether an application is already installed. When used together with the “Install Application” action, it lets you skip installing apps that are already present on the device.
+
+[+] Added the “Get Cookies from Application” action.
+
+[+] Added the “Get Connection Parameters via adb” action (serial number or address and port to connect to the device).
+
+[+] The “Swipe Emulation” action now allows you to perform a more realistic curved finger movement across the screen.
+
+[+] Added the “Switch Physical Camera to Virtual” action.
+
+[+] Added conversion of all new actions to C# code via the context menu.
+
+[+] Added the ability to record mouse movement along an arbitrary path (mouse icon in the “Device” window).
+
+[+] Added the ability to open a URL in a browser (Custom C# code):
+*instance.DroidInstance.App.OpenUrl(url); - the page will open in the default browser;
+*instance.DroidInstance.App.OpenUrl(url, packageName); - the page will open in the specified browser.
+
+[+] Added the ability to quickly change or release the selected device in the bottom menu of the “Device” window.
+(Resolves the “Device is busy in ProjectMaker” error when running a template in ZennoDroid).
+
+[+] Added the ability to change the proxy via the bottom menu of the “Device” window.
+
+[+] Increased the size of the “Query Text” field in the “Database Query” action.
+
+[+] Added the ability to set a private DNS address in Android 9 and above (Custom C# code):
+`instance.DroidInstance.Proxy.EnablePrivateDns("dns.google");`.
+
+[+] Added the ability not to block IP leaks (Custom C# code)
+`instance.DroidInstance.Proxy.BlockUDPLeak = false;`
+`instance.DroidInstance.Proxy.BlockWebRtcLeak = false;`
+
+[+] Added the ability to set the DNS query proxying type via Redsocks (Custom C# code).
+`instance.DroidInstance.Proxy.UseDnsTcp = true;`
+`instance.DroidInstance.Proxy.UseDnsUdp = true;`
+
+[+] Added the `fingerprint` (PhoneFingerprint) parameter to the Device Profile.
+
+[+] Before executing all actions that work with a device, a device connection check and reconnection wait have been added.
+
+[+] Added a check to ensure there are no device connection drops during long adb shell commands.
+
+### Fixed:
+
+[\] Fixed saving and restoring application accounts in the form of phone numbers (containing spaces).
+
+[\] Fixed the “SU not found” error when saving and restoring application accounts.
+
+[\] Fixed real IP leakage via WebRTC (when checking on [!\[\](https://pixelscan.net/assets/favicon-16x16.png?v=2)Pixelscan | Fast multi-check tool for detection analysis](http://pixelscan.net) and others).
+
+[\] Fixed a bug when executing SQL queries on Rooted devices.
+
+[\] Fixed an error when opening applications in Android 5.1.
+
+[\] Fixed ad blocking in MEmu 9.0.6.
+
+[\] Fixed a bug when searching by image via C# (FindImage with specified search time).
+
+[\] Fixed errors when executing the “Swipe” action.
+
+[\] Fixed an error that caused a long pause after completing tasks and before starting new threads.
+
+[\] Fixed pressing the Scan QR Code button in Memu 9:
+`new QRCodeManager().PressQRCodeScanButton();`
+
+[\] Fixed errors when working with applications (Open, Clear, and others).
+
+[\] Fixed an issue where the buttons on the emulator’s side panel did not work.
+
+[\] Improved the “Fix build.prop errors” function.
+
+[\] Improved engine initialization for retrieving the element tree.
+
+[\] Fixed the “Failed to establish adb connection when launching the device” error if the device model name contained spaces.
+
+[\] Fixed an error in the URL opening function
+`instance.DroidInstance.App.OpenUrl(url, packageName)`
+
+[\] Fixed an error when creating screenshots on devices with high screen resolution
+`instance.DroidInstance.Screen.ScreenshotAsArray();`
+`instance.DroidInstance.Screen.ScreenshotAsArray(area);`
+
+[\] Fixed excessive IP leak blocking when proxying via Redsocks.
+
+[\] Fixed an error when displaying the instance while running projects in ZennoDroid.
+
+[\] Fixed an error when retrieving the path to the cookie file
+`instance.DroidInstance.App.GetCookiePath(packageName)`
+
+[\] Fixed cookie retrieval from third-party browsers (not Chrome).
+
+[\] Fixed an error when generating IMEI.

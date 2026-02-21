@@ -1,0 +1,56 @@
+﻿---
+sidebar_position: 111
+title: "ZennoDroid 2.3.8.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.8.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636068361/ZennoDroid+2.3.8.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636068361/ZennoDroid+2.3.8.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.8.0
+
+### Added:
+
+[+] In the Android Settings menu, added the ability to use a shared system disk when creating emulators (Memu 9).
+
+[+] Disabled shutting down the ADB server when closing the program (this could lead to losing connected devices on restart).
+
+[+] In the “Installed Applications” menu, added the ability to clear application data (when recording is enabled, the action will be recorded in the project).
+
+[+] In the “Installed Applications” menu, added the ability to uninstall an application (when recording is enabled, the action will be recorded in the project).
+
+[+] Scrcpy updated to 2.3.1.
+
+[+] UIAutomator updated to 5.13.
+
+[+] FFmpeg updated to 6.1.
+
+[+] Adb updated to 34.0.5.
+
+[+] Frida updated to 16.1.8.
+
+### Fixed:
+
+[\] Fixed changing the system language on the device.
+
+[\] Fixed disabling animations on the device.
+
+[\] In the “Installed Applications” menu, significantly sped up retrieving the list of applications.
+
+[\] Fixed a critical error when retrieving the list of emulators (an empty list was returned).
+
+[\] Fixed errors when exchanging information with the device (clipboard, notifications, sending characters, etc.).
+
+[\] Fixed errors when retrieving device status.
+
+[\] Fixed an error during full device reset in multithreaded mode.
+
+[\] Fixed long initialization wait time on first launch of devices with Android 7.
+
+[\] Fixed emulation of incoming SMS messages on Android 9.

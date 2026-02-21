@@ -1,0 +1,88 @@
+---
+sidebar_position: 109
+title: "ZennoDroid 2.3.10.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.10.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636461595/ZennoDroid+2.3.10.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636461595/ZennoDroid+2.3.10.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.10.0
+
+### Added:
+
+[+] Proxifier updated to the latest version 4.12.
+
+[+] Added the ability to add your own rules to the default Proxifier settings file (**ProxifierDefaultProfile.ppx**). ZennoDroid will not modify or delete them.  
+The file is located in the Proxifier subfolder inside the program directory. After editing, you need to delete the `ProxifierProfile.ppx` file — it will be recreated automatically using your custom rules.
+
+[+] Added automatic repair of the Proxifier settings file if it becomes corrupted.
+
+[+] The “Select device” action now searches for devices by both name and identifier. Identifiers have the format `MEmu_1, MEmu_2`, etc.
+
+[+] Added the ability to execute JavaScript in third-party browsers:  
+Chrome beta, Chrome canary, Kiwi, Brave, Vivaldi, Microsoft Edge beta, Opera, Opera beta, Samsung Browser, Mi Browser, Yandex Browser.  
+This functionality can be used, for example, to retrieve the contents of a web page.
+
+[+] For Yandex Browser, forced enabling of JavaScript execution has been added (disabled by default). To enable it, the browser will be stopped (one time).
+
+[+] Added the ability to get the WebSocket address (ws://address) of the active page. Custom C# code.
+
+[+] Added support for Android 12 (requires MEmu version 9.1.6 or higher).
+
+[+] Added the ability to create an emulator based on Android 12.
+
+[+] Added Vulkan rendering mode (Android 12 uses only this mode).
+
+[+] Added the ability to perform multi-touch (up to 10 simultaneous touches). Custom C# code.
+
+[+] Added the ability to disable image capture. Screen updates are performed manually using the “Refresh screen” button or via C# code.
+
+[+] ADB updated to 35.0.1.
+
+[+] Added a timeout when sending and receiving files from the device (5 minutes).
+
+[+] The “Devices” tool has been renamed to “Device Manager.”
+
+[+] Added the ability to specify a URL as the proxy address when using Redsocks2.
+
+### Fixed:
+
+[\] Fixed full reset in Android 12.
+
+[\] Fixed getting and removing accounts in Android 12.
+
+[\] Fixed retrieval of the list of running devices (identifiers were displayed instead of names).
+
+[\] Fixed an error when converting the “Search by image” action to C# code.
+
+[\] Fixed monitoring of connected devices.
+
+[\] Fixed ADB server initialization.
+
+[\] Fixed search for the “Set” and “Get value,” “Execute event” actions from the context menu in the “Show action” log (corrected the format of the created action IDs).
+
+[\] Fixed various errors that caused freezes when working with MEmu based on Android 12.
+
+[\] Fixed forced enabling of JavaScript execution in Yandex Browser. Also added the ability to execute JavaScript in the Yandex app (*com.yandex.searchapp).
+
+[\] Fixed device selection by identifier (MEmu\_1, MEmu\_2,...).
+
+[\] Fixed the error "Install APK action execution: Input string was not in a correct format."
+
+[\] Fixed an issue that prevented ZennoDroid from being restored from the system tray.
+
+[\] Fixed errors during Proxifier installation.
+
+[\] Removed a device model whose use prevented Google Services from working.
+
+[\] Fixed duplication of blocks when adding them from the action constructor.
+
+[\] Fixed a vulnerability in MEmu where, even with superuser mode disabled, some apps could detect Root.

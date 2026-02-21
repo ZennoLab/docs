@@ -1,0 +1,87 @@
+---
+sidebar_position: 100
+title: "ZennoDroid 2.4.6.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.6.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3983343618/ZennoDroid+2.4.6.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3983343618/ZennoDroid+2.4.6.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.4.6.0
+
+### Added:
+
++ **ZD PRO.** When using the MEmu emulator, the ability to set a mobile carrier has been unlocked (by default, MEmu limits the selection to carriers available in its built-in database and resets the settings if you try to set a third-party carrier). Now, when generating a profile, you can use data from all carriers listed on [MCC-MNC.com - Mobile Network Code Database](https://mcc-mnc.com/).
+
++ **ZD ENTERPRISE.** A new LSPosed Management action group has been added. It allows you to easily manage various LSPosed modules used to spoof device parameters. You can now specify a list of applications where spoofing should be applied, create and restore settings backups without using the C# API. [Documentation link](../Enterprise/LSPosed_Control).
+
++ **ZD ENTERPRISE.** Added the Generate Device action. It allows you to create a device based on specified filters or from predefined parameters in JSON format. You can now easily configure the generated device parameters by setting filters and options without using the C# API. [Documentation](../Android/Enterprise/setting#generate-device).
+
++ **ZD ENTERPRISE.** Added an action to enable JavaScript execution in applications that contain a WebView. Access to WebView in non-browser applications is always disabled by default. This setting allows you to access the HTML markup not only of browsers but also of applications that use WebView (the element tree must contain android.webkit.WebView). [Documentation](../Android/Enterprise/setting#webview-access)
+
++ Emoji support. The Set Value and Keyboard Emulation actions now display emojis correctly and support their input.
+
++ The mobile carrier database has been updated. Now all carriers listed on [!\[\](https://mcc-mnc.com/favicon.svg)MCC-MNC.com - Mobile Network Code Database](https://mcc-mnc.com/) are used when generating data.
+
++ The mobile device database has been updated. Models with Android 14, 15, and 16 have been added (Google, Samsung, Motorola).
+
++ The Image Search and Pixel Search actions now allow you to specify a wait time before starting the search.
+
++ When launching a device in ProjectMaker, information about the current connection stage has been added. This helps you better understand at which stage an issue occurred in case of a long load time.
+
++ Clash has been updated to version 1.19.15. For automatic updating, you need to remove the current version first. [Documentation](../Android/Enterprise/Clash#automatic-update).
+
++ Appium Settings has been updated to version 6.0.8. For automatic updating, you need to remove the installed version (io.appium.settings).
+
++ ScrCpy has been updated to version 3.3.3.
+
++ UIAutomator2 has been updated to version 8.1.2.
+
++ ZennoDroid has been migrated to .NET Framework 4.8. If .NET Framework 4.8 is not installed on your computer, you need to install it using this link: [<u data-renderer-mark="true">Download .NET Framework 4.8 Runtime</u>](https://dotnet.microsoft.com/ru-ru/download/dotnet-framework/thank-you/net48-web-installer "https://dotnet.microsoft.com/ru-ru/download/dotnet-framework/thank-you/net48-web-installer").
+
++ **ZD ENTERPRISE.** Automatic GPU generation (GL Vendor, GL Renderer) has been disabled when using the C# API function instance.DroidInstance.Settings.GenerateRandomLSPosedSettings, which could cause display issues (white screen) on some devices.  
+If needed, generation can be enabled: you can use the Generate Device action (Advanced tab) or the C# API (see example below).
+
++ **ZD ENTERPRISE.** Methods for easier device generation have been added to the C# API:  
+SetRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions)  
+GenerateRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions options)
+
+Example of model generation:
+
+C#:
+
+```csharp
+var filter = new DeviceFilter();
+filter.Country = "us";
+filter.Version = "12|13|14|15";
+filter.GpuVendor = "Qualcomm|ARM";
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true;
+options.AddGpu = true;
+
+var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options);
+instance.DroidInstance.Settings.SetLSPosedSettings(json);
+```
+
++ **ZD ENTERPRISE.** The ZennoDroid module has been updated to version 1.8.2. Support for new device models has been added.
+
+### Fixed:
+
+- **ZD PRO.** Fixed the set of parameters in actions when switching the emulator type: Create Device, Shared Folder Setup.
+- **ZD PRO.** Added notifications about actions not supported in LDPlayer: Rendering Mode, Camera Type Selection, etc.
+- **ZD ENTERPRISE.** Added notifications when an incorrect Canvas noise value is set (when using a custom device model generator or the C# API).
+
+### Press releases published on our forum:
+
+- [ZD ENTERPRISE](https://zenno.club/discussion/threads/zennodroid-enterprise-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-upravlenie-generaciej-modeli.130390/ "https://zenno.club/discussion/threads/zennodroid-enterprise-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-upravlenie-generaciej-modeli.130390/")
+- [ZD PRO](https://zenno.club/discussion/threads/zennodroid-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-podderzhka-vvoda-ehmodzi.130391/ "https://zenno.club/discussion/threads/zennodroid-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-podderzhka-vvoda-ehmodzi.130391/")
+
+```

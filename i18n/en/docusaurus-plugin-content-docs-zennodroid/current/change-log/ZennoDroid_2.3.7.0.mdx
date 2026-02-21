@@ -1,0 +1,57 @@
+﻿---
+sidebar_position: 112
+title: "ZennoDroid 2.3.7.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.7.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636002826/ZennoDroid+2.3.7.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636002826/ZennoDroid+2.3.7.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.7.0
+
+### Added:
+
+[+] Expanded the list of emulated device models (around 300 items). The IMEI of generated models matches real devices.
+
+[+] Added the ability to retrieve a file from the device.
+
+[+] Added the ability to send a file to the device. When sending media files, they will be automatically updated in the gallery.
+
+[+] Added the ability to retrieve an installed application file from the device in apk or apk bundle (apks) format.
+
+### Fixed:
+
+[\] Fixed an error when launching the application on Windows 7.
+
+[\] Added the ro.build.fingerprint field to the “Device model” action.
+
+[\] Fixed an error when stopping a template.
+
+[\] Fixed an error when sending files to partitions mounted as read-only.
+
+[\] Added an error notification when running templates if no device was selected beforehand.
+
+[\] Added timeouts for sending/receiving files and installing applications to prevent these operations from hanging during execution.
+
+[\] Fixed waiting for adb connection before executing the “Console command” action.
+
+[\] Fixed waiting for device operations to complete when running templates.
+
+[\] Fixed slow instance preview updates.
+
+[\] Fixed automatic restart of the ADB server when the process crashes.
+
+[\] Updated Newtonsoft.Json libraries to version 13.0.3.
+
+[\] Added "www" to the balance request URL for the SmsHub service.
+
+[\] Removed two outdated SMS services: Smska and SmsVk.
+
+[\] Changed the default URLs for the following services: SmsAcktiwator to [<u data-renderer-mark="true">https://smsak.org/api/</u>](https://smsak.org/api/?roistat_visit=1569121 "https://smsak.org/api/?roistat_visit=1569121"), SmsActivate to [<u data-renderer-mark="true">https://api.sms-activate.org/stubs/handler_api.php</u>](https://api.sms-activate.org/stubs/handler_api.php?roistat_visit=1569121 "https://api.sms-activate.org/stubs/handler_api.php?roistat_visit=1569121"), and VirtualSms to [<u data-renderer-mark="true">https://api.sms-activate.org/stubs/handler_api.php</u>](https://api.sms-activate.org/stubs/handler_api.php?roistat_visit=1569121 "https://api.sms-activate.org/stubs/handler_api.php?roistat_visit=1569121"). Existing service configurations will not be updated.

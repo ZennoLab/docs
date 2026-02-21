@@ -1,0 +1,69 @@
+---
+sidebar_position: 106
+title: "ZennoDroid 2.4.0.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.0.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636592667/ZennoDroid+2.4.0.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636592667/ZennoDroid+2.4.0.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.4.0.0
+
+### Added:
+
+[+] Added the ["Search by Pixel"](../pm/Creating/SearchByPix) action, which allows you to search for matches in an image by pixel color (or multiple colors).
+
+[+] Added an option to select a device from a preconfigured list in the "Selection" action. This lets you assign devices to work with specific templates. Free devices are selected randomly from the list.
+
+[+] Added the ability to specify the image capture type in the "Launch" action. By default, the type specified in the global settings will be used.
+
+[+] Added the ability to open the device window with a double-click while a template is running.
+
+[+] The size and position of the "Waiting for user actions" window are now saved when it is closed.
+
+[+] Scrcpy updated to 3.1. Improved support for modern devices.
+
+[+] Interaction with the ADB server is now handled via the .NET client from AOSP.
+
+### Fixed:
+
+[\] Fixed language switching on a running device in multithreaded mode.
+
+[\] Fixed errors when saving element wait times in the “Set/Get Value” and “Execute Event” actions.
+
+[\] Fixed selection of the search area in the "Search by Image" action when resizing the window.
+
+[\] Fixed object selection when opening the action builder and when resizing the window.
+
+[\] Disabled the launch of the ZennoLab.AudioMute.exe process.
+
+[\] Fixed the appearance of the Device Manager when opened by clicking on the device name.
+
+[\] Fixed a bug that prevented LDPlayer from being used without MEmu installed.
+
+[\] Fixed a bug where the application installation cube returned an error even if the installation was successful.
+
+[\] Fixed an error when installing applications in multithreaded mode.
+
+[\] Fixed an error when retrieving information about the emulator’s resolution in use.
+
+[\] Fixed a bug that prevented connection to the MEmu emulator when more than 10 GB of RAM was allocated.
+
+[\] Fixed incorrect encoding in responses when installing applications in split apk format (apks, xapk).
+
+[\] Fixed the "The path contains invalid characters" error when executing the "Get Application APK" action.
+
+[\] Fixed an error when using a URL as a proxy address in Redsocks mode.
+
+[\] Fixed a visual bug where an error was displayed in the "Set Clipboard" and "Get Clipboard" actions even when the fields were filled in correctly.
+
+[\] Fixed an issue that could cause text input, clipboard retrieval and setting, and notification retrieval to stop working.
+
+[\] Fixed proxy configuration in Proxifier mode when using LDPlayer. IPv6 proxies can now be used on LDPlayer 9.1, provided that the computer’s network adapter has an IPv6 address.
