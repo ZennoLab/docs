@@ -131,7 +131,7 @@ Here's how you could extract links using regular expressions that you build in t
 
 ![Add to project](./assets/Text/Text_pic11.png)
 
-**1.** Using the [**Get Value**](../Android/ProLite/GetValue) action, get the HTML code that contains links to online users.  
+**1.** Using the [**Get Value**](../Android/pro-lite/GetValue) action, get the HTML code that contains links to online users.  
 **2.** Add the **Regex** action. Build your pattern in the [**Regex Constructor**](../Tools/RegEx_Tester#regular-expression-builder).  
 **3.** In the action properties, put the *html* variable as input, and save results to the *urls* list.  
 **4.** After running, you'll get a list of unique IDs which you can use to build user profile URLs.
@@ -259,7 +259,7 @@ _______________________________________________
 A URL only allows Latin letters, numbers, and a handful of punctuation marks. All other symbols in HTTP requests must be encoded with **UrlEncode** or the server won't understand your request.
 
 ### Encode Only Variable Values
-This option is useful when building [**HTTP requests**](../Project%20Editor/HTTP%20and%20FTP/HTTP) because you only need to encode parameters, not the site address.
+This option is useful when building [**HTTP requests**](../project-editor/http-and-ftp/HTTP) because you only need to encode parameters, not the site address.
 
 Settings might look like this:
 
@@ -384,4 +384,4 @@ _______________________________________________
 ## Useful Links
 - [**JavaScript Tester**](../Tools/Java_Tester)
 - [**How to connect translation services**](../Settings/Translators)
-- [**Get Value**](../Android/ProLite/GetValue)
+- [**Get Value**](../Android/pro-lite/GetValue)
