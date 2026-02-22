@@ -49,7 +49,7 @@ _______________________________________________
 
 ### 3. Pressing Enter
 Now, pick the search bar and type "zennolab". After entering the text, the search won't start automatically—just like on a real device, you need to tap **"Enter"**, and there's a specific action for this.
-Right-click the block → Add action → [Android → Keyboard Emulation](../Android/ProLite/Keyboard). In the action properties, enter: `AndroidKeys.ENTER`.
+Right-click the block → Add action → [Android → Keyboard Emulation](../Android/pro-lite/Keyboard). In the action properties, enter: `AndroidKeys.ENTER`.
 <VideoSample source={require("@site/static/video/browser_3.mp4").default}/>
 _______________________________________________
 
@@ -59,7 +59,7 @@ Add a link to ZennoDroid in the action builder and tap it using the *touch* acti
 _______________________________________________
 
 ### 5. Open and Minimize
-Right-click the block with the event that opens the link → **Add action → [Logic → Pause](../Project%20Editor/Logic/Pause) → set 10 seconds**. After that, add a [**Keyboard Emulation**](../Android/ProLite/Keyboard) action with the special button, which will minimize the app. The action's text will automatically be `AndroidKeys.HOME`.
+Right-click the block with the event that opens the link → **Add action → [Logic → Pause](../project-editor/Logic/Pause) → set 10 seconds**. After that, add a [**Keyboard Emulation**](../Android/pro-lite/Keyboard) action with the special button, which will minimize the app. The action's text will automatically be `AndroidKeys.HOME`.
 <VideoSample source={require("@site/static/video/browser_5.mp4").default}/>
 :::info **Why a 10-second pause?**
 We add the pause so you can clearly see the page that's opened. Otherwise, right after you click the link, the app would minimize. This way, you actually see the requested page before the template moves on.
@@ -74,9 +74,9 @@ _______________________________________________
 
 If needed, you can save the browser's state as a backup (cookies, logged-in sessions, etc.) and restore it before new actions, so you don't have to start fresh each time.
 
-1. Right-click the blocks area → **Add action → [Android → App Actions](../Android/ProLite/App#save-app-data).**
+1. Right-click the blocks area → **Add action → [Android → App Actions](../Android/pro-lite/App#saving-of-applications-data).**
 Then pick the **Save app data** action. In the **App Name** field, enter the app ID: ***com.android.chrome***. You'll also need to set a path to save the backup archive.
-2. Repeat the last step, but pick [**Restore app data**](../Android/ProLite/App#restore-app-data) as the action. Specify the path to your backup archive.
+2. Repeat the last step, but pick [**Restore app data**](../Android/pro-lite/App#restoring-of-applications-data) as the action. Specify the path to your backup archive.
 
 ##### Video tutorial:
 
@@ -87,6 +87,6 @@ Then pick the **Save app data** action. In the **App Name** field, enter the app
 _______________________________________________
 
 ## Useful Links
-- [**App Actions**](../Android/ProLite/App)
-- [**Pause**](../Project%20Editor/Logic/Pause)
-- [**Keyboard Emulation**](../Android/ProLite/Keyboard)
+- [**App Actions**](../Android/pro-lite/App)
+- [**Pause**](../project-editor/Logic/Pause)
+- [**Keyboard Emulation**](../Android/pro-lite/Keyboard)
