@@ -15,6 +15,16 @@ Clash lets you set up a transparent proxy on Android devices with Root. It's par
 
 You'll need this program to [Set up a proxy in Clash mode](../../Settings/Proxy_Traffic_Ent).
 _______________________________________________
+## Automatic Installation
+The **Box for Root** module is installed automatically when configuring a proxy in Clash mode for the first time.
+
+### Automatic Updating
+If Clash is already installed on the device, it will not update automatically.
+
+To update an installed version, you need to perform the following steps:
+1. **Remove the installed Clash**. To do this, execute the Adb Shell action *with superuser (root) privileges enabled*: `rm -rf /data/adb/box`
+2. After that, set up the proxy in Clash mode. **The new version will be installed automatically**.
+_______________________________________________
 ## Manual Installation  
 :::warning **You don't have to install the module manually.**
 Box for Root installs automatically the first time you use a proxy in Clash mode.
