@@ -1,0 +1,125 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.9.9.0 12.05.2016"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.9.9.0 12.05.2016.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495321729/ZennoPoster+5.9.9.0+12.05.2016"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495321729/ZennoPoster+5.9.9.0+12.05.2016)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.9.9.0 (12.05.2016)
+
+### New features:
+
+[+] Added the ability to use [❗→ SMS services](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486539308/SMS "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486539308/SMS") (SmsVK, SmsReg, SmsActivate).
+
+[+] Added translation capability to text processing (Baidu, Google, Yandex, Bing).
+
+[+] Added support for working with the [articleforge.com](http://www.articleforge.com/?ref=f61a00 "http://www.articleforge.com/?ref=f61a00") service.
+
+[+] Added the ability to filter a page’s source code by specific tags (Tab Data → Process only specified tags).
+
+[+] Added note search functionality to project search.
+
+[+] For actions that search for HTML elements (GET, SET, RISE, Captcha), a configurable element wait time has been added (Advanced tab). This allows you to remove unnecessary “Pause” actions from templates.
+
+[+] Added “Comment” and “Uncomment” options to the context menu of the “Custom C# Code” editor.
+
+[+] In the ProjectMaker editor, when inserting an action into a group, groups now expand only downward.
+
+[+] In the ProjectMaker editor, tooltips for static blocks now appear instantly.
+
+[+] Added methods Tab.DropFile(string filepath, int x, int y) and HtmlElement.DropFile(string filepath, int x=-1, int y=-1) to perform file drag & drop.
+
+[+] Added the method Tab.FindElementByAttribute(string tags, string attrName, string attrValue, string searchKind, string number), where the “number” parameter can accept value ranges, for example “random1(1,12-15,35-end)”.
+
+[+] Added the macros [login] and [password] to proxy output, which return the proxy login and password respectively. Also added the [auth] macro, which returns a string in the format login:password@ if authentication is required, and an empty string if it is not. The default output format in tasks has been changed to [auth][ip]:[port].
+
+[+] Added automatic GeoIP database updates for detecting the proxy’s country.
+
+[+] Added the “Insert snippet” option in CodeCreator.
+
+[+] When working with databases, it is now possible to split the result into variables.
+
+[+] Expanded spintax syntax [❗→ Advanced spintax](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793#%D0%A0%D0%B0%D1%81%D1%88%D0%B8%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81-%D1%81%D0%BF%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B0 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793#%D0%A0%D0%B0%D1%81%D1%88%D0%B8%D1%80%D0%B5%D0%BD%D1%8B%D0%B9-%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81-%D1%81%D0%BF%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B0").
+
+[+] Added image quality settings to the “Image Processing” action.
+
+[+] Added the setting “Automatically resume active tasks after restart”.
+
+[+] Added methods project.Profile.Save(string path, bool saveProxy = false, bool savePlugins = false, bool saveLocalStorage = false) and project.Profile.Load(string path).
+
+[+] Added a new input settings type “Password”.
+
+[+] In the “Project in Project” action, added the flag “Match variables with identical names”. When enabled, all variables with identical names that are not included in the custom mapping table will be matched automatically.
+
+[+] Added the flags “Parse RSS text” and “Parse RSS links” to proxy source settings. When the first flag is enabled, proxies are searched not only in the source text but also in the RSS feed text, if available. When the second flag is enabled and an RSS feed is available, all links from it are parsed and processed like automatically added resources; that is, only those where proxies are found appear in the source list. New sources are marked with the “RSS” label.
+
+[+] Added the flag “Add local network addresses” to proxy source settings.
+
+[+] Added support for the macro `{ -TimeNow.DateDateFormat- }` in the source address field, similar to its use in ZennoPoster.
+
+[+] Added the setting “Treat non-anonymous proxies as dead” to ProxyChecker settings.
+
+[+] Added the option “Set thread count” to the bat file creation form.
+
+[+] Added a setting in ZennoPoster for the directory where purchased projects are downloaded. Restarting ZennoPoster is required after changing this setting.
+
+[+] Added new actions UrlEncode and UrlDecode to text processing.
+
+[+] Added the macro `{ -Project.LastExecutedActionId- }` and the field project.LastExecutedActionId, which return the ID of the last executed action in the project.
+
+[+] Added the macro `{ -Project.LastExecutedActionElapsedTime}` and the field project.LastExecutedActionElapsedTime, which return the execution time in milliseconds of the last executed action in the project.
+
+[+] Added the methods DrawAsBitmap and DrawPartAsBitmap for HtmlElement, which return a Bitmap result.
+
+[+] Added the action “Add list” to table processing, which writes list data to the specified table column starting from the first row.
+
+[+] Added methods ZennoLab.Macros.TextProcessing.UrlEncode(string) and ZennoLab.Macros.TextProcessing.UrlDecode(string).
+
+[+] In the actions for deleting rows from lists and tables, added the option “Delete empty and whitespace-only items”.
+
+[+] Added FTP protocol support in the browser. This means you can navigate FTP resources through the browser.
+
+[+] Added the setting (Editor → Open previously opened projects at startup), which allows ProjectMaker to remember open projects on close and automatically reopen them at the next launch.
+
+### Bug fixes:
+
+[\] Fixed several issues with generating C# action code.
+
+[\] Fixed the regular expression for parsing proxies with authentication. This resolved the issue where the first proxy in the list was skipped if it required authentication.
+
+[\] Fixed reloading of instances with a hidden browser.
+
+[\] Fixed the “Sublist selection” action.
+
+[\] Fixed an issue in the ProjectMaker editor where changes to action settings were sometimes not saved after closing.
+
+[\] Fixed the issue of an extra slash being added to paths when copying lists and tables.
+
+[\] Fixed loading of ProxyChecker sources with JavaScript enabled.
+
+[\] Fixed issues with processing input settings that caused them not to be displayed.
+
+[\] Fixed saving and loading of local storage.
+
+[\] Fixed browser operation in ProjectMaker when switching the “Do not use browser” flag.
+
+[\] Fixed cookie handling in HTTP requests.
+
+[\] Fixed Cyrillic processing in additional RuCaptcha parameters.
+
+[\] Fixed cursor jumping when changing the maximum thread count in a ZennoPoster task.
+
+[\] Fixed project list scrolling when switching categories.
+
+[\] Fixed working with proxy source groups.
+
+[\] Fixed working with SQL binary types; these data are now returned as a Base64 string.

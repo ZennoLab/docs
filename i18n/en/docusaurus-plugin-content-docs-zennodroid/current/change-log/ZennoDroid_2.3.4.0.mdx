@@ -1,0 +1,81 @@
+---
+sidebar_position: 115
+title: "ZennoDroid 2.3.4.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.4.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331082757/ZennoDroid+2.3.4.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331082757/ZennoDroid+2.3.4.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.4.0
+
+### New features:
+
+[+] Added the options “Use project proxy” and “Use project cookies” to the HCaptcha recognition action.
+
+[+] Added the “Recognize ReCaptcha” action (via SiteKey).
+
+[+] Added the ability to run scripts for Frida. “*Custom C# code”
+
+[+] Added the ability to install and execute SQL queries to application databases via SQLite3. “*Custom C# code”
+
+[+] Added the ability to retrieve cookies from browsers and from applications containing WebView (displaying web content). “*Custom C# code”
+
+[+] Added the ability to change the date and time on the device. “*Custom C# code”
+
+[+] Added conversion of individual actions to C# code via the context menu (all actions from the Device Actions and App Actions groups, touch, swipe, text input, image search, as well as some actions from the Utilities and Settings groups).
+
+[+] Added the ability to get a list of devices with additional information (indexes, names, running, occupied in ZD). “*Custom C# code”
+
+[+] Increased the default profile values (CPU = 2 cores, RAM = 2GB).
+
+[+] Added the “Fix build.prop errors” setting.
+
+:::important
+Fixes an issue where `ro.boot.hardware` and `Build.HARDWARE` were always set to `Intel`, as well as a bug in Android 9 where setting the CPU from 1 to 3 cores caused the device model name and several other parameters to display as `Unknown`.
+:::
+
+### Bug fixes:
+
+[\] Fixed the mail services configuration function.
+
+[\] Fixed deletion of devices whose names consist only of digits.
+
+[\] Fixed opening the project settings menu.
+
+[\] Fixed an error when using breakpoints in the “Custom C# code” action.
+
+[\] Fixed an error when working with Android 9 devices in bridge mode.
+
+[\] Fixed the “Close all applications” function.
+
+[\] Fixed slow opening of the Android settings menu.
+
+[\] Partially fixed issues when executing JavaScript in Chrome 111 and above.
+
+[\] Fixed errors when capturing images in MJPEG mode.
+
+[\] Fixed timeout exit when MEmu freezes on startup.
+
+[\] Fixed errors that caused new threads in ZennoDroid to be blocked from starting.
+
+[\] Fixed an error when clearing an input field.
+
+[\] Fixed a bug in MEmu with Android 9 where setting the CPU from 1 to 3 cores caused the device model name and several other parameters to display as **Unknown**.
+
+[\] The values *ro.boot.hardware and *Build.HARDWARE no longer show Intel.
+
+[\] Fixed an error when searching for an emulator by name.
+
+[\] In the “Installed applications” menu, application names were not displayed.
+
+[\] Fixed an issue that caused the error “Executing action Start device Can't send rs binary” and froze command sending via ADB.
+
+[\] Fixed an error when clearing an input field in MEmu 9.

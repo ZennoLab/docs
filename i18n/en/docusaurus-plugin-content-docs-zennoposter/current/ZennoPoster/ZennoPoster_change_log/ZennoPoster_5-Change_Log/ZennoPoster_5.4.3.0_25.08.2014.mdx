@@ -1,0 +1,71 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.4.3.0 25.08.2014"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.4.3.0 25.08.2014.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200075/ZennoPoster+5.4.3.0+25.08.2014"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506200075/ZennoPoster+5.4.3.0+25.08.2014)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.4.3.0 (25.08.2014)
+
+### New features:
+
+[+] Added support for non-Latin domain names in GET/POST requests (for example, “http://bücher.com”, “http://мойдомен.рф”, “παράδειγμα.δοκιμή”).
+
+[+] Added the ability to import input settings via a bat file.
+
+[+] Added the ability to minimize ZennoPoster to the system tray.
+
+[+] Added the “Ignore Frame” page load state option.
+
+[+] Added overloads for the methods [SendErrorToLog](http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~SendErrorToLog.html "http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~SendErrorToLog.html"), [SendInfoToLog](http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~SendInfoToLog.html "http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~SendInfoToLog.html"), [SendWarningToLog](http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~SendWarningToLog.html "http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~SendWarningToLog.html") of the project object. The last parameter controls whether the message is also displayed in ZennoPoster.
+
+[+] Added log settings. You can edit the log retention time and the maximum number of entries.
+
+[+] Improved loading speed and performance of ProjectMaker.
+
+[+] Improved profile file selection in HTTP GET/POST actions.
+
+[+] Added an additional parameter to the method [ZennoPoster.GetProxy](http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~GetProxy.html "http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~GetProxy.html") to return the proxy in canonical address format (protocol://login:pass@ip:port).
+
+[+] Added the methods [ExportInputSettings](http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ExportInputSettings.html "http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ExportInputSettings.html") and [ImportInputSettings](http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ImportInputSettings.html "http://help.zennolab.com/en/v5/zennoposter/5.4.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ImportInputSettings.html") to the ZennoPoster class for working with input settings.
+
+[+] Added interruption for the Pause and Email Processing actions in ZennoPoster.
+
+### Bug fixes:
+
+[\] Fixed the DrawToBitmap method. In rare cases, it was not possible to save an image or retrieve a captcha on long pages due to scrolling.
+
+[\] Fixed select emulation. Disabled elements are now taken into account during full emulation.
+
+[\] Fixed incorrect encoding detection for some files; it can now also be disabled.
+
+[\] Fixed infinite redirect loops with incorrect authorization data.
+
+[\] Fixed .bat file handling.
+
+[\] Fixed selecting and copying the Switch action in ProjectMaker.
+
+[\] Fixed ProjectMaker operation when loading files.
+
+[\] Fixed errors when launching and running CodeCreator.
+
+[\] Fixed errors when locating elements on a page.
+
+[\] Fixed URL updates in the address bar.
+
+[\] When using custom characters in the Random action, the other flags become unavailable.
+
+[\] Added escaping of special characters when using the “Search text on page” function.
+
+[\] Fixed SFTP operation without a proxy.
+
+[\] Fixed opening input settings of projects added in previous versions of ZennoPoster.

@@ -1,0 +1,51 @@
+﻿---
+sidebar_position: 116
+title: "ZennoDroid 2.3.3.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.3.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331050000/ZennoDroid+2.3.3.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331050000/ZennoDroid+2.3.3.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.3.0
+
+### New features:
+
+[+] Added the ability to proxy traffic using Redsocks2 (available only on Android 7x64 and Android 9 images). Redsocks2 supports proxy addresses only in the `IP:Port` format.
+
+[+] When using Redsocks2, you can now specify DNS addresses and proxy DNS requests.
+
+[+] When using Redsocks2, the public IP address via WebRTC matches the proxy address.
+
+[+] Added the ability to disable Proxifier.
+
+[+] Added the ability to recognize hCaptcha in an app via recognition services.
+
+[+] Added the ability to recognize hCaptcha (with/without a submit button) in the Chrome browser via recognition services.
+
+[+] Added the ability to install/start the Frida server. Execute a script. (Button on the panel next to the “Installed Applications” button).
+
+[+] Improved multithreaded performance when sending a large number of commands to devices simultaneously.
+
+### Bug fixes:
+
+[\] Fixed an issue where pop-up notifications stopped displaying in ZennoDroid.
+
+[\] Fixed an issue where the project recovery window would appear on restarting ZennoDroid even after the program had closed correctly.
+
+[\] Fixed the “Remote WebSocket not found” error when executing JavaScript on a page.
+
+[\] Fixed an issue where the “ADB Shell Console Command” action returned an incomplete response.
+
+[\] Fixed the ERROR\_RECAPTCHA\_INVALID\_DOMAIN error when submitting hCaptcha for recognition.
+
+[\] Fixed a bug where Frida could detect no more than 10–15 connected devices.
+
+[\] Fixed very long initialization on the first retrieval of the element tree.

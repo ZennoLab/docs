@@ -1,0 +1,46 @@
+---
+sidebar_position: 114
+title: "ZennoDroid 2.3.5.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.5.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331115525/ZennoDroid+2.3.5.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2331115525/ZennoDroid+2.3.5.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.5.0
+
+### New features:
+
+[+] Added the ability to save and restore a Google account and some app accounts (“Custom C# code”).
+
+[+] Added the ability to specify the sender name when simulating SMS sending to a device.
+
+[+] Added the ability to execute JavaScript on a page from the “Custom C# code” action.
+```csharp
+var url = instance.DroidInstance.WebView.EvaluateScript("return window.location.href");
+```
+
+[+] Added the ability to solve ReCaptcha2 via images using CapMonsterCloud (English challenges only).
+
+[+] Accelerated initialization when first retrieving the element tree.
+
+[+] Updated Appium to 5.8, FFmpeg to 6.0.
+
+[+] Automatic opening of images in ReCaptcha2.
+
+### Bug fixes:
+
+[\] Fixed an error when simulating SMS sending to a device.
+
+[\] Improved the “Fix build.prop errors” setting.
+
+[\] Fixed an error when retrieving the name of the active app.
+
+[\] Fixed an error when clearing notifications in the notification shade.

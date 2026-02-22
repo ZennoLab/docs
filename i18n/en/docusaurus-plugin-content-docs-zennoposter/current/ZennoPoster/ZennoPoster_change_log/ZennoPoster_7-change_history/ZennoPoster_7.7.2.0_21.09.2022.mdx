@@ -1,0 +1,148 @@
+---
+sidebar_position: 131
+title: "ZennoPoster 7.7.2.0 21.09.2022"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.7.2.0 21.09.2022.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2213347329/ZennoPoster+7.7.2.0+21.09.2022"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2213347329/ZennoPoster+7.7.2.0+21.09.2022)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.7.2.0 (21.09.2022)
+
+**New features:**
+
+[+] The Chromium engine has been updated to version 105.
+
+[+] Improved Chromium browser fingerprint emulation in workers and other browser entities.
+
+[+] Added the ability to configure DNS over HTTPS in Chromium.
+
+[+] Added an overload for the *Instance.SetProxy(ProxySettings proxySettings, NetworkSettings networkSettings)* method in C#.
+
+[+] Improved Chromium browser performance and optimized IO consumption.
+
+[+] Improved Chromium navigation and request handling; fixed possible causes of navigation freezes.
+
+[+] Added the “ReCaptcha compatibility mode” option to the “Start hCaptcha interception” action, improving compatibility with websites that use both protections.
+
+[+] Added a new Chromium launch argument --theme, which accepts two values: light and dark. This argument controls the Chromium theme; by default, the theme depends on the operating system. Example: --theme=light
+
+[+] Added automatic fixing of an old issue with the Variable Processing action. The issue caused uncontrolled project size growth. Previously, the action was only fixed when reopened.
+
+[+] The Audio browser profile setting has been split into two options: Audio and Audio (noise).  
+Audio controls JS object parameters. Audio (noise) is the fingerprint emulation algorithm. Now, Audio is enabled by default, while Audio (noise) is disabled. For older projects, if Audio was enabled, both Audio and Audio (noise) will be enabled; if disabled, both will be disabled.
+
+[+] The Client Rect browser profile setting has been renamed to Client Rect (noise) and is now disabled by default for new projects.
+
+[+] Added a canvas emulation fallback setting to the browser profile for cases where super emulation fails. You can now select a noise mode if super emulation does not work.
+
+[+] The SetProxy action now includes settings for detecting the “outgoing” IP. You can automatically determine the IP address (taking detection errors into account or ignoring them) or enter it manually.
+
+[+] Added Notification API support in Chromium. The LastNotificationText and LastNotificationTitle macros, as well as the corresponding API properties, now work the same way as in other browsers.
+
+[+] Added a “Hide instance from users” option to project encryption settings. If enabled and the user only has Execution permission, the browser will not be shown in ZennoPoster and ProjectMaker except during “Waiting for user action”.
+
+[+] Added tracking of algorithms using measureText functions for canvas super emulation.
+
+[+] Added the Chromium launch argument --enable-site-isolation-trials.
+
+[+] Added WebP image format support for the “Image Processing” action.
+
+[+] The ZennoPoster task setting “Execute Bad End when project is interrupted” is now enabled by default for new tasks.
+
+[+] Slightly improved ZennoPoster and ProjectMaker startup speed.
+
+**Bug fixes:**
+
+[\] Fixed loading freezes on some websites such as twitter.com and reddit.com.
+
+[\] Fixed application of the sec-ch-ua header in the Chromium browser.
+
+[\] Chromium now consumes fewer system threads, improving overall performance.
+
+[\] Fixed instance.DownloadsPath behavior for Chromium, including file downloads via extensions.
+
+[\] Fixed an issue where extensions disappeared when loading a profile folder.
+
+[\] Fixed possible system crashes (blue screen) caused by handle and thread leaks in Chromium.
+
+[\] Fixed handle leaks in ProjectMaker.
+
+[\] Fixed an issue where a Chromium extension window blocked ProjectMaker from maximizing.
+
+[\] ZennoPoster now switches to BadEnd when a project is interrupted (enable the “Execute BadEnd when project is interrupted” option in ZennoPoster settings under the “Stop” tab).
+
+[\] Fixed an issue where deleting a line between actions also deleted the connected action.
+
+[\] Fixed ProjectMaker window layout changes when maximizing and restoring from full screen, as well as when opening projects while ProjectMaker is minimized.
+
+[\] The DevTools context menu window now opens in the correct location.
+
+[\] When solving hCaptcha, ReCaptcha is no longer mentioned in the log.
+
+[\] Fixed inheritance of Canvas seed settings when launching the browser in a browserless project.
+
+[\] Fixed horizontal scroll reset when clicking an input field on Avito.
+
+[\] The action builder now correctly records an action with an element searched in an extension popup, even if the popup was already closed.
+
+[\] Fixed interaction issues with the browser in ProjectMaker after sequentially running Browserless mode and then Chromium.
+
+[\] Fixed hCaptcha sitekey parsing on some websites.
+
+[\] Fixed a ProjectMaker project loss issue when saving to a disk with no free space.
+
+[\] Fixed IndexedDB folder migration when converting a profile folder from CEF to Chromium.
+
+[\] Fixed extension window flickering in Chromium.
+
+[\] Fixed canvas and WebGL noise behavior on some websites in Chromium.
+
+[\] Fixed issues where the Chromium profile folder remained locked after project completion.
+
+[\] Fixed instance.SetWindowSize behavior in ZennoPoster, including the Screen Maximize profile option.
+
+[\] Fixed an issue where ClientRect noise sometimes failed to apply.
+
+[\] Fixed the “Launch instance” action with the “Browserless” option. Sometimes execution failed with an error.
+
+[\] Fixed cases where the ZennoPoster task scheduler would freeze.
+
+[\] Fixed Chromium crashes caused by using outdated font API methods.
+
+[\] Fixed several visual bugs in ProjectMaker, such as displaying the URL from another/closed tab, showing the browserless project message, browser launch error messages, and incorrect page load status updates in Chromium.
+
+[\] Fixed outdated navigator field adjustments for the Chromium browser.
+
+[\] Fixed keyboard emulation for Russian, English, Spanish, French, Ukrainian, and Belarusian layouts in Chromium. Key metadata for these layouts is now sent correctly. The layout is determined automatically based on the emulated text.
+
+[\] Fixed full mouse emulation in multithreaded mode for Chromium.
+
+[\] Fixed tab activity handling (sometimes an action could fail because Chromium incorrectly identified the active tab).
+
+[\] Fixed some screenshot issues in Chromium where noise or pixelation could previously appear.
+
+[\] Fixed the display of the “How to repeat” field in the ZennoPoster task scheduler.
+
+[\] Fixed escaping of special characters when converting text processing actions into C# code.
+
+[\] Fixed execution of the Launch instance action in ProjectMaker with the same profile folder as a running Chromium instance.
+
+[\] Fixed Chromium rendering when the browser window size exceeds the desktop size.
+
+[\] Fixed retrieval of URL and domain for frames in Chromium.
+
+[\] Fixed OpenCV library integration with ZennoPoster.
+
+[\] Restored the variable copy button in HTTP/GET/POST request actions.
+
+[\] Fixed layout of the “Launch instance” action.
+
+[\] Fixed screenshot capture in Chromium on pages with scrolling, and fixed image search on pages with scrolling.

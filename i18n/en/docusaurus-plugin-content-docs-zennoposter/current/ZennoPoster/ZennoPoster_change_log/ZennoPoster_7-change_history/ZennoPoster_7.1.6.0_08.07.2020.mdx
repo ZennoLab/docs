@@ -1,0 +1,57 @@
+---
+sidebar_position: 146
+title: "ZennoPoster 7.1.6.0 08.07.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.1.6.0 08.07.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/782565381/ZennoPoster+7.1.6.0+08.07.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/782565381/ZennoPoster+7.1.6.0+08.07.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.1.6.0 (08.07.2020)
+
+### New features:
+
+[+] We are working on reorganizing the documentation. ProjectMaker now includes integrated help — most program windows now have a “?” icon that opens the help page for the selected tool or action. Not all articles have been written or updated yet, but even now it’s useful to have some reference materials at hand.
+
+[+] Added the ability to localize your projects into other languages. Translation of notes, your custom text in actions, and log output messages is supported. To work with localization, a new section for managing translations has been added to the File menu.
+
+[+] Added a new “Swipe Event” action. You can now perform a simple swipe in any direction or to an element using the new action. In the Action Builder, this event is available as “swipe into view”.
+
+[+] Added a new class, MouseEmulationParameters, which describes full emulation parameters, as well as an overload of the Tab.FullEmulationMouseSetOptions method that accepts this class. In addition to the existing parameters, the class now includes two new ones responsible for scroll speed: MinScrollSpeed and MaxScrollSpeed.
+
+[+] Improved the compact view of the Receive Mail action. Now all the main action settings can be edited in compact view. Also, when more than one email is found, the most recent one is now selected instead of returning an error.
+
+[+] If there is no connection to the server, the ZennoPoster scheduler no longer adds attempts to tasks.
+
+[+] The Cookie field is now hidden when the Use CookieContainer option is enabled in HTTP request actions.
+
+[+] Added support for the data-s parameter in the Solve ReCaptcha2 action.
+
+### Bug fixes:
+
+[\] Fixed the auto-update functionality.
+
+[\] Fixed touch event emulation on some websites that detected a touch click as a regular click. Added a Browser Settings → Touchscreen action, similar to the C# property Instance.ForceTouch. To correctly emulate touch events, you need to enable the touchscreen setting.
+
+[\] Fixed AudioContext emulation in Firefox.
+
+[\] Improved Chrome browser emulation, including authorization in Google services.
+
+[\] Navigation via the address bar now works in Chrome while waiting for user actions.
+
+[\] Fixed errors when converting actions to code if the values use macros.
+
+[\] Fixed the Tab.Handle property in Firefox.
+
+[\] Fixed mouse jitter in ProjectMaker during full emulation.
+
+[\] Fixed termination of inactive database processes in ZennoPoster.
+
+[\] Other fixes and improvements.

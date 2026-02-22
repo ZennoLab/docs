@@ -1,0 +1,47 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.0.7.0 18.10.2013"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.0.7.0 18.10.2013.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/504430674/ZennoPoster+5.0.7.0+18.10.2013"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/504430674/ZennoPoster+5.0.7.0+18.10.2013)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.0.7.0 (18.10.2013)
+
+### New features:
+
+[+] Added the option Record → “Automatically insert project directory macro”. When recording a project, the project directory macro will be automatically inserted into file paths if the file is located in the same directory or a subdirectory as the project.
+
+[+] Added the instance.GetCookie command — now you can retrieve cookies for GET/POST requests with a single line of C# macro. return instance.GetCookie(“example.com”, true);
+
+[+] Added critical task priority in ZennoPoster.
+
+[+] The Decaptcher module now returns the correct error code instead of the “Object reference not set to an instance of an object” error.
+
+[+] Added the helper class ZennoLab.CommandCenter.PhpHelper for thread synchronization in PHP projects in CodeCreator.
+
+[+] Added the ability to edit input settings in the task manager.
+
+[+] Added a check for incompatible software during installation.
+
+### Bug fixes:
+
+[\] Fixed the HTTP POST request for the multipart/form-data option and binary file uploads.
+
+[\] Fixed an issue where it was not possible to change the settings of multiple sources.
+
+[\] An “Unpacking error” sometimes occurred during installation.
+
+[\] Fixed several errors when executing PHP code.
+
+[\] Fixed an issue where an incorrect UserAgent was sent during the SSL Handshake via an HTTP proxy. The fix works when a single thread per proxy is set. Don’t worry — the target server never saw your real UserAgent, so you can keep working as before. Now even the proxy will never be able to see the default UserAgent.
+
+[\] The action for launching an external program now exits correctly if the launch fails.

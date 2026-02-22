@@ -1,0 +1,89 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.43.0.0 14.05.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.43.0.0 14.05.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/636649473/ZennoPoster+5.43.0.0+14.05.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/636649473/ZennoPoster+5.43.0.0+14.05.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.43.0.0 (14.05.2020)
+
+### New features:
+
+[+] Added request retry settings in Chrome. The instance.AutoRetry property enables retries, the instance.AutoRetry5xxResponses property enables retries for 5xx response codes, and instance.AutoRetry must also be enabled. The instance.AutoRetryMaxAttempts property lets you adjust the number of attempts, from 1 to 10, default is 3.
+
+[+] Added a “Parse Data” item to the Elements Tree context menu.
+
+[+] ProjectMaker now displays a bright panel with a message and a “Continue execution” button when waiting for user actions.
+
+[+] Added support for digest authentication in GET requests when using the alternative HTTP request method.
+
+### Bug fixes:
+
+[\] Fixed project publishing.
+
+[\] Fixed C# code debugging in multi-window mode.
+
+[\] ProjectMaker now minimizes, restores, and resizes significantly faster.
+
+[\] Fixed scheduler behavior when selecting a specific time instead of an interval in the “When to repeat” block. The scheduler will now trigger once at the specified time instead of triggering throughout the entire minute.
+
+[\] Fixed mouse movement emulation freezing when the cursor reached the edge of the page.
+
+[\] Fixed updating of the variable list in the Variables window when creating a variable in action properties.
+
+[\] Fixed auto-detection of settings in the Receive Mail action.
+
+[\] Fixed an issue with slow project saving when the recent projects history was populated.
+
+[\] The instance window is now guaranteed to come to the foreground when waiting for user actions.
+
+[\] Fixed the ThreadStatic attribute in C# code in ProjectMaker.
+
+[\] Fixed clipboard handling in C# code in ProjectMaker.
+
+[\] In element-related actions, the “Wait no more than” setting now works correctly when the wait time is less than 5 seconds.
+
+[\] When debugging C# code, pressing the Stop button now immediately stops project execution.
+
+[\] Fixed issues launching ProjectMaker when the code editor failed to initialize.
+
+[\] ZennoPoster now handles auxiliary database processes better, terminating them if they hang.
+
+[\] Fixed possible freezes in alternative HTTP requests and when using the HEAD method.
+
+[\] Fixed DOM retrieval on some pages in Chrome.
+
+[\] Chrome no longer freezes when attempting to set invalid cookies.
+
+[\] Increased Chrome startup timeouts, which should improve browser launches on heavily loaded computers.
+
+[\] In the Data Parsing window, “Range” and “Filtering” have been swapped for a more logical workflow.
+
+[\] Fixed editing of the match number in classic search parameters when inserting a variable from the context menu.
+
+[\] Collapsed C# and common code blocks are now remembered when closing the window.
+
+[\] Reduced proxy connection usage when working with the HTTP Connection Pool using the alternative HTTP request method. Relevant for proxy packages with connection limits.
+
+[\] Fixed XML tag parsing.
+
+[\] Deprecated settings in the Settings → Instance tab have been hidden.
+
+[\] Fixed recognition of reCAPTCHA v2 in tabs on some websites.
+
+[\] Fixed the error description when specifying the UserAgent header in HTTP requests in an incorrect format.
+
+[\] Fixed timezone setting when configured via hours and minutes.
+
+[\] Fixed the thread count for tasks in ZennoPoster.
+
+[\] Fixed display of variable values in tooltips above ProjectMaker actions.

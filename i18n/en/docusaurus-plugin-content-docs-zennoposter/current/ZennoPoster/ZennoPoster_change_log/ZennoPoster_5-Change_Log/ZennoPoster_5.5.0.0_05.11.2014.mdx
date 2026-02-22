@@ -1,0 +1,159 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.5.0.0 05.11.2014"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.5.0.0 05.11.2014.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/504528915/ZennoPoster+5.5.0.0+05.11.2014"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/504528915/ZennoPoster+5.5.0.0+05.11.2014)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.5.0.0 (05.11.2014)
+
+### New features:
+
+[+] The browser engine has been updated to version 24.8.
+
+[+] The “Repeat in loop” option has been added to the context menu in the ProjectMaker editor for actions and action groups, allowing you to quickly create loops.
+
+[+] Errors and warnings for optional actions or actions with unsuccessful outcome handling are no longer shown in the log.
+
+[+] The bot marketplace API has been extended with the CreateBot and UploadBotContent functions. Details [❗→ here](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862407/API "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862407/API").
+
+[+] A new field type, Comment, has been added to input settings to display text across the full width of the settings window.
+
+[+] A “Help” field has been added for input setting elements. You can use simple HTML markup such as &lt;b&gt; and &lt;i&gt;.
+
+[+] Added support for \.xlsm table format.
+
+[+] You can now save the project’s current proxy to a profile.
+
+[+] The “Delete rows” table action has been expanded.
+
+[+] You can now disable sounds for instances (works on Windows Vista and above).
+
+[+] You can now edit default values for input settings in the ProjectMaker preview.
+
+[+] You can now copy GAC links between projects.
+
+[+] Added the “Keep databases in reserve” and “Inactive database lifetime” settings. These settings allow you to control the number of inactive databases, helping you save RAM.
+
+[+] The “Run Program” action now allows you to start programs in hidden mode.
+
+[+] The logic for mail authorization with auto-detection of settings has been changed. If authorization fails, the error text is displayed and you are prompted to enter the data manually.
+
+[+] The input settings editing window has been improved.
+
+[+] Connections between actions can now be recreated without deleting the old one.
+
+[+] When you open a project in the project editing window, the Start action is focused.
+
+[+] Added a button for infinite task execution in ZennoPoster.
+
+[+] When copying actions from another project, a dialog appears allowing you to choose the policy for copying variables associated with the actions.
+
+[+] project.Context now works with the dynamic type instead of object.
+
+[+] The Keys property has been added to project.Context, returning a list of all keys.
+
+[+] The project’s Variables are now enumerable, and the Keys property has also been added.
+
+[+] Added a profile file selection dialog for GET/POST request actions.
+
+[+] Improved the display of the Switch action.
+
+[+] Increased the processing speed of GET/POST requests.
+
+[+] Added the [instance.SetUserHeader(string headerName, string value)](https://help.zennolab.com/en/v5/zennoposter/5.5/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.Instance~SetUserHeader.html "https://help.zennolab.com/en/v5/zennoposter/5.5/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.Instance~SetUserHeader.html") method to add custom headers to browser requests.
+
+[+] Added the ability to navigate to a column in the “Custom C# Code” action.
+
+[+] Added automatic renaming of variables, lists, and tables in C# code.
+
+[+] Added the “Track thread state” setting to display additional statistics parameters.
+
+[+] Added the “Do not fill action settings cache” setting to speed up ProjectMaker startup.
+
+[+] Added a setting for the number of HTTP request retries in POST and GET actions.
+
+[+] Added a setting for lists and tables: “Leave empty file in UTF8 encoding”.
+
+[+] Added the “Show resulting variable in action description” setting.
+
+[+] Added the “Run unfinished projects at startup” setting.
+
+[+] Added additional inspections for C# and JavaScript code.
+
+[+] The IsWindowExists method has been added to the Emulator class to check if a window exists.
+
+### Fixed bugs:
+
+[\] Changing the default value of variables caused the project to enter a modified state.
+
+[\] Fixed a ProjectMaker crash when starting a project from the beginning on some computers.
+
+[\] Fixed flickering of the yellow loading indicator on some websites.
+
+[\] Fixed subscription handling in ZennoBox.
+
+[\] Fixed the scheduler in ZennoPoster.
+
+[\] Fixed image retrieval from a page — images are now taken directly from the browser cache instead of being re-rendered.
+
+[\] Fixed database freezes during drag & drop.
+
+[\] When starting a project from the beginning, browser flags such as CSS loading are reset to their default state.
+
+[\] Fixed operation on systems with Hindi localization and some other Eastern localizations.
+
+[\] Fixed corruption of settings files that previously required reinstalling the program.
+
+[\] Fixed cookie handling in GET/POST requests.
+
+[\] Fixed list binding in ZennoPoster.
+
+[\] Fixed a bug with the “No label” tag in ZennoPoster.
+
+[\] Fixed action deletion in ProjectMaker.
+
+[\] Fixed tab closing in ProjectMaker — after closing, an empty tab named “page” would remain.
+
+[\] Fixed initialization of lists and tables.
+
+[\] Changes in C# code were not saved when starting a project from a specified action with the code editor open.
+
+[\] Fixed GET/POST requests when using ports in the URL.
+
+[\] Fixed Delete key handling in ZennoPoster.
+
+[\] A project created in CodeCreator that does not use an instance no longer creates an instance in ZennoPoster.
+
+[\] Fixed opening an excessive number of databases.
+
+[\] Fixed the Alert action.
+
+[\] Fixed a bug in recording actions in ProjectMaker.
+
+[\] Fixed repeated execution of macros.
+
+[\] Fixed recording of the AllowPopup action.
+
+[\] Fixed input settings in ZennoPoster for older projects.
+
+[\] Fixed handling of CpuClass, OsCpu, Platform, Product, and ProductSub profile fields when saving and loading.
+
+[\] Fixed ProjectMaker freezing when opening a Google document.
+
+[\] The Switch action was marked as incorrectly configured if it contained rows with identical values.
+
+[\] Fixed display of some websites that differed from how they appear in the browser.
+
+[\] Fixed a ProjectMaker crash when using KeyEvent.
+
+[\] After minimizing to the tray, ZennoPoster would maximize to full screen if it had been in that mode before minimizing.

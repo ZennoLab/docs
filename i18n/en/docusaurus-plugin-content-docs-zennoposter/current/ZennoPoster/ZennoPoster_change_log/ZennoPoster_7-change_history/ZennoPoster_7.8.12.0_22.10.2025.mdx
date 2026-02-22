@@ -1,0 +1,44 @@
+---
+sidebar_position: 97
+title: "ZennoPoster 7.8.12.0 22.10.2025"
+description: ""
+date: "2025-10-22"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.8.12.0 (22.10.2025)
+
+**Added:**
+
+[+] Chromium browser updated to version 141.
+
+[+] The "Launch ZennoBrowser instance" action now offers several browser launch options. You can now choose from 4 options:
+• Specify profile ID. This option contains the previous settings, i.e., it подразумевает specifying ProfileId.
+• Use current profile ID. When this option is selected, the `{-Project.ZennoBrowserProfileId-}` macro will be used as the profile identifier.
+• Specify profile folder ID. This option allows you to specify FolderId; one profile from the selected profiles folder will be launched.
+• Use current profile folder ID. When this option is selected, the `{-Project.ZennoBrowserProfileContainerId-}` macro will be used as the profiles folder identifier.
+
+[+] When launching a profile from ZennoBrowser, the `{-Project.ZennoBrowserProfileId-}` and `{-Project.ZennoBrowserProfileContainerId-}` macros are now updated, meaning these macros now contain information about the most recently launched profile.
+
+[+] The "Launch ZennoBrowser instance" action with the options "Specify profile folder ID" or "Use current profile folder ID" will launch a profile from the specified folder even if another profile from that folder has already been launched. This allows you to organize profile rotation on launch.
+
+[+] Added new actions "Browser -> Settings -> Stop instance" and "Integration with ZennoBrowser -> Stop instance".
+
+[+] In cookie export and import actions, including via API, support for partitioned cookies has been added for Chromium and ChromiumFromZB browsers.
+
+**Fixed:**
+
+[\] Fixed the causes of ChromiumFromZB browsers closing during integration token renewal. Fixes were also made on the ZB product side and will be available starting from version 0.29.30.2.
+
+[\] Fixed task interruption in ZennoPoster when using a browser from ZB.
+
+[\] Fixed the profile launch error "Received message exceeds the maximum; configured message size.", the fix will be available when using ZB version 0.29.30.2.
+
+[\] Support for Canvas SuperEmulation has been discontinued. Instead, the profile settings now include a checkbox to enable or disable Canvas and WebGL noise. Additionally, along with the removal of canvas superemulation, the project no longer stops at an unexpected point if the "Continue project" checkbox was not selected in the Profile settings. This fixes issues some users experienced where a project would unexpectedly switch to badend or an action would complete unsuccessfully even though it visually appeared successful.
+
+[\] Support for CapMonster1 modules has been discontinued. These are very old modules; for many years the product has offered integration with a wide range of captcha recognition services instead, including CapMonsterCloud.
+

@@ -1,0 +1,131 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.9.7.1 21.01.2016"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.9.7.1 21.01.2016.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993908/ZennoPoster+5.9.7.1+21.01.2016"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993908/ZennoPoster+5.9.7.1+21.01.2016)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.9.7.1 (21.01.2016)
+
+### New features:
+
+[+] In the “Text Processing” and “Data” actions, parsing multiple values at once using a regular expression has been added. You can now save matches to variables with a selected match number, as well as to a table with the option to exclude a range of columns.
+
+[+] The regular expression builder has been improved — it now shows matches by groups, and you can select only the required parsing results to copy to the clipboard.
+
+[+] Asynchronous captcha recognition has been added. In the recognition action, under the Advanced tab, there is now a “Recognize asynchronously” flag. When enabled, a related action for waiting for recognition appears.
+
+[+] An optional asyncRecognize parameter has been added to the captcha recognition methods of the ZennoPoster class. The method now returns a recognition ID, which must be used as a parameter for the new method [ZennoPoster.WaitCaptchaRecognition(string)](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic441.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic441.html").
+
+[+] A new project mode, “Browser without content rendering,” has been added. Currently in beta. In this mode, almost everything works except plugins such as Flash. Rendering is disabled, which helps save memory and CPU resources.
+
+[+] The “Project in Project” action now includes an “Open browser if required” flag. If the browser is disabled in the main project and this flag is enabled, the browser will be created for the duration of the “Project in Project” action if the nested project uses a browser.
+
+[+] Certificate installation has been added to the “Browser Settings” action.
+
+[+] Proxifier support has been added. A new “Use Proxifier” flag is available in project settings. Proxifier version 3.29+ is required for correct operation.
+
+[+] When recording actions in ProjectMaker, a new group is now created, whenever possible, within the visible area of the project.
+
+[+] Transliteration support via code has been added with the method Macros.TextProcessing.Translit(String).
+
+[+] The [ZennoPoster.MailConfirm](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic419.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic419.html") method now includes an additional parameter throwsException, which defaults to false. When set to true, the MailConfirm method will throw exceptions on errors. The standard exception types are located in the ZennoLab.CommandCenter.Exceptions.Mail namespace.
+
+[+] Dependencies on AForge have been removed.
+
+[+] A button has been added to the ZennoPoster task scheduler to update the start time to the current time.
+
+[+] In advanced mail handling mode, buttons for copying variable macros have been added.
+
+[+] In the list operations actions “Add from List” and “Select Sublist,” macros are now allowed in the list name field.
+
+[+] Logging settings have been added. In C# code, the property [project.LogOptions.LogFile](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic571.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic571.html") lets you set the path to the project execution log file, and the property [project.LogOptions.SplitLogByThread](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic572.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic572.html") enables automatic log splitting by threads. When set to true, the log file is named in the format “file path.N.extension,” where N is the execution thread ID.
+
+[+] Two new options have been added to the table operations action: sort by columns and remove duplicates by columns.
+
+[+] The variable processing action has been adapted to work with large numbers.
+
+[+] A “Mirror” option has been added to the “Image Processing” action. Corresponding methods have also been added for C# code.
+
+[+] The [InnerText](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic120.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic120.html") method has been added to the HtmlElement class.
+
+[+] The IEnumerable interface has been implemented for HtmlElementCollection to allow iteration in loops.
+
+[+] A “Sort project variables alphabetically” setting has been added to ProjectMaker.
+
+[+] The methods Add(name, value), Delete(name), and Clear() have been added to [project.Context](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic677.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic677.html").
+
+[+] An overload of the [ZennoPoster.HttpPost](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic393.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic393.html") method has been added that accepts the content parameter as a byte array. Additionally, when specifying the content type application/octet-stream, you can provide a file path in the content parameter or the corresponding HTTP POST action field. In this case, the binary representation of the file will be included in the request.
+
+[+] Emulation of the following window.screen object fields has been added: “top”, “left”, “availTop”, “availLeft”, “colorDepth”. To change these fields, pass the following values respectively as the pref argument to the method [Instance.SetScreenPreference(ScreenPreference preference, int value)](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic218.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic218.html"): “screen\_top”, “screen\_left”, “screen\_avail\_top”, “screen\_avail\_left”, “screen\_color\_depth”.
+
+[+] Overloads of the methods [Instance.SetScreenPreference(ScreenPreference preference, int value)](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic218.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic218.html") and [Instance.SetWindowPreference(WindowPreference preference, int value)](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic223.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic223.html") have been added, accepting an enumeration as the first argument instead of a string.
+
+[+] Emulation of the “navigator.doNotTrack” field has been added. To emulate it via the [Instance.SetHeader](https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic208.html "https://help.zennolab.com/en/v5/zennoposter/5.9.7/webframe.html#topic208.html") method that accepts a string, set the first parameter to “http\_user\_agent\_donottrack”.
+
+[+] A “Correct display of non-Latin characters in Excel for .csv files” flag has been added to table settings.
+
+[+] In ProxyChecker, a setting has been added to immediately remove a proxy from the live list if it fails a check.
+
+[+] ProjectMaker now allows you to import input settings entirely, not just their values.
+
+[+] The “Sort as numbers if possible” flag has been added to list and table sorting actions.
+
+### Fixed bugs:
+
+[\] Fixed issues with opening nested projects.
+
+[\] Fixed issues in the Lite version when using the instance reload action.
+
+[\] Fixed an issue where recent changes to action settings were sometimes not saved in ProjectMaker.
+
+[\] Fixed text input into Flash forms.
+
+[\] Fixed some issues when converting project actions to C# code.
+
+[\] Fixed missing suggestions from the “Common Code” block in “C# Code” actions in certain cases.
+
+[\] Fixed issues with recording projects in CodeCreator.
+
+[\] Fixed cookie handling in HTTP requests during redirects.
+
+[\] Fixed detection and handling of the active tab.
+
+[\] Fixed enabling of the advertisement checkbox when starting a project “From the beginning”.
+
+[\] Fixed project updates via symbolic link.
+
+[\] Disabled adding the JavaScript authorization action when project recording is disabled.
+
+[\] Fixed opening the proxy list for an anonymous source in ProxyChecker.
+
+[\] In ProxyChecker, fixed calculation of the next proxy check time after taking it from the live list.
+
+[\] Fixed column sorting in the “Get Row” table operation action.
+
+[\] Fixed the captcha recognition action when the “Last captcha” flag is enabled and the “Merge captchas” flag is disabled.
+
+[\] Fixed display of the task thread count in ZennoPoster when stopping via the task manager.
+
+[\] Fixed an issue where the ImageProcessingResizeFromFile method in “pixel” mode switched to “percent”.
+
+[\] Fixed an issue with an empty current project proxy when the browser is disabled.
+
+[\] Fixed proxy settings in FTP connections.
+
+[\] Fixed issues copying a variable macro from input settings.
+
+[\] Minor bugs in the ProjectMaker editor.
+
+[\] Fixed issues loading the website http://nationalgeographic.com.
+
+[\] Fixed removal of line breaks in the body of multipart HTTP POST requests.

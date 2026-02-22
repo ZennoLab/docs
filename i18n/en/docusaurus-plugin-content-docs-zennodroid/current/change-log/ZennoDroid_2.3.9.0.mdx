@@ -1,0 +1,56 @@
+﻿---
+sidebar_position: 110
+title: "ZennoDroid 2.3.9.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.9.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636461582/ZennoDroid+2.3.9.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636461582/ZennoDroid+2.3.9.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.9.0
+
+### Added:
+
+[+] Added the “Delete Account” action.
+
+[+] Added the “Get Accounts” action.
+
+[+] Added an option on the settings tab to select image capture quality (High/Low, roughly corresponding to FullHD and HD quality). This significantly reduces load when working with a large number of threads.
+
+[+] Added image-based solving for “HCaptcha” via CapMonster Cloud (English challenges only).
+
+[+] Added the ability to open the “Device Manager” from the toolbar and the Tools menu.
+
+[+] Added display of the device name in ZennoDroid (in the instance display window).
+Now the label under the instance window is shown in the format: Project [DeviceName] Port.
+
+[+] Added the ability to specify a region (country) in the “Change Language” action: en-US, en-CA, fr-FR, ...
+
+[+] Minor visual changes in “Select Image Capture Method.” You can switch between H.264 (default) and MJPEG.
+
+[+] Added validation of the application name when retrieving and clearing notifications, as well as when retrieving cookies.
+
+### Fixed:
+
+[\] Fixed ReCaptcha2 solving via CapMonster Cloud in Chrome browser version 117 and above (English challenges only).
+
+[\] Fixed autocomplete for `{AndroidKeys}` macros in the “Set Value” and “Action Builder” actions.
+
+[\] Fixed enabling auto-rotation when launching applications.
+
+[\] Fixed bridge mode operation in Android 9 when using RNDIS.
+
+[\] Fixed an error when converting the “Get Device List” action to C# code.
+
+[\] Fixed retrieving the apk (apks) of an application from a device.
+
+[\] Fixed project-wide text search (Ctrl - F3) in actions using classic element search: get/set value, perform event, and others.
+
+[\] Fixed retrieving a file from a device.

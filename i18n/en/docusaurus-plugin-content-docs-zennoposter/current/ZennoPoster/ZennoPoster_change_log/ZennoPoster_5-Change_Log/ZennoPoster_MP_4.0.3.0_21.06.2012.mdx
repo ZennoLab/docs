@@ -1,0 +1,87 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster MP 4.0.3.0 21.06.2012"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster MP 4.0.3.0 21.06.2012.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/509476865/ZennoPoster+MP+4.0.3.0+21.06.2012"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/509476865/ZennoPoster+MP+4.0.3.0+21.06.2012)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster MP 4.0.3.0 (21.06.2012)
+
+### New features:
+
+[+] The task scheduling system in ZennoPoster has been redesigned — now it uses only attempts and execution success limits.
+
+[+] IntelliSearch has been improved: it recognizes more fields and in the correct order (for example, it finds the captcha first, solves it, and only then prompts you to enter data). IntelliSearch also tries to answer security questions.
+
+[+] Page load tracking is now more accurate; you can catch AJAX and POST/GET requests after the page has loaded (see browser options).
+
+[+] Project debugging has been improved — the debug window no longer blocks the project, making it convenient to work even on small screens.
+
+[+] The log has been improved, both during debugging and during execution in ZennoPoster.
+
+[+] Added project search. The search covers all key action fields (you can right-click an error in the log, copy the action ID, and find it).
+
+[+] All fields that support macros now have syntax highlighting and Ctrl+Space suggestions.
+
+[+] Lists and tables can now be linked to files during project execution, not only during initialization (a new action in list and table operations).
+
+[+] Improved clicking on links and buttons.
+
+[+] An alert system has been added to the logic (Alert).
+
+[+] You can now delete items from a list by value.
+
+[+] In text processing → split into list, you can now specify multiple separators separated by a space.
+
+[+] The captcha loads even when images are disabled.
+
+[+] The Random action now accepts macros as input data; you can also generate a random login.
+
+[+] Ranges now work everywhere a number is specified (whether for matches or simply a line number).
+
+[+] Added Drag&Drop support for projects in the editor.
+
+[+] The installer has been improved — it now installs everything forcefully, which should improve correct startup and program performance.
+
+[+] Project groups have been removed.
+
+### Bug fixes:
+
+[\] Fixed setting the User Agent and other browser properties via profile.
+
+[\] Projects can now be transferred between the Russian and English versions of the program.
+
+[\] Fixed proxy distribution and checking speed issues on some machines.
+
+[\] Fixed email processing bugs — it now proceeds through the required actions.
+
+[\] Fields in FTP actions now support macros.
+
+[\] Fixed file existence check.
+
+[\] When performing operations such as extracting text from a file, getting a line from a list, or reading a cell from a table, macros contained in the text are now executed first, and only then is the text returned to the user variable.
+
+[\] Correct detection of elite public proxies.
+
+[\] The selected text verification window now allows editing the selected text.
+
+[\] Action screenshots can now be copied between projects.
+
+[\] Lists and tables linked to a file now work correctly in multithreaded mode.
+
+[\] Fixed an error when initializing a global counter with a number.
+
+[\] Numerous layout and incorrect form display bugs fixed.
+
+[\] GET/POST requests now execute correctly even with infrequent use.
+
+[\] Many other minor bugs fixed.

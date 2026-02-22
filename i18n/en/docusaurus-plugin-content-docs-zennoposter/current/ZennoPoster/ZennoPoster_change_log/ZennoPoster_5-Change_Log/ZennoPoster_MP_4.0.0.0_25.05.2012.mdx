@@ -1,0 +1,189 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster MP 4.0.0.0 25.05.2012"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster MP 4.0.0.0 25.05.2012.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/509378563/ZennoPoster+MP+4.0.0.0+25.05.2012"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/509378563/ZennoPoster+MP+4.0.0.0+25.05.2012)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster MP 4.0.0.0 (25.05.2012)
+
+We’ve slightly adjusted the terminology — now a template is called a project, a branch is an action, and a step is a group of actions.
+
+### IntelliSearch
+
+This is a new feature that allows you to:
+
+- create a project very quickly;
+
+- write one project for a large number of similar (and not so similar) websites;
+
+- increase the stability of projects tailored to a single website.
+
+Essentially, this is a system for recognizing input fields, buttons, links, etc. on a website. You go to a site and, as you go through the web page elements, you specify which class each element belongs to — login, password, submit button, and so on. Then, when you visit a new web page, the system starts recognizing some elements on its own, and you fine-tune the rest. The more examples you provide, the more accurately the system recognizes new elements. In fact, the system already has a trained base, so it will immediately recognize most web page elements — you’ll only need to fine-tune a few. As a result, you can take a thousand sites built on a similar engine, train the system on 10 of them, and after that it will be able to register on, say, 50 out of those 1000 without additional training. You then fine-tune it on some of the sites where it failed, the overall success rate increases, and so on. Ultimately, you can create a multi-project capable of handling thousands of resources.
+
+In a project, IntelliSearch is represented as a database. You can add it to another project, fine-tune it, and so on. There are predefined element classes, but you can also add your own.
+
+### Firefox engine
+
+ZennoPoster now uses Firefox to emulate the browser. Thanks to this:
+
++ everything that could potentially reveal a bot is emulated — both in headers and when requesting parameters from JavaScript (navigator, screen objects, etc.);
+
++ full control over the DOM model;
+
++ increased project execution stability;
+
++ reduced CPU load;
+
++ several times less RAM usage per instance;
+
++ fewer half-open connections per instance;
+
++ SOCKS5 support;
+
++ clearing of all types of cookies (more than 10 types);
+
++ the browser busy flag now responds to AJAX requests.
+
+In short, you now have full access to any browser feature, and it’s used to the fullest.
+
+### ProxyChecker
+
+In short — it can overwhelm network hardware.
+
+Tested on a server from http://hetzner.de — we managed to push 15,000 checking threads; couldn’t go higher because more network connections couldn’t be opened there.
+
+It can check a million proxies in just a few minutes — as long as your network hardware is up to the task.
+
+Heavily optimized and, under normal operation, consumes almost no memory or CPU time.
+
+The proxy database has been redesigned — it now handles huge proxy lists well and loads quickly when the program starts.
+
+ProxyChecker includes a network tester — you can run the test once, and it will automatically determine the maximum number of threads your system can handle.
+
+It checks all parameters you might need.
+
+### Visual editor
+
+Now it:
+
++ supports large and very large projects;
+
++ includes a minimap;
+
++ provides convenient parameter editing forms directly in the editor, separate for each action type;
+
++ allows you to continue developing a project while it’s open in the editor.
+
+### New ZennoPoster interface
+
+Designed in the best traditions of torrent clients:
+
++ you can hide instance windows;
+
++ a project is added only once and is not removed when the program restarts;
+
++ project categories for quick navigation;
+
++ project grouping;
+
++ new scheduler.
+
+### Keyboard and mouse emulation
+
+Many interesting websites now protect themselves from bots by tracking whether keys are actually pressed when filling out input fields. Mouse and keyboard emulation help bypass this protection.
+
+First, there is built-in emulation that works by default during project execution — fields are filled using keyboard emulation, and buttons and links are clicked using mouse emulation.
+
+Second, you can simply send the necessary keyboard commands to the page and click mouse buttons at specified coordinates.
+
+There is also mouse emulation using screenshot search — more on that below.
+
+### Click on image
+
+Sometimes you need to click an element that isn’t intended to be clickable — for example, Google now uses a div as a select element during registration, or you may need to click a specific spot inside Flash, such as pressing play on a YouTube video, etc.
+
+Text editors sometimes require clicking one of their toolbar buttons. All this is handled by the new “Click on image” feature. It’s called from the right-click menu on an HTML page while recording a project. You specify which part of the screenshot to search for and where to click relative to it. That is, you can search not for the element itself, but for an area of the page near it, and then click at the desired location relative to that area.
+
+The feature is highly optimized and doesn’t consume much CPU power.
+
+### Static blocks
+
+Projects now have static blocks — these include browser settings, profile, emulation settings, tables, lists, etc.
+
+These settings make project management more convenient. They are displayed at the bottom of the project editor in a separate panel.
+
+They are also displayed and configured during project recording at the bottom of the project tree.
+
+### Entry, good and bad project exits
+
+A project starts executing from the location specified by the special “Entry” element, represented in the editor as a gray circle. A project can finish with or without an error, so there are two additional exits — “Good” and “Bad.” After execution, control is passed to one of them, and you can perform some final actions depending on whether the project completed successfully.
+
+### New data types in the project
+
+Table and list — created for convenient data handling, especially with files that often need to be represented as lists and tables. They are managed via static blocks and standard actions.
+
+For example, you can immediately parse all links from a page into a list, sort them, remove duplicates, and save them to a file.
+
+When working with tables, xls, xlsx, odt, and csv formats are supported.
+
+Both reading and writing are supported.
+
+Variables. To avoid dealing with macro links, there are now variables (macro links no longer exist). The results of actions are stored in variables; to access a variable’s value, you use that variable’s macro.
+
+### Project encryption
+
+You can now encrypt your project and grant other users different types of rights: execution, read, write, full access.
+
+Rights are granted to the email address used to register ZennoPoster.
+
+Rights management is handled through a static block added to the project by dragging it from the toolbar into the editor.
+
+### Email processing
+
++ supports the IMAP protocol;
+
++ you can now work without deleting emails from the server.
+
+In most cases, you no longer need to create regular expressions.
+
+You specify the email and password, connection settings are determined automatically, download the emails and choose the criteria to search for the desired message. If the criteria are specified correctly, the required email in the list will be highlighted in green. If more than one email matches the criteria, they will be highlighted in red. Then, from the table, select which data you need from the email (check the boxes in the rows with the required text) and specify which variables the extracted text should be stored in.
+
+### Profile
+
+For convenient generation of data to fill out forms, a profile has been created. It generates personal data (Russian or American) with correct statistical distribution and geographic consideration. For example, if a person from Ryazan is generated, their name will most likely be something like Pyotr Ivanov, and if from Kazan — perhaps Albert Nurgaliev.
+
+### Macros
+
+Macros are now only static. All macros, global variables, and local variables can be found in the table.
+
+### FTP, SFTP, FTPS
+
+Nothing special — standard FTP:
+
++ file management;
+
++ directory management.
+
+### Regular expression builder
+
+Now it features:
+
++ syntax highlighting;
+
++ search with Ctrl+F.
+
+It is now called from the email confirmation form and via a button on the template editor toolbar.
+
+### Logic
+
+Added switch — i.e., selection from multiple options.

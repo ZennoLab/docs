@@ -1,0 +1,67 @@
+---
+sidebar_position: 140
+title: "ZennoPoster 7.3.1.0 14.01.2021"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.3.1.0 14.01.2021.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1307770951/ZennoPoster+7.3.1.0+14.01.2021"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1307770951/ZennoPoster+7.3.1.0+14.01.2021)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.3.1.0 (14.01.2021)
+
+### New features:
+
+[+] In ProjectMaker, a new action “Update” has been added to the “Profile Operations” action — to update old profiles to the latest current browser version. This not only updates the user agent but also all the necessary profile parameters.
+
+[+] A new profile format “Profile folder” has been added to ProjectMaker, which surpasses the old profile-file format in both speed and quality.
+
+[+] A new action “Work with Cookies” has been added to ProjectMaker, with the ability to import, export, and clear Cookies.
+
+[+] A new action “Check for Text Presence” has been added to ProjectMaker, similar to the function “Create a check for selected text presence.” At the same time, the function “Create a check for selected text presence” has also been converted into a single cube.
+
+[+] A new C# code debugger (Beta) has been integrated. Expected results — increased performance, debugging of new language constructs, and fixes for debugger freezes.
+
+[+] A new option “Thread culture” has been added under Settings -&gt; Execution. This option affects the localization language (culture) of the execution and debugging thread for projects and C# cubes. In the Russian version, “ru-RU” is set by default and may affect parsing of dates, numbers with decimal commas, and more.
+
+[+] A new tab “Free Projects” has been added to the ProjectMaker start page, containing links to collections of projects for you.
+
+[+] Improved anonymity for Chrome.
+
+### Bug fixes:
+
+[\] Fixed an issue with timezone and locale emulation in the Chrome engine.
+
+[\] Fixed an error when writing to a Google Sheet if the first sheet (gid=0) was deleted.
+
+[\] Optimized the execution speed of browserless projects.
+
+[\] Fixed an issue where debugging in ProjectMaker stopped working after several passes through shared code.
+
+[\] Fixed an issue where project execution in debug mode could freeze if the C# code contained a throw operator.
+
+[\] Fixed an error when loading a project containing problematic libraries.
+
+[\] Restored the logic of the IF action: the expression “No numbers &gt; 0” now produces an error.
+
+[\] Fixed an issue where on the website http://m.olx.kz, after solving ReCaptcha2, the “Register” button remained inactive.
+
+[\] Fixed the Schedule logic: previously, when selecting “How to repeat” — “Consecutively with pause,” the pause timer started from the moment the project launched. Now the pause timer starts after the project execution is completed.
+
+[\] Fixed the Schedule logic: the schedule will now correctly launch a project when the FROM and TO fields have identical values.
+
+[\] Fixed an issue where, when launching ffmpeg via the “Run Programs” action with the “Capture STD OUT” and “Capture STD ERR” checkboxes enabled, the action waited for the time specified in Timeout and then ended with an error.
+
+[\] Fixed the operation of the ScreenMaximize browser profile option after clearing the cache in Chrome.
+
+[\] A new option “Recreate C# execution thread” has been added under Settings -&gt; Debugging. Enabling this option may fix memory leaks during C# code execution.
+
+[\] Fixed a cosmetic bug where, when opening a site in a popup and then closing it, the page address was replaced with the previous one or with about:blank.
+
+[\] Other fixes and improvements.

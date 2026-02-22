@@ -1,0 +1,61 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.1.0.0 27.12.2013"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.1.0.0 27.12.2013.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397871/ZennoPoster+5.1.0.0+27.12.2013"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397871/ZennoPoster+5.1.0.0+27.12.2013)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.1.0.0 (27.12.2013)
+
+### New features:
+
+[+] Added the ability to view lists and tables.
+
+[+] When opening a project, variables, lists, and tables are initialized with default values.
+
+[+] Added the ability to move between fields using the Tab key in action properties.
+
+[+] Added support for the services [RIPCaptcha](http://ripcaptcha.com/ "http://ripcaptcha.com/") and [UUWise](http://uuwise.com/ "http://uuwise.com/").
+
+[+] Added code generation and editor settings in CodeCreator.
+
+[+] Added support for active mode in FTP.
+
+[+] Added a block for declaring additional using directives for “Custom C# Code”.
+
+### Bug fixes:
+
+[\] Reduced memory usage in ProjectMaker during prolonged operation.
+
+[\] Improved stability of ProjectMaker, ZennoPoster, and threads.
+
+[\] Fixed an “Index was out of range” error when retrieving data from lists and tables during debugging.
+
+[\] Fixed an error initializing SFTP connections. To work with the server, SSH access is sufficient.
+
+[\] Fixed an error when deleting directories via FTP with a complex nested folder hierarchy.
+
+[\] Checking for text on a page now generates a correct regular expression for text validation. Line breaks and tab characters are taken into account.
+
+[\] In ProjectMaker, in the advanced editor, when resizing action settings, the text fields now occupy all available space.
+
+[\] Fixed C# macros ZennoLab.Macros.FileSystem.FileGetLine(s) — deleting a line from a file no longer generates extra blank lines.
+
+[\] In CodeCreator, fixed an issue with non-working macros in list and table paths.
+
+[\] In CodeCreator, fixed code generation issues and execution of file upload code.
+
+[\] In CodeCreator, the “Find and Replace” form sometimes did not appear.
+
+[\] Fixed some Drag&Drop issues.
+
+[\] Fixed some errors occurring on .NET Framework 4.5.1.

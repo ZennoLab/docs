@@ -1,0 +1,85 @@
+---
+sidebar_position: 100
+title: "ZennoDroid 2.4.6.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.6.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3983343618/ZennoDroid+2.4.6.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Оригинальная страница](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3983343618/ZennoDroid+2.4.6.0)** — Источник данного материала
+
+_______________________________________________  
+# ZennoDroid 2.4.6.0
+
+### Добавлено:
+
++ **ZD PRO.** При использовании эмулятора MEmu разблокирована возможность задать мобильного оператора (по умолчанию MEmu ограничивает выбор операторов только теми, которые представлены в его встроенной базе и при попытке задать стороннего оператора сбрасывает настройки). Таким образом при генерации профиля появилась возможность использовать данные всех операторов с сайта [MCC-MNC.com - Mobile Network Code Database](https://mcc-mnc.com/).
+
++ **ZD ENTERPRISE.** Добавлена новая группа экшенов Управление LSPosed. Позволяет легко управлять различными модулями LSPosed при помощи которых осуществляется подмена параметров на устройствах. Теперь можно задать список приложений, к которым необходимо применять подмену, делать и восстанавливать бэкапы настроек без использования API C# [Ссылка на справку](../Enterprise/LSPosed_Control).
+
++ **ZD ENTERPRISE.** Добавлен экшен Сгенерировать устройство. Позволяет сформировать устройство по заданным фильтрам или из предварительно заданных параметров в формате json. Теперь можно легко настраивать параметры генерируемого устройства задавая фильтры и настройки без использования API C#. [Справка](../Android/Enterprise/setting#сгенерировать-устройство).
+
++ **ZD ENTERPRISE.** Добавлен экшен для включения возможности выполнять javascript в приложениях содержащих WebView. Доступ к WebView в приложениях не являющихся браузерами всегда выключен. Данная настройка позволяет получить доступ к к html разметке не только браузеров, но и приложений использующих WebView (в дереве элементов должен присутствовать элемент android.webkit.WebView). [Справка](../Android/Enterprise/setting#доступ-к-webview)
+
++ Поддержка эмодзи. Экшены Установить значение и Эмуляция клавиатуры теперь корректно отображают эмодзи и поддерживают их ввод.
+
++ Обновлена база мобильных операторов, теперь при генерации данных используются все операторы размещенные на сайте [!\[\](https://mcc-mnc.com/favicon.svg)MCC-MNC.com - Mobile Network Code Database](https://mcc-mnc.com/) .
+
++ Обновлена база мобильных устройств. Добавлены модели с Android 14, 15 и 16 (Google, Samsung, Motorola).
+
++ В экшены Поиск по картинке и Поиск по пикселю добавлена возможность указать время ожидания перед поиском.
+
++ При запуске устройства в ProjectMaker добавлена информация о текущем этапе подключения к устройству. Позволяет лучше понять на каком этапе возникла проблема в случае долгой загрузки.
+
++ Clash обновлен до версии 1.19.15. Для автоматического обновления необходимо предварительно удалить текущую версию. [Справка](../Android/Enterprise/Clash#автоматическое-обновление).
+
++ Appium Settings обновлен до версии 6.0.8. Для автоматического обновления необходимо удалить установленную версию (io.appium.settings).
+
++ ScrCpy обновлен до версии 3.3.3.
+
++ UIAutomator2 обновлен до версии 8.1.2.
+
++ ZennoDroid переведен на .Net Framework 4.8. Если на компьютере отсутствует .NET Framework 4.8, его необходимо установить по ссылке [<u data-renderer-mark="true">Скачать .NET Framework 4.8 Runtime</u>](https://dotnet.microsoft.com/ru-ru/download/dotnet-framework/thank-you/net48-web-installer "https://dotnet.microsoft.com/ru-ru/download/dotnet-framework/thank-you/net48-web-installer").
+
++ **ZD ENTERPRISE.** Отключена автоматическая генерация GPU (GL Vendor, GL Renderer) при использовании функции API C# instance.DroidInstance.Settings.GenerateRandomLSPosedSettings, которая на некоторых устройствах могла вызвать проблемы с отображением (белый экран).
+В случае необходимости генерация может быть включена: для этого можно использовать экшен Сгенерировать устройство (вкладка Дополнительно) или API C# (пример приведен ниже)
+
++ **ZD ENTERPRISE.** В API C# добавлены методы для более простой генерации устройств
+SetRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions)
+GenerateRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions options)
+
+Пример генерации модели:
+
+C#:
+
+```csharp
+var filter = new DeviceFilter();
+filter.Country = "us";
+filter.Version = "12|13|14|15";
+filter.GpuVendor = "Qualcomm|ARM";
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true;
+options.AddGpu = true;
+
+var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options);
+instance.DroidInstance.Settings.SetLSPosedSettings(json);
+```
+
++ **ZD ENTERPRISE.** Модуль ZennoDroid обновлен до версии 1.8.2. Добавлена поддержка новых моделей устройств.
+
+### Исправлено:
+
+- **ZD PRO.** Исправлен набор параметров в экшенах при переключении типа используемого эмулятора: Создать устройство, Настройка общей папки.
+- **ZD PRO.** Добавлены уведомления о неподдерживаемых в LDPlayer экшенах: Режим рендеринга, Выбор типа камеры и пр.
+- **ZD ENTERPRISE.** Добавлена выдача уведомлений в случае установки некорректного значения шума Canvas (при использовании собственного генератора моделей устройства или при использовании API C#).
+
+### Пресс-релизы опубликованы на нашем форуме:
+
+- [ZD ENTERPRISE](https://zenno.club/discussion/threads/zennodroid-enterprise-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-upravlenie-generaciej-modeli.130390/ "https://zenno.club/discussion/threads/zennodroid-enterprise-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-upravlenie-generaciej-modeli.130390/")
+- [ZD PRO](https://zenno.club/discussion/threads/zennodroid-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-podderzhka-vvoda-ehmodzi.130391/ "https://zenno.club/discussion/threads/zennodroid-2-4-6-0-novye-modeli-s-android-14-15-16-o-rasshirena-baza-mobilnyx-operatorov-o-podderzhka-vvoda-ehmodzi.130391/")

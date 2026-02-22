@@ -1,0 +1,72 @@
+---
+sidebar_position: 105
+title: "ZennoDroid 2.4.1.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.1.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636592681/ZennoDroid+2.4.1.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3636592681/ZennoDroid+2.4.1.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.4.1.0
+
+### Added:
+
+[+] The "ADB Shell Command" action now supports executing commands with superuser (Root) privileges.
+
+[+] The "ADB Shell Command" action now supports executing commands without checking the device connection.
+
+[+] The "ADB Shell Command" action no longer requires specifying a variable to save the command execution result.
+
+[+] The "Close Application" action now supports closing all running applications.
+
+[+] The "Open Application" action now supports launching an application with superuser privileges (required if specifying an activity causes the action to fail with the error "SecurityException: Permission Denial").
+
+[+] Added the ability to paste text from the Windows clipboard into the device window via the context menu or using the Shift + Insert keyboard shortcut.
+
+[+] The "Installed Applications" menu now displays the application version. The process of collecting application information when opening the form has been significantly accelerated.
+
+[+] Added a method to the C# API for quickly reconnecting image capture. Use it if you manually changed the screen resolution during operation (wm size, wm density). It restores the image and correct cursor coordinate display  
+`instance.DroidInstance.Screen.ResetScreen();`
+
+[+] A large number of [<u data-renderer-mark="true">new element properties</u>](https://github.com/appium/appium-uiautomator2-driver?tab=readme-ov-file&amp;roistat_visit=1569121#element-attributes "https://github.com/appium/appium-uiautomator2-driver?tab=readme-ov-file&amp;roistat_visit=1569121#element-attributes") (a11y-important, drawing-order, and others) introduced in the new version of UIAutomator have been added to the element tree, the Action Builder, and the "Get/Set Value" and "Perform Event" actions.
+
+[+] UIAutomator updated to version 7.3.1.
+
+[+] Scrcpy updated to version 3.2.
+
+### Fixed:
+
+[\] Completely rewritten the code responsible for emulating long finger movement on the screen, which previously worked unstably in multithreaded execution. The changes affected the "Zoom" and "Swipe" actions (Long Tap and Swipe - Drag'n'drop - allowing you to move sliders in captchas / move elements on the screen), as well as the C# API:
+- `instance.DroidInstance.Input.Swipe` and `instance.DroidInstance.Input.SwipeCurved`
+- `instance.DroidInstance.Input.LongTapAndSwipe` and `instance.DroidInstance.Input.LongTapAndSwipeCurved`
+- `instance.DroidInstance.Input.ZoomIn` and `instance.DroidInstance.Input.ZoomOut`
+- `instance.DroidInstance.Input.FreeMove`
+
+[\] Fixed a bug where the timeout did not trigger when executing the "ADB Shell Command" action.
+
+[\] Fixed an issue where the element tree did not display if a newer version of UIAutomator was already installed on the device.
+
+[\] Fixed an issue where a closed application was not removed from the list of recently opened applications.
+
+[\] Fixed an issue where the "Text Check" action did not detect text located in the `hint` attribute.
+
+[\] Fixed an issue where the additional value-setting menu did not appear for autofill fields.
+
+[\] Fixed the search for a text input field when using the "Explore Element" and "Follow Cursor" functions. Priority will now be given to fields that allow value input, even if they are overlapped by another element.
+
+[\] Fixed updating and displaying information in the "Element Properties" window.
+
+[\] Fixed the display of context menu items in the device window.
+
+[\] Fixed the display of the proxy being used in the device window (an empty string was shown if the proxy address did not fit on the screen).
+
+[\] Removed plugin-related functions from the menu.
+
+[\] Fixed image rotation in landscape mode in LDPlayer9.

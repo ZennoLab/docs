@@ -1,0 +1,29 @@
+---
+sidebar_position: 99
+title: "ZennoPoster 7.8.10.0 18.09.2025"
+description: ""
+date: "2025-09-18"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.8.10.0 (18.09.2025)
+
+**Added:**
+
+[+] Chromium browser updated to version 140.
+
+[+] Enabled cookie import for the Chromium browser launched via ZennoBrowser integration.
+
+[+] Updated the component responsible for text fields in ProjectMaker.  
+The new component supports a larger number of characters, including emojis. It also supports C# syntax up to version 13 of the language.  
+Please note that the C# compiler for the "Custom Code" actions currently supports language version no higher than 7.3, which may cause some inconvenience. We plan to fix this in the near future.
+
+**Fixed:**
+
+[\] Fixed the display of form-data parameters in requests in the ProjectMaker traffic monitor.
+
+[\] Fixed Chromium browser resizing in ZennoPoster when opening the browser and switching tabs. Also, after executing the `instance.SetWindowSize` method, the Chromium browser window no longer resizes automatically—this is now left under your control. At the same time, the browser itself inside the window resizes according to the required dimensions, and everything works as expected.

@@ -1,0 +1,125 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.7.0.0 22.12.2014"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.7.0.0 22.12.2014.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397861/ZennoPoster+5.7.0.0+22.12.2014"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397861/ZennoPoster+5.7.0.0+22.12.2014)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.7.0.0 (22.12.2014)
+
+### New features:
+
+[+] Added the ability to create nested projects. Details [❗→ here](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489291822 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489291822"). The feature is currently in beta.
+
+[+] Added the “Clear unused blocks” option to the static blocks menu. Unused tables, lists, and FTP connections are cleared.
+
+[+] Added the ability to configure a blank project. To do this, save the desired project to the ZennoPoster root folder with the name BlankProject.xmlz.
+
+[+] Added the ability to drag connections in ProjectMaker by the tip of the arrow.
+
+[+] You can now use simple HTML markup in comments in InputSettings.
+
+[+] Improved interruption of Pause and Mail Processing actions during execution in ZennoPoster.
+
+[+] Added recreation of connections for the Switch action.
+
+[+] Added the “Check entered data for compliance” setting to fix double text input.
+
+[+] Improved the logic of the action builder.
+
+[+] Added the “Set value from variable” item to the C# code context menu.
+
+[+] ZennoPoster window size is now saved.
+
+[+] The template name for which the settings are opened has been added to the ZennoPoster input settings header.
+
+[+] Added autocomplete in the resulting variable selection field in action settings.
+
+[+] Added a global instance setting “Object initialization wait timeout.” You can reduce the display time of the yellow loading indicator status; changing this value is not recommended on low-performance computers.
+
+[+] Added a global setting “Show notifications in log only.” If you have many projects, it’s convenient to disable notifications for all of them at once.
+
+[+] Added informational warnings when working with lists and tables about adding elements that contain a separator.
+
+[+] Added toolbar button icons in ZennoPoster.
+
+[+] Added the ability to pass typeid for the RuoKuaiCaptcha service via additional captcha recognition parameters.
+
+[+] Added tag sorting in ZennoPoster, as well as the ability to rename tags in the category list.
+
+[+] Increased space for icons in the extended editor quick access panel.
+
+[+] Added an “Expand” button in the regular expression builder.
+
+### Bug fixes:
+
+[\] Improved overall stability.
+
+[\] Fixed ProjectMaker crashes when entering data on some websites.
+
+[\] Fixed errors with captcha retrieval on some websites.
+
+[\] Fixed authorization on third-party websites via OpenID (Google, etc.).
+
+[\] Fixed popunder behavior on some websites.
+
+[\] Fixed bugs with displaying the element tree and their properties.
+
+[\] Fixed the COM object bug: “COM object that has been separated from its underlying RCW cannot be used.”
+
+[\] Fixed DNS request proxying via socks (in xulrunner.js you can uncomment the line pref(«network.proxy.socks\_remote\_dns», true)).
+
+[\] Fixed validation of the infinite task execution button in ZennoPoster.
+
+[\] Fixed date handling on computers with modified date formats. ZennoPoster now starts correctly with non-standard date and time settings.
+
+[\] Fixed table and list binding via C# code.
+
+[\] Custom headers now work in all tabs.
+
+[\] Proxies with the same IP but different ports are now considered unique in the live proxy list.
+
+[\] Fixed additional URL checks.
+
+[\] Now when you click “From the beginning,” the captcha input window closes.
+
+[\] Fixed input settings resetting when making project changes that do not affect input settings.
+
+[\] Fixed WordAI functionality.
+
+[\] Fixed incorrect deletion of all rows from a table.
+
+[\] Fixed recreation of connections between actions.
+
+[\] Fixed an editor bug where a single selected action was not inserted into groups.
+
+[\] Fixed scrolling in the resulting variable selection control.
+
+[\] Fixed display of the Switch action.
+
+[\] Fixed action search in the extended editor.
+
+[\] Fixed the appearance of empty frames from action groups.
+
+[\] Fixed the “First row — headers” flag in table settings.
+
+[\] Fixed scrolling of the attribute name combo box in the action builder.
+
+[\] Fixed tabulation in ProjectMaker action properties.
+
+[\] Fixed errors when opening the “Run Program” action settings.
+
+[\] When opening projects in ProjectMaker by any method, it now switches to the “Recording and Debugging” tab.
+
+[\] Fixed automatic substitution of column names in the table row retrieval action.
+
+[\] Fixed incorrect handling of the “If” action when the database crashes in case of numeric comparison.

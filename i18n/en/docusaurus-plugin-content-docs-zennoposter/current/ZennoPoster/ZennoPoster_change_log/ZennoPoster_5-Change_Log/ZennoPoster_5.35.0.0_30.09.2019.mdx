@@ -1,0 +1,69 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.35.0.0 30.09.2019"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.35.0.0 30.09.2019.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059133/ZennoPoster+5.35.0.0+30.09.2019"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495059133/ZennoPoster+5.35.0.0+30.09.2019)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.35.0.0 (30.09.2019)
+
+### New features:
+
+[+] Added a setting for delay between database launches, which helps prevent CPU spikes on low-performance computers. Available in Settings → Instance → Timeout between database launches.
+
+[+] Added the ability to enable certificate validation in the Chrome browser; to do this, use the argument –ignore-certificate-errors=false
+
+[+] Improved cursor behavior when using the FullEmulationMouseMove method
+
+[+] Added proxy display in the Request Info window under Traffic.
+
+[+] Added the ability to access BrowserProfile fields in C# code via project.Profile.BrowserProfile
+
+[+] Added the ZennoPoster.SetMaxThreads method
+
+[+] Added a new setting to the ProxyCheker source settings: “Delete previous proxies except the live list on load.”
+
+### Bug fixes:
+
+[\] Fixed a timezone emulation issue in Chrome that caused problems on some websites, such as Avito.
+
+[\] Fixed popup tab handling in Chrome.
+
+[\] Fixed Flash support in Chrome.
+
+[\] Fixed IP navigation in Chrome; the –ignore-certificate-errors flag is now added by default on launch.
+
+[\] Fixed an error when calling the action constructor in Chrome.
+
+[\] Fixed an issue with retrieving DOM and page Text in Chrome.
+
+[\] Fixed issues with frequent database restarts that led to an overall decrease in ZennoPoster performance.
+
+[\] Disabled autocomplete in search (Ctrl+F) for page source Text, Dom, or Source.
+
+[\] Fixed access to project.Json in a new project before clicking “From the beginning.”
+
+[\] Text encoded in windows-1251 is now correctly transmitted via multipart in the alternative HTTP method.
+
+[\] Fixed the display of .ico images in the Request Info window.
+
+[\] Fixed downloading via the alternative HTTP method; file extensions are now set correctly.
+
+[\] Fixed issues that caused proxy checking to stop in ProxyCheker.
+
+[\] Fixed an issue where auto-search sometimes did not work in ProxyCheker.
+
+[\] Now, when you click “From the beginning,” project.Context is cleared.
+
+[\] Fixed initialization of global variables in the project; they are no longer overwritten if already in use in the program.
+
+[\] Other fixes and improvements.

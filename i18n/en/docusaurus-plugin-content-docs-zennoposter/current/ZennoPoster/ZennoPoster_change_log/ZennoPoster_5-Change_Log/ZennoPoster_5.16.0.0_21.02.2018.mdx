@@ -1,0 +1,111 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.16.0.0 21.02.2018"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.16.0.0 21.02.2018.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993796/ZennoPoster+5.16.0.0+21.02.2018"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993796/ZennoPoster+5.16.0.0+21.02.2018)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.16.0.0 (21.02.2018)
+
+### New features:
+
+[+] Beta: Added a new feature for Publishing projects.
+
+[+] Improved user anonymity. The program no longer stores the user’s email in the registry; instead, it uses the account ID. This helps prevent credential theft.
+
+[+] Beta: Added automatic program updates.
+
+[+] Added all possible WebGL emulation parameters.
+
+[+] Added support for browser notifications. You can now receive notifications from websites and work with them. Messages can be enabled or disabled. You can read received messages using the macros `{ -Page.LastNotificationTitle- }` and `{ -Page.LastNotificationText- }`.
+
+[+] Implemented the ability to send directly to CapMonster via sitekey without service emulation.
+
+[+] BotUI: Added the ability to assign a proxy to a project and select a proxy rule.
+
+[+] BotUI: Added the ability to move elements on the grid using the arrow keys while holding Ctrl.
+
+[+] BotUI: Added the ability to change the font for labels.
+
+[+] Added the ability to take screenshots of the visible part of the page directly from an action.
+
+[+] Improved the ZennoPoster thread manager; tasks now start faster when a large number of projects are added to ZennoPoster.
+
+[+] Improved logging: the project name where an error occurred is now included, which is especially convenient for deeply nested projects.
+
+[+] Extended the [SetValue](https://help.zennolab.com/en/v5/zennoposter/5.16.0.0/webframe.html#topic127.html "https://help.zennolab.com/en/v5/zennoposter/5.16.0.0/webframe.html#topic127.html") method. It now has an optional parameter that allows you to append text to the end of existing content without deleting it.
+
+[+] Extended the [GetTraffic](https://help.zennolab.com/en/v5/zennoposter/5.16.0.0/webframe.html#topic488.html "https://help.zennolab.com/en/v5/zennoposter/5.16.0.0/webframe.html#topic488.html") method to retrieve request and response bodies. Analyzing traffic and intercepting data is now even more convenient.
+
+[+] Added the service http://sms-acktiwator.ru.
+
+[+] Extended the [EvaluateScript](https://help.zennolab.com/en/v5/zennoposter/5.16.0.0/webframe.html#topic32.html "https://help.zennolab.com/en/v5/zennoposter/5.16.0.0/webframe.html#topic32.html") method for sites where the eval method is broken. When specifying an alternative script execution method, the script will attempt to run without using eval.
+
+### Bug fixes:
+
+[\] Fixed SFTP support.
+
+[\] Fixed a potential data leak via Firefox Resources Reader.
+
+[\] Fixed the ability to edit C# code while a project is running.
+
+[\] Fixed history clearing in Firefox 52.
+
+[\] Fixed certificate installation in Firefox 52.
+
+[\] Fixed interception of OpenFileDialog for Flash uploads.
+
+[\] Restored the ZennoPoster.IpTools.GetTimezone method.
+
+[\] Fixed an issue with saving modified WebGL data to the profile.
+
+[\] Fixed keyboard emulation when working with Google search and simulating pressing the period key.
+
+[\] Fixed manual closing of instance windows on Windows 7.
+
+[\] Fixed ProjectMaker crashing on startup on Windows 7 and some versions of .NET Framework.
+
+[\] Fixed creation of new variables from project input settings.
+
+[\] Fixed a bug with hovering over list blocks in ProjectMaker.
+
+[\] Fixed CodeCreator launch on some computers.
+
+[\] BotUI: Fixed Multiselect functionality.
+
+[\] BotUI: Fixed incorrect element selection and editing.
+
+[\] BotUI: Fixed saving values in input settings fields.
+
+[\] BotUI: Fixed tab switching.
+
+[\] BotUI: Removed unnecessary code from HTML.
+
+[\] BotUI: Fixed issues with pointer-events: none.
+
+[\] BotUI: Added code alignment where possible.
+
+[\] BotUI: Adds &lt;script&gt; to a button only when it has an onclick handler.
+
+[\] BotUI: Fixed elementId for checkBox.
+
+[\] BotUI: Added a notification during manual code editing that editable elements must have a numeric ID.
+
+[\] BotUI: Fixed object ID numbering when working with multiple open projects.
+
+[\] BotUI: Fixed animations when using animate.css.
+
+[\] BotUI: Fixed tab switching when the tab name contains “:” or “.”.
+
+[\] Fixed documentation.
+
+[\] UI fixes.

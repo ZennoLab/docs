@@ -1,0 +1,87 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster MP 4.3.0.0 25.10.2012"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster MP 4.3.0.0 25.10.2012.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/505970750/ZennoPoster+MP+4.3.0.0+25.10.2012"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/505970750/ZennoPoster+MP+4.3.0.0+25.10.2012)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster MP 4.3.0.0 (25.10.2012)
+
+### New features:
+
+[+] [❗→ Support for C# macros](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/C+.net").
+
+[+] Labels for sources and the label-based selection rule have been restored.
+
+[+] Added a repeated request for proxy checking.
+
+[+] Added a User Agent for the verification request, making proxy checks more accurate.
+
+[+] Ability to set the tab loading timeout using a variable.
+
+[+] Copying lists, tables, and input settings.
+
+[+] Added “Open project folder” to the project context menu in ZennoPoster.
+
+[+] Added “Open project folder” to the project context menu in ProjectMaker (right-click on the project tab).
+
+[+] Added the “Leave file empty” option for lists and tables.
+
+[+] Open settings in the editor now behave like regular windows, making it convenient to work with multiple open settings at the same time.
+
+[+] Added the “Reset successes” option to the bat file creation window.
+
+### Fixed bugs:
+
+[\] Variable values defined in the input settings were not substituted into lists, tables, and other static blocks when the project started.
+
+[\] When taking a line with deletion from a \.csv file, all line breaks were removed and all data ended up in a single line.
+
+[\] When adding a global variable to the list properties (file path), the list properties window would no longer open.
+
+[\] Variables were not copied when copying table operation actions.
+
+[\] No WordAI setting in ZennoPoster (did not work on 64-bit platforms).
+
+[\] Fixed the “No active tab in instance” error after a long pause or a long email search.
+
+[\] A list linked to a non-existent file was not saved to the hard drive.
+
+[\] In debug mode, after 5 minutes of operation, changes to lists and tables stopped being saved to files.
+
+[\] In table operations, the last edit of output variables was sometimes not saved.
+
+[\] Links in debug mode would disappear when using the table operation action.
+
+[\] Sometimes the action group would not be redrawn.
+
+[\] Element shifting in the editor during debugging and saving/loading the project no longer occurs.
+
+[\] It was not possible to set the profile age value.
+
+[\] NavigationTimeout was not inherited when opening a popup.
+
+[\] Clearing cookies in the middle of a project now correctly clears HTML5 Local Storage.
+
+[\] Error when executing the “Run program” action if the “Record EXIT CODE” checkbox was not selected.
+
+[\] IMAP folders with 0 messages are now processed correctly.
+
+[\] CapMonster is now fully 64-bit, which eliminates errors when training consumed a lot of memory.
+
+[\] The real proxy IP address is now unique.
+
+[\] Eliminated a number of causes that could make CheckingProcessor.exe freeze or consume excessive resources.
+
+[\] When creating a bat file, the “Add attempts” number was ignored and “Add 100 attempts” was always used.
+
+[\] Minor bug fixes.

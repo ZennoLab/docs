@@ -1,0 +1,103 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.10.2.0 28.12.2016"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.10.2.0 28.12.2016.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502759457/ZennoPoster+5.10.2.0+28.12.2016"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502759457/ZennoPoster+5.10.2.0+28.12.2016)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.10.2.0 (28.12.2016)
+
+### New features:
+
+[+] You can now install multiple versions of ZennoPoster at the same time. You can install different products under different accounts on the same computer. If the installer asks you to install .NET Framework 2.0/3.5, agree—this is a one-time operation. If the automatic installation on the server fails, here are the [instructions](http://winitpro.ru/index.php/2014/05/14/ustanovka-net-framework-3-5-v-windows-server-2012-r2/ "http://winitpro.ru/index.php/2014/05/14/ustanovka-net-framework-3-5-v-windows-server-2012-r2/") for manual installation.
+
+[+] Faster UI processing in ProjectMaker and ZennoPoster.
+
+[+] General performance improvements.
+
+[+] Improved Canvas emulation. For the option to work correctly, you need to enable Canvas emulation BEFORE navigating to the page, not during execution.
+
+[+] Added the ability to execute JavaScript when creating a page window (DOMWindowCreated). You can override any JavaScript objects before the site accesses them for the first time.
+
+[+] Active action arrows are now highlighted.
+
+[+] Draggable arrows are now highlighted.
+
+[+] Now a correct error is displayed instead of “The project contains no input settings” if you do not have permission to run the project.
+
+[+] Added the ability to disable notifications about successful project execution in the log. Settings ➙ Other ➙ Logging settings ➙ Show notifications in the log about successful project execution.
+
+[+] Getting proxies in ProjectMaker from ProxyChecker now works from actions, not only from C# code.
+
+[+] Improved CSV file processing.
+
+[+] Added the “Remember position in C# block” setting. Settings ➙ Editor. By default, only the line is remembered, and the code opens on the line where editing ended. When the setting is enabled, the exact last editing position is remembered.
+
+### Fixed bugs:
+
+[\] Fixed causes of ZennoPoster interface freezes.
+
+[\] Fixed causes of ProjectMaker interface freezes.
+
+[\] Fixed browser crashes on some websites.
+
+[\] Fixed errors that caused ZennoPoster instability.
+
+[\] Fixed browser functionality on Yandex Direct and Vimeo.
+
+[\] Fixed layout shifting on VKontakte and other sites at low screen resolutions.
+
+[\] Fixed mouse movement delay emulation.
+
+[\] Fixed “Follow cursor”.
+
+[\] Fixed cookie issues during long runs.
+
+[\] Fixed search error when working via POP3 if the server returns emails in an incorrect order.
+
+[\] Fixed an error that caused stuck base.exe processes when using nested projects.
+
+[\] Fixed debugging of nested projects that require launching a browser.
+
+[\] Fixed an error that caused infinite initialization of base.exe.
+
+[\] Fixed an error where files with very long names were not downloaded.
+
+[\] Removed unnecessary settings from globalsetttings.settings.
+
+[\] Fixed project canvas resizing when recording projects.
+
+[\] When double-clicking to open a project, the open dialog no longer appears again.
+
+[\] Fixed the functionality of the buttons (From Start, Forward, and Stop) in the extended editor.
+
+[\] Fixed saving the state of the “Show instances” button.
+
+[\] Fixed loading and saving profiles on Asian Windows localizations.
+
+[\] Fixed the action Get DOM ➙ parsing ➙ single match ➙ Random.
+
+[\] Restored region support in C# code.
+
+[\] Fixed errors when converting C# code.
+
+[\] Fixed the Ctrl+Y key combination.
+
+[\] Removed the context menu in the instance during execution.
+
+[\] Fixed cookie parsing on some sites during HTTP GET/POST redirects.
+
+[\] Minor user interface fixes.
+
+[\] On startup, ZennoPoster detects where it was launched and whether hardware graphics acceleration is supported. If ZennoPoster incorrectly detects the presence of a GPU, you can always enable it in the settings. Settings ➙ Instance ➙ Use GPU for rendering acceleration. Enabling this setting without a built-in GPU accelerator may lead to unstable operation.
+
+[\] Fixed an error when using the action “Work with directories ➙ File path,” where an empty path was returned for a non-existent file and the action completed successfully. If you use this action in your templates and want them to work in both old and new versions, you need to mark this action as optional.

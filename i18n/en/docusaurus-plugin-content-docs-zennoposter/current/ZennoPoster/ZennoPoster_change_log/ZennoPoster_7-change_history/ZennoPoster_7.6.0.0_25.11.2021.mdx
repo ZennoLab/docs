@@ -1,0 +1,71 @@
+---
+sidebar_position: 134
+title: "ZennoPoster 7.6.0.0 25.11.2021"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.6.0.0 25.11.2021.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2091646981/ZennoPoster+7.6.0.0+25.11.2021"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2091646981/ZennoPoster+7.6.0.0+25.11.2021)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.6.0.0 (25.11.2021)
+
+**New features:**
+
+[+] Added support for extensions in the Chromium engine.
+
+[+] In ProjectMaker, a notification was added that extensions are available only in Chromium: “Browser extensions are available for the Chromium browser. To change the browser type, open Project Settings → Browser Type.”
+
+[+] In ProjectMaker, the “Mouse Movement Emulation” action was added. You just need to set a time range, and during that period the project will perform human-like mouse movements and scrolling on the currently loaded page.
+
+[+] In ProjectMaker, the “Send Email” action was added to send notifications from your email service to any email address using an SMTP server.
+
+[+] The Traffic window was added to ProjectMaker for the Chromium engine.
+
+[+] Support for the Content Security Policy feature was added to Chromium.
+
+[+] The layout of buttons in the browser window menu in ProjectMaker was optimized.
+
+[+] Improved anonymity in Chromium.
+
+[+] Added the ability to modify request and response content: ChangeRequest and ChangeResponse for the Chromium engine.
+
+[+] In ProjectMaker, for the static block Add Google Sheet, a checkbox “Remember pinned rows and columns” was introduced. When loading the table, an additional request will be made to retrieve pinned rows and columns. The additional request consumes your account’s request quota.
+
+[+] Article Extraction was added for the Chromium engine.
+
+**Bug fixes:**
+
+[\] Fixed an issue where the settings for the “Send Email” action would not open.
+
+[\] Fixed an issue where ProjectMaker would lose focus when refreshing the Element Tree.
+
+[\] Fixed hCaptcha recognition on http://bakecaincontrii.com
+
+[\] Fixed an issue where the Chromium engine in ProjectMaker would display a cropped browser view at 150% screen scaling.
+
+[\] Fixed an issue where the Swipe action would stop working and the cursor movement during swipe would speed up.
+
+[\] Fixed an issue where, after starting a project “From the beginning” in ProjectMaker, Chromium browser resizing would stop working.
+
+[\] Fixed an issue where the Chromium engine on a desktop browser profile displayed a small visible area.
+
+[\] Fixed an issue where, in ProjectMaker, actions were selected instead of moved after navigating through the project using the spacebar and mouse.
+
+[\] Fixed an issue where the action for taking a screenshot of the entire instance did not work correctly in the Chromium engine.
+
+[\] Fixed an issue where ProjectMaker could freeze when working via RDP.
+
+[\] Fixed an issue where the “Finish” button in ProjectMaker could not be clicked during email processing.
+
+[\] Fixed an issue where clearing the cache in the CEF engine after setting a proxy in the format socks5://username:password@ip:port would reset it and route traffic directly from the real IP.
+
+[\] Fixed an issue with opening the file selection dialog in CEF while waiting for user actions.
+
+[\] Fixed an issue where a Google Sheet with 1000+ rows and the “First row — headers” option enabled would not sync.

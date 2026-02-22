@@ -1,0 +1,91 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.9.5.1 15.10.2015"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.9.5.1 15.10.2015.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502890620/ZennoPoster+5.9.5.1+15.10.2015"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502890620/ZennoPoster+5.9.5.1+15.10.2015)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.9.5.1 (15.10.2015)
+
+### New features:
+
+[+] Added a “75%” scale setting to the captcha recognition action.
+
+[+] Added balance display in the captcha recognition service settings.
+
+[+] Improved the [ZennoPoster.CaptchaRecognition](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~CaptchaRecognition%28String,String,String%29.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~CaptchaRecognition%28String,String,String%29.html") method for receiving audio files. Now the ZennoPoster + CapMonster bundle can also recognize audio captchas, for example [❗→ ReCaptcha Audio](https://zennolab.atlassian.net/wiki/spaces/RU/pages/526614533/ReCaptcha+Audio "https://zennolab.atlassian.net/wiki/spaces/RU/pages/526614533/ReCaptcha+Audio").
+
+[+] Added the “Default - unsuccessful exit” setting to the Switch action.
+
+[+] Added the “Mandatory use of all listed parameters” setting to the Random action.
+
+[+] Added an extension for the `{ -TimeNow.Date- }` macro. Now you can specify your own time format before the closing bracket `{ -TimeNow.Date[Format]- }`. You can read more about date formats at the following links: [Custom Date and Time Format Strings](https://msdn.microsoft.com/ru-ru/library/8kb3ddd4%28v=vs.100%29.aspx "https://msdn.microsoft.com/ru-ru/library/8kb3ddd4(v=vs.100).aspx"), [Standard Date and Time Format Strings](https://msdn.microsoft.com/ru-ru/library/az4se3k1%28v=vs.100%29.aspx "https://msdn.microsoft.com/ru-ru/library/az4se3k1(v=vs.100).aspx").
+
+[+] Added the `{ -TimeNow.UnixTime- }` macro.
+
+[+] Added text search and replace functions to the C# code editors, as well as saving selected text to a snippet file.
+
+[+] Added font and text size settings for C# code editors in ProjectMaker.
+
+[+] Added the “Refresh fields” button to the element properties window, which updates the element properties as well as the element tree.
+
+[+] Improved project search. First, the search runs through user comments, then through everything else. Added the “Search in all open projects” flag.
+
+[+] Added the ability to delete default rules in ProxyChecker (you can restore them if needed).
+
+[+] Added a field to record action errors in the “Work with Email” action.
+
+[+] Added the `{ -Environment.CurrentUser- }` macro.
+
+[+] Added profile variables to the Environment tab in the variables window.
+
+[+] Added the “Clear sorting” button to the variables window.
+
+[+] The captcha recognition action now logs an appropriate message in ProjectMaker and ZennoPoster when authorization data is empty. Does not work via C# code.
+
+[+] Added saving of scroll position in the “Your C# Code” action.
+
+### Bug fixes:
+
+[\] Fixed range handling.
+
+[\] Fixed the issue with disappearing element selection menus.
+
+[\] Fixed boundary setting for HTTP POST.
+
+[\] Fixed the proxy clearing issue.
+
+[\] Fixed the issue of truncated responses from http://rucaptcha.com.
+
+[\] Fixed the “Convert to C#” menu item when converting variables for some actions.
+
+[\] Fixed sending special characters in HTTP POST requests.
+
+[\] Fixed captcha retrieval on some websites.
+
+[\] Fixed the use of remote\_dns via socks proxy.
+
+[\] Fixed incorrect encoding display of LastAlertText.
+
+[\] Checking for selected text on a page now works correctly with any number of spaces in the text.
+
+[\] When recording is disabled in ProjectMaker, inserting values from profile and variables does not create action blocks.
+
+[\] Fixed nested project handling with the “Execution” access level in ProjectMaker.
+
+[\] Fixed cookie handling affecting the Groupon website and some others.
+
+[\] Fixed copying of lists and tables between projects.
+
+[\] Fixed Export and Import buttons in the project input settings in ProjectMaker.
+
+[\] Fixed execution of nested projects via C# code.

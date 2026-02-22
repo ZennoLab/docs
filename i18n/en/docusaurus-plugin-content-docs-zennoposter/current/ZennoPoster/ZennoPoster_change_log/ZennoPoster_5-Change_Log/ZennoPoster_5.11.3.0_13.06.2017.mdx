@@ -1,0 +1,65 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.11.3.0 13.06.2017"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.11.3.0 13.06.2017.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502988803/ZennoPoster+5.11.3.0+13.06.2017"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502988803/ZennoPoster+5.11.3.0+13.06.2017)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.11.3.0 (13.06.2017)
+
+### New features:
+
+[+] Added support for HSTS Super Cookie processing. A flag to save super cookies has been added to the profile save method and to the corresponding action block. HSTS Super Cookies are cleared together with other cookies. Similar to regular cookies, the following methods have been added: void instance.SaveSuperCookie(string path), byte[] instance.SaveSuperCookie(), void instance.LoadSuperCookie(string path), void instance.LoadSuperCookie(byte[] cookie), void instance.SetSuperCookie(string cookie), string instance.GetSuperCookie(string domain = default(string)).
+
+[+] Added an action for solving ReCaptcha2 via Anti-Captcha, RuCaptcha, Imagetyperz, and CapMonster services. Now you can simply add the action to your project—it will automatically detect ReCaptcha2 on the page and solve it. ReCaptcha2 and ReCaptcha2 Invisible are supported, and GET/POST can be used when solving through Anti-Captcha, RuCaptcha, and Imagetyperz.
+
+[+] Added multi-selection of elements in BotUI.
+
+[+] Added action history (Undo/Redo) in BotUI.
+
+[+] Added the ability to move controls by one pixel using the keyboard arrow keys in BotUI.
+
+[+] Added Ctrl+C/Ctrl+V support in BotUI.
+
+[+] Added HtmlElement.BoundingClientWidth and HtmlElement.BoundingClientHeight properties. The element properties and constructor now include clientwidth and clientheight, which can be accessed via HtmlElement.GetAttribute and return BoundingClientWidth and BoundingClientHeight. The old width and height properties now display ScrollWidth and ScrollHeight.
+
+[+] Added buttons to open Input Settings / BotUI in ZennoPoster.
+
+[+] Added the ability to copy message text from the context menu in the ZennoPoster log.
+
+[+] Increased thread startup speed.
+
+[+] Improved time emulation performance.
+
+[+] Removed the dependency on Newtonsoft.Json. If you need a specific version of Newtonsoft.Json for your work, you can safely use it without editing config files.
+
+### Bug fixes:
+
+[\] When WebRTC is disabled, it now shows that the microphone and camera are unavailable, even if they are present.
+
+[\] Fixed issues when working with Proxifier.
+
+[\] Fixed an issue where an unsaved project could disappear if it contained no actions but had static blocks.
+
+[\] Fixed socks5 proxy authentication when handling a large number of connections.
+
+[\] Fixed an issue where you couldn’t select a variable from the context menu in the C# Custom Code action.
+
+[\] Fixed the accumulation of junk files after a project crash and when running nested projects.
+
+[\] Fixed adding multiple assemblies as dependencies.
+
+[\] Non-breaking spaces are now properly removed with Trim.
+
+[\] Fixed launching CodeCreator projects written in PHP in ZennoPoster.
+
+[\] Fixed minor UI bugs.

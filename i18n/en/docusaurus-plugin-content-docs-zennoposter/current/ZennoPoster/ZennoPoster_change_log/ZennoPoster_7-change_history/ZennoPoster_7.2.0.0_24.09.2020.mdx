@@ -1,0 +1,115 @@
+---
+sidebar_position: 144
+title: "ZennoPoster 7.2.0.0 24.09.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.2.0.0 24.09.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/991658000/ZennoPoster+7.2.0.0+24.09.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/991658000/ZennoPoster+7.2.0.0+24.09.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.2.0.0 (24.09.2020)
+
+### New features:
+
+[+] Updated the Chrome browser version to 84.
+
+[+] The C# compiler now supports language versions up to C# 7.3.
+
+[+] HTTP requests have been moved to a separate process, which should improve ZennoPoster stability.
+
+[+] In ProjectMaker, in the browser settings under Profile, the Chrome slider has been split into two: Chrome based — generates browsers based on Chrome, and Chrome — generates only Chrome browsers.
+
+[+] Improved emulation of Chrome extensions.
+
+[+] Added a new SMS service: http://smshub.org
+
+[+] Added the ability to create a new table, create a new sheet, and link to an existing Google Sheet from the "Table operations" action.
+
+[+] Added display of network errors in Chrome instead of a white page.
+
+[+] Added automatic recovery of input settings if the input settings file is corrupted.
+
+[+] In the Task Manager scheduler, a "Menu" button has been added, similar to the one in the Scheduler.
+
+[+] Restored the column in ZennoPoster showing information about the next scheduled project run if it is managed by the scheduler.
+
+[+] When selecting Chrome, Firefox52, or Firefox52x64 browsers in Project Settings, the "Dedicated process" option is automatically disabled. When selecting Chrome, "Use Proxifier" is also disabled.
+
+[+] If the ZennoPoster version is lower than required by the project being launched, instead of the error "Project does not contain input settings," you will now see: "This project requires ZennoPoster version XX.XX or higher. Please update."
+
+[+] Added a tooltip about proxy protocols to the GET/POST request actions.
+
+[+] During Touch event execution, the mouse cursor is replaced with a hand icon with a finger to make it clear which event is being sent.
+
+[+] Cosmetic improvements to the instance view mode in ZennoPoster.
+
+[+] Improved display of certain actions in the dark theme in ProjectMaker.
+
+### Bug fixes:
+
+[\] Fixed a cause of RAM memory leaks in ZennoPoster when running projects in multithreaded mode.
+
+[\] Fixed instance freezes when there were issues creating a tab.
+
+[\] Fixed microphone and camera emulation for mobile profiles.
+
+[\] Fixed WebGL antialiasing emulation.
+
+[\] Fixed setting of WebRTC deviceId and label for mobile profiles.
+
+[\] Added battery charge emulation for mobile profiles.
+
+[\] Other improvements and changes to WebRTC Media Devices emulation.
+
+[\] Fixed an issue where mobile profiles had missing or incorrect screen orientation.
+
+[\] Fixed a ProjectMaker crash caused by closing an unfinished regular expression builder.
+
+[\] Fixed freezes when a multiline unclosed comment was present in C# code in ProjectMaker.
+
+[\] Fixed an issue with incorrect display of C# action properties when the input field was resized to a very small width.
+
+[\] Now, if ZennoPoster is restarted after a crash, project execution times in the scheduler are not shifted.
+
+[\] Fixed an issue where sorting a table loaded from a file saved changes back to the file even if the corresponding checkbox was not selected in settings.
+
+[\] Fixed scheduler operation when a project finished at 00:00.
+
+[\] Now ForceTouch enables mobile device emulation, so scrolling becomes visible only while scrolling, like in a mobile browser.
+
+[\] Fixed swipe display in Yandex.Metrica.
+
+[\] Fixed ReCaptcha2 recognition on some websites.
+
+[\] Fixed the logic for undoing changes with Ctrl + Z in the “Custom JavaScript code” action. Previously, undo reverted project changes instead of editor changes.
+
+[\] Fixed ForceTouch behavior in ProjectMaker after clicking "From the beginning."
+
+[\] Restored automatic action selection after copying and pasting.
+
+[\] Fixed an issue where, in ProjectMaker, when executing an HTTP request in browserless mode, the result was not displayed in a variable in browser mode.
+
+[\] Now the JavaScript font setting works correctly on large screen resolutions, just like in C#.
+
+[\] Fixed sorting by the Time (ms) column in the ProjectMaker Traffic Monitor.
+
+[\] Fixed an issue where the lines "Put task ID" and "Put into variable" disappeared in the ReCaptcha recognition action in ProjectMaker.
+
+[\] Fixed timeout handling when downloading large files using the alternative HTTP request transfer method.
+
+[\] Fixed a cosmetic bug where the error "Project completed with errors" appeared after a Bad End was triggered in ProjectMaker.
+
+[\] Fixed an issue where tasks were mixed up when recognizing ReCaptcha2 via CapMonster.dll -&gt; In the tab.
+
+[\] Fixed an issue where ReCaptcha2 Invisible continued recognition after it had already been successfully recognized.
+
+[\] Fixed project selection in ZennoPoster using the Shift key.
+
+[\] Removed the "Open in ProjectMaker" button in ZennoBox.

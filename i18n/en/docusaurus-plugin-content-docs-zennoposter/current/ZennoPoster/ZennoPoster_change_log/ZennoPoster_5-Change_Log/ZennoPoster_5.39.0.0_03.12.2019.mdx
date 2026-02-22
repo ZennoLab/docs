@@ -1,0 +1,55 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.39.0.0 03.12.2019"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.39.0.0 03.12.2019.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495386693/ZennoPoster+5.39.0.0+03.12.2019"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495386693/ZennoPoster+5.39.0.0+03.12.2019)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.39.0.0 (03.12.2019)
+
+### New features:
+
+[+] Improved Chrome stability.
+
+[+] Added support for GPU rendering in Chrome.
+
+[+] Improved randomization for all actions that require random values.
+
+[+] The Go to Page action will now end with an error if the page fails to load in Chrome.
+
+[+] Added the ability to retrieve collections of global variables. In C# code, the project.GlobalVariables object now includes the IEnumerable&lt;string&gt; Namespaces property to retrieve a collection of global variable namespaces and an indexer that accepts only a namespace IEnumerable&lt;IGlobalVariable&gt; this[string nameSpace] to retrieve a collection of global variables by namespace.
+
+[+] Improved error messages when launching your own projects from the purchased templates folder.
+
+[+] Added a new action Directories → Check if directory exists.
+
+### Bug fixes:
+
+[\] Fixed causes of ZennoPoster thread freezing.
+
+[\] Fixed an error that caused issues in the Action Builder and when retrieving the DOM in the Chrome browser.
+
+[\] Disabled setting the resolution to 50505\*50505, which caused Chrome to freeze.
+
+[\] Fixed HTTP proxy handling in the alternative HTTP request method.
+
+[\] Fixed overriding of the Host header during redirects in the alternative HTTP request method.
+
+[\] The current hour macro is now available in the TimeNow macro dropdown list.
+
+[\] Fixed an issue with saving a template when certain characters were used.
+
+[\] Fixed rendering of the Switch action.
+
+[\] Fixed the display of variables in the context menu Set value from variable.
+
+[\] Other fixes and improvements.

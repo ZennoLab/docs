@@ -1,0 +1,133 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.40.0.0 29.01.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.40.0.0 29.01.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862451/ZennoPoster+5.40.0.0+29.01.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494862451/ZennoPoster+5.40.0.0+29.01.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.40.0.0 (29.01.2020)
+
+### New features:
+
+[+] Chrome browser version updated to 78.
+
+[+] Improved WebGL and WebRTC emulation in Chrome.
+
+[+] Added dns-over-proxy setting to the Chrome browser configuration file (base\_cr.exe.config and pminstance.exe.config in the program directory).
+
+[+] The “Detailed log” setting is no longer reset after restarting the program.
+
+[+] Detailed log is now enabled immediately after turning on the setting and is disabled only manually.
+
+[+] Added action Files → Wait for file.
+
+[+] Added action Directories → Wait for directory.
+
+[+] Added action Text processing → Split Text.
+
+[+] Added action Browser → Settings → Wait for user actions, аналог instance.WaitForUserAction in C# code. Added a message for waiting. Improved the user action waiting interface in ZennoPoster.
+
+[+] Added the ability to select multiple masks using the | symbol in the Directories → Get file list action.
+
+[+] Added the “Error on empty response” option in the Text processing → Regex action.
+
+[+] Updated the vcredist packages included with the application.
+
+[+] The installer now applies optimal TCP/IP stack settings.
+
+[+] Added setting Other → Compress Large Object Heap. Useful when processing large string data, for example when auto-search is enabled in ProxyChecker.
+
+[+] Added new macro `{ -Project.LastErrorComment- }` and property project.LastErrorComment. They contain the comment of the last failed action if available, or the error text if it can be obtained.
+
+[+] Improved exporting of lists and tables to disk. Projects can now interact with lists and tables (initialize and perform actions with them) while they are being exported to disk.
+
+### Bug fixes:
+
+[\] Fixed Google authorization in the Chrome browser.
+
+[\] Fixed passing document.referrer when navigating to a page from a cube in Chrome.
+
+[\] Fixed causes of ZennoPoster thread freezes.
+
+[\] Fixed ProjectMaker freezing when the browser freezes.
+
+[\] Fixed Chrome browser freezing when clearing cookies.
+
+[\] Fixed URL update in the address bar in ProjectMaker.
+
+[\] Fixed passing cookies through a proxy in the Chrome browser (occurred in test version 5.40.0.0).
+
+[\] Fixed loading of localStorage in Chrome. The issue could cause loss of site authorization and other problems.
+
+[\] Fixed the error text in the Settings → Install certificate action for the Chrome browser.
+
+[\] Fixed the disappearance of the “Store in variable” field in the settings window of the “Solve Recaptcha” action.
+
+[\] Fixed conversion to C# code for the following actions: Text → Split, Text → Regex, Settings (browser) → Wait for user actions.
+
+[\] Fixed a bug where temporary files for lists and tables were not deleted.
+
+[\] Changes to instance.WaitForUserAction no longer affect already published projects (occurred in test version 5.40.0.0).
+
+[\] Fixed copying of lists and tables without an attached file between projects in ProjectMaker.
+
+[\] Fixed some C# code debugging errors in ProjectMaker.
+
+[\] Fixed the Settings → Instance → Mute sound setting. ZennoPoster no longer mutes sound in third-party processes.
+
+[\] Fixed rendering in Chrome when the browser width is small.
+
+[\] Fixed causes of Chrome browser freezing on some sites or in popups.
+
+[\] Fixed issues with alternative HTTP requests on some sites.
+
+[\] Fixed the use of numeric column index when reading table cells.
+
+[\] File names are no longer converted to lowercase when downloading via HTTP requests or the browser.
+
+[\] When debugging code in ProjectMaker, the correct tab in the common code now opens.
+
+[\] Fixed proxy format validation for incorrect proxy types.
+
+[\] Fixed XML parsing error caused by invalid characters.
+
+[\] Fixed Content-Type display in the traffic monitor for alternative HTTP requests.
+
+[\] Fixed execution error of the Restart instance action for a new unsaved project.
+
+[\] Fixed issues with spaces in headers in alternative HTTP requests.
+
+[\] Fixed cookie container handling in alternative HTTP requests.
+
+[\] Connections now close properly when using HTTP Connection Pool and alternative HTTP requests.
+
+[\] Fixed export of input settings; DropDown/DropDownMultiSelect now export correct values.
+
+[\] When exceeding the maximum number of rows in a table, the write-to-table action now fails with an appropriate error.
+
+[\] Fixed search in the code field for C# code and JavaScript actions.
+
+[\] When a timezone error occurs, the full date is now displayed instead of only the time.
+
+[\] Fixed adding new namespaces for global variables inside an action.
+
+[\] Fixed causes of the advanced mail action settings form freezing.
+
+[\] Fixed causes of the Set proxy action freezing when emulation settings are enabled.
+
+[\] Columns can no longer be accidentally deleted in the traffic window.
+
+[\] Fixed HttpConnectionPool error when working with proxies with the same IP but different ports.
+
+[\] Fixed GeoIP database update.
+
+[\] Other fixes and improvements.

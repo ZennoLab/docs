@@ -1,0 +1,160 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster MP 4.5.0.1 06.03.2013"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster MP 4.5.0.1 06.03.2013.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506036279/ZennoPoster+MP+4.5.0.1+06.03.2013"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506036279/ZennoPoster+MP+4.5.0.1+06.03.2013)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster MP 4.5.0.1 (06.03.2013)
+
+### CodeCreator for ZennoPoster MP has been released.
+
+### New features:
+
+[+] Support for .NET Framework 4.0.
+
+[+] Switched to the new Phalanger [3.0.0.3851 (January 2013)] (PHP 5.0), managed code only, including PHP plugins.
+
+[+] Phalanger installation is no longer required for PHP projects.
+
+[+] Support for the new ZennoPoster MP project format.
+
+[+] Ability to use all ZennoPoster MP blocks (Profile, IntelliSearch, InputSettings, etc.).
+
+[+] New project structure:
+
+- Ability to rename elements, including the project name.
+- Storing images in resource files (.resx).
+- Storing external links directly in the project.
+
+[+] New code and project properties editor:
+
+- Quick actions panel (Cut, Copy, Paste, etc.).
+- Code navigation. New project-wide search forms.
+- Editing project properties.
+- Editing lists, tables, variables, and project input settings.
+- Editing project resource files.
+- Highlighting saved/unsaved code changes.
+- New panel layout during code debugging.
+
+[+] Added buttons:
+
+- “Manual captcha input” during code debugging.
+- “Pause” debugging.
+- “Save As” to save a copy of the project under a new name.
+- “Compile” to compile the entire project.
+
+[+] Improved code generation.
+
+[+] ZennoPoster automatically finds all external project links. You no longer need to copy them into the ZennoPoster directory.
+
+[+] Conversion of the old zpproj file format to the new one.
+
+### Bug fixes:
+
+[\] The debugger sometimes froze during step-by-step debugging.
+
+[\] ZennoPoster displayed a successful execution message even though the project returned a value &lt; 0.
+
+[\] After making changes to a running project, you had to restart ZennoPoster.
+
+[\] If template recording was paused, the pause was removed after starting execution.
+
+[\] Tooltips for some assemblies from the GAC were not displayed.
+
+[\] ZennoPoster did not compile PHP projects on some systems.
+
+[\] The “Create check for selected text presence” button did not work.
+
+### Updates in ZennoPoster & CapMonster
+
+### New features:
+
+[+] Default settings moved to the xulrunner.js file.
+
+[+] Use of regular expressions in the Set → SelectedItems action constructor (keyword Regex:).
+
+[+] Search across all documents on the page (-1).
+
+[+] Added an option in project recording settings to search in all forms by default (-1).
+
+[+] The JavaScript tester now shows where and what error occurred.
+
+[+] Original Firefox frame for the selected element (allows hardware acceleration in ProjectMaker).
+
+[+] When switching properties in the action designer, values of the selected element are auto-filled.
+
+[+] Handling redirects for GET/POST requests.
+
+[+] Ability to change instance size.
+
+[+] A task becomes active immediately after being added to ZennoPoster.
+
+[+] Notification when entering a new variable name that matches an existing variable.
+
+[+] Added the ability to send complaints about incorrectly recognized captchas to http://ImageDecoders.com.
+
+[+] Added proxy ban check in Spam House.
+
+[+] Improved CapMonster training algorithm.
+
+### Bug fixes:
+
+[\] Fixed a critical bug in the Firefox core that could lead to account bans when working through a proxy (this bug is still not fixed in the browser itself, only by us).
+
+[\] Improved SOCKS support; no need to restart the instance after each execution.
+
+[\] Could not create a rule in ProxyChecker for Google.
+
+[\] Elements were not found under Turkish localization (possibly in other localizations as well).
+
+[\] URL not updated after redirect in ProjectMaker.
+
+[\] Memory leak when processing assemblies in ZennoPoster + slowdown over time (in some projects).
+
+[\] After recording a project, the authorization action remains unconfigured.
+
+[\] Negative number in the thread count indicator.
+
+[\] Proper support for HTML5 video + audio.
+
+[\] Settings opening speed increased by 30%.
+
+[\] Improved and fixed retrieval of the Outerhtml property for HTML elements.
+
+[\] No unnecessary transitions (loading indicator flickering) when retrieving properties / selecting elements.
+
+[\] Fixed possible failure to save ZennoPoster settings during date serialization/deserialization.
+
+[\] Error with Good/BadEnd that could cause ProjectMaker to crash.
+
+[\] Fixed a cookie-related error that made registration on some websites impossible.
+
+[\] If Regex is specified as the separator in a list, Match is used instead of Split.
+
+[\] In ZennoPoster, a file linked to a list is not updated more than once.
+
+[\] Increase in thread count in large projects.
+
+[\] Fixed error when saving to a file a table not linked to a file.
+
+[\] Setting a Content-Type for HTTP POST other than urlencoded did not work.
+
+[\] Macros are not executed in the useragent and cookie fields of GET/POST requests.
+
+[\] If images are disabled in the project, the captcha is not sent for recognition if it is located outside the main document.
+
+[\] Many default settings were enabled that could potentially reduce anonymity.
+
+[\] Fixed some errors that caused CapMonster to freeze.
+
+[\] Minor bug fixes.

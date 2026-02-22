@@ -1,0 +1,135 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.4.0.0 11.08.2014"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.4.0.0 11.08.2014.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/504463446/ZennoPoster+5.4.0.0+11.08.2014"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/504463446/ZennoPoster+5.4.0.0+11.08.2014)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.4.0.0 (11.08.2014)
+
+### New features:
+
+[+] Added the option to purchase a ZennoPoster Dev license, which allows you to sell bots without commission, sell subscriptions, and use the API to create your own stores. Cost: $150 for 6 months.
+
+[+] Added the ability to sell projects via the server not only for ZennoBox, but also for ZennoPoster.
+
+[+] Added mirror servers required for ZennoPoster to operate in the USA and China. If it’s impossible to connect to the main server, ZennoPoster automatically switches to the nearest available mirror.
+
+[+] Proxy checking servers have been distributed across three data centers (USA, Germany, Russia) for better availability and reliability.
+
+[+] In the project editor, object selection using a selection frame and Ctrl+Click has been added. Selected objects can be moved/cut/copied/deleted/pasted. When pasting, connections between objects are preserved.
+
+[+] Added dropdown and tab elements to input settings.
+
+[+] Added import and export options for input settings.
+
+[+] Added the ability to connect a profile in HTTP GET/POST actions.
+
+[+] Global variables are now displayed separately: those declared in the project and those outside the project.
+
+[+] Added a “does not match regular expression” condition to the action for deleting lines from a list.
+
+[+] Browser version updated to the latest 24 ESR.
+
+[+] Added automatic search and cleanup of unused variables in a project.
+
+[+] Added the ability to manage templates by template name via bat and the ZennoPoster class.
+
+[+] Added quick insertion of snippets from the Snippets folder in the C# action.
+
+[+] Added the project.Context property for storing and sharing objects between C# snippets. This feature is convenient when working with a database—you can store the database connection in the project context.
+
+[+] Added the project.Profile.RegenerateLogin(String) method for generating logins.
+
+[+] Added the HtmlElement.ScrollIntoView() method to scroll a tab to the specified HTML element.
+
+[+] Added the IZennoTable.Clear() method to clear table contents via code.
+
+[+] Added the IZennoTable.Bind(String) method to bind a table to a file via code.
+
+[+] Added the IZennoList.Bind(String) method to bind a list to a file via code.
+
+[+] Added the IZennoList.AddRange(IEnumerable&lt;string&gt;) and IZennoList.AddRange(IZennoList) methods to add an array of data to a list.
+
+[+] Added support for several Chinese CAPTCHA recognition services.
+
+[+] When copying actions from one project to another, all variables, lists, and tables used in the action are copied into the project.
+
+[+] Added the option “Text processing - ToUpper”, “First character” — converts only the first character of the text to uppercase.
+
+[+] Changed the minimum delay when emulating text input to 15 ms; the maximum has been increased to 10,000 ms (10 seconds).
+
+[+] Actions that use non-existent variables in parameter text are highlighted as errors.
+
+[+] In the ProjectMaker browser, toggles for “Load styles (CSS)” and “Load plugins in the same window” have been added.
+
+[+] When opening projects that are already added in ZennoPoster, a notification now appears.
+
+[+] In the project tab context menu in editor mode, the items “Close” and “Close all except this” have been added.
+
+[+] Added automatic column numbering in the table processing action.
+
+[+] Optimized and fixed the processing of the “Condition” action.
+
+[+] Added the “Reset consecutive failures” item to the ZennoPoster task context menu.
+
+[+] Added the “Log only” flag to the Alert action.
+
+[+] The CAPTCHA recognition form can now be closed during recording.
+
+### Fixed bugs:
+
+[\] Fixed Drag&Drop functionality; it now works on all websites.
+
+[\] Fixed an error in processing InputSettings when field names matched.
+
+[\] Fixed an issue with the Ctrl + Z and Ctrl + Y hotkeys in C# code editors.
+
+[\] Fixed a bug in the CodeCreator editor when setting breakpoints.
+
+[\] The directory selection window was not displayed in the FTP directories action.
+
+[\] Fixed several issues with SFTP.
+
+[\] Fixed Yandex mail support.
+
+[\] Fixed errors when reprocessing the same email.
+
+[\] Fixed context menu disappearing.
+
+[\] Fixed saving HTTP request results to a file when present.
+
+[\] Fixed keyboard emulation in plugins (such as Flash).
+
+[\] Fixed the size of HTTP GET/POST request controls in advanced ProjectMaker mode.
+
+[\] Fixed closing of the Switch action in the advanced ProjectMaker editor.
+
+[\] Fixed display of the live proxy list.
+
+[\] Fixed the manual CAPTCHA input window.
+
+[\] Recording mode during image search testing is recognized correctly.
+
+[\] Fixed repeated Referer setting.
+
+[\] Fixed the PreviousSubling property of HtmlElement.
+
+[\] Fixed the consecutive failure counter.
+
+[\] Task input settings are saved in case of an unexpected ZennoPoster shutdown.
+
+[\] Fixed the file upload action in multithreaded mode.
+
+[\] Fixed adding duplicate proxy IP addresses.
+
+[\] GeoIP updated in ProxyChecker.

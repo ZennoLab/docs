@@ -1,0 +1,109 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster MP 4.1.0.0 28.08.2012"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster MP 4.1.0.0 28.08.2012.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506396717/ZennoPoster+MP+4.1.0.0+28.08.2012"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506396717/ZennoPoster+MP+4.1.0.0+28.08.2012)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster MP 4.1.0.0 (28.08.2012)
+
+ZennoBox is a new feature program that lets you sell your projects to people who don’t have ZennoPoster. Essentially, ZennoBox is ZennoPoster with certain limitations, tied to specific projects that the user purchases from you and/or other sellers. [❗→ Read more here](https://zennolab.atlassian.net/wiki/spaces/RU/pages/495386651/ZennoBox "https://zennolab.atlassian.net/wiki/spaces/RU/pages/495386651/ZennoBox").
+
+### New features:
+
+[+] Input settings for projects. [❗→ More details here](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492339208 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492339208").
+
+[+] Tables are now flexible—columns are added as needed, even if they weren’t in the original file.
+
+[+] You can now delete incoming and outgoing connections from the action context menu.
+
+[+] Updated Geo IP database for ProxyChecker.
+
+[+] Editing the maximum number of threads has been unlocked for the Standard version (value can be from 1 to 5).
+
+[+] Added a “Back” button during browser recording.
+
+[+] The keyword “end” now works when searching for elements if specified as the match number.
+
+[+] The spintax processing engine has been sped up several times over + it can now handle incorrect spintax, even with unclosed brackets.
+
+[+] The list of captcha recognition modules is now editable—you can insert macros there.
+
+[+] Execution now uses the same browser profile as recording. If you need to randomize the User Agent, enable this option in the profile settings.
+
+### Fixed bugs:
+
+[\] Fixed downloading files from AdWords, Torrents, etc.
+
+[\] FCKEditor now works.
+
+[\] When changing a file synchronized with a table or list, ZennoPoster prompts you to reread the changes. If a list or table is linked to a file without synchronization, it will update during the next project run.
+
+[\] Fixed numerous memory leaks during ZennoPoster and ProjectMaker operation.
+
+[\] While ZennoPoster was running, empty files with macro names were being created in the program folder after project execution.
+
+[\] “Save file” now creates a file if the “append” and “add line break” checkboxes are not selected.
+
+[\] Debugger crash when using variable macros.
+
+[\] The error “Value cannot be null. Parameter name: value” no longer appears when reading an empty file.
+
+[\] When working with FTP, the action always completed successfully even though an error was shown in the log.
+
+[\] When applying filters in ProxyChecker, the number of affected proxies was calculated incorrectly.
+
+[\] When applying filters, if the user selected “Do not apply,” the filter checkbox was still marked.
+
+[\] After applying a filter, the number of proxies in the database was not recalculated.
+
+[\] The global variable macro did not work when the global variable was a number.
+
+[\] The recognition queue was not cleared when manually entering input after stopping debugging.
+
+[\] In the action builder, changing the “form number” and “document” reset the “Full Tag” and “Attribute Name” fields.
+
+[\] Fixed element search in the action builder.
+
+[\] For exotic elements like tr, option, u, it was impossible to set/get their attributes (innertext, value, onclick, etc.).
+
+[\] When searching for an element via the action builder and adding it to the project, cookies were automatically cleared.
+
+[\] Optimized work with the IntelliSearch database. As a result, ZennoPoster uses less memory.
+
+[\] You can now add screenshot search while project recording is paused.
+
+[\] When deleting an auto variable, the variable in the first tab was actually deleted.
+
+[\] The error “no active tab in instance” should no longer appear.
+
+[\] The default variable value is now saved if you open the variable editing window, change the value, and close it without moving focus to another field.
+
+[\] Incorrect spintax no longer generates garbage like \{ -String.Spintax.
+
+[\] Added the ability to create a new global variable from variable operations.
+
+[\] The first breakpoint did not work if you quickly started debugging before reaching it.
+
+[\] The FTP action on some hosts uploaded no more than 50 files.
+
+[\] When selecting multiple proxy rules, ZennoPoster chose any available proxy instead of one that satisfies all rules.
+
+[\] Taking a proxy without deletion returned several identical proxies in a row.
+
+[\] Email processing now loads messages one by one instead of all at once. Required for many services.
+
+[\] Fixed a glitch with displaying the form and authorization fields in an HTTP GET request.
+
+[\] In tables created in memory or linked to an empty file, the first row was always empty.
+
+[\] Minor fixes.

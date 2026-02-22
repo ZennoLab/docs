@@ -1,0 +1,36 @@
+---
+sidebar_position: 124
+title: "ZennoPoster 7.7.9.0 30.11.2023"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.7.9.0 30.11.2023.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2373189651/ZennoPoster+7.7.9.0+30.11.2023"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2373189651/ZennoPoster+7.7.9.0+30.11.2023)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.7.9.0 (30.11.2023)
+
+**New features:**
+
+[+] The Chromium browser has been updated to version 119. The executable file for the Chromium browser has been renamed to zbe1.exe.
+[+] Newtonsoft.Json libraries have been updated to version 13.0.3.
+[+] Added "www" to the balance request address for the SmsHub service.
+[+] Removed two outdated SMS services: Smska and SmsVk.
+[+] Changed the default URLs for the following services: SmsAcktiwator to [<u data-renderer-mark="true">https://smsak.org/api/</u>](https://smsak.org/api/ "https://smsak.org/api/") , SmsActivate to [<u data-renderer-mark="true">https://api.sms-activate.org/stubs/handler_api.php</u>](https://api.sms-activate.org/stubs/handler_api.php "https://api.sms-activate.org/stubs/handler_api.php") and VirtualSms to [<u data-renderer-mark="true">https://api.sms-activate.org/stubs/handler_api.php</u>](https://api.sms-activate.org/stubs/handler_api.php "https://api.sms-activate.org/stubs/handler_api.php").
+
+**Bug fixes:**
+
+[\] Fixed Chromium renderer crashes in some cases.
+[\] Fixed default image scaling in the Chromium browser.
+[\] Sound will now play in the Chromium browser when the “Disable sound” setting is turned off.
+[\] Fixed some issues with touch events in the Chromium browser.
+[\] Fixed inaccuracies in full mouse emulation in the Chromium browser.
+[\] Fixed page scaling in the Chromium browser when setting the window size larger than the actual size.
+[\] Fixed an issue launching CEF after launching Chromium in ProjectMaker.
+[\] Fixed an issue where, after prolonged operation, some Chromium browser processes remained unclosed. Browser process startup and shutdown have become more reliable.

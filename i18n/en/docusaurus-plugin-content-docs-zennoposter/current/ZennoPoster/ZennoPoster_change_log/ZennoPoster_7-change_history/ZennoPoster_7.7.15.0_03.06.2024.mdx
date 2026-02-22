@@ -1,0 +1,33 @@
+---
+sidebar_position: 118
+title: "ZennoPoster 7.7.15.0 03.06.2024"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.7.15.0 03.06.2024.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2679701510/ZennoPoster+7.7.15.0+03.06.2024"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2679701510/ZennoPoster+7.7.15.0+03.06.2024)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.7.15.0 (03.06.2024)
+
+**New features:**
+
+[+] Chromium browser updated to version 125.
+[+] Added support for IPv4 proxies with a text host, not only in IP format.
+[+] In the proxy parsing builder, you can now create regular expressions without additional fields. Such an expression must contain named groups Host, Port, and optionally Login, Pass.
+[+] Added a new regular expression that supports parsing any proxy. Proxies are identified with login and password taken into account. Login and password are also displayed in the live proxy table.
+[+] Improved proxy saving and loading.
+[+] Improved Chromium browser anonymity.
+[+] Added the “Restore ZennoPoster on crash” option (Program Settings → “Other” section). The option is enabled by default. In this case, the ZennoLab.ProcessTracker process is launched, which restores ZennoPoster if it crashes. If the option is disabled, the process is not launched. Changing this option requires restarting the program.
+
+**Bug fixes:**
+
+[\] Fixed entering the dot "." character in the “Keyboard Emulation” cube in the Chromium browser.
+[\] Fixed generating the Speech Voice list for profiles with Windows OS and Google Chrome or Edge browser.
+[\] When searching in the ZennoPoster log, found entries are no longer truncated and are now displayed in full.

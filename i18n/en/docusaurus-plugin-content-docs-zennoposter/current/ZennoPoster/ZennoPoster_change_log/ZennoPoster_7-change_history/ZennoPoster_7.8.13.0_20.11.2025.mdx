@@ -1,0 +1,33 @@
+---
+sidebar_position: 96
+title: "ZennoPoster 7.8.13.0 20.11.2025"
+description: ""
+date: "2025-11-20"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.8.13.0 (20.11.2025)
+
+**Added:**
+
+[+] ZennoPoster now monitors GPU usage. When any resource runs out (CPU, GPU, RAM), ZennoPoster will display a system status line that now also includes GPU information. At the moment, GPU load monitoring does not affect browser launches in any way.
+
+[+] The ZennoPoster installer now includes a Geo database. During product installation, the database will be updated if your current database is older than the one included in the installer.
+
+[+] In the “Create ZennoBrowser Profiles” action, when creating “Default” profiles, a new folder setting has been added with the following options: Default. With this option, profiles will be created in the default folder. Specify profile folder ID. This option allows you to specify a FolderId; new profiles will be created in the selected profile folder. Use current profile folder ID. When this option is selected, the macro `{-Project.ZennoBrowserProfileContainerId-}` will be used as the profile folder identifier. The new option will be supported in ZennoBrowser 0.29.30.2+. In earlier versions, profiles will be created only in the default folder.
+
+[+] Changes have been prepared to support integration with new versions of ZB.
+
+[+] In the ZP7 version following 7.8.13.0, an update of the .NET Framework platform to 4.8 is planned. The platform version for ZP7 API assemblies will not change, so this update should be fully compatible with existing projects and plugins. Nevertheless, we would like to draw your attention to this change.
+
+**Fixed:**
+
+[\] Fixed task startup in the ZennoPoster Task Manager after restarting the program.
+
+[\] Fixed the display of large responses for requests in the Traffic Monitor.
+
+[\] Fixed the display of current cookies in the Current Profile window for the ZennoBrowser browser.

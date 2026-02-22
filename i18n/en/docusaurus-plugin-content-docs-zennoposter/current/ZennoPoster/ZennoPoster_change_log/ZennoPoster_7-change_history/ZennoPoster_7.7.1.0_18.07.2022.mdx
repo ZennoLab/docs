@@ -1,0 +1,133 @@
+---
+sidebar_position: 132
+title: "ZennoPoster 7.7.1.0 18.07.2022"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.7.1.0 18.07.2022.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2210660357/ZennoPoster+7.7.1.0+18.07.2022"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2210660357/ZennoPoster+7.7.1.0+18.07.2022)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.7.1.0 (18.07.2022)
+
+**New features:**
+
+[+] Chromium engine updated to version 99.
+
+[+] Font emulation in Chromium. You can now pass different font sets to the browser. To do this, when launching an instance, specify the key [I]--zl-fonts-dir[/I] and provide the absolute path to the fonts folder.
+
+[+] Conversion of CEF profile folders to Chromium profile folders. To do this, in the “Launch instance” block, enable the checkbox “Convert CEF profile folder to Chromium”.
+
+[+] Improved User-agent hints field emulation.
+
+[+] Improved Canvas emulation on many websites.
+
+[+] ZennoPoster integration with VisualStudio now supports VS2022.
+
+[+] Reduced traffic volume for retrieving Canvas from the server.
+
+[+] Hidden messages from the VisualStudio integration block in ZennoPoster.
+
+[+] Hidden messages about unsuccessful Canvas emulation in ZennoPoster when the mode to not stop the project on failed emulation is selected.
+
+**Bug fixes:**
+
+[\] Fixed an issue where Chromium profile folders could be transferred incorrectly from one computer to another.
+
+[\] Fixed an issue where the execution status of the “Launch instance” block was triggered prematurely, which could cause the subsequent page navigation to fail.
+
+[\] Fixed a bug where launch arguments containing spaces might not be passed to instances.
+
+[\] Fixed an issue where extensions installed without using a profile folder could remain when reusing an instance.
+
+[\] Fixed user interaction with Chromium browser extensions. You can now record templates using mouse clicks and the right-click context menu.
+
+[\] Fixed possible causes of UI freezing when using Chromium.
+
+[\] Fixed causes of freezes in ProjectMaker in case of an instance crash.
+
+[\] Fixed the display of the Chromium browser in ProjectMaker when restarting the browser.
+
+[\] Fixed an issue where the Swipe action in CEF might not work.
+
+[\] Fixed a bug in the “Launch program” block where it might not work if the timeout is set to more than 9999 seconds.
+
+[\] Fixed Canvas emulation when creating a Google account.
+
+[\] Fixed Canvas emulation on various websites (arena-top100.com, discord.com, f.vision, youla.ru, and others).
+
+[\] Fixed Enter key emulation in Chromium.
+
+[\] Fixed pasting text from the clipboard into the Chromium browser.
+
+[\] Fixed the “Delete downloaded” checkbox in the Receive Mail block.
+
+[\] Fixed the “Delete found email” checkbox in the Receive Mail block.
+
+[\] Fixed proxy handling when the login or password contained the “+” character.
+
+[\] Fixed an issue where a selected block and its group could not be deleted simultaneously.
+
+[\] Fixed the “Clean unused variables” button when the project contains a variable cleanup block.
+
+[\] Removed the 60-second delay between executions of ZennoPoster.BulkMailDownload.
+
+[\] Fixed setting Chromium browser window size in PM when launching the browser with a profile folder.
+
+[\] Fixed causes of Chromium browser freezes in some cases.
+
+[\] Fixed some causes of CEF browser freezes.
+
+[\] Fixed file downloads in Chromium via extensions; the download result is now saved to Instance.LastDownloadedFile and the corresponding macro.
+
+[\] Fixed causes of exceptions when working with CookieContainer in VisualStudio projects.
+
+[\] Fixed ProjectMaker freezing with certain value ranges in the Page Parsing block.
+
+[\] Fixed Chromium display freezing when maximizing the browser window in ZennoPoster.
+
+[\] Fixed causes of Chromium renderer crashes (“Aw, Snap”) during super Canvas emulation.
+
+[\] Fixed closing of ctfmon.exe processes.
+
+[\] Fixed endless launching of zennobrowser.exe in some situations (crashed instance, launching with an occupied profile folder, etc.).
+
+[\] Fixed instance preview updates when an extension window appears.
+
+[\] Fixed double character input during keyboard emulation.
+
+[\] Fixed hCaptcha interception on some websites.
+
+[\] Fixed Chromium browser crashes on Gmail, Google Colab, Discord, and some other websites.
+
+[\] Fixed CEF browser crashes when working with certain websites and cookies.
+
+[\] Fixed automatic enabling of the “Monitor computer resources” setting.
+
+[\] Fixed full mouse emulation in Chromium on the Avito website and others.
+
+[\] Fixed element search in Chromium on the Avito website.
+
+[\] Fixed some causes of memory leaks in ProjectMaker and Chromium.
+
+[\] Fixed connecting the studio plugin to VisualStudio 2022.
+
+[\] Fixed Chromium operation in ZennoPoster when opening the “Waiting for user actions” form.
+
+[\] Fixed retrieving Dom/Text in Chromium on Facebook.
+
+[\] Now, if a project does not use a browser in ProjectMaker, no extra requests are sent to Traffic Monitor.
+
+[\] Fixed an issue where renaming a variable in a ProjectMaker project also renamed a variable with the same name in C# code.
+
+[\] Fixed long touch emulation in Chromium.
+
+[\] Fixed a WebRTC issue. Now the Local IP Address in CEF and Chromium always has the value "n/a" (we plan to improve emulation in the future).
+
+[\] Fixed an issue with WebRTC Public IP Address. If WebRTC emulation is enabled in the profile and the proxy’s Public IP Address cannot be determined (which can happen with “dead” proxies), then the proxy setup block ends with an error. In other cases, the correct value is set.

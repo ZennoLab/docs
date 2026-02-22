@@ -1,0 +1,44 @@
+﻿---
+sidebar_position: 102
+title: "ZennoDroid 2.4.4.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.4.4.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3831201797/ZennoDroid+2.4.4.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3831201797/ZennoDroid+2.4.4.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.4.4.0
+
+### Added:
+
+[+] The app data save and restore actions have been completely redesigned:
+
+- Added support for Android 12.
+- Added saving and restoring of permissions granted to the app.
+- Added saving and restoring of the account associated with the app, if the account data is stored in the account storage rather than in the app  
+(Google accounts are not supported).
+
+[+] Added the "Add account" action (Google accounts are not supported).
+
+[+] The "Get file" action now allows you to retrieve files that are restricted.
+
+[+] The "Send file" action now allows you to send files to restricted directories (for example, /data).
+
+[+] The API now supports searching by multiple images simultaneously.
+
+[+] New properties have been added to the Appium API for working with a found element:
+*IsDisplayed - the element is within the visible area of the screen.  
+*Rectangle - the position, size, and boundary coordinates of the element.
+
+### Fixed:
+
+[\] The "Get account" action now returns account metadata required for correct restoration (Google accounts are not supported).
+
+[\] Fixed a critical bug when sending files to the device.

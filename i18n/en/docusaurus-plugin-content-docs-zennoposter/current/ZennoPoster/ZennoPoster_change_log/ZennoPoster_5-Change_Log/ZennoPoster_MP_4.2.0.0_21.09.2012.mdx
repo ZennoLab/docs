@@ -1,0 +1,89 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster MP 4.2.0.0 21.09.2012"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster MP 4.2.0.0 21.09.2012.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397923/ZennoPoster+MP+4.2.0.0+21.09.2012"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397923/ZennoPoster+MP+4.2.0.0+21.09.2012)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster MP 4.2.0.0 (21.09.2012)
+
+### New features:
+
+[+] Uses the latest Firefox 15 engine. Runs faster and consumes less memory (sometimes significantly less).
+
+[+] In gateway proxies, the country is now determined by the actual IP address rather than the gateway address.
+
+[+] Added the ability to set protocol and SSL from variables.
+
+[+] Added topinbrowser and leftinbrowser attributes to elements for proper click emulation.
+
+[+] Added a setting for the number of threads per proxy-checking process in ProxyChecker. It is recommended to use a small value when checking paid proxies.
+
+[+] IntelliSearch has become smarter.
+
+[+] Expanded the functionality of the text replacement action.
+
+[+] List operations — selecting a sublist with deletion.
+
+[+] Added a monitoring policy setting for modified files. By default, changes from a file are immediately reflected in lists and tables if the file is synchronized with them.
+
+### Bug fixes:
+
+[\] A project now waits for proxies if no live proxies are available — the status “Waiting for proxy” appears.
+
+[\] A thread and instance entering an infinite loop, leading to memory consumption and a crash.
+
+[\] Mail error when re-reading from the same mailbox.
+
+[\] Input Settings (ProjectMaker/ZennoPoster) did not work if they contained a label or other non-significant fields.
+
+[\] The player did not work on http://soundcloud.com; added a browser option to load plugins in the same window.
+
+[\] Did not click Flash buttons in an inactive window.
+
+[\] List operations — Add from list — To the beginning of an empty list caused an error.
+
+[\] IntelliSearch did not find the search field on some websites.
+
+[\] Not all parameters were saved during IntelliSearch training, resulting in the element not being found on repeated search.
+
+[\] Lists: bug with a custom delimiter not linked to a file.
+
+[\] CSV format was read incorrectly if cell values contained quotes and ;.
+
+[\] The first element in a multiselect was not selected if the zero element was unavailable.
+
+[\] Incorrect row count in a table with empty rows.
+
+[\] The http://AntiGate.com module did not work on some machines.
+
+[\] Different behavior during debugging and recording with http://Yahoo.com.
+
+[\] Empty files were not deleted after removing all rows from tables and lists.
+
+[\] Tables: when headers were present, taking the first row with deletion removed both the first row and the headers.
+
+[\] Proxy sources continued loading even if they were disabled.
+
+[\] Proxy sources were not loaded if the address contained non-Latin characters.
+
+[\] Working with mail on your own domain: 404 error during login.
+
+[\] Profile GEO location was sometimes not taken into account.
+
+[\] Memory leaks when a task finished in ZennoPoster.
+
+[\] Browsing folders in Windows XP showed folders twice (in uppercase and lowercase).
+
+[\] Refined the proxy speed calculation algorithm; now displays correct values for fast proxies.
+
+[\] Minor bug fixes.

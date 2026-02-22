@@ -1,0 +1,79 @@
+---
+sidebar_position: 141
+title: "ZennoPoster 7.3.0.0 02.12.2020"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.3.0.0 02.12.2020.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1181483063/ZennoPoster+7.3.0.0+02.12.2020"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1181483063/ZennoPoster+7.3.0.0+02.12.2020)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.3.0.0 (02.12.2020)
+
+### New features:
+
+[+] In case of an unexpected ZennoPoster crash, the software will restart and restore project execution.
+
+[+] A Speech Voice option has been added to the Profile settings. The Web Speech API allows interaction with voice interfaces for speech recognition and synthesis. Speech Voices are preset voices used to generate audio representations of information.
+
+[+] Added automatic detection and addition of Device Pixel Ratio if the Screen Maximize checkbox is selected in the Profile settings. Device Pixel Ratio can also be set via C# code:
+
+`instance.DevicePixelRatio`
+
+[+] Permissions emulation has been added, similar to the Chrome browser. You can check it here: http://yandex.ru/internet/
+
+[+] Added the ability to get the current number of active project threads. To do this, use the following C# code:
+
+`int threadsZP = ZennoPoster.GetThreadsCount();
+int currentTaskThreadsById = ZennoPoster.GetThreadsCount(Id);
+int currentTaskThreadsByName = ZennoPoster.GetThreadsCount(Name);`
+
+[+] A Screen Maximize option has been added to the Profile settings. It sets the window size according to the generated Screen size. Layout issues may occur when using this option. This option should improve anonymity. Equivalent to the following C# snippet:
+
+`instance.SetWindowSize(project.Profile.AvailScreenWidth, project.Profile.AvailScreenHeight);`
+
+[+] Added the ability to integrate your own captcha services based on common APIs.
+
+[+] Improved performance in ProjectMaker with the Modern2 editor theme — group shadows are disabled by default. You can enable shadows in the settings under "Appearance" -&gt; "Draw group shadow".
+
+[+] The logic for Disabled actions has been changed: now Disabled actions behave the same as IF (true). That is, if during execution the project reaches a disabled action, it will be treated as successfully executed.
+
+[+] Updated the default user agents in HTTP request actions. This applies only to newly created HTTP request actions; existing projects will remain unchanged.
+
+[+] Added the ability to limit the number of HTTP Connection Pool connections in ZennoPoster and ProjectMaker settings. This should stabilize performance when working with a large number of HTTP requests.
+
+[+] Improved anonymity when interacting with JS notifications.
+
+[+] Improved visibility of some elements in the Regular Expression Builder when using the dark theme.
+
+### Bug fixes:
+
+[\] Restored the Bad End - Good End logic: if a transition was made to one of the Ends, a transition to the other End will not occur until the project is started "From the beginning". Also, an option "Go to Bad/GoodEnd during multiple debugging runs" has been added to the ProjectMaker settings under the Debug tab.
+
+[\] Fixed IF block compatibility for some expressions.
+
+[\] Fixed an issue where after disabling images in the project settings in ProjectMaker, they could not be forcibly enabled via the "Images" action.
+
+[\] Fixed an issue where FullEmulationMouseWheel did not work on the Firefox engine when the cursor was outside the visible area.
+
+[\] Fixed an issue where the project was not saved after quickly editing C# code.
+
+[\] Fixed a ProjectMaker crash when clicking "Test" in the Action Builder.
+
+[\] Fixed issues where project execution settings in the Task Manager could reset.
+
+[\] Fixed the display of long regular expressions in the Regex action property.
+
+[\] Added the Add method for IZennoList for the dynamic type.
+
+[\] Fixed an issue where ProjectMaker could crash when working with YouTube.
+
+[\] Fixed an issue where BAT files created via the project context menu did not work in ZennoBox.
+
+[\] Fixed a memory leak issue caused by a missing Switch.

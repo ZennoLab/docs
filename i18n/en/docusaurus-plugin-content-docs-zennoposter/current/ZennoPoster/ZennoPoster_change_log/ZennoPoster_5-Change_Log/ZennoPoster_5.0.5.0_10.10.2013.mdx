@@ -1,0 +1,71 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.0.5.0 10.10.2013"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.0.5.0 10.10.2013.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506101796/ZennoPoster+5.0.5.0+10.10.2013"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506101796/ZennoPoster+5.0.5.0+10.10.2013)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.0.5.0 (10.10.2013)
+
+### New features:
+
+[+] You can now add text notes to projects: right-click on an empty area and select “Add note”. Double-click to edit the text.
+
+[+] Groups in the editor now support multi-line comments.
+
+[+] In ProjectMaker, the instance now displays mouse coordinates.
+
+[+] Windows 8.1 support.
+
+[+] Added project.Name and project.ProxyRules properties for the project variable in C# macros.
+
+[+] You can now create a single bat file to manage multiple projects at once. To do this, select several projects and click “Create bat”.
+
+[+] You can create a bat file to start or stop all projects not managed by the scheduler at once. To do this, use the -all keyword instead of -ids.
+
+[+] Added a debugging setting “Extended log” — displays columns with filtering capability.
+
+[+] The “Captcha recognition” and “Check for text presence” actions are now added to a project even when recording is disabled.
+
+[+] Added an option to disable GPU during debugging for those whose browser flickers while debugging (Settings → Debugging).
+
+[+] ZennoPoster has been added to the whitelist of many antivirus companies, so antivirus software should no longer corrupt files during installation or interfere with operation.
+
+[+] ProxyChecker now includes auto-search settings. Found proxies can now be immediately checked for Google bans, speed, HTTPS support, etc.
+
+### Fixed bugs:
+
+[\] Fixed the “Debug thread terminated” issue that prevented saving a project.
+
+[\] In some cases, application compatibility mode was not set during installation, causing ProjectMaker not to launch and threads not to start.
+
+[\] In CodeCreator within ActionDesigner, elements were not highlighted with a frame during iteration.
+
+[\] FTP actions sometimes did not handle unsuccessful logout properly.
+
+[\] When closing a project in ProjectMaker, more memory is now released.
+
+[\] In ProjectMaker, proxy settings in the HTTP → Get action were not saved in the editor.
+
+[\] The “Encoding” field in GET/POST request actions now supports variables.
+
+[\] Debugging now works correctly in projects where captcha recognition is performed via CapMonster modules in a C# macro.
+
+[\] Retrieving a single match when parsing the DOM now works correctly; previously, the last match was always taken.
+
+[\] Fixed some installation issues on Windows 8 / Windows Server 2012.
+
+[\] Significantly reduced memory usage when working with email; memory is now released after task completion.
+
+[\] Fixed and improved ProxyChecker performance when deleting proxies.
+
+[\] Fixed the issue of xls table reset as well as the cyclic reloading of an empty xls file.

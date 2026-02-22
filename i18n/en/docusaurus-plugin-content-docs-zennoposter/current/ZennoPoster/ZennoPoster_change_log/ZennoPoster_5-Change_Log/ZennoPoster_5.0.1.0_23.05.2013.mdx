@@ -1,0 +1,109 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.0.1.0 23.05.2013"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.0.1.0 23.05.2013.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506232855/ZennoPoster+5.0.1.0+23.05.2013"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506232855/ZennoPoster+5.0.1.0+23.05.2013)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.0.1.0 (23.05.2013)
+
+### New features:
+
+[+] Filling fields with variables via the context menu. If the variable is not empty, its value can be used to fill the field.
+
+[+] Display of Drag&Drop coordinates in the debugger.
+
+[+] Option to clear the log when starting playback from the beginning.
+
+[+] Debug option “delayed action rendering.” Enable it when debugging long projects and projects with loops.
+
+[+] Updated documentation for C# macros.
+
+[+] When compiling a C# macro, the location of the error is now indicated; you can jump to the specified line using the context menu in the code or with a keyboard shortcut.
+
+[+] In recording/debug mode, you can display a panel with static blocks for projects (Right-click → Show static blocks).
+
+[+] Added the ability to rename tasks in the task scheduler.
+
+[+] Added confirmation when deleting projects from ZennoPoster.
+
+[+] Added hotkeys for deleting (Delete) and renaming (F2) projects in ProjectMaker.
+
+[+] Added the ability to bulk edit schedule settings for multiple selected projects.
+
+[+] Updated the log in ZennoPoster.
+
+[+] Added a button to copy a variable in Table Processing → Get Row.
+
+[+] In ProjectMaker settings, added a “Reset panels” button that restores the default panel layout.
+
+[+] Files .xmlz and .zpproj are now associated with CodeCreator and ProjectMaker respectively.
+
+[+] In recording/debug mode, action settings now open on double-click if they were hidden.
+
+[+] Now when splitting a group, an arrow is automatically created between them. Right-click on an action → Create new group. You can use this during recording to separate groups logically.
+
+### Bug fixes:
+
+[\] Fixed an error when running projects with C# macros on computers without Windows SDK installed.
+
+[\] The project folder variable in table properties was replaced with the actual path.
+
+[\] The program could be closed without stopping debugging.
+
+[\] The C# macro tester now works correctly during repeated testing.
+
+[\] GET/POST requests could stop executing after long idle periods.
+
+[\] IntelliSearch field-filling action settings could be displayed incorrectly.
+
+[\] The uniqueness of FTP connection names was not checked.
+
+[\] Improved display of the element tree.
+
+[\] The ribbon state is now remembered after restarting ProjectMaker.
+
+[\] Lists and tables are loaded on the fly when settings are changed.
+
+[\] When deleting emails via IMAP, emails are deleted; if it is possible to move them to the trash, they are moved to the trash.
+
+[\] Instances that are no longer running are not shown in the instances list.
+
+[\] Fixed an issue with endless error logging when working with Excel tables.
+
+[\] Static blocks could disappear from the panel.
+
+[\] Lists and tables are now rebound to the file after their settings are changed, not after closing the settings. If the settings have not changed, the list data remains the same.
+
+[\] Focus no longer shifts when opening the action constructor.
+
+[\] Stopping debugging now stops HTTP GET/POST actions.
+
+[\] Errors occurring when working with captcha recognition services are now displayed more informatively instead of “Unable to cast object of type 'bla-bla-bla' to type 'ZennoLab.InterfacesLibrary.CaptchaRecognition.ICommonCaptchaModuleInterface'.”
+
+[\] Following a link from an email when working with mail is now recorded after the mail action.
+
+[\] Reworked proxy source settings in ZennoProxyChecker. This may resolve the issue of sending repeated requests to a proxy.
+
+[\] Fixed errors where actions were inserted in the wrong place during recording.
+
+[\] Fixed errors where dragging an action onto a group caused incorrect behavior.
+
+[\] The scroll bar could sometimes disappear when viewing action properties.
+
+[\] The static blocks settings window is non-modal again and no longer blocks simultaneous work with action settings.
+
+[\] Possibly fixed an issue where static blocks disappeared when maximizing the program window.
+
+[\] Improved Drag&Drop emulation.
+
+[\] Minor fixes.

@@ -1,0 +1,115 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.7.5.0 26.02.2015"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.7.5.0 26.02.2015.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397852/ZennoPoster+5.7.5.0+26.02.2015"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/504397852/ZennoPoster+5.7.5.0+26.02.2015)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.7.5.0 (26.02.2015)
+
+### New features:
+
+[+] Added the ability to choose a separator for CSV tables in the table settings.
+
+[+] Added a “Replace” menu item for actions; it is active if there is an action in the clipboard.
+
+[+] Added the “Download as file + headers” option for HTTP GET/POST requests; useful if downloading files sets cookies.
+
+[+] Reduced memory usage when using HTTP GET/POST requests.
+
+[+] HTTP GET/POST requests now send the Accept, Accept-Language, and Accept-Encoding headers by default if they were not specified by the user.
+
+[+] Added a tab with all current profile field values to the profile window.
+
+[+] Extended the mail processing action logs; you can now see from the logs why an email was not found.
+
+[+] Added a scheduler log so you can see what was launched and when.
+
+[+] The scheduler now displays the time of the next program launch.
+
+[+] Found matches in the Regex action are now written to the log.
+
+[+] Added IntelliSense to the attribute field in the action builder.
+
+[+] When creating a variable for the “Repeat in loop” action, the value 0 is now set not only as the default value but also as the current value.
+
+[+] Added the ability to enable word wrap in the “Page Text View” form.
+
+[+] Added the option to enter a proxy string in the format protocol://login:pass@ip:port for GET/POST request actions.
+
+[+] You can now resize the proxy source settings window.
+
+[+] Added the project.TaskId property to get the current task ID in ZennoPoster.
+
+[+] Added the CapMonster2.dll module (for CapMonster version 2.2+) to recognize captchas directly via the CapMonster2 service.
+
+[+] Added vertical scroll bars to the properties of C# and JavaScript code actions.
+
+[+] Added the instance.UrlManipulation property. If it is true, you can use the ZennoPoster instance string.
+
+[+] Added the instance.WaitForUserAction(timeout) method. When called, the ZennoPoster instance window is forcibly shown for the number of seconds specified in the timeout parameter; a “Close” button has also been added. Project execution continues only after the Close button is pressed or the timeout expires.
+
+[+] Added the “Always output warnings to log” setting.
+
+[+] Added the DownloadPath parameter to the ZennoPoster.HttpGet and ZennoPoster.HttpPost methods to change the download folder.
+
+### Fixed bugs:
+
+[\] Fixed import of input settings containing tags.
+
+[\] In HTTP POST, the specified encoding is now used when sending data.
+
+[\] HTTP GET/POST now correctly detect and decompress gzip.
+
+[\] When selecting a group of actions, the selection of a single action is now cleared.
+
+[\] Fixed an issue with loading duplicate purchases in ZennoBox and ZennoPoster.
+
+[\] Fixed causes of corrupted captchas.
+
+[\] Fixed issues with moving arrows between actions in ProjectMaker.
+
+[\] Fixed profile loading action; after loading a profile, its changes are now correctly displayed in C# snippets.
+
+[\] Fixed selection of new projects when adding them to ZennoPoster.
+
+[\] Fixed some errors in macro hints and incorrect Ctrl+Space behavior in editors.
+
+[\] Fixed the ZennoPoster task scheduler.
+
+[\] Fixed the extended log; copying information from the log is now more convenient.
+
+[\] Fixed proxy passing to nested projects during debugging in ProjectMaker.
+
+[\] Improved stability on some websites.
+
+[\] When running a project “From the beginning,” the variables Page.LastAlertText and Page.LastAlertTitle are cleared.
+
+[\] Fixed an issue with list lines merging after removing duplicates.
+
+[\] Fixed deleting emails via IMAP when using ZennoPoster.BulkMailDownload.
+
+[\] Fixed binding of lists and tables in nested projects in ProjectMaker.
+
+[\] Fixed debugging errors caused by the Switch action.
+
+[\] Fixed operation of nested projects on inactive equipment in the Personal Account.
+
+[\] Fixed activation of the Stop button when switching from a nested project in ProjectMaker.
+
+[\] Fixed code generation errors in CodeCreator from the action builder (you may need to reset code generation settings to default).
+
+[\] Fixed proxy loading when loading a profile.
+
+[\] Action validation now ignores variable macros in code comments.
+
+[\] Fixed taking rows from a table into a list.

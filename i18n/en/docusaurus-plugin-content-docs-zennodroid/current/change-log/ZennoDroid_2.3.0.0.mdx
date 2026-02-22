@@ -1,0 +1,168 @@
+---
+sidebar_position: 118
+title: "ZennoDroid 2.3.0.0"
+description: ""
+date: "2026-02-20"
+converted: true
+originalFile: "ZennoDroid 2.3.0.0.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2211315713/ZennoDroid+2.3.0.0"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2211315713/ZennoDroid+2.3.0.0)** — Source of this material
+
+_______________________________________________  
+# ZennoDroid 2.3.0.0
+
+### New features:
+
+[+] Generation of IMEI, Android ID, IMSI, and Sim Serial parameters.
+
+[+] Android device parameter values in environment variables.
+
+[+] Ability to limit the search area in the “Search by image” action.
+
+[+] Added the *None action to the “Search by image” action.
+
+[+] Search success/failure indicators in the “Search by image” action.
+
+[+] Added an option to cover part of the image to fine-tune image search tolerance.
+
+[+] Ability to adjust the frame capture rate.
+
+[+] Color modes: normal – RGB, grayscale – Gray, and black-and-white – Black.
+
+[+] Ability to save the coordinates of the found rectangle into variables.
+
+[+] Ability to get the search sample hash (for C# methods).
+
+[+] Interval between virtual machine launches.
+
+[+] ZennoDroid no longer uses a virtual machine that is currently being used in ProjectMaker.
+
+[+] Ability to use value ranges in the “Execute event,” “Set value,” and “Get value” actions.
+
+[+] Setting for instant text input without delays in the “Android keyboard emulation” action.
+
+[+] Setting that allows you to install curl in Memu versions where it was not included by default.
+
+[+] Setting that allows you to specify the virtual machine startup wait time.
+
+[+] Ability to disable the microphone and sound.
+
+[+] Ability to set an FPS limit.
+
+[+] Error message if the license has expired.
+
+[+] All changes from ZennoPoster 7.7.0.0.
+
+[+] C# methods.
+
+[+] GPU Optimization and Anti-Flickering settings.
+
+[+] Improved image search algorithm.
+
+[+] When executing the “Close application” action, it is also removed from the list of recently launched apps (the “Recent apps” button).
+
+[+] “Recognize captcha” action.
+
+[+] The list of installed applications in the “Tools” menu now includes information about the active application.
+
+[+] CPU load monitoring during project execution. A new thread will not start if CPU usage exceeds 80%.
+
+[+] Check the connection to the virtual machine before performing clicks and sending text.
+
+[+] Timeout for long virtual machine operations: creation, cloning, etc. (300 sec), APK installation (120 sec).
+
+[+] Improved image capture mechanism.
+
+[+] Horizontal scroll bar in the “Element tree.”
+
+[+] The “Installed applications” menu now includes “Open/Close application” actions. If recording is enabled, the action will be added to the project.
+
+[+] Execute JavaScript in the Chrome browser.
+
+[+] Execute JavaScript in the built-in browser.
+
+[+] Desktop ad blocking implemented using a new method.
+
+[+] Click a random spot within the found element. The X and Y fields now support macros (i.e., you can enter random, end, or a range of values).
+
+[+] All limitations in the settings have been removed (launch interval, FPS, startup wait time).
+
+[+] Added the ability to change the baseband (GSM module firmware) from C# code:
+
+```csharp
+instance.DroidInstance.Settings.SetBaseband("G9300ZCU2API3");
+```
+
+[+] Added the ability to read messages from the quick access panel using C# code:
+
+```csharp
+var json = instance.DroidInstance.App.GetAllNotifications();
+```
+
+[+] Added a setting to simulate battery discharge/charging.
+
+[+] Emulation of an incoming SMS message from C# code:
+
+```csharp
+instance.DroidInstance.Input.SendSmsMessage("+79998007060", "Привет!");
+```
+
+[+] Added the ability to change the time zone from C# code:
+
+```csharp
+instance.DroidInstance.Settings.SetTimezone("Europe/Moscow");
+```
+
+[+] Added the ability to change the system language on the fly without rebooting.  
+“Set system language” action or “Custom C# code”:
+
+```csharp
+instance.DroidInstance.Settings.SetLanguage(""ru"");
+```
+
+### Bug fixes:
+
+[\] Retrieving the element tree structure in some applications (Samokat).
+
+[\] On startup, ZennoDroid closes all running virtual machines except the one used in ProjectMaker.
+
+[\] The “Search by image” action now accounts for content changes in the emulator window.
+
+[\] Added environment variables %ZennoDroidDllPath% and %ZennoDroidCurrentPath%.
+
+[\] Fixed an issue where searching for an element in a pop-up window would return an element located behind that window.
+
+[\] Actions now fail with an error if the connection to the virtual machine is lost during execution (crash, reboot, etc.).
+
+[\] BadEnd now works correctly if the project execution timeout is triggered.
+
+[\] Fixed freezing in the “Saving state” status on shutdown.
+
+[\] Fixed an issue where image search did not highlight the found element.
+
+[\] Application-related actions (open/close/clear) now fail with an error if you specify a non-existent application name.
+
+[\] In the “Keyboard emulation” action, the `{AndroidKeys}` macro now includes cursor control (HOME, END, UP, LEFT, etc.).
+
+[\] The `{AndroidKeys.COPY}` and `{AndroidKeys.PASTE}` macros work in Android 7.1 (emulator internal clipboard).
+
+[\] Fixed errors when working with the MEmu multi-manager.
+
+[\] Pressing Stop in ProjectMaker interrupts the execution of the “ADB Shell console command” action.
+
+[\] Fixed a ProjectMaker crash when pressing the Run button if no virtual machines have been created.
+
+[\] Fixed an issue where the `{AndroidKeys.CLEAR}` macro did not delete large blocks of text.
+
+[\] Fixed search by the *notext condition.
+
+[\] The “Minimum ZennoDroid version” field in the Encryption block now accounts for new action features.
+
+[\] Fixed an issue where launching a cloned/imported VM did not work the first time.
+
+[\] Fixed various issues when working with Proxifier. Checking Proxifier/winsocks status before launch. Preventing repeated launches.

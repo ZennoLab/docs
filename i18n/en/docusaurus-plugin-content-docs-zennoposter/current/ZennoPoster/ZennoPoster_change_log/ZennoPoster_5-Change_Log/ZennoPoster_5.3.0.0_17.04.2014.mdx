@@ -1,0 +1,81 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.3.0.0 17.04.2014"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.3.0.0 17.04.2014.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/506101784/ZennoPoster+5.3.0.0+17.04.2014"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/506101784/ZennoPoster+5.3.0.0+17.04.2014)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.3.0.0 (17.04.2014)
+
+### New features:
+
+[+] Firefox engine updated to version 24 ESR.
+
+[+] Added the ability to run projects without a browser. Perfect for working with service APIs (project settings → do not use browser).
+
+[+] Added the ability to disable CSS.
+
+[+] Added methods to search for elements via XPath using C#.
+
+[+] Added support for SOCKS 5 with authentication.
+
+[+] Added the ability to change page encoding.
+
+[+] Added the ability to get alert text via `{ -Page.LastAlertText- }` and alert title via `{ -Page.LastAlertTitle- }`.
+
+[+] PluginContainer can run in a separate process.
+
+[+] You can hide and show JavaScript navigator object fields depending on the browser you are emulating.
+
+[+] GeoIP database updated.
+
+[+] ZennoPoster interface is now faster.
+
+[+] Improved warning and error output in the log.
+
+[+] Added the ability to specify a custom POST request type.
+
+[+] Added the Name property to the Tab class; you can get the name of the current tab using the C# snippet return instance.ActiveTab.Name;
+
+[+] Added the ability to copy the encryption block between projects.
+
+### Bug fixes:
+
+[\] Fixed an issue with incorrect display of project logs after deleting a project.
+
+[\] Fixed an issue with incorrect display of instances after a long runtime.
+
+[\] Fixed an issue with file name generation in ResourceDownloader.
+
+[\] Fixed the cause of “Timeout GetResult expired” errors in ResourceDownloader when using JavaScript.
+
+[\] By popular request, removed email from the headers of the ProjectMaker and ZennoPoster forms.
+
+[\] Fixed image search on Flash content.
+
+[\] Fixed frame loading issues on some websites.
+
+[\] Fixed video loading issues on YouTube.
+
+[\] Fixed video playback issue on Vimeo.
+
+[\] Fixed photo uploads on Yahoo.
+
+[\] Fixed header handling.
+
+[\] Fixed incorrect file type detection when downloading.
+
+[\] Fixed variable processing when working with email.
+
+[\] Fixed popup windows appearing when executing JavaScript in ProxyChecker.
+
+[\] Fixed incorrect popup behavior in multithreading.

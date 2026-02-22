@@ -1,0 +1,37 @@
+---
+sidebar_position: 110
+title: "ZennoPoster 7.8.0.0 30.01.2025"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.8.0.0 30.01.2025.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3274473475/ZennoPoster+7.8.0.0+30.01.2025"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3274473475/ZennoPoster+7.8.0.0+30.01.2025)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.8.0.0 (30.01.2025)
+
+**Added:**
+
+[+] Integration with the new ZennoBrowser product has been added.  
+You can now launch the Chromium browser with advanced ZennoBrowser emulations directly from ZennoPoster7 and take advantage of all its automation features and conveniences.  
+To support the integration, a new cube "Integration with ZennoBrowser" has been added, which includes two actions: "Get ZennoBrowser profiles" and "Launch ZennoBrowser instance". The option to launch the new browser type has also been added to the classic "Launch instance" action.  
+Full instructions for ZennoBrowser integration are available [<u data-renderer-mark="true">here</u>](https://drive.google.com/file/d/1ia9r-aIqUmeDg95Ud1Kbw_R46nWMYkuf/view?usp=sharing&amp;roistat_visit=1024986 "https://drive.google.com/file/d/1ia9r-aIqUmeDg95Ud1Kbw_R46nWMYkuf/view?usp=sharing&amp;roistat_visit=1024986").  
+If you don’t have ZennoBrowser yet, you can [<u data-renderer-mark="true">apply</u>](https://zenno.link/1XKwl?roistat_visit=1024986 "https://zenno.link/1XKwl?roistat_visit=1024986") to test it.
+
+[+] In ZennoPoster, when displaying a Chromium browser from ZennoBrowser, the real browser is shown. At the moment, the minimize, maximize, and close buttons of the browser window work like standard window controls, so it is not recommended to use them. As an alternative, the context menu in the Instances tab in ZennoPoster has been expanded with the options Show, Hide browser window, and Continue for the Wait for user action.
+
+[+] The ability to launch Chromium from ZennoBrowser using C# code has been added. For this purpose, the following methods have been added to the instance object: IntegrationLaunch(string profileId), IntegrationLaunch(string profileId, string workspaceId), as well as Launch(BrowserLaunchSettings launchSettings). The old Launch methods can only start browsers built into ZennoPoster7. The new Launch method that accepts a settings object can start any browser. To launch built-in browsers, you need to use an instance of the BuiltInBrowserLaunchSettings class, and to launch a browser from ZennoBrowser, you need to use an instance of the IntegratedBrowserLaunchSettings class.
+
+[+] An overload of the tab.GetTraffic(GetTrafficSettings settings) method has been added, which accepts a settings object. In the GetTrafficSettings class, in addition to collections of regular expressions, the GatherAllTraffic setting has been added. If you set GatherAllTraffic to true, the GetTraffic method will return all requests, including those already retrieved via GetTraffic.
+
+**Fixed:**
+
+[\] Fixed the display of the website URL in ProjectMaker. Previously, the address bar could show the URL of a secondary request.
+
+[\] Fixed loading and updating of the geo database.

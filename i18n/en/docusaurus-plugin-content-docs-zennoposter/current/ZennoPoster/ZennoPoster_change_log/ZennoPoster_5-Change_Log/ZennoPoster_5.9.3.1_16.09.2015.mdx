@@ -1,0 +1,97 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.9.3.1 16.09.2015"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.9.3.1 16.09.2015.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993917/ZennoPoster+5.9.3.1+16.09.2015"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494993917/ZennoPoster+5.9.3.1+16.09.2015)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.9.3.1 (16.09.2015)
+
+### New features:
+
+[+] Expanded capabilities for working with [❗→ ranges](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488964137").
+
+[+] Added support for transparent images used as a watermark in the “Image Processing” action. Transparent parts of the image are no longer filled with white.
+
+[+] Improved smoothness of character input when emulating a keyboard with long delays.
+
+[+] Added the “Remember the number of recently opened projects” setting, allowing you to control how many recently opened projects are shown on the start page.
+
+[+] Removed the animation for hiding/showing windows in ProjectMaker while recording projects.
+
+[+] Added the “Exit with error if the list is empty” parameter to the “Sublist Selection” action.
+
+[+] The “Convert to C#” menu item now takes variable macros into account.
+
+[+] When recording mode is disabled in ProjectMaker, data from the profile, variables, and IntelliSearch are now inserted into fields.
+
+[+] Improved error handling, with clearer error messages written to the log.
+
+[+] If authorization data is incorrect, the “Work with Email” action stops after the first attempt.
+
+[+] Updated GeoIP in ProxyChecker.
+
+[+] Added display of error messages for the “If” action in ZennoPoster.
+
+[+] Added support for the BypassCaptcha service.
+
+[+] Accelerated processing of proxy sources with JavaScript.
+
+[+] Added the C# method [ZennoPoster.InterruptTask](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~InterruptTask.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~InterruptTask.html") for interrupting tasks.
+
+[+] Added the C# property [project.Path](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Path.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Path.html"), the same as [project.Directory](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Directory.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.InterfacesLibrary~ZennoLab.InterfacesLibrary.ProjectModel.IZennoPosterProjectModel~Directory.html"), but with a trailing \ at the end.
+
+[+] Added the C# method [HtmlElement.Reload](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.HtmlElement~Reload.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.HtmlElement~Reload.html") to resolve issues with non-working Flash objects.
+
+[+] Added the C# method [ZennoPoster.ValidateEmail](https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ValidateEmail.html "https://help.zennolab.com/en/v5/zennoposter/5.9.3/webframe.html#ZennoLab.CommandCenter~ZennoLab.CommandCenter.ZennoPoster~ValidateEmail.html") to validate email addresses.
+
+[+] Added support for the proxy service [luminati.io](http://luminati.io/?affiliate=email/darkdiver@zennolab.com "http://luminati.io/?affiliate=email/darkdiver@zennolab.com").
+
+### Fixed bugs:
+
+[\] Fixed CSS being disabled.
+
+[\] Fixed filling in some fields (login, name, etc.) under full emulation.
+
+[\] Fixed authorization in social networks.
+
+[\] Fixed retrieving element text; no more extra junk in the text.
+
+[\] Fixed file downloads.
+
+[\] Fixed pasting via Ctrl+V.
+
+[\] Fixed some memory leaks.
+
+[\] Fixed sound being disabled.
+
+[\] Fixed support for socks5 with authorization.
+
+[\] Fixed retrieving instance.ActiveTab.Handle.
+
+[\] Accessing the instance.ActiveTab.Title property no longer causes freezing.
+
+[\] Fixed cookie handling.
+
+[\] Fixed file naming when downloading them via HTTP requests.
+
+[\] Fixed the ad blocking feature.
+
+[\] Fixed handling of HTML element events not included in the current event list (e.g., paste).
+
+[\] Fixed an issue in ProjectMaker where cutting and pasting multiple groups did not remove them.
+
+[\] Fixed the issue of lists and tables becoming detached from tasks.
+
+[\] Fixed cleanup of unused variables when the project contains the “Project in Project” action.
+
+[\] Fixed saving lists when modifying them via C# code using the indexer.

@@ -1,0 +1,38 @@
+---
+sidebar_position: 101
+title: "ZennoPoster 7.8.8.0 12.08.2025"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 7.8.8.0 12.08.2025.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/3721428999/ZennoPoster+7.8.8.0+12.08.2025"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3721428999/ZennoPoster+7.8.8.0+12.08.2025)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 7.8.8.0 (12.08.2025)
+
+**Added:**
+
+[+] Now the "Launch Browser" action with the without-browser option or the similar C# method *instance.Launch, *instance.Stop closes the browser in ProjectMaker as well.
+At the same time, clicking "From the beginning" in a project without a browser will not close the browser, but only hide it, as before.
+
+[+] Added the *instance.Stop() method. Calling this method closes the launched browser; it works in both ZennoPoster and ProjectMaker.
+
+[+] Proxy settings were added to the *IntegratedBrowserLaunchSettings object for launching a browser from ZennoBrowser with proxy override via the *instance.Launch method.
+
+**Fixed:**
+
+[\] Fixed Chromium browser crashes on some websites.
+
+[\] Fixed the *instance.Launch method when using *BrowserType.WithoutBrowser.
+
+[\] Fixed the *instance.IntegrationLaunch method.
+
+[\] Fixed the *instance.Reload method.
+
+[\] Fixed the behavior of labels in ZennoPoster.

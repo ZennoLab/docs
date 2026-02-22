@@ -1,0 +1,55 @@
+﻿---
+sidebar_position: 1
+title: "ZennoPoster 5.11.6.0 17.08.2017"
+description: ""
+date: "2025-09-15"
+converted: true
+originalFile: "ZennoPoster 5.11.6.0 17.08.2017.txt"
+targetUrl: "https://zennolab.atlassian.net/wiki/spaces/RU/pages/502857729/ZennoPoster+5.11.6.0+17.08.2017"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/502857729/ZennoPoster+5.11.6.0+17.08.2017)** — Source of this material
+
+_______________________________________________  
+# ZennoPoster 5.11.6.0 (17.08.2017)
+
+### New features:
+
+[+] Added browser audio device fingerprint emulation (audio fingerprint). When a project starts, a unique fingerprint is generated and written to the profile; when the profile is saved and later loaded, the fingerprint is restored. The corresponding C# property has been added — [AudioContextMode](https://help.zennolab.com/en/v5/zennoposter/5.11.6.0/topic353.html "https://help.zennolab.com/en/v5/zennoposter/5.11.6.0/topic353.html").
+
+[+] Added playback device emulation in WebRTC.
+
+[+] Added simultaneous launch of multiple templates in the Task Manager (task groups have been introduced; groups are executed in order. Templates within a group start simultaneously; if a group is interrupted by another group, they are considered different groups).
+
+[+] Drag-and-drop for the virtual mouse. The tab now has C# methods [FullEmulationMouseDragAndDrop](https://help.zennolab.com/en/v5/zennoposter/5.11.6.0/topic462.html "https://help.zennolab.com/en/v5/zennoposter/5.11.6.0/topic462.html") (int fromX, int fromY, int toX, int toY) and [FullEmulationMouseDragAndDrop](https://help.zennolab.com/en/v5/zennoposter/5.11.6.0/topic463.html "https://help.zennolab.com/en/v5/zennoposter/5.11.6.0/topic463.html") (HtmlElement fromHe, HtmlElement toHe).
+
+[+] A Blacklist for proxy sources has been added in ZennoPoster.
+
+[+] Added folder selection in BotUI.
+
+[+] Added the ability to delete processed e-mail.
+
+### Bug fixes:
+
+[\] Fixed issues with WebRTC emulation when reloading a page.
+
+[\] Fixed Google Translate functionality via the website http://translate.google.com.
+
+[\] Fixed an issue with file uploads via Flash.
+
+[\] Fixed disabling of RSS sources in ProxyChecker.
+
+[\] Fixed the appearance of the proxy sending option for the CapMonster2.dll module in the ReCaptcha2 action.
+
+[\] Fixed an issue with time zone emulation in Yandex Mail.
+
+[\] Fixed sound card clicks when launching the program.
+
+[\] Stability improvements.
+
+[\] Fixed intrusive autocomplete in input fields within actions.
+
+[\] Fixed an issue with sorting tasks by time in ZennoPoster.
