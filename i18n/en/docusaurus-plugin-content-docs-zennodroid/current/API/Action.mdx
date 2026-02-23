@@ -129,6 +129,7 @@ void Start()
 ```csharp
 bool applyProfile 
 // Pass True if you want to use data from the ZennoDroid profile.
+// Device parameters (IMEI, Android ID, etc.) will be taken from the Current profile tab.  
 ```  
 
 *Overload:*   
@@ -146,15 +147,13 @@ action.Start(); // Start.
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Select the device.
-action.Start(true); // Start using ZennoDroid profile data.
+action.Start(true); // Start using ZennoDroid profile data.  
 ```  
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Select the device.
 action.Start("mjpeg"); // Start with captureScreenMethod.
 ```  
-
-Device parameters (IMEI, Android ID, etc.) will be taken from the ZennoDroid profile (the **Current profile** tab).  
 _______________________________________________
 ### Stop the selected running device
 ```csharp

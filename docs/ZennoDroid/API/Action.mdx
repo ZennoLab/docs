@@ -129,6 +129,7 @@ void Start()
 ```csharp
 bool applyProfile 
 // Передаем True, если хотим использовать данные из профиля ZennoDroid.
+// Данные устройства (IMEI, Android ID и т.д.) будут браться из вкладки Текущий профиль.  
 ```  
 
 *Перегрузка:*   
@@ -153,8 +154,6 @@ var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Выбираем устройство.
 action.Start("mjpeg"); // Запускаем c captureScreenMethod
 ```
-
-Данные устройства (IMEI, Android ID и т.д.) будут браться из профиля ZennoDroid (вкладка **Текущий профиль**).  
 _______________________________________________
 ### Останавливаем выбранное запущенное устройство.
 ```csharp
