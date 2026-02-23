@@ -96,6 +96,30 @@ action.SelectRandom("Samsung");
 
 Тогда под маску `"Samsung"` попадут **Samsung_S23_Android14** и **Samsung_A51_Android12**. Так что после фильтрации метод случайно выберет одно из этих устройств.
 _______________________________________________
+### Выбор случайного устройства из списка  
+```csharp
+void SelectRandom(IEnumerable<string> source) 
+```  
+
+*Parameters:*   
+```csharp
+IEnumerable<string> source // Список имён/названий устройств, из которых нужно выбрать случайное.  
+```  
+
+#### Example  
+```csharp
+var action = instance.DroidInstance.Action;
+var devices = new List<string>
+{
+    "Pixel_7_Android14",
+    "Samsung_S23_Android14",
+    "Xiaomi_RedmiNote12_Android13",
+    "Samsung_A51_Android12",
+    "Google_Nexus5X_Android8"
+};
+action.SelectRandom(devices);
+```
+_______________________________________________  
 ### Запускаем устройство, которое ранее выбрали.
 ```csharp
 void Start()  
