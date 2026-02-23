@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 20
 sidebar_label: Device Filter
 title: Device Filter | ZennoDroid Documentation | ZennoLab
 description: Device Filter - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -10,7 +10,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 <DisclaimerNotice />
 
 ## Description  
-**`IDeviceFilter`**  
+**`IDeviceFilter`**
 
 This is used to work with filter settings when generating JSON data to spoof device information with LSPosed.
 
@@ -61,8 +61,6 @@ string GpuVendor { get; set; }
 
 #### Examples  
 ```csharp
-var settings = instance.DroidInstance.Settings;
-
 var filter = new DeviceFilter();
 filter.Country = "us"; // Choose country
 filter.Version = "12|13|14|15"; // Choose Android version
@@ -72,6 +70,10 @@ var options = new DeviceOptions();
 options.AddCanvasNoise = true; // Add canvas noise
 options.AddGpu = true; // Add fake GPU
 
-var json = settings.GenerateRandomLSPosedSettings(filter, options); // Generate random data for LSPosed spoofing based on the filter and options
-settings.SetLSPosedSettings(json); // Apply the spoofed data
+var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Generate random data for LSPosed spoofing based on the filter and options
+instance.DroidInstance.Settings.SetLSPosedSettings(json); // Apply the spoofed data
 ```
+_______________________________________________
+## Useful links  
+- [**IDroidSettingsAPI**](./Settings).
+- [**IDeviceOptions**](./DeviceOptions).

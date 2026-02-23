@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 20
 sidebar_label: Device Filter
 title: Device Filter | Документация ZennoDroid | ZennoLab
 description: Device Filter - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
@@ -10,10 +10,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 <DisclaimerNotice />
 
 ## Описание.  
-**`IDeviceFilter`**  
+**`IDeviceFilter`**
 
 Используется для работы с настройками фильтров при генерации JSON-данных для подмены информации об устройстве через LSPosed.  
-
 Этот API позволяет задавать параметры фильтрации, чтобы подбирать нужные данные при генерации устройств.  
 
 ### Свойства.  
@@ -54,8 +53,6 @@ string Version { get; set; }
 
 #### Примеры:  
 ```csharp
-var settings = instance.DroidInstance.Settings;
-
 var filter = new DeviceFilter();
 filter.Country = "us"; // Выбрать страну
 filter.Version = "12|13|14|15"; // Выбрать версию Android
@@ -65,6 +62,10 @@ var options = new DeviceOptions();
 options.AddCanvasNoise = true; // Добавить шум для Canvas
 options.AddGpu = true; // Добавить поддельный GPU
 
-var json = settings.GenerateRandomLSPosedSettings(filter, options); // Сгенерировать случайные данные для подмены LSPosed на основе фильтра и опций
-settings.SetLSPosedSettings(json); // Применить подменённые данные
+var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Сгенерировать случайные данные для подмены LSPosed на основе фильтра и опций
+instance.DroidInstance.Settings.SetLSPosedSettings(json); // Применить подменённые данные
 ```
+_______________________________________________
+## Полезные ссылки.  
+- [**IDroidSettingsAPI**](./Settings).
+- [**IDeviceOptions**](./DeviceOptions).
