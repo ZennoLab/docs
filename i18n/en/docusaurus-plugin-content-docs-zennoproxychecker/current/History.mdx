@@ -1,0 +1,302 @@
+---
+sidebar_position: 5
+title: Changelog
+description: "ZennoProxyChecker changelog?"
+--- 
+
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+<details>
+<summary>***ZennoProxyChecker 2.5.0.0***</summary>  
+
+ > New features:
+ > + Automatic proxy search.
+ > + JavaScript execution on proxy sources.
+ > + Proxy distribution via FTP.
+ > + Checking via SpamHaus.
+
+ > Bug fixes:
+ > + Updated Geo IP list, countries are now detected more accurately. 
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 2.5.0.2***</summary>
+
+ > Bug fixes:
+ > +  Fixed errors in ProxyChecker that caused proxy checking to stop, unstable performance, and program freezes.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 2.5.0.5***</summary>
+
+ > New features:
+ > + Windows 8.1 support.
+ > + Added auto-search settings. Now found proxies can be immediately checked for Google bans, speed, HTTPS, etc.
+ > + ZennoProxyChecker has been added to the whitelist of many antivirus companies, so antivirus software should no longer corrupt files during installation or interfere with operation.
+
+ > Bug fixes:
+ > + Fixed some installation errors on Windows 8 / Windows Server 2012.
+ > + Improved and accelerated ProxyChecker performance when deleting proxies.
+ > + Fixed JavaScript execution on sources. Removed freezes and alerts.
+ > + Added the “Disable errors globally” setting, enabling it resolves some issues with CheckingProcessor.exe.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 2.5.0.6***</summary>
+
+ > New features:
+ > + Added incompatible software check during installation.
+
+ > Bug fixes:
+ > + Fixed an issue where it was impossible to change settings for multiple sources.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 2.5.0.7***</summary>
+
+ > Bug fixes:
+ > + Fixed a crash during long-term operation with a large number of checking threads.
+ > + Fixed an issue where the program would not start if .NET Framework 4.5 was installed instead of .NET Framework.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 2.6.0.0***</summary>
+
+ > New features:
+ > + Added proxy checking for any URL.
+ > + Updated interface.
+ > + Added the “Consider proxies alive” setting — proxies are immediately placed into the live list with the parameters selected in the source settings.
+ > + Proxies that do not require checking are immediately placed into the live list, bypassing the checking queue.
+ > + The “Recheck” category now has two parameters — “Minimum interval after the previous check” and “Minimum interval after being taken from the live list.”
+ > + Resources found through automatic search are added to the source list only after suitability verification.
+ > + Added the “Check proxy only once” source setting. Suitable for checking large public lists.
+ > + In the live proxy window, some columns can now be hidden.
+ > + Proxies in the live list can be selected and copied to the clipboard.
+ > + Proxy distribution tasks now have a name.
+ > + Added [country] and [country_code] macros to proxy distribution.
+
+ > Bug fixes:
+ > + Improved program stability.
+ > + Updated GeoIP.
+ > + Proxies with the same IP but different ports are now considered unique in the live proxy list.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.0.0.0***</summary>
+
+ > New features:
+ > + New proxy checking engine — improved accuracy, stability, and checking speed.
+ > + Redesigned user interface.
+ > + Proxy sources are now grouped by tags.
+ > + You can now add proxies to the program in 2 clicks without specifying a source. To do this, select “Add proxy.”
+ > + Added the “Load proxies” function.
+ > + Added the “Check proxies” function.
+ > + Added the “Recheck live” function.
+ > + Live proxies from a source are now displayed as a link. Clicking it shows only proxies from that specific source. If needed, this can be saved as a rule for future use.
+ > + Added the “Save” command in the “Sources” window to save selected proxy sources.
+ > + Added the “Copy to clipboard” function in the “Proxies” window for the current proxy list.
+ > + The “Save to file” function now saves only the current list, not all live proxies.
+ > + If you have purchased ProxyChecker with updates, its capabilities are not limited in other ZennoLab products.
+
+ > Bug fixes:
+ > + Improved stability.
+ > + Optimized performance, reduced memory usage.
+ > + Improved accuracy of SOCKS4/5 proxy checking.
+ > + Fixed memory leaks.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.0.0.1***</summary>
+
+ > Bug fixes:
+ > + Improved stability.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.1.0.0***</summary>
+
+ > New features:
+ > + Added the ability to delete default rules. You can restore them if needed.
+ > + Added a source setting for immediate removal of proxies from the live list after a failed check.
+ > + Added [login] and [password] macros to proxy distribution, which return the proxy login and password respectively. Also added the [auth] macro, which returns a string in the format login:password@ if authentication is required, and an empty string if authentication is not required. The default format in distribution tasks has been changed to [auth][ip]:[port].
+ > + Added automatic GeoIP database updates.
+ > + Added “Parse RSS text” and “Parse RSS links” flags to proxy source settings. When the first flag is enabled, proxies are searched not only in the source text but also in the RSS feed text, if available. When the second flag is enabled and an RSS feed is available, all links from it are parsed and processed the same way as automatically added resources, meaning only those containing proxies appear in the source list. New sources are marked with the “RSS” tag.
+ > + Added the “Add local network addresses” flag to proxy source settings.
+ > + Added the ability to use the `{-TimeNow.Date[Date format]-}` macro in the source address field, similar to its usage in ZennoPoster.
+ > + Added the “Consider non-anonymous proxies as dead” setting to ProxyChecker.
+ 
+ > Bug fixes:
+ > + Fixed opening the proxy list for an anonymous source in ProxyChecker.
+ > + Fixed calculation of the next proxy check time after being taken from the live list.
+ > + Fixed the regular expression for parsing proxies with authentication. This resolved the issue where the first proxy in the list was skipped if it had authentication.
+ > + Fixed working with proxy source groups.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.1.1.0***</summary>
+
+ > New features:
+ > + Added the “Detailed auto-search log” flag to ProxyChecker settings. The detailed log is intended for diagnosing auto-search issues.
+
+ > Bug fixes:
+ > + Fixed rule creation with the “Source” setting.
+ > + Fixed RSS processing when parsing sources.
+ > + Fixed JavaScript processing when parsing sources.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.1.1.5***</summary>
+
+ > Bug fixes:
+ > + Improved stability.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.1.2.0 (23.03.2017)***</summary>
+
+ > New features:
+ > + Optimized performance.
+ > + Reduced memory usage.
+ > + Updated DevExpress components and the target .NET Framework, resulting in a more pleasant and responsive UI.
+
+ > Bug fixes:
+ > + Improved stability.
+ > + Optimized proxy auto-search via Google/Bing.
+ > + Proxies in the live list were not being rechecked.
+ > + Fixed RSS parsing errors.
+ > + The “Delete previous proxies when loading” option from the live list was not working.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.1.5.0 (21.09.2017)***</summary>
+
+ > New features:
+ > + Added a filter for “Cloudflare proxy.”
+ >If websites are not hosted on Cloudflare, Cloudflare IPs will not work as HTTP proxies. This filter helps avoid attempts to work with such sites. Located here: *Management* tab — *Filters* — *Cloudflare Component*.
+ > + Added a Blacklist for proxy sources, *Sources* tab — *Blacklist*. To add multiple sources to the blacklist at once, select them in the list and activate *Add to blacklist* in the context menu.
+
+ > Bug fixes:
+ > + Fixed an issue where RSS sources could not be disabled.
+ > + Improved stability.
+ > + Minor fixes.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.2.0.0 (18.05.2018)***</summary>
+
+ > New features:
+ > + Blacklist for proxy sources.
+ > + Added functionality to clean proxies by time if proxies are initially considered alive. Option in proxy source settings — *Delete previous proxies from the live list when loading*.
+ > + Improved program stability.
+ > + Interface improvements.
+
+ > Bug fixes:
+ > + Fixed proxy checking freezes.
+ > + Fixed an issue where proxy sources were not saved after restarting the program.
+ > + Fixed ResourceDownloader behavior, removed unnecessary dialog windows.
+ > + Fixed proxy parsing rules.
+ > + Improved handling of authentication errors (Get Auth Credentials).
+ > + Fixed SFTP support.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.3.0.0 (11.07.2019)***</summary>
+
+ > New features:
+ > + Added DNSBL support.
+
+ > Bug fixes:
+ > + Restored proxy auto-search functionality.
+ > + Fixed increased download threads for proxy sources.
+ > + Fixed UI bugs.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.4.0.0 (14.09.2019)***</summary>
+
+ > New features:
+ > + Added an alternative proxy checking method. In ProxyChecker settings, the *Use .NET process for proxy checking* option has been added. The alternative method helps avoid unexpected error 217 issues on problematic systems and also reduces resource usage during proxy checking.
+
+ > Bug fixes:
+ > + Fixed proxy database loading errors.
+ > + Fixed program errors that caused proxy checking to stop.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.6.0.0 (27.04.2020)***</summary>
+
+
+ > New features:
+ > + Added Large Object Heap cleanup.
+ > + Optimized source download threads.
+ > + Optimized proxy processing.
+ > + Added Palestine and Serbia to the country filter.
+
+ > Bug fixes:
+ > + Fixed proxy source auto-search.
+ > + Fixed GeoIP database updates.
+ > + Fixed proxy distribution functionality.
+ > + Fixed Google ban checking.
+ > + Fixed SOCKS5 proxy checking.
+ > + Fixed saving of proxy sources.
+ > + Other fixes and improvements.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.7.0.0 (25.03.2024)***</summary>
+
+ > Fixed:
+ > + Fixed proxy auto-search.
+ > + Fixed geo-database updates for detecting proxy countries.
+ > + Other fixes and improvements.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.8.0.0 (10.06.2024)***</summary>
+
+ > Added:
+ > + Support for IPv4 proxies with a textual host, not only in IP format.
+ > + In the proxy parsing constructor, added the ability to create regular expressions without additional fields. Such an expression must contain named groups Host, Port, and optionally Login, Pass.
+ > + Added a new regular expression that supports parsing any proxy. Proxies are identified taking login and password into account. Login and password are also displayed in the live proxy table.
+ > + Improved proxy saving and loading.
+
+ > Fixed:
+ > + Fixed the Chinese version of ZennoProxyChecker.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.8.1.0 (19.11.2024)***</summary>
+
+ > Fixed:
+ > + Fixed license reload. It is now possible to launch the program without a full reinstallation.
+ > + Fixed proxy source search in ProxyChecker. Auto-search will now look for proxies with IP-based hosts as before. For manually added sources, ProxyChecker will search for proxies with any type of host.
+</details>
+
+
+<details>
+<summary>***ZennoProxyChecker 3.8.2.0 (07.02.2025)***</summary>
+
+ > Fixed:
+ > + Fixed auto-search for sources. Source searching is now performed using a browser. The proxy checking process has also been improved — ProxyChecker now finds a significantly larger number of proxies.
+</details>
