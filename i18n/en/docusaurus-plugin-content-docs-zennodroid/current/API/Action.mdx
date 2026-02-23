@@ -32,19 +32,19 @@ var action = instance.DroidInstance.Action;
 action.SelectByIndex(0);
 ```
 _______________________________________________
-### Select a device by its ADB name
+### Select a device by its name
 ```csharp
 void SelectByName(string name)  
 ```
 *Parameters:*
 ```csharp
-string name // Pass the ADB name of the device you want to pick.
+string name // Pass the name of the device you want to pick.
 ```  
 
 #### Example  
 ```csharp
 var action = instance.DroidInstance.Action;
-action.SelectByName("adbName");
+action.SelectByName("deviceName");
 ```
 _______________________________________________
 ### Select a device by its display name
