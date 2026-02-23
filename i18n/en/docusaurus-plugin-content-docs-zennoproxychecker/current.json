@@ -10,6 +10,38 @@
   "sidebar.zennoproxycheckerSidebar.category.Знакомство.link.generated-index.title": {
     "message": "Introduction",
     "description": "The generated-index page title for category Знакомство in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Настройки": {
+    "message": "Settings",
+    "description": "The label for category Настройки in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Настройки.link.generated-index.title": {
+    "message": "ZennoProxyChecker Settings",
+    "description": "The generated-index page title for category Настройки in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Интерфейс программы": {
+    "message": "Program Interface",
+    "description": "The label for category Интерфейс программы in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Интерфейс программы.link.generated-index.title": {
+    "message": "Program Interface",
+    "description": "The generated-index page title for category Интерфейс программы in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Источники": {
+    "message": "Sources",
+    "description": "The label for category Источники in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Источники.link.generated-index.title": {
+    "message": "Sources",
+    "description": "The generated-index page title for category Источники in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Работа с прокси": {
+    "message": "Working with Proxies",
+    "description": "The label for category Работа с прокси in sidebar zennoproxycheckerSidebar"
+  },
+  "sidebar.zennoproxycheckerSidebar.category.Работа с прокси.link.generated-index.title": {
+    "message": "Working with Proxies",
+    "description": "The generated-index page title for category Работа с прокси in sidebar zennoproxycheckerSidebar"
   }
 }
 
