@@ -1,0 +1,117 @@
+---
+sidebar_position: 1
+title: Management
+description: "How do you manage proxies in ZennoProxyChecker?"
+--- 
+
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+The “Management” tab is available immediately after launching the program: it allows you to control proxy collection and configure each stage.
+
+
+![interface_ru](.\assets\Managing\interface_ru.png)
+
+
+## **Control Panel** 
+
+![managing_panel_ru](.\assets\Managing\managing_panel_ru.png)
+
+
+ - **Start/Stop** — use these buttons to start or stop proxy collection and checking.
+ - **Filters** — a set of rules applied to proxies before they are added to the program database after being loaded from a source. You can read more in the article [Filters](https://docs.zennolab.com/zennoproxychecker/Program%20interface/Filters).
+ - **Rules** — a set of conditions that allow you to take proxies from the [live list](https://docs.zennolab.com/zennoproxychecker/Working%20with%20proxies/Live_list). Learn more in the article [Rules](https://docs.zennolab.com/zennoproxychecker/Program%20interface/Rules).
+ - **Network Monitor** — this built-in utility lets you test your internet connection for the maximum number of simultaneous threads.
+ - **Help** — opens the documentation in your browser.
+
+
+## **Proxy Sources**
+
+![proxy_source_ru](.\assets\Managing\proxy_source_ru.png)
+
+Here you configure proxy loading from sources.
+
+When you click in the area displaying the number of sources, you will be redirected to [Sources](https://docs.zennolab.com/zennoproxychecker/Program%20interface/Sources).
+
+
+### **Number of Sources**
+
+![number_of_sources_ru](.\assets\Managing\number_of_sources_ru.png)
+
+The lower number shows the total number of sources saved in the database.
+
+The upper number shows the number of active sources.
+
+### **Load Proxies**
+
+Clicking this button starts collecting proxies from sources.
+
+#### **Thread Count Settings**
+
+
+![setting_the_number_of_sources_ru](.\assets\Managing\setting_the_number_of_sources_ru.png)
+
+
+You can adjust how many threads will be used to load proxies from sources by clicking the gear icon.
+
+
+### **Enable Auto Search** 
+
+![enable_auto_search_ru](.\assets\Managing\enable_auto_search_ru.png)
+
+The button is active only when proxy loading is enabled.
+
+When this option is activated, ProxyChecker will automatically search the internet for proxy sources.
+
+After clicking the gear icon, the source settings that will be applied to the found websites will open (you can read more about these settings [in this article](https://docs.zennolab.com/zennoproxychecker/Program%20interface/Sources)).
+
+In the [program settings](https://docs.zennolab.com/zennoproxychecker/category/proxychecker-settings), you can set limits at which auto search will stop.
+
+
+## **Proxy Database** ##
+
+![proxy_database_ru](.\assets\Managing\proxy_database_ru.png)
+
+Here you start the actual proxy checking process. When you click in the area displaying the number of proxies, you will be redirected to [Sources](https://docs.zennolab.com/zennoproxychecker/Program%20interface/Sources).
+
+
+### **Check Proxies** ###
+
+This button starts the checking process.
+
+#### **Settings** ####
+
+![settings_ru](.\assets\Managing\settings_ru.png)
+
+Clicking the gear button opens the checking settings.
+
+Here you can set the number of checking threads and the limit for the number of live proxies, upon reaching which the checking will stop.
+
+
+## **Live Proxies** ##
+
+![live_proxies_ru](.\assets\Managing\live_proxies_ru.png)
+
+Here you can see the number of live proxies and configure the time during which a proxy is considered live. When you click in the area displaying the number of live proxies, you will be redirected to [Proxy](https://docs.zennolab.com/zennoproxychecker/Program%20interface/Proxy).
+
+### **Clear List** ###
+
+When activated, the live list will be cleared according to the configured lifetime of a live proxy.
+
+#### **Lifetime** ####
+
+![lifetime_ru](.\assets\Managing\lifetime_ru.png)
+
+Clicking the gear icon opens a settings window where you specify how long a proxy is considered live.
+
+### **Proxy Output** ###
+
+Go to the [proxy output tab](https://docs.zennolab.com/zennoproxychecker/Program%20interface/Results).
+
+
+## **Useful Links** ##
+
+[**Proxy Checking**](https://docs.zennolab.com/zennoproxychecker/Working%20with%20proxies/Checking_proxy)
+
+[**Live List**](https://docs.zennolab.com/zennoproxychecker/Working%20with%20proxies/Live_list)
