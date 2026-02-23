@@ -17,25 +17,32 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 Этот API позволяет задавать параметры фильтрации, чтобы подбирать нужные данные при генерации устройств.  
 
 ### Свойства.  
+- **Страна**
+```csharp
+string Country { get; set; }
+
+// Например: us|ru|de|fr
+```
+
 - **Производитель телефона**. 
 ```csharp
 string Manufacturer { get; set; }
 
-// Например: Samsung|Pegatron|BYD|OPPO|Inventec|Foxconn|Honor|Huawei|Lenovo
+// Например: Samsung|Xiaomi
 ```   
 
 - **Бренд телефона**. 
 ```csharp
 string Brand { get; set; }
 
-// Например: Samsung|Xiaomi|OPPO|Realme|Honor|OnePlus|Huawei|Nothing
+// Например: Redmi|Poco
 ```
 
 - **Модель телефона**. 
 ```csharp
 string Model { get; set; }
 
-// Например: SamsungS24Ultra|Xiaomi14Pro|OPPOFindX7|RealmeGT5Pro|HonorMagic6Pro|OnePlus12|HuaweiP60Pro|Nothing(2)
+// Например: SM-A505F
 ```
 
 - **Версия Android**. 
@@ -49,9 +56,15 @@ string Version { get; set; }
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var filter = new DeviceFilter(); // Создаем фильтр с данными для генерации
-filter.Brand = "Samsung|Xiaomi|OPPO"; // Выбор устройств
-filter.Version = "10|11|12|13"; // Выбор версии Android
-var json = settings.GenerateRandomLSPosedSettings(project.Profile.Country, filter); // Генерируем случайные данные для подмены LSPosed на основание фильтра
-settings.SetLSPosedSettings(json); // Делаем подмену данных
+var filter = new DeviceFilter();
+filter.Country = "us"; // Выбрать страну
+filter.Version = "12|13|14|15"; // Выбрать версию Android
+filter.GpuVendor = "Qualcomm|ARM"; // Выбрать производителя GPU
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true; // Добавить шум для Canvas
+options.AddGpu = true; // Добавить поддельный GPU
+
+var json = settings.GenerateRandomLSPosedSettings(filter, options); // Сгенерировать случайные данные для подмены LSPosed на основе фильтра и опций
+settings.SetLSPosedSettings(json); // Применить подменённые данные
 ```

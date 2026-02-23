@@ -17,25 +17,32 @@ This is used to work with filter settings when generating JSON data to spoof dev
 With this API, you can set filter parameters to pick the right data when generating devices.
 
 ### Properties  
+- **Country**
+```csharp
+string Country { get; set; }
+
+// Examples: us|ru|de|fr
+```
+
 - **Phone Manufacturer**
 ```csharp
 string Manufacturer { get; set; }
 
-// Examples: Samsung|Pegatron|BYD|OPPO|Inventec|Foxconn|Honor|Huawei|Lenovo
+// Examples: Samsung|Xiaomi
 ```
 
 - **Phone Brand**
 ```csharp
 string Brand { get; set; }
 
-// Examples: Samsung|Xiaomi|OPPO|Realme|Honor|OnePlus|Huawei|Nothing
+// Examples: Redmi|Poco
 ```
 
 - **Phone Model**
 ```csharp
 string Model { get; set; }
 
-// Examples: SamsungS24Ultra|Xiaomi14Pro|OPPOFindX7|RealmeGT5Pro|HonorMagic6Pro|OnePlus12|HuaweiP60Pro|Nothing(2)
+// Examples: SM-A505F
 ```
 
 - **Android Version**
@@ -45,13 +52,26 @@ string Version { get; set; }
 // Examples: 12|13|14|15|16
 ```
 
+- **GPU Vendor**
+```csharp
+string GpuVendor { get; set; }
+
+// Examples: Qualcomm|ARM
+```
+
 #### Examples  
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var filter = new DeviceFilter(); // Create a filter with data for generation
-filter.Brand = "Samsung|Xiaomi|OPPO"; // Choose devices
-filter.Version = "10|11|12|13"; // Choose Android version
-var json = settings.GenerateRandomLSPosedSettings(project.Profile.Country, filter); // Generate random data for LSPosed spoofing based on the filter
+var filter = new DeviceFilter();
+filter.Country = "us"; // Choose country
+filter.Version = "12|13|14|15"; // Choose Android version
+filter.GpuVendor = "Qualcomm|ARM"; // Choose Gpu vendor
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true; // Add canvas noise
+options.AddGpu = true; // Add fake GPU
+
+var json = settings.GenerateRandomLSPosedSettings(filter, options); // Generate random data for LSPosed spoofing based on the filter and options
 settings.SetLSPosedSettings(json); // Apply the spoofed data
 ```
