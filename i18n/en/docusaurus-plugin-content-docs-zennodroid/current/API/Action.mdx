@@ -101,20 +101,7 @@ _______________________________________________
 void Start()  
 ```
 
-#### Example  
-```csharp
-var action = instance.DroidInstance.Action;
-action.SelectByTitle("Name"); // Select the device.
-action.Start(); // Start.
-```  
-_______________________________________________
-### Start the selected device using profile data
-```csharp
-void Start(bool applyProfile)  
-```  
-Device parameters (IMEI, Android ID, etc.) will be taken from the ZennoDroid profile (the **Current profile** tab).  
-
-*Parameters:*   
+*Overload:*   
 ```csharp
 bool applyProfile 
 // Pass True if you want to use data from the ZennoDroid profile.
@@ -123,22 +110,27 @@ bool applyProfile
 *Overload:*   
 ```csharp
 string captureScreenMethod // Screen capture method type.  
-
 // Options: "h264", "mjpeg" or "off".
 ```
 
 #### Example  
 ```csharp
-//#1
+var action = instance.DroidInstance.Action;
+action.SelectByTitle("Name"); // Select the device.
+action.Start(); // Start.
+```  
+```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Select the device.
 action.Start(true); // Start using ZennoDroid profile data.
-
-//#2
+```  
+```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Select the device.
-action.Start(true, "mjpeg"); // Start with captureScreenMethod.
-```
+action.Start("mjpeg"); // Start with captureScreenMethod.
+```  
+
+Device parameters (IMEI, Android ID, etc.) will be taken from the ZennoDroid profile (the **Current profile** tab).  
 _______________________________________________
 ### Stop the selected running device
 ```csharp

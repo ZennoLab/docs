@@ -101,20 +101,7 @@ _______________________________________________
 void Start()  
 ```
 
-#### Пример.  
-```csharp
-var action = instance.DroidInstance.Action;
-action.SelectByTitle("Name"); // Выбираем устройство.
-action.Start(); // Запускаем.
-```  
-_______________________________________________
-### Запускаем выбранное устройство с применением данных из нашего профиля.
-```csharp
-void Start(bool applyProfile)  
-```  
-Данные устройства (IMEI, Android ID и т.д.) будут браться из профиля ZennoDroid (вкладка **Текущий профиль**).  
-
-*Параметры:*   
+*Перегрузка:*   
 ```csharp
 bool applyProfile 
 // Передаем True, если хотим использовать данные из профиля ZennoDroid.
@@ -123,22 +110,27 @@ bool applyProfile
 *Перегрузка:*   
 ```csharp
 string captureScreenMethod // Передаем тип захвата изображения.  
-
 // Варианты: "h264", "mjpeg" или "off".
 ```
 
 #### Пример.  
 ```csharp
-//#1
+var action = instance.DroidInstance.Action;
+action.SelectByTitle("Name"); // Выбираем устройство.
+action.Start(); // Запускаем.
+```  
+```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Выбираем устройство.
 action.Start(true); // Запускаем с данными из профиля ZD
-
-//#2
+```  
+```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Выбираем устройство.
-action.Start(true, "mjpeg"); // Запускаем c captureScreenMethod
+action.Start("mjpeg"); // Запускаем c captureScreenMethod
 ```
+
+Данные устройства (IMEI, Android ID и т.д.) будут браться из профиля ZennoDroid (вкладка **Текущий профиль**).  
 _______________________________________________
 ### Останавливаем выбранное запущенное устройство.
 ```csharp
