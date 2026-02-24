@@ -1,0 +1,267 @@
+---
+sidebar_position: 0
+sidebar_label: DroidInstance API
+title: DroidInstance API | ZennoDroid Documentation | ZennoLab
+description: DroidInstance API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# DroidInstance API
+<DisclaimerNotice />
+
+## Description  
+Welcome to the first part of the documentation for working with the ZennoDroid API. Here, you'll find key information, the main methods for working with ZennoDroid objects, and C# code examples.
+
+## The main object for working with the ZennoDroid API  
+**`IDroidInstanceAPI DroidInstance`**
+
+This object is basically a container for interfaces that let you interact with different aspects of Android, such as managing apps, sending input, settings, and so on.
+With it, you can access the interaction object you need and then use its methods and properties for working with the API.
+### Example.  
+```csharp
+instance.DroidInstance.Action.SelectRandom();
+```  
+_______________________________________________
+## List of interfaces.  
+```csharp
+IAppiumDriverAPI AppiumDriver { get; }
+IDroidActionAPI Action { get; }
+IDroidAppAPI App { get; }
+IDroidHierarchyAPI Hierarchy { get; }
+IDroidInfoAPI Info { get; }
+IDroidInputAPI Input { get; }
+IDroidProxyAPI Proxy { get; }
+IDroidScreenAPI Screen { get; }
+IDroidSettingsAPI Settings { get; }
+IFridaDeviceAPI FridaDevice { get; }
+ISqlite3API Sqlite3 { get; }
+IWebViewAPI WebView { get; }
+```
+## Interface properties and methods.  
+### IAppiumDriverAPI
+[**IAppiumDriverAPI AppiumDriver**](./AppiumDriver)  
+```csharp
+IAndroidElementAPI ActiveElement();
+IAndroidElementAPI FindElementByAccessibilityId(string id);
+IAndroidElementAPI FindElementByClassName(string className);
+IAndroidElementAPI FindElementById(string id);
+IAndroidElementAPI FindElementByUiAutomator(string uiSelector);
+IAndroidElementAPI FindElementByXPath(string xpath);
+IAndroidElementAPI[] FindElementsByAccessibilityId(string id);
+IAndroidElementAPI[] FindElementsById(string id);
+IAndroidElementAPI[] FindElementsByClassName(string className);
+IAndroidElementAPI[] FindElementsByUiAutomator(string uiSelector);
+IAndroidElementAPI[] FindElementsByXPath(string xpath);
+void ScrollToElementByAccessibilityId(string id, int maxSwipes);
+void ScrollToElementByClassName(string className, int maxSwipes);
+void ScrollToElementByUiAutomator(string uiSelector, int maxSwipes);
+string GetScreenshot();
+void UpdateSettings(string key, object value);
+void UpdateSettings(IEnumerable<KeyValuePair<string, object>> keyValuePairs);
+```
+### IDroidActionAPI
+[**`IDroidActionAPI Action`**](./Action)  
+```csharp
+void SelectRandom(string mask);
+void SelectRandom(IEnumerable<string> source);
+void Start();
+void Start(bool applyProfile);
+void Start(string captureScreenMethod);
+void Start(bool applyProfile, string captureScreenMethod);
+void Stop();
+```  
+### IDroidAppAPI
+[**`IDroidAppAPI App`**](./Hierarchy)  
+```csharp
+string AppDir(string packageName);
+string DataDir(string packageName);
+string GetAccounts(string packageName);
+string GetAccounts(string packageName, string type);
+string GetAllNotifications();
+string GetAppNotifications(string packageName);
+string GetCookie(string packageName);
+string GetCookiePath(string packageName);
+string Top { get; }
+string Uid(string packageName);
+uint TopPid { get; }
+void AddAccount(string name, string type, string password);
+void AddAccount(string name, string type, string password, string metadata);
+void BackupAppData(string packageName, string pathToBackup);
+void BackupAppData(string packageName, string pathToBackup, bool savePermissions);
+void BackupAppData(string packageName, string pathToBackup, bool savePermissions, string accountType);
+void Clean(string packageName);
+void CleanCache(string packageName);
+void ClearAllNotifications();
+void ClearAppNotifications(string packageName);
+void Close(string packageName);
+void CloseAll();
+void Delete(string packageName);
+void InstallApk(string path);
+void InstallApk(string path, bool useCache, bool useRoot);
+bool IsInstalled(string packageName);
+string[] GetListPackages();
+string[] GetListSystemPackages();
+string[] GetListUserPackages();
+void Open(string packageName);
+void Open(string packageName, string activityName);
+void Open(string packageName, string activityName, string action);
+void OpenAsRoot(string packageName, string activityName);
+void OpenAsRoot(string packageName, string activityName, string action);
+void OpenUrl(string url);
+void OpenUrl(string url, string packageName);
+void PatchFlutterLib(string packageName, string proxy);
+bool RemoveAccount(string name, string type);
+void RestoreAppData(string packageName, string pathToBackup);
+void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions);
+void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
+void RestoreFlutterLib(string packageName);
+```  
+### IDroidHierarchyAPI Hierarchy
+[**`IDroidHierarchyAPI Hierarchy`**](./Hierarchy)  
+```csharp
+string GetLayout();
+```  
+### IDroidInfoAPI Info
+[**`IDroidInfoAPI Info`**](./Info)  
+```csharp
+int Index { get; }
+string Title { get; }
+string Name { get; }
+int UiPort { get; }
+string AddressPort { get; }
+```  
+### IDroidInputAPI Input
+[**`IDroidInputAPI Input`**](./Input)  
+```csharp
+void ClearText();
+string GetClipboard();
+void LongTap(int x, int y);
+void LongTapAndSwipe(int x1, int y1, int x2, int y2);
+void LongTapAndSwipe(int x1, int y1, int x2, int y2, int duration);
+void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2);
+void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2, int duration);
+void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2);
+void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration);
+void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2);
+void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration);
+void SendKeyCode(int keyCode);
+void SendKeyCode(KeyCode keyCode);
+void SendSmsMessage(string phone, string message);
+void SendText(string text);
+void SendText(string text, int latency);
+void SetClipboard(string text);
+string Shell(string command);
+string Shell(string command, int timeout);
+string Shell(string command, int timeout, bool checkconnect);
+string RootShell(string command);
+string RootShell(string command, int timeout);
+string RootShell(string command, int timeout, bool checkconnect);
+void Swipe(int x1, int y1, int x2, int y2);
+void Swipe(int x1, int y1, int x2, int y2, int duration);
+void SwipeCurved(int x1, int y1, int x2, int y2);
+void SwipeCurved(int x1, int y1, int x2, int y2, int duration);
+void SwipeCurved(int x1, int y1, double bending, int x2, int y2);
+void SwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration);
+void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2);
+void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration);
+void Tap(int x, int y);
+void Tap(int x, int y, int duration);
+void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType);
+void FingerDown(int x, int y);
+void FingerDown(int x, int y, int fingerId);
+void FingerMove(int x, int y);
+void FingerMove(int x, int y, int fingerId);
+void FingerUp(int x, int y);
+void FingerUp(int x, int y, int fingerId);
+void FreeMove(string json, double speed);
+void ZoomIn();
+void ZoomIn(int centerX, int centerY, double ratio);
+void ZoomOut();
+void ZoomOut(int centerX, int centerY, double ratio);
+```  
+### IDroidProxyAPI Proxy
+[**`IDroidProxyAPI Proxy`**](./Proxy)  
+```csharp
+string GetProxy();
+void SetProxy(string proxy);
+void SetProxy(string proxy, IDroidProxySettings settings);
+void ClearProxy();
+void EnablePrivateDns(string address);
+void DisablePrivateDns();
+```  
+### IDroidScreenAPI
+**`IDroidScreenAPI Screen`**  
+```csharp
+Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval);
+Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime);
+Rectangle FindImage(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval);
+Rectangle FindImage(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int searchTime);
+Point FindPixel(Color color, Rectangle[] rectangles, int variation);
+Point FindPixel(Color color, Rectangle[] rectangles, int variation, int searchTime);
+Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation);
+Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime);
+Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation);
+Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime);
+Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation);
+Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime);
+Rectangle FindImageBlackWhite(string imageHash, Rectangle[] rectangles, int confidenceInterval, int threshold);
+Rectangle FindImageBlackWhite(string imageHash, Rectangle[] rectangles, int confidenceInterval, int threshold, int searchTime);
+Rectangle FindImageBlackWhite(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int threshold);
+Rectangle FindImageBlackWhite(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int threshold, int searchTime);
+Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confidenceInterval);
+Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime);
+Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval);
+Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int searchTime);
+byte[] ScreenshotAsArray();
+byte[] ScreenshotAsArray(Rectangle area);
+string ScreenshotAsBase64String();
+string ScreenshotAsBase64String(Rectangle area);
+void RefreshScreen();
+void ResetScreen();
+void SetCaptureScreenQuality(int quality);
+```  
+### IDroidSettingsAPI
+[**`IDroidSettingsAPI Settings`**](./Settings)  
+```csharp
+void ClearLSPosedSettings();
+string GenerateRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions options);
+void SetBaseband(string version);
+void SetGeo(double longitude, double latitude);
+void SetGeo(double longitude, double latitude, double altitude);
+void SetGeo(double longitude, double latitude, double altitude, double bearing);
+void SetGeo(double longitude, double latitude, double altitude, double bearing, double speed);
+void SetLanguage(string language);
+void SetLSPosedSettings(string json);
+void SetRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions);
+void SetTime(DateTime dateTime);
+void SetTime(string dateTime);
+void SetTimezone(string timezone);
+```  
+### IFridaDeviceAPI
+**`IFridaDeviceAPI FridaDevice`**
+```csharp
+string Id { get; }
+string Name { get; }
+IFridaSessionAPI Attach(uint pid);
+void DetachAllSessions();
+void DetachSessionByScriptName(string scriptName);
+void InstallAndRunServer();
+void KillServer();
+void LoadScriptToApp(string packageName, string source);
+void LoadScriptToFrontmost(string source);
+uint Spawn(string packageName);
+void Resume(uint pid);
+```  
+### ISqlite3API
+**`ISqlite3API Sqlite3`**
+```csharp
+string ExecuteQuery(string database, string query);
+string ExecuteQuery(string database, string query, string options);
+void Install();
+```  
+### IWebViewAPI
+[**`IWebViewAPI WebView`**](./WebView)  
+```csharp
+string EvaluateScript(string script);
+string GetAttachedWebSocketUrl();
+```  

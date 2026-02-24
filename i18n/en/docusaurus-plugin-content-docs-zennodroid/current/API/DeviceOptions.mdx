@@ -1,0 +1,61 @@
+---
+sidebar_position: 21
+sidebar_label: Device Options
+title: Device Options | ZennoDroid Documentation | ZennoLab
+description: Device Options - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Device Options
+<DisclaimerNotice />
+
+## Description  
+**`IDeviceOptions`**
+
+This is used with DeviceFilter when generating JSON data to spoof device information with LSPosed.
+With this class, you can customize spoofing layers beyond basic device filtering.
+
+### Properties  
+- **Add Canvas Noise**  
+Adds randomized noise to Canvas fingerprinting. Prevents identical canvas hashes across devices for anti-bot evasion.
+```csharp
+bool? AddCanvasNoise { get; set; }
+```
+
+- **Add GPU**  
+Enables fake GPU/WebGL information spoofing. Randomizes GPU vendor/renderer strings matching DeviceFilter.GpuVendor.
+```csharp
+bool? AddGpu { get; set; }
+```
+
+- **Add WebView**  
+Provides the ability to execute JavaScript in applications containing WebView.  
+By default, access to WebView in non-browser applications is always disabled. This setting allows access to HTML markup not only in browsers, but also in applications that use WebView. To do this, the android.webkit.WebView element must be present in the element tree.
+```csharp
+bool? AddWebView { get; set; }
+```
+
+- **Add WiFi Emulation**  
+Emulates WiFi connection. Used for firmware that doesn't detect internet connectivity when WiFi is disabled. 
+```csharp
+bool? AddWiFiEmulation { get; set; }
+```
+
+#### Examples  
+```csharp
+var filter = new DeviceFilter();
+filter.Country = "us"; // Choose country
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true; // Add canvas noise
+options.AddGpu = true; // Add fake GPU
+options.AddWebView = true; // Enable WebView JavaScript access
+options.AddWiFiEmulation = true; // Emulate WiFi
+
+var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Generate random data for LSPosed spoofing based on the filter and options
+instance.DroidInstance.Settings.SetLSPosedSettings(json); // Apply the spoofed data
+```
+_______________________________________________
+## Useful links  
+- [**IDroidSettingsAPI**](./Settings).
+- [**IDeviceFilter**](./DeviceFilter).
