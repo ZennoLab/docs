@@ -32,19 +32,19 @@ var action = instance.DroidInstance.Action;
 action.SelectByIndex(0);
 ```
 _______________________________________________
-### Выбор устройства по имени ADB.
+### Выбор устройства по имени.
 ```csharp
 void SelectByName(string name)  
 ```
 *Параметры:*
 ```csharp
-string name // Передаем имя ADB устройства, которое хотим выбрать.
+string name // Передаем имя устройства, которое хотим выбрать.
 ```  
 
 #### Пример.  
 ```csharp
 var action = instance.DroidInstance.Action;
-action.SelectByName("adbName");
+action.SelectByName("deviceName");
 ```
 _______________________________________________
 ### Выбор устройства по его названию.
@@ -96,9 +96,46 @@ action.SelectRandom("Samsung");
 
 Тогда под маску `"Samsung"` попадут **Samsung_S23_Android14** и **Samsung_A51_Android12**. Так что после фильтрации метод случайно выберет одно из этих устройств.
 _______________________________________________
+### Выбор случайного устройства из списка  
+```csharp
+void SelectRandom(IEnumerable<string> source) 
+```  
+
+*Параметры:*   
+```csharp
+IEnumerable<string> source // Список имён/названий устройств, из которых нужно выбрать случайное.  
+```  
+
+#### Пример  
+```csharp
+var action = instance.DroidInstance.Action;
+var devices = new List<string>
+{
+    "Pixel_7_Android14",
+    "Samsung_S23_Android14",
+    "Xiaomi_RedmiNote12_Android13",
+    "Samsung_A51_Android12",
+    "Google_Nexus5X_Android8"
+};
+action.SelectRandom(devices);
+```
+_______________________________________________  
 ### Запускаем устройство, которое ранее выбрали.
 ```csharp
 void Start()  
+```
+
+*Перегрузка:*   
+```csharp
+bool applyProfile 
+// Передаем True, если хотим использовать данные из профиля ZennoDroid.
+// Данные устройства (IMEI, Android ID и т.д.) будут браться из вкладки Текущий профиль.  
+```  
+
+*Перегрузка:*   
+```csharp
+string captureScreenMethod // Передаем тип захвата изображения.  
+// Варианты: "h264", "mjpeg" или "off".
 ```
 
 #### Пример.  
@@ -107,37 +144,15 @@ var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Выбираем устройство.
 action.Start(); // Запускаем.
 ```  
-_______________________________________________
-### Запускаем выбранное устройство с применением данных из нашего профиля.
 ```csharp
-void Start(bool applyProfile)  
-```  
-Данные устройства (разрешение экрана, CPU и т.д.) будут браться из профиля ZennoDroid (вкладка **Текущий профиль**).  
-
-*Параметры:*   
-```csharp
-bool applyProfile 
-// Передаем True, если хотим использовать данные из профиля ZennoDroid.
-```  
-
-*Перегрузка:*   
-```csharp
-string captureScreenMethod // Передаем тип захвата изображения.  
-
-// Варианты: "h264", "mjpeg" или "off".
-```
-
-#### Пример.  
-```csharp
-//#1
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Выбираем устройство.
 action.Start(true); // Запускаем с данными из профиля ZD
-
-//#2
+```  
+```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Выбираем устройство.
-action.Start(true, "mjpeg"); // Запускаем c captureScreenMethod
+action.Start("mjpeg"); // Запускаем c captureScreenMethod
 ```
 _______________________________________________
 ### Останавливаем выбранное запущенное устройство.

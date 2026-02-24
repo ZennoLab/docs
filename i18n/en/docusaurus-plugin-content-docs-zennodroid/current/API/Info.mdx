@@ -10,16 +10,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 <DisclaimerNotice />
 
 ## Description  
-Welcome to the first part of the documentation for working with the ZennoDroid API. Here, you'll find key information, the main methods for working with ZennoDroid objects, and C# code examples.
-
-## The main object for working with the ZennoDroid API  
-**`IDroidInstanceAPI DroidInstance`**
-
-This object is basically a container for interfaces that let you interact with different aspects of Android, such as managing apps, sending input, settings, and so on.
-
-With it, you can access the interaction object you need and then use its methods and properties for working with the API.
-
-## Information about the current device  
 **`IDroidInfoAPI Info`**
 
 Gives you access to info about the current device. This interface is used to get various details about the connected device, but only after you've selected and connected to it using the IDroidActionAPI Action methods.
@@ -53,7 +43,7 @@ _______________________________________________
 ```csharp
 string AddressPort { get; }
 ```
-This matches the *Name* property.
+For physical phones, matches the *Name* property value. For emulators, provides the connection address and port e.g. "127.0.0.1:21503" for MEmu
 _______________________________________________
 #### Example
 ```csharp

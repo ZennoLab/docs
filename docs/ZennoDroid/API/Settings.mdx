@@ -56,7 +56,7 @@ var settings = instance.DroidInstance.Settings;
 settings.SetTime(DateTime.Now); // Установить текущее время
 ```
 _______________________________________________
-### Установить часовый пояс.
+### Установить часовой пояс.
 ```csharp
 void SetTimezone(string timezone)
 ```   
@@ -109,87 +109,88 @@ double speed // Скорость движения объекта.
 ``` 
 _______________________________________________
 ## Работа с LSPosed в ZennoDroid Enterprise.  
-### Открыть LSPosed.
-```csharp
-void OpenLSPosed() 
-```   
 
-#### Пример.  
+### Сгенерировать JSON для подмены на случайные данные. 
 ```csharp
-var settings = instance.DroidInstance.Settings;
-
-settings.OpenLSPosed(); // Открыть LSPosed
+string GenerateRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions) 
 ```
-_______________________________________________
-### Сгенерировать JSON для подмены на случайные данные.
-```csharp
-string GenerateRandomLSPosedSettings(string countryName) 
-```   
 
-*Параметры:*   
-```csharp
-string countryName // Имя страны для подмены.
-``` 
-
-*Перегрузка:*   
+*Параметры:*  
 ```csharp
 IDeviceFilter filter // Фильтр для генерации подмены с нужными данными.
-``` 
+IDeviceOptions options // Настройка подмены помимо базовой фильтрации устройств
+```
 
 #### Пример.  
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var country = project.Profile.Country; // Страна для генерации
-var json = settings.GenerateRandomLSPosedSettings(country); // Получить Json для подмены LSPosed
+var filter = new DeviceFilter();
+filter.Country = "us"; // Выбрать страну
+filter.Version = "12|13|14|15"; // Выбрать версию Android
+filter.GpuVendor = "Qualcomm|ARM"; // Выбрать производителя GPU
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true; // Добавить шум Canvas
+options.AddGpu = true; // Добавить поддельный GPU
+
+var json = settings.GenerateRandomLSPosedSettings(filter, options); // Получить JSON для подмены LSPosed
+return json;
 ```
 _______________________________________________
 ### Подмена данных телефона из JSON.
 ```csharp
 void SetLSPosedSettings(string json) 
-```   
+```
 
-*Параметры:*   
+*Параметры:*  
 ```csharp
-string json // Значение JSON для подмены через LSPosed.
-``` 
+string json // The JSON value for LSPosed spoofing.
+```
 
 #### Пример.  
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var country = project.Profile.Country; // Страна для генерации
-var json = settings.GenerateRandomLSPosedSettings(country); // Получить Json для подмены LSPosed
+var filter = new DeviceFilter();
+filter.Country = "us"; // Выбрать страну
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true;
+
+var json = settings.GenerateRandomLSPosedSettings(filter, options); // Получить JSON для подмены LSPosed
 settings.SetLSPosedSettings(json); // Сделать подмену данных устройства
 ```
 _______________________________________________
 ### Подмена данных телефона на случайные данные.
 ```csharp
-void SetRandomLSPosedSettings(string countryName)
-```   
+void SetRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions)
+```
 
-*Параметры:*   
-```csharp
-string countryName  // Имя страны для подмены.
-``` 
-
-*Перегрузка:*   
+*Параметры:*  
 ```csharp
 IDeviceFilter filter // Фильтр для генерации подмены с нужными данными.
-``` 
+IDeviceOptions options // Настройка подмены помимо базовой фильтрации устройств
+```
 
 #### Пример.  
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var country = project.Profile.Country; // Страна для генерации
-settings.SetRandomLSPosedSettings(country); // Сделать случайную подмену данных устройства
+var filter = new DeviceFilter();
+filter.Country = "gb";
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true;
+
+// Генерируем и сразу применяем случайное устройство. Используется когда нам неважно какое устройство сгенерировалось и его не нужно применять повторно.
+settings.SetRandomLSPosedSettings(filter, options);
 ```
 _______________________________________________
 ### Очистить данные подмены LSPosed.
 ```csharp
 void ClearLSPosedSettings()
-```   
+```
 
 #### Пример.  
 ```csharp
@@ -198,3 +199,6 @@ var settings = instance.DroidInstance.Settings;
 settings.ClearLSPosedSettings(); // Очистить данные подмены LSPosed
 ```
 _______________________________________________
+## Полезные ссылки.   
+- [**IDeviceFilter**](./DeviceFilter).
+- [**IDeviceOptions**](./DeviceOptions).

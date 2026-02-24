@@ -109,39 +109,33 @@ double speed // Object speed.
 ```
 _______________________________________________
 ## Working with LSPosed in ZennoDroid Enterprise  
-### Open LSPosed
-```csharp
-void OpenLSPosed() 
-```
 
-#### Example  
-```csharp
-var settings = instance.DroidInstance.Settings;
-
-settings.OpenLSPosed(); // Open LSPosed
-```
-_______________________________________________
 ### Generate JSON for random data spoofing
 ```csharp
-string GenerateRandomLSPosedSettings(string countryName) 
+string GenerateRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions) 
 ```
 
 *Parameters:*  
 ```csharp
-string countryName // Country name for spoofing.
-```
-
-*Overload:*  
-```csharp
 IDeviceFilter filter // Filter for generating specific spoofed data.
+IDeviceOptions options // Customize spoofing layers beyond basic device filtering
 ```
 
 #### Example  
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var country = project.Profile.Country; // Country for generation
-var json = settings.GenerateRandomLSPosedSettings(country); // Get JSON for LSPosed spoofing
+var filter = new DeviceFilter();
+filter.Country = "us"; // Choose country
+filter.Version = "12|13|14|15"; // Choose Android version
+filter.GpuVendor = "Qualcomm|ARM"; // Choose Gpu vendor
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true; // Add canvas noise
+options.AddGpu = true; // Add fake GPU
+
+var json = settings.GenerateRandomLSPosedSettings(filter, options); // Get JSON for LSPosed spoofing
+return json;
 ```
 _______________________________________________
 ### Apply spoofed phone data from JSON
@@ -158,32 +152,39 @@ string json // The JSON value for LSPosed spoofing.
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var country = project.Profile.Country; // Country for generation
-var json = settings.GenerateRandomLSPosedSettings(country); // Get JSON for LSPosed spoofing
+var filter = new DeviceFilter();
+filter.Country = "us"; // Choose country
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true;
+
+var json = settings.GenerateRandomLSPosedSettings(filter, options); // Get JSON for LSPosed spoofing
 settings.SetLSPosedSettings(json); // Apply device data spoofing
 ```
 _______________________________________________
 ### Spoof phone data with random values
 ```csharp
-void SetRandomLSPosedSettings(string countryName)
+void SetRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions)
 ```
 
 *Parameters:*  
 ```csharp
-string countryName  // Country name for spoofing.
-```
-
-*Overload:*  
-```csharp
 IDeviceFilter filter // Filter for generating specific spoofed data.
+IDeviceOptions options // Customize spoofing layers beyond basic device filtering
 ```
 
 #### Example  
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-var country = project.Profile.Country; // Country for generation
-settings.SetRandomLSPosedSettings(country); // Apply random device data spoofing
+var filter = new DeviceFilter();
+filter.Country = "gb";
+
+var options = new DeviceOptions();
+options.AddCanvasNoise = true;
+
+// Generate and immediately apply random device. Used when we don't care which device was generated and don't need to reapply it.
+settings.SetRandomLSPosedSettings(filter, options);
 ```
 _______________________________________________
 ### Clear LSPosed spoofing data
@@ -198,3 +199,6 @@ var settings = instance.DroidInstance.Settings;
 settings.ClearLSPosedSettings(); // Clear LSPosed spoofed data
 ```
 _______________________________________________
+## Useful links
+- [**IDeviceFilter**](./DeviceFilter).
+- [**IDeviceOptions**](./DeviceOptions).
