@@ -27,5 +27,21 @@ export default function Root({children}) {
     setTimeout(() => updateBodyClass(window.location.pathname), 100);
   }, []);
 
+  // добавляем искусственную прокрутку к элементу, если в URL есть хеш
+  useEffect(() => {
+    if (location.hash) {
+      // Даем React время на отрисовку контента (100ms)
+      const timeout = setTimeout(() => {
+        const id = decodeURIComponent(location.hash.substring(1));
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [location.hash]);
+
   return <>{children}</>;
 }
