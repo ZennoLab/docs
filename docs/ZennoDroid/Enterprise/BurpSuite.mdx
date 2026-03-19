@@ -1,0 +1,105 @@
+---
+sidebar_position: 9
+sidebar_label: Перехват трафика с помощью BurpSuite
+title: Перехват трафика с помощью BurpSuite | Документация ZennoDroid | ZennoLab
+description: Перехват трафика с помощью BurpSuite - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+# Перехват трафика с помощью BurpSuite
+:::info **Пожалуйста, ознакомьтесь с [*Правилами использования материалов на данном ресурсе*](../Disclaimer).**
+:::
+
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+);  
+
+Для анализа трафика можно воспользоваться решением [**BurpSuite Community Edition**](https://portswigger.net/burp/communitydownload) от PortSwigger
+
+## Настройка Burp Suite  
+_________________
+ ### 1. Скачать и установить  
+ <details>
+<summary>1. Выбрать **Burp Suite Community Edition** и нажать **«Download»**</summary>  
+
+![Download](./assets/BurpSuite/BurpSuite_pic1.png)
+</details>  
+
+ <details>
+<summary>2. Создаем временный **(Temporary)** проект.</summary>  
+
+ ![Next](./assets/BurpSuite/BurpSuite_pic2.png) 
+</details>   
+
+ <details>
+<summary>3. Используем **настройки по умолчанию (Use Burp defaults)** для проекта.</summary>  
+
+ ![StartBurp](./assets/BurpSuite/BurpSuite_pic3.png) 
+</details> 
+
+ ### 2. Настроить Burp Suite на обработку трафика с локальной сети компьютера  
+<details>
+<summary>1. Заходим в **настройки (Settings)**</summary>  
+
+ ![Find out](./assets/BurpSuite/BurpSuite_pic4.png)
+</details>  
+
+<details>
+<summary>2. Выбираем **Tools → Proxy** и нажимаем **«Import / Export CA certificate»**. </summary>  
+
+ ![Import](./assets/BurpSuite/BurpSuite_pic5.png)
+</details>  
+
+<details>
+<summary>3. Затем выбираем ***Certificate and private key from PKCS#12 keystore*** → выбрать файл **zenno.pfx** (*пароль **123***).</summary>  
+
+![private kay](./assets/BurpSuite/BurpSuite_pic6.png)  
+_________________  
+![private kay](./assets/BurpSuite/BurpSuite_pic7.png) 
+</details>
+
+
+## Перехват трафика с использованием Frida  
+_________________
+### Настройка BurpSuite и отключение проверки сертификата с помощью скриптов для Frida
+:::info **Все необходимые файлы можно скачать по ссылке:**
+[Frida\_Burp\_HttpToolkit.zip](https://www.dropbox.com/scl/fi/1vp7g23me9ekr34aacsfh/Frida_Burp_HttpToolkit.zip?rlkey=8ykdpi0jve6aplqpfpoh0rcoq&st=lac44ugj&dl=0)  
+:::  
+
+<VideoSample source={require("./assets/BurpSuite/Frida_SSL_Pinning_Demo.mp4").default}/>
+_________________
+### Установка пользовательского сертификата для перехвата трафика в Chrome  
+:::info **Все необходимые файлы можно скачать по ссылке:**
+[Frida\_Burp\_HttpToolkit.zip](https://www.dropbox.com/scl/fi/1vp7g23me9ekr34aacsfh/Frida_Burp_HttpToolkit.zip?rlkey=8ykdpi0jve6aplqpfpoh0rcoq&st=lac44ugj&dl=0)  
+:::  
+> *Предварительная настройка Burp Suite показана в предыдущем видео* 
+
+<VideoSample source={require("./assets/BurpSuite/FridaChrome.mp4").default}/>
+_________________
+## Перехват трафика без использования Frida  
+### Настройка BurpSuite и отключение проверки сертификата с помощью модуля ZennoDroid
+:::warning **Метод поддерживается только в ZennoDroid Enterprise**
+:::
+:::info **Все необходимые файлы можно скачать по ссылке:**
+[TrafficCapture.zip](https://www.dropbox.com/scl/fi/gs7la6k2cs1xpkt7jo6sf/TrafficCapture.zip?rlkey=jwu7u81gy040v1hk6vz0g0gc9&st=be8hpjyq&dl=0)  
+:::  
+
+<VideoSample source={require("./assets/BurpSuite/Frida_SSL_Pinning_Demo.mp4").default}/>
+_________________
+### Настройка BurpSuite и патч приложения для перехвата запросов flutter
+:::info **Все необходимые файлы можно скачать по ссылке:**
+[Flutter_Patch_Restore.zip](https://www.dropbox.com/scl/fi/1yx6s8yg2x1nuk0c7a4l6/FlutterPatchRestore.zip?rlkey=9ui6an51gcqppta9uq7o7op5t&st=065bqtiv&dl=0)  
+:::  
+
+<VideoSample source={require("./assets/BurpSuite/Flutter_Patch_Restore.mp4").default}/>
+
+_________________
+## Полезные ссылки  
+- [**Установка и настройка Frida**](../Tools/Frida).
+- [**Frida\_Burp\_HttpToolkit.zip**](https://www.dropbox.com/scl/fi/1vp7g23me9ekr34aacsfh/Frida_Burp_HttpToolkit.zip?rlkey=8ykdpi0jve6aplqpfpoh0rcoq&st=lac44ugj&dl=0) (пароль на zenno.pfx - 123).  
+- [**TrafficCapture.zip**](https://www.dropbox.com/scl/fi/gs7la6k2cs1xpkt7jo6sf/TrafficCapture.zip?rlkey=jwu7u81gy040v1hk6vz0g0gc9&st=be8hpjyq&dl=0) (пароль на zenno.pfx - 123).  
+- [**Flutter_Patch_Restore.zip**](https://www.dropbox.com/scl/fi/1yx6s8yg2x1nuk0c7a4l6/FlutterPatchRestore.zip?rlkey=9ui6an51gcqppta9uq7o7op5t&st=065bqtiv&dl=0)  
+- [**android-ssl-pinning-demo.apk**](https://github.com/httptoolkit/android-ssl-pinning-demo/releases/latest)
+- [**Подключение реального устройства к ZennoDroid**](../Enterprise/Connection).
+- [**Управление LSPosed**](../Enterprise/LSPosed_Control).
+ 
