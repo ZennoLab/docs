@@ -1,0 +1,254 @@
+---
+sidebar_position: 1
+sidebar_label: Extra API
+title: Extra API | ZennoDroid Documentation | ZennoLab
+description: Extra API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Extra API
+<DisclaimerNotice />
+
+## Description  
+This section contains a list of interfaces that are not included in the main [DroidInstance API](./DroidInstance) container and that also have their own classes for creating objects.  
+
+### Examples.  
+```csharp
+new DroidManager().ReconnectOffline();
+new LSPosedHelper(instance.DroidInstance).Open();
+``` 
+_______________________________________________
+## List of interfaces.  
+```csharp
+IAndroidElementAPI AndroidElementAPI;
+IBlueStacks5API BlueStacks5;
+IBlueStacks5ManagerAPI BlueStacks5Manager;
+IBlueStacks5RootAPI BlueStacks5Root;
+IBlueStacks5SettingsAPI BlueStacks5Settings;
+IDeviceFilter DeviceFilter;
+IDeviceOptions DeviceOptions;
+IDeviceSummaryInfo IDeviceSummaryInfo;
+IDroidManagerAPI DroidManager;
+IDroidProxySettings DroidProxySettings;
+IFridaDeviceAPI FridaDevice;
+IFridaScriptAPI FridaScriptAPI;
+IFridaSessionAPI FridaSessionAPI;
+ILSPosedAPI LSPosedHelper;
+IQRCodeManager QRCodeManager;
+ISqlite3API Sqlite3Helper;
+```
+## Interface properties and methods.  
+### IAndroidElementAPI
+[**`IAndroidElementAPI AndroidElementAPI`**](./Element)  
+```csharp
+string Id { get; }
+string Text { get; }
+bool IsDisplayed { get; }
+Rectangle Rectangle { get; }
+string GetAttribute(string name);
+bool GetBooleanAttribute(string name);
+void Click();
+void Clear();
+void SendText(string text);
+void SendKeys(string text);
+string GetScreenshot();
+```
+### IBlueStacks5API
+**`IBlueStacks5API BlueStacks5`**
+```csharp
+void Start();
+void Stop();
+void Connect();
+void Disconnect();
+string AddressPort { get; }
+bool IsRunning { get; }
+bool IsBootCompleted { get; }
+```
+### IBlueStacks5ManagerAPI
+**`IBlueStacks5ManagerAPI BlueStacks5Manager`**
+```csharp
+string Create(string imageName, int cpus, int ram, string graphicEngine, string graphicRenderer, string deviceProfile, string abiList);
+void DeleteByName(string name);
+void StartManager();
+void StopManager();
+string TitleToNameConverter(string title);
+```
+### IBlueStacks5RootAPI
+**`IBlueStacks5RootAPI BlueStacks5Root`**
+```csharp
+void Lock();
+void Unlock();
+void Patch();
+void InstallMagisk(string path);
+void FlashMagisk();
+void EnableZygisk();
+```
+### IBlueStacks5SettingsAPI
+**`IBlueStacks5SettingsAPI BlueStacks5Settings`**
+```csharp
+void SetGeo(double longitude, double latitude);
+void SetIMEI(string value);
+```
+### IDeviceFilter
+[**`IDeviceFilter DeviceFilter`**](./DeviceFilter)  
+```csharp
+string Country { get; set; }
+string Manufacturer { get; set; }
+string Brand { get; set; }
+string Model { get; set; }
+string Version { get; set; }
+string GpuVendor { get; set; }
+```
+### IDeviceOptions
+[**`IDeviceOptions DeviceOptions`**](./DeviceOptions)  
+```csharp
+bool? AddCanvasNoise { get; set; }
+bool? AddGpu { get; set; }
+bool? AddWebView { get; set; }
+bool? AddWiFiEmulation { get; set; }
+```
+### IDeviceSummaryInfo
+**`IDeviceSummaryInfo IDeviceSummaryInfo`**
+```csharp
+int Index { get; }
+string Name { get; }
+string Title { get; }
+bool IsRunning { get; }
+bool IsBusy { get; }
+```
+### IDroidManagerAPI
+**`IDroidManagerAPI DroidManager`**
+```csharp
+IDeviceSummaryInfo[] GetListDevices();
+int ConvertNameToIndex(string name);
+int[] GetListIndices();
+string BaseDirectory { get; }
+string ConvertIndexToName(int index);
+string ConvertIndexToTitle(int index);
+string ConvertTitleToName(string title);
+string[] GetListNames();
+string[] GetListTitles();
+void ReconnectOffline();
+```
+### IDroidProxySettings
+**`IDroidProxySettings DroidProxySettings.Proxifier`**
+```csharp
+bool? BlockWebRtcLeak { get; set; }
+bool? BlockUDPLeak { get; set; }
+```
+**`IDroidProxySettings DroidProxySettings.ProxifierViaPC`**
+```csharp
+bool? BlockWebRtcLeak { get; set; }
+bool? BlockUDPLeak { get; set; }
+string DnsServers { get; set; }
+string LocalIPv4Address { get; set; }
+```
+**`IDroidProxySettings DroidProxySettings.Redsocks`**
+```csharp
+string DnsServers { get; set; }
+bool? UseDnsTcp { get; set; }
+bool? UseDnsUdp { get; set; }
+bool? BlockWebRtcLeak { get; set; }
+bool? BlockUDPLeak { get; set; }
+string WebRtcLeakAddresses { get; set; }
+string WebUdpLeakAddresses { get; set; }
+```
+**`IDroidProxySettings DroidProxySettings.RedsocksViaPC`**
+```csharp
+string DnsServers { get; set; }
+bool? UseDnsTcp { get; set; }
+bool? UseDnsUdp { get; set; }
+bool? BlockWebRtcLeak { get; set; }
+bool? BlockUDPLeak { get; set; }
+string WebRtcLeakAddresses { get; set; }
+string WebUdpLeakAddresses { get; set; }
+string LocalIPv4Address { get; set; }
+```
+**`IDroidProxySettings DroidProxySettings.Clash`**
+```csharp
+string DnsServers { get; set; }
+string LocalIPv4Address { get; set; }
+string LocalIPv6Address { get; set; }
+string WhiteList { get; set; }
+string BlackList { get; set; }
+string NetworkMode { get; set; }
+string Rules { get; set; }
+```
+**`IDroidProxySettings DroidProxySettings.ClashViaPC`**
+```csharp
+string DnsServers { get; set; }
+string LocalIPv4Address { get; set; }
+string LocalIPv6Address { get; set; }
+string WhiteList { get; set; }
+string BlackList { get; set; }
+string NetworkMode { get; set; }
+string Rules { get; set; }
+```
+### IFridaDeviceAPI
+**`IFridaDeviceAPI FridaDevice`**
+```csharp
+string Name { get; }
+string Id { get; }
+IFridaSessionAPI Attach(uint pid);
+uint Spawn(string packageName);
+void Resume(uint pid);
+void DetachSessionByScriptName(string scriptName);
+void DetachAllSessions();
+void InstallAndRunServer();
+void KillServer();
+void LoadScriptToApp(string packageName, string source);
+void LoadScriptToFrontmost(string source);
+```
+### IFridaScriptAPI
+**`IFridaScriptAPI FridaScriptAPI`**
+```csharp
+event EventHandler<FridaScriptMessageEventArgs> Message;
+string Name { get; }
+void Load();
+void Unload();
+void Eternalize();
+void Post(string message);
+void PostWithData(string message, byte[] data);
+```
+### IFridaSessionAPI
+**`IFridaSessionAPI FridaSessionAPI`**
+```csharp
+uint Pid { get; }
+IFridaScriptAPI CreateScript(string source, string name);
+IFridaScriptAPI CreateScript(string source);
+void Detach();
+```
+### ILSPosedAPI
+**`ILSPosedAPI LSPosedHelper`**
+```csharp
+string ModuleName { get; set; }
+void EnableModule();
+void DisableModule();
+void AddPackages(params string[] packageNames);
+void RemovePackages(params string[] packageNames);
+void SetPackages(params string[] packageNames);
+void BackupModule(string fileName);
+void BackupAllModules(string fileName);
+void RestoreModule(string fileName);
+void RestoreAllModules(string fileName);
+void Open();
+void Close();
+string GetCLIStatus();
+```
+### IQRCodeManager
+**`IQRCodeManager QRCodeManager`**
+```csharp
+void CloseQRCodeScanWindow();
+void CloseViewfinderWindow();
+void DrawImage(byte[] image, Rectangle area, Rectangle background);
+void DrawImage(string fileName, Rectangle area, Rectangle background);
+void PressQRCodeScanButton();
+void SetViewfinderPosition(Rectangle rect);
+```
+### ISqlite3API
+**`ISqlite3API Sqlite3Helper`**
+```csharp
+void Install();
+string ExecuteQuery(string database, string query);
+string ExecuteQuery(string database, string query, string options);
+```  

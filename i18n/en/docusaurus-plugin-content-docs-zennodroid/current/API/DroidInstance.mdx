@@ -62,6 +62,9 @@ void UpdateSettings(IEnumerable<KeyValuePair<string, object>> keyValuePairs);
 ### IDroidActionAPI
 [**`IDroidActionAPI Action`**](./Action)  
 ```csharp
+void SelectByIndex(int index);
+void SelectByName(string name);
+void SelectByTitle(string title);
 void SelectRandom(string mask);
 void SelectRandom(IEnumerable<string> source);
 void Start();

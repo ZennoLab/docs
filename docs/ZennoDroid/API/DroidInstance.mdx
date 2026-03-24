@@ -39,7 +39,7 @@ IWebViewAPI WebView { get; }
 ```
 ## Свойства и методы интерфейсов.  
 ### IAppiumDriverAPI
-[**IAppiumDriverAPI AppiumDriver**](./AppiumDriver)  
+[**`IAppiumDriverAPI AppiumDriver`**](./AppiumDriver)  
 ```csharp
 IAndroidElementAPI ActiveElement();
 IAndroidElementAPI FindElementByAccessibilityId(string id);
@@ -62,6 +62,9 @@ void UpdateSettings(IEnumerable<KeyValuePair<string, object>> keyValuePairs);
 ### IDroidActionAPI
 [**`IDroidActionAPI Action`**](./Action)  
 ```csharp
+void SelectByIndex(int index);
+void SelectByName(string name);
+void SelectByTitle(string title);
 void SelectRandom(string mask);
 void SelectRandom(IEnumerable<string> source);
 void Start();
@@ -70,6 +73,21 @@ void Start(string captureScreenMethod);
 void Start(bool applyProfile, string captureScreenMethod);
 void Stop();
 ```  
+### IDroidActionEmulatorAPI: IDroidActionAPI
+[**`IDroidActionAPI Action`**](./Action)  
+```csharp
+int Clone();
+int Create(string version);
+int Import(string path);
+void DeleteByIndex(int index);
+void DeleteByName(string name);
+void DeleteByTitle(string title);
+void Export(string path);
+void FactoryReset(bool resetSystem);
+void Rename(int index, string title);
+void Rename(string name, string title);
+void RenameTo(string title);
+``` 
 ### IDroidAppAPI
 [**`IDroidAppAPI App`**](./Hierarchy)  
 ```csharp
