@@ -492,3 +492,53 @@ var packageName = "com.google.chrome"; // Имя приложения
 var json = app.GetAccounts(packageName); // Получить аккаунты приложения
 ```
 _______________________________________________
+### Инъекция пользовательского javascript перед загрузкой страницы.
+```csharp
+void InjectScript(string packageName, string script);
+```   
+
+*Параметры:*   
+```csharp
+string packageName // Имя приложения, для работы метода.
+string script // javascript, который необходимо выполнить перед загрузкой страницы
+``` 
+
+#### Пример.  
+```csharp
+var app = "com.android.chrome";
+var script = project.Variables["script"].Value;
+
+instance.DroidInstance.App.Close(app); // Закрыть приложение
+
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages(app); // Задать приложение в списке подмены модуля ZennoDroid
+lspHelper.EnableModule(); // Включить модуль ZennoDroid
+
+instance.DroidInstance.Settings.SetLSPosedSettings("{ \"UseInjectScript\":true }"); // Включить возможность выполнять javascript перед загрузкой страницы
+instance.DroidInstance.App.InjectScript(app, script); // Задать скрипт, который будет выполняться перед загрузкой
+
+instance.DroidInstance.App.Open(app); // Отрыть приложение
+```
+Переменная проекта *script* содержит код, который нужно выполнить.
+```javascript
+(() => {
+  const ID = "hello-world-date-banner";
+  const existing = document.getElementById(ID);
+  const text = `Hello world — ${new Date().toLocaleString()}`;
+
+  if (existing) {
+    existing.textContent = text; // already added: just update
+    return;
+  }
+
+  const el = document.createElement("div");
+  el.id = ID;
+  el.textContent = text;
+  el.style.cssText =
+    "padding:8px 12px;background:#fffbcc;color:#111;" +
+    "font:14px/1.4 system-ui;border-bottom:1px solid #e6d98c;";
+  (document.body || document.documentElement).prepend(el);
+})();
+```
+_______________________________________________
+

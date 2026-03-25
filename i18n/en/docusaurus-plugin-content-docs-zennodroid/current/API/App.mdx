@@ -474,3 +474,52 @@ var packageName = "com.google.chrome"; // App name
 var json = app.GetAccounts(packageName); // Get app accounts
 ```
 _______________________________________________
+### Injecting custom javascript before page load.
+```csharp
+void InjectScript(string packageName, string script);
+```   
+
+*Parameters:*   
+```csharp
+string packageName // Application name for the method to work.
+string script // javascript to be executed before the page loads
+``` 
+
+#### Example.  
+```csharp
+var app = "com.android.chrome";
+var script = project.Variables["script"].Value;
+
+instance.DroidInstance.App.Close(app); // Close the application
+
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages(app); // Set the application in the ZennoDroid module spoofing list
+lspHelper.EnableModule(); // Enable the ZennoDroid module
+
+instance.DroidInstance.Settings.SetLSPosedSettings("{ \\"UseInjectScript\\":true }"); // Enable the ability to execute javascript before page load
+instance.DroidInstance.App.InjectScript(app, script); // Set the script to be executed before loading
+
+instance.DroidInstance.App.Open(app); // Open the application
+```
+The project variable script contains the code to be executed.
+```javascript
+(() => {
+  const ID = "hello-world-date-banner";
+  const existing = document.getElementById(ID);
+  const text = `Hello world — ${new Date().toLocaleString()}`;
+
+  if (existing) {
+    existing.textContent = text; // already added: just update
+    return;
+  }
+
+  const el = document.createElement("div");
+  el.id = ID;
+  el.textContent = text;
+  el.style.cssText =
+    "padding:8px 12px;background:#fffbcc;color:#111;" +
+    "font:14px/1.4 system-ui;border-bottom:1px solid #e6d98c;";
+  (document.body || document.documentElement).prepend(el);
+})();
+```
+_______________________________________________
