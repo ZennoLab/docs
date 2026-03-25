@@ -99,6 +99,7 @@ void ClearAppNotifications(string packageName);
 void Close(string packageName);
 void CloseAll();
 void Delete(string packageName);
+void InjectScript(string packageName, string script);
 void InstallApk(string path);
 void InstallApk(string path, bool useCache, bool useRoot);
 bool IsInstalled(string packageName);
@@ -117,6 +118,7 @@ bool RemoveAccount(string name, string type);
 void RestoreAppData(string packageName, string pathToBackup);
 void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions);
 void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
+void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
 void RestoreFlutterLib(string packageName);
 ```  
 ### IDroidHierarchyAPI Hierarchy
@@ -267,4 +269,5 @@ void Install();
 ```csharp
 string EvaluateScript(string script);
 string GetAttachedWebSocketUrl();
+void InjectSystemCertificate(string source);
 ```  

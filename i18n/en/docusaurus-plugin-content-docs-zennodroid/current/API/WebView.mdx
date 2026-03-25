@@ -44,6 +44,18 @@ string GetAttachedWebSocketUrl()
 ```csharp
 var webView = instance.DroidInstance.WebView;
 
-var webSoket = webView.GetAttachedWebSocketUrl(); // Get the WebSocket
+var webSocket = webView.GetAttachedWebSocketUrl(); // Get the WebSocket
 ```
+_______________________________________________
+### System certificate injection in Android.
+```csharp
+void InjectSystemCertificate(string source)
+```   
+
+#### Example.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+webView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
+```  
 _______________________________________________

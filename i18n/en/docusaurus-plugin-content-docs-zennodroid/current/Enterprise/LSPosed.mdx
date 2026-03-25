@@ -34,7 +34,7 @@ _________________
 
 The official version of LSPosed has not been updated for a long time and does not work on modern versions of Android. Therefore, we recommend using a special build of the LSPosed Framework with API support, prepared for use with ZennoDroid.  
 
-> [**Special build v1.10.2**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto)
+> [**Special build v1.11.0**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto)
 
 <details>
 <summary>Download this build to your phone in the *sdcard/Download/* folder and install it using the standard menu.</summary>  
@@ -69,21 +69,21 @@ To fix this, open LSPosed from the notification panel, switch to the *Modules* t
 Now you can pick which apps will get spoofed device parameters.
 _________________
 #### Important Information
-- You should only add the apps to the spoof list that actually need their data changed. Often, for everything to work correctly, you also need to add *Google Play Services (com.google.android.gms)* to the spoof list. There’s no need to add the system framework.
+- You should only add the apps to the spoof list that actually need their data changed. There’s no need to add the system framework.
 - If you delete an app after activating it, then reinstall it, you must re-activate it in the spoof list (uncheck and check the box).
 
 :::tip LSPosed has a visual bug.
 When you remove an app, it disappears from the spoof list. If you reinstall it, it won’t show up in the list automatically (the box might be checked, but spoofing won’t work).
 :::
 
-- Not all apps appear in the list by default. If you don’t see the app you need (like Google Play Services or Chrome), go to the *Hide* menu and uncheck the right group.
+- Not all apps appear in the list by default. If you don’t see the app you need (like Google Chrome), go to the *Hide* menu and uncheck the right group.
 
 ![System](./assets/LSPosed/LSPosed_pic11.png)
 
 - After picking the apps for spoofing, go back to ZennoDroid and tap **“Restart”**. Once it restarts, a notification will show that the module is ready to use. Now you can change device parameters with actions.
 
 ![Module is on](./assets/LSPosed/LSPosed_pic12.png)
-- After spoofing device parameters, close the necessary apps. It’s best to do this with the **“Close app”** action. If Google Play Services (com.google.android.gms) are included in the spoof list, they need to be closed too.
+- After spoofing device parameters, close the necessary apps. It’s best to do this with the **“Close app”** action.  
 :::tip You can close apps before spoofing.
 But some system apps will restart themselves right after, so they might see the old parameters.
 :::
@@ -104,13 +104,13 @@ Main functions:
 
 Examples of working with the API are also included in the archive [LSPosedAPI.zip](https://www.dropbox.com/scl/fi/xsw5q8ej1wtmhpg5695we/LSPosedAPI.zip?rlkey=menqd2q7a0g6qnmc1l3omq4fr&st=0byf2hwb&dl=0&roistat_visit=1429674).  
 
-To use this, you need to work with our [**Special build v1.10.2**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto).After installation, no additional setup is required. For use with ZennoDroid, a CLI with automatic enabling has been added to the fork; *it’s compatible with current Android versions*. 
+To use this, you need to work with our [**Special build v1.11.0**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto).After installation, no additional setup is required. For use with ZennoDroid, a CLI with automatic enabling has been added to the fork; *it’s compatible with current Android versions*. 
 _________________
 ## **Managing LSPosed using actions**
 In version 2.4.6, a convenient way [**to manage LSPosed**](./LSPosed_Control) was added through a group of actions.
 _________________
 ## Useful Links
 - Template for spoofing device parameters via actions and API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)
-- [**Latest version of LSPosed Framework**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto)
+- [**Latest version of LSPosed Framework**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto)
 - [**Connecting a real device to ZennoDroid**](./Connection)
 - [**Device settings**](../Settings/Settings_for_Enterprise)

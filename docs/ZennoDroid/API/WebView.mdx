@@ -44,6 +44,19 @@ string GetAttachedWebSocketUrl()
 ```csharp
 var webView = instance.DroidInstance.WebView;
 
-var webSoket = webView.GetAttachedWebSocketUrl(); // Получить WebSoket
+var webSocket = webView.GetAttachedWebSocketUrl(); // Получить WebSocket
 ```
+_______________________________________________
+### Инъекция системного сертификата в Android.
+```csharp
+void InjectSystemCertificate(string source)
+```   
+
+#### Пример.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+webView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
+```  
+[**Настройка BurpSuite и отключение проверки сертификата с помощью модуля ZennoDroid**](../Enterprise/BurpSuite/#настройка-burpsuite-и-отключение-проверки-сертификата-с-помощью-модуля-zennodroid)
 _______________________________________________
