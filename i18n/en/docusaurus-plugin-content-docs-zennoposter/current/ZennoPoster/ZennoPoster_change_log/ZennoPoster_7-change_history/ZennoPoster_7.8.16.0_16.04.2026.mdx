@@ -1,0 +1,35 @@
+---
+sidebar_position: 93
+title: "ZennoPoster 7.8.16.0 16.04.2026"
+description: ""
+date: "2026-04-16"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.8.16.0 (16.04.2026)
+
+**Added:**
+
+[+] The Chromium browser has been updated to version 146.
+
+[+] Added a new HTTP request transfer method, "TLS client". The new method emulates a TLS fingerprint based on the UserAgent passed in the request, which increases the likelihood of bypassing protections on modern websites.
+
+[+] In the static block "GAC references", you can now select and add several assemblies at once instead of one.
+
+[+] In the action designer, the "Document number" and "Form number" fields are now hidden by default, and the value "-1" is applied to these fields. In "Settings -> Editor", the option "Show document and form numbers in the action designer" has been added, which allows you to display and use these fields.
+
+**Fixed:**
+
+[\] Fixed the slow startup of browser instances when running a large number of threads.
+
+[\] Fixed the issue where instance previews froze in ZennoPoster. The issue with instance interruption has also been fixed.
+
+[\] Fixed the operation of the Chromium and ChromiumFromZB browsers at screen scales other than 100%.
+
+[\] Fixed the issue of instance processes not terminating after ZennoPoster finished working; the processes now exit correctly.
+
+[\] The wrapper for the Chromium and ChromiumFromZB browsers has been moved to a separate process for ZennoPoster. This isolates ZennoPoster from the browsers, reduces the load on the main process, and, among other things, decreases the amount of memory that the ZennoPoster process can use.
