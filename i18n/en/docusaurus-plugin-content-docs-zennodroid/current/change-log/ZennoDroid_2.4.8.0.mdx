@@ -10,11 +10,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 <DisclaimerNotice />
 
 _______________________________________________  
-18.02.26
+18.02.2026
 
 **Added:**
 
-[+] **ZD ENTERPRISE.** Added an **action to emulate enabled WiFi**. Used for firmware that does not detect an internet connection when WiFi is disabled. In the C# API, the AddWiFiEmulation parameter has been added to enable WiFi emulation.
+[+] **ZD ENTERPRISE.** A new **action for emulating an enabled WiFi connection** has been added. It is useful on firmware versions that do not detect an internet connection when WiFi is disabled. An `AddWiFiEmulation` parameter has been added to the C# API to enable WiFi emulation.
 
 ```csharp
 var filter = new DeviceFilter();
@@ -26,14 +26,14 @@ var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter,
 instance.DroidInstance.Settings.SetLSPosedSettings(json);
 ```
 
-[+] Added a **method in the C# API for quickly changing image capture quality**. You can use it both before connecting to the device and after.
+[+] A **method for quickly changing the image capture quality** has been added to the C# API. It can be executed both before and after connecting to a device.
 
 ```csharp
 // 0 - Very low quality, 5 - Low, 10 - High
 instance.DroidInstance.Screen.SetCaptureScreenQuality(10);
 ```
 
-[+] **ZD ENTERPRISE.** Added a **method in the C# API to patch the Flutter library** (ReFlutter) for further interception and analysis of traffic in Burp Suite.
+[+] **ZD ENTERPRISE.** A **method for patching the Flutter library** (ReFlutter) has been added to the C# API, enabling subsequent traffic interception and analysis in Burp Suite.
 
 ```csharp
 // Patch the library
@@ -42,51 +42,51 @@ instance.DroidInstance.App.PatchFlutterLib("tech.httptoolkit.pinning_demo", "10.
 instance.DroidInstance.App.RestoreFlutterLib("tech.httptoolkit.pinning_demo");
 ```
 
-[Example](https://www.dropbox.com/scl/fi/qck8cl7eiuqy61u508goe/Flutter_Patch_Restore.mp4?rlkey=xfavaqx4twy0atd49sdz4l26b&st=qfbcx200&dl=0) of usage. [Application](https://github.com/httptoolkit/android-ssl-pinning-demo/releases/latest) to test request interception via Flutter
+[Usage example](https://www.dropbox.com/scl/fi/qck8cl7eiuqy61u508goe/Flutter_Patch_Restore.mp4?rlkey=xfavaqx4twy0atd49sdz4l26b&st=qfbcx200&dl=0). [Sample application](https://github.com/httptoolkit/android-ssl-pinning-demo/releases/latest) for testing request interception through Flutter.
 
-[+] Added a **method in the C# API to get the path to the installed app folder** (The path changes upon reinstallation and has the format: `/data/app/~~y085wNyYQQpQwtJ1jpUYOg==/com.android.chrome-rD8qfdRUT680QgUrsaftWQ==`)
+[+] A **method for getting the path to the installed application folder** has been added to the C# API (the path changes on reinstallation and has the format `/data/app/~~y085wNyYQQpQwtJ1jpUYOg==/com.android.chrome-rD8qfdRUT680QgUrsaftWQ==`).
 
 ```csharp
 return instance.DroidInstance.App.AppDir("com.android.chrome");
 ```
 
-[+] Improvements for **hiding Frida usage** on the device:
-- Frida replaced with the anti-detect fork Florida
-- Changed the frida-server process name
-- Changed the re.frida.helper helper process name
-- Changed the port used
+[+] Improvements for **hiding Frida usage** on a device:
+- Frida has been replaced with the anti-detect fork Florida.
+- The `frida-server` process name has been changed.
+- The auxiliary process name `re.frida.helper` has been changed.
+- The port used has been changed.
 
-[+] **Frida** updated to 17.5.2 (Florida).
+[+] **Frida** has been updated to 17.5.2 (Florida).
 
-[+] **AdbClient** updated to 3.6.16.
+[+] **AdbClient** has been updated to 3.6.16.
 
-[+] **Scrcpy** updated to 3.3.4.
+[+] **Scrcpy** has been updated to 3.3.4.
 
-[+] **Appium Settings** updated to 7.0.13. For automatic update, you need to remove the installed version (io.appium.settings).
+[+] **Appium Settings** has been updated to 7.0.13. For the automatic update, you must first uninstall the currently installed version (`io.appium.settings`).
 
-[+] **UIAutomator2** updated to 9.10.0.
+[+] **UIAutomator2** has been updated to 9.10.0.
 
-[+] **Adb** updated to 36.0.2.
+[+] **Adb** has been updated to 36.0.2.
 
-[+] **Clash** updated to 1.19.18. For automatic update, you must first [remove](../Android/Enterprise/Clash#automatic-updating) the current version.
+[+] **Clash** has been updated to 1.19.18. For the automatic update, you must first [uninstall](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3592617997/Clash+Box+for+Root#%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5) the current version.
 
 **Fixed:**
 
-[\] Fixed **DNS leak** when using whitelist and blacklist in Clash proxy mode.
+[\] Fixed a **DNS leak** when using the allowlist and blocklist in Clash proxy mode.
 
-[\] Fixed the **Invalid virtual disk** (InvalidMedium) error when launching LDPlayer.
+[\] **ZD ENTERPRISE.** Fixed the **behavior of the Get clipboard and Set clipboard actions**, as well as character input in Native Input mode on non-standard firmware.
 
-[\] Fixed the **Failed to fix operator** error.
+[\] **ZD ENTERPRISE.** **Added a bypass for the protection** against obtaining Root by all previous methods in the BlueStacks emulator version 5.22.140 and higher. Updated Root script: [BlueStacks 5 Root ver.6.zip](https://www.dropbox.com/scl/fi/h1j1ug2fdlz82pgno3fev/BlueStacks-5-Root-ver.6.zip?rlkey=efh177rcbt336kua1il9tdc49&st=40ys0wun&dl=0), [instructions](https://www.dropbox.com/scl/fi/882sb3y4pqbvv681bb0l1/BlueStacks-Root-Magisk-Android-13.mp4?rlkey=6m6tdmt9s71529vh5mqimgg0j&st=yssk1a3h&dl=0).
 
-[\] **ZD ENTERPRISE.** Fixed the **actions** Get Clipboard, Set Clipboard, as well as character input in Native Input mode on non-standard firmware.
-
-[\] **ZD ENTERPRISE.** **Added a bypass for protection** against obtaining Root by all previous methods in the BlueStacks emulator version 5.22.140 and above. Updated script for obtaining Root: [BlueStacks 5 Root ver.6.zip](https://www.dropbox.com/scl/fi/h1j1ug2fdlz82pgno3fev/BlueStacks-5-Root-ver.6.zip?rlkey=efh177rcbt336kua1il9tdc49&st=40ys0wun&dl=0) [Instructions](https://www.dropbox.com/scl/fi/882sb3y4pqbvv681bb0l1/BlueStacks-Root-Magisk-Android-13.mp4?rlkey=6m6tdmt9s71529vh5mqimgg0j&st=yssk1a3h&dl=0).
-
-[\] **ZD ENTERPRISE.** Fixed **launching the BlueStacks emulator** version 5.22.140 and above via the C# API:
+[\] **ZD ENTERPRISE.** Fixed the **launch of the BlueStacks emulator** version 5.22.140 and higher via the C# API:
 
 ```csharp
 string name = new BlueStacks5Manager().TitleToNameConverter("BlueStacks App Player 17");
 new BlueStacks5(name).Start();
 ```
 
-[\] **ZD ENTERPRISE.** Fixed **incorrect Brand filter behavior** in the Generate Device action.
+[\] **ZD ENTERPRISE.** Fixed **incorrect filter behavior** by `Brand` in the Generate device action.
+
+[\] Fixed the **Invalid virtual disk** (`InvalidMedium`) error when starting LDPlayer.
+
+[\] Fixed the **"Failed to fix operator"** error.

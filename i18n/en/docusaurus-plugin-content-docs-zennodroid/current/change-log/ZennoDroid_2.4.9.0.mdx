@@ -1,0 +1,78 @@
+---
+sidebar_position: 97
+title: "ZennoDroid 2.4.9.0"
+description: ""
+date: "2026-04-06"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+06.04.2026
+
+**Added:**
+
+[+] **Added support for MEmu 9.5.0.** The MEmu developers replaced the version of the bundled VirtualBox (6.1.40) and also introduced a fix for Windows 11 that fully eliminated the recurring Blue Screen of Death (BSOD) issue during operation.
+
+[+] **ZD ENTERPRISE.** A **new experimental feature** that allows transferring a specially prepared application backup from one device to another. Uses the **new LSPosed module (ZennoBackup)**.
+Immediately after installation, and before the first launch, add the application to the list of apps handled by the ZennoBackup module (in the LSPosed module setup action, specify the module name `com.zennolab.zennobackup`).
+When restoring a backup in the Restore application data action, check the "Use ZennoBackup module" checkbox.
+
+[+] **ZD ENTERPRISE.** **Automatic installation of the ZennoDroid and ZennoBackup modules** when executing the LSPosed module setup action.
+
+[+] **ZD ENTERPRISE.** **Automatic Root granting for the ZennoDroid module** on first installation (when using Magisk).
+
+[+] **ZD ENTERPRISE.** Added the **ability to temporarily disable individual applications from the LSPosed scope**. In the LSPosed module setup action, prepend a `#` before the application name:
+
+```
+com.android.chrome
+#com.yandex.browser
+```
+
+[+] **ZD ENTERPRISE.** Added the **ability to inject custom JavaScript** before page load in Chrome and Yandex browsers, as well as in applications that use WebView. [Instructions](../API/App#injecting-custom-javascript-before-page-load).
+
+```csharp
+// Enable javascript injection capability (executed once before launching the application)
+instance.DroidInstance.Settings.SetLSPosedSettings("{ \"UseInjectScript\":true }");
+
+// The script variable contains the script to be applied when the page loads in Google Chrome
+instance.DroidInstance.App.InjectScript("com.android.chrome", project.Variables["script"].Value);
+```
+
+[+] **ZD ENTERPRISE.** Added a **certificate pinning bypass via the ZennoDroid module** (without using Frida):
+
+```csharp
+// The cert_pem variable contains the certificate in pem format (-----BEGIN CERTIFICATE----- ... ----------END CERTIFICATE-----)
+var settings = new {
+        CertificateUnpinning = project.Variables["cert_pem"].Value
+};
+var json = Global.ZennoLab.Json.JsonConvert.SerializeObject(settings);
+instance.DroidInstance.Settings.SetLSPosedSettings(json);
+```
+
+Instructions: [BurpSuite setup and disabling certificate verification using the ZennoDroid module](../Enterprise/BurpSuite).
+
+[+] **ZD ENTERPRISE.** **System certificate installation**, including Chrome/WebView support, for traffic interception:
+
+```csharp
+// The cert_pem variable contains the certificate in pem format (-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----)
+instance.DroidInstance.WebView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
+```
+
+[+] **ZD ENTERPRISE.** The **LSPosed_CLI module** has been updated to version [1.11.0](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto).
+
+[+] **ZD ENTERPRISE.** Added the **ability to use the [ReLSPosed](https://github.com/AnatolyJacobs/ReLSPosed_CLI/releases/tag/v1.0.2_cli_auto) fork** instead of LSPosed (CLI support has been added for management via the [LSPosed Management](../Enterprise/LSPosed_Control) action group).
+
+[+] A list of all interfaces for working with ZennoDroid via C# has been added to the documentation: [DroidInstance API](../API/DroidInstance), [Additional API](../API/DroidExtra).
+
+**Fixed:**
+
+[\] Fixed **slow execution of the check** that an application is already installed (used in many actions that work with applications).
+
+[\] Fixed the **"failed to capture image"** error that occurred during a brief loss of connection with the device at the moment the Start action was executed.
+
+[\] Fixed the **ReCaptcha solving action** for image-based captchas.
+
+[\] Fixed slow **operation of the Image processing action** in multithreaded mode.

@@ -10,11 +10,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 <DisclaimerNotice />
 
 _______________________________________________  
-18.02.26
+18.02.2026
 
 **Добавлено:**
 
-[+] **ZD ENTERPRISE.** Добавлен **экшен для эмуляции наличия включенного WiFi**. Используется для прошивок, которые не видят наличия интернет-подключения при отключенном WiFi. В API C# добавлен параметр AddWiFiEmulation для включения эмуляции WiFi.
+[+] **ZD ENTERPRISE.** Добавлен **экшен для эмуляции наличия включенного WiFi**. Используется для прошивок, которые не видят наличия интернет-подключения при отключенном WiFi. В API C# добавлен параметр `AddWiFiEmulation` для включения эмуляции WiFi.
 
 ```csharp
 var filter = new DeviceFilter();
@@ -33,7 +33,7 @@ instance.DroidInstance.Settings.SetLSPosedSettings(json);
 instance.DroidInstance.Screen.SetCaptureScreenQuality(10);
 ```
 
-[+] **ZD ENTERPRISE.** В API C# добавлен **метод для патча библиотеки Flutter** (ReFlutter), с целью дальнейшего перехвата и анализа трафика в Burp Suite.
+[+] **ZD ENTERPRISE.** В API C# добавлен **метод для патча библиотеки Flutter** (ReFlutter) с целью дальнейшего перехвата и анализа трафика в Burp Suite.
 
 ```csharp
 // Патч библиотеки
@@ -42,19 +42,19 @@ instance.DroidInstance.App.PatchFlutterLib("tech.httptoolkit.pinning_demo", "10.
 instance.DroidInstance.App.RestoreFlutterLib("tech.httptoolkit.pinning_demo");
 ```
 
-[Пример](https://www.dropbox.com/scl/fi/qck8cl7eiuqy61u508goe/Flutter_Patch_Restore.mp4?rlkey=xfavaqx4twy0atd49sdz4l26b&st=qfbcx200&dl=0) использования. [Приложение](https://github.com/httptoolkit/android-ssl-pinning-demo/releases/latest) для проверки перехвата запросов через Flutter
+[Пример](https://www.dropbox.com/scl/fi/qck8cl7eiuqy61u508goe/Flutter_Patch_Restore.mp4?rlkey=xfavaqx4twy0atd49sdz4l26b&st=qfbcx200&dl=0) использования. [Приложение](https://github.com/httptoolkit/android-ssl-pinning-demo/releases/latest) для проверки перехвата запросов через Flutter.
 
-[+] В API C# добавлен **метод для получения пути к папке установленной программы** (Путь меняющийся при переустановке, имеет формат: `/data/app/~~y085wNyYQQpQwtJ1jpUYOg==/com.android.chrome-rD8qfdRUT680QgUrsaftWQ==`)
+[+] В API C# добавлен **метод для получения пути к папке установленной программы** (путь, меняющийся при переустановке, имеет формат: `/data/app/~~y085wNyYQQpQwtJ1jpUYOg==/com.android.chrome-rD8qfdRUT680QgUrsaftWQ==`).
 
 ```csharp
 return instance.DroidInstance.App.AppDir("com.android.chrome");
 ```
 
 [+] Улучшения для **сокрытия использования Frida** на устройстве:
-- Frida заменена на анти-детект форк Florida
-- Изменено имя процесса frida-server
-- Изменено имя вспомогательного процесса re.frida.helper
-- Изменен используемый порт
+- Frida заменена на анти-детект форк Florida.
+- Изменено имя процесса `frida-server`.
+- Изменено имя вспомогательного процесса `re.frida.helper`.
+- Изменен используемый порт.
 
 [+] **Frida** обновлена до 17.5.2 (Florida).
 
@@ -62,25 +62,21 @@ return instance.DroidInstance.App.AppDir("com.android.chrome");
 
 [+] **Scrcpy** обновлен до 3.3.4.
 
-[+] **Appium Settings** обновлен до 7.0.13. Для автоматического обновления необходимо удалить установленную версию (io.appium.settings).
+[+] **Appium Settings** обновлен до 7.0.13. Для автоматического обновления необходимо удалить установленную версию (`io.appium.settings`).
 
 [+] **UIAutomator2** обновлен до 9.10.0.
 
 [+] **Adb** обновлен до 36.0.2.
 
-[+] **Clash** обновлен до 1.19.18. Для автоматического обновления необходимо предварительно [удалить](/zennodroid/Android/Enterprise/Clash#автоматическое-обновление) текущую версию.
+[+] **Clash** обновлен до 1.19.18. Для автоматического обновления необходимо предварительно [удалить](https://zennolab.atlassian.net/wiki/spaces/RU/pages/3592617997/Clash+Box+for+Root#%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5) текущую версию.
 
 **Исправлено:**
 
 [\] Исправлена **утечка DNS** при использовании белого и черного списка в режиме проксирования Clash.
 
-[\] Исправлена ошибка **Invalid virtual disk** (InvalidMedium) при запуске LDPlayer.
+[\] **ZD ENTERPRISE.** Исправлена **работа экшенов** «Получить буфер обмена», «Задать буфер обмена», а также ввод символов в режиме Native Input на нестандартных прошивках.
 
-[\] Устранена ошибка **Не удалось исправить оператора**.
-
-[\] **ZD ENTERPRISE.** Исправлена **работа экшенов** Получить буфер обмена, Задать буфер обмена, а также ввод символов в режиме Native Input на нестандартных прошивках.
-
-[\] **ZD ENTERPRISE.** **Добавлен обход защиты** от получения Root всеми прежними способами в эмуляторе BlueStacks версии 5.22.140 и выше. Обновленный скрипт для получения Root: [BlueStacks 5 Root ver.6.zip](https://www.dropbox.com/scl/fi/h1j1ug2fdlz82pgno3fev/BlueStacks-5-Root-ver.6.zip?rlkey=efh177rcbt336kua1il9tdc49&st=40ys0wun&dl=0) [Инструкция](https://www.dropbox.com/scl/fi/882sb3y4pqbvv681bb0l1/BlueStacks-Root-Magisk-Android-13.mp4?rlkey=6m6tdmt9s71529vh5mqimgg0j&st=yssk1a3h&dl=0).
+[\] **ZD ENTERPRISE.** **Добавлен обход защиты** от получения Root всеми прежними способами в эмуляторе BlueStacks версии 5.22.140 и выше. Обновленный скрипт для получения Root: [BlueStacks 5 Root ver.6.zip](https://www.dropbox.com/scl/fi/h1j1ug2fdlz82pgno3fev/BlueStacks-5-Root-ver.6.zip?rlkey=efh177rcbt336kua1il9tdc49&st=40ys0wun&dl=0), [инструкция](https://www.dropbox.com/scl/fi/882sb3y4pqbvv681bb0l1/BlueStacks-Root-Magisk-Android-13.mp4?rlkey=6m6tdmt9s71529vh5mqimgg0j&st=yssk1a3h&dl=0).
 
 [\] **ZD ENTERPRISE.** Исправлен **запуск эмулятора BlueStacks** версии 5.22.140 и выше через API C#:
 
@@ -89,4 +85,8 @@ string name = new BlueStacks5Manager().TitleToNameConverter("BlueStacks App Play
 new BlueStacks5(name).Start();
 ```
 
-[\] **ZD ENTERPRISE.** Исправлена **неправильная работа фильтра** по Brand в экшене Сгенерировать устройство.
+[\] **ZD ENTERPRISE.** Исправлена **неправильная работа фильтра** по `Brand` в экшене «Сгенерировать устройство».
+
+[\] Исправлена ошибка **Invalid virtual disk** (`InvalidMedium`) при запуске LDPlayer.
+
+[\] Устранена ошибка **«Не удалось исправить оператора»**.
