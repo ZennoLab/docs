@@ -1,0 +1,78 @@
+---
+sidebar_position: 97
+title: "ZennoDroid 2.4.9.0"
+description: ""
+date: "2026-04-06"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+06.04.2026
+
+**Добавлено:**
+
+[+] **Добавлена поддержка MEmu 9.5.0.** Разработчики MEmu заменили версию используемого VirtualBox (6.1.40), а также внедрили исправление для Windows 11, полностью устранившее проблему периодического появления синего экрана смерти (BSOD) во время работы системы.
+
+[+] **ZD ENTERPRISE.** **Новая экспериментальная функция**, позволяющая перенести специальным образом сформированный бэкап приложения с одного устройства на другое. Используется **новый модуль для LSPosed (ZennoBackup)**.
+Сразу после установки и до первого запуска необходимо добавить приложение в список подменяемых модулем ZennoBackup (в экшене «Настройка модуля LSPosed» указать имя модуля `com.zennolab.zennobackup`).
+При восстановлении бэкапа в экшене «Восстановить данные приложения» необходимо поставить галочку «Использовать модуль ZennoBackup».
+
+[+] **ZD ENTERPRISE.** **Автоматическая установка модулей ZennoDroid и ZennoBackup** при выполнении экшена «Настройка модуля LSPosed».
+
+[+] **ZD ENTERPRISE.** **Автоматическое предоставление Root для модуля ZennoDroid** при первой установке (при использовании Magisk).
+
+[+] **ZD ENTERPRISE.** Добавлена **возможность временно отключить отдельные приложения из области действия LSPosed**. В экшене «Настройка модуля LSPosed» необходимо указать префикс `#` перед названием приложения:
+
+```
+com.android.chrome
+#com.yandex.browser
+```
+
+[+] **ZD ENTERPRISE.** Добавлена **возможность инъекции пользовательского JavaScript** перед загрузкой страницы в браузерах Chrome и Yandex, а также в приложениях, использующих WebView. [Инструкция](https://docs.zennolab.com/zennodroid/API/App#%D0%B8%D0%BD%D1%8A%D0%B5%D0%BA%D1%86%D0%B8%D1%8F-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-javascript-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%BE%D0%B9-%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B).
+
+```csharp
+// Включить возможность инъекции javascript (выполняется один раз до запуска приложения)
+instance.DroidInstance.Settings.SetLSPosedSettings("{ \"UseInjectScript\":true }");
+
+// В переменной script хранится скрипт, который нужно применить при загрузке страницы в Google Chrome
+instance.DroidInstance.App.InjectScript("com.android.chrome", project.Variables["script"].Value);
+```
+
+[+] **ZD ENTERPRISE.** Добавлен **обход проверки сертификата через модуль ZennoDroid** (без использования Frida):
+
+```csharp
+// В переменной cert_pem хранится сертификат в формате pem (-----BEGIN CERTIFICATE----- ... ----------END CERTIFICATE-----)
+var settings = new {
+        CertificateUnpinning = project.Variables["cert_pem"].Value
+};
+var json = Global.ZennoLab.Json.JsonConvert.SerializeObject(settings);
+instance.DroidInstance.Settings.SetLSPosedSettings(json);
+```
+
+Инструкция: [Настройка BurpSuite и отключение проверки сертификата с помощью модуля ZennoDroid](https://docs.zennolab.com/zennodroid/Enterprise/BurpSuite#%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0-%D0%B1%D0%B5%D0%B7-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-frida).
+
+[+] **ZD ENTERPRISE.** **Установка системного сертификата**, включая поддержку Chrome/WebView, для перехвата трафика:
+
+```csharp
+// В переменной cert_pem хранится сертификат в формате pem (-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----)
+instance.DroidInstance.WebView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
+```
+
+[+] **ZD ENTERPRISE.** Обновлен **модуль LSPosed_CLI** до версии [1.11.0](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto).
+
+[+] **ZD ENTERPRISE.** Добавлена **возможность использовать форк [ReLSPosed](https://github.com/AnatolyJacobs/ReLSPosed_CLI/releases/tag/v1.0.2_cli_auto)** вместо LSPosed (добавлена поддержка CLI для управления через группу экшенов [«Управление LSPosed»](https://docs.zennolab.com/zennodroid/Enterprise/LSPosed_Control)).
+
+[+] В справку добавлен список всех интерфейсов для работы с ZennoDroid через C#: [DroidInstance API](https://docs.zennolab.com/zennodroid/API/DroidInstance), [Дополнительный API](https://docs.zennolab.com/zennodroid/API/DroidExtra).
+
+**Исправлено:**
+
+[\] Исправлено **медленное выполнение проверки**, что приложение уже установлено (используется во многих экшенах работы с приложением).
+
+[\] Исправлена **ошибка «не удалось захватить изображение»**, возникавшая при кратковременной потере связи с устройством в момент выполнения экшена «Запуск».
+
+[\] Исправлена **работа экшена для разгадывания ReCaptcha** по картинкам.
+
+[\] Исправлена медленная **работа экшена «Обработка изображений»** в многопоточном режиме.
