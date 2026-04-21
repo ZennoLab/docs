@@ -8,9 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод создает папку профилей. Вызывающей стороне необходимо убедиться, что указанные ID рабочего пространства и местоположение являются корректными.
+## **Описание** 
 
-#### **Параметры запроса:**
+Этот метод создает папку профилей. Вызывающей стороне необходимо убедиться, что указанные ID рабочего пространства и местоположение корректные.
+
+## **Параметры запроса**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
@@ -18,9 +20,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | workspaceId | integer | int64 | \-1 | ID рабочего пространства, в котором будет создана папка профилей. По умолчанию \-1, если не указано. |
 | location | string (enum) |  | Local | Местоположение, где будет создана папка профилей. Варианты местоположения папки: `"Local"` или `"Cloud"`. |
 
-#### 
 
-#### **Пример запроса:**
+## **Пример запроса**
 
 **POST**  
 **CURL:**
@@ -60,12 +61,14 @@ http://localhost:8160/v1/profile_folders?name=&workspaceId=-1&location=Local
 
 ![](../assets/image10.png)
 
-**Дополнительно:**  
+### **Дополнительно**  
+
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
+Api-Token: токен из **UserArea2**
+
 ![](../assets/image8.png)
 
-#### **Ответ API:**
+## **Ответ API**
 
 | Response code | Result |
 | :---: | :---: |

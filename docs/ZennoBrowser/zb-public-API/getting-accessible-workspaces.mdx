@@ -8,9 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Операция получает список рабочих пространств, доступных текущему пользователю. Эта информация необходима для выполнения большинства последующих запросов.
+## **Описание** 
 
-#### **Параметры запроса:**
+Операция получает список рабочих пространств, доступных текущему пользователю. Эта информация необходима для выполнения большинства последующих запросов.
+
+## **Параметры запроса:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :-----: |
@@ -20,11 +22,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | name | string |  | (empty) | Необязательный фильтр по имени рабочего пространства |
 | roles | string |  | (empty) | Необязательный фильтр по ролям |
 
-#### 
 
-#### **Пример запроса:**
 
+## **Пример запроса:**
+ 
 **GET**  
+
 **CURL:**
 
 ```bash
@@ -59,11 +62,11 @@ using (var response = await client.SendAsync(request))
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.
+Api-Token: токен из **UserArea2**
 
 ![](./assets/image8.png)
 
-#### **Ответ API:**
+## **Ответ API:**
 
 | Response code | Result |
 | :---: | :---: |

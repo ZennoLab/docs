@@ -6,15 +6,16 @@ description: Место хранения профилей — раздел оф�
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
-# Место хранения профилей
+## **Место хранения профилей**
 <DisclaimerNotice />
 
 Сейчас назначение пути для хранения профилей выглядит так:
-1. Нужно создать файл `zp8.profilemanager.json` в моих документах (если файл отсутствует)
-2. Добавить секцию Paths в файл
-Пример:
+1. Нужно создать файл `zp8.profilemanager.json` в моих документах (если файл отсутствует).
+2. Добавить секцию Paths в файл.
 
-**Для сохранения в папку TWST**
+### **Пример:**
+
+**— для сохранения в папку TWST**
 ```json
 { "Paths": 
     { "ProfilesRootPath": "C:/Users/Administrator/Desktop/TWST" } 
@@ -22,12 +23,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ``` 
 
 
-**Либо если вы хотите сохранять профили на диск D в папку %Name% , то добавляем:**
+**— либо, если вы хотите сохранять профили на диск D в папку %Name%, нужно добавить:**
 ```json
 { "Paths": 
     { "ProfilesRootPath": "D:/%Name%" } 
 }
 ```
 :::warning **Обратите внимание**
-Что путь через проводник пишется так `D:\%Name%`,а для JSON нужно `D:/%Name%`.
+Путь через проводник пишется так `D:\%Name%`, а для JSON нужно `D:/%Name%`.
 :::
