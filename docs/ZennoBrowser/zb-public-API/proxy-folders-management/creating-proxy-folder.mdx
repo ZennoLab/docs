@@ -8,17 +8,19 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод создает новую папку прокси. 
+## **Описание** 
 
-#### **Параметры запроса:**
+Этот метод создаёт новую папку прокси. 
+
+## **Параметры запроса**
 
 | Parameter | Type | Format | Default | Description |
 | ----- | ----- | ----- | ----- | ----- |
 | name | string |  | (empty) | Имя новой папки (обязательно) |
-| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию |
 | location | string (enum) |  | Local | Место хранения (Local или Cloud) |
 
-#### **Пример запроса:**
+## **Пример запроса**
 
 **POST**  
 **CURL:**
@@ -58,13 +60,14 @@ http://localhost:8160/v1/proxy_folders?name=&workspaceId=&=
 
 ![](../assets/image25.png)
 
-**Дополнительно:**  
+### **Дополнительно**  
+
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Токен из **UserArea2**.
+Api-Token: Токен из **UserArea2**
 
 ![](../assets/image8.png)
 
-#### **Ответ API:**
+## **Ответ API**
 
 | Response code | Result |
 | :---: | :---: |

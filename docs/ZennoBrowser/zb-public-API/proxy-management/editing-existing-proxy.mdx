@@ -8,24 +8,26 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод изменяет конфигурацию существующего прокси-сервера на основе указанных параметров. 
+## **Описание** 
 
-#### **Параметры запроса:**
+Этот метод изменяет конфигурацию существующего прокси-сервера на основе указанных параметров. 
+
+## **Параметры запроса**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
 | proxyId | string | uuid | (empty) |  Уникальный идентификатор прокси (обязателен) |
-| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
-| folderId | string | uuid | (empty) | Новая папка для прокси. Оставьте пустым, чтобы не менять текущее значение. |
-| name | string |  | (empty) | Новое имя прокси. Установите в null, чтобы сохранить текущее имя. |
-| proxyUrl | string |  | (empty) | Новый URL для прокси. |
-| ipChangeUrl | string |  | (empty) | Новый URL для ротации IP. |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию |
+| folderId | string | uuid | (empty) | Новая папка для прокси. Оставьте пустым, чтобы не менять текущее значение |
+| name | string |  | (empty) | Новое имя прокси. Установите null, чтобы сохранить текущее имя |
+| proxyUrl | string |  | (empty) | Новый URL для прокси |
+| ipChangeUrl | string |  | (empty) | Новый URL для ротации IP |
 
 :::note
 ID прокси, который нужно отредактировать, необходимо указать в фигурных скобках `{ }` в пути URL.
 :::
 
-#### **Пример запроса:**
+## **Пример запроса**
 
 **PUT**  
 **CURL:**
@@ -65,13 +67,13 @@ http://localhost:8160/v1/proxies/{proxyId}?workspaceId=&folderId=&name=&proxyUri
 
 ![](../assets/image21.png)
 
-**Дополнительно:**  
+### **Дополнительно**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.
+Api-Token: токен из **UserArea2**
 
 ![](../assets/image8.png)
 
-#### **Ответ API:**
+## **Ответ API**
 
 | Response code | Result |
 | :---: | :---: |
