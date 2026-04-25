@@ -12,7 +12,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 Операция получает список рабочих пространств, доступных текущему пользователю. Эта информация необходима для выполнения большинства последующих запросов.
 
-## **Параметры запроса:**
+## **Параметры запроса**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :-----: |
@@ -24,7 +24,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 
 
-## **Пример запроса:**
+## **Пример запроса**
  
 **GET**  
 
@@ -60,13 +60,14 @@ using (var response = await client.SendAsync(request))
 **Cube:** `http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles=`  
 ![](./assets/image7.png)
 
-**Дополнительно:**  
+### **Дополнительно**
+
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: токен из **UserArea2**
 
 ![](./assets/image8.png)
 
-## **Ответ API:**
+## **Ответ API**
 
 | Response code | Result |
 | :---: | :---: |

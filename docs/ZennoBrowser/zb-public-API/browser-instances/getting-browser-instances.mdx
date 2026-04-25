@@ -8,26 +8,29 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод возвращает список браузерных процессов, доступных для текущего пользователя, с подробной информацией.  
+## **Описание** 
+
+Этот метод возвращает список браузерных процессов, доступных для текущего пользователя, с подробной информацией.  
+
 Результаты можно отфильтровать по ID профиля или ID процесса, а также при необходимости отсортировать или ограничить по количеству возвращаемых записей.
 
 :::warning
 Эти действия применяются **только** к экземплярам браузера, запущенным через API.
 :::
 
-#### **Параметры запроса:**
+## **Параметры запроса**
 
 | Parameter | Type | Format | Default | Description |
 | ----- | ----- | ----- | ----- | ----- |
-| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию |
 | start | integer | int32 | 0 | Начальный индекс для постраничного вывода |
 | total | integer | int32 | 1000 | Максимальное количество результатов для возврата |
-| profileId | string | uuid | (empty) | Фильтр по ID профиля (опционально). |
-| processId | integer | int32 | (empty) | Фильтр по ID процесса браузера (опционально). |
-| sorting | string |  | (empty) | Параметры сортировки: ConnectionString, ProcessId, ProfileId (опционально). |
+| profileId | string | uuid | (empty) | Фильтр по ID профиля (опционально) |
+| processId | integer | int32 | (empty) | Фильтр по ID процесса браузера (опционально) |
+| sorting | string |  | (empty) | Параметры сортировки: ConnectionString, ProcessId, ProfileId (опционально) |
  
 
-#### **Пример запроса:**
+## **Пример запроса**
 
 **GET**  
 **CURL:**
@@ -66,12 +69,14 @@ http://localhost:8160/v1/browser_instances?workspaceId=-1&start=0&total=1000&pro
 
 ![](../assets/image28.png)
 
-**Дополнительно:**  
+### **Дополнительно**
+
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Токен из **UserArea2**.  
+Api-Token: Токен из **UserArea2**
+
 ![](../assets/image8.png)
 
-#### **Ответ API:**
+## **Ответ API**
 
 | Response code | Result |
 | :---: | :---: |

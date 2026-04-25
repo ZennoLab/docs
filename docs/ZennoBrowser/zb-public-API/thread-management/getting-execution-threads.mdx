@@ -8,21 +8,24 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод получает список потоков выполнения для указанного рабочего пространства.  
+## **Описание** 
+
+Этот метод получает список потоков выполнения для указанного рабочего пространства.  
+
 Потоки можно фильтровать по токену или типу, ограничивать по количеству результатов и при необходимости сортировать.
 
-#### **Параметры запроса:**
+## **Параметры запроса**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
-| start | integer | int32 | 0 | Начальный индекс для пагинации. |
-| total | integer | int32 | 1000 | Максимальное количество возвращаемых потоков. |
-| thread_token | string |  | (empty) | Фильтр по определённому токену потока (необязательно). |
-| type | string enum |  | (empty) | Фильтр по типу токена (`Manual`, `BrowserInstance`) (необязательно). |
-| sorting | string |  | (empty) | Параметры сортировки: CreatedAt, ThreadToken, Type, WorkspaceId (необязательно). |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию |
+| start | integer | int32 | 0 | Начальный индекс для пагинации |
+| total | integer | int32 | 1000 | Максимальное количество возвращаемых потоков |
+| thread_token | string |  | (empty) | Фильтр по определённому токену потока (необязательно) |
+| type | string enum |  | (empty) | Фильтр по типу токена (`Manual`, `BrowserInstance`) (необязательно) |
+| sorting | string |  | (empty) | Параметры сортировки: CreatedAt, ThreadToken, Type, WorkspaceId (необязательно) |
 
-#### **Пример запроса:**
+## **Пример запроса**
 
 **GET**  
 **CURL:**
@@ -61,12 +64,14 @@ http://localhost:8160/v1/threads?workspaceId=&start=&total=&thread_token=&=&sort
 
 ![](../assets/image33.png)
 
-**Дополнительно:**  
+### **Дополнительно**
+
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
+Api-Token: токен из **UserArea2**
+
 ![](../assets/image8.png)
 
-#### **Ответ API:**
+## **Ответ API**
 
 | Response code | Result |
 | :---: | :---: |

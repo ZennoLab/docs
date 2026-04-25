@@ -8,20 +8,22 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод можно использовать для пакетного запуска потоков выполнения.
+## **Описание** 
 
-#### **Параметры запроса:**
+Этот метод можно использовать для пакетного запуска потоков выполнения.
+
+## **Параметры запроса**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| count | integer | int32 |  | Количество потоков для запуска. |
-| workspaceId | integer | int64 | \-1 | Идентификатор рабочей области. `-1` означает рабочую область по умолчанию. |
+| count | integer | int32 |  | Количество потоков для запуска |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочей области. `-1` означает рабочую область по умолчанию |
 
 :::note
 Количество потоков для запуска следует указывать как параметр пути в URL.
 :::
 
-#### **Пример запроса:**
+## **Пример запроса**
 
 **POST**
 
@@ -62,12 +64,14 @@ http://localhost:8160/v1/threads/create_bulk?count=5&workspaceId=-1
 
 ![](../assets/image35.png)
 
-**Дополнительно:**  
+### **Дополнительно**
+
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
+Api-Token: токен из **UserArea2**
+
 ![](../assets/image8.png)
 
-#### **Ответ API:**
+## **Ответ API**
 
 | Response code | Result |
 | :---: | :---: |
