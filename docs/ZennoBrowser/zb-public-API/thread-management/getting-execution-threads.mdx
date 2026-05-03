@@ -18,12 +18,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. -1 означает рабочее пространство по умолчанию |
 | start | integer | int32 | 0 | Начальный индекс для пагинации |
 | total | integer | int32 | 1000 | Максимальное количество возвращаемых потоков |
 | thread_token | string |  | (empty) | Фильтр по определённому токену потока (необязательно) |
 | type | string enum |  | (empty) | Фильтр по типу токена (`Manual`, `BrowserInstance`) (необязательно) |
-| sorting | string |  | (empty) | Параметры сортировки: CreatedAt, ThreadToken, Type, WorkspaceId (необязательно) |
+| sorting | string |  | (empty) | Параметры сортировки: `CreatedAt`, `ThreadToken`, `Type`, `WorkspaceId` (необязательно) |
 
 ## **Пример запроса**
 
