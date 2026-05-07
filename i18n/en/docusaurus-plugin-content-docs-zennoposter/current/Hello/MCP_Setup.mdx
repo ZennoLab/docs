@@ -1,0 +1,160 @@
+---
+sidebar_position: 8
+title: "Setup Guide for AI Assistants"
+description: " "
+date: "2026-05-07"
+converted: true
+originalFile: "ZennoPoster MCP — Setup Guide for AI Assistants.md"
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+# ZennoPoster MCP — Setup Guide for AI Assistants
+
+> **Prerequisites:** ProjectMaker must be running before connecting any AI assistant. The MCP servers start automatically with ProjectMaker and listen on:
+> - **BrowserMCP** (Browser control) → `http://localhost:6108`
+> - **ProjectMCP** (Project control) → `http://localhost:6107`
+
+---
+
+## 1. GitHub Copilot
+
+### Steps
+
+1. Make sure ProjectMaker is running.
+2. Open your user profile folder: press `Win + R`, type `%USERPROFILE%`, press Enter.
+3. Create a file named `.mcp.json` in that folder (e.g. `C:\Users\YourName\.mcp.json`).
+4. Paste the following content:
+
+```json
+{
+  "servers": {
+    "BrowserMCP": {
+      "type": "http",
+      "url": "http://localhost:6108"
+    },
+    "ProjectMCP": {
+      "type": "http",
+      "url": "http://localhost:6107"
+    }
+  }
+}
+```
+
+5. Restart Visual Studio (or reload the Copilot extension).
+6. Copilot will now have access to both MCP servers in all your workspaces.
+
+---
+
+## 2. Claude Code (CLI)
+
+### Steps
+
+1. Make sure ProjectMaker is running.
+2. Open a terminal.
+3. Run the following two commands:
+
+```sh
+claude mcp add BrowserMCP --transport http http://localhost:6108
+claude mcp add ProjectMCP --transport http http://localhost:6107
+```
+
+4. Verify the servers are registered:
+
+```sh
+claude mcp list
+```
+
+5. The MCP servers are now available globally in all Claude Code sessions.
+
+> To remove them later: `claude mcp remove BrowserMCP` and `claude mcp remove ProjectMCP`
+
+---
+
+## 3. OpenAI Codex CLI
+
+### Steps
+
+1. Make sure ProjectMaker is running.
+2. Open a terminal.
+3. Run the following two commands:
+
+```sh
+codex mcp add BrowserMCP --url http://localhost:6108
+codex mcp add ProjectMCP --url http://localhost:6107
+```
+
+4. Verify:
+
+```sh
+codex mcp list
+```
+
+---
+
+## Example Prompts
+
+### Browser Automation
+
+```
+Start the browser, open a new tab called "search", navigate it to https://google.com,
+find the search input, type "ZennoPoster" into it, and click the search button.
+```
+
+```
+Get all open tabs and show me their names and IDs.
+```
+
+```
+In tab 1, get the DOM content filtered by 'input;button;form' and find the login form.
+Then fill in the username field with "admin" and the password field with "12345" and submit.
+```
+
+```
+Navigate tab 2 to https://example.com, read the full page DOM text, and summarize what's on the page.
+```
+
+### Project Management
+
+```
+Show me the structure of the current project → list all actions with their IDs and types.
+```
+
+```
+Add a new variable called "LoginUrl" with default value "https://example.com/login".
+```
+
+```
+Get all variables in the project and show me which ones have empty default values.
+```
+
+```
+Create a new list called "Proxies" and add these items to it:
+192.168.1.1:8080, 192.168.1.2:8080, 192.168.1.3:8080
+```
+
+```
+Create a table called "Accounts" with 3 columns, then add a row with values:
+"user@mail.com", "password123", "active"
+```
+
+```
+Get the current execution logs (all levels) and tell me if there are any errors.
+```
+
+```
+What was the last error in the project? Show me the action ID where it happened.
+```
+
+### Combined Browser + Project
+
+```
+Open a browser, navigate to the login page stored in the project variable "LoginUrl",
+fill in the credentials from the "Accounts" table (first row), submit the form,
+and save the result page URL back to the variable "LastVisitedUrl".
+```
+
+```
+Get the project structure, find all "NavigateToUrl" actions, and list their URLs.
+```

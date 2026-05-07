@@ -49,6 +49,33 @@ _________________
 
 ![Restart computer](./assets/HyperV/HyperV_pic5.gif)  
 _________________
+## Alternative disabling method
+:::warning **Tested on Windows 11 Home 24H2.**
+This option may help if the other methods did not work.
+:::
+
+*Let's go through it step by step:*
+#### 1. Open Registry Editor (`Regedit`) and go to:
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity`
+
+Change the **Enabled** parameter value to `0`.
+
+#### 2. Now go to the next section:
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\WindowsHello`
+
+Change the **Enabled** value to `0` again.
+
+#### 3. Restart your computer.
+After that, Windows may report a problem with PIN sign-in. Just create a new PIN.
+
+### Additionally
+:::warning **Tested on Windows 11 Pro.**
+:::
+If the method above did not help, you can try the official Microsoft tool:
+[Device Guard and Credential Guard Hardware Readiness Tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337)
+
+Usually, the PowerShell script is run with the `-Disable` parameter to turn off Device Guard and Credential Guard. After that, a restart is required, and you may need to confirm the changes during boot, for example by pressing `F3`.
+_________________
 ## Turning off Memory Integrity  
 For everything to work smoothly without Hyper-V, let’s also turn off Memory Integrity.  
 1. In the Windows search, type **Core Isolation** and hit **Enter**.  
