@@ -62,8 +62,10 @@ export default function NavbarContent() {
   return (
     <>
       <div className={clsx('navbar__inner', styles.navbarInner)}>
-        <div className={clsx('navbar__items', styles.mainItems)}>
+        <div className={clsx('navbar__items', styles.brandItems)}>
           <NavbarLogo />
+        </div>
+        <div className={clsx('navbar__items', styles.searchItems)}>
           <NavbarItems items={searchItems} />
         </div>
         <div className={clsx('navbar__items', styles.productItems)}>
