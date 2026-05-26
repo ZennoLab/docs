@@ -263,13 +263,6 @@ img[alt*="-eighty"] { width: 80%; }
   color: #67f5a9 !important;
 }
 
-@media (max-width: 996px) {
-  .video-course-link-container {
-    display: none;
-  }
-}
-
-
 .lk-link svg {
   display: none;
 }

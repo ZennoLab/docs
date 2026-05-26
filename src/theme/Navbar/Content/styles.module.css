@@ -2,3 +2,101 @@
   max-width: var(--ifm-container-width-xl);
   margin: 0 auto;
 }
+
+:global(.navbar) {
+  height: auto;
+  min-height: 3.75rem;
+}
+
+.navbarInner {
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0;
+}
+
+.mainItems {
+  flex: 1 1 auto;
+}
+
+.productItems {
+  flex: 0 1 auto;
+  justify-content: flex-end;
+}
+
+.productItems :global(.navbar__link) {
+  white-space: nowrap;
+}
+
+.utilityItems {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .navbarInner {
+    row-gap: 0.25rem;
+  }
+
+  .mainItems {
+    order: 1;
+    min-width: 0;
+  }
+
+  .utilityItems {
+    order: 2;
+  }
+
+  .productItems {
+    order: 3;
+    flex: 1 0 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 996px) {
+  .productItems :global(.navbar__item) {
+    display: inline-block;
+  }
+
+  .colorModeToggle {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbarInner {
+    column-gap: 0.25rem;
+  }
+
+  .mainItems :global(.navbar__brand) {
+    margin-right: 0.25rem;
+  }
+
+  .mainItems :global(.navbar__title) {
+    max-width: 7rem;
+  }
+
+  .mainItems :global(.DocSearch-Button) {
+    width: 2.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .mainItems :global(.DocSearch-Button-Placeholder),
+  .mainItems :global(.DocSearch-Button-Keys) {
+    display: none;
+  }
+
+  .mainItems :global(.navbar__search-input) {
+    width: 2.5rem;
+  }
+
+  .productItems {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 436px) {
+  .mainItems :global(.navbar__title) {
+    display: none;
+  }
+}

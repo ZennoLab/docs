@@ -1,7 +1,6 @@
-import { DefaultNavbarItemProps } from '@theme/NavbarItem';
 import getLocaleStrings from '@site/src/locales';
 
-const leftItems = [
+const searchItems = [
   {
     type: 'search',
     position: 'left',
@@ -13,7 +12,7 @@ const leftItems = [
 export const getMenuItems = (locale) => {
   const localeStrings = getLocaleStrings(locale);
   
-  const rightItems = [
+  const utilityItems = [
     {
       type: 'localeDropdown',
       position: 'right',
@@ -75,7 +74,5 @@ export const getMenuItems = (locale) => {
     },
   ];
 
-  rightItems.unshift(...productItems);
-
-  return { leftItems, rightItems };
+  return { searchItems, productItems, utilityItems };
 };
