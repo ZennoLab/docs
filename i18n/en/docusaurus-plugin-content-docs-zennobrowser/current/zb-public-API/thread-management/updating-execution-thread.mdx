@@ -1,8 +1,8 @@
-﻿---
+---
 sidebar_position: 4
-sidebar_label: Updating Execution Thread
-title: Updating Execution Thread
-description: Update a single execution thread's configuration - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+sidebar_label: Continuing an Execution Thread
+title: Continuing an Execution Thread
+description: Continues work of the execution thread associated with the thread token. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -14,8 +14,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| threadToken | string |  | (required) | Unique identifier of the execution thread to continue. |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| threadToken | string |  | (required) | Unique identifier of the execution thread to continue (required). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
 :::note
 The ID of the thread to update should be specified inside curly braces `{ }` in the URL path.
@@ -27,20 +27,21 @@ The ID of the thread to update should be specified inside curly braces `{ }` in 
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/threads/use/{threadToken}?workspaceId=-1' \
+curl 'http://localhost:8160/v1/threads/use/thread-token-1?workspaceId=-1' \
   --request PUT \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Put,
-    RequestUri = new Uri("http://localhost:8160/v1/threads/use/{threadToken}?workspaceId=-1"),
+    RequestUri = new Uri("http://localhost:8160/v1/threads/use/thread-token-1?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -63,19 +64,22 @@ http://localhost:8160/v1/threads/use/{threadToken}?workspaceId=-1
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful update.
+No response body.
 
 **Error Response (500):**
 

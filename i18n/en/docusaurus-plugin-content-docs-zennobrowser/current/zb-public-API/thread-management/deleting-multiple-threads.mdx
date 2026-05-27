@@ -1,8 +1,8 @@
 ---
 sidebar_position: 7
-sidebar_label: Stopping Threads (Bulk)
-title: Stopping Multiple Threads
-description: Stop multiple execution threads at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+sidebar_label: Deleting Multiple Threads
+title: Deleting Multiple Threads
+description: Stopping Multiple Threads. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -14,19 +14,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
-| body | JSON-Array |  |  | Target execution thread tokens Example: `["uuid1", "uuid2"]` |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
-:::note
-The list of thread tokens to delete should be specified as an array in the request body using the following format:
+#### **Request body:**
 
-```json
-[
-  "threadToken1",
-  "threadToken2"
-]
-```
-:::
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[string] |  | (optional) | Target execution thread tokens Example: ["uuid1", "uuid2"]. |
 
 #### **Example request:**
 
@@ -36,18 +30,18 @@ The list of thread tokens to delete should be specified as an array in the reque
 ```bash
 curl 'http://localhost:8160/v1/threads/delete_bulk?workspaceId=-1' \
   --request DELETE \
-  --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
+
+  --header 'Content-Type: application/json' \
   --data '[
-    "threadToken1",
-    "threadToken2"
-  ]'
+  "string"
+]'
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
@@ -57,14 +51,8 @@ var request = new HttpRequestMessage
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("[\n  \"threadToken1\",\n  \"threadToken2\"\n]")
-    {
-        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-    }
 };
+request.Content = new StringContent("[\n  \"string\"\n]", Encoding.UTF8, "application/json");
 using (var response = await client.SendAsync(request))
 {
     response.EnsureSuccessStatusCode();
@@ -77,26 +65,34 @@ using (var response = await client.SendAsync(request))
 ```
 http://localhost:8160/v1/threads/delete_bulk?workspaceId=-1
 ```  
-**Body:**  
-`["threadToken1", "threadToken2"]`
+**Body (JSON):**
+```json
+[
+  "threadToken1",
+  "threadToken2"
+]
+```
 
 ![](../assets/image39.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful deletion.
+No response body.
 
 **Error Response (500):**
 

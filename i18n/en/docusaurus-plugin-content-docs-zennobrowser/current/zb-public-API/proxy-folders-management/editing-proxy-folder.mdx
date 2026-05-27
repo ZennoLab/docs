@@ -1,14 +1,12 @@
-﻿---
+---
 sidebar_position: 3
 sidebar_label: Editing Proxy Folder
 title: Editing Proxy Folder
-description: Update an existing proxy folder's properties - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Updates the name of the specified proxy folder. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
-
-### **Editing proxy folder**
 
 **Description:** This method updates the name of the specified proxy folder. This is the only editable property.
 
@@ -16,13 +14,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| proxyFolderId | string | uuid | (empty) | The folder identifier (Required) |
-| name | string |  | (empty) | The new folder name |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
-
-**Note:**
-
-The ID of the edited proxy list should be specified inside curly braces {} in the URL path.
+| proxyFolderId | string | uuid | (required) | The folder identifier (required). |
+| name | string |  | (empty) | The new folder name. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
 #### **Example request:**
 
@@ -30,20 +24,21 @@ The ID of the edited proxy list should be specified inside curly braces {} in th
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxy_folders/{proxyFolderId}?name=&workspaceId=' \
+curl 'http://localhost:8160/v1/proxy_folders/123e4567-e89b-12d3-a456-426614174000?name=ApiEntity&workspaceId=-1' \
   --request PUT \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Put,
-    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders/{proxyFolderId}?name=&workspaceId="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders/123e4567-e89b-12d3-a456-426614174000?name=ApiEntity&workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -68,18 +63,20 @@ http://localhost:8160/v1/proxy_folders/{proxyFolderId}?name=&workspaceId=
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png) 
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful update.
+No response body.
 
 **Error Response (500):**
 

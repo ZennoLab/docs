@@ -8,7 +8,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод получает список профилей с их атрибутами из указанного рабочего пространства и [папки.](http://folder.It) Можно дополнительно фильтровать результаты по ID, имени, тегам и параметрам сортировки.
+**Описание:** Этот метод получает список профилей с их атрибутами из указанного рабочего пространства и папки. Можно дополнительно фильтровать результаты по ID, имени, тегам и параметрам сортировки.
 
 #### **Параметры запроса:**
 
@@ -21,6 +21,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | id | string | uuid | (empty) | Идентификатор профиля для фильтрации (необязательно). |
 | name | string |  | (empty) | Имя профиля для фильтрации (необязательно). |
 | tags | string |  | (empty) | Теги для фильтрации (необязательно). Несколько тегов можно разделять пробелами. |
+| tagOperator | string |  | (empty) | Логический оператор для фильтрации по тегам: `Or` возвращает профили с любым из указанных тегов, `And` — профили, содержащие все указанные теги. |
 | sorting | string |  | (empty) | Параметры сортировки (необязательно). Id, ContainerId, Name, CreationTime, User.Sex, User.Name, User.Surname, User.Age, User.Country, OperationSystem.Name, OperationSystem.Version, Brand.Name, Brand.Version, Proxy, Proxy.Name, ProfileState.DisplayStatus, ProfileState.Description, Status, OperationalState.OperationStatus, OperationalState.CanChangeOperationStatus, UsedTime, LastStartTime, LastErrorMessage, Tags, Tags.Id, Notes |
 
 #### 
@@ -31,7 +32,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=&id=&name=&tags=&sorting=' \
+curl 'http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=123e4567-e89b-12d3-a456-426614174000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&tags=tag1%20tag2&tagOperator=And&sorting=name%20ASC' \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
 ```
 
@@ -43,7 +44,7 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Get,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=&id=&name=&tags=&sorting="),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=123e4567-e89b-12d3-a456-426614174000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&tags=tag1%20tag2&tagOperator=And&sorting=name%20ASC"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -59,22 +60,25 @@ using (var response = await client.SendAsync(request))
 
 **Cube:**  
 ```
-http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=&id=&name=&tags=&sorting=
+http://localhost:8160/v1/profiles?workspaceId=-1&start=0&total=1000&folderId=123e4567-e89b-12d3-a456-426614174000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&tags=tag1 tag2&tagOperator=And&sorting=name ASC
 ```
 
 ![](../assets/image13.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**  
-![](../assets/image8.png)
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
-| Response code | Result |
+| Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успешно |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 
@@ -84,41 +88,42 @@ Api-Token: токен из **UserArea2**
   "items": [
     {
       "id": "123e4567-e89b-12d3-a456-426614174000",
-      "name": null,
+      "name": "Sample Name",
       "folderId": "123e4567-e89b-12d3-a456-426614174000",
       "creationTime": "2025-07-25T09:34:29.768Z",
       "user": {
-        "sex": "Male",
-        "name": null,
-        "surname": null,
+        "sex": "string",
+        "name": "Sample Name",
+        "surname": "Sample Name",
         "age": 1,
-        "country": null
+        "country": "string"
       },
       "browser": {
         "operationSystem": {
-          "name": null,
-          "version": null
+          "name": "Sample Name",
+          "version": "1.0.0"
         },
         "brand": {
-          "name": null,
-          "version": null
+          "name": "Sample Name",
+          "version": "1.0.0"
         }
       },
       "proxy": {
         "id": "123e4567-e89b-12d3-a456-426614174000",
-        "name": null
+        "name": "Sample Name"
       },
-      "status": null,
-      "usedTimeSeconds": null,
-      "lastStartTime": null,
+      "status": "Ok",
+      "usedTimeSeconds": 12.5,
+      "lastStartTime": "2026-05-19T10:00:00Z",
       "lastErrorMessage": null,
       "tags": [
         {
-          "name": null,
-          "color": null
+          "name": "Sample Name",
+          "color": "#4F46E5"
         }
       ],
-      "notes": null
+      "notes": "string",
+      "presetId": "123e4567-e89b-12d3-a456-426614174000"
     }
   ]
 }

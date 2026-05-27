@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "title": "Thread Management",
-    "description": " "
+    "description": "Operations for creating, reusing, and stopping execution threads."
   }
-} 
+}

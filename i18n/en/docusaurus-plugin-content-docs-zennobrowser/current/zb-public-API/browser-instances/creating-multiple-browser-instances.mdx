@@ -1,34 +1,31 @@
-﻿---
+---
 sidebar_position: 3
-sidebar_label: Creating Instances (Bulk)
+sidebar_label: Creating Multiple Browser Instances
 title: Creating Multiple Browser Instances
-description: Create multiple browser instances at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Creates multiple browser instances for the specified profiles. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method is used to create browser instances in bulk for the specified profiles. Please ensure that the provided profile IDs are valid and the specified workspace ID exists.
+**Description:** This method is used to create browser instances in bulk for the specified profiles. Ensure that the provided profile IDs are valid and that the specified workspace ID exists.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
-| desktopName | string |  | (empty) | The name of the desktop environment (optional). |
-| keepAlive | логическое значение |  | true | This value indicates if the browser instances should remain active after creation. Set ”true” to keep the instances active; otherwise, false. Defaults to true (`true` или `false`). |
-| body | JSON-Array  |  |  | The array of profile UUIDs to create browser instances for. Example: `["uuid1", "uuid2"]` |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| desktopName | string |  | (empty) | The name of the desktop environment (optional). Defaults to empty. |
+| keepAlive | boolean |  | (empty) | Indicates if the browser instances should remain active after creation. true to keep active; otherwise false. Defaults to true. |
+| environmentTags | string |  | (empty) | Tags to configure the environment for the browser instance. |
+| commandLineArguments | string |  | (empty) | Custom additional command line arguments to pass to the browser on startup |
 
-:::note
-The list of profile IDs for browser instances to create should be passed as an array in the request body using the following format:
+#### **Request body:**
 
-```json
-[
-  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
-  "d24eba34-12d6-4412-ab20-80fae618c264"
-]
-```
-:::
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[string] | uuid | (optional) | Array of profile UUIDs for which browser instances will be created. Each ID must correspond to an existing profile. |
+
 
 #### **Example request:**
 
@@ -36,40 +33,31 @@ The list of profile IDs for browser instances to create should be passed as an a
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true' \
+curl 'http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu' \
   --request POST \
-  --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
+
+  --header 'Content-Type: application/json' \
   --data '[
-    "uuid1",
-    "uuid2"
-  ]'
+  "123e4567-e89b-12d3-a456-426614174000"
+]'
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true"),
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("[\n  " +
-                                "\"uuid1\"," +
-                                "\"uuid2\"," +
-                                "\n]")
-    {
-        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-    }
 };
+request.Content = new StringContent("[\n  \"123e4567-e89b-12d3-a456-426614174000\"\n]", Encoding.UTF8, "application/json");
 using (var response = await client.SendAsync(request))
 {
     response.EnsureSuccessStatusCode();
@@ -78,37 +66,43 @@ using (var response = await client.SendAsync(request))
 }
 ```
 
-**`Cube:`**  
+**Cube:**
 ```
-http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true
+http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu
 ```
-**Data:**   
-`["uuid1", "uuid2"]`
+
+**Body (JSON):**
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
 
 ![](../assets/image30.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
-
-Returns an array of created browser instances:
 
 ```json
 [
   {
     "profileId": "123e4567-e89b-12d3-a456-426614174000",
     "processId": 1,
-    "connectionString": null
+    "connectionString": "ws://127.0.0.1:12345/devtools/browser/example"
   }
 ]
 ```

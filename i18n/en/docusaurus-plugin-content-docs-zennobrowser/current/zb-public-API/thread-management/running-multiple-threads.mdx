@@ -1,21 +1,21 @@
-﻿---
+---
 sidebar_position: 3
-sidebar_label: Running Threads (Bulk)
+sidebar_label: Running Multiple Threads
 title: Running Multiple Threads
-description: Start multiple execution threads at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Runs multiple execution threads. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method can be used to start execution threads in bulk.
+**Description:** This method can be used to start execution threads in bulk for the specified workspace.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| count | integer | int32 |  | Number of threads to run. |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| count | integer | int32 | (empty) | Number of threads to run. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
 :::note
 The number of threads to run should be specified as a path parameter in the URL.
@@ -23,20 +23,20 @@ The number of threads to run should be specified as a path parameter in the URL.
 
 #### **Example request:**
 
-**POST**
-
+**POST**  
 **CURL:**
 
 ```bash
 curl 'http://localhost:8160/v1/threads/create_bulk?count=5&workspaceId=-1' \
   --request POST \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
@@ -64,27 +64,28 @@ http://localhost:8160/v1/threads/create_bulk?count=5&workspaceId=-1
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
-
-Returns an array of created thread objects:
 
 ```json
 [
   {
     "workspaceId": 1,
-    "threadToken": null,
-    "type": "Manual",
-    "createdAt": "2025-07-25T09:34:29.768Z"
+    "threadToken": "thread-token-1",
+    "type": "string",
+    "createdAt": "2026-05-19T10:00:00Z"
   }
 ]
 ```

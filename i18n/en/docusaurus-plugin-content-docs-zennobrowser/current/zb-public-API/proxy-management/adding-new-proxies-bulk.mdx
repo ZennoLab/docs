@@ -1,0 +1,118 @@
+---
+sidebar_position: 3
+sidebar_label: Adding New Proxies (Bulk)
+title: Adding New Proxies (Bulk)
+description: Creates multiple proxies in a single operation and returns their unique identifiers. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method processes an array of proxy data and creates all specified proxies. Errors during creation of individual proxies are ignored.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| folderId | string | uuid | (empty) | Optional folder ID to associate with all created proxies. |
+
+#### **Request body:**
+
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[ProxyData] | schema | (optional) | Array of proxy data containing URI, name, and optional IP change URL for each proxy. |
+
+#### **Example request:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxies/create_bulk?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+
+  --header 'Content-Type: application/json' \
+  --data '[
+  {
+    "proxyUri": "http://login:pass@127.0.0.1:8080",
+    "name": "Sample Name",
+    "ipChangeUrl": "https://example.com"
+  }
+]'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/proxies/create_bulk?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+request.Content = new StringContent("[\n  {\n    \"proxyUri\": \"http://login:pass@127.0.0.1:8080\",\n    \"name\": \"Sample Name\",\n    \"ipChangeUrl\": \"https://example.com\"\n  }\n]", Encoding.UTF8, "application/json");
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/proxies/create_bulk?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000
+```
+
+**Body (JSON):**
+```json
+[
+  {
+    "proxyUri": "http://login:pass@127.0.0.1:8080",
+    "name": "Sample Name",
+    "ipChangeUrl": "https://example.com"
+  }
+]
+```
+
+![](../assets/zp_proxy_add_bulk.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
