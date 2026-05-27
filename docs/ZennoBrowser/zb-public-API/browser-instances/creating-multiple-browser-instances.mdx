@@ -1,14 +1,14 @@
 ﻿---
 sidebar_position: 3
-sidebar_label: Создание экземпляров (пакетно)
-title: Создание нескольких экземпляров браузера
+sidebar_label: Создание экземпляров браузера (массово)
+title: Создание экземпляров браузера (массово)
 description: Одновременное создание нескольких экземпляров браузера — подробное руководство по ZennoBrowser Public API. Инструкции по использованию, примеры и руководство по настройке
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод используется для пакетного создания экземпляров браузера для указанных профилей. Пожалуйста, убедитесь, что переданные ID профилей действительны и указанный ID рабочего пространства существует.
+**Описание:** Этот метод используется для массового создания экземпляров браузера для указанных профилей. Пожалуйста, убедитесь, что переданные ID профилей действительны и указанный ID рабочего пространства существует.
 
 #### **Параметры запроса:**
 
@@ -17,18 +17,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
 | desktopName | string |  | (empty) | Имя рабочего стола (необязательно). |
 | keepAlive | логическое значение |  | true | Показывает, должны ли экземпляры браузера оставаться активными после создания. Установите `true`, чтобы экземпляры оставались активными; в противном случае `false`. Значение по умолчанию — `true` (`true` или `false`). |
+| environmentTags | string |  | (empty) | Теги для конфигурации окружения экземпляра браузера. |
+| commandLineArguments | string |  | (empty) | Пользовательские дополнительные аргументы командной строки, которые будут переданы браузеру при запуске. |
 | body | JSON-Array  |  |  | Массив UUID профилей, для которых нужно создать экземпляры браузера. Пример: `["uuid1", "uuid2"]` |
-
-:::note
-Список ID профилей, для которых нужно создать экземпляры браузера, должен быть передан в теле запроса в виде массива в следующем формате:
-
-```json
-[
-  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
-  "d24eba34-12d6-4412-ab20-80fae618c264"
-]
-```
-:::
 
 #### **Пример запроса:**
 
@@ -36,14 +27,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true' \
+curl 'http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu' \
   --request POST \
   --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
   --data '[
-    "uuid1",
-    "uuid2"
-  ]'
+  "123e4567-e89b-12d3-a456-426614174000"
+]'
 ```
 
 **C#:**
@@ -54,15 +44,12 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true"),
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("[\n  " +
-                                "\"uuid1\"," +
-                                "\"uuid2\"," +
-                                "\n]")
+    Content = new StringContent("[\n  \"123e4567-e89b-12d3-a456-426614174000\"\n]")
     {
         Headers =
         {
@@ -78,26 +65,33 @@ using (var response = await client.SendAsync(request))
 }
 ```
 
-**`Cube:`**  
+**Cube:**  
 ```
-http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=&keepAlive=true
+http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop 1&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu
 ```
-**Data:**   
-`["uuid1", "uuid2"]`
+**Body (JSON):**
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
 
 ![](../assets/image30.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
-| Response code | Result |
+| Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успешно |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 
@@ -108,7 +102,7 @@ Api-Token: токен из **UserArea2**.
   {
     "profileId": "123e4567-e89b-12d3-a456-426614174000",
     "processId": 1,
-    "connectionString": null
+    "connectionString": "ws://127.0.0.1:12345/devtools/browser/example"
   }
 ]
 ```

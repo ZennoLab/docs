@@ -1,24 +1,27 @@
 ---
 sidebar_position: 8
-sidebar_label: Импорт файлов cookie в профиль
-title: Импорт файлов cookie в профиль
-description: Импорт файлов cookie в существующий профиль браузера в формате JSON — подробное руководство по публичному API ZennoBrowser. Пошаговые инструкции, примеры использования и справка по параметрам запроса
+sidebar_label: Импорт cookie в профиль
+title: Импорт cookie в профиль
+description: Импорт cookie в существующий профиль браузера в формате JSON — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-### **Импорт файлов cookie в профиль**
-
-**Описание:** Этот метод позволяет импортировать файлы cookie в существующий профиль в формате JSON.
+**Описание:** Этот метод позволяет импортировать cookie в существующий профиль в формате JSON. Убедитесь, что параметр cookies содержит корректное JSON-значение с импортируемыми cookie.
 
 #### **Параметры запроса:**
 
-| Parameter | Type | Format | Default | Description |
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
-| profileId | string | uuid | (required) | Уникальный идентификатор целевого профиля для импорта файлов cookie (**обязательный**). |
-| body | JSON-Array | UUID profiles |  | Файлы cookie в формате JSON `[cookie]`  |
+| profileId | string | uuid | (required) | Уникальный идентификатор целевого профиля для импорта cookie (**обязательный**). |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства. -1 означает рабочее пространство по умолчанию. |
+
+#### **Тело запроса:**
+
+| Поле | Тип | Формат | Обязательность | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | string |  | (optional) | Cookie в JSON-формате для импорта. |
 
 #### **Пример запроса:**
 
@@ -26,34 +29,28 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles/{profileId}/cookies/import' \
+curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000/cookies/import?workspaceId=-1' \
   --request POST \
-  --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
-  --data '{}'
+  --header 'Content-Type: application/json' \
+  --data '"string"'
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}/cookies/import"),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000/cookies/import?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("{}")
-    {
-        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-    }
 };
+request.Content = new StringContent("\"string\"", Encoding.UTF8, "application/json");
 using (var response = await client.SendAsync(request))
 {
     response.EnsureSuccessStatusCode();
@@ -62,28 +59,33 @@ using (var response = await client.SendAsync(request))
 }
 ```
 
-**Куб:**  
-`http://localhost:8160/v1/profiles/{profileId}/cookies/import`   
+**Cube:**  
+```
+http://localhost:8160/v1/profiles/{profileId}/cookies/import?workspaceId=-1
+```
+
 ![](../assets/image11-1.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: токен из **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
-| Response code | Result |
+| Код ответа | Результат |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | Успешно |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 
-При успешном импорте тело ответа не возвращается.
+Тело ответа отсутствует.
 
-**Ответ об ошибке (500):**
+**Ответ с ошибкой (500):**
 
 ```json
 {

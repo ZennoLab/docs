@@ -1,8 +1,8 @@
-﻿---
+---
 sidebar_position: 5
 sidebar_label: Deleting Browser Profile
 title: Deleting Browser Profile
-description: Delete a single browser profile from the workspace - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Deletes an existing browser profile. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -14,8 +14,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| profileId | string | uuid | (required) | Unique identifier of the profile to delete (**required**). |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| profileId | string | uuid | (required) | Unique identifier of the profile to delete (required). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
 :::note
 The profile ID should be specified inside curly braces `{ }` in the URL path.
@@ -27,20 +27,21 @@ The profile ID should be specified inside curly braces `{ }` in the URL path.
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1' \
+curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
   --request DELETE \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Delete,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1"),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -55,25 +56,30 @@ using (var response = await client.SendAsync(request))
 ```
 
 **Cube:**  
-`http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1`
+```
+http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1
+```
 
 ![](../assets/image17.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful deletion.
+No response body.
 
 **Error Response (500):**
 

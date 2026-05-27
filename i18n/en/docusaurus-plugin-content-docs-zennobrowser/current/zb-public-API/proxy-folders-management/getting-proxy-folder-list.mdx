@@ -1,8 +1,8 @@
-﻿---
+---
 sidebar_position: 1
-sidebar_label: Getting Proxy Folders
+sidebar_label: Getting Proxy Folder List
 title: Getting Proxy Folder List
-description: Retrieve a list of proxy folders in the workspace - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Retrieves a list of proxy folders with filtering, sorting, and pagination options. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -14,15 +14,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
-| start | integer | int32 | 0 | Index of the first folder to return (zero-based) |
-| total | integer | int32 | 1000 | Maximum number of results to return |
-| id | string | uuid | (empty) | Filter by certain folder identifier |
-| name | string |  | (empty) | Filter by folder name |
-| sorting | string |  | (empty) | Result sorting condition |
-| location | string (enum) |  | (empty) | Proxy type filter (Local or Cloud) |
-
-#### 
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| start | integer | int32 | (empty) | Index of the first folder to return (zero-based). |
+| total | integer | int32 | (empty) | Maximum number of results to return. |
+| id | string | uuid | (empty) | Filter by certain folder identifier (optional). |
+| name | string |  | (empty) | Filter by folder name (optional). |
+| sorting | string |  | (empty) | Result sorting condition (optional). |
+| location | string |  | (empty) | Proxy type filter (Local or Cloud). |
 
 #### **Example request:**
 
@@ -30,19 +28,20 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxy_folders?workspaceId=&start=&total=&id=&name=&sorting=&=' \
+curl 'http://localhost:8160/v1/proxy_folders?workspaceId=-1&start=0&total=1000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&sorting=name%20ASC&location=Local' \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Get,
-    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders?workspaceId=&start=&total=&id=&name=&sorting=&="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders?workspaceId=-1&start=0&total=1000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&sorting=name%20ASC&location=Local"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -67,14 +66,16 @@ http://localhost:8160/v1/proxy_folders?workspaceId=&start=&total=&id=&name=&sort
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
@@ -84,8 +85,8 @@ Api-Token: Token from **UserArea2**.
   "items": [
     {
       "id": "123e4567-e89b-12d3-a456-426614174000",
-      "name": null,
-      "location": "Local",
+      "name": "Sample Name",
+      "location": "string",
       "quantity": 1
     }
   ]
