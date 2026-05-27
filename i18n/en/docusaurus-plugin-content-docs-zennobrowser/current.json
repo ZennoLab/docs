@@ -118,5 +118,177 @@
   "sidebar.zennobrowserSidebar.category.Управление потоками.link.generated-index.title": {
     "message": "Thread Management",
     "description": "The generated-index page title for category Управление потоками in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление потоками выполнения": {
+    "message": "Thread Management",
+    "description": "The label for category Управление потоками выполнения in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление потоками выполнения.link.generated-index.title": {
+    "message": "Thread Management",
+    "description": "The generated-index page title for category Управление потоками выполнения in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление потоками выполнения.link.generated-index.description": {
+    "message": "Operations for creating, reusing, and stopping execution threads.",
+    "description": "The generated-index page description for category Управление потоками выполнения in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.ZennoBrowser": {
+    "message": "ZennoBrowser",
+    "description": "The label for category ZennoBrowser in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.ZennoBrowser.link.generated-index.description": {
+    "message": "Browser automation documentation with ZennoBrowser",
+    "description": "The generated-index page description for category ZennoBrowser in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.??????????.link.generated-index.description": {
+    "message": "Learn the basics of working with ZennoBrowser",
+    "description": "The generated-index page description for category ?????????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.????????? ? ?????????.link.generated-index.title": {
+    "message": "Installation and setup",
+    "description": "The generated-index page title for category ????????? ? ????????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.????????? ? ?????????.link.generated-index.description": {
+    "message": "Here we explain how to install and set up ZennoBrowser",
+    "description": "The generated-index page description for category ????????? ? ????????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.???????? ???????????.link.generated-index.description": {
+    "message": "What can you do with ZennoBrowser?",
+    "description": "The generated-index page description for category ???????? ??????????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ? ZennoPoster.link.generated-index.description": {
+    "message": "How can you scale your work by connecting ZennoBrowser to ZennoPoster?",
+    "description": "The generated-index page description for category ?????????? ? ZennoPoster in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????????? ??????????.link.generated-index.description": {
+    "message": "Frequently asked questions about ZennoBrowser, usage examples, and other information",
+    "description": "The generated-index page description for category ?????????????? ?????????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ??????? ????????": {
+    "message": "Folder Management",
+    "description": "The label for category ?????????? ??????? ???????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ??????? ????????.link.generated-index.title": {
+    "message": "Folder Management",
+    "description": "The generated-index page title for category ?????????? ??????? ???????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ??????? ????????.link.generated-index.description": {
+    "message": "Operations for working with ZennoBrowser profile folders.",
+    "description": "The generated-index page description for category ?????????? ??????? ???????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ????????? ????????": {
+    "message": "Profile Management",
+    "description": "The label for category ?????????? ????????? ???????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ????????? ????????.link.generated-index.title": {
+    "message": "Profile Management",
+    "description": "The generated-index page title for category ?????????? ????????? ???????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ????????? ????????.link.generated-index.description": {
+    "message": "Operations for working with ZennoBrowser browser profiles.",
+    "description": "The generated-index page description for category ?????????? ????????? ???????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.??????": {
+    "message": "Proxy Management",
+    "description": "The label for category ?????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.??????.link.generated-index.title": {
+    "message": "Proxy Management",
+    "description": "The generated-index page title for category ?????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.??????.link.generated-index.description": {
+    "message": "Operations for creating, updating, and deleting proxies.",
+    "description": "The generated-index page description for category ?????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ??????? ??????": {
+    "message": "Proxy Folders Management",
+    "description": "The label for category ?????????? ??????? ?????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ??????? ??????.link.generated-index.title": {
+    "message": "Proxy Folders Management",
+    "description": "The generated-index page title for category ?????????? ??????? ?????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ??????? ??????.link.generated-index.description": {
+    "message": "Operations for organizing proxies into folders.",
+    "description": "The generated-index page description for category ?????????? ??????? ?????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ????????.link.generated-index.description": {
+    "message": "Operations for starting, stopping, and retrieving browser instance information.",
+    "description": "The generated-index page description for category ?????????? ???????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.???????": {
+    "message": "Product",
+    "description": "The label for category ??????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.???????.link.generated-index.title": {
+    "message": "Product",
+    "description": "The generated-index page title for category ??????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.???????.link.generated-index.description": {
+    "message": "Operations for retrieving product information, browser version, limits, and tariff.",
+    "description": "The generated-index page description for category ??????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.?????????? ???????? ??????????.link.generated-index.description": {
+    "message": "Operations for creating, reusing, and stopping execution threads.",
+    "description": "The generated-index page description for category ?????????? ???????? ?????????? in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками профилей": {
+    "message": "Folder Management",
+    "description": "The label for category Управление папками профилей in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками профилей.link.generated-index.title": {
+    "message": "Folder Management",
+    "description": "The generated-index page title for category Управление папками профилей in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками профилей.link.generated-index.description": {
+    "message": "Operations for working with ZennoBrowser profile folders.",
+    "description": "The generated-index page description for category Управление папками профилей in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление профилями браузера": {
+    "message": "Profile Management",
+    "description": "The label for category Управление профилями браузера in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление профилями браузера.link.generated-index.title": {
+    "message": "Profile Management",
+    "description": "The generated-index page title for category Управление профилями браузера in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление профилями браузера.link.generated-index.description": {
+    "message": "Operations for working with ZennoBrowser browser profiles.",
+    "description": "The generated-index page description for category Управление профилями браузера in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками прокси": {
+    "message": "Proxy Folders Management",
+    "description": "The label for category Управление папками прокси in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками прокси.link.generated-index.title": {
+    "message": "Proxy Folders Management",
+    "description": "The generated-index page title for category Управление папками прокси in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Управление папками прокси.link.generated-index.description": {
+    "message": "Operations for organizing proxies into folders.",
+    "description": "The generated-index page description for category Управление папками прокси in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Пресеты": {
+    "message": "Presets",
+    "description": "The label for category Пресеты in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Пресеты.link.generated-index.title": {
+    "message": "Presets",
+    "description": "The generated-index page title for category Пресеты in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Пресеты.link.generated-index.description": {
+    "message": "Operations for working with presets and preset extensions.",
+    "description": "The generated-index page description for category Пресеты in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Продукт": {
+    "message": "Product",
+    "description": "The label for category Продукт in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Продукт.link.generated-index.title": {
+    "message": "Product",
+    "description": "The generated-index page title for category Продукт in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Продукт.link.generated-index.description": {
+    "message": "Operations for retrieving product information, browser version, limits, and tariff.",
+    "description": "The generated-index page description for category Продукт in sidebar zennobrowserSidebar"
   }
-} 
+}
