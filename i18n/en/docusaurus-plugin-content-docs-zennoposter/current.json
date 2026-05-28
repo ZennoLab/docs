@@ -434,6 +434,18 @@
   "sidebar.zennoposterSidebar.category.ZennoPoster 5 — история изменений": {
     "message": "ZennoPoster 5 — Change History",
     "description": "The label for category ZennoPoster 5 — Change History in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ИИ": {
+    "message": "AI",
+    "description": "The label for category ИИ in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ИИ.link.generated-index.title": {
+    "message": "AI",
+    "description": "The generated-index page title for category ИИ in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ИИ.link.generated-index.description": {
+    "message": "Actions for working with LLM providers and AI services.",
+    "description": "The generated-index page description for category ИИ in sidebar zennoposterSidebar"
   }
 }
 
