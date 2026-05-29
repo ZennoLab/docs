@@ -9,9 +9,16 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Место хранения профилей
 <DisclaimerNotice />
 
+По умолчанию профили хранятся в директории:
+```
+C:\Users\{USER}\AppData\Local\ZennoLab\Profiles
+```
+
+
 Сейчас назначение пути для хранения профилей выглядит так:
 1. Нужно создать файл `zp8.profilemanager.json` в моих документах (если файл отсутствует)
 2. Добавить секцию Paths в файл
+
 Пример:
 
 **Для сохранения в папку TWST**
@@ -25,9 +32,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **Либо если вы хотите сохранять профили на диск D в папку %Name% , то добавляем:**
 ```json
 { "Paths": 
-    { "ProfilesRootPath": "D:/%Name%" } 
+    { "ProfilesRootPath": "D:/Name" } 
 }
 ```
 :::warning **Обратите внимание**
-Что путь через проводник пишется так `D:\%Name%`,а для JSON нужно `D:/%Name%`.
+Что путь через проводник пишется так `D:\Name`,а для JSON нужно `D:/Name`.
 :::
