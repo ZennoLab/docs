@@ -1,0 +1,600 @@
+---
+sidebar_position: 7
+title: "AI Assistant"
+description: "This document describes the built-in ZennoPoster 7 AI assistant (ProjectMaker), how it works, its limitations, and recommendations for using it effectively."
+date: "2026-06-04"
+slug: ai-assistant
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+# AI Assistant
+
+## Contents {#contents}
+
+1. [What is the AI assistant in ZennoPoster?](#1-what-is-the-ai-assistant-in-zennoposter)
+2. [Two operating modes: Assistant and Agent](#2-two-operating-modes-assistant-and-agent)
+3. [How the agent builds projects: three scenarios](#3-how-the-agent-builds-projects-three-scenarios)
+4. [Turn limits and the continuation protocol](#4-turn-limits-and-the-continuation-protocol)
+5. [Chat context and memory](#5-chat-context-and-memory)
+6. [Connecting and choosing a model](#6-connecting-and-choosing-a-model)
+7. [Known limitations](#7-known-limitations)
+8. [Tips for phrasing tasks](#8-tips-for-phrasing-tasks)
+9. [Common mistakes and FAQ](#9-common-mistakes-and-faq)
+10. [Solution architecture (for advanced users)](#10-solution-architecture-for-advanced-users)
+11. [Connecting external AI assistants (optional)](#11-connecting-external-ai-assistants-optional)
+12. [AI assistant development](#12-ai-assistant-development)
+
+---
+
+## 1. What is the AI assistant in ZennoPoster? {#1-what-is-the-ai-assistant-in-zennoposter}
+
+The AI assistant is a chat interface built into ProjectMaker that lets you:
+
+- **describe a task in words** → the agent will add the cubes to the project on its own;
+- **ask questions** about ZennoPoster, C#, and browser automation;
+- **debug and fix** projects that have already been built.
+
+Under the hood, the assistant uses a language model (LLM) through Semantic Kernel (Microsoft) and two MCP servers:
+
+| Server | Address | What it can do |
+|---|---|---|
+| **Project MCP** | `http://localhost:6107` | Read the project structure, add/edit cubes, manage lists and variables |
+| **Browser MCP** | `http://localhost:6108` | Control a live browser inside ProjectMaker: clicks, form filling, navigation, DOM reading |
+
+> MCP servers start automatically together with ProjectMaker. The port addresses are only needed if you are connecting an **external** AI assistant (see [section 11](#11-connecting-external-ai-assistants-optional)) – nothing needs to be configured for the built-in chat.
+
+---
+
+## 2. Two operating modes: Assistant and Agent {#2-two-operating-modes-assistant-and-agent}
+
+Two modes are available in the ProjectMaker interface. These are **fundamentally different** things.
+
+### 2.1 Assistant – read-only {#21-assistant--read-only}
+
+Assistant works in **read-only** mode: it can see your project and tell you everything about it, but it **does not change anything**. This is a safe mode for production scenarios – it cannot accidentally break the project.
+
+| Parameter | Value |
+|---|---|
+| Access to project | ✅ Read-only (structure, cubes, parameters) |
+| Project modification | ❌ No |
+| Browser access | ❌ No |
+| What it can do | Answer questions, explain, analyze, advise |
+
+**What Assistant can do:**
+- Read the project structure and explain what the selected cube does
+- Analyze errors from the last run and suggest the cause
+- Tell you about available cube parameters
+- Explain how a particular ZennoPoster function works
+- Help with C# code and advise on automation architecture
+
+**What not to expect from Assistant:**
+- That it will add, change, or delete cubes in the project
+- That it will open or control the browser
+- That it will build automation on its own
+
+---
+
+### 2.2 Agent – full access {#22-agent--full-access}
+
+Agent has **full read and write access**. It can independently:
+
+- **add, modify, move, and delete cubes**;
+- **build links** between cubes (success/error), create and rename groups;
+- **create and fill tables, lists, and variables**, link tables to Google Sheets;
+- **control a running browser** – tabs, URL navigation, DOM reading, clicks, text input, event emulation;
+- **run individual cubes and read their logs** – to debug the scenario step by step;
+- **write code for OwnCode\|CSharp cubes** – the assistant knows the current C# project API (`IZennoPosterProjectModel`, `Instance`, and others).
+
+| Parameter | Value |
+|---|---|
+| Tools (MCP) | ✅ Yes |
+| Access to project | ✅ Reads and modifies structure |
+| Browser access | ✅ Controls a live browser |
+| What it can do | Build/edit projects autonomously |
+
+**Use Agent when:**
+- You want AI to build automation from scratch
+- You need to add new steps to an existing project
+- You want to debug/fix a project
+- You need to record browser actions as cubes
+
+**Keep in mind:**
+- The agent works step by step – each action (tool call) is one "turn"
+- There is a turn limit for each request (see section 4)
+- After the agent finishes, **check the result** – sometimes adjustments are needed
+
+---
+
+## 3. How the agent builds projects: three scenarios {#3-how-the-agent-builds-projects-three-scenarios}
+
+The agent chooses one of three strategies depending on your task. Understanding these strategies will help you phrase requests correctly.
+
+---
+
+### Scenario A: RECORD – recording actions in the browser {#scenario-a-record--recording-actions-in-the-browser}
+
+**When it is used:** the task involves the browser – clicking, filling out a form, logging in, scraping a page.
+
+**How it works:**
+1. The agent enables recording mode (`SetRecording = true`)
+2. Controls the browser through Browser MCP (real clicks/navigation)
+3. All actions are **automatically turned into cubes** in the project
+4. When finished, it disables recording (`SetRecording = false`)
+
+**Example request:**
+> "Log in to example.com using username user@mail.com and password 12345"
+
+**What you will see in the project:** a chain of cubes – navigation, text input, button click.
+
+**Important to know:**
+- The browser must be open in ProjectMaker
+- Do not touch the browser while the agent is working – it controls it itself
+- If the site requires CAPTCHA, the agent will stop and ask for help
+
+---
+
+### Scenario B: BUILD – programmatic logic assembly {#scenario-b-build--programmatic-logic-assembly}
+
+**When it is used:** logic without a browser – working with variables, lists, conditions, loops, HTTP requests, C# code.
+
+**How it works:**
+1. The agent looks for the required cube types (`FindActions`)
+2. Gets the cube parameter schema (`GetActionSchema`)
+3. Adds a cube with filled parameters (`AddAction`)
+4. Configures links between cubes (`SetActionLinks`)
+
+**Example request:**
+> "Add a check: if variable `status` equals `ok`, go down the success branch, otherwise go down the error branch"
+
+**What you will see in the project:** condition and transition cubes with links.
+
+**Important to know:**
+- BUILD is slower than RECORD – each cube requires several turns
+- Complex projects are better built in parts (request → check → next request)
+
+---
+
+### Scenario C: EDIT – editing existing cubes {#scenario-c-edit--editing-existing-cubes}
+
+**When it is used:** you need to fix the parameters of an existing cube.
+
+**How it works:**
+1. The agent gets cube details (`GetActionDetails`)
+2. Makes changes (`EditAction`)
+
+**Example request:**
+> "Fix the XPath selector in the cube to this new one: //div[@class='new-class']"
+
+**Critically important:** before editing, the agent **must** first read the current state of the cube. If the agent tries to edit "blind," stop it and say "first read the cube parameters."
+
+---
+
+### Mixed tasks (RECORD + BUILD) {#mixed-tasks-record--build}
+
+If a task requires both browser actions and logic, the agent first fully completes the RECORD part, turns off recording, and only then moves on to BUILD. Do not expect both parts to be interleaved – this is a deliberate architectural decision for reliability.
+
+---
+
+## 4. Turn limits and the continuation protocol {#4-turn-limits-and-the-continuation-protocol}
+
+### What a "turn" is {#what-a-turn-is}
+
+Each tool call by the agent (open browser, add cube, read DOM, etc.) is one turn. The agent cannot make an unlimited number of turns in a single request.
+
+### Limits {#limits}
+
+| Situation | Behavior |
+|---|---|
+| Task completed within the limit | The agent finishes and reports back |
+| Task not completed, limit is close | The agent stops at a logical checkpoint and asks to continue |
+| Infinite loop (DOM without cubes) | The agent receives a warning and must change strategy |
+
+### How to continue working {#how-to-continue-working}
+
+When the agent says it has stopped, type:
+
+```
+continue
+```
+
+When it receives this command, the agent automatically:
+1. Reads the current project structure (`GetProjectStructure`)
+2. Finds out the cursor position (`GetCursor`)
+3. Checks recording status (`GetRecording`)
+4. Continues from where it left off
+
+> **⚠ You do not need** to repeat the whole task from scratch – the agent restores the context on its own.
+
+### Sign of a hang-up (loop-guard) {#sign-of-a-hang-up-loop-guard}
+
+If the agent reads the page DOM many times in a row but does not add cubes, that is a sign it is stuck. The agent should either enable recording and perform an action, use selectors it has already seen, or ask you. If you see that the agent is "reading the page" in circles without any result, type:
+
+```
+you are stuck, you are not adding cubes. use the selectors you already found or ask me
+```
+
+---
+
+## 5. Chat context and memory {#5-chat-context-and-memory}
+
+### How memory works {#how-memory-works}
+
+The AI model does not have long-term memory. It works with a "context window" – a certain number of tokens (words/characters) that fit into a single request to the model.
+
+| Aspect | Reality |
+|---|---|
+| Does it remember past sessions | ❌ No – each new chat starts from a blank slate |
+| Does it remember the beginning of a long dialogue | ⚠ Partially – earlier messages may "fall out" of the window |
+| Does it remember the project structure | ✅ Yes – through calling `GetProjectStructure` each time |
+
+### Practical consequences {#practical-consequences}
+
+1. **Long dialogues degrade.** If the chat has become very long (50+ messages), start a new one – the agent was not "remembering" the history anyway, it will still read the project again.
+
+2. **Do not rely on "you remember."** Do not say "do it like before" without specifying what exactly. It is better to repeat the details.
+
+3. **After a broken session, start a new chat.** The agent does not know what happened before.
+
+4. **Project structure comes from tools, not memory.** The agent always reads the current state through MCP rather than "remembering" it from the chat.
+
+---
+
+## 6. Connecting and choosing a model {#6-connecting-and-choosing-a-model}
+
+> **This is the required first step.** Without connecting at least one model, the AI assistant will not work – neither in Assistant mode nor in Agent mode. The model and access key are set once in the program settings.
+
+### Step 1. Open model settings {#step-1-open-model-settings}
+
+ZennoPoster main screen → **Settings** (gear icon) → **"AI"** tab → **"AI service modules settings"** block.
+
+### Step 2. Enter the key for the required service {#step-2-enter-the-key-for-the-required-service}
+
+**Built-in services.** Several providers are available "out of the box." Each has two fields – "Secret key" and "Additional parameters" (API server address):
+
+| Service | Server address ("Additional parameters") |
+|---|---|
+| **OpenAI** | `https://api.openai.com` |
+| **Claude** (Anthropic) | `https://api.anthropic.com` |
+| **DeepSeek** | `https://api.deepseek.com` |
+| **Gemini** (Google) | `https://generativelanguage.googleapis.com` |
+
+Setup order:
+
+1. In the **"Secret key"** field, paste your API key for the selected service (for example, `sk-...` for DeepSeek, `sk-ant-...` for Claude).
+2. The **"Additional parameters"** field is the API server address. You only need to change it if you use a proxy or a compatible third-party endpoint; for official services, leave the default value.
+3. **Restart ZennoPoster** – without a restart, the settings will not be applied (this is warned about by the red text at the top of the window: *"You need to restart the program for the settings to take effect"*).
+
+> **Where to get the key:** in the account dashboard of the relevant service (OpenAI Platform, Anthropic Console, DeepSeek, Google AI Studio). The key is tied to your paid account.
+
+### Step 3. Which model to choose {#step-3-which-model-to-choose}
+
+We tested different models on real ZennoPoster tasks. In short:
+
+- **DeepSeek – recommended for most users.** It is the most cost-effective option: **hundreds of requests cost less than just a few dollars**. At the same time, the results on ZennoPoster tasks are very good. On average, a project request consumes 10-100 thousand tokens, depending on the project size.
+- **Claude – the strongest model** (cleaner output, more reliable with loops, neater stopping), but noticeably more expensive to use.
+- The difference in quality between them is **small** – DeepSeek is not far behind Claude. So for everyday work, DeepSeek offers better value for money.
+
+| Model | When to choose |
+|---|---|
+| **DeepSeek** | **Default choice** – best balance of price and quality, very cheap at large volumes |
+| **Claude** | When you need maximum quality and cost is not critical |
+
+> **Bottom line:** start with **DeepSeek** – it is enough for the vast majority of tasks, and costs are minimal. Switch to Claude only if you hit quality limits on complex projects.
+
+### Adding a service {#adding-a-service}
+
+Click the **"Add your own service"** link – the **"Adding a new AI module"** window will open:
+
+| Field | What to enter |
+|---|---|
+| **Module name** | Any name under which the service will appear in the list |
+| **API** | API format from the dropdown list (for example, `DeepSeek`) – choose the one your service is compatible with |
+| **Token** | Service access key |
+| **Server** | API server address (for example, `https://api.openai.com` or the address of your local server) |
+
+Click **"Add"** and restart the program. After that, the module will appear in the common list of services alongside the built-in ones, and it can be selected for the agent to use.
+
+> ⚠ **Key security.** An API key is access to your paid account. Do not show it in screenshots or screen recordings, do not send it in chats, and do not store it openly. If the key has been exposed, revoke it immediately in the provider dashboard and create a new one.
+
+---
+
+## 7. Known limitations {#7-known-limitations}
+
+### 7.1 What the agent does poorly or unstably {#71-what-the-agent-does-poorly-or-unstably}
+
+| Limitation | Explanation | Workaround |
+|---|---|---|
+| **CAPTCHA** | The agent does not solve CAPTCHA | Solve it manually, then ask the agent to continue |
+| **Complex CSS/XPath** | On unusual sites, it may pick the wrong selector | Check selectors after building, fix them manually |
+| **Long projects (100+ cubes)** | GetProjectStructure returns a lot of data – the model may lose track | Build the project in parts, give tasks in blocks |
+| **"Blind" editing** | If the agent edits a cube without GetActionDetails, parameters may break | Explicitly require: "first read the cube, then edit" |
+| **Nested groups** | Deeply nested cube groups may be interpreted incorrectly | Simplify the structure, work with one nesting level |
+| **Dynamic sites (SPA)** | JS apps with dynamic loading are harder to record | Wait for loading manually, then tell the agent to continue |
+| **"Thinking out loud" (think-aloud)** | During a long RECORD session, the model (especially DeepSeek) comments on every step – "let's take a look… the DOM is large… I'll try another way" – instead of giving a clean result | Not critical for the final result, but annoying to read. If it bothers you, choose a model with cleaner output or ask it to "show only the final cube summary" |
+
+---
+
+### 7.2 What the agent cannot do in principle {#72-what-the-agent-cannot-do-in-principle}
+
+- **Run a project for execution** – only build the structure
+- **Call external APIs directly** (without the corresponding cube in the project)
+- **Save templates** between sessions
+- **See the execution results** of a task already running in ZennoPoster (only the project structure)
+- **Work with files on disk** (only through project variables/lists)
+
+---
+
+## 8. Tips for phrasing tasks {#8-tips-for-phrasing-tasks}
+
+### ✅ Good requests {#-good-requests}
+
+**Specific, with details:**
+> "Go to https://example.com/login, enter username `{login}` in the #username field and password `{password}` in the #password field, click the "Log in" button, wait for the profile page to load"
+
+**With variable specification:**
+> "Save the parsing result to variable `parsed_data`"
+
+**With branching clarification:**
+> "If element .success-msg is found – go down the success branch. If element .error-msg – go down the error branch"
+
+**Broken down into blocks:**
+> "First do only the authorization. When it is ready, tell me, I will check it and give you the next block"
+
+---
+
+### ❌ Bad requests {#-bad-requests}
+
+**Too general:**
+> "Make auto-posting to social media"
+
+*Problem: the agent does not know what exactly to do, on which platform, or with what data.*
+
+**Without context:**
+> "Add a check"  
+*Problem: what kind of check? Where? After which cube?*
+
+**"Everything at once":**
+> "Do authorization, parse all posts, process the data, write it to the database, and send a report"
+
+*Problem: the agent will most likely hit the turn limit halfway through. Better to do it one block at a time.*
+
+**Without saying where to insert it:**
+> "Add a condition cube"
+
+*The agent does not know exactly where. Specify: "add after cube with id X" or "at the start of group Y."*
+
+---
+
+### Template for a good request {#template-for-a-good-request}
+
+```
+[What needs to be done] + [Where exactly] + [With what data/variables] + [Branching conditions] + [What to save as a result]
+```
+
+**Example:**
+> "After the authorization cube, add retrieval of the profile page HTML via GET. Find the value of the `<span class="username">` tag in it and save it to variable `current_username`. If the element is not found – go down the error branch"
+
+---
+
+## 9. Common mistakes and FAQ {#9-common-mistakes-and-faq}
+
+### ❓ The agent does nothing – it just replies with text {#-the-agent-does-nothing--it-just-replies-with-text}
+
+**Cause:** you are in **Assistant** mode, not Agent.  
+**Solution:** switch to Agent mode.
+
+---
+
+### ❓ The agent is "stuck" – reading the DOM again and again {#-the-agent-is-stuck--reading-the-dom-again-and-again}
+
+**Cause:** it cannot find the required element or does not know how to proceed.  
+**Solution:** type:
+```
+You are reading the DOM in circles without taking action. Either enable recording and click the element, or tell me that you cannot find it – I will help
+```
+
+---
+
+### ❓ The agent said "continue" but does not remember what it was doing {#-the-agent-said-continue-but-does-not-remember-what-it-was-doing}
+
+**Cause:** the context is full or you started a new chat.  
+**Solution:** in a new chat, give the agent context:
+```
+You were building an authorization project for example.com. The authorization is done (cubes 1-5). You need to add parsing – you stopped before this step. Continue
+```
+
+---
+
+### ❓ ``` appeared in the C# cube code {#--appeared-in-the-c-cube-code}
+
+**Cause:** the agent inserted a markdown wrapper instead of plain code.  
+**Solution:** manually remove the lines ` ```csharp ` at the beginning and ` ``` ` at the end. Or ask the agent:
+```
+Rewrite the code of the C# cube with id=X – remove the markdown wrappers, leave only plain C#
+```
+
+---
+
+### ❓ The agent added cubes in the wrong place {#-the-agent-added-cubes-in-the-wrong-place}
+
+**Cause:** the cursor (`SetCursor`) was not where you expected it to be.  
+**Solution:** before adding cubes, explicitly specify the position:
+```
+Add the cubes after the cube with id=N, in the "Authorization" group
+```
+
+---
+
+### ❓ The agent "made up" a C# method that does not exist {#-the-agent-made-up-a-c-method-that-does-not-exist}
+
+**Cause:** the language model is hallucinating the API, especially ZennoPoster-specific parts.  
+**Solution:** 
+- Check C# code before running it
+- Use the official documentation
+- Ask the agent: "Does this method exist in ZennoPoster? Show an example from the documentation"
+
+
+---
+
+### ❓ The agent started doing something, but did the wrong thing. How do I roll it back? {#-the-agent-started-doing-something-but-did-the-wrong-thing-how-do-i-roll-it-back}
+
+**Problem:** ZennoPoster has no "undo" for agent actions (Ctrl+Z).  
+**Prevention:** save a copy of the project before a complex task.  
+**After an error:** ask the agent to delete the added cubes by name/id, or delete them manually.
+
+---
+
+### ❓ Can I work with the browser while the agent is working? {#-can-i-work-with-the-browser-while-the-agent-is-working}
+
+**Answer:** no. In RECORD mode, the agent controls the browser – working in parallel will cause action conflicts. Wait until it finishes or stop the agent.
+
+---
+
+## 10. Solution architecture (for advanced users) {#10-solution-architecture-for-advanced-users}
+
+### Component diagram {#component-diagram}
+
+```
+ProjectMaker (UI)
+       │
+       ▼
+  Chat Interface
+       │
+       ▼
+  Semantic Kernel ──────────────────────────────┐
+  (Microsoft, orchestrator)                     │
+       │                                         │
+       ├──► LLM Model (chosen by the user)       │
+       │                                         │
+       ├──► Project MCP Server ◄─────────────────┘
+       │         │
+       │         ├── GetProjectStructure
+       │         ├── AddAction / EditAction
+       │         ├── GetActionDetails / GetActionSchema
+       │         ├── FindActions
+       │         ├── SetCursor / GetCursor
+       │         ├── SetRecording / GetRecording
+       │         ├── SetActionLinks
+       │         └── Variables / Lists / Groups
+       │
+       └──► Browser MCP Server
+                 │
+                 ├── Navigate
+                 ├── Click / Type / Select
+                 ├── GetDomText / GetDomSnapshot
+                 ├── Screenshot
+                 └── Scroll / Hover
+```
+
+### How one agent "turn" works {#how-one-agent-turn-works}
+
+```
+The user writes a request
+          │
+          ▼
+Semantic Kernel sends the request to the LLM
+(system prompt + history + project context)
+          │
+          ▼
+The LLM decides: reply with text OR call a tool
+          │
+    ┌─────┴─────┐
+    │           │
+Reply        Tool call
+with text    (Project MCP / Browser MCP)
+    │           │
+    │           ▼
+    │     The tool runs
+    │     The result is returned to the LLM
+    │           │
+    └─────┬─────┘
+          │
+          ▼
+The LLM forms the next action or the final reply
+```
+
+### Recording mode (SetRecording) {#recording-mode-setrecording}
+
+Recording mode is the key mechanism of the RECORD scenario. When it is **enabled**:
+
+- Every Browser MCP action (click, input, navigation) **automatically creates a cube** in the project
+- Cubes are added sequentially at the current cursor position
+- The agent does not call `AddAction` explicitly – the browser records for it
+
+When it is **disabled**:
+
+- Browser MCP actions are performed, but **are not recorded** in the project
+- This is used for "reading" the page state without cluttering the project with unnecessary cubes
+
+### Project cursor (SetCursor / GetCursor) {#project-cursor-setcursor--getcursor}
+
+The cursor determines **where** the next cube will be inserted. It consists of two parameters:
+- `actionId` – the id of the cube **after which** the next one will be inserted
+- `groupId` – the id of the group **into which** the cube will be inserted
+
+Before adding a series of cubes, the agent must set the cursor to the right place. If this is not done, cubes may appear in an unexpected place in the project.
+
+---
+
+## 11. Connecting external AI assistants (optional) {#11-connecting-external-ai-assistants-optional}
+
+The built-in chat in ProjectMaker works "out of the box" – nothing needs to be configured. But the same MCP servers (Project MCP and Browser MCP) can also be connected to **external** AI assistants so you can control the project and browser from your editor or terminal.
+
+> **These are two different things.** The built-in chat and an external assistant are independent entry points to the same MCP servers. If the built-in chat is enough for you, you can skip this section.
+
+**General requirement:** ProjectMaker must be **running** – the MCP servers start together with it and listen on:
+- **BrowserMCP** → `http://localhost:6108`
+- **ProjectMCP** → `http://localhost:6107`
+
+### GitHub Copilot {#github-copilot}
+
+1. Make sure ProjectMaker is running.
+2. Open the profile folder: `Win + R` → `%USERPROFILE%` → Enter.
+3. Create the file `.mcp.json` (for example, `C:\Users\YourName\.mcp.json`) with the following contents:
+
+```json
+{
+  "servers": {
+    "BrowserMCP": { "type": "http", "url": "http://localhost:6108" },
+    "ProjectMCP": { "type": "http", "url": "http://localhost:6107" }
+  }
+}
+```
+
+4. Restart Visual Studio (or reload the Copilot extension).
+
+### Claude Code (CLI) {#claude-code-cli}
+
+```sh
+claude mcp add BrowserMCP --transport http http://localhost:6108
+claude mcp add ProjectMCP --transport http http://localhost:6107
+claude mcp list   # check
+```
+
+Remove later: `claude mcp remove BrowserMCP` and `claude mcp remove ProjectMCP`.
+
+### OpenAI Codex (CLI) {#openai-codex-cli}
+
+```sh
+codex mcp add BrowserMCP --url http://localhost:6108
+codex mcp add ProjectMCP --url http://localhost:6107
+codex mcp list   # check
+```
+
+---
+
+## 12. AI assistant development {#12-ai-assistant-development}
+
+The AI assistant in ZennoPoster is actively evolving. We are constantly improving its capabilities, expanding the set of tools, increasing agent stability, and improving task understanding quality. As language models themselves improve, the assistant is also becoming more accurate and faster.
+
+This means that the limitations described in section 7 will decrease over time, while usage scenarios will expand. 
+
+At the moment, we are actively working on:
+1. adding a limited default free model
+2. the ability to work with several chats at once, as well as switching between them while preserving context and chat history
+3. adding support for openrouter
+4. other improvements to the AI assistant
+
+> **Your opinion matters to us.** We will be glad to receive user comments and suggestions: what works well, what is missing, what errors occur, and what tasks you would like to automate with AI. Your real experience directly affects the direction in which we develop the assistant. Share your feedback – it helps make the tool better.
