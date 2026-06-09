@@ -9,57 +9,37 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Proxy API
 <DisclaimerNotice />
 
-## Description  
-**`IDroidProxyAPI Proxy`**  
+## Description
 
-This interface is for managing your device's proxy server settings. It lets you set up basic proxy parameters as well as advanced options needed for more precise connection configuration.  
+`IDroidProxyAPI` is designed to manage proxy server settings on the device in ZennoDroid. Allows you to configure basic proxy parameters as well as advanced settings for fine-tuning the connection.
 
-### Properties  
-- **Block WebRTC leaks**  
-```csharp
-bool BlockWebRtcLeak { get; set; }
-```   
-
-- **Block UDP leaks**  
-```csharp
-bool BlockUDPLeak { get; set; }
-```   
-
-- **DNS requests over TCP**  
-```csharp
-bool UseDnsTcp { get; set; }
-```   
-
-- **DNS requests over UDP**  
-```csharp
-bool UseDnsUdp { get; set; }
-```  
 _______________________________________________
 ## Methods
-### Set Proxy
-```csharp
-void SetProxy(string proxy)
-```   
 
-*Parameters:*   
-```csharp
-string proxy // Proxy value. Format: login:pass@IP:port
-``` 
+- **`void SetProxy(string proxy, IDroidProxySettings settings)`**  
+    Sets a proxy with connection parameters.
+    
+    **Parameters:**
+    - `proxy` — proxy value (format: `login:pass@IP:port`);
+    - `settings` — proxy parameters (e.g. `new DroidProxySettings.ClashViaPC()`).
 
 #### Example  
 ```csharp
 var proxy = instance.DroidInstance.Proxy;
 
-// Set up a proxy
-proxy.SetProxy("socks5://login:pass@100.20.30.40:8080");
-proxy.SetProxy("https://login:pass@100.20.30.40:8080");
-proxy.SetProxy("login:pass@100.20.30.40:8080");
+// Set proxy
+var settings = new DroidProxySettings.ClashViaPC();
+settings.DnsServers = "1.1.1.1";
+instance.DroidInstance.Proxy.SetProxy("socks5://login:pass@100.20.30.40:8080", settings);
 ```
-_______________________________________________ 
-### Get Project Proxy
-```csharp
-string GetProxy()
-```    
+
+---
+
+- **`string GetProxy()`**  
+    Returns the proxy set in the project.
+    
+    **Returns:**  
+    A string with the current proxy value.
 
 #### Example  
 ```csharp
@@ -67,11 +47,11 @@ var proxy = instance.DroidInstance.Proxy;
 
 var projectProxy = proxy.GetProxy(); // Get project proxy
 ```
-_______________________________________________ 
-### Clear Proxy
-```csharp
-void ClearProxy()
-```    
+
+---
+
+- **`void ClearProxy()`**  
+    Clears the proxy settings.
 
 #### Example  
 ```csharp
@@ -79,50 +59,14 @@ var proxy = instance.DroidInstance.Proxy;
 
 proxy.ClearProxy(); // Clear project proxy
 ```
-_______________________________________________ 
-### Set Your Own DNS Server
-```csharp
-void SetDnsServers(string dnsServers)
-```    
 
-*Parameters:*   
-```csharp
-string dnsServers // DNS value.
-``` 
+---
 
-#### Example  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-proxy.SetDnsServers("1.1.1.1,8.8.4.4"); // Set DNS server
-```
-_______________________________________________ 
-### Set Local Address
-```csharp
-void SetLocalAddress(string address)
-```    
-
-*Parameters:*   
-```csharp
-string address // Local address.
-``` 
-
-#### Example  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-proxy.SetLocalAddress("192.168.20.0"); // Set local address
-```
-_______________________________________________ 
-### Enable Private DNS
-```csharp
-void EnablePrivateDns(string address)
-```    
-
-*Parameters:*   
-```csharp
-string address // Private DNS.
-``` 
+- **`void EnablePrivateDns(string address)`**  
+    Enables private DNS.
+    
+    **Parameters:**
+    - `address` — private DNS server address (e.g. `dns.google`).
 
 #### Example  
 ```csharp
@@ -130,16 +74,11 @@ var proxy = instance.DroidInstance.Proxy;
 
 proxy.EnablePrivateDns("dns.google"); // Enable private DNS
 ```
-_______________________________________________ 
-### Disable Private DNS
-```csharp
-void DisablePrivateDns()
-```    
 
-*Parameters:*   
-```csharp
-string address // Private DNS.
-``` 
+---
+
+- **`void DisablePrivateDns()`**  
+    Disables private DNS.
 
 #### Example  
 ```csharp
