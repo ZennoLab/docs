@@ -1,0 +1,277 @@
+---
+sidebar_position: 19
+sidebar_label: Frida API
+title: Frida API | Документация ZennoDroid | ZennoLab
+description: Frida API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Frida API
+<DisclaimerNotice />
+
+## Описание
+
+Набор интерфейсов для динамического анализа и инструментации приложений через **Frida** в ZennoDroid.
+
+| Интерфейс | Описание |
+|---|---|
+| `IFridaDeviceAPI` | Управление Frida Server и подключение к процессам |
+| `IFridaSessionAPI` | Сессия подключения к конкретному процессу |
+| `IFridaScriptAPI` | Жизненный цикл и обмен сообщениями скрипта |
+
+_______________________________________________
+
+## IFridaDeviceAPI
+
+Предназначен для работы с инструментом динамического анализа **Frida** на Android-устройстве. Позволяет управлять Frida Server, подключаться к процессам и внедрять скрипты.
+
+### Id
+
+- **`string Id { get; }`**  
+    Уникальный идентификатор устройства.
+    
+    **Возвращает:**  
+    Строку с ID устройства (например, ADB serial).
+
+### Name
+
+- **`string Name { get; }`**  
+    Имя устройства.
+    
+    **Возвращает:**  
+    Человекочитаемое название устройства или эмулятора.
+
+---
+
+### Attach
+
+- **`IFridaSessionAPI Attach(uint pid)`**  
+    Подключается к уже запущенному процессу.
+    
+    **Параметры:**
+    - `pid` — идентификатор процесса.
+    
+    **Возвращает:**  
+    Объект [`IFridaSessionAPI`](#ifridasessionapi), представляющий активную сессию.
+
+---
+
+### DetachAllSessions
+
+- **`void DetachAllSessions()`**  
+    Отключает все активные Frida-сессии на устройстве.
+
+---
+
+### DetachSessionByScriptName
+
+- **`void DetachSessionByScriptName(string scriptName)`**  
+    Отключает сессию, связанную с указанным скриптом.
+    
+    **Параметры:**
+    - `scriptName` — имя скрипта, по которому производится поиск и отключение.
+
+---
+
+### InstallAndRunServer
+
+- **`void InstallAndRunServer()`**  
+    Устанавливает (если необходимо) и запускает Frida Server на устройстве.
+
+---
+
+### KillServer
+
+- **`void KillServer()`**  
+    Останавливает Frida Server.
+
+---
+
+### LoadScriptToApp
+
+- **`void LoadScriptToApp(string packageName, string source)`**  
+    Загружает и выполняет Frida-скрипт в указанном приложении.
+    
+    **Параметры:**
+    - `packageName` — имя пакета приложения;
+    - `source` — исходный код Frida-скрипта (JavaScript).
+
+---
+
+### LoadScriptToFrontmost
+
+- **`void LoadScriptToFrontmost(string source)`**  
+    Загружает и выполняет скрипт в текущем активном приложении.
+    
+    **Параметры:**
+    - `source` — исходный код скрипта.
+
+---
+
+### Spawn
+
+- **`uint Spawn(string packageName)`**  
+    Запускает приложение в приостановленном состоянии (до выполнения `Resume`).
+    
+    **Параметры:**
+    - `packageName` — имя пакета приложения.
+    
+    **Возвращает:**  
+    `pid` созданного процесса.
+
+---
+
+### Resume
+
+- **`void Resume(uint pid)`**  
+    Возобновляет выполнение ранее запущенного процесса.
+    
+    **Параметры:**
+    - `pid` — идентификатор процесса.
+
+#### Пример.
+```csharp
+var source = project.Variables["script"].Value;
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+var pid = device.Spawn("com.android.settings");
+var session = device.Attach(pid);
+
+var script = session.CreateScript(source, "myScript");
+script.Message += (o, e) => project.SendInfoToLog(e.Message);
+script.Load();
+
+device.Resume(pid);
+```
+
+Содержимое переменной `script` (выводит сообщение в лог):
+```javascript
+console.log('hello!')
+```
+
+_______________________________________________
+
+## IFridaSessionAPI
+
+Представляет сессию подключения к процессу через Frida. Является промежуточным звеном между `IFridaDeviceAPI` (устройство) и `IFridaScriptAPI` (скрипты).
+
+### Pid
+
+- **`uint Pid { get; }`**  
+    Идентификатор процесса, к которому подключена сессия.
+    
+    **Возвращает:**  
+    `pid` процесса.
+
+---
+
+### CreateScript
+
+- **`IFridaScriptAPI CreateScript(string source, string name)`**  
+    Создаёт Frida-скрипт с указанным именем.
+    
+    **Параметры:**
+    - `source` — исходный код скрипта (JavaScript);
+    - `name` — имя скрипта.
+    
+    **Возвращает:**  
+    Объект [`IFridaScriptAPI`](#ifridascriptapi).
+
+- **`IFridaScriptAPI CreateScript(string source)`**  
+    Создаёт Frida-скрипт без явного указания имени.
+    
+    **Параметры:**
+    - `source` — исходный код скрипта.
+    
+    **Возвращает:**  
+    Объект [`IFridaScriptAPI`](#ifridascriptapi).
+
+---
+
+### Detach
+
+- **`void Detach()`**  
+    Отключается от процесса.
+    
+    **Описание:**  
+    Завершает текущую сессию Frida и освобождает ресурсы.
+
+_______________________________________________
+
+## IFridaScriptAPI
+
+Представляет отдельный Frida-скрипт. Управляет жизненным циклом скрипта и обменом сообщениями между C# кодом и внедрённым JavaScript.
+
+### Message
+
+- **`EventHandler<FridaScriptMessageEventArgs> Message`**  
+    Событие: сообщение от скрипта.
+    
+    **Описание:**  
+    Сообщения от скрипта (через `send()` или `console.log()`) обрабатываются в C# через это событие.
+
+### Name
+
+- **`string Name { get; }`**  
+    Имя скрипта.
+    
+    **Возвращает:**  
+    Строковое имя, идентифицирующее скрипт.
+
+---
+
+### Load
+
+- **`void Load()`**  
+    Загружает и запускает скрипт в процессе.
+    
+    **Описание:**  
+    После вызова скрипт начинает выполняться.
+
+---
+
+### Unload
+
+- **`void Unload()`**  
+    Выгружает скрипт.
+    
+    **Описание:**  
+    Останавливает выполнение и удаляет скрипт из процесса.
+
+---
+
+### Eternalize
+
+- **`void Eternalize()`**  
+    Делает скрипт «постоянным».
+    
+    **Описание:**  
+    Скрипт продолжает работать даже после завершения сессии или отключения клиента.
+
+---
+
+### Post
+
+- **`void Post(string message)`**  
+    Отправляет сообщение в Frida-скрипт.
+    
+    **Параметры:**
+    - `message` — строковое сообщение.
+    
+    **Описание:**  
+    Используется для передачи данных в JavaScript (обрабатывается через `recv()`).
+
+---
+
+### PostWithData
+
+- **`void PostWithData(string message, byte[] data)`**  
+    Отправляет сообщение с бинарными данными.
+    
+    **Параметры:**
+    - `message` — строковое сообщение;
+    - `data` — массив байтов.
+    
+    **Описание:**  
+    Позволяет передавать бинарные данные (например, файлы, буферы).
+_______________________________________________

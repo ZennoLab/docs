@@ -1,18 +1,36 @@
+---
+sidebar_position: 12
+sidebar_label: QRCodeManager API
+title: QRCodeManager API | Документация ZennoDroid | ZennoLab
+description: QRCodeManager API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# QRCodeManager API
+<DisclaimerNotice />
+
 ## Описание
 
 `IQRCodeManager` предназначен для работы с QR-кодами в ZennoDroid. Позволяет управлять окном сканирования, отображать изображения (например, QR-коды) и взаимодействовать с интерфейсом камеры/сканера.
 
+_______________________________________________
 ## Методы
+
+### CloseQRCodeScanWindow
 
 - **`void CloseQRCodeScanWindow()`**  
     Закрывает окно сканирования QR-кода.
 
 ---
 
+### CloseViewfinderWindow
+
 - **`void CloseViewfinderWindow()`**  
     Закрывает окно видоискателя (камеры).
 
 ---
+
+### DrawImage
 
 - **`void DrawImage(byte[] image, Rectangle area, Rectangle background)`**  
     Отображает изображение на экране.
@@ -34,18 +52,24 @@
 
 ---
 
+### PressQRCodeScanButton
+
 - **`void PressQRCodeScanButton()`**  
     Нажимает кнопку запуска сканирования QR-кода.
 
-### Пример.
+#### Пример.
 ```csharp
 var qr = new QRCodeManager();
 qr.PressQRCodeScanButton();
 ```
+
 ---
+
+### SetViewfinderPosition
 
 - **`void SetViewfinderPosition(Rectangle rect)`**  
     Устанавливает позицию окна видоискателя.
     
     **Параметры:**
     - `rect` — область расположения окна.
+_______________________________________________

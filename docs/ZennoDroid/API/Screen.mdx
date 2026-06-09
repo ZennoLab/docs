@@ -1,13 +1,22 @@
-ссылки нет.
+---
+sidebar_position: 17
+sidebar_label: Screen API
+title: Screen API | Документация ZennoDroid | ZennoLab
+description: Screen API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Screen API
+<DisclaimerNotice />
 
 ## Описание
 
-## `IDroidScreenAPI`
+`IDroidScreenAPI` предоставляет методы для анализа экрана устройства: поиск изображений, пикселей, получение скриншотов и управление захватом экрана.
 
-Интерфейс `IDroidScreenAPI` предоставляет методы для анализа экрана устройства: поиск изображений, пикселей, получение скриншотов и управление захватом экрана.
+_______________________________________________
+## Методы
 
-## Методы:
-
+### FindImage
 
 - **`Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval)`**  
     Выполняет поиск изображения по хэшу в указанных областях экрана.
@@ -19,9 +28,6 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
-
----
 
 - **`Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
     Выполняет поиск изображения с ограничением по времени.
@@ -34,9 +40,6 @@
     
     **Возвращает:**  
     `Rectangle` — найденная область.
-    
-
----
 
 - **`Rectangle FindImage(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval)`**  
     Выполняет поиск одного из нескольких изображений.
@@ -48,9 +51,6 @@
     
     **Возвращает:**  
     `Rectangle` — область первого найденного изображения.
-    
-
----
 
 - **`Rectangle FindImage(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
     Поиск одного из нескольких изображений с ограничением времени.
@@ -63,9 +63,10 @@
     
     **Возвращает:**  
     `Rectangle` — найденная область.
-    
 
 ---
+
+### FindPixel
 
 - **`Point FindPixel(Color color, Rectangle[] rectangles, int variation)`**  
     Ищет пиксель заданного цвета.
@@ -77,9 +78,6 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
-
----
 
 - **`Point FindPixel(Color color, Rectangle[] rectangles, int variation, int searchTime)`**  
     Поиск пикселя с ограничением времени.
@@ -92,9 +90,6 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
-
----
 
 - **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation)`**  
     Ищет пиксель по цвету в HTML-формате.
@@ -106,9 +101,6 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
-
----
 
 - **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime)`**  
     Поиск HTML-цвета с таймаутом.
@@ -121,9 +113,10 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
 
 ---
+
+### FindPixels
 
 - **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation)`**  
     Ищет пиксель из набора цветов.
@@ -135,9 +128,6 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
-
----
 
 - **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime)`**  
     Поиск одного из цветов с ограничением времени.
@@ -150,9 +140,6 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
-
----
 
 - **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation)`**  
     Ищет пиксель из набора HTML-цветов.
@@ -164,9 +151,6 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
-
----
 
 - **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime)`**  
     Поиск HTML-цветов с таймаутом.
@@ -179,9 +163,10 @@
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
-    
 
 ---
+
+### FindImageBlackWhite
 
 - **`Rectangle FindImageBlackWhite(string imageHash, Rectangle[] rectangles, int confidenceInterval, int threshold)`**  
     Поиск изображения в чёрно-белом режиме.
@@ -194,9 +179,6 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
-
----
 
 - **`Rectangle FindImageBlackWhite(string imageHash, Rectangle[] rectangles, int confidenceInterval, int threshold, int searchTime)`**  
     Ч/б поиск с таймаутом.
@@ -210,9 +192,6 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
-
----
 
 - **`Rectangle FindImageBlackWhite(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int threshold)`**  
     Поиск нескольких изображений в ч/б.
@@ -225,9 +204,6 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
-
----
 
 - **`Rectangle FindImageBlackWhite(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int threshold, int searchTime)`**  
     Ч/б поиск нескольких изображений с таймаутом.
@@ -241,9 +217,10 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
 
 ---
+
+### FindImageGrayscale
 
 - **`Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confidenceInterval)`**  
     Поиск изображения в оттенках серого.
@@ -255,9 +232,6 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
-
----
 
 - **`Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
     Поиск grayscale с таймаутом.
@@ -270,9 +244,6 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
-
----
 
 - **`Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval)`**  
     Поиск нескольких изображений в grayscale.
@@ -284,9 +255,6 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
-
----
 
 - **`Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
     Поиск grayscale с таймаутом.
@@ -299,9 +267,10 @@
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
-    
 
 ---
+
+### ScreenshotAsArray
 
 - **`byte[] ScreenshotAsArray()`**  
     Делает скриншот всего экрана.
@@ -309,15 +278,13 @@
     **Возвращает:**  
     Массив байтов изображения.
 
-### Пример.
+#### Пример.
 ```csharp
 var data = instance.DroidInstance.Screen.ScreenshotAsArray();
 using (var ms = new MemoryStream(data))
 using (var bmp = new Bitmap(ms))
 	bmp.Save(project.Path + "myScreen.png");
 ```
-
----
 
 - **`byte[] ScreenshotAsArray(Rectangle area)`**  
     Делает скриншот указанной области.
@@ -327,18 +294,16 @@ using (var bmp = new Bitmap(ms))
     
     **Возвращает:**  
     Массив байтов.
-    
 
 ---
+
+### ScreenshotAsBase64String
 
 - **`string ScreenshotAsBase64String()`**  
     Делает скриншот экрана.
     
     **Возвращает:**  
     Строку Base64.
-    
-
----
 
 - **`string ScreenshotAsBase64String(Rectangle area)`**  
     Делает скриншот области.
@@ -348,22 +313,28 @@ using (var bmp = new Bitmap(ms))
     
     **Возвращает:**  
     Base64 строку.
-    
 
 ---
+
+### RefreshScreen
 
 - **`void RefreshScreen()`**  
-    Обновляет изображение на экране. Используется если выбран тип захвата экрана, который требует ручного обновления (captureScreenMethod = "off").
+    Обновляет изображение на экране. Используется если выбран тип захвата экрана, который требует ручного обновления (`captureScreenMethod = "off"`).
 
 ---
+
+### ResetScreen
 
 - **`void ResetScreen()`**  
     Сбрасывает параметры захвата экрана и запускает новый процесс захвата. Используется для перезапуска захвата при изменении условий (например, при смене разрешения экрана командой `wm size WidthxHeight`).
 
 ---
 
+### SetCaptureScreenQuality
+
 - **`void SetCaptureScreenQuality(int quality)`**  
     Устанавливает качество захвата.
     
     **Параметры:**
     - `quality` — уровень качества (влияет на скорость и точность). Допустимые значения от 0 до 10.
+_______________________________________________

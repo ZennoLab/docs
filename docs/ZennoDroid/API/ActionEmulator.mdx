@@ -1,0 +1,130 @@
+---
+sidebar_position: 18
+sidebar_label: ActionEmulator API
+title: ActionEmulator API | Документация ZennoDroid | ZennoLab
+description: ActionEmulator API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# ActionEmulator API
+<DisclaimerNotice />
+
+## Описание
+
+`IDroidActionEmulatorAPI : IDroidActionAPI`
+
+Интерфейс `IDroidActionEmulatorAPI` расширяет базовый [`IDroidActionAPI`](./Action) и предоставляет методы для управления эмуляторами **MEmu** и **LDPlayer** в ZennoDroid. Позволяет создавать, клонировать, импортировать, удалять и настраивать виртуальные устройства.
+
+## Свойства
+
+### Action
+
+- **`IDroidActionAPI Action`**  
+    Доступ к базовым действиям с устройством (унаследованный функционал через [`IDroidActionAPI`](./Action)).
+
+_______________________________________________
+## Методы
+
+### Clone
+
+- **`int Clone()`**  
+    Создаёт копию текущего эмулятора.
+    
+    **Возвращает:**  
+    Индекс нового эмулятора.
+
+---
+
+### Create
+
+- **`int Create(string version)`**  
+    Создаёт новый эмулятор с указанной версией Android.
+    
+    **Параметры:**
+    - `version` — версия Android.  
+    Возможные значения для **MEmu**:
+        - `"71"` — Android 7.1 (x86)
+        - `"76"` — Android 7.1 (x64)
+        - `"96"` — Android 9.0 (x64)
+        - `"120"` — Android 12.0 (x64)
+    
+    **LDPlayer** всегда создаёт эмулятор с Android 9.
+    
+    **Возвращает:**  
+    Индекс созданного эмулятора.
+
+#### Пример.
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+var index = droid.Action.Create("96");
+```
+
+---
+
+### Import
+
+- **`int Import(string path)`**  
+    Импортирует эмулятор из файла.
+    
+    **Параметры:**
+    - `path` — путь к файлу/архиву эмулятора.
+    
+    **Возвращает:**  
+    Индекс импортированного эмулятора.
+    
+    Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+---
+
+### Export
+
+- **`void Export(string path)`**  
+    Экспортирует текущий эмулятор в файл.
+    
+    **Параметры:**
+    - `path` — путь для сохранения.
+    
+    Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+---
+
+### DeleteByIndex
+
+- **`void DeleteByIndex(int index)`**  
+    Удаляет эмулятор по индексу.
+
+### DeleteByName
+
+- **`void DeleteByName(string name)`**  
+    Удаляет эмулятор по имени.
+
+### DeleteByTitle
+
+- **`void DeleteByTitle(string title)`**  
+    Удаляет эмулятор по отображаемому названию.
+
+---
+
+### FactoryReset
+
+- **`void FactoryReset(bool resetSystem)`**  
+    Выполняет сброс эмулятора к заводским настройкам.
+    
+    **Параметры:**
+    - `resetSystem` — если `true`, выполняется полный сброс с системными данными; если `false` — сбрасываются только пользовательские данные.
+
+---
+
+### Rename
+
+- **`void Rename(int index, string title)`**  
+    Переименовывает эмулятор по индексу.
+
+- **`void Rename(string name, string title)`**  
+    Переименовывает эмулятор по имени.
+
+### RenameTo
+
+- **`void RenameTo(string title)`**  
+    Переименовывает текущий эмулятор.
+_______________________________________________

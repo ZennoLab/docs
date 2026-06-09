@@ -1,0 +1,316 @@
+---
+sidebar_position: 20
+sidebar_label: BlueStacks5 API
+title: BlueStacks5 API | Документация ZennoDroid | ZennoLab
+description: BlueStacks5 API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# BlueStacks5 API
+<DisclaimerNotice />
+
+## Описание
+
+Набор интерфейсов для управления эмулятором **BlueStacks 5** в ZennoDroid Enterprise.
+
+| Интерфейс | Описание |
+|---|---|
+| `IBlueStacks5API` | Запуск, остановка и подключение к эмулятору |
+| `IBlueStacks5SettingsAPI` | Системные параметры: геолокация, IMEI |
+| `IBlueStacks5RootAPI` | Управление root-доступом и Magisk |
+| `IBlueStacks5ManagerAPI` | Создание и удаление инстансов через менеджер |
+
+_______________________________________________
+
+## IBlueStacks5API
+
+Управление запуском, остановкой и подключением к эмулятору BlueStacks 5.
+
+### AddressPort
+
+- **`string AddressPort { get; }`**  
+    Адрес и порт подключения к эмулятору.
+    
+    **Возвращает:**  
+    Строку в формате `IP:Port` (например: `127.0.0.1:5555`).
+
+### IsRunning
+
+- **`bool IsRunning { get; }`**  
+    Проверяет, запущен ли эмулятор.
+    
+    **Возвращает:**  
+    `true`, если эмулятор запущен; иначе `false`.
+
+### IsBootCompleted
+
+- **`bool IsBootCompleted { get; }`**  
+    Проверяет, завершена ли загрузка Android внутри эмулятора.
+    
+    **Возвращает:**  
+    `true`, если система полностью загружена и готова к работе.
+
+---
+
+### Start
+
+- **`void Start()`**  
+    Запускает эмулятор BlueStacks.
+
+#### Пример.
+```csharp
+new BlueStacks5("Rvc64_1", "nxt").Start();
+```
+
+---
+
+### Stop
+
+- **`void Stop()`**  
+    Останавливает эмулятор.
+
+---
+
+### Connect
+
+- **`void Connect()`**  
+    Подключается к эмулятору (обычно через ADB).
+
+---
+
+### Disconnect
+
+- **`void Disconnect()`**  
+    Разрывает соединение с эмулятором.
+
+:::note Важные замечания
+- После `Start()` рекомендуется проверять `IsBootCompleted`, прежде чем выполнять действия.
+- `Connect()` следует вызывать после запуска эмулятора.
+- В некоторых сценариях требуется повторное подключение при сбоях ADB.
+:::
+
+_______________________________________________
+
+## IBlueStacks5SettingsAPI
+
+Изменение системных параметров эмулятора BlueStacks 5.
+
+### SetGeo
+
+- **`void SetGeo(double longitude, double latitude)`**  
+    Устанавливает геолокацию устройства.
+    
+    **Параметры:**
+    - `longitude` — долгота (например: `37.6173`);
+    - `latitude` — широта (например: `55.7558`).
+    
+    **Описание:**  
+    Позволяет эмулировать нахождение устройства в заданной точке на карте.
+
+#### Пример.
+```csharp
+new BlueStacks5Settings("Rvc64_1", "nxt").SetGeo(-73.572604, 40.651980);
+```
+
+---
+
+### SetIMEI
+
+- **`void SetIMEI(string value)`**  
+    Устанавливает IMEI устройства.
+    
+    **Параметры:**
+    - `value` — строковое значение IMEI.
+    
+    **Описание:**  
+    Используется для подмены идентификатора устройства.
+
+:::warning Важные замечания
+- Некорректные значения IMEI могут вызывать ошибки в приложениях или определяться как недействительные.
+- После изменения параметров рекомендуется перезапустить эмулятор и переподключиться.
+- Геолокация может дополнительно кешироваться приложениями — иногда требуется их перезапуск.
+:::
+
+_______________________________________________
+
+## IBlueStacks5RootAPI
+
+Управление root-доступом, Magisk и патчами в эмуляторе BlueStacks 5.
+
+### Lock
+
+- **`void Lock()`**  
+    Блокирует root-доступ в эмуляторе. Восстанавливает системный раздел к состоянию без root.
+    
+    **Описание:**  
+    Отключает root, делая систему более «чистой» (например, для обхода проверок приложений).
+
+---
+
+### Unlock
+
+- **`void Unlock()`**  
+    Разблокирует root-доступ.
+    
+    **Описание:**  
+    Переводит системный раздел в режим записи. Позволяет вносить изменения для получения root-доступа.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
+```
+
+---
+
+### Patch
+
+- **`void Patch()`**  
+    Применяет патч для подготовки системы к работе с root.
+    
+    **Описание:**  
+    Модифицирует системные компоненты эмулятора для поддержки root-доступа.
+
+---
+
+### InstallMagisk
+
+- **`void InstallMagisk(string path)`**  
+    Устанавливает Magisk из указанного файла.
+    
+    **Параметры:**
+    - `path` — путь к файлу Magisk (`.apk`).
+
+---
+
+### FlashMagisk
+
+- **`void FlashMagisk()`**  
+    Выполняет прошивку (установку) Magisk в систему.
+    
+    **Описание:**  
+    Применяет Magisk на уровне системы после установки.
+
+---
+
+### EnableZygisk
+
+- **`void EnableZygisk()`**  
+    Включает Zygisk — модуль Magisk для внедрения в процессы через Zygote. Поддерживается на Android 9 (Pie) и выше.
+    
+    **Описание:**  
+    Позволяет использовать продвинутые модули и хуки (например, для обхода детекта root).
+
+:::warning Важные замечания
+- Операции с root могут повлиять на стабильность эмулятора или нарушить работу приложений.
+- После изменений рекомендуется перезапуск эмулятора и проверка состояния root.
+- Используется совместно с [`IFridaDeviceAPI`](./Frida), [`IDroidAppAPI`](./App) и `RootShell` ([`IDroidInputAPI`](./Input#rootshell)).
+:::
+
+_______________________________________________
+
+## IBlueStacks5ManagerAPI
+
+Управление инстансами BlueStacks 5 через менеджер: создание, удаление, запуск/остановка службы.
+
+**Конструктор:** `BlueStacks5Manager(string oem)`
+
+- `oem` — строка, идентифицирующая версию BlueStacks:
+    - `"nxt"` — стандартная версия
+    - `"nxt_cn"` — версия для Китая
+    - `"msi5"` — версия от MSI (MSI App Player 5)
+
+### Create
+
+- **`string Create(string imageName, int cpus, int ram, string graphicEngine, string graphicRenderer, string deviceProfile, string abiList)`**  
+    Создаёт новый экземпляр эмулятора с заданными параметрами.
+    
+    **Параметры:**
+    - `imageName` — базовый образ эмулятора:
+        - `"Nougat32"` — Android 7.1 (x86)
+        - `"Nougat64"` — Android 7.1 (x64)
+        - `"Pie64"` — Android 9.0 (x64)
+        - `"Rvc64"` — Android 11.0 (x64)
+        - `"Tiramisu64"` — Android 13.0 (x64)
+    - `cpus` — количество выделенных CPU;
+    - `ram` — объём оперативной памяти (МБ);
+    - `graphicEngine` — графический движок (только для Android 7):
+        - `"aga"` — Compatibility
+        - `"pga"` — Performance
+    - `graphicRenderer` — тип рендера:
+        - `"gl"` — OpenGL
+        - `"dx"` — DirectX
+        - `"vlcn"` — Vulkan
+    - `deviceProfile` — профиль устройства:
+        - `"rogt"` — Asus ROG 2
+        - `"ptxg"` — Google Pixel 2XL
+        - `"optp"` — OnePlus 10 Pro
+        - `"opet"` — OnePlus 8T
+        - `"anfg"` — Samsung Galaxy A90 5G
+        - `"smtn"` — Samsung Galaxy S10
+        - `"stfg"` — Samsung Galaxy S10 5G
+        - `"stul"` — Samsung Galaxy S20 Ultra
+        - `"stwp"` — Samsung Galaxy S20+
+        - `"stou"` — Samsung Galaxy S21 Ultra
+        - `"sstt"` — Samsung Galaxy S22
+        - `"sttu"` — Samsung Galaxy S22 Ultra
+        - `"xitp"` — Xiaomi 11T Pro
+    - `abiList` — список поддерживаемых ABI (например: `"x86,x64,arm,arm64"`).
+    
+    **Возвращает:**  
+    Имя созданного инстанса.
+
+#### Пример.
+```csharp
+var name = new BlueStacks5Manager("nxt").Create("Rvc64", 
+	cpus:2, 
+	ram:2048,
+	graphicEngine:"aga",
+	graphicRenderer:"dx",
+	deviceProfile:"xitp", 
+	abiList:"x86,x64,arm,arm64");
+```
+
+---
+
+### DeleteByName
+
+- **`void DeleteByName(string name)`**  
+    Удаляет экземпляр эмулятора по имени.
+    
+    **Параметры:**
+    - `name` — имя инстанса.
+
+---
+
+### StartManager
+
+- **`void StartManager()`**  
+    Запускает менеджер BlueStacks (службу управления инстансами).
+
+---
+
+### StopManager
+
+- **`void StopManager()`**  
+    Останавливает менеджер BlueStacks.
+
+---
+
+### TitleToNameConverter
+
+- **`string TitleToNameConverter(string title)`**  
+    Преобразует отображаемое название эмулятора в его системное имя.
+    
+    **Параметры:**
+    - `title` — отображаемое имя (как в интерфейсе BlueStacks).
+    
+    **Возвращает:**  
+    Внутреннее имя инстанса, используемое системой.
+
+:::note Важные замечания
+- Перед созданием/удалением инстансов рекомендуется запустить менеджер (`StartManager()`).
+- Параметры `cpus` и `ram` должны соответствовать возможностям хост-машины.
+- Некорректные значения графики могут привести к нестабильной работе.
+- Используется совместно с `IBlueStacks5API` для полного цикла: создание → запуск → автоматизация → удаление.
+:::
+_______________________________________________
