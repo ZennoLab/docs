@@ -185,7 +185,7 @@ string NetworkMode { get; set; }
 string Rules { get; set; }
 ```
 ### IFridaDeviceAPI
-**`IFridaDeviceAPI FridaDevice`**
+[**`IFridaDeviceAPI FridaDevice`**](./Frida#ifridadeviceapi)
 ```csharp
 string Name { get; }
 string Id { get; }
@@ -200,7 +200,7 @@ void LoadScriptToApp(string packageName, string source);
 void LoadScriptToFrontmost(string source);
 ```
 ### IFridaScriptAPI
-**`IFridaScriptAPI FridaScriptAPI`**
+[**`IFridaScriptAPI FridaScriptAPI`**](./Frida#ifridascriptapi)
 ```csharp
 event EventHandler<FridaScriptMessageEventArgs> Message;
 string Name { get; }
@@ -211,7 +211,7 @@ void Post(string message);
 void PostWithData(string message, byte[] data);
 ```
 ### IFridaSessionAPI
-**`IFridaSessionAPI FridaSessionAPI`**
+[**`IFridaSessionAPI FridaSessionAPI`**](./Frida#ifridasessionapi)
 ```csharp
 uint Pid { get; }
 IFridaScriptAPI CreateScript(string source, string name);
@@ -219,7 +219,7 @@ IFridaScriptAPI CreateScript(string source);
 void Detach();
 ```
 ### ILSPosedAPI
-**`ILSPosedAPI LSPosedHelper`**
+[**`ILSPosedAPI LSPosedHelper`**](./LSPosed)
 ```csharp
 string ModuleName { get; set; }
 void EnableModule();
@@ -236,7 +236,7 @@ void Close();
 string GetCLIStatus();
 ```
 ### IQRCodeManager
-**`IQRCodeManager QRCodeManager`**
+[**`IQRCodeManager QRCodeManager`**](./QRCodeManager)
 ```csharp
 void CloseQRCodeScanWindow();
 void CloseViewfinderWindow();
@@ -246,7 +246,7 @@ void PressQRCodeScanButton();
 void SetViewfinderPosition(Rectangle rect);
 ```
 ### ISqlite3API
-**`ISqlite3API Sqlite3Helper`**
+[**`ISqlite3API Sqlite3Helper`**](./Sqlite3)
 ```csharp
 void Install();
 string ExecuteQuery(string database, string query);
