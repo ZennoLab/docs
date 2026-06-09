@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 10
 sidebar_label: Extra API
 title: Extra API | ZennoDroid Documentation | ZennoLab
 description: Extra API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -54,7 +54,7 @@ void SendKeys(string text);
 string GetScreenshot();
 ```
 ### IBlueStacks5API
-**`IBlueStacks5API BlueStacks5`**
+[**`IBlueStacks5API BlueStacks5`**](./BlueStacks5#ibluestacks5api)
 ```csharp
 void Start();
 void Stop();
@@ -65,7 +65,7 @@ bool IsRunning { get; }
 bool IsBootCompleted { get; }
 ```
 ### IBlueStacks5ManagerAPI
-**`IBlueStacks5ManagerAPI BlueStacks5Manager`**
+[**`IBlueStacks5ManagerAPI BlueStacks5Manager`**](./BlueStacks5#ibluestacks5managerapi)
 ```csharp
 string Create(string imageName, int cpus, int ram, string graphicEngine, string graphicRenderer, string deviceProfile, string abiList);
 void DeleteByName(string name);
@@ -74,7 +74,7 @@ void StopManager();
 string TitleToNameConverter(string title);
 ```
 ### IBlueStacks5RootAPI
-**`IBlueStacks5RootAPI BlueStacks5Root`**
+[**`IBlueStacks5RootAPI BlueStacks5Root`**](./BlueStacks5#ibluestacks5rootapi)
 ```csharp
 void Lock();
 void Unlock();
@@ -84,7 +84,7 @@ void FlashMagisk();
 void EnableZygisk();
 ```
 ### IBlueStacks5SettingsAPI
-**`IBlueStacks5SettingsAPI BlueStacks5Settings`**
+[**`IBlueStacks5SettingsAPI BlueStacks5Settings`**](./BlueStacks5#ibluestacks5settingsapi)
 ```csharp
 void SetGeo(double longitude, double latitude);
 void SetIMEI(string value);
@@ -108,7 +108,7 @@ bool? AddWebView { get; set; }
 bool? AddWiFiEmulation { get; set; }
 ```
 ### IDeviceSummaryInfo
-**`IDeviceSummaryInfo IDeviceSummaryInfo`**
+[**`IDeviceSummaryInfo IDeviceSummaryInfo`**](./DeviceSummaryInfo)
 ```csharp
 int Index { get; }
 string Name { get; }
@@ -117,7 +117,7 @@ bool IsRunning { get; }
 bool IsBusy { get; }
 ```
 ### IDroidManagerAPI
-**`IDroidManagerAPI DroidManager`**
+[**`IDroidManagerAPI DroidManager`**](./DroidManager)
 ```csharp
 IDeviceSummaryInfo[] GetListDevices();
 int ConvertNameToIndex(string name);
@@ -131,19 +131,19 @@ string[] GetListTitles();
 void ReconnectOffline();
 ```
 ### IDroidProxySettings
-**`IDroidProxySettings DroidProxySettings.Proxifier`**
+[**`IDroidProxySettings DroidProxySettings.Proxifier`**](./DroidProxySettings#droidproxysettingsproxifier)
 ```csharp
 bool? BlockWebRtcLeak { get; set; }
 bool? BlockUDPLeak { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.ProxifierViaPC`**
+[**`IDroidProxySettings DroidProxySettings.ProxifierViaPC`**](./DroidProxySettings#droidproxysettingsproxifierviapc)
 ```csharp
 bool? BlockWebRtcLeak { get; set; }
 bool? BlockUDPLeak { get; set; }
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.Redsocks`**
+[**`IDroidProxySettings DroidProxySettings.Redsocks`**](./DroidProxySettings#droidproxysettingsredsocks)
 ```csharp
 string DnsServers { get; set; }
 bool? UseDnsTcp { get; set; }
@@ -153,7 +153,7 @@ bool? BlockUDPLeak { get; set; }
 string WebRtcLeakAddresses { get; set; }
 string WebUdpLeakAddresses { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.RedsocksViaPC`**
+[**`IDroidProxySettings DroidProxySettings.RedsocksViaPC`**](./DroidProxySettings#droidproxysettingsredsocksviapc)
 ```csharp
 string DnsServers { get; set; }
 bool? UseDnsTcp { get; set; }
@@ -164,7 +164,7 @@ string WebRtcLeakAddresses { get; set; }
 string WebUdpLeakAddresses { get; set; }
 string LocalIPv4Address { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.Clash`**
+[**`IDroidProxySettings DroidProxySettings.Clash`**](./DroidProxySettings#droidproxysettingsclash)
 ```csharp
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
@@ -174,7 +174,7 @@ string BlackList { get; set; }
 string NetworkMode { get; set; }
 string Rules { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.ClashViaPC`**
+[**`IDroidProxySettings DroidProxySettings.ClashViaPC`**](./DroidProxySettings#droidproxysettingsclashviapc)
 ```csharp
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }

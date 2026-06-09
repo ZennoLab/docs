@@ -1,5 +1,5 @@
 ---
-sidebar_position: 21
+sidebar_position: 80
 sidebar_label: Device Options
 title: Device Options | ZennoDroid Documentation | ZennoLab
 description: Device Options - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -15,31 +15,45 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 This is used with DeviceFilter when generating JSON data to spoof device information with LSPosed.
 With this class, you can customize spoofing layers beyond basic device filtering.
 
-### Properties  
-- **Add Canvas Noise**  
-Adds randomized noise to Canvas fingerprinting. Prevents identical canvas hashes across devices for anti-bot evasion.
-```csharp
-bool? AddCanvasNoise { get; set; }
-```
+## Properties
 
-- **Add GPU**  
-Enables fake GPU/WebGL information spoofing. Randomizes GPU vendor/renderer strings matching DeviceFilter.GpuVendor.
-```csharp
-bool? AddGpu { get; set; }
-```
+### AddCanvasNoise
 
-- **Add WebView**  
-Provides the ability to execute JavaScript in applications containing WebView.  
-By default, access to WebView in non-browser applications is always disabled. This setting allows access to HTML markup not only in browsers, but also in applications that use WebView. To do this, the android.webkit.WebView element must be present in the element tree.
-```csharp
-bool? AddWebView { get; set; }
-```
+- **`bool? AddCanvasNoise { get; set; }`**  
+    Adds Canvas noise.
+    
+    **Description:**  
+    Enables Canvas fingerprint modification to avoid exact matches across devices.
 
-- **Add WiFi Emulation**  
-Emulates WiFi connection. Used for firmware that doesn't detect internet connectivity when WiFi is disabled. 
-```csharp
-bool? AddWiFiEmulation { get; set; }
-```
+---
+
+### AddGpu
+
+- **`bool? AddGpu { get; set; }`**  
+    Adds GPU spoofing.
+    
+    **Description:**  
+    Enables GPU/WebGL information spoofing. Randomizes GPU vendor/renderer strings according to `DeviceFilter.GpuVendor`.
+
+---
+
+### AddWebView
+
+- **`bool? AddWebView { get; set; }`**  
+    Adds WebView access.
+    
+    **Description:**  
+    Provides the ability to execute JavaScript in applications containing WebView. By default, WebView access in non-browser applications is always disabled. The `android.webkit.WebView` element must be present in the element tree.
+
+---
+
+### AddWiFiEmulation
+
+- **`bool? AddWiFiEmulation { get; set; }`**  
+    Adds Wi-Fi emulation.
+    
+    **Description:**  
+    Emulates a WiFi connection. Used for firmware that does not detect internet connectivity when WiFi is disabled.
 
 #### Examples  
 ```csharp

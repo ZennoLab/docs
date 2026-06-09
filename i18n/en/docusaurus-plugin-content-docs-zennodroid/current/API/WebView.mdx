@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 230
 sidebar_label: WebView API
 title: WebView API | ZennoDroid Documentation | ZennoLab
 description: WebView API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -9,53 +9,76 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # WebView API
 <DisclaimerNotice />
 
-## Description  
-**`IWebViewAPI WebView`**  
+## Description
 
-Gives you control over the WebView, which is mainly used in browsers (and rarely in other apps).  
+`IWebViewAPI` is designed for interacting with **WebView** inside Android applications in ZennoDroid. It allows you to execute JavaScript code, retrieve connection information, and manage certificates.
 
-The main advantage of WebView is that you can interact with web page content using JavaScript, which seriously expands what you can do with websites.  
-_______________________________________________
-## Methods  
-### Run JavaScript
-```csharp
-string EvaluateScript(string script)
-```   
+## Methods
 
-*Parameters:*   
-```csharp
-string script // JavaScript code.
-``` 
+### EvaluateScript
+
+- **`string EvaluateScript(string script)`**  
+    Executes JavaScript code inside WebView.
+    
+    **Parameters:**
+    - `script` — JavaScript code to execute.
+    
+    **Returns:**  
+    The result of the script execution as a string.
+
+---
+
+### GetAttachedWebSocketUrl
+
+- **`string GetAttachedWebSocketUrl()`**  
+    Retrieves the WebSocket connection URL.
+    
+    **Returns:**  
+    A string containing the WebSocket address.
+    
+    **Description:**  
+    Used for debugging and analyzing WebView connections (e.g. for attaching DevTools).
+
+---
+
+### InjectSystemCertificate
+
+- **`void InjectSystemCertificate(string source)`**  
+    Installs a system certificate.
+    
+    **Parameters:**
+    - `source` — path to the certificate or its contents.
+    
+    **Description:**  
+    Allows adding a trusted certificate to the system for:
+    - intercepting HTTPS traffic;
+    - working with proxies (Burp, Charles, Fiddler);
+    - bypassing SSL pinning (in some cases).
 
 #### Example  
-```csharp
-var webView = instance.DroidInstance.WebView;
-
-var script = "return document.documentElement.innerHTML"; // JS to get the page html
-var html = webView.EvaluateScript(script); // Run the script and get the html
-```
-_______________________________________________
-### Get WebSocket URL
-```csharp
-string GetAttachedWebSocketUrl()
-```   
-
-#### Example  
-```csharp
-var webView = instance.DroidInstance.WebView;
-
-var webSocket = webView.GetAttachedWebSocketUrl(); // Get the WebSocket
-```
-_______________________________________________
-### System certificate injection in Android.
-```csharp
-void InjectSystemCertificate(string source)
-```   
-
-#### Example.  
 ```csharp
 var webView = instance.DroidInstance.WebView;
 
 webView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
 ```  
+
+---
+
+### EnableForcedRenderWebView
+
+- **`void EnableForcedRenderWebView()`**  
+    Forces the Chromium accessibility tree to remain active.
+
+    **Description:**  
+    Bypasses Chromium's `AutoDisableAccessibilityV2` feature, which automatically shuts down the accessibility tree when no screen readers (such as TalkBack) are detected as active. Call this method before interacting with WebView elements via Appium if elements are not being found.
+
+---
+
+### DisableForcedRenderWebView
+
+- **`void DisableForcedRenderWebView()`**  
+    Reverts the patch applied by `EnableForcedRenderWebView`.
+
+    **Description:**  
+    Restores Chromium's default `AutoDisableAccessibilityV2` behavior, allowing the browser to shut down the accessibility tree when no screen readers are connected.
 _______________________________________________

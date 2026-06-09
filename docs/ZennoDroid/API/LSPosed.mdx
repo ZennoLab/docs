@@ -1,0 +1,152 @@
+---
+sidebar_position: 170
+sidebar_label: LSPosed API
+title: LSPosed API | Документация ZennoDroid | ZennoLab
+description: LSPosed API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# LSPosed API
+<DisclaimerNotice />
+
+## Описание
+
+`ILSPosedAPI` предназначен для управления модулями **LSPosed** на Android-устройстве в среде ZennoDroid. Позволяет включать/отключать модули, управлять списком приложений, к которым они применяются, а также выполнять резервное копирование и восстановление.
+
+## Свойства
+
+### ModuleName
+
+- **`string ModuleName { get; set; }`**  
+    Имя модуля.
+    
+    **Описание:**  
+    Указывает модуль, с которым выполняются операции.
+
+_______________________________________________
+## Методы
+
+### EnableModule
+
+- **`void EnableModule()`**  
+    Включает указанный модуль.
+
+---
+
+### DisableModule
+
+- **`void DisableModule()`**  
+    Отключает указанный модуль.
+
+---
+
+### AddPackages
+
+- **`void AddPackages(params string[] packageNames)`**  
+    Добавляет приложения, к которым применяется модуль.
+    
+    **Параметры:**
+    - `packageNames` — массив имён пакетов приложений.
+
+---
+
+### RemovePackages
+
+- **`void RemovePackages(params string[] packageNames)`**  
+    Удаляет приложения из списка применения модуля.
+    
+    **Параметры:**
+    - `packageNames` — массив пакетов.
+
+---
+
+### SetPackages
+
+- **`void SetPackages(params string[] packageNames)`**  
+    Устанавливает полный список приложений для модуля (заменяет существующий).
+    
+    **Параметры:**
+    - `packageNames` — массив пакетов.
+
+---
+
+### BackupModule
+
+- **`void BackupModule(string fileName)`**  
+    Создаёт резервную копию настроек текущего модуля.
+    
+    **Параметры:**
+    - `fileName` — имя файла для сохранения.
+
+---
+
+### BackupAllModules
+
+- **`void BackupAllModules(string fileName)`**  
+    Создаёт резервную копию всех модулей.
+    
+    **Параметры:**
+    - `fileName` — имя файла.
+
+---
+
+### RestoreModule
+
+- **`void RestoreModule(string fileName)`**  
+    Восстанавливает настройки модуля из файла.
+    
+    **Параметры:**
+    - `fileName` — путь к файлу бэкапа.
+
+---
+
+### RestoreAllModules
+
+- **`void RestoreAllModules(string fileName)`**  
+    Восстанавливает все модули из резервной копии.
+    
+    **Параметры:**
+    - `fileName` — путь к файлу.
+
+---
+
+### Open
+
+- **`void Open()`**  
+    Открывает интерфейс LSPosed.
+
+---
+
+### Close
+
+- **`void Close()`**  
+    Закрывает интерфейс LSPosed.
+
+---
+
+### GetCLIStatus
+
+- **`string GetCLIStatus()`**  
+    Получает статус LSPosed через CLI.
+    
+    **Возвращает:**  
+    Строку со статусом (информация о версии Android, LSPosed, модель устройства).
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+return lspHelper.GetCLIStatus();
+```
+_______________________________________________
+
+:::warning Важные замечания
+- Требуется:
+    - root-доступ;
+    - установленный LSPosed/Magisk.
+- Изменения модулей могут требовать:
+    - перезапуска приложения;
+    - или перезагрузки устройства.
+- Неправильная конфигурация может:
+    - привести к сбоям приложений;
+    - вызвать bootloop (в редких случаях).
+:::

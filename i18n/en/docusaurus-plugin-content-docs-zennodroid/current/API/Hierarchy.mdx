@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 140
 sidebar_label: Hierarchy API
 title: Hierarchy API | ZennoDroid Documentation | ZennoLab
 description: Hierarchy API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -9,16 +9,20 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Hierarchy API
 <DisclaimerNotice />
 
-## Description  
-**`IDroidHierarchyAPI Hierarchy`** 
+## Description
 
-Provides access to the tree of interface elements on the current device screen. It's used to get the UI structure, which is an XML tree of all elements and their relationships.
+`IDroidHierarchyAPI` provides access to the UI element tree of the current device screen. Used to retrieve the UI structure as an XML tree of all elements and their relationships.
+
 _______________________________________________
 ## Methods
-### Get the current screen's XML tree.
-```csharp
-string GetLayout()
-```   
+
+### GetLayout
+
+- **`string GetLayout()`**  
+    Returns the XML tree of the current screen.
+    
+    **Returns:**  
+    An XML string with the UI element hierarchy.
 
 #### Example  
 ```csharp

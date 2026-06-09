@@ -1,5 +1,5 @@
 ---
-sidebar_position: 21
+sidebar_position: 80
 sidebar_label: Device Options
 title: Device Options | Документация ZennoDroid | ZennoLab
 description: Device Options - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
@@ -16,31 +16,45 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 С помощью этого класса можно настроить уровни подмены помимо базовой фильтрации устройств.
 
-### Свойства  
-- **Шум Canvas**  
-Добавляет случайный шум к Canvas-фингерпринтингу. Предотвращает одинаковые хэши canvas.
-```csharp
-bool? AddCanvasNoise { get; set; }
-```
+## Свойства
 
-- **Подмена GPU**  
-Включает подмену GPU/WebGL информации. Рандомизирует строки GPU vendor/renderer в соответствии с DeviceFilter.GpuVendor.
-```csharp
-bool? AddGpu { get; set; }
-```
+### AddCanvasNoise
 
-- **Доступ к WebView**  
-Предоставляет возможность выполнять JavaScript в приложениях, содержащих WebView.
-По умолчанию доступ к WebView в приложениях, не являющихся браузерами, всегда выключен. Данная настройка позволяет получить доступ к HTML-разметке не только браузеров, но и приложений использующих WebView. Для этого в дереве элементов должен присутствовать элемент android.webkit.WebView.
-```csharp
-bool? AddWebView { get; set; }
-```
+- **`bool? AddCanvasNoise { get; set; }`**  
+    Добавляет шум Canvas.
+    
+    **Описание:**  
+    Включает модификацию Canvas-отпечатка (fingerprint), чтобы избежать точного совпадения между устройствами.
 
-- **Эмуляция WiFi**  
-Эмулирует WiFi-соединение. Используется для прошивок, которые не видят наличия интернет-подключения при отключенном WiFi.
-```csharp
-bool? AddWiFiEmulation { get; set; }
-```
+---
+
+### AddGpu
+
+- **`bool? AddGpu { get; set; }`**  
+    Добавляет подмену GPU.
+    
+    **Описание:**  
+    Включает подмену GPU/WebGL информации. Рандомизирует строки GPU vendor/renderer в соответствии с `DeviceFilter.GpuVendor`.
+
+---
+
+### AddWebView
+
+- **`bool? AddWebView { get; set; }`**  
+    Добавляет доступ к WebView.
+    
+    **Описание:**  
+    Предоставляет возможность выполнять JavaScript в приложениях, содержащих WebView. По умолчанию доступ к WebView в приложениях, не являющихся браузерами, всегда выключен. Для этого в дереве элементов должен присутствовать элемент `android.webkit.WebView`.
+
+---
+
+### AddWiFiEmulation
+
+- **`bool? AddWiFiEmulation { get; set; }`**  
+    Добавляет эмуляцию Wi-Fi.
+    
+    **Описание:**  
+    Эмулирует WiFi-соединение. Используется для прошивок, которые не видят наличия интернет-подключения при отключённом WiFi.
 
 #### Примеры:  
 ```csharp

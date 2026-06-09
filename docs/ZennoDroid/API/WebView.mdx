@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 230
 sidebar_label: WebView API
 title: WebView API | Документация ZennoDroid | ZennoLab
 description: WebView API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
@@ -9,48 +9,51 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # WebView API
 <DisclaimerNotice />
 
-## Описание.  
-**`IWebViewAPI WebView`**  
+## Описание
 
-Предоставляет доступ к управлению WebView, которое используется преимущественно в браузерах (в других приложениях встречается редко).  
+`IWebViewAPI` предназначен для взаимодействия с **WebView** внутри Android-приложений в ZennoDroid. Позволяет выполнять JavaScript-код, получать информацию о соединении и управлять сертификатами.
 
-Основной ценностью WebView является возможность взаимодействия с содержимым веб-страниц через JavaScript, что существенно расширяет функционал работы с сайтами.  
-_______________________________________________
-## Методы.  
-### Выполнить JavaScript.
-```csharp
-string EvaluateScript(string script)
-```   
+## Методы
 
-*Параметры:*   
-```csharp
-string script // Текст JavaScript.
-``` 
+### EvaluateScript
 
-#### Пример.  
-```csharp
-var webView = instance.DroidInstance.WebView;
+- **`string EvaluateScript(string script)`**  
+    Выполняет JavaScript-код внутри WebView.
+    
+    **Параметры:**
+    - `script` — JavaScript-код для выполнения.
+    
+    **Возвращает:**  
+    Результат выполнения скрипта в виде строки.
 
-var script = "return document.documentElement.innerHTML"; // JS получить html страницы
-var html = webView.EvaluateScript(script); // Выполнить скрипт и получить html
-```
-_______________________________________________
-### Получить URL-адрес WebSocket.
-```csharp
-string GetAttachedWebSocketUrl()
-```   
+---
 
-#### Пример.  
-```csharp
-var webView = instance.DroidInstance.WebView;
+### GetAttachedWebSocketUrl
 
-var webSocket = webView.GetAttachedWebSocketUrl(); // Получить WebSocket
-```
-_______________________________________________
-### Инъекция системного сертификата в Android.
-```csharp
-void InjectSystemCertificate(string source)
-```   
+- **`string GetAttachedWebSocketUrl()`**  
+    Получает URL WebSocket-соединения.
+    
+    **Возвращает:**  
+    Строку с адресом WebSocket.
+    
+    **Описание:**  
+    Используется для отладки и анализа соединения WebView (например, для подключения DevTools).
+
+---
+
+### InjectSystemCertificate
+
+- **`void InjectSystemCertificate(string source)`**  
+    Устанавливает системный сертификат.
+    
+    **Параметры:**
+    - `source` — путь к сертификату или его содержимое.
+    
+    **Описание:**  
+    Позволяет добавить доверенный сертификат в систему для:
+    - перехвата HTTPS-трафика;
+    - работы с прокси (Burp, Charles, Fiddler);
+    - обхода SSL pinning (в некоторых случаях).
 
 #### Пример.  
 ```csharp
@@ -59,4 +62,24 @@ var webView = instance.DroidInstance.WebView;
 webView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
 ```  
 [**Настройка BurpSuite и отключение проверки сертификата с помощью модуля ZennoDroid**](../Enterprise/BurpSuite/#настройка-burpsuite-и-отключение-проверки-сертификата-с-помощью-модуля-zennodroid)
+
+---
+
+### EnableForcedRenderWebView
+
+- **`void EnableForcedRenderWebView()`**  
+    Принудительно включает рендеринг дерева элементов (accessibility tree) в Chromium.
+
+    **Описание:**  
+    Обходит функцию Chromium `AutoDisableAccessibilityV2`, которая автоматически отключает дерево элементов, если не обнаруживает активных программ чтения с экрана (например, TalkBack). Вызовите этот метод перед работой с WebView через Appium, если элементы не обнаруживаются.
+
+---
+
+### DisableForcedRenderWebView
+
+- **`void DisableForcedRenderWebView()`**  
+    Отменяет патч, применённый методом `EnableForcedRenderWebView`.
+
+    **Описание:**  
+    Восстанавливает стандартное поведение Chromium `AutoDisableAccessibilityV2`, позволяя браузеру отключать дерево элементов при отсутствии программ чтения с экрана.
 _______________________________________________
