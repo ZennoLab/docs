@@ -15,14 +15,22 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Properties
 
+### Id
+
 - **`string Id { get; }`**  
     Unique element identifier (GUID).
+
+### Text
 
 - **`string Text { get; }`**  
     Text content of the element.
 
+### IsDisplayed
+
 - **`bool IsDisplayed { get; }`**  
     Indicates whether the element is currently visible on screen.
+
+### Rectangle
 
 - **`Rectangle Rectangle { get; }`**  
     Element geometry (position and size) in screen coordinates.
@@ -44,6 +52,8 @@ Rectangle rectangle = de.Rectangle; // Get the Rectangle property value
 _______________________________________________
 ## Methods
 
+### GetAttribute
+
 - **`string GetAttribute(string name)`**  
     Returns the value of the specified element attribute (e.g. `content-desc`, `class`, `checked`, etc.).
     
@@ -64,6 +74,8 @@ var text = de.GetAttribute("text"); // Get the "text" attribute value
 
 ---
 
+### GetBooleanAttribute
+
 - **`bool GetBooleanAttribute(string name)`**  
     Returns a boolean attribute value (e.g. `enabled`, `clickable`, `checked`).
     
@@ -71,6 +83,8 @@ var text = de.GetAttribute("text"); // Get the "text" attribute value
     - `name` — attribute name.
 
 ---
+
+### Click
 
 - **`void Click()`**  
     Clicks the element.
@@ -88,6 +102,8 @@ de.Click(); // Click on the element
 
 ---
 
+### Clear
+
 - **`void Clear()`**  
     Clears the element's content (typically a text field).
 
@@ -103,6 +119,8 @@ de.Clear(); // Clear the element's value
 ```
 
 ---
+
+### SendText
 
 - **`void SendText(string text)`**  
     Enters text into the element.
@@ -123,6 +141,8 @@ de.SendText("Hello world!"); // Enter text into the element's field
 
 ---
 
+### SendKeys
+
 - **`void SendKeys(string text)`**  
     Enters text character by character. More "realistic" input than `SendText`.
     
@@ -130,6 +150,8 @@ de.SendText("Hello world!"); // Enter text into the element's field
     - `text` — string to enter.
 
 ---
+
+### GetScreenshot
 
 - **`string GetScreenshot()`**  
     Takes a screenshot of the element's bounding area and returns it as a Base64 string.

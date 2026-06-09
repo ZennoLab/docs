@@ -15,6 +15,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Методы
 
+### Swipe
+
 - **`void Swipe(int x1, int y1, int x2, int y2)`**  
     Выполняет свайп по экрану.
     
@@ -45,6 +47,8 @@ input.Swipe(start.X, start.Y, end.X, end.Y, duration); // Сделать сва�
 ```
 
 ---
+
+### SwipeCurved
 
 - **`void SwipeCurved(int x1, int y1, int x2, int y2)`**  
     Изогнутый свайп.
@@ -111,6 +115,8 @@ input.SwipeCurved(start.X, start.Y, xPivot, yPivot, end.X, end.Y, duration); // 
 
 ---
 
+### Tap
+
 - **`void Tap(int x, int y)`**  
     Выполняет одиночное нажатие по координатам.
     
@@ -137,6 +143,8 @@ input.Tap(point.X, point.Y, duration); // Долгое нажатие по ко�
 
 ---
 
+### Touch
+
 - **`void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)`**  
     Нажатие в заданной области с дополнительными настройками.
     
@@ -158,6 +166,8 @@ input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Нажатие 
 
 ---
 
+### LongTap
+
 - **`void LongTap(int x, int y)`**  
     Выполняет долгое нажатие по координатам.
     
@@ -166,6 +176,8 @@ input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Нажатие 
     - `y` — координата по Y.
 
 ---
+
+### LongTapAndSwipe
 
 - **`void LongTapAndSwipe(int x1, int y1, int x2, int y2)`**  
     Долгое нажатие с последующим свайпом.
@@ -196,6 +208,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
 ```
 
 ---
+
+### LongTapAndSwipeCurved
 
 - **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2)`**  
     Выполняет долгий тап в точке `(x1, y1)` и свайп к `(x2, y2)` по кривой.
@@ -234,6 +248,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
 
 ---
 
+### FingerDown
+
 - **`void FingerDown(int x, int y)`**  
     Эмулирует касание экрана (палец опускается) в точке.
 
@@ -243,6 +259,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
     **Параметры:**
     - `fingerId` — ID пальца.
 
+### FingerMove
+
 - **`void FingerMove(int x, int y)`**  
     Перемещает активный палец в новую точку.
 
@@ -251,6 +269,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
     
     **Параметры:**
     - `fingerId` — ID пальца.
+
+### FingerUp
 
 - **`void FingerUp(int x, int y)`**  
     Убирает палец с экрана (завершает касание).
@@ -263,6 +283,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
 
 ---
 
+### FreeMove
+
 - **`void FreeMove(string json, double speed)`**  
     Выполняет пользовательский жест по заданной траектории.
     
@@ -271,6 +293,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
     - `speed` — скорость выполнения жеста.
 
 ---
+
+### ZoomIn
 
 - **`void ZoomIn()`**  
     Приближает экран.
@@ -292,6 +316,8 @@ input.ZoomIn(-1, -1, 1.0); // Приблизить с настройкой
 
 ---
 
+### ZoomOut
+
 - **`void ZoomOut()`**  
     Отдаляет экран.
 
@@ -311,6 +337,8 @@ input.ZoomOut(-1, -1, 1.0); // Отдалить с настройкой
 ```
 
 ---
+
+### SendText
 
 - **`void SendText(string text)`**  
     Вводит текст в активное поле.
@@ -338,6 +366,8 @@ input.SendText(text, latency); // Вводим текст с настройко�
 
 ---
 
+### SendKeyCode
+
 - **`void SendKeyCode(KeyCode keyCode)`**  
     Отправляет клавишу через enum [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME).
     
@@ -360,6 +390,8 @@ input.SendKeyCode(3); // Отправка спецсимволов (по чис�
 
 ---
 
+### ClearText
+
 - **`void ClearText()`**  
     Очищает текст в текущем активном поле ввода.
 
@@ -371,6 +403,8 @@ input.ClearText(); // очистить текст элемента
 ```
 
 ---
+
+### GetClipboard
 
 - **`string GetClipboard()`**  
     Получает содержимое буфера обмена.
@@ -387,6 +421,8 @@ var text = input.GetClipboard(); // Получить текст из буфер�
 
 ---
 
+### SetClipboard
+
 - **`void SetClipboard(string text)`**  
     Устанавливает содержимое буфера обмена.
     
@@ -402,6 +438,8 @@ input.SetClipboard(text); // Поместить текст в буфер обм�
 ```
 
 ---
+
+### Shell
 
 - **`string Shell(string command)`**  
     Выполняет команду [ADB Shell](../Android/pro-lite/Utilities#консольная-команда-adb-shell).
@@ -443,6 +481,8 @@ input.Shell(adb, 1000, true); // Выполнить команду переза�
 
 ---
 
+### RootShell
+
 - **`string RootShell(string command)`**  
     Выполняет shell-команду с root-доступом.
     
@@ -468,6 +508,8 @@ input.Shell(adb, 1000, true); // Выполнить команду переза�
     - `checkconnect` — проверять подключение к устройству перед выполнением.
 
 ---
+
+### SendSmsMessage
 
 - **`void SendSmsMessage(string phone, string message)`**  
     Эмулирует получение входящего SMS на устройстве.

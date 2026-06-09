@@ -17,6 +17,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Методы
 
+### ActiveElement
+
 - **`IAndroidElementAPI ActiveElement()`**  
     Возвращает текущий активный (сфокусированный) элемент.
     
@@ -31,6 +33,8 @@ var de = driver.ActiveElement(); // Получить элемент в фоку�
 ```
 
 ---
+
+### FindElementByAccessibilityId
 
 - **`IAndroidElementAPI FindElementByAccessibilityId(string id)`**  
     Находит элемент по Accessibility ID (`content-desc`).
@@ -54,6 +58,8 @@ de.Click(); // Кликнуть по элементу
 
 ---
 
+### FindElementByClassName
+
 - **`IAndroidElementAPI FindElementByClassName(string className)`**  
     Находит элемент по имени класса.
     
@@ -75,6 +81,8 @@ de.SendText("Привет мир!"); // Написать текст в поле 
 ```
 
 ---
+
+### FindElementById
 
 - **`IAndroidElementAPI FindElementById(string id)`**  
     Находит элемент по resource-id.
@@ -98,6 +106,8 @@ var text = de.Text; // Получить текст элемента
 
 ---
 
+### FindElementByUiAutomator
+
 - **`IAndroidElementAPI FindElementByUiAutomator(string uiSelector)`**  
     Находит элемент через [UiSelector](https://developer.android.com/reference/kotlin/androidx/test/uiautomator/UiSelector?hl=en).
     
@@ -119,6 +129,8 @@ de.Click(); // Кликнуть по элементу
 ```
 
 ---
+
+### FindElementByXPath
 
 - **`IAndroidElementAPI FindElementByXPath(string xpath)`**  
     Находит элемент по XPath.
@@ -142,6 +154,8 @@ de.Click(); // Кликнуть по элементу
 
 ---
 
+### FindElementsByAccessibilityId
+
 - **`IAndroidElementAPI[] FindElementsByAccessibilityId(string id)`**  
     Находит все элементы по Accessibility ID (`content-desc`).
     
@@ -163,6 +177,8 @@ var count = des.Length; // Количество найденных элемен�
 ```
 
 ---
+
+### FindElementsById
 
 - **`IAndroidElementAPI[] FindElementsById(string id)`**  
     Находит все элементы по resource-id.
@@ -186,6 +202,8 @@ var count = des.Length; // Количество найденных элемен�
 
 ---
 
+### FindElementsByClassName
+
 - **`IAndroidElementAPI[] FindElementsByClassName(string className)`**  
     Находит все элементы по имени класса.
     
@@ -207,6 +225,8 @@ var count = des.Length; // Количество найденных элемен�
 ```
 
 ---
+
+### FindElementsByUiAutomator
 
 - **`IAndroidElementAPI[] FindElementsByUiAutomator(string uiSelector)`**  
     Находит все элементы через [UiSelector](https://developer.android.com/reference/kotlin/androidx/test/uiautomator/UiSelector?hl=en).
@@ -230,6 +250,8 @@ var count = des.Length; // Количество найденных элемен�
 
 ---
 
+### FindElementsByXPath
+
 - **`IAndroidElementAPI[] FindElementsByXPath(string xpath)`**  
     Находит все элементы по XPath.
     
@@ -252,6 +274,8 @@ var count = des.Length; // Количество найденных элемен�
 
 ---
 
+### ScrollToElementByAccessibilityId
+
 - **`void ScrollToElementByAccessibilityId(string id, int maxSwipes)`**  
     Прокручивает экран до элемента по Accessibility ID.
     
@@ -268,6 +292,8 @@ driver.ScrollToElementByAccessibilityId("Chrome search", countScroll); // Скр
 ```
 
 ---
+
+### ScrollToElementByClassName
 
 - **`void ScrollToElementByClassName(string className, int maxSwipes)`**  
     Прокручивает экран до элемента по имени класса.
@@ -286,6 +312,8 @@ driver.ScrollToElementByClassName("android.widget.ImageView", countScroll); // �
 
 ---
 
+### ScrollToElementByUiAutomator
+
 - **`void ScrollToElementByUiAutomator(string uiSelector, int maxSwipes)`**  
     Прокручивает экран до элемента через [UiSelector](https://developer.android.com/reference/kotlin/androidx/test/uiautomator/UiSelector?hl=en).
     
@@ -303,6 +331,8 @@ driver.ScrollToElementByUiAutomator("new UiSelector().text(\"Display\")", countS
 
 ---
 
+### GetScreenshot
+
 - **`string GetScreenshot()`**  
     Делает скриншот текущего экрана устройства.
     
@@ -310,6 +340,8 @@ driver.ScrollToElementByUiAutomator("new UiSelector().text(\"Display\")", countS
     Изображение в виде строки Base64.
 
 ---
+
+### UpdateSettings
 
 - **`void UpdateSettings(string key, object value)`**  
     Обновляет одну настройку драйвера.

@@ -18,6 +18,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Свойства
 
+### AddCanvasNoise
+
 - **`bool? AddCanvasNoise { get; set; }`**  
     Добавляет шум Canvas.
     
@@ -25,6 +27,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     Включает модификацию Canvas-отпечатка (fingerprint), чтобы избежать точного совпадения между устройствами.
 
 ---
+
+### AddGpu
 
 - **`bool? AddGpu { get; set; }`**  
     Добавляет подмену GPU.
@@ -34,6 +38,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ---
 
+### AddWebView
+
 - **`bool? AddWebView { get; set; }`**  
     Добавляет доступ к WebView.
     
@@ -41,6 +47,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     Предоставляет возможность выполнять JavaScript в приложениях, содержащих WebView. По умолчанию доступ к WebView в приложениях, не являющихся браузерами, всегда выключен. Для этого в дереве элементов должен присутствовать элемент `android.webkit.WebView`.
 
 ---
+
+### AddWiFiEmulation
 
 - **`bool? AddWiFiEmulation { get; set; }`**  
     Добавляет эмуляцию Wi-Fi.

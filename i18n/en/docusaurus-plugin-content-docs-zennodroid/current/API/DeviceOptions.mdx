@@ -17,6 +17,8 @@ With this class, you can customize spoofing layers beyond basic device filtering
 
 ## Properties
 
+### AddCanvasNoise
+
 - **`bool? AddCanvasNoise { get; set; }`**  
     Adds Canvas noise.
     
@@ -24,6 +26,8 @@ With this class, you can customize spoofing layers beyond basic device filtering
     Enables Canvas fingerprint modification to avoid exact matches across devices.
 
 ---
+
+### AddGpu
 
 - **`bool? AddGpu { get; set; }`**  
     Adds GPU spoofing.
@@ -33,6 +37,8 @@ With this class, you can customize spoofing layers beyond basic device filtering
 
 ---
 
+### AddWebView
+
 - **`bool? AddWebView { get; set; }`**  
     Adds WebView access.
     
@@ -40,6 +46,8 @@ With this class, you can customize spoofing layers beyond basic device filtering
     Provides the ability to execute JavaScript in applications containing WebView. By default, WebView access in non-browser applications is always disabled. The `android.webkit.WebView` element must be present in the element tree.
 
 ---
+
+### AddWiFiEmulation
 
 - **`bool? AddWiFiEmulation { get; set; }`**  
     Adds Wi-Fi emulation.

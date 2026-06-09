@@ -19,11 +19,15 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Свойства
 
+### Top
+
 - **`string Top { get; }`**  
     Текущее активное приложение.
     
     **Возвращает:**  
     Имя пакета приложения на переднем плане.
+
+### TopPid
 
 - **`uint TopPid { get; }`**  
     PID текущего приложения.
@@ -40,6 +44,8 @@ uint TopPid = app.TopPid;
 ```
 _______________________________________________
 ## Методы
+
+### Open
 
 - **`void Open(string packageName)`**  
     Запускает приложение.
@@ -61,6 +67,8 @@ _______________________________________________
     - `packageName` — имя пакета;
     - `activityName` — имя Activity;
     - `action` — действие Intent (например: `android.intent.action.VIEW`).
+
+### OpenAsRoot
 
 - **`void OpenAsRoot(string packageName, string activityName)`**  
     Запускает приложение с правами root с указанием Activity.
@@ -95,6 +103,8 @@ app.Open(packageName, activity); // Открыть приложение
 
 ---
 
+### OpenUrl
+
 - **`void OpenUrl(string url)`**  
     Открывает URL.
     
@@ -119,6 +129,8 @@ app.OpenUrl(url, packageName); // Открыть Chrome и зайти на са�
 
 ---
 
+### Close
+
 - **`void Close(string packageName)`**  
     Закрывает приложение.
     
@@ -135,6 +147,8 @@ app.Close(packageName); // Закрыть приложение
 
 ---
 
+### CloseAll
+
 - **`void CloseAll()`**  
     Закрывает все приложения.
 
@@ -146,6 +160,8 @@ app.CloseAll(); // Закрыть все приложения
 ```
 
 ---
+
+### Clean
 
 - **`void Clean(string packageName)`**  
     Полностью очищает данные приложения (возвращает в состояние после установки).
@@ -163,6 +179,8 @@ app.Clean(packageName); // Очистить данные приложения
 
 ---
 
+### CleanCache
+
 - **`void CleanCache(string packageName)`**  
     Очищает только кэш приложения.
     
@@ -178,6 +196,8 @@ app.CleanCache(packageName); // Очистить кэш приложения
 ```
 
 ---
+
+### InstallApk
 
 - **`void InstallApk(string path)`**  
     Устанавливает APK-файл.
@@ -202,6 +222,8 @@ app.InstallApk(pathApk); // Установить приложение
 ```
 
 ---
+
+### IsInstalled
 
 - **`bool IsInstalled(string packageName)`**  
     Проверяет, установлено ли приложение.
@@ -228,6 +250,8 @@ if (!isApk) // Если нет, то установим
 
 ---
 
+### Delete
+
 - **`void Delete(string packageName)`**  
     Удаляет приложение с устройства.
     
@@ -243,6 +267,8 @@ app.Delete(packageName); // Удалить приложение
 ```
 
 ---
+
+### Uid
 
 - **`string Uid(string packageName)`**  
     Получает UID приложения.
@@ -263,6 +289,8 @@ var uid = app.Uid(packageName); // Получить uid приложения
 
 ---
 
+### DataDir
+
 - **`string DataDir(string packageName)`**  
     Возвращает директорию данных приложения.
     
@@ -282,6 +310,8 @@ var directory = app.DataDir(packageName); // Получить директори
 
 ---
 
+### AppDir
+
 - **`string AppDir(string packageName)`**  
     Возвращает путь к директории приложения на устройстве.
     
@@ -289,6 +319,8 @@ var directory = app.DataDir(packageName); // Получить директори
     - `packageName` — имя пакета приложения (например: `com.android.chrome`).
 
 ---
+
+### GetListPackages
 
 - **`string[] GetListPackages()`**  
     Возвращает список всех пакетов на устройстве.
@@ -305,6 +337,8 @@ var packages = app.GetListPackages(); // Получить массив всех 
 
 ---
 
+### GetListSystemPackages
+
 - **`string[] GetListSystemPackages()`**  
     Возвращает список системных приложений.
     
@@ -319,6 +353,8 @@ var packages = app.GetListSystemPackages(); // Получить массив в�
 ```
 
 ---
+
+### GetListUserPackages
 
 - **`string[] GetListUserPackages()`**  
     Возвращает список пользовательских приложений.
@@ -335,6 +371,8 @@ var packages = app.GetListUserPackages(); // Получить массив вс�
 
 ---
 
+### GetAllNotifications
+
 - **`string GetAllNotifications()`**  
     Получает все уведомления устройства в формате JSON.
     
@@ -350,6 +388,8 @@ project.Json.FromString(json); // Обработать Json
 ```
 
 ---
+
+### GetAppNotifications
 
 - **`string GetAppNotifications(string packageName)`**  
     Получает уведомления конкретного приложения в формате JSON.
@@ -371,6 +411,8 @@ project.Json.FromString(json); // Обработать Json
 
 ---
 
+### ClearAllNotifications
+
 - **`void ClearAllNotifications()`**  
     Очищает все уведомления устройства.
 
@@ -382,6 +424,8 @@ app.ClearAllNotifications(); // Очистить все уведомления
 ```
 
 ---
+
+### ClearAppNotifications
 
 - **`void ClearAppNotifications(string packageName)`**  
     Очищает уведомления конкретного приложения.
@@ -398,6 +442,8 @@ app.ClearAppNotifications(packageName); // Очистить уведомлени
 ```
 
 ---
+
+### BackupAppData
 
 - **`void BackupAppData(string packageName, string pathToBackup)`**  
     Создаёт резервную копию данных приложения.
@@ -430,6 +476,8 @@ app.BackupAppData(packageName, pathSave); // Сделать бэкап
 
 ---
 
+### RestoreAppData
+
 - **`void RestoreAppData(string packageName, string pathToBackup)`**  
     Восстанавливает данные приложения из резервной копии.
     
@@ -450,6 +498,8 @@ app.BackupAppData(packageName, pathSave); // Сделать бэкап
     - `restorePermissions` — восстанавливать разрешения;
     - `restoreAccount` — восстанавливать связанные аккаунты.
 
+### RestoreDetachedAppData
+
 - **`void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount)`**  
     Восстанавливает данные приложения без привязки к устройству, на котором был сделан бэкап. Необходимо использовать модуль ZennoBackup.
     
@@ -467,6 +517,8 @@ app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
 ```
 
 ---
+
+### GetCookie
 
 - **`string GetCookie(string packageName)`**  
     Получает cookies приложения.
@@ -487,6 +539,8 @@ var cookies = app.GetCookie(packageName); // Получить куки прил�
 
 ---
 
+### GetCookiePath
+
 - **`string GetCookiePath(string packageName)`**  
     Возвращает путь к cookies приложения.
     
@@ -505,6 +559,8 @@ var pathCookie = app.GetCookiePath(packageName); // Получить путь х
 ```
 
 ---
+
+### AddAccount
 
 - **`bool AddAccount(string name, string type, string password)`**  
     Добавляет аккаунт на устройство.
@@ -530,6 +586,8 @@ var pathCookie = app.GetCookiePath(packageName); // Получить путь х
     `true`, если аккаунт успешно добавлен; иначе `false`.
 
 ---
+
+### GetAccounts
 
 - **`string GetAccounts(string packageName)`**  
     Получает список аккаунтов приложения в формате JSON.
@@ -560,6 +618,8 @@ var json = app.GetAccounts(packageName); // Получить аккаунты п
 
 ---
 
+### RemoveAccount
+
 - **`bool RemoveAccount(string name, string type)`**  
     Удаляет аккаунт.
     
@@ -578,12 +638,16 @@ var json = app.GetAccounts(packageName); // Получить аккаунты п
 
 ---
 
+### PatchFlutterLib
+
 - **`void PatchFlutterLib(string packageName, string proxy)`**  
     Выполняет патч библиотеки Flutter (`libflutter.so`) для указанного приложения с целью перенаправления сетевого трафика в BurpSuite для дальнейшего анализа.
     
     **Параметры:**
     - `packageName` — имя пакета приложения;
     - `proxy` — адрес прокси (например: `10.0.2.2:8083`).
+
+### RestoreFlutterLib
 
 - **`void RestoreFlutterLib(string packageName)`**  
     Восстанавливает оригинальную библиотеку Flutter (`libflutter.so`), отменяя ранее применённый патч.
@@ -592,6 +656,8 @@ var json = app.GetAccounts(packageName); // Получить аккаунты п
     - `packageName` — имя пакета приложения.
 
 ---
+
+### InjectScript
 
 - **`void InjectScript(string packageName, string script)`**  
     Внедряет JavaScript-скрипт в приложение, который выполняется перед загрузкой страницы.

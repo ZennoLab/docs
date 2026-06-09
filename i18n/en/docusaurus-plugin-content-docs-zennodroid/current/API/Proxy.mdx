@@ -16,6 +16,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 _______________________________________________
 ## Methods
 
+### SetProxy
+
 - **`void SetProxy(string proxy, IDroidProxySettings settings)`**  
     Sets a proxy with connection parameters.
     
@@ -35,6 +37,8 @@ instance.DroidInstance.Proxy.SetProxy("socks5://login:pass@100.20.30.40:8080", s
 
 ---
 
+### GetProxy
+
 - **`string GetProxy()`**  
     Returns the proxy set in the project.
     
@@ -50,6 +54,8 @@ var projectProxy = proxy.GetProxy(); // Get project proxy
 
 ---
 
+### ClearProxy
+
 - **`void ClearProxy()`**  
     Clears the proxy settings.
 
@@ -61,6 +67,8 @@ proxy.ClearProxy(); // Clear project proxy
 ```
 
 ---
+
+### EnablePrivateDns
 
 - **`void EnablePrivateDns(string address)`**  
     Enables private DNS.
@@ -76,6 +84,8 @@ proxy.EnablePrivateDns("dns.google"); // Enable private DNS
 ```
 
 ---
+
+### DisablePrivateDns
 
 - **`void DisablePrivateDns()`**  
     Disables private DNS.

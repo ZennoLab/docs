@@ -19,11 +19,15 @@ This follows the same logic as the **App Actions** block for the [**Lite/Pro**](
 
 ## Properties
 
+### Top
+
 - **`string Top { get; }`**  
     The currently active app.
     
     **Returns:**  
     The package name of the foreground app.
+
+### TopPid
 
 - **`uint TopPid { get; }`**  
     PID of the current app.
@@ -40,6 +44,8 @@ uint TopPid = app.TopPid;
 ```
 _______________________________________________
 ## Methods
+
+### Open
 
 - **`void Open(string packageName)`**  
     Launches an app.
@@ -61,6 +67,8 @@ _______________________________________________
     - `packageName` — package name;
     - `activityName` — Activity name;
     - `action` — Intent action (e.g. `android.intent.action.VIEW`).
+
+### OpenAsRoot
 
 - **`void OpenAsRoot(string packageName, string activityName)`**  
     Launches an app with root privileges and a specific Activity.
@@ -95,6 +103,8 @@ app.Open(packageName, activity); // Open app with specific activity
 
 ---
 
+### OpenUrl
+
 - **`void OpenUrl(string url)`**  
     Opens a URL.
     
@@ -119,6 +129,8 @@ app.OpenUrl(url, packageName); // Open Chrome and navigate to ya.ru
 
 ---
 
+### Close
+
 - **`void Close(string packageName)`**  
     Closes an app.
     
@@ -135,6 +147,8 @@ app.Close(packageName); // Close the app
 
 ---
 
+### CloseAll
+
 - **`void CloseAll()`**  
     Closes all apps.
 
@@ -146,6 +160,8 @@ app.CloseAll(); // Close all apps
 ```
 
 ---
+
+### Clean
 
 - **`void Clean(string packageName)`**  
     Completely clears app data (resets the app to its post-install state).
@@ -163,6 +179,8 @@ app.Clean(packageName); // Clear app data
 
 ---
 
+### CleanCache
+
 - **`void CleanCache(string packageName)`**  
     Clears the app cache only.
     
@@ -178,6 +196,8 @@ app.CleanCache(packageName); // Clear app cache
 ```
 
 ---
+
+### InstallApk
 
 - **`void InstallApk(string path)`**  
     Installs an APK file.
@@ -202,6 +222,8 @@ app.InstallApk(pathApk); // Install the app
 ```
 
 ---
+
+### IsInstalled
 
 - **`bool IsInstalled(string packageName)`**  
     Checks whether an app is installed.
@@ -228,6 +250,8 @@ if (!isApk) // If not, install it
 
 ---
 
+### Delete
+
 - **`void Delete(string packageName)`**  
     Uninstalls an app from the device.
     
@@ -243,6 +267,8 @@ app.Delete(packageName); // Uninstall the app
 ```
 
 ---
+
+### Uid
 
 - **`string Uid(string packageName)`**  
     Gets the app's UID.
@@ -263,6 +289,8 @@ var uid = app.Uid(packageName); // Get app UID
 
 ---
 
+### DataDir
+
 - **`string DataDir(string packageName)`**  
     Returns the app's data directory.
     
@@ -282,6 +310,8 @@ var directory = app.DataDir(packageName); // Get app data directory
 
 ---
 
+### AppDir
+
 - **`string AppDir(string packageName)`**  
     Returns the path to the app's installation directory on the device.
     
@@ -289,6 +319,8 @@ var directory = app.DataDir(packageName); // Get app data directory
     - `packageName` — package name (e.g. `com.android.chrome`).
 
 ---
+
+### GetListPackages
 
 - **`string[] GetListPackages()`**  
     Returns a list of all packages on the device.
@@ -305,6 +337,8 @@ var packages = app.GetListPackages(); // Get list of all installed apps
 
 ---
 
+### GetListSystemPackages
+
 - **`string[] GetListSystemPackages()`**  
     Returns a list of system apps.
     
@@ -319,6 +353,8 @@ var packages = app.GetListSystemPackages(); // Get list of all system apps
 ```
 
 ---
+
+### GetListUserPackages
 
 - **`string[] GetListUserPackages()`**  
     Returns a list of user-installed apps.
@@ -335,6 +371,8 @@ var packages = app.GetListUserPackages(); // Get list of all user-installed apps
 
 ---
 
+### GetAllNotifications
+
 - **`string GetAllNotifications()`**  
     Gets all device notifications in JSON format.
     
@@ -350,6 +388,8 @@ project.Json.FromString(json); // Process JSON
 ```
 
 ---
+
+### GetAppNotifications
 
 - **`string GetAppNotifications(string packageName)`**  
     Gets notifications for a specific app in JSON format.
@@ -371,6 +411,8 @@ project.Json.FromString(json); // Process JSON
 
 ---
 
+### ClearAllNotifications
+
 - **`void ClearAllNotifications()`**  
     Clears all device notifications.
 
@@ -382,6 +424,8 @@ app.ClearAllNotifications(); // Clear all notifications
 ```
 
 ---
+
+### ClearAppNotifications
 
 - **`void ClearAppNotifications(string packageName)`**  
     Clears notifications for a specific app.
@@ -398,6 +442,8 @@ app.ClearAppNotifications(packageName); // Clear app notifications
 ```
 
 ---
+
+### BackupAppData
 
 - **`void BackupAppData(string packageName, string pathToBackup)`**  
     Creates a backup of app data.
@@ -430,6 +476,8 @@ app.BackupAppData(packageName, pathSave); // Make a backup
 
 ---
 
+### RestoreAppData
+
 - **`void RestoreAppData(string packageName, string pathToBackup)`**  
     Restores app data from a backup.
     
@@ -450,6 +498,8 @@ app.BackupAppData(packageName, pathSave); // Make a backup
     - `restorePermissions` — restore permissions;
     - `restoreAccount` — restore linked accounts.
 
+### RestoreDetachedAppData
+
 - **`void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount)`**  
     Restores app data without binding to the device on which the backup was made. Requires the ZennoBackup module.
     
@@ -467,6 +517,8 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
 ```
 
 ---
+
+### GetCookie
 
 - **`string GetCookie(string packageName)`**  
     Gets the app's cookies.
@@ -487,6 +539,8 @@ var cookies = app.GetCookie(packageName); // Get app cookies
 
 ---
 
+### GetCookiePath
+
 - **`string GetCookiePath(string packageName)`**  
     Returns the path to the app's cookie file.
     
@@ -505,6 +559,8 @@ var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
 ```
 
 ---
+
+### AddAccount
 
 - **`bool AddAccount(string name, string type, string password)`**  
     Adds an account to the device.
@@ -530,6 +586,8 @@ var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
     `true` if the account was added successfully; otherwise `false`.
 
 ---
+
+### GetAccounts
 
 - **`string GetAccounts(string packageName)`**  
     Gets the list of accounts for an app in JSON format.
@@ -560,6 +618,8 @@ var json = app.GetAccounts(packageName); // Get app accounts
 
 ---
 
+### RemoveAccount
+
 - **`bool RemoveAccount(string name, string type)`**  
     Removes an account.
     
@@ -578,12 +638,16 @@ In such cases you need to retrieve accounts from the app and forcibly remove the
 
 ---
 
+### PatchFlutterLib
+
 - **`void PatchFlutterLib(string packageName, string proxy)`**  
     Patches the Flutter library (`libflutter.so`) for a given app to redirect network traffic to BurpSuite for further analysis.
     
     **Parameters:**
     - `packageName` — package name;
     - `proxy` — proxy address (e.g. `10.0.2.2:8083`).
+
+### RestoreFlutterLib
 
 - **`void RestoreFlutterLib(string packageName)`**  
     Restores the original Flutter library (`libflutter.so`), reverting a previously applied patch.
@@ -592,6 +656,8 @@ In such cases you need to retrieve accounts from the app and forcibly remove the
     - `packageName` — package name.
 
 ---
+
+### InjectScript
 
 - **`void InjectScript(string packageName, string script)`**  
     Injects a JavaScript script into an app that runs before page load.

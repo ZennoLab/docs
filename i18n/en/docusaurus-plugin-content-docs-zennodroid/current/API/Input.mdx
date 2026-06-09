@@ -15,6 +15,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Methods
 
+### Swipe
+
 - **`void Swipe(int x1, int y1, int x2, int y2)`**  
     Performs a swipe across the screen.
     
@@ -45,6 +47,8 @@ input.Swipe(start.X, start.Y, end.X, end.Y, duration); // Swipe by coordinates w
 ```
 
 ---
+
+### SwipeCurved
 
 - **`void SwipeCurved(int x1, int y1, int x2, int y2)`**  
     Curved swipe.
@@ -111,6 +115,8 @@ input.SwipeCurved(start.X, start.Y, xPivot, yPivot, end.X, end.Y, duration); // 
 
 ---
 
+### Tap
+
 - **`void Tap(int x, int y)`**  
     Performs a single tap at the given coordinates.
     
@@ -137,6 +143,8 @@ input.Tap(point.X, point.Y, duration); // Long tap by coordinates
 
 ---
 
+### Touch
+
 - **`void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)`**  
     Tap within a specified area with additional options.
     
@@ -158,6 +166,8 @@ input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Tap with option
 
 ---
 
+### LongTap
+
 - **`void LongTap(int x, int y)`**  
     Performs a long press at the given coordinates.
     
@@ -166,6 +176,8 @@ input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Tap with option
     - `y` — Y coordinate.
 
 ---
+
+### LongTapAndSwipe
 
 - **`void LongTapAndSwipe(int x1, int y1, int x2, int y2)`**  
     Long press followed by a swipe.
@@ -196,6 +208,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
 ```
 
 ---
+
+### LongTapAndSwipeCurved
 
 - **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2)`**  
     Performs a long tap at `(x1, y1)` and swipes to `(x2, y2)` along a curved path.
@@ -234,6 +248,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
 
 ---
 
+### FingerDown
+
 - **`void FingerDown(int x, int y)`**  
     Simulates touching the screen (finger down) at point `(x, y)`.
 
@@ -243,6 +259,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
     **Parameters:**
     - `fingerId` — finger ID.
 
+### FingerMove
+
 - **`void FingerMove(int x, int y)`**  
     Moves the active finger to a new point.
 
@@ -251,6 +269,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
     
     **Parameters:**
     - `fingerId` — finger ID.
+
+### FingerUp
 
 - **`void FingerUp(int x, int y)`**  
     Lifts the finger from the screen (ends the touch).
@@ -263,6 +283,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
 
 ---
 
+### FreeMove
+
 - **`void FreeMove(string json, double speed)`**  
     Performs a custom gesture along a defined trajectory.
     
@@ -271,6 +293,8 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
     - `speed` — gesture execution speed.
 
 ---
+
+### ZoomIn
 
 - **`void ZoomIn()`**  
     Zooms in the screen.
@@ -292,6 +316,8 @@ input.ZoomIn(-1, -1, 1.0); // Zoom in with settings
 
 ---
 
+### ZoomOut
+
 - **`void ZoomOut()`**  
     Zooms out the screen.
 
@@ -311,6 +337,8 @@ input.ZoomOut(-1, -1, 1.0); // Zoom out with settings
 ```
 
 ---
+
+### SendText
 
 - **`void SendText(string text)`**  
     Enters text into the active field.
@@ -338,6 +366,8 @@ input.SendText(text, latency); // Enter text with typing speed setting
 
 ---
 
+### SendKeyCode
+
 - **`void SendKeyCode(KeyCode keyCode)`**  
     Sends a key via the [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME) enum.
     
@@ -360,6 +390,8 @@ input.SendKeyCode(3); // Send special key (by numeric value)
 
 ---
 
+### ClearText
+
 - **`void ClearText()`**  
     Clears the text in the current active input field.
 
@@ -371,6 +403,8 @@ input.ClearText(); // Clear element text
 ```
 
 ---
+
+### GetClipboard
 
 - **`string GetClipboard()`**  
     Retrieves the clipboard contents.
@@ -387,6 +421,8 @@ var text = input.GetClipboard(); // Get text from clipboard
 
 ---
 
+### SetClipboard
+
 - **`void SetClipboard(string text)`**  
     Sets the clipboard contents.
     
@@ -402,6 +438,8 @@ input.SetClipboard(text); // Copy text to clipboard
 ```
 
 ---
+
+### Shell
 
 - **`string Shell(string command)`**  
     Executes an [ADB Shell](../Android/pro-lite/Utilities#console-command-adb-shell) command.
@@ -443,6 +481,8 @@ input.Shell(adb, 1000, true); // Reboot with wait and connection check
 
 ---
 
+### RootShell
+
 - **`string RootShell(string command)`**  
     Executes a shell command with root access.
     
@@ -468,6 +508,8 @@ input.Shell(adb, 1000, true); // Reboot with wait and connection check
     - `checkconnect` — check device connection before executing.
 
 ---
+
+### SendSmsMessage
 
 - **`void SendSmsMessage(string phone, string message)`**  
     Simulates receiving an incoming SMS on the device.
