@@ -65,6 +65,7 @@ void UpdateSettings(IEnumerable<KeyValuePair<string, object>> keyValuePairs);
 void SelectByIndex(int index);
 void SelectByName(string name);
 void SelectByTitle(string title);
+void SelectRandom();
 void SelectRandom(string mask);
 void SelectRandom(IEnumerable<string> source);
 void Start();
@@ -87,8 +88,8 @@ string GetCookiePath(string packageName);
 string Top { get; }
 string Uid(string packageName);
 uint TopPid { get; }
-void AddAccount(string name, string type, string password);
-void AddAccount(string name, string type, string password, string metadata);
+bool AddAccount(string name, string type, string password);
+bool AddAccount(string name, string type, string password, string metadata);
 void BackupAppData(string packageName, string pathToBackup);
 void BackupAppData(string packageName, string pathToBackup, bool savePermissions);
 void BackupAppData(string packageName, string pathToBackup, bool savePermissions, string accountType);
@@ -270,4 +271,6 @@ void Install();
 string EvaluateScript(string script);
 string GetAttachedWebSocketUrl();
 void InjectSystemCertificate(string source);
+void EnableForcedRenderWebView();
+void DisableForcedRenderWebView();
 ```  

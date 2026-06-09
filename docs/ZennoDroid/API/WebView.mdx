@@ -62,4 +62,24 @@ var webView = instance.DroidInstance.WebView;
 webView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
 ```  
 [**Настройка BurpSuite и отключение проверки сертификата с помощью модуля ZennoDroid**](../Enterprise/BurpSuite/#настройка-burpsuite-и-отключение-проверки-сертификата-с-помощью-модуля-zennodroid)
+
+---
+
+### EnableForcedRenderWebView
+
+- **`void EnableForcedRenderWebView()`**  
+    Принудительно включает рендеринг дерева элементов (accessibility tree) в Chromium.
+
+    **Описание:**  
+    Обходит функцию Chromium `AutoDisableAccessibilityV2`, которая автоматически отключает дерево элементов, если не обнаруживает активных программ чтения с экрана (например, TalkBack). Вызовите этот метод перед работой с WebView через Appium, если элементы не обнаруживаются.
+
+---
+
+### DisableForcedRenderWebView
+
+- **`void DisableForcedRenderWebView()`**  
+    Отменяет патч, применённый методом `EnableForcedRenderWebView`.
+
+    **Описание:**  
+    Восстанавливает стандартное поведение Chromium `AutoDisableAccessibilityV2`, позволяя браузеру отключать дерево элементов при отсутствии программ чтения с экрана.
 _______________________________________________

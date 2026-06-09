@@ -61,4 +61,24 @@ var webView = instance.DroidInstance.WebView;
 
 webView.InjectSystemCertificate(project.Variables["cert_pem"].Value);
 ```  
+
+---
+
+### EnableForcedRenderWebView
+
+- **`void EnableForcedRenderWebView()`**  
+    Forces the Chromium accessibility tree to remain active.
+
+    **Description:**  
+    Bypasses Chromium's `AutoDisableAccessibilityV2` feature, which automatically shuts down the accessibility tree when no screen readers (such as TalkBack) are detected as active. Call this method before interacting with WebView elements via Appium if elements are not being found.
+
+---
+
+### DisableForcedRenderWebView
+
+- **`void DisableForcedRenderWebView()`**  
+    Reverts the patch applied by `EnableForcedRenderWebView`.
+
+    **Description:**  
+    Restores Chromium's default `AutoDisableAccessibilityV2` behavior, allowing the browser to shut down the accessibility tree when no screen readers are connected.
 _______________________________________________
