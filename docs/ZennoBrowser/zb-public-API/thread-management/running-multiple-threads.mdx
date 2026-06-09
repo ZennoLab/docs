@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 3
-sidebar_label: Запуск потоков (пакетно)
+sidebar_label: Запуск потоков выполнения (массово)
 title: Запуск нескольких потоков
 description: Одновременный запуск нескольких потоков выполнения — подробное руководство по публичному API ZennoBrowser. Детальные инструкции, примеры использования и руководство по настройке
 ---
@@ -8,7 +8,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Описание:** Этот метод можно использовать для пакетного запуска потоков выполнения.
+**Описание:** Этот метод можно использовать для массового запуска потоков выполнения.
 
 #### **Параметры запроса:**
 
@@ -64,15 +64,18 @@ http://localhost:8160/v1/threads/create_bulk?count=5&workspaceId=-1
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
-| Response code | Result |
+| Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успешно |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 

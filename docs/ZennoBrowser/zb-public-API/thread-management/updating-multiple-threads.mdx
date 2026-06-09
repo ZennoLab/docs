@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 5
-sidebar_label: Обновление потоков (массовое)
+sidebar_label: Обновление потоков выполнения (массово)
 title: Обновление нескольких потоков
 description: Массовое обновление нескольких потоков выполнения — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
 ---
@@ -16,17 +16,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | :-----: | :-----: | :-----: | :-----: | :----- |
 | workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
 | body | JSON-Array |  |  | Массив токенов потоков для обновления потоков выполнения. Не может быть null или пустым. Пример: `["uuid1", "uuid2"]` |
-
-:::note
-Список токенов потоков для обновления должен быть указан в теле запроса в виде массива в следующем формате:
-
-```json
-[
-  "threadToken1",
-  "threadToken2"
-]
-```
-:::
 
 #### **Пример запроса:**
 
@@ -77,22 +66,30 @@ using (var response = await client.SendAsync(request))
 ```
 http://localhost:8160/v1/threads/use_bulk?workspaceId=-1
 ```  
-**Data:**   
-`["threadToken1", "threadToken2"]`
+**Body (JSON):**
+```json
+[
+  "threadToken1",
+  "threadToken2"
+]
+```
 
 ![](../assets/image37.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Токен из **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
-| Response code | Result |
+| Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успешно |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 

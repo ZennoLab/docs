@@ -1,7 +1,7 @@
 ﻿---
 sidebar_position: 3
-sidebar_label: Создание профилей (массово)
-title: Массовое создание браузерных профилей
+sidebar_label: Создание браузерных профилей (массово)
+title: Создание браузерных профилей (массово)
 description: Массовое создание нескольких браузерных профилей с кастомными настройками — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
@@ -36,6 +36,10 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | proxyServerId | string | uuid | (пусто) | Идентификатор прокси-сервера (необязательно). |
 | speechVoices | string |  | (пусто) | Настройки голосов синтеза речи. Допустимые значения: “on” — включить или “off” — отключить эту функцию. (on или off) |
 | tags | string |  | (пусто) | Теги профиля, разделённые пробелами или запятыми (например, `1 2 3 4`) |
+| canvas | string |  | (пусто) | Настройки Canvas. Допустимые значения: `Ignore` — отключить эту функцию или `Noise` — использовать зашумление. |
+| mediaDevices | string |  | (пусто) | Настройки медиоустройств. Допустимые значения: `auto` — использовать значение из отпечатка, `ignore` — использовать реальные значения или пользовательские значения. Можно указать от одного до трех целых чисел, соответствующих значениям `AudioInput`, `AudioOutput` и `VideoInput`. Числа можно пропускать. Например, `1,,5` означает `AudioInput = 1`, `AudioOutput = случайное значение`, `VideoInput = 5`. |
+| commandLineArguments | string |  | (пусто) | Пользовательские дополнительные аргументы командной строки, которые будут переданы браузеру при запуске. |
+| presetId | string | uuid | (пусто) | Необязательный идентификатор пресета, который используется для инициализации конфигурации профиля. |
 
 #### 
 
@@ -45,7 +49,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles/create_bulk?count=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&tags=' \
+curl 'http://localhost:8160/v1/profiles/create_bulk?count=5&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&proxyServerId=123e4567-e89b-12d3-a456-426614174000&speechVoices=on&tags=tag1%20tag2&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&presetId=123e4567-e89b-12d3-a456-426614174000' \
   --request POST \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
 ```
@@ -58,7 +62,7 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles/create_bulk?count=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&tags="),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/create_bulk?count=5&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&proxyServerId=123e4567-e89b-12d3-a456-426614174000&speechVoices=on&tags=tag1%20tag2&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&presetId=123e4567-e89b-12d3-a456-426614174000"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -74,22 +78,25 @@ using (var response = await client.SendAsync(request))
 
 **Cube:**  
 ```
-http://localhost:8160/v1/profiles/create_bulk?count=&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&tags=
+http://localhost:8160/v1/profiles/create_bulk?count=5&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&screen=1920 x 1080&cpu=8/16&memory=8&language=en-US&geoLocation=55.7558,37.6176&timeZone=Europe/Moscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&proxyServerId=123e4567-e89b-12d3-a456-426614174000&speechVoices=on&tags=tag1 tag2&canvas=Noise&mediaDevices=1,1,1&commandLineArguments=--disable-gpu&presetId=123e4567-e89b-12d3-a456-426614174000
 ```
 
 ![](../assets/image15.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**  
-![](../assets/image8.png)
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
-| Response code | Result |
+| Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успешно |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 

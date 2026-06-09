@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 1
 sidebar_label: Getting Started
 title: Getting Started with the ZennoBrowser API
@@ -10,89 +10,114 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-## Getting Started with the ZennoBrowser API
+The API token is required to execute all requests. You can create it in UserArea2 and then pass it in the `Api-Token` header for every call.
 
-The API Token is required to execute all requests. It can obtained as follows:
+## Generate an API token
 
-1. Log in to UserArea2 with active ZennoBrowser subscription;
-2. Open "ZennoBrowser" section at the top of the main page;
+1. Log in to UserArea2 with an active ZennoBrowser subscription.
+2. Open the **ZennoBrowser** section on the top panel.
 
 ![](./assets/image1.png)
 
-3. Click the "API Control" link;
+3. Click **API Control**.
 
 ![](./assets/image2.png)
 
-4. Specify token name (minimum 3 characters);
+4. Enter a token name with at least 3 characters.
 
 ![](./assets/image3.png)
 
-5. Select the period which this token will be valid for (7 days, 30 days, 60 days, etc.);
+5. Choose the token lifetime.
 
 ![](./assets/image4.png)
 
-6. Click "Generate token";
-
+6. Click **Generate token**.
 
 ![](./assets/image5.png)
 
-7. Copy the generated token. After closing the window, it is not possible to copy the token again, so be sure to save the generated token.
+7. Copy the generated token immediately. After closing the dialog, the token value can no longer be copied.
 
 ![](./assets/image6.png)
 
-8. Use the generated token to execute requests.
+## First request
 
-**Note:**
+A simple way to verify the token is to request the list of accessible workspaces.
 
-1. After deleting the token, it will continue functioning within 1.5-2 hours;  
-2. After token has expired, it will cease to function;  
-3. If you have lost a previously created token, you can create a new one.
+**GET**  
+**CURL:**
 
-## **Parameter Encoding (URL Encoding)**
+```bash
+curl 'http://localhost:8160/v1/workspaces?start=0&total=1000' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
 
-### **Important: Passing special characters in parameter values**
+**C#:**
 
-If you construct HTTP requests manually (using `HttpClient`, `fetch`, `curl`, etc.), you **must URL-encode parameter values**.
+```csharp
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/workspaces?start=0&total=1000"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
 
-This is especially important for parameters like `screen=HD+`.  
-If the `+` character is not encoded, the server will interpret it as a **space**, which will result in an error.
+**Cube:**
+```
+http://localhost:8160/v1/workspaces?start=0&total=1000
+```
 
-**Example for `screen=HD+`**
+**Expected response:**
 
-* **Incorrect:** `.../create?screen=HD+`  
-* **Correct:** `.../create?screen=HD%2B`
+```json
+{
+  "totalCount": 1,
+  "items": [
+    {
+      "workspaceId": 1,
+      "name": null,
+      "role": "Owner"
+    }
+  ]
+}
+```
 
-### Commonly Used Characters
+## Parameter Encoding (URL Encoding)
 
-For the API to work correctly, the following characters **must be encoded when they are part of parameter values**.
+If you construct HTTP requests manually, URL-encode parameter values that contain special characters.
 
-Encode these characters **only if they are part of the actual data (values)**, not as URL syntax.
+This is especially important for values such as `screen=HD+`. If `+` is not encoded, the server will interpret it as a space.
 
 | Character | Description | Encoded |
 | ----- | ----- | ----- |
-| `+` | Plus sign (e.g. `HD+`) | `%2B` |
+| `+` | Plus sign (for example `HD+`) | `%2B` |
 | (space) | Space | `%20` |
-| `&` | Ampersand (parameter separator) | `%26` |
+| `&` | Ampersand | `%26` |
 | `=` | Equals sign | `%3D` |
 | `?` | Question mark | `%3F` |
 | `/` | Slash | `%2F` |
 | `:` | Colon | `%3A` |
 
-### Implementation Examples
+**C# example:**
 
-**C# (HttpClient)**
-
-Instead of manually concatenating strings, use `Uri.EscapeDataString()` for parameter values that may contain special characters.
-``` csharp
+```csharp
 string screen = "HD+";
 string url = $"http://localhost:8160/v1/profiles/create?name=ApiProfile&workspaceId=-1&screen={Uri.EscapeDataString(screen)}";
-// Result: ...?screen=HD%2B
 ```
-**Python (Requests)**
 
-The `requests` library automatically handles URL encoding when parameters are passed as a dictionary.
-``` Python
+**Python example:**
+
+```python
 params = {'screen': 'HD+'}
-response = requests.get('http://localhost:8160/v1/profiles/create',params=params)
-# The library automatically converts this to HD%2B
+response = requests.post('http://localhost:8160/v1/profiles/create', params=params)
 ```

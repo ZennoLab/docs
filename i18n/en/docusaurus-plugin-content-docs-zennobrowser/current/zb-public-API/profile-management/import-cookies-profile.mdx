@@ -1,24 +1,27 @@
 ---
-sidebar_position: 8
-sidebar_label: Importing cookies into a profile
-title: Importing cookies into a profile
-description: Importing cookies into an existing browser profile in JSON format — a detailed guide to the ZennoBrowser Public API. Step-by-step instructions, usage examples, and a reference for request parameters
+sidebar_position: 7
+sidebar_label: Import Cookies into a Profile
+title: Importing Cookies into a Profile
+description: Imports cookies into the specified profile. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-### **Import cookies into a profile**
-
-**Description:** This method allows importing cookies into an existing profile in JSON format.
+**Description:** This method allows importing cookies into an existing profile in JSON format. Ensure that the cookies parameter is a valid JSON value representing the cookies to be imported.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
-| profileId | string | uuid | (required) | The unique identifier of the target profile for cookie import (**required**). |
-| body | JSON-Array | UUID profiles |  | Cookies in JSON format `[cookie]`  |
+| profileId | string | uuid | (required) | Unique identifier of the target profile for cookie import (required). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+
+#### **Request body:**
+
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | string |  | (optional) | Cookies in JSON format to import. |
 
 #### **Example request:**
 
@@ -26,34 +29,29 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles/{profileId}/cookies/import' \
+curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000/cookies/import?workspaceId=-1' \
   --request POST \
-  --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
-  --data '{}'
+
+  --header 'Content-Type: application/json' \
+  --data '"string"'
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles/{profileId}/cookies/import"),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000/cookies/import?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("{}")
-    {
-        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-    }
 };
+request.Content = new StringContent("\"string\"", Encoding.UTF8, "application/json");
 using (var response = await client.SendAsync(request))
 {
     response.EnsureSuccessStatusCode();
@@ -63,25 +61,29 @@ using (var response = await client.SendAsync(request))
 ```
 
 **Cube:**  
-`http://localhost:8160/v1/profiles/{profileId}/cookies/import`   
+```
+http://localhost:8160/v1/profiles/{profileId}/cookies/import
+```
 ![](../assets/image11-1.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful import.
+No response body.
 
 **Error Response (500):**
 

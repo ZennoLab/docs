@@ -1,9 +1,9 @@
 {
-  "label": "Управление папками",
+  "label": "Управление папками профилей",
   "position": 3,
   "link": {
     "type": "generated-index",
-    "title": "Управление папками",
-    "description": " "
+    "title": "Управление папками профилей",
+    "description": "Операции для работы с папками профилей ZennoBrowser."
   }
 }

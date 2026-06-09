@@ -1,0 +1,119 @@
+---
+sidebar_position: 10
+sidebar_label: Получение данных профиля браузера
+title: Получение данных профиля браузера
+description: Получение подробной информации о профиле браузера — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод получает подробную информацию о конкретном профиле браузера.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Уникальный идентификатор профиля, информацию о котором необходимо получить. |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства. Значение `-1` означает рабочее пространство по умолчанию. |
+
+#### **Пример запроса:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000/get_profile?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000/get_profile?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000/get_profile?workspaceId=-1
+```
+
+![](../assets/zp_profile_get_profile_info.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "name": "Sample Name",
+  "folderId": "123e4567-e89b-12d3-a456-426614174000",
+  "proxyServerId": "123e4567-e89b-12d3-a456-426614174000",
+  "tags": [
+    {
+      "name": "Sample Name",
+      "color": "#4F46E5"
+    }
+  ],
+  "notes": "string",
+  "screen": "string",
+  "cpu": "string",
+  "memory": "string",
+  "language": "string",
+  "geoLocation": "string",
+  "timeZone": "string",
+  "webGl": "string",
+  "webGpu": "string",
+  "webRtc": "string",
+  "domRect": "string",
+  "canvas": "string",
+  "mediaDevices": "string",
+  "commandLineArguments": "string",
+  "audio": "string",
+  "fonts": "string",
+  "battery": "string",
+  "plugins": "string",
+  "speechVoices": "string",
+  "presetId": "123e4567-e89b-12d3-a456-426614174000"
+}
+```
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

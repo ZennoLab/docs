@@ -1,8 +1,8 @@
-﻿---
+---
 sidebar_position: 2
-sidebar_label: Adding New Proxy
-title: Adding New Proxy
-description: Add a new proxy server to the workspace with custom configuration - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+sidebar_label: Adding a New Proxy
+title: Adding a New Proxy
+description: Adds a new proxy entry using the provided configuration parameters. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -15,10 +15,10 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
 | name | string |  | (empty) | Name of the added proxy. This value cannot be null or empty. |
-| proxyUrl | string |  | (empty) | URL-address of the proxy. This value must be a valid URL. (cannot be null or empty, for example `http://login:pass@host:port`). |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
-| folderId | string | uuid | (empty) | Optional identifier of the folder to associate with the proxy. Can take null value. |
-| ipChangeUrl | string |  | (empty) | Optional URL to trigger IP change for the proxy. Defaults to an empty string if not specified. |
+| proxyUri | string |  | (empty) | URL-address of the proxy. Must be a valid URL (e.g., `http://login:pass@host:port`). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| folderId | string | uuid | (empty) | Identifier of the folder to associate with the proxy (optional). Defaults to null. |
+| ipChangeUrl | string |  | (empty) | URL to trigger IP change for the proxy (optional). Defaults to empty. |
 
 #### **Example request:**
 
@@ -26,20 +26,21 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxies/create?name=&proxyUri=&workspaceId=&folderId=&ipChangeUrl=' \
+curl 'http://localhost:8160/v1/proxies/create?name=ApiEntity&proxyUri=http%3A%2F%2Flogin%3Apass%40127.0.0.1%3A8080&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&ipChangeUrl=https%3A%2F%2Fexample.com%2Fchange-ip' \
   --request POST \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/proxies/create?name=&proxyUri=&workspaceId=&folderId=&ipChangeUrl="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxies/create?name=ApiEntity&proxyUri=http%3A%2F%2Flogin%3Apass%40127.0.0.1%3A8080&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&ipChangeUrl=https%3A%2F%2Fexample.com%2Fchange-ip"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -63,23 +64,21 @@ http://localhost:8160/v1/proxies/create?name=&proxyUri=&workspaceId=&folderId=&i
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-Returns an array containing the ID of the newly created proxy:
-
-```json
-[
-  "123e4567-e89b-12d3-a456-426614174000"
-]
+```text
+123e4567-e89b-12d3-a456-426614174000
 ```
 
 **Error Response (500):**
