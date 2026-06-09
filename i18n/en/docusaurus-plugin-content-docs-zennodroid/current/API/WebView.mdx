@@ -9,50 +9,47 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # WebView API
 <DisclaimerNotice />
 
-## Description  
-**`IWebViewAPI WebView`**  
+## Description
 
-Gives you control over the WebView, which is mainly used in browsers (and rarely in other apps).  
+`IWebViewAPI` is designed for interacting with **WebView** inside Android applications in ZennoDroid. It allows you to execute JavaScript code, retrieve connection information, and manage certificates.
 
-The main advantage of WebView is that you can interact with web page content using JavaScript, which seriously expands what you can do with websites.  
-_______________________________________________
-## Methods  
-### Run JavaScript
-```csharp
-string EvaluateScript(string script)
-```   
+## Methods
 
-*Parameters:*   
-```csharp
-string script // JavaScript code.
-``` 
+- **`string EvaluateScript(string script)`**  
+    Executes JavaScript code inside WebView.
+    
+    **Parameters:**
+    - `script` — JavaScript code to execute.
+    
+    **Returns:**  
+    The result of the script execution as a string.
+
+---
+
+- **`string GetAttachedWebSocketUrl()`**  
+    Retrieves the WebSocket connection URL.
+    
+    **Returns:**  
+    A string containing the WebSocket address.
+    
+    **Description:**  
+    Used for debugging and analyzing WebView connections (e.g. for attaching DevTools).
+
+---
+
+- **`void InjectSystemCertificate(string source)`**  
+    Installs a system certificate.
+    
+    **Parameters:**
+    - `source` — path to the certificate or its contents.
+    
+    **Description:**  
+    Allows adding a trusted certificate to the system for:
+    - intercepting HTTPS traffic;
+    - working with proxies (Burp, Charles, Fiddler);
+    - bypassing SSL pinning (in some cases).
 
 #### Example  
-```csharp
-var webView = instance.DroidInstance.WebView;
-
-var script = "return document.documentElement.innerHTML"; // JS to get the page html
-var html = webView.EvaluateScript(script); // Run the script and get the html
-```
-_______________________________________________
-### Get WebSocket URL
-```csharp
-string GetAttachedWebSocketUrl()
-```   
-
-#### Example  
-```csharp
-var webView = instance.DroidInstance.WebView;
-
-var webSocket = webView.GetAttachedWebSocketUrl(); // Get the WebSocket
-```
-_______________________________________________
-### System certificate injection in Android.
-```csharp
-void InjectSystemCertificate(string source)
-```   
-
-#### Example.  
 ```csharp
 var webView = instance.DroidInstance.WebView;
 

@@ -9,44 +9,23 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Element API
 <DisclaimerNotice />
 
-## Description  
-**`IAndroidElementAPI`**  
+## Description
 
-This interface allows you to manage user interface elements in Android apps. You use it to perform various actions on elements found using the [IAppiumDriverAPI](./AppiumDriver) interface methods.
+`IAndroidElementAPI` represents an Android UI element in ZennoDroid (via Appium). Provides properties and methods for retrieving element information and interacting with it.
 
-### Properties  
-- **Element's id property value**
-```csharp
-string Id { get; }
-```  
+## Properties
 
-- **Element's text property value**
-```csharp
-string Text { get; }
-```  
+- **`string Id { get; }`**  
+    Unique element identifier (GUID).
 
-#### Examples:
-```csharp
-var driver = instance.DroidInstance.AppiumDriver;
+- **`string Text { get; }`**  
+    Text content of the element.
 
-var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
-if (de == null)
-    throw new Exception("Element not found");
+- **`bool IsDisplayed { get; }`**  
+    Indicates whether the element is currently visible on screen.
 
-var id = de.Id; // Get the Id property value
-var text = de.Text; // Get the text property value
-```
-_______________________________________________  
-## Methods
-### Get an element's property value
-```csharp
-string GetAttribute(string name)
-```   
-
-*Parameters:*   
-```csharp
-string name // Name of the property you want to get.
-``` 
+- **`Rectangle Rectangle { get; }`**  
+    Element geometry (position and size) in screen coordinates.
 
 #### Example  
 ```csharp
@@ -56,14 +35,45 @@ var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by
 if (de == null)
     throw new Exception("Element not found");
 
-var bounds = de.GetAttribute("bounds"); // Get the "bounds" property value
-var text = de.GetAttribute("text"); // Get the "text" property value
+string id = de.Id; // Get the Id property value
+string text = de.Text; // Get the Text property value
+bool isDisplayed = de.IsDisplayed; // Get the IsDisplayed property value
+Rectangle rectangle = de.Rectangle; // Get the Rectangle property value
 ```
-_______________________________________________ 
-### Click the found element
+
+_______________________________________________
+## Methods
+
+- **`string GetAttribute(string name)`**  
+    Returns the value of the specified element attribute (e.g. `content-desc`, `class`, `checked`, etc.).
+    
+    **Parameters:**
+    - `name` — attribute name.
+
+#### Example  
 ```csharp
-void Click()
-```   
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+var bounds = de.GetAttribute("bounds"); // Get the "bounds" attribute value
+var text = de.GetAttribute("text"); // Get the "text" attribute value
+```
+
+---
+
+- **`bool GetBooleanAttribute(string name)`**  
+    Returns a boolean attribute value (e.g. `enabled`, `clickable`, `checked`).
+    
+    **Parameters:**
+    - `name` — attribute name.
+
+---
+
+- **`void Click()`**  
+    Clicks the element.
 
 #### Example  
 ```csharp
@@ -75,11 +85,11 @@ if (de == null)
 
 de.Click(); // Click on the element
 ```
-_______________________________________________ 
-### Clear an element's value (like input text)
-```csharp
-void Clear()
-```   
+
+---
+
+- **`void Clear()`**  
+    Clears the element's content (typically a text field).
 
 #### Example  
 ```csharp
@@ -91,16 +101,14 @@ if (de == null)
 
 de.Clear(); // Clear the element's value
 ```
-_______________________________________________ 
-### Enter text into the element's field
-```csharp
-void SendText(string text)
-```   
 
-*Parameters:*   
-```csharp
-string text  // The value you want to enter.
-``` 
+---
+
+- **`void SendText(string text)`**  
+    Enters text into the element.
+    
+    **Parameters:**
+    - `text` — text to enter.
 
 #### Example  
 ```csharp
@@ -112,13 +120,16 @@ if (de == null)
 
 de.SendText("Hello world!"); // Enter text into the element's field
 ```
-_______________________________________________ 
-### Enter special characters
-```csharp
-void SendKeys(string text)
-```   
 
-*Parameters:*   
-```csharp
-string text  // Special characters you want to enter.
-```
+---
+
+- **`void SendKeys(string text)`**  
+    Enters text character by character. More "realistic" input than `SendText`.
+    
+    **Parameters:**
+    - `text` — string to enter.
+
+---
+
+- **`string GetScreenshot()`**  
+    Takes a screenshot of the element's bounding area and returns it as a Base64 string.

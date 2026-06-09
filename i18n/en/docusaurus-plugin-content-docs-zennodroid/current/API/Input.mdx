@@ -9,27 +9,26 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Input API
 <DisclaimerNotice />
 
-## Description  
-**`IDroidInputAPI Input`**  
+## Description
 
-Gives you access to emulate actions on your device for interacting with the interface and app elements. You use this interface to perform swipes, taps, and enter text, as well as execute [**ADB Shell commands**](../Android/pro-lite/Utilities#console-command-adb-shell).
-_______________________________________________
-## Methods 
-### Swipe the screen from point to point
-```csharp
-void Swipe(int x1, int y1, int x2, int y2) 
-```   
+`IDroidInputAPI` is designed to emulate user input on an Android device in ZennoDroid. Allows you to perform taps, swipes, text input, clipboard operations, and system events.
 
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int x2, int y2 // Coordinates of the second point.
-``` 
+## Methods
 
-*Overload:*   
-```csharp
-int duration  // How long the swipe takes (speed).  
-```
+- **`void Swipe(int x1, int y1, int x2, int y2)`**  
+    Performs a swipe across the screen.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point.
+
+- **`void Swipe(int x1, int y1, int x2, int y2, int duration)`**  
+    Swipe with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
 
 #### Example  
 ```csharp
@@ -42,20 +41,59 @@ input.Swipe(start.X, start.Y, end.X, end.Y); // Swipe by coordinates
 
 //#2
 var duration = 100;
-input.Swipe(start.X, start.Y, end.X, end.Y, duration); // Swipe with custom speed
+input.Swipe(start.X, start.Y, end.X, end.Y, duration); // Swipe by coordinates with speed control
 ```
-_______________________________________________
-### Curved swipe from point to point
-```csharp
-void SwipeCurved(int x1, int y1, int x2, int y2, int duration) 
-```   
 
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int x2, int y2 // Coordinates of the second point.
-int duration  // Swipe speed. 
-``` 
+---
+
+- **`void SwipeCurved(int x1, int y1, int x2, int y2)`**  
+    Curved swipe.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point.
+
+- **`void SwipeCurved(int x1, int y1, int x2, int y2, int duration)`**  
+    Curved swipe with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
+
+- **`void SwipeCurved(int x1, int y1, double bending, int x2, int y2)`**  
+    Curved swipe with bend coefficient.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `bending` — bend coefficient;
+    - `x2`, `y2` — end point.
+
+- **`void SwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration)`**  
+    Curved swipe with bend coefficient and duration.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `bending` — bend coefficient;
+    - `x2`, `y2` — end point;
+    - `duration` — duration.
+
+- **`void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2)`**  
+    Curved swipe through an intermediate pivot point.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `xPivot`, `yPivot` — curve pivot point;
+    - `x2`, `y2` — end point.
+
+- **`void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration)`**  
+    Curved swipe through an intermediate pivot point with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `xPivot`, `yPivot` — curve pivot point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
 
 #### Example  
 ```csharp
@@ -65,49 +103,26 @@ Point start = new Point() { X = 100, Y = 500 }; // Start point
 Point end = new Point() { X = 200, Y = 200 }; // End point
 var duration = 100; // Swipe speed
 input.SwipeCurved(start.X, start.Y, end.X, end.Y, duration); // Curved swipe
-```
-_______________________________________________
-### Curved swipe with bend control
-```csharp
-void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration) 
-```   
 
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int xPivot // X of the pivot point.
-int yPivot // Y of the pivot point.
-int x2, int y2 // Coordinates of the second point.
-int duration  // Swipe speed. 
-``` 
-
-#### Example  
-```csharp
-var input = instance.DroidInstance.Input;
-
-Point start = new Point() { X = 100, Y = 500 }; // Start point
-Point end = new Point() { X = 200, Y = 200 }; // End point
-var duration = 100; // Swipe speed
-var xPivot = 200; // X of the bend
-var yPivot = 700; // Y of the bend
+var xPivot = 200; // Bend X setting
+var yPivot = 700; // Bend Y setting
 input.SwipeCurved(start.X, start.Y, xPivot, yPivot, end.X, end.Y, duration); // Curved swipe with bend settings
 ```
-_______________________________________________
-### Tap by coordinates
-```csharp
-void Tap(int x, int y) 
-```   
 
-*Parameters:*   
-```csharp
-int x // X coordinate.
-int y // Y coordinate.
-``` 
+---
 
-*Overload:*   
-```csharp
-int duration  // Duration of the tap.  
-```
+- **`void Tap(int x, int y)`**  
+    Performs a single tap at the given coordinates.
+    
+    **Parameters:**
+    - `x`, `y` — point coordinates.
+
+- **`void Tap(int x, int y, int duration)`**  
+    Tap at given coordinates with specified duration.
+    
+    **Parameters:**
+    - `x`, `y` — point coordinates;
+    - `duration` — tap duration (ms).
 
 #### Example  
 ```csharp
@@ -119,45 +134,53 @@ input.Tap(point.X, point.Y); // Tap by coordinates
 var duration = 100; // Tap duration
 input.Tap(point.X, point.Y, duration); // Long tap by coordinates
 ```
-_______________________________________________
-### Tap by coordinates with extra options
-```csharp
-void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)
-```   
 
-*Parameters:*   
-```csharp
-int xMin, int yMin // Lower point coordinates.
-int xMax, int yMax // Upper point coordinates.
-bool longPress // Use a long tap
-string clickDistributionType // Click type: "Normal" or "Random". 
-``` 
+---
+
+- **`void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)`**  
+    Tap within a specified area with additional options.
+    
+    **Parameters:**
+    - `xMin`, `yMin` — top-left corner of the area;
+    - `xMax`, `yMax` — bottom-right corner of the area;
+    - `longPress` — use a long press;
+    - `clickDistributionType` — click distribution type (`"Normal"` or `"Random"`).
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-Point start = new Point() { X = 100, Y = 500 }; // Start
-Point end = new Point() { X = 200, Y = 200 }; // End
+Point start = new Point() { X = 100, Y = 500 }; // Start point
+Point end = new Point() { X = 200, Y = 200 }; // End point
 
 input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Tap with options
 ```
-_______________________________________________
-### Long tap and swipe the screen
-```csharp
-void LongTapAndSwipe(int x1, int y1, int x2, int y2)
-```   
 
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int x2, int y2 // Coordinates of the second point.
-``` 
+---
 
-*Overload:*   
-```csharp
-int duration  // How long the swipe takes (speed).  
-```
+- **`void LongTap(int x, int y)`**  
+    Performs a long press at the given coordinates.
+    
+    **Parameters:**
+    - `x` — X coordinate;
+    - `y` — Y coordinate.
+
+---
+
+- **`void LongTapAndSwipe(int x1, int y1, int x2, int y2)`**  
+    Long press followed by a swipe.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point.
+
+- **`void LongTapAndSwipe(int x1, int y1, int x2, int y2, int duration)`**  
+    Long press and swipe with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
 
 #### Example  
 ```csharp
@@ -169,62 +192,176 @@ Point end = new Point() { X = 200, Y = 200 }; // End point
 input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y); // Long tap and swipe
 
 var duration = 100; // Duration
-input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and swipe with swipe speed setting
+input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and swipe with speed control
 ```
-_______________________________________________
-### Enter text into a field
-```csharp
-void SendText(string text)
-```   
 
-*Parameters:*   
-```csharp
-string text // Text to enter.
-``` 
+---
 
-*Overload:*   
+- **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2)`**  
+    Performs a long tap at `(x1, y1)` and swipes to `(x2, y2)` along a curved path.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2, int duration)`**  
+    Same, but with gesture duration control.
+    
+    **Parameters:**
+    - `duration` — swipe duration in milliseconds.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2)`**  
+    Adds control over the curvature of the path.
+    
+    **Parameters:**
+    - `bending` — bend coefficient (the larger the value, the greater the deviation from a straight line).
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration)`**  
+    Adds control over the curvature of the path with duration specification.
+    
+    **Parameters:**
+    - `bending` — bend coefficient (the larger the value, the greater the deviation from a straight line);
+    - `duration` — swipe duration in milliseconds.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2)`**  
+    Performs a swipe along a curve passing through a specified intermediate pivot point.
+    
+    **Parameters:**
+    - `xPivot`, `yPivot` — coordinates of the curve control point.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration)`**  
+    Performs a swipe along a curve passing through a specified intermediate pivot point with duration control.
+    
+    **Parameters:**
+    - `xPivot`, `yPivot` — coordinates of the curve control point;
+    - `duration` — swipe duration in milliseconds.
+
+---
+
+- **`void FingerDown(int x, int y)`**  
+    Simulates touching the screen (finger down) at point `(x, y)`.
+
+- **`void FingerDown(int x, int y, int fingerId)`**  
+    Simulates a touch with a specified finger ID (for multi-touch).
+    
+    **Parameters:**
+    - `fingerId` — finger ID.
+
+- **`void FingerMove(int x, int y)`**  
+    Moves the active finger to a new point.
+
+- **`void FingerMove(int x, int y, int fingerId)`**  
+    Moves a specific finger.
+    
+    **Parameters:**
+    - `fingerId` — finger ID.
+
+- **`void FingerUp(int x, int y)`**  
+    Lifts the finger from the screen (ends the touch).
+
+- **`void FingerUp(int x, int y, int fingerId)`**  
+    Ends the touch for a specific finger.
+    
+    **Parameters:**
+    - `fingerId` — finger ID.
+
+---
+
+- **`void FreeMove(string json, double speed)`**  
+    Performs a custom gesture along a defined trajectory.
+    
+    **Parameters:**
+    - `json` — JSON description of the movement trajectory;
+    - `speed` — gesture execution speed.
+
+---
+
+- **`void ZoomIn()`**  
+    Zooms in the screen.
+
+- **`void ZoomIn(int centerX, int centerY, double ratio)`**  
+    Zoom in with parameters.
+    
+    **Parameters:**
+    - `centerX`, `centerY` — zoom center;
+    - `ratio` — zoom ratio.
+
+#### Example  
 ```csharp
-int latency // Delay between characters.  
+var input = instance.DroidInstance.Input;
+
+input.ZoomIn(); // Zoom in
+input.ZoomIn(-1, -1, 1.0); // Zoom in with settings
 ```
+
+---
+
+- **`void ZoomOut()`**  
+    Zooms out the screen.
+
+- **`void ZoomOut(int centerX, int centerY, double ratio)`**  
+    Zoom out with parameters.
+    
+    **Parameters:**
+    - `centerX`, `centerY` — zoom center;
+    - `ratio` — zoom-out ratio.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.ZoomOut(); // Zoom out
+input.ZoomOut(-1, -1, 1.0); // Zoom out with settings
+```
+
+---
+
+- **`void SendText(string text)`**  
+    Enters text into the active field.
+    
+    **Parameters:**
+    - `text` — string to enter.
+
+- **`void SendText(string text, int latency)`**  
+    Enters text with a delay between characters.
+    
+    **Parameters:**
+    - `text` — string to enter;
+    - `latency` — delay between characters (ms).
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
 var text = "Hello world!";
-input.SendText(text); // Enter text in a field
+input.SendText(text); // Enter text into the field
 
 var latency = 100; // Typing speed
-input.SendText(text, latency); // Enter text with typing speed specified
+input.SendText(text, latency); // Enter text with typing speed setting
 ```
-_______________________________________________
-### Enter special characters (via [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME))
-```csharp
-void SendKeyCode(KeyCode keyCode)
-```   
 
-*Parameters:*   
-```csharp
-KeyCode keyCode // Special character identifier.
-``` 
+---
 
-*Overload:*   
-```csharp
-int keyCode // Numeric code for the special character.  
-```
+- **`void SendKeyCode(KeyCode keyCode)`**  
+    Sends a key via the [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME) enum.
+    
+    **Parameters:**
+    - `keyCode` — `KeyCode` enum value.
+
+- **`void SendKeyCode(int keyCode)`**  
+    Sends a key by numeric code.
+    
+    **Parameters:**
+    - `keyCode` — numeric key code.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-input.SendKeyCode(KeyCode.KEYCODE_HOME); // Send special character (by name)
-input.SendKeyCode(3); // Send special character (by number)
+input.SendKeyCode(KeyCode.KEYCODE_HOME); // Send special key (by name)
+input.SendKeyCode(3); // Send special key (by numeric value)
 ```
-_______________________________________________
-### Clear the text field
-```csharp
-void ClearText()
-```   
+
+---
+
+- **`void ClearText()`**  
+    Clears the text in the current active input field.
 
 #### Example  
 ```csharp
@@ -232,22 +369,63 @@ var input = instance.DroidInstance.Input;
 
 input.ClearText(); // Clear element text
 ```
-_______________________________________________
-### Execute an [**ADB Shell**](../Android/pro-lite/Utilities#console-command-adb-shell) command
-```csharp
-string Shell(string command)
-```   
 
-*Parameters:*   
-```csharp
-string command // ADB command to run.
-``` 
+---
 
-*Overload:*   
+- **`string GetClipboard()`**  
+    Retrieves the clipboard contents.
+    
+    **Returns:**  
+    The string from the clipboard.
+
+#### Example  
 ```csharp
-int timeout // Command timeout.  
-bool checkconnect // Whether to check device connection.
+var input = instance.DroidInstance.Input;
+
+var text = input.GetClipboard(); // Get text from clipboard
 ```
+
+---
+
+- **`void SetClipboard(string text)`**  
+    Sets the clipboard contents.
+    
+    **Parameters:**
+    - `text` — string to write to the clipboard.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+var text = "Hello world!";
+input.SetClipboard(text); // Copy text to clipboard
+```
+
+---
+
+- **`string Shell(string command)`**  
+    Executes an [ADB Shell](../Android/pro-lite/Utilities#console-command-adb-shell) command.
+    
+    **Parameters:**
+    - `command` — command to execute.
+    
+    **Returns:**  
+    Command execution result.
+
+- **`string Shell(string command, int timeout)`**  
+    Executes a command with a timeout.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — wait time (ms).
+
+- **`string Shell(string command, int timeout, bool checkconnect)`**  
+    Executes a command with timeout and connection check.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — wait time (ms);
+    - `checkconnect` — check device connection before executing.
 
 #### Example  
 ```csharp
@@ -262,87 +440,41 @@ input.Shell(adb, 1000); // Launch app and wait for execution
 var adb = "reboot"; // Reboot command
 input.Shell(adb, 1000, true); // Reboot with wait and connection check
 ```
-_______________________________________________
-### Get text from Clipboard
-```csharp
-string GetClipboard()
-```   
 
-#### Example  
-```csharp
-var input = instance.DroidInstance.Input;
+---
 
-var text = input.GetClipboard(); // Get text from clipboard
-```
-_______________________________________________
-### Copy text to Clipboard
-```csharp
-void SetClipboard(string text)
-```   
+- **`string RootShell(string command)`**  
+    Executes a shell command with root access.
+    
+    **Parameters:**
+    - `command` — command to execute (e.g. `cat /system/build.prop`, `ls /data/data`).
+    
+    **Returns:**  
+    Command execution result (stdout) as a string.
 
-*Parameters:*   
-```csharp
-string text // Text to put in clipboard.
-``` 
+- **`string RootShell(string command, int timeout)`**  
+    Executes a root command with a time limit.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — maximum execution time (ms).
 
-#### Example  
-```csharp
-var input = instance.DroidInstance.Input;
+- **`string RootShell(string command, int timeout, bool checkconnect)`**  
+    Extended variant with connection check.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — execution timeout (ms);
+    - `checkconnect` — check device connection before executing.
 
-var text = "Hello world!";
-input.SetClipboard(text); // Copy text to clipboard
-```
-_______________________________________________
-### Zoom in the screen
-```csharp
-void ZoomIn()
-```   
+---
 
-*Overload:*   
-```csharp
-int centerX // X of the center.
-int centerY // Y of the center.
-double ratio // Zoom amount. 
-```
-
-#### Example  
-```csharp
-var input = instance.DroidInstance.Input;
-
-input.ZoomIn(); // Zoom in
-input.ZoomIn(-1, -1, 1.0); // Zoom in with additional settings
-```
-_______________________________________________
-### Zoom out the screen
-```csharp
-void ZoomOut()
-```   
-
-*Overload:*   
-```csharp
-int centerX // X of the center.
-int centerY // Y of the center.
-double ratio // Zoom out amount. 
-```
-
-#### Example  
-```csharp
-var input = instance.DroidInstance.Input;
-
-input.ZoomOut(); // Zoom out
-input.ZoomOut(-1, -1, 1.0); // Zoom out with additional settings
-```
-_______________________________________________
-### Simulate receiving an SMS on the device
-```csharp
-void SendSmsMessage(string phone, string message)
-```   
-
-*Parameters:*   
-```csharp
-string phone // Fake sender phone number.
-string message // The SMS text to be received.
-``` 
+- **`void SendSmsMessage(string phone, string message)`**  
+    Simulates receiving an incoming SMS on the device.
+    
+    **Parameters:**
+    - `phone` — sender phone number;
+    - `message` — message text.
 
 #### Example  
 ```csharp
@@ -353,4 +485,3 @@ var message = "Hi!";
 input.SendSmsMessage(phone, message); // Simulate incoming SMS
 ```
 _______________________________________________
-You can read about the **difference between ways of sending keystrokes** in detail in the [**ADB Shell Commands**](../Android/pro-lite/Utilities#console-command-adb-shell).

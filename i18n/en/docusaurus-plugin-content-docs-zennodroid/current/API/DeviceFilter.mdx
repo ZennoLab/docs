@@ -9,55 +9,57 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Device Filter
 <DisclaimerNotice />
 
-## Description  
-**`IDeviceFilter`**
+## Description
 
-This is used to work with filter settings when generating JSON data to spoof device information with LSPosed.
+`IDeviceFilter` is used to set filters when selecting or generating a device in ZennoDroid. It allows you to restrict device parameters by various characteristics such as region, manufacturer, model, and hardware features.
 
-With this API, you can set filter parameters to pick the right data when generating devices.
+## Properties
 
-### Properties  
-- **Country**
-```csharp
-string Country { get; set; }
+- **`string Country { get; set; }`**  
+    Device country.
+    
+    **Description:**  
+    Sets the device region (e.g. `us`, `ru`, `de` or `us|ru|de`).
 
-// Examples: us|ru|de|fr
-```
+---
 
-- **Phone Manufacturer**
-```csharp
-string Manufacturer { get; set; }
+- **`string Manufacturer { get; set; }`**  
+    Device manufacturer.
+    
+    **Description:**  
+    E.g. `Samsung`, `Xiaomi`, `Poco` or `Samsung|Xiaomi|Poco`.
 
-// Examples: Samsung|Xiaomi
-```
+---
 
-- **Phone Brand**
-```csharp
-string Brand { get; set; }
+- **`string Brand { get; set; }`**  
+    Device brand.
+    
+    **Description:**  
+    May match the manufacturer or differ (e.g. `Redmi`, `POCO` or `Redmi|Poco`).
 
-// Examples: Redmi|Poco
-```
+---
 
-- **Phone Model**
-```csharp
-string Model { get; set; }
+- **`string Model { get; set; }`**  
+    Device model.
+    
+    **Description:**  
+    E.g. `SM-A505F`.
 
-// Examples: SM-A505F
-```
+---
 
-- **Android Version**
-```csharp
-string Version { get; set; }
+- **`string Version { get; set; }`**  
+    Android version.
+    
+    **Description:**  
+    E.g. `12`, `13`, `14` or `12|13|14`.
 
-// Examples: 12|13|14|15|16
-```
+---
 
-- **GPU Vendor**
-```csharp
-string GpuVendor { get; set; }
-
-// Examples: Qualcomm|ARM
-```
+- **`string GpuVendor { get; set; }`**  
+    GPU manufacturer.
+    
+    **Description:**  
+    E.g. `ARM`, `Qualcomm`.
 
 #### Examples  
 ```csharp

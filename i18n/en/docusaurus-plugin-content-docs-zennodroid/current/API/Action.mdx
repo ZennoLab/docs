@@ -9,102 +9,95 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Action API
 <DisclaimerNotice />
 
-## Description  
-**`IDroidActionAPI Action`**  
+## Description
 
-This interface gives you access to device management. You can select, start, and stop a device. It works with both virtual and real phones.  
+`IDroidActionAPI` is designed to manage device/emulator selection and lifecycle in ZennoDroid. Allows you to select a device in various ways and start or stop it.
 
-It mirrors how the **Device Actions** block works for the [**Lite/Pro**](../Android/pro-lite/action) and [**Enterprise**](../Android/Enterprise/action) versions.  
+It mirrors how the **Device Actions** block works for the [**Lite/Pro**](../Android/pro-lite/action) and [**Enterprise**](../Android/Enterprise/action) versions.
+
 _______________________________________________
-## Methods  
-### Select a device by its index
-```csharp
-void SelectByIndex(int index)  
-```
-*Parameters:*
-```csharp
-int index // Pass the index of the device you want to pick.
-```  
+## Methods
+
+- **`void SelectByIndex(int index)`**  
+    Selects a device by its index.
+    
+    **Parameters:**
+    - `index` — numeric device identifier.
 
 #### Example  
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByIndex(0);
 ```
-_______________________________________________
-### Select a device by its name
-```csharp
-void SelectByName(string name)  
-```
-*Parameters:*
-```csharp
-string name // Pass the name of the device you want to pick.
-```  
+
+---
+
+- **`void SelectByName(string name)`**  
+    Selects a device by its internal name.
+    
+    **Parameters:**
+    - `name` — system name of the device.
 
 #### Example  
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByName("deviceName");
 ```
-_______________________________________________
-### Select a device by its display name
-```csharp
-void SelectByTitle(string title)  
-```
-*Parameters:*   
-```csharp
-string title // Pass the title of the device you want to pick.
-```  
+
+---
+
+- **`void SelectByTitle(string title)`**  
+    Selects a device by its display name.
+    
+    **Parameters:**
+    - `title` — human-readable name of the device.
 
 #### Example  
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("titleName");
 ```
-_______________________________________________
-### Select a random device from those available
-```csharp
-void SelectRandom()  
-``` 
+
+---
+
+- **`void SelectRandom()`**  
+    Selects a random device from all available ones.
 
 #### Example  
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectRandom();
 ```
-_______________________________________________
-### Select a random device that matches a mask
-```csharp
-void SelectRandom(string mask)  
-``` 
-*Parameters:*   
-```csharp
-string mask // Pass the mask you want to use.  
-```  
+
+---
+
+- **`void SelectRandom(string mask)`**  
+    Selects a random device matching a mask.
+    
+    **Parameters:**
+    - `mask` — string pattern for filtering (e.g. part of a name or title).
 
 #### Example  
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectRandom("Samsung");
 ```
-Let's say you've got these devices:  
+Let's say you have the following devices:  
 - *Pixel_7_Android14;*  
 - *Samsung_S23_Android14;*  
 - *Xiaomi_RedmiNote12_Android13;*  
 - *Samsung_A51_Android12;*  
 - *Google_Nexus5X_Android8;*  
 
-The `"Samsung"` mask will match **Samsung_S23_Android14** and **Samsung_A51_Android12**. After filtering, the method will randomly pick one of these two.  
-_______________________________________________
-### Select a random device from a list  
-```csharp
-void SelectRandom(IEnumerable<string> source) 
-```  
+The `"Samsung"` mask will match **Samsung_S23_Android14** and **Samsung_A51_Android12**. After filtering, the method randomly picks one of them.
 
-*Parameters:*   
-```csharp
-IEnumerable<string> source // List of device names/titles to choose from.
-```  
+---
+
+- **`void SelectRandom(IEnumerable<string> source)`**  
+    Selects a random device from a given list.
+    
+    **Parameters:**
+    - `source` — collection of device names or identifiers.
 
 #### Example  
 ```csharp
@@ -119,24 +112,30 @@ var devices = new List<string>
 };
 action.SelectRandom(devices);
 ```
-_______________________________________________  
-### Start the device you've selected previously
-```csharp
-void Start()  
-```
 
-*Overload:*   
-```csharp
-bool applyProfile 
-// Pass True if you want to use data from the ZennoDroid profile.
-// Device parameters (IMEI, Android ID, etc.) will be taken from the Current profile tab.  
-```  
+---
 
-*Overload:*   
-```csharp
-string captureScreenMethod // Screen capture method type.  
-// Options: "h264", "mjpeg" or "off".
-```
+- **`void Start()`**  
+    Starts the selected device.
+
+- **`void Start(bool applyProfile)`**  
+    Starts the device with the option to apply the template profile.
+    
+    **Parameters:**
+    - `applyProfile` — whether to apply the template profile before starting (IMEI, Android ID, etc. from the Current Profile tab).
+
+- **`void Start(string captureScreenMethod)`**  
+    Starts the device with a specified screen capture method.
+    
+    **Parameters:**
+    - `captureScreenMethod` — screen capture method (`"h264"`, `"mjpeg"`, or `"off"`).
+
+- **`void Start(bool applyProfile, string captureScreenMethod)`**  
+    Starts the device with a profile and a specified screen capture method.
+    
+    **Parameters:**
+    - `applyProfile` — apply profile;
+    - `captureScreenMethod` — screen capture method (`"h264"`, `"mjpeg"`, or `"off"`).
 
 #### Example  
 ```csharp
@@ -147,18 +146,18 @@ action.Start(); // Start.
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Select the device.
-action.Start(true); // Start using ZennoDroid profile data.  
+action.Start(true); // Start using ZennoDroid profile data.
 ```  
 ```csharp
 var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name"); // Select the device.
 action.Start("mjpeg"); // Start with captureScreenMethod.
-```  
-_______________________________________________
-### Stop the selected running device
-```csharp
-void Stop()  
 ```
+
+---
+
+- **`void Stop()`**  
+    Stops the current device.
 
 #### Example  
 ```csharp
