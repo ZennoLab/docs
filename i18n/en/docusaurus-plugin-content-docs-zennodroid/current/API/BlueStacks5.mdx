@@ -1,0 +1,316 @@
+---
+sidebar_position: 60
+sidebar_label: BlueStacks5 API
+title: BlueStacks5 API | ZennoDroid Documentation | ZennoLab
+description: BlueStacks5 API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# BlueStacks5 API
+<DisclaimerNotice />
+
+## Description
+
+A set of interfaces for managing the **BlueStacks 5** emulator in ZennoDroid Enterprise.
+
+| Interface | Description |
+|---|---|
+| `IBlueStacks5API` | Starting, stopping, and connecting to the emulator |
+| `IBlueStacks5SettingsAPI` | System parameters: geolocation, IMEI |
+| `IBlueStacks5RootAPI` | Managing root access and Magisk |
+| `IBlueStacks5ManagerAPI` | Creating and deleting instances via the manager |
+
+_______________________________________________
+
+## IBlueStacks5API
+
+Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
+
+### AddressPort
+
+- **`string AddressPort { get; }`**  
+    Connection address and port of the emulator.
+    
+    **Returns:**  
+    A string in `IP:Port` format (e.g. `127.0.0.1:5555`).
+
+### IsRunning
+
+- **`bool IsRunning { get; }`**  
+    Checks whether the emulator is running.
+    
+    **Returns:**  
+    `true` if the emulator is running; otherwise `false`.
+
+### IsBootCompleted
+
+- **`bool IsBootCompleted { get; }`**  
+    Checks whether Android has finished booting inside the emulator.
+    
+    **Returns:**  
+    `true` if the system is fully loaded and ready to use.
+
+---
+
+### Start
+
+- **`void Start()`**  
+    Starts the BlueStacks emulator.
+
+#### Example
+```csharp
+new BlueStacks5("Rvc64_1", "nxt").Start();
+```
+
+---
+
+### Stop
+
+- **`void Stop()`**  
+    Stops the emulator.
+
+---
+
+### Connect
+
+- **`void Connect()`**  
+    Connects to the emulator (typically via ADB).
+
+---
+
+### Disconnect
+
+- **`void Disconnect()`**  
+    Disconnects from the emulator.
+
+:::note Important Notes
+- After `Start()`, it is recommended to check `IsBootCompleted` before performing any actions.
+- `Connect()` should be called after the emulator has started.
+- In some scenarios, reconnection may be required when ADB fails.
+:::
+
+_______________________________________________
+
+## IBlueStacks5SettingsAPI
+
+Modifying system parameters of the BlueStacks 5 emulator.
+
+### SetGeo
+
+- **`void SetGeo(double longitude, double latitude)`**  
+    Sets the device's geolocation.
+    
+    **Parameters:**
+    - `longitude` — longitude (e.g. `37.6173`);
+    - `latitude` — latitude (e.g. `55.7558`).
+    
+    **Description:**  
+    Allows emulating the device's location at a specified point on the map.
+
+#### Example
+```csharp
+new BlueStacks5Settings("Rvc64_1", "nxt").SetGeo(-73.572604, 40.651980);
+```
+
+---
+
+### SetIMEI
+
+- **`void SetIMEI(string value)`**  
+    Sets the device IMEI.
+    
+    **Parameters:**
+    - `value` — IMEI string value.
+    
+    **Description:**  
+    Used to spoof the device identifier.
+
+:::warning Important Notes
+- Invalid IMEI values may cause errors in applications or be detected as invalid.
+- After changing parameters, it is recommended to restart the emulator and reconnect.
+- Geolocation may additionally be cached by applications — sometimes a restart is required.
+:::
+
+_______________________________________________
+
+## IBlueStacks5RootAPI
+
+Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
+
+### Lock
+
+- **`void Lock()`**  
+    Locks root access in the emulator. Restores the system partition to a non-root state.
+    
+    **Description:**  
+    Disables root, making the system more "clean" (e.g. for bypassing application checks).
+
+---
+
+### Unlock
+
+- **`void Unlock()`**  
+    Unlocks root access.
+    
+    **Description:**  
+    Puts the system partition in write mode. Allows making changes to gain root access.
+
+#### Example
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
+```
+
+---
+
+### Patch
+
+- **`void Patch()`**  
+    Applies a patch to prepare the system for root.
+    
+    **Description:**  
+    Modifies emulator system components to support root access.
+
+---
+
+### InstallMagisk
+
+- **`void InstallMagisk(string path)`**  
+    Installs Magisk from the specified file.
+    
+    **Parameters:**
+    - `path` — path to the Magisk file (`.apk`).
+
+---
+
+### FlashMagisk
+
+- **`void FlashMagisk()`**  
+    Flashes (installs) Magisk into the system.
+    
+    **Description:**  
+    Applies Magisk at the system level after installation.
+
+---
+
+### EnableZygisk
+
+- **`void EnableZygisk()`**  
+    Enables Zygisk — a Magisk module for injecting into processes via Zygote. Supported on Android 9 (Pie) and above.
+    
+    **Description:**  
+    Allows using advanced modules and hooks (e.g. for bypassing root detection).
+
+:::warning Important Notes
+- Root operations may affect emulator stability or break application functionality.
+- After changes, restarting the emulator and verifying root status is recommended.
+- Used together with [`IFridaDeviceAPI`](./Frida), [`IDroidAppAPI`](./App), and `RootShell` ([`IDroidInputAPI`](./Input#rootshell)).
+:::
+
+_______________________________________________
+
+## IBlueStacks5ManagerAPI
+
+Managing BlueStacks 5 instances via the manager: creating, deleting, starting/stopping the service.
+
+**Constructor:** `BlueStacks5Manager(string oem)`
+
+- `oem` — string identifying the BlueStacks version:
+    - `"nxt"` — standard version
+    - `"nxt_cn"` — China version
+    - `"msi5"` — MSI version (MSI App Player 5)
+
+### Create
+
+- **`string Create(string imageName, int cpus, int ram, string graphicEngine, string graphicRenderer, string deviceProfile, string abiList)`**  
+    Creates a new emulator instance with the specified parameters.
+    
+    **Parameters:**
+    - `imageName` — base emulator image:
+        - `"Nougat32"` — Android 7.1 (x86)
+        - `"Nougat64"` — Android 7.1 (x64)
+        - `"Pie64"` — Android 9.0 (x64)
+        - `"Rvc64"` — Android 11.0 (x64)
+        - `"Tiramisu64"` — Android 13.0 (x64)
+    - `cpus` — number of allocated CPUs;
+    - `ram` — amount of RAM (MB);
+    - `graphicEngine` — graphics engine (Android 7 only):
+        - `"aga"` — Compatibility
+        - `"pga"` — Performance
+    - `graphicRenderer` — render type:
+        - `"gl"` — OpenGL
+        - `"dx"` — DirectX
+        - `"vlcn"` — Vulkan
+    - `deviceProfile` — device profile:
+        - `"rogt"` — Asus ROG 2
+        - `"ptxg"` — Google Pixel 2XL
+        - `"optp"` — OnePlus 10 Pro
+        - `"opet"` — OnePlus 8T
+        - `"anfg"` — Samsung Galaxy A90 5G
+        - `"smtn"` — Samsung Galaxy S10
+        - `"stfg"` — Samsung Galaxy S10 5G
+        - `"stul"` — Samsung Galaxy S20 Ultra
+        - `"stwp"` — Samsung Galaxy S20+
+        - `"stou"` — Samsung Galaxy S21 Ultra
+        - `"sstt"` — Samsung Galaxy S22
+        - `"sttu"` — Samsung Galaxy S22 Ultra
+        - `"xitp"` — Xiaomi 11T Pro
+    - `abiList` — list of supported ABIs (e.g. `"x86,x64,arm,arm64"`).
+    
+    **Returns:**  
+    The name of the created instance.
+
+#### Example
+```csharp
+var name = new BlueStacks5Manager("nxt").Create("Rvc64", 
+	cpus:2, 
+	ram:2048,
+	graphicEngine:"aga",
+	graphicRenderer:"dx",
+	deviceProfile:"xitp", 
+	abiList:"x86,x64,arm,arm64");
+```
+
+---
+
+### DeleteByName
+
+- **`void DeleteByName(string name)`**  
+    Deletes an emulator instance by name.
+    
+    **Parameters:**
+    - `name` — instance name.
+
+---
+
+### StartManager
+
+- **`void StartManager()`**  
+    Starts the BlueStacks manager (instance management service).
+
+---
+
+### StopManager
+
+- **`void StopManager()`**  
+    Stops the BlueStacks manager.
+
+---
+
+### TitleToNameConverter
+
+- **`string TitleToNameConverter(string title)`**  
+    Converts an emulator display name to its system name.
+    
+    **Parameters:**
+    - `title` — display name (as shown in the BlueStacks interface).
+    
+    **Returns:**  
+    Internal instance name used by the system.
+
+:::note Important Notes
+- Before creating/deleting instances, it is recommended to start the manager (`StartManager()`).
+- The `cpus` and `ram` parameters must match the host machine's capabilities.
+- Incorrect graphics values may lead to unstable behavior.
+- Used together with `IBlueStacks5API` for the full cycle: create → start → automate → delete.
+:::
+_______________________________________________

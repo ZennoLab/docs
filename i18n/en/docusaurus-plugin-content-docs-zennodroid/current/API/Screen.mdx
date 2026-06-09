@@ -1,0 +1,340 @@
+---
+sidebar_position: 200
+sidebar_label: Screen API
+title: Screen API | ZennoDroid Documentation | ZennoLab
+description: Screen API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Screen API
+<DisclaimerNotice />
+
+## Description
+
+`IDroidScreenAPI` provides methods for analyzing the device screen: searching for images and pixels, taking screenshots, and managing screen capture.
+
+_______________________________________________
+## Methods
+
+### FindImage
+
+- **`Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval)`**  
+    Searches for an image by hash within the specified screen areas.
+    
+    **Parameters:**
+    - `imageHash` — hash of the image to compare against;
+    - `rectangles` — array of `Rectangle` areas to search in;
+    - `confidenceInterval` — match accuracy (0–100, higher means stricter match).
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+- **`Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
+    Searches for an image with a time limit.
+    
+    **Parameters:**
+    - `imageHash` — image hash;
+    - `rectangles` — search areas;
+    - `confidenceInterval` — match accuracy;
+    - `searchTime` — maximum search time in milliseconds.
+    
+    **Returns:**  
+    `Rectangle` — the found area.
+
+- **`Rectangle FindImage(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval)`**  
+    Searches for one of several images.
+    
+    **Parameters:**
+    - `imageHashes` — array of image hashes;
+    - `rectangles` — search areas;
+    - `confidenceInterval` — match accuracy.
+    
+    **Returns:**  
+    `Rectangle` — the area of the first found image.
+
+- **`Rectangle FindImage(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
+    Searches for one of several images with a time limit.
+    
+    **Parameters:**
+    - `imageHashes` — array of hashes;
+    - `rectangles` — search areas;
+    - `confidenceInterval` — match accuracy;
+    - `searchTime` — search time in milliseconds.
+    
+    **Returns:**  
+    `Rectangle` — the found area.
+
+---
+
+### FindPixel
+
+- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel of the specified color.
+    
+    **Parameters:**
+    - `color` — the target color (`Color`);
+    - `rectangles` — search areas;
+    - `variation` — allowed color deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for a pixel with a time limit.
+    
+    **Parameters:**
+    - `color` — color;
+    - `rectangles` — search areas;
+    - `variation` — color deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel by HTML-format color.
+    
+    **Parameters:**
+    - `htmlColor` — color as a string (e.g. `#FF0000`);
+    - `rectangles` — search areas;
+    - `variation` — allowed deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for an HTML color with a timeout.
+    
+    **Parameters:**
+    - `htmlColor` — color;
+    - `rectangles` — search areas;
+    - `variation` — deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+---
+
+### FindPixels
+
+- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel from a set of colors.
+    
+    **Parameters:**
+    - `colors` — array of colors;
+    - `rectangles` — search areas;
+    - `variation` — allowed deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for one of the colors with a time limit.
+    
+    **Parameters:**
+    - `colors` — array of colors;
+    - `rectangles` — search areas;
+    - `variation` — deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel from a set of HTML colors.
+    
+    **Parameters:**
+    - `htmlColors` — array of colors in string format;
+    - `rectangles` — search areas;
+    - `variation` — deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for HTML colors with a timeout.
+    
+    **Parameters:**
+    - `htmlColors` — array of colors;
+    - `rectangles` — search areas;
+    - `variation` — deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+---
+
+### FindImageBlackWhite
+
+- **`Rectangle FindImageBlackWhite(string imageHash, Rectangle[] rectangles, int confidenceInterval, int threshold)`**  
+    Searches for an image in black-and-white mode.
+    
+    **Parameters:**
+    - `imageHash` — image hash;
+    - `rectangles` — search areas;
+    - `confidenceInterval` — match accuracy;
+    - `threshold` — binarization threshold.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+- **`Rectangle FindImageBlackWhite(string imageHash, Rectangle[] rectangles, int confidenceInterval, int threshold, int searchTime)`**  
+    Black-and-white search with a timeout.
+    
+    **Parameters:**
+    - `imageHash` — hash;
+    - `rectangles` — areas;
+    - `confidenceInterval` — accuracy;
+    - `threshold` — threshold;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+- **`Rectangle FindImageBlackWhite(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int threshold)`**  
+    Searches for multiple images in black-and-white mode.
+    
+    **Parameters:**
+    - `imageHashes` — array of hashes;
+    - `rectangles` — areas;
+    - `confidenceInterval` — accuracy;
+    - `threshold` — threshold.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+- **`Rectangle FindImageBlackWhite(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int threshold, int searchTime)`**  
+    Black-and-white search for multiple images with a timeout.
+    
+    **Parameters:**
+    - `imageHashes` — array;
+    - `rectangles` — areas;
+    - `confidenceInterval` — accuracy;
+    - `threshold` — threshold;
+    - `searchTime` — time.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+---
+
+### FindImageGrayscale
+
+- **`Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confidenceInterval)`**  
+    Searches for an image in grayscale mode.
+    
+    **Parameters:**
+    - `imageHash` — hash;
+    - `rectangles` — areas;
+    - `confidenceInterval` — accuracy.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+- **`Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
+    Grayscale search with a timeout.
+    
+    **Parameters:**
+    - `imageHash` — hash;
+    - `rectangles` — areas;
+    - `confidenceInterval` — accuracy;
+    - `searchTime` — time.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+- **`Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval)`**  
+    Searches for multiple images in grayscale.
+    
+    **Parameters:**
+    - `imageHashes` — array;
+    - `rectangles` — areas;
+    - `confidenceInterval` — accuracy.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+- **`Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int searchTime)`**  
+    Grayscale search with a timeout.
+    
+    **Parameters:**
+    - `imageHashes` — array;
+    - `rectangles` — areas;
+    - `confidenceInterval` — accuracy;
+    - `searchTime` — time.
+    
+    **Returns:**  
+    `Rectangle` — the area where the image was found.
+
+---
+
+### ScreenshotAsArray
+
+- **`byte[] ScreenshotAsArray()`**  
+    Takes a screenshot of the entire screen.
+    
+    **Returns:**  
+    Byte array of the image.
+
+#### Example
+```csharp
+var data = instance.DroidInstance.Screen.ScreenshotAsArray();
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+	bmp.Save(project.Path + "myScreen.png");
+```
+
+- **`byte[] ScreenshotAsArray(Rectangle area)`**  
+    Takes a screenshot of the specified area.
+    
+    **Parameters:**
+    - `area` — screen area.
+    
+    **Returns:**  
+    Byte array.
+
+---
+
+### ScreenshotAsBase64String
+
+- **`string ScreenshotAsBase64String()`**  
+    Takes a screenshot of the screen.
+    
+    **Returns:**  
+    A Base64 string.
+
+- **`string ScreenshotAsBase64String(Rectangle area)`**  
+    Takes a screenshot of an area.
+    
+    **Parameters:**
+    - `area` — screen area.
+    
+    **Returns:**  
+    A Base64 string.
+
+---
+
+### RefreshScreen
+
+- **`void RefreshScreen()`**  
+    Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`).
+
+---
+
+### ResetScreen
+
+- **`void ResetScreen()`**  
+    Resets screen capture parameters and starts a new capture process. Used to restart capture when conditions change (e.g. after changing the resolution with `wm size WidthxHeight`).
+
+---
+
+### SetCaptureScreenQuality
+
+- **`void SetCaptureScreenQuality(int quality)`**  
+    Sets the capture quality.
+    
+    **Parameters:**
+    - `quality` — quality level (affects speed and accuracy). Allowed values are 0 to 10.
+_______________________________________________

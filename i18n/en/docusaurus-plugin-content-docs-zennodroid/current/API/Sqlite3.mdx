@@ -1,0 +1,60 @@
+---
+sidebar_position: 220
+sidebar_label: Sqlite3 API
+title: Sqlite3 API | ZennoDroid Documentation | ZennoLab
+description: Sqlite3 API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Sqlite3 API
+<DisclaimerNotice />
+
+## Description
+
+`ISqlite3API` is designed for working with **SQLite** databases on an Android device within ZennoDroid. It allows you to install the required tools and execute SQL queries directly against database files.
+
+_______________________________________________
+## Methods
+
+### Install
+
+- **`void Install()`**  
+    Installs or initializes SQLite tools on the device.
+    
+    **Description:**  
+    Used before executing queries if SQLite is missing or not configured.
+
+---
+
+### ExecuteQuery
+
+- **`string ExecuteQuery(string database, string query)`**  
+    Executes an SQL query against a database.
+    
+    **Parameters:**
+    - `database` — path to the database file (e.g. `/data/data/com.app/databases/db.sqlite`);
+    - `query` — SQL query (e.g. `SELECT * FROM users`).
+    
+    **Returns:**  
+    The query result as a string.
+
+- **`string ExecuteQuery(string database, string query, string options)`**  
+    Executes an SQL query with additional parameters.
+    
+    **Parameters:**
+    - `database` — path to the database;
+    - `query` — SQL query;
+    - `options` — additional execution parameters (e.g. output format or SQLite mode).
+    
+    **Returns:**  
+    The query result.
+
+#### Example
+```csharp
+// Get the cookie file path for Chrome and query the cookies database.
+
+var path = instance.DroidInstance.App.GetCookiePath("com.android.chrome");
+var cookie = instance.DroidInstance.Sqlite3.ExecuteQuery(path, "SELECT * FROM cookies", "-json");
+return cookie;
+```
+_______________________________________________

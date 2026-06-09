@@ -1,0 +1,65 @@
+---
+sidebar_position: 90
+sidebar_label: DeviceSummaryInfo
+title: DeviceSummaryInfo | ZennoDroid Documentation | ZennoLab
+description: DeviceSummaryInfo - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# DeviceSummaryInfo
+<DisclaimerNotice />
+
+## Description
+
+`IDeviceSummaryInfo` contains summary information about a device or emulator. Used to retrieve basic state and identification data about a device without requiring a full connection.
+
+## Properties
+
+### Index
+
+- **`int Index { get; }`**  
+    Unique device index.
+    
+    **Returns:**  
+    A numeric identifier used to address the device within the system.
+
+---
+
+### Name
+
+- **`string Name { get; }`**  
+    Internal device name.
+    
+    **Returns:**  
+    The system name (e.g. an instance identifier).
+
+---
+
+### Title
+
+- **`string Title { get; }`**  
+    Display name of the device.
+    
+    **Returns:**  
+    A human-readable name (e.g. one set by the user).
+
+---
+
+### IsRunning
+
+- **`bool IsRunning { get; }`**  
+    Indicates whether the device is running.
+    
+    **Returns:**  
+    `true` if the device is active; otherwise `false`.
+
+---
+
+### IsBusy
+
+- **`bool IsBusy { get; }`**  
+    Indicates whether the device is busy.
+    
+    **Returns:**  
+    `true` if the device is in use (e.g. a scenario is running); otherwise `false`.
+_______________________________________________

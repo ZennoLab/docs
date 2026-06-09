@@ -1,0 +1,142 @@
+---
+sidebar_position: 100
+sidebar_label: DroidManager API
+title: DroidManager API | ZennoDroid Documentation | ZennoLab
+description: DroidManager API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# DroidManager API
+<DisclaimerNotice />
+
+## Description
+
+`IDroidManagerAPI` is designed for managing the list of devices/emulators in ZennoDroid. It allows you to retrieve information about available devices, work with their identifiers, and perform basic management operations.
+
+## Properties
+
+### BaseDirectory
+
+- **`string BaseDirectory { get; }`**  
+    Base directory for device data storage.
+    
+    **Returns:**  
+    Path to the directory where emulator/device data is stored.
+
+#### Example
+```csharp
+return new DroidManager().BaseDirectory;
+```
+
+_______________________________________________
+## Methods
+
+### GetListDevices
+
+- **`IDeviceSummaryInfo[] GetListDevices()`**  
+    Returns the list of all devices.
+    
+    **Returns:**  
+    An array of [`IDeviceSummaryInfo`](./DeviceSummaryInfo) with summary information about each device.
+
+---
+
+### ConvertNameToIndex
+
+- **`int ConvertNameToIndex(string name)`**  
+    Converts a device name to its index.
+    
+    **Parameters:**
+    - `name` — internal device name.
+    
+    **Returns:**  
+    Device index.
+
+---
+
+### GetListIndices
+
+- **`int[] GetListIndices()`**  
+    Returns the list of indices for all devices.
+    
+    **Returns:**  
+    Array of indices (`int[]`).
+
+---
+
+### ConvertIndexToName
+
+- **`string ConvertIndexToName(int index)`**  
+    Converts a device index to its internal name.
+    
+    **Parameters:**
+    - `index` — device index.
+    
+    **Returns:**  
+    Device name.
+
+---
+
+### ConvertIndexToTitle
+
+- **`string ConvertIndexToTitle(int index)`**  
+    Converts a device index to its display name.
+    
+    **Parameters:**
+    - `index` — device index.
+    
+    **Returns:**  
+    Human-readable device name.
+
+---
+
+### ConvertTitleToName
+
+- **`string ConvertTitleToName(string title)`**  
+    Converts a device display name to its internal name.
+    
+    **Parameters:**
+    - `title` — display name.
+    
+    **Returns:**  
+    Internal device name.
+
+---
+
+### GetListNames
+
+- **`string[] GetListNames()`**  
+    Returns the list of names for all devices.
+    
+    **Returns:**  
+    Array of strings with internal names.
+
+---
+
+### GetListTitles
+
+- **`string[] GetListTitles()`**  
+    Returns the list of display names for all devices.
+    
+    **Returns:**  
+    Array of strings with display names.
+
+---
+
+### ReconnectOffline
+
+- **`void ReconnectOffline()`**  
+    Attempts to reconnect all offline devices.
+    
+    **Description:**  
+    Used to restore the connection (e.g. via ADB) to devices that are temporarily unavailable.
+
+_______________________________________________
+
+:::note Important Notes
+- Index, name, and title are different representations of the same device:
+    - `Index` — numeric ID;
+    - `Name` — system name;
+    - `Title` — display name.
+- The `ReconnectOffline()` method is useful for unstable connections or after restarting ADB.
+:::
