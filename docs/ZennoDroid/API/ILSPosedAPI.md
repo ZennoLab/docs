@@ -16,6 +16,7 @@
 - **`void EnableModule()`**  
     Включает указанный модуль.
 
+
 ---
 
 - **`void DisableModule()`**  
@@ -93,9 +94,13 @@
     Получает статус LSPosed через CLI.
     
     **Возвращает:**  
-    Строку со статусом (например, информация о запущенных модулях и состоянии системы).
-    
+    Строку со статусом (информация о версии Android, LSPosed, модель устройтсва).
 
+### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+return lspHelper.GetCLIStatus();
+```
 ---
 
 ### Важные замечания

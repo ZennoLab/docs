@@ -2,6 +2,7 @@
 
 `IBlueStacks5API` предназначен для управления эмулятором **BlueStacks 5** в среде ZennoDroid Enterprise. Позволяет запускать и останавливать эмулятор, управлять подключением и получать информацию о его состоянии.
 
+
 ## Свойства
 
 - **`string AddressPort { get; }`**  
@@ -30,6 +31,11 @@
 
 - **`void Start()`**  
     Запускает эмулятор BlueStacks.
+
+### Пример.
+```csharp
+new BlueStacks5("Rvc64_1", "nxt").Start();
+```
 
 ---
 

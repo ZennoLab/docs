@@ -14,31 +14,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 Этот интерфейс нужен для управления настройками прокси-сервера на устройстве. Он позволяет настроить базовые параметры прокси для устройства, а также дополнительные настройки, необходимые для тонкой конфигурации подключения.  
 
-### Свойства.  
-- **Блокировать утечку WebRtc**. 
-```csharp
-bool BlockWebRtcLeak { get; set; }
-```   
-
-- **Блокировать утечку UDP**. 
-```csharp
-bool BlockUDPLeak { get; set; }
-```   
-
-- **DNS-запросы с использованием протокола TCP**. 
-```csharp
-bool UseDnsTcp { get; set; }
-```   
-
-- **DNS-запросы с использованием протокола UDP**. 
-```csharp
-bool UseDnsUdp { get; set; }
-```  
 _______________________________________________
 ## Методы.
 ### Установить прокси.
 ```csharp
-void SetProxy(string proxy)
+void SetProxy(string proxy, IDroidProxySettings settings)
 ```   
 
 *Параметры:*   
@@ -46,14 +26,18 @@ void SetProxy(string proxy)
 string proxy // Значение прокси. Формат: login:pass@IP:port
 ``` 
 
+```csharp
+IDroidProxySettings settings // Параметры прокси. Например: new DroidProxySettings.ProxifierViaPC()
+``` 
+
 #### Пример.  
 ```csharp
 var proxy = instance.DroidInstance.Proxy;
 
 // Установить прокси
-proxy.SetProxy("socks5://login:pass@100.20.30.40:8080");
-proxy.SetProxy("https://login:pass@100.20.30.40:8080");
-proxy.SetProxy("login:pass@100.20.30.40:8080");
+var settings = new DroidProxySettings.ClashViaPC();
+settings.DnsServers = "1.1.1.1";
+instance.DroidInstance.Proxy.SetProxy("socks5://login:pass@100.20.30.40:8080", settings);
 ```
 _______________________________________________ 
 ### Получить прокси проекта.
@@ -78,40 +62,6 @@ void ClearProxy()
 var proxy = instance.DroidInstance.Proxy;
 
 proxy.ClearProxy(); // Очистить прокси проекта
-```
-_______________________________________________ 
-### Установить свой DNS сервер.
-```csharp
-void SetDnsServers(string dnsServers)
-```    
-
-*Параметры:*   
-```csharp
-string dnsServers // Значение DNS.
-``` 
-
-#### Пример.  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-proxy.SetDnsServers("1.1.1.1,8.8.4.4"); // Установить DNS сервер
-```
-_______________________________________________ 
-### Установить локальный адрес.
-```csharp
-void SetLocalAddress(string address)
-```    
-
-*Параметры:*   
-```csharp
-string address // Локальный адрес.
-``` 
-
-#### Пример.  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-proxy.SetLocalAddress("192.168.20.0"); // Установить Локальный адрес
 ```
 _______________________________________________ 
 ### Включить частный DNS.

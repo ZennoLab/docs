@@ -35,3 +35,12 @@
     
     **Возвращает:**  
     Результат выполнения запроса.
+
+### Пример.
+```csharp
+// Получаем путь к файлу cookie для Chrome и выполняем запрос к базе данных cookies.
+
+var path = instance.DroidInstance.App.GetCookiePath("com.android.chrome");
+var cookie = instance.DroidInstance.Sqlite3.ExecuteQuery(path, "SELECT * FROM cookies", "-json");
+return cookie;
+```

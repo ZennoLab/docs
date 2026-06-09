@@ -4,7 +4,7 @@
 ## Описание
 ### `IDroidActionEmulatorAPI : IDroidActionAPI`
 
-Интерфейс `IDroidActionEmulatorAPI` расширяет базовый `IDroidActionAPI` и предоставляет методы для управления эмуляторами Memu и LDPlayer в ZennoDroid. Позволяет создавать, клонировать, импортировать, удалять и настраивать виртуальные устройства.
+Интерфейс `IDroidActionEmulatorAPI` расширяет базовый `IDroidActionAPI` и предоставляет методы для управления эмуляторами **MEmu** и **LDPlayer** в ZennoDroid. Позволяет создавать, клонировать, импортировать, удалять и настраивать виртуальные устройства.
 
 ### Свойство
 
@@ -23,9 +23,22 @@
     Создаёт новый эмулятор с указанной версией Android.
     
     **Параметры:**
-    - `version` — версия Android (например: `"7.1"`, `"9.0"`).
+    - `version` — версия Android  
+    Возможные значения для эмулятора MEmu:  
+        - `"71" - Android 7.1(x86)`  
+        - `"76" - Android 7.1(x64)`  
+        - `"96" - Android 9.0(x64)`  
+        - `"120" - Android 12.0(x64)`  
+        
+    LDPlayer всегда создает эмулятор с Android 9.
+    
     **Возвращает:** индекс созданного эмулятора.
     
+### Пример.
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+var index = droid.Action.Create("96");
+```
 
 ---
 
@@ -37,7 +50,7 @@
     
     **Возвращает:** индекс импортированного эмулятора.
     
-
+    Формат файла бэкапа эмулятора: MEmu:`*.ova` LDPlayer:`*.ldbk`
 ---
 
 - **`void Export(string path)`**  
@@ -46,6 +59,7 @@
     **Параметры:**
     - `path` — путь для сохранения.
 
+    Формат файла бэкапа эмулятора: MEmu:`*.ova` LDPlayer:`*.ldbk`
 ---
 
 - **`void DeleteByIndex(int index)`**  

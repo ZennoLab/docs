@@ -1,4 +1,4 @@
-ссылки нет
+https://docs.zennolab.com/zennodroid/API/FridaDevice
 
 ## Описание
 
@@ -88,9 +88,30 @@
     
 
 ---
-
 - **`void Resume(uint pid)`**  
     Возобновляет выполнение ранее запущенного процесса.
     
     **Параметры:**
     - `pid` — идентификатор процесса.
+
+---
+### Пример.
+
+```csharp
+var source = project.Variables["script"].Value;
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+var pid = device.Spawn("com.android.settings");
+var session = device.Attach(pid);
+
+var script = session.CreateScript(source, "myScript");
+script.Message += (o, e) => project.SendInfoToLog(e.Message);
+script.Load();
+
+device.Resume(pid);
+```
+
+Содержимое переменной `script` (выводит сообщение в лог):
+```javascript
+console.log('hello!')
+```

@@ -60,7 +60,7 @@ ___
     
     **Параметры:**
     - `savePermissions` — сохранять разрешения;
-    - `accountType` — тип аккаунта (например, Google, Facebook и т.д.).
+    - `accountType` — тип аккаунта (например, com.yandex.passport, com.twitter.android.auth.login). Тип аккаунта можно узнать с помощью метода `GetAccounts(string packageName)`.
 
 ---
 
@@ -92,7 +92,7 @@ ___
 ---
 
 - **`void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount)`** 
-    Восстанавливает данные приложения в "отсоединённом" режиме (без привязки к текущему состоянию устройства).
+    Восстанавливает данные приложения без привязки к устройству на котором был сделан бэкап. Необходимо использовать модуль ZennoBackup
     
     **Параметры:**
     - `restorePermissions` — восстанавливать разрешения;
@@ -129,11 +129,11 @@ ___
 ___
 
 - **`void PatchFlutterLib(string packageName, string proxy)`**  
-    Выполняет патч библиотеки Flutter (`libflutter.so`) для указанного приложения с целью перенаправления сетевого трафика через прокси.
+    Выполняет патч библиотеки Flutter (`libflutter.so`) для указанного приложения с целью перенаправления сетевого трафика в BurpSuite для дальнейшего анализа.
     
     **Параметры:**
     - `packageName` — имя пакета приложения;
-    - `proxy` — адрес прокси (например: `127.0.0.1:8888`).
+    - `proxy` — адрес прокси (например: `10.0.2.2:8083`).
 
 ---
 

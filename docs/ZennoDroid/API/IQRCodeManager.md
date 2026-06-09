@@ -37,6 +37,11 @@
 - **`void PressQRCodeScanButton()`**  
     Нажимает кнопку запуска сканирования QR-кода.
 
+### Пример.
+```csharp
+var qr = new QRCodeManager();
+qr.PressQRCodeScanButton();
+```
 ---
 
 - **`void SetViewfinderPosition(Rectangle rect)`**  
