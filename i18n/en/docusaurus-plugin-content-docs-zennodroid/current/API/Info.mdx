@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 150
 sidebar_label: Info API
 title: Info API | ZennoDroid Documentation | ZennoLab
 description: Info API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -9,43 +9,61 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Info API
 <DisclaimerNotice />
 
-## Description  
-**`IDroidInfoAPI Info`**
+## Description
 
-Gives you access to info about the current device. This interface is used to get various details about the connected device, but only after you've selected and connected to it using the IDroidActionAPI Action methods.
+`IDroidInfoAPI` provides basic information about the device or emulator in ZennoDroid. Used to retrieve identifiers, network parameters, and data needed for connecting to and managing the device.
 
-### Properties  
-- **Device index**
-```csharp
-int Index { get; }
-```
-Duplicates the **Index** info from the [Device Manager](../Tools/Device_Manager) window.
-_______________________________________________
-- **Device title**
-```csharp
-string Title { get; }
-```
-Duplicates the **Title** info from the [Device Manager](../Tools/Device_Manager) window.
-_______________________________________________
-- **Device name (ADB)**
-```csharp
-string Name { get; }
-```
-This is the ADB device name, the same as the **Device** info in the [Device Manager](../Tools/Device_Manager) window.
-_______________________________________________
-- **Port shown in the instance window**
-```csharp
-int UiPort { get; }
-```
-This is only relevant when running a template in ZennoDroid.
-_______________________________________________
-- **Address for connecting via ADB**
-```csharp
-string AddressPort { get; }
-```
-For physical phones, matches the *Name* property value. For emulators, provides the connection address and port e.g. "127.0.0.1:21503" for MEmu
-_______________________________________________
-#### Example
+## Properties
+
+### Index
+
+- **`int Index { get; }`**  
+    Device index.
+    
+    **Returns:**  
+    Unique numeric identifier of the device. Mirrors the **Index** field in the [Device Manager](../Tools/Device_Manager) window.
+
+---
+
+### Title
+
+- **`string Title { get; }`**  
+    Device display name.
+    
+    **Returns:**  
+    Human-readable device name. Mirrors the **Title** field in the [Device Manager](../Tools/Device_Manager) window.
+
+---
+
+### Name
+
+- **`string Name { get; }`**  
+    Internal ADB device name.
+    
+    **Returns:**  
+    System name used by the API. Mirrors the **Device** field in the [Device Manager](../Tools/Device_Manager) window.
+
+---
+
+### UiPort
+
+- **`int UiPort { get; }`**  
+    UI port of the device.
+    
+    **Returns:**  
+    Port used for UI interaction with the device. Only relevant when running a template in ZennoDroid.
+
+---
+
+### AddressPort
+
+- **`string AddressPort { get; }`**  
+    Device connection address and port.
+    
+    **Returns:**  
+    A string in `IP:Port` format used for ADB connections (e.g. `127.0.0.1:21503` for MEmu). For physical phones, matches the value of the `Name` property.
+
+#### Example  
 ```csharp
 var info = instance.DroidInstance.Info;
 

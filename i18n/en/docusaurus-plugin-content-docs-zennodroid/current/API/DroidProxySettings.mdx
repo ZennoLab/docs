@@ -1,0 +1,274 @@
+---
+sidebar_position: 110
+sidebar_label: DroidProxySettings
+title: DroidProxySettings | ZennoDroid Documentation | ZennoLab
+description: DroidProxySettings - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# DroidProxySettings
+<DisclaimerNotice />
+
+## Description
+
+`IDroidProxySettings` defines proxy settings and network data leak protection for an Android device in ZennoDroid. Used to improve anonymity and control network traffic.
+
+It has multiple implementations (configuration variants) depending on the proxying method.
+
+_______________________________________________
+
+## DroidProxySettings.Proxifier
+
+Basic proxy settings using a traffic proxying mechanism.
+
+- **`bool? BlockWebRtcLeak { get; set; }`**  
+    Enables or disables protection against WebRTC leaks.
+    
+    **Description:**  
+    Prevents the real IP address from being exposed via WebRTC (used in browsers and WebView).
+
+---
+
+- **`bool? BlockUDPLeak { get; set; }`**  
+    Enables or disables protection against UDP leaks.
+    
+    **Description:**  
+    Blocks UDP traffic that may bypass the proxy and expose the real IP.
+
+_______________________________________________
+
+## DroidProxySettings.ProxifierViaPC
+
+Extended proxy settings when using PC-based proxying.
+
+- **`bool? BlockWebRtcLeak { get; set; }`**  
+    Controls protection against WebRTC leaks.
+
+---
+
+- **`bool? BlockUDPLeak { get; set; }`**  
+    Controls UDP leak blocking.
+
+---
+
+- **`string DnsServers { get; set; }`**  
+    Specifies DNS servers.
+    
+    **Description:**  
+    Allows setting custom DNS servers (e.g. `8.8.8.8, 1.1.1.1`).
+
+---
+
+- **`string LocalIPv4Address { get; set; }`**  
+    Local IPv4 address.
+    
+    **Description:**  
+    Used to bind the proxy to a specific PC network interface.
+
+_______________________________________________
+
+## DroidProxySettings.Redsocks
+
+Proxy settings via **Redsocks** (redirecting TCP/UDP traffic through a proxy).
+
+- **`string DnsServers { get; set; }`**  
+    DNS servers.
+    
+    **Description:**  
+    Specifies the DNS list (e.g. `8.8.8.8, 1.1.1.1`).
+
+---
+
+- **`bool? UseDnsTcp { get; set; }`**  
+    Use DNS over TCP.
+    
+    **Description:**  
+    Redirects DNS requests over TCP instead of UDP.
+
+---
+
+- **`bool? UseDnsUdp { get; set; }`**  
+    Use DNS over UDP.
+    
+    **Description:**  
+    Use DNS through the proxy.
+
+---
+
+- **`bool? BlockWebRtcLeak { get; set; }`**  
+    WebRTC leak blocking.
+
+---
+
+- **`bool? BlockUDPLeak { get; set; }`**  
+    UDP leak blocking.
+
+---
+
+- **`string WebRtcLeakAddresses { get; set; }`**  
+    Addresses for WebRTC handling.
+    
+    **Description:**  
+    List of IPs/addresses used to control or spoof WebRTC traffic.
+
+---
+
+- **`string WebUdpLeakAddresses { get; set; }`**  
+    Addresses for UDP leak handling.
+    
+    **Description:**  
+    List of IPs/addresses for controlling UDP traffic.
+
+_______________________________________________
+
+## DroidProxySettings.RedsocksViaPC
+
+Extended Redsocks settings when proxying via PC.
+
+- **`string DnsServers { get; set; }`**  
+    DNS servers.
+
+---
+
+- **`bool? UseDnsTcp { get; set; }`**  
+    Use DNS over TCP.
+
+---
+
+- **`bool? UseDnsUdp { get; set; }`**  
+    Use DNS through the proxy.
+
+---
+
+- **`bool? BlockWebRtcLeak { get; set; }`**  
+    WebRTC leak blocking.
+
+---
+
+- **`bool? BlockUDPLeak { get; set; }`**  
+    UDP leak blocking.
+
+---
+
+- **`string WebRtcLeakAddresses { get; set; }`**  
+    Addresses for WebRTC.
+
+---
+
+- **`string WebUdpLeakAddresses { get; set; }`**  
+    Addresses for UDP.
+
+---
+
+- **`string LocalIPv4Address { get; set; }`**  
+    Local IPv4 address.
+    
+    **Description:**  
+    Sets the local IPv4 address.
+
+_______________________________________________
+
+## DroidProxySettings.Clash
+
+Proxy settings via **Clash** — an advanced proxy client with traffic routing rule support.
+
+- **`string DnsServers { get; set; }`**  
+    DNS servers.
+    
+    **Description:**  
+    Specifies the DNS list (e.g. `8.8.8.8, 1.1.1.1`).
+
+---
+
+- **`string LocalIPv4Address { get; set; }`**  
+    Local IPv4 address.
+    
+    **Description:**  
+    Sets the local IPv4 address.
+
+---
+
+- **`string LocalIPv6Address { get; set; }`**  
+    Local IPv6 address.
+    
+    **Description:**  
+    Sets the local IPv6 address.
+
+---
+
+- **`string WhiteList { get; set; }`**  
+    Whitelist.
+    
+    **Description:**  
+    List of applications whose traffic will be routed through the proxy.
+
+---
+
+- **`string BlackList { get; set; }`**  
+    Blacklist.
+    
+    **Description:**  
+    List of applications whose traffic will go directly, bypassing the proxy.
+
+---
+
+- **`string NetworkMode { get; set; }`**  
+    Network operation mode.
+    
+    **Description:**  
+    Defines the routing strategy:
+    - `redirect` — handles tcp + udp[direct]
+    - `tproxy` — handles tcp + udp
+    - `mixed` — redirect[tcp] + tun[udp]
+    - `enhance` — redirect[tcp] + tproxy[udp]
+    - `tun` — handles tcp + udp (auto-route)
+
+---
+
+- **`string Rules { get; set; }`**  
+    Routing rules.
+    
+    **Description:**  
+    A set of rules (in Clash format) defining where to route which traffic.
+
+_______________________________________________
+
+## DroidProxySettings.ClashViaPC
+
+Clash settings when proxying via PC.
+
+- **`string DnsServers { get; set; }`**  
+    DNS servers.
+
+---
+
+- **`string LocalIPv4Address { get; set; }`**  
+    Local IPv4 address.
+
+---
+
+- **`string LocalIPv6Address { get; set; }`**  
+    Local IPv6 address.
+
+---
+
+- **`string WhiteList { get; set; }`**  
+    Whitelist.
+
+---
+
+- **`string BlackList { get; set; }`**  
+    Blacklist.
+
+---
+
+- **`string NetworkMode { get; set; }`**  
+    Network mode.
+
+---
+
+- **`string Rules { get; set; }`**  
+    Routing rules.
+_______________________________________________
+## Useful links
+- [**IDroidProxyAPI**](./Proxy).

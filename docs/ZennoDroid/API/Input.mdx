@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 160
 sidebar_label: Input API
 title: Input API | Документация ZennoDroid | ZennoLab
 description: Input API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
@@ -9,27 +9,28 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Input API
 <DisclaimerNotice />
 
-## Описание.  
-**`IDroidInputAPI Input`**  
+## Описание
 
-Предоставляет доступ к эмуляции действий на устройстве для взаимодействия с интерфейсом и элементами приложения. Этот интерфейс используется для выполнения свайпов, тапов и ввода текста, а также для выполнения [**команд ADB Shell**](../Android/pro-lite/Utilities#консольная-команда-adb-shell).
-_______________________________________________
-## Методы. 
-### Cвайп по экрану от точки до точки.
-```csharp
-void Swipe(int x1, int y1, int x2, int y2) 
-```   
+`IDroidInputAPI` предназначен для эмуляции пользовательского ввода на Android-устройстве в ZennoDroid. Позволяет выполнять касания, свайпы, ввод текста, работу с буфером обмена и системными событиями.
 
-*Параметры:*   
-```csharp
-int x1, int y1 // Координаты первой точки.
-int x2, int y2 // Координаты второй точки.
-``` 
+## Методы
 
-*Перегрузка:*   
-```csharp
-int duration  // Продолжительность свайпа (скорость).  
-```
+### Swipe
+
+- **`void Swipe(int x1, int y1, int x2, int y2)`**  
+    Выполняет свайп по экрану.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `x2`, `y2` — конечная точка.
+
+- **`void Swipe(int x1, int y1, int x2, int y2, int duration)`**  
+    Свайп с управлением скоростью.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `x2`, `y2` — конечная точка;
+    - `duration` — длительность свайпа (мс).
 
 #### Пример.  
 ```csharp
@@ -44,18 +45,59 @@ input.Swipe(start.X, start.Y, end.X, end.Y); // Сделать свайп по �
 var duration = 100;
 input.Swipe(start.X, start.Y, end.X, end.Y, duration); // Сделать свайп по координатам с настройкой скорости движения
 ```
-_______________________________________________
-### Изогнутый свайп от точки до точки.
-```csharp
-void SwipeCurved(int x1, int y1, int x2, int y2, int duration) 
-```   
 
-*Параметры:*   
-```csharp
-int x1, int y1 // Координаты первой точки.
-int x2, int y2 // Координаты второй точки.
-int duration  // Продолжительность свайпа (скорость). 
-``` 
+---
+
+### SwipeCurved
+
+- **`void SwipeCurved(int x1, int y1, int x2, int y2)`**  
+    Изогнутый свайп.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `x2`, `y2` — конечная точка.
+
+- **`void SwipeCurved(int x1, int y1, int x2, int y2, int duration)`**  
+    Изогнутый свайп с управлением скоростью.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `x2`, `y2` — конечная точка;
+    - `duration` — длительность свайпа (мс).
+
+- **`void SwipeCurved(int x1, int y1, double bending, int x2, int y2)`**  
+    Изогнутый свайп с коэффициентом изгиба.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `bending` — коэффициент изгиба;
+    - `x2`, `y2` — конечная точка.
+
+- **`void SwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration)`**  
+    Изогнутый свайп с изгибом и длительностью.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `bending` — коэффициент изгиба;
+    - `x2`, `y2` — конечная точка;
+    - `duration` — длительность.
+
+- **`void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2)`**  
+    Изогнутый свайп через промежуточную точку.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `xPivot`, `yPivot` — промежуточная точка кривой;
+    - `x2`, `y2` — конечная точка.
+
+- **`void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration)`**  
+    Изогнутый свайп через промежуточную точку с управлением скоростью.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `xPivot`, `yPivot` — промежуточная точка кривой;
+    - `x2`, `y2` — конечная точка;
+    - `duration` — длительность свайпа (мс).
 
 #### Пример.  
 ```csharp
@@ -65,49 +107,28 @@ Point start = new Point() { X = 100, Y = 500 }; // Точка старта
 Point end = new Point() { X = 200, Y = 200 }; // Точка конца
 var duration = 100; // скорость свайпа
 input.SwipeCurved(start.X, start.Y, end.X, end.Y, duration); // Изогнутый свайп
-```
-_______________________________________________
-### Изогнутый свайп с контролем изгиба.
-```csharp
-void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration) 
-```   
 
-*Параметры:*   
-```csharp
-int x1, int y1 // Координаты первой точки.
-int xPivot // Точка вращения по Х.
-int yPivot // Точка вращения по Y.
-int x2, int y2 // Координаты второй точки.
-int duration  // Продолжительность свайпа (скорость). 
-``` 
-
-#### Пример.  
-```csharp
-var input = instance.DroidInstance.Input;
-
-Point start = new Point() { X = 100, Y = 500 }; // Точка старта
-Point end = new Point() { X = 200, Y = 200 }; // Точка конца
-var duration = 100; // Скорость свайпа
 var xPivot = 200; // Настройка изгиба по X
 var yPivot = 700; // Настройка изгиба по Y
 input.SwipeCurved(start.X, start.Y, xPivot, yPivot, end.X, end.Y, duration); // Изогнутый свайп c настройкой изгиба
 ```
-_______________________________________________
-### Нажатие по координатам.
-```csharp
-void Tap(int x, int y) 
-```   
 
-*Параметры:*   
-```csharp
-int x // Координаты точки по Х.
-int y // Координаты точки по Y.
-``` 
+---
 
-*Перегрузка:*   
-```csharp
-int duration  // Длительность нажатия.  
-```
+### Tap
+
+- **`void Tap(int x, int y)`**  
+    Выполняет одиночное нажатие по координатам.
+    
+    **Параметры:**
+    - `x`, `y` — координаты точки.
+
+- **`void Tap(int x, int y, int duration)`**  
+    Нажатие по координатам с заданной длительностью.
+    
+    **Параметры:**
+    - `x`, `y` — координаты точки;
+    - `duration` — длительность нажатия (мс).
 
 #### Пример.  
 ```csharp
@@ -119,19 +140,19 @@ input.Tap(point.X, point.Y); // Нажатие по координатам
 var duration = 100; // Продолжительность нажатия
 input.Tap(point.X, point.Y, duration); // Долгое нажатие по координатам
 ```
-_______________________________________________
-### Нажатие по координатам c дополнительными настройками.
-```csharp
-void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)
-```   
 
-*Параметры:*   
-```csharp
-int xMin, int yMin // Координаты нижней точки.
-int xMax, int yMax // Координаты верхней точки.
-bool longPress // Использовать долгое нажатие
-string clickDistributionType // Тип клика: "Normal" или "Random". 
-``` 
+---
+
+### Touch
+
+- **`void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)`**  
+    Нажатие в заданной области с дополнительными настройками.
+    
+    **Параметры:**
+    - `xMin`, `yMin` — верхний левый угол области;
+    - `xMax`, `yMax` — нижний правый угол области;
+    - `longPress` — использовать долгое нажатие;
+    - `clickDistributionType` — тип распределения точки клика (`"Normal"` или `"Random"`).
 
 #### Пример.  
 ```csharp
@@ -142,22 +163,36 @@ Point end = new Point() { X = 200, Y = 200 }; // Точка конца
 
 input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Нажатие по координатам с настройками
 ```
-_______________________________________________
-### Долгое нажатие и свайп по экрану.
-```csharp
-void LongTapAndSwipe(int x1, int y1, int x2, int y2)
-```   
 
-*Параметры:*   
-```csharp
-int x1, int y1 // Координаты первой точки.
-int x2, int y2 // Координаты второй точки.
-``` 
+---
 
-*Перегрузка:*   
-```csharp
-int duration  // Продолжительность свайпа (скорость).  
-```
+### LongTap
+
+- **`void LongTap(int x, int y)`**  
+    Выполняет долгое нажатие по координатам.
+    
+    **Параметры:**
+    - `x` — координата по X;
+    - `y` — координата по Y.
+
+---
+
+### LongTapAndSwipe
+
+- **`void LongTapAndSwipe(int x1, int y1, int x2, int y2)`**  
+    Долгое нажатие с последующим свайпом.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `x2`, `y2` — конечная точка.
+
+- **`void LongTapAndSwipe(int x1, int y1, int x2, int y2, int duration)`**  
+    Долгое нажатие со свайпом и управлением скоростью.
+    
+    **Параметры:**
+    - `x1`, `y1` — начальная точка;
+    - `x2`, `y2` — конечная точка;
+    - `duration` — длительность свайпа (мс).
 
 #### Пример.  
 ```csharp
@@ -171,21 +206,152 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y); // долгое нажа�
 var duration = 100; // Продолжительность нажатия
 input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое нажатие и свайп по экрану, с настройкой скорости свайпа
 ```
-_______________________________________________
-### Ввод текста в поле.
-```csharp
-void SendText(string text)
-```   
 
-*Параметры:*   
-```csharp
-string text // Текст ввода.
-``` 
+---
 
-*Перегрузка:*   
+### LongTapAndSwipeCurved
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2)`**  
+    Выполняет долгий тап в точке `(x1, y1)` и свайп к `(x2, y2)` по кривой.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2, int duration)`**  
+    То же самое, но с управлением длительностью жеста.
+    
+    **Параметры:**
+    - `duration` — длительность свайпа в миллисекундах.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2)`**  
+    Добавляет контроль степени кривизны траектории.
+    
+    **Параметры:**
+    - `bending` — коэффициент изгиба (чем больше значение, тем сильнее отклонение от прямой).
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration)`**  
+    Добавляет контроль степени кривизны траектории с указанием длительности.
+    
+    **Параметры:**
+    - `bending` — коэффициент изгиба (чем больше значение, тем сильнее отклонение от прямой);
+    - `duration` — длительность свайпа в миллисекундах.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2)`**  
+    Выполняет свайп по кривой, проходящей через заданную промежуточную точку (pivot).
+    
+    **Параметры:**
+    - `xPivot`, `yPivot` — координаты контрольной точки кривой.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration)`**  
+    Выполняет свайп по кривой, проходящей через заданную промежуточную точку (pivot) с управлением длительностью.
+    
+    **Параметры:**
+    - `xPivot`, `yPivot` — координаты контрольной точки кривой;
+    - `duration` — длительность свайпа в миллисекундах.
+
+---
+
+### FingerDown
+
+- **`void FingerDown(int x, int y)`**  
+    Эмулирует касание экрана (палец опускается) в точке.
+
+- **`void FingerDown(int x, int y, int fingerId)`**  
+    Эмулирует касание с указанием ID пальца (для мультитача).
+    
+    **Параметры:**
+    - `fingerId` — ID пальца.
+
+### FingerMove
+
+- **`void FingerMove(int x, int y)`**  
+    Перемещает активный палец в новую точку.
+
+- **`void FingerMove(int x, int y, int fingerId)`**  
+    Перемещает конкретный палец.
+    
+    **Параметры:**
+    - `fingerId` — ID пальца.
+
+### FingerUp
+
+- **`void FingerUp(int x, int y)`**  
+    Убирает палец с экрана (завершает касание).
+
+- **`void FingerUp(int x, int y, int fingerId)`**  
+    Завершает касание конкретного пальца.
+    
+    **Параметры:**
+    - `fingerId` — ID пальца.
+
+---
+
+### FreeMove
+
+- **`void FreeMove(string json, double speed)`**  
+    Выполняет пользовательский жест по заданной траектории.
+    
+    **Параметры:**
+    - `json` — JSON-описание траектории движения;
+    - `speed` — скорость выполнения жеста.
+
+---
+
+### ZoomIn
+
+- **`void ZoomIn()`**  
+    Приближает экран.
+
+- **`void ZoomIn(int centerX, int centerY, double ratio)`**  
+    Приближение с параметрами.
+    
+    **Параметры:**
+    - `centerX`, `centerY` — центр приближения;
+    - `ratio` — коэффициент приближения.
+
+#### Пример.  
 ```csharp
-int latency // Задержка между вводом символов.  
+var input = instance.DroidInstance.Input;
+
+input.ZoomIn(); // Приблизить
+input.ZoomIn(-1, -1, 1.0); // Приблизить с настройкой
 ```
+
+---
+
+### ZoomOut
+
+- **`void ZoomOut()`**  
+    Отдаляет экран.
+
+- **`void ZoomOut(int centerX, int centerY, double ratio)`**  
+    Отдаление с параметрами.
+    
+    **Параметры:**
+    - `centerX`, `centerY` — центр отдаления;
+    - `ratio` — коэффициент отдаления.
+
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.ZoomOut(); // Отдалить
+input.ZoomOut(-1, -1, 1.0); // Отдалить с настройкой
+```
+
+---
+
+### SendText
+
+- **`void SendText(string text)`**  
+    Вводит текст в активное поле.
+    
+    **Параметры:**
+    - `text` — строка для ввода.
+
+- **`void SendText(string text, int latency)`**  
+    Вводит текст с задержкой между символами.
+    
+    **Параметры:**
+    - `text` — строка для ввода;
+    - `latency` — задержка между символами (мс).
 
 #### Пример.  
 ```csharp
@@ -197,34 +363,37 @@ input.SendText(text); // Вводим текст в поле элемента
 var latency = 100; // Скорость набора текста
 input.SendText(text, latency); // Вводим текст с настройкой скорости ввода
 ```
-_______________________________________________
-### Ввод специальных символов (через [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME)).
-```csharp
-void SendKeyCode(KeyCode keyCode)
-```   
 
-*Параметры:*   
-```csharp
-KeyCode keyCode // Идентификатор спец.символа.
-``` 
+---
 
-*Перегрузка:*   
-```csharp
-int keyCode // Числовой код спец.символа.  
-```
+### SendKeyCode
+
+- **`void SendKeyCode(KeyCode keyCode)`**  
+    Отправляет клавишу через enum [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME).
+    
+    **Параметры:**
+    - `keyCode` — значение перечисления `KeyCode`.
+
+- **`void SendKeyCode(int keyCode)`**  
+    Отправляет клавишу по числовому коду.
+    
+    **Параметры:**
+    - `keyCode` — числовой код клавиши.
 
 #### Пример.  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-input.SendKeyCode(KeyCode.KEYCODE_HOME); //Отправка спецсимволов (по названию)
-input.SendKeyCode(3); //Отправка спецсимволов(по числовому значению)
+input.SendKeyCode(KeyCode.KEYCODE_HOME); // Отправка спецсимволов (по названию)
+input.SendKeyCode(3); // Отправка спецсимволов (по числовому значению)
 ```
-_______________________________________________
-### Очистить поле ввода от текста.
-```csharp
-void ClearText()
-```   
+
+---
+
+### ClearText
+
+- **`void ClearText()`**  
+    Очищает текст в текущем активном поле ввода.
 
 #### Пример.  
 ```csharp
@@ -232,22 +401,69 @@ var input = instance.DroidInstance.Input;
 
 input.ClearText(); // очистить текст элемента
 ```
-_______________________________________________
-### Выполнить команду [**ADB Shell**](../Android/pro-lite/Utilities#консольная-команда-adb-shell).
-```csharp
-string Shell(string command)
-```   
 
-*Параметры:*   
-```csharp
-string command // Команда ADB, которую нужно выполнить.
-``` 
+---
 
-*Перегрузка:*   
+### GetClipboard
+
+- **`string GetClipboard()`**  
+    Получает содержимое буфера обмена.
+    
+    **Возвращает:**  
+    Строку из буфера обмена.
+
+#### Пример.  
 ```csharp
-int timeout // Время ожидания команды.  
-bool checkconnect // Проверка подключения к устройству.
+var input = instance.DroidInstance.Input;
+
+var text = input.GetClipboard(); // Получить текст из буфера обмена
 ```
+
+---
+
+### SetClipboard
+
+- **`void SetClipboard(string text)`**  
+    Устанавливает содержимое буфера обмена.
+    
+    **Параметры:**
+    - `text` — строка для записи в буфер.
+
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+var text = "Привет мир!";
+input.SetClipboard(text); // Поместить текст в буфер обмена
+```
+
+---
+
+### Shell
+
+- **`string Shell(string command)`**  
+    Выполняет команду [ADB Shell](../Android/pro-lite/Utilities#консольная-команда-adb-shell).
+    
+    **Параметры:**
+    - `command` — команда для выполнения.
+    
+    **Возвращает:**  
+    Результат выполнения команды.
+
+- **`string Shell(string command, int timeout)`**  
+    Выполняет команду с таймаутом.
+    
+    **Параметры:**
+    - `command` — команда;
+    - `timeout` — время ожидания (мс).
+
+- **`string Shell(string command, int timeout, bool checkconnect)`**  
+    Выполняет команду с таймаутом и проверкой подключения.
+    
+    **Параметры:**
+    - `command` — команда;
+    - `timeout` — время ожидания (мс);
+    - `checkconnect` — проверять подключение к устройству.
 
 #### Пример.  
 ```csharp
@@ -262,87 +478,45 @@ input.Shell(adb, 1000); //Запускаем приложение с ожида�
 var adb = "reboot"; // Команда перезагрузки
 input.Shell(adb, 1000, true); // Выполнить команду перезагрузки c ожиданием выполнения и проверкой подключения adb
 ```
-_______________________________________________
-### Взять текст из Буфера обмена.
-```csharp
-string GetClipboard()
-```   
 
-#### Пример.  
-```csharp
-var input = instance.DroidInstance.Input;
+---
 
-var text = input.GetClipboard(); // Получить текст из буфера обмена
-```
-_______________________________________________
-### Скопировать текст в Буфер обмена.
-```csharp
-void SetClipboard(string text)
-```   
+### RootShell
 
-*Параметры:*   
-```csharp
-string text // Текст для буфера обмена.
-``` 
+- **`string RootShell(string command)`**  
+    Выполняет shell-команду с root-доступом.
+    
+    **Параметры:**
+    - `command` — команда для выполнения (например: `cat /system/build.prop`, `ls /data/data`).
+    
+    **Возвращает:**  
+    Результат выполнения команды (stdout) в виде строки.
 
-#### Пример.  
-```csharp
-var input = instance.DroidInstance.Input;
+- **`string RootShell(string command, int timeout)`**  
+    Выполняет root-команду с ограничением по времени.
+    
+    **Параметры:**
+    - `command` — команда;
+    - `timeout` — максимальное время выполнения (мс).
 
-var text = "Привет мир!";
-input.SetClipboard(text); // Поместить текст в буфер обмена
-```
-_______________________________________________
-### Приблизить экран.
-```csharp
-void ZoomIn()
-```   
+- **`string RootShell(string command, int timeout, bool checkconnect)`**  
+    Расширенный вариант с проверкой соединения.
+    
+    **Параметры:**
+    - `command` — команда;
+    - `timeout` — таймаут выполнения (мс);
+    - `checkconnect` — проверять подключение к устройству перед выполнением.
 
-*Перегрузка:*   
-```csharp
-int centerX // Центр точки по Х.
-int centerY // Центр точки по Y.
-double ratio // Значение приближения. 
-```
+---
 
-#### Пример.  
-```csharp
-var input = instance.DroidInstance.Input;
+### SendSmsMessage
 
-input.ZoomIn(); // Приблизить
-input.ZoomIn(-1, -1, 1.0); // Приблизить с настройкой
-```
-_______________________________________________
-### Отдалить экран.
-```csharp
-void ZoomOut()
-```   
-
-*Перегрузка:*   
-```csharp
-int centerX // Центр точки по Х.
-int centerY // Центр точки по Y.
-double ratio // Значение отдаления. 
-```
-
-#### Пример.  
-```csharp
-var input = instance.DroidInstance.Input;
-
-input.ZoomOut(); // Отдалить
-input.ZoomOut(-1, -1, 1.0); // Отдалить с настройкой
-```
-_______________________________________________
-### Эмуляция получения SMS на устройство.
-```csharp
-void SendSmsMessage(string phone, string message)
-```   
-
-*Параметры:*   
-```csharp
-string phone // Телефон, который якобы отправляет нам SMS.
-string message // Текст, который должен поступить в SMS.
-``` 
+- **`void SendSmsMessage(string phone, string message)`**  
+    Эмулирует получение входящего SMS на устройстве.
+    
+    **Параметры:**
+    - `phone` — номер телефона отправителя;
+    - `message` — текст сообщения.
 
 #### Пример.  
 ```csharp

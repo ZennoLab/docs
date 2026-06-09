@@ -1,0 +1,130 @@
+---
+sidebar_position: 30
+sidebar_label: ActionEmulator API
+title: ActionEmulator API | ZennoDroid Documentation | ZennoLab
+description: ActionEmulator API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# ActionEmulator API
+<DisclaimerNotice />
+
+## Description
+
+`IDroidActionEmulatorAPI : IDroidActionAPI`
+
+The `IDroidActionEmulatorAPI` interface extends the base [`IDroidActionAPI`](./Action) and provides methods for managing **MEmu** and **LDPlayer** emulators in ZennoDroid. It allows you to create, clone, import, delete, and configure virtual devices.
+
+## Properties
+
+### Action
+
+- **`IDroidActionAPI Action`**  
+    Access to basic device actions (inherited functionality via [`IDroidActionAPI`](./Action)).
+
+_______________________________________________
+## Methods
+
+### Clone
+
+- **`int Clone()`**  
+    Creates a copy of the current emulator.
+    
+    **Returns:**  
+    The index of the new emulator.
+
+---
+
+### Create
+
+- **`int Create(string version)`**  
+    Creates a new emulator with the specified Android version.
+    
+    **Parameters:**
+    - `version` — Android version.  
+    Possible values for **MEmu**:
+        - `"71"` — Android 7.1 (x86)
+        - `"76"` — Android 7.1 (x64)
+        - `"96"` — Android 9.0 (x64)
+        - `"120"` — Android 12.0 (x64)
+    
+    **LDPlayer** always creates an emulator with Android 9.
+    
+    **Returns:**  
+    The index of the created emulator.
+
+#### Example
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+var index = droid.Action.Create("96");
+```
+
+---
+
+### Import
+
+- **`int Import(string path)`**  
+    Imports an emulator from a file.
+    
+    **Parameters:**
+    - `path` — path to the emulator file/archive.
+    
+    **Returns:**  
+    The index of the imported emulator.
+    
+    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+---
+
+### Export
+
+- **`void Export(string path)`**  
+    Exports the current emulator to a file.
+    
+    **Parameters:**
+    - `path` — path for saving.
+    
+    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+---
+
+### DeleteByIndex
+
+- **`void DeleteByIndex(int index)`**  
+    Deletes an emulator by index.
+
+### DeleteByName
+
+- **`void DeleteByName(string name)`**  
+    Deletes an emulator by name.
+
+### DeleteByTitle
+
+- **`void DeleteByTitle(string title)`**  
+    Deletes an emulator by display name.
+
+---
+
+### FactoryReset
+
+- **`void FactoryReset(bool resetSystem)`**  
+    Performs a factory reset of the emulator.
+    
+    **Parameters:**
+    - `resetSystem` — if `true`, a full reset including system data is performed; if `false`, only user data is reset.
+
+---
+
+### Rename
+
+- **`void Rename(int index, string title)`**  
+    Renames an emulator by index.
+
+- **`void Rename(string name, string title)`**  
+    Renames an emulator by name.
+
+### RenameTo
+
+- **`void RenameTo(string title)`**  
+    Renames the current emulator.
+_______________________________________________

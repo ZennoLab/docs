@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 70
 sidebar_label: Device Filter
 title: Device Filter | Документация ZennoDroid | ZennoLab
 description: Device Filter - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
@@ -9,47 +9,69 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Device Filter
 <DisclaimerNotice />
 
-## Описание.  
-**`IDeviceFilter`**
+## Описание
 
-Используется для работы с настройками фильтров при генерации JSON-данных для подмены информации об устройстве через LSPosed.  
-Этот API позволяет задавать параметры фильтрации, чтобы подбирать нужные данные при генерации устройств.  
+`IDeviceFilter` используется для задания фильтров при выборе или генерации устройства в ZennoDroid. Позволяет ограничить параметры устройства по различным характеристикам, таким как регион, производитель, модель и аппаратные особенности.
 
-### Свойства.  
-- **Страна**
-```csharp
-string Country { get; set; }
+## Свойства
 
-// Например: us|ru|de|fr
-```
+### Country
 
-- **Производитель телефона**. 
-```csharp
-string Manufacturer { get; set; }
+- **`string Country { get; set; }`**  
+    Страна устройства.
+    
+    **Описание:**  
+    Задаёт регион устройства (например: `us`, `ru`, `de` или `us|ru|de`).
 
-// Например: Samsung|Xiaomi
-```   
+---
 
-- **Бренд телефона**. 
-```csharp
-string Brand { get; set; }
+### Manufacturer
 
-// Например: Redmi|Poco
-```
+- **`string Manufacturer { get; set; }`**  
+    Производитель устройства.
+    
+    **Описание:**  
+    Например: `Samsung`, `Xiaomi`, `Poco` или `Samsung|Xiaomi|Poco`.
 
-- **Модель телефона**. 
-```csharp
-string Model { get; set; }
+---
 
-// Например: SM-A505F
-```
+### Brand
 
-- **Версия Android**. 
-```csharp
-string Version { get; set; }
+- **`string Brand { get; set; }`**  
+    Бренд устройства.
+    
+    **Описание:**  
+    Может совпадать с производителем или отличаться (например: `Redmi`, `POCO` или `Redmi|Poco`).
 
-// Например: 12|13|14|15|16
-```  
+---
+
+### Model
+
+- **`string Model { get; set; }`**  
+    Модель устройства.
+    
+    **Описание:**  
+    Например: `SM-A505F`.
+
+---
+
+### Version
+
+- **`string Version { get; set; }`**  
+    Версия Android.
+    
+    **Описание:**  
+    Например: `12`, `13`, `14` или `12|13|14`.
+
+---
+
+### GpuVendor
+
+- **`string GpuVendor { get; set; }`**  
+    Производитель графического процессора.
+    
+    **Описание:**  
+    Например: `ARM`, `Qualcomm`.
 
 #### Примеры:  
 ```csharp

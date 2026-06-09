@@ -1,0 +1,60 @@
+---
+sidebar_position: 220
+sidebar_label: Sqlite3 API
+title: Sqlite3 API | Документация ZennoDroid | ZennoLab
+description: Sqlite3 API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Sqlite3 API
+<DisclaimerNotice />
+
+## Описание
+
+`ISqlite3API` предназначен для работы с базами данных **SQLite** на Android-устройстве в среде ZennoDroid. Позволяет устанавливать необходимые инструменты и выполнять SQL-запросы напрямую к файлам баз данных.
+
+_______________________________________________
+## Методы
+
+### Install
+
+- **`void Install()`**  
+    Устанавливает или инициализирует SQLite-инструменты на устройстве.
+    
+    **Описание:**  
+    Используется перед выполнением запросов, если SQLite отсутствует или не настроен.
+
+---
+
+### ExecuteQuery
+
+- **`string ExecuteQuery(string database, string query)`**  
+    Выполняет SQL-запрос к базе данных.
+    
+    **Параметры:**
+    - `database` — путь к файлу базы данных (например: `/data/data/com.app/databases/db.sqlite`);
+    - `query` — SQL-запрос (например: `SELECT * FROM users`).
+    
+    **Возвращает:**  
+    Результат выполнения запроса в виде строки.
+
+- **`string ExecuteQuery(string database, string query, string options)`**  
+    Выполняет SQL-запрос с дополнительными параметрами.
+    
+    **Параметры:**
+    - `database` — путь к базе данных;
+    - `query` — SQL-запрос;
+    - `options` — дополнительные параметры выполнения (например, формат вывода или режим SQLite).
+    
+    **Возвращает:**  
+    Результат выполнения запроса.
+
+#### Пример.
+```csharp
+// Получаем путь к файлу cookie для Chrome и выполняем запрос к базе данных cookies.
+
+var path = instance.DroidInstance.App.GetCookiePath("com.android.chrome");
+var cookie = instance.DroidInstance.Sqlite3.ExecuteQuery(path, "SELECT * FROM cookies", "-json");
+return cookie;
+```
+_______________________________________________

@@ -65,6 +65,7 @@ void UpdateSettings(IEnumerable<KeyValuePair<string, object>> keyValuePairs);
 void SelectByIndex(int index);
 void SelectByName(string name);
 void SelectByTitle(string title);
+void SelectRandom();
 void SelectRandom(string mask);
 void SelectRandom(IEnumerable<string> source);
 void Start();
@@ -74,7 +75,7 @@ void Start(bool applyProfile, string captureScreenMethod);
 void Stop();
 ```  
 ### IDroidAppAPI
-[**`IDroidAppAPI App`**](./Hierarchy)  
+[**`IDroidAppAPI App`**](./App)  
 ```csharp
 string AppDir(string packageName);
 string DataDir(string packageName);
@@ -87,8 +88,8 @@ string GetCookiePath(string packageName);
 string Top { get; }
 string Uid(string packageName);
 uint TopPid { get; }
-void AddAccount(string name, string type, string password);
-void AddAccount(string name, string type, string password, string metadata);
+bool AddAccount(string name, string type, string password);
+bool AddAccount(string name, string type, string password, string metadata);
 void BackupAppData(string packageName, string pathToBackup);
 void BackupAppData(string packageName, string pathToBackup, bool savePermissions);
 void BackupAppData(string packageName, string pathToBackup, bool savePermissions, string accountType);
@@ -195,7 +196,7 @@ void EnablePrivateDns(string address);
 void DisablePrivateDns();
 ```  
 ### IDroidScreenAPI
-**`IDroidScreenAPI Screen`**  
+[**`IDroidScreenAPI Screen`**](./Screen)  
 ```csharp
 Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval);
 Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime);
@@ -243,7 +244,7 @@ void SetTime(string dateTime);
 void SetTimezone(string timezone);
 ```  
 ### IFridaDeviceAPI
-**`IFridaDeviceAPI FridaDevice`**
+[**`IFridaDeviceAPI FridaDevice`**](./Frida)
 ```csharp
 string Id { get; }
 string Name { get; }
@@ -258,7 +259,7 @@ uint Spawn(string packageName);
 void Resume(uint pid);
 ```  
 ### ISqlite3API
-**`ISqlite3API Sqlite3`**
+[**`ISqlite3API Sqlite3`**](./Sqlite3)
 ```csharp
 string ExecuteQuery(string database, string query);
 string ExecuteQuery(string database, string query, string options);
@@ -270,4 +271,6 @@ void Install();
 string EvaluateScript(string script);
 string GetAttachedWebSocketUrl();
 void InjectSystemCertificate(string source);
+void EnableForcedRenderWebView();
+void DisableForcedRenderWebView();
 ```  
