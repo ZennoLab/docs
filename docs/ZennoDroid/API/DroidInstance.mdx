@@ -89,7 +89,7 @@ void Rename(string name, string title);
 void RenameTo(string title);
 ``` 
 ### IDroidAppAPI
-[**`IDroidAppAPI App`**](./Hierarchy)  
+[**`IDroidAppAPI App`**](./App)  
 ```csharp
 string AppDir(string packageName);
 string DataDir(string packageName);
@@ -210,7 +210,7 @@ void EnablePrivateDns(string address);
 void DisablePrivateDns();
 ```  
 ### IDroidScreenAPI
-**`IDroidScreenAPI Screen`**  
+[**`IDroidScreenAPI Screen`**](./Screen)  
 ```csharp
 Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval);
 Rectangle FindImage(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime);
@@ -258,7 +258,7 @@ void SetTime(string dateTime);
 void SetTimezone(string timezone);
 ```  
 ### IFridaDeviceAPI
-**`IFridaDeviceAPI FridaDevice`**
+[**`IFridaDeviceAPI FridaDevice`**](./Frida)
 ```csharp
 string Id { get; }
 string Name { get; }
@@ -273,7 +273,7 @@ uint Spawn(string packageName);
 void Resume(uint pid);
 ```  
 ### ISqlite3API
-**`ISqlite3API Sqlite3`**
+[**`ISqlite3API Sqlite3`**](./Sqlite3)
 ```csharp
 string ExecuteQuery(string database, string query);
 string ExecuteQuery(string database, string query, string options);
