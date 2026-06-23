@@ -62,4 +62,35 @@ _______________________________________________
 Перейдя на эту вкладку, вы увидите перед собой два поля:  
 - **Верхнее**. Служит для добавления *namespaces*, которые используются при выполнении кода в экшенах C#. Например, для парсинга XML нужно написать `using System.Xml;`.  
 - **Нижнее**. Здесь перечислены все *using*, которые используются проектом по умолчанию. Их нельзя редактировать.  
+_______________________________________________
+## Пример работы.  
+Подадим изображение и коэффициент прозрачности на вход метода `SetImageOpacity`. В результате мы получим картинку с эффектом полупрозрачности, которую можно сохранить на диск.  
+```C
+public static Image SetImageOpacity(Image image, float opacity)  
+{  
+    try  {  
+		Bitmap bmp = new Bitmap(image.Width, image.Height);
+        //создание графики из картинки
+        using (Graphics gfx = Graphics.FromImage(bmp)) {
+            //создание объекта color matrix  
+            ColorMatrix matrix = new ColorMatrix();      
+            //установка прозрачности 
+            matrix.Matrix33 = opacity;  
+            //создание новых атрибутов
+            ImageAttributes attributes = new ImageAttributes();      
+            //установка цвета прозрачности картинки
+            attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);    
+            //отрисовываем картинку
+            gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+        }
+        return bmp;  
+    }  
+    catch (Exception ex) {  
+        return null;  
+    }  
+} 
+```  
 
+А вот так эта функция вызывается из [**экшена C#**](./С):  
+`Image img = OwnCode.CommonCode.SetImageOpacity(Image.FromFile(project.Directory + "//image.jpg"), .5f);`
+_______________________________________________
