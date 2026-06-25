@@ -1,0 +1,81 @@
+---
+sidebar_position: 99
+title: "Operating Instructions"
+description: "Step-by-step operating instructions for the ZennoPoster software suite: creating and debugging projects in ProjectMaker, launching and configuring threads and schedules in ZennoPoster."
+date: "2026-06-25"
+slug: operating-instructions
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+The ZennoPoster software suite consists of two applications:
+
+* **ProjectMaker** – for creating, recording, and debugging projects (automation templates).  
+* **ZennoPoster** – for running finished projects: managing threads, proxies, and schedules.  
+Each execution thread is an isolated browser with its own cookies, cache, proxy, and User-Agent.
+
+The workflow consists of four steps.
+
+## **Step 1\. Launching ProjectMaker**
+
+Launch **ProjectMaker** and go to the **"Recording and Debugging"** tab—this is where the main windows for creating and editing a project are located. The project and the built-in browser are synchronized in real time.  
+In the workspace, the **"Element Tree"**, **"Selected Element Properties"**, and **"Page Text"** panels are available; you can move, hide, and restore them through the menu.
+
+[Start Page](/zennoposter/ProjectMaker/Start_Page)
+
+## **Step 2\. Creating and Debugging a Project**
+
+### **2.1. Recording**
+
+1. Create a new project or open an existing one using the buttons in the top menu.  
+2. Click the "Record" button in the top menu.  
+3. Enter the website address in the browser address bar and wait until the page fully loads.  
+4. Perform actions in the browser—each one is recorded in the project as an action. You can also add actions manually by right-clicking in the project window.
+
+To find elements, use the **"Follow Cursor"** mode, the action builder, and the **"Element Tree"** window.
+
+### **2.2. Debugging**
+
+1. Start execution from "From the Beginning". Step-by-step execution and running to a breakpoint are also available.  
+2. Each time you run "From the Beginning", the log is cleared; it shows actions, warnings, and errors.  
+3. If an error occurs, adjust the action parameters and immediately test it again. You can continue recording the project using the "Record" button.
+
+| IMPORTANT Debugging in ProjectMaker is slower than execution in ZennoPoster (because of animation), and in ZennoPoster website elements may not have enough time to load. In critical places, add checks, pauses, and waiting for elements to load. |
+| :---- |
+
+### **2.3. Saving**
+
+Save the project as a .zp file—it is used for adding the project to ZennoPoster.
+
+## **Step 3\. Launching ZennoPoster**
+
+Launch **ZennoPoster**. The main window contains the project list, thread controls, and the log; the schedule is on a separate tab. Each project has an **"Instances"** tab where you can see running threads in real time with the following statuses: *Preparing, Running, Waiting for User Action, Error, Success*.
+
+[Main Menu](/zennoposter/ZennoPoster/Interface/Main_Menu)
+
+## **Step 4\. Adding a Project, Configuring Threads, and Setting Up a Schedule**
+
+### **4.1. Adding a Project**
+
+Click **"Add Template"** and select the project file (.zp); for multiple projects, use **"Add Templates"**. In the window that opens, configure the execution parameters.
+
+### **4.2. Threads**
+
+In the multithreaded version, set the number of threads for the project. The number of threads is selected individually and depends on the project and your computer resources; the maximum number of simultaneously launched threads is set in the ZennoPoster settings.
+
+### **4.3. Schedule**
+
+On the **"Schedule"** tab, configure automatic launch. The scheduler supports schedules of any complexity—one-time execution, execution on days of the week within specified intervals, repetition with pauses, and a number of attempts.  
+After setup, use the **"Schedule Debugger"** (menu in the upper-right corner of the "Schedule" tab)—it will calculate an approximate execution flow.
+
+| NOTE If the scheduled launch time was missed, the project does not run immediately after the program starts, but waits until the next scheduled time. |
+| :---- |
+
+## **Related Articles**
+
+* [Creating a Project](/zennoposter/category/recording-and-creating-projects)  
+* [Debugging a Project](/zennoposter/category/debugging-projects)  
+* [Running Projects](/zennoposter/category/project-delivery)  
+* [Schedule Planner](/zennoposter/category/schedule-planner)  
+* [Technical Support](https://helpdesk.zennolab.com/en)
