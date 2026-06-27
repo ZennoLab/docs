@@ -446,6 +446,78 @@
   "sidebar.zennoposterSidebar.category.ИИ.link.generated-index.description": {
     "message": "Actions for working with LLM providers and AI services.",
     "description": "The generated-index page description for category ИИ in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tables.link.generated-index.title": {
+    "message": "Tables",
+    "description": "The generated-index page title for category Tables in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Tables.link.generated-index.description": {
+    "message": "Actions for working with regular and Google Sheets.",
+    "description": "The generated-index page description for category Tables in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.title": {
+    "message": "Executing projects",
+    "description": "The generated-index page title for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Delivery.link.generated-index.description": {
+    "message": "Starting and managing project execution: project parameters, context menu, creating a BAT file, ZennoPoster input settings.",
+    "description": "The generated-index page description for category Project Delivery in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.title": {
+    "message": "Project parameters",
+    "description": "The generated-index page title for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Project Settings.link.generated-index.description": {
+    "message": "Main execution parameters: settings, stop, log, schedule planner, instances.",
+    "description": "The generated-index page description for category Project Settings in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.title": {
+    "message": "Schedule Planner",
+    "description": "The generated-index page title for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.Schedule Planner.link.generated-index.description": {
+    "message": "General information, scheduler features, and the schedule debugger for automating launches.",
+    "description": "The generated-index page description for category Schedule Planner in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker.link.generated-index.title": {
+    "message": "ProjectMaker - An App for Creating Projects for ZennoPoster",
+    "description": "The generated-index page title for category ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ProjectMaker.link.generated-index.description": {
+    "message": "A complete guide to working with ProjectMaker, a powerful tool for creating automated projects in ZennoPoster",
+    "description": "The generated-index page description for category ProjectMaker in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster.link.generated-index.title": {
+    "message": "ZennoPoster - an application for running projects",
+    "description": "The generated-index page title for category ZennoPoster in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster.link.generated-index.description": {
+    "message": "A software suite from ZennoLab for automating browser actions and SEO tasks: record and replay scripts with no coding, multithreading, work with proxies and captchas. This section includes materials on the interface, project table, and settings (including ProxyChecker).",
+    "description": "The generated-index page description for category ZennoPoster in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.История изменений ZennoPoster.link.generated-index.title": {
+    "message": "ZennoPoster Change Log",
+    "description": "The generated-index page title for category История изменений ZennoPoster in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.История изменений ZennoPoster.link.generated-index.description": {
+    "message": "Summary of releases and changes by version. Includes subsections for ZennoPoster 7 and ZennoPoster 5.",
+    "description": "The generated-index page description for category История изменений ZennoPoster in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster 7 — история изменений.link.generated-index.title": {
+    "message": "ZennoPoster 7 — Change History",
+    "description": "The generated-index page title for category ZennoPoster 7 — история изменений in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster 7 — история изменений.link.generated-index.description": {
+    "message": "Full changelog of ZennoPoster 7: new features, improvements, and fixes.",
+    "description": "The generated-index page description for category ZennoPoster 7 — история изменений in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster 5 — история изменений.link.generated-index.title": {
+    "message": "ZennoPoster 5 — Change History",
+    "description": "The generated-index page title for category ZennoPoster 5 — история изменений in sidebar zennoposterSidebar"
+  },
+  "sidebar.zennoposterSidebar.category.ZennoPoster 5 — история изменений.link.generated-index.description": {
+    "message": "Chronology of ZennoPoster 5 updates: key changes and fixes.",
+    "description": "The generated-index page description for category ZennoPoster 5 — история изменений in sidebar zennoposterSidebar"
   }
 }
 
