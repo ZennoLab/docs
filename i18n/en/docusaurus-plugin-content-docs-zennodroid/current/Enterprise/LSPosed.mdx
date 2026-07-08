@@ -24,7 +24,7 @@ _________________
 ## Installing the LSPosed Framework
 
 <details>
-<summary>You'll need a phone with [**Magisk**](https://github.com/topjohnwu/Magisk) and a working [**LSPosed Framework**](https://github.com/LSPosed/LSPosed) to install the module.</summary>  
+<summary>Starting with ZennoDroid 2.5.0.0, you'll need a phone with [**Magisk**](https://github.com/topjohnwu/Magisk) and a working [**LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0) to install the module.</summary>  
 
 |   ![Magisk](./assets/LSPosed/LSPosed_pic1.png)   | ![zygisk](./assets/LSPosed/LSPosed_pic2.png) |
 | :--------: | :-------: |
@@ -32,9 +32,7 @@ _________________
  
 </details>
 
-The official version of LSPosed has not been updated for a long time and does not work on modern versions of Android. Therefore, we recommend using a special build of the LSPosed Framework with API support, prepared for use with ZennoDroid.  
-
-> [**Special build v1.11.0**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto)
+The current official version of LSPosed is distributed through the official [**Telegram channel**](https://t.me/LSPosed). You can also download the latest version of LSPosed via [**this link**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)
 
 <details>
 <summary>Download this build to your phone in the *sdcard/Download/* folder and install it using the standard menu.</summary>  
@@ -48,9 +46,9 @@ The official version of LSPosed has not been updated for a long time and does no
 
 _________________
 ## Installing the ZennoDroid Module
-The ZennoDroid module is installed automatically when you first try to change device parameters.
+The ZennoDroid module is installed automatically when you first try to change device parameters or when you run any action from the [LSPosed Management](./LSPosed_Control) group.
 On the first launch, your device will ask for superuser rights.
-You'll need to tap the **"Allow"** button.
+You'll need to tap the **"Allow"** button (when using Magisk, permission is granted automatically).
 
 ![Allow](./assets/LSPosed/LSPosed_pic6.png)
 _________________
@@ -76,7 +74,7 @@ _________________
 When you remove an app, it disappears from the spoof list. If you reinstall it, it won’t show up in the list automatically (the box might be checked, but spoofing won’t work).
 :::
 
-- Not all apps appear in the list by default. If you don’t see the app you need (like Google Chrome), go to the *Hide* menu and uncheck the right group.
+- Not all apps appear in the list by default. If you don’t see the app you need (like Google Chrome), go to the *Settings* menu and select the right group.
 
 ![System](./assets/LSPosed/LSPosed_pic11.png)
 
@@ -98,19 +96,18 @@ Main functions:
 - get information about LSPosed.
 
 ### Video tutorial   
-> Setting up the ZennoDroid and the [FLAG_SECURE](https://github.com/VarunS2002/Xposed-Disable-FLAG_SECURE/releases/tag/2.0.0) modules, which allows viewing secured pages.  
+> Setting up the ZennoDroid module and the [DisableFlagSecure](https://github.com/LSPosed/DisableFlagSecure/releases/latest) (`io.github.lsposed.disableflagsecure`) module, which allows viewing secured pages.  
 
 <VideoSample source={require("@site/static/video/LSPosedAPI.mp4").default}/>  
 
 Examples of working with the API are also included in the archive [LSPosedAPI.zip](https://www.dropbox.com/scl/fi/xsw5q8ej1wtmhpg5695we/LSPosedAPI.zip?rlkey=menqd2q7a0g6qnmc1l3omq4fr&st=0byf2hwb&dl=0&roistat_visit=1429674).  
 
-To use this, you need to work with our [**Special build v1.11.0**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto).After installation, no additional setup is required. For use with ZennoDroid, a CLI with automatic enabling has been added to the fork; *it’s compatible with current Android versions*. 
 _________________
 ## **Managing LSPosed using actions**
 In version 2.4.6, a convenient way [**to manage LSPosed**](./LSPosed_Control) was added through a group of actions.
 _________________
 ## Useful Links
 - Template for spoofing device parameters via actions and API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)
-- [**Latest version of LSPosed Framework**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto)
+- [**Latest version of LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)
 - [**Connecting a real device to ZennoDroid**](./Connection)
 - [**Device settings**](../Settings/Settings_for_Enterprise)

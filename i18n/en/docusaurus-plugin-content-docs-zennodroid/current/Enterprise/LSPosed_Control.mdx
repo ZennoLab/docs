@@ -12,7 +12,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ## Description 
 This action is used to manage various LSPosed modules that are used to spoof parameters on devices.  
 
-> To work, you need to use our [**Special build v1.10.2**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto).  
+:::warning Starting with ZennoDroid 2.5.0.0, you need to use [**LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0).  
+No other LSPosed modifications should be installed on the device
+:::
 
 ### How to add it to a project? 
 Via the context menu: **Add Action → Android → LSPosed Management**  
@@ -30,9 +32,9 @@ The data is returned in JSON format and can be processed using the [JSON and XML
 Response example:  
 ```json
 {
-  "API version": "100",
-  "Injection Interface": "Zygisk",
-  "Framework version": ".1.10.2_cli_auto(7201)",
+  "API version": 102,
+  "Injection Interface": "LSPosed",
+  "Framework version": "2.1.0 (7769)",
   "System version": "15 (API 35)",
   "Device": "Realme RMX3834",
   "System ABI": "arm64-v8a"
@@ -44,7 +46,7 @@ Here you can specify the list of applications for which parameter spoofing shoul
 
 ![LSPosed module configuration](./assets/LSPosed_Control/LSPosed_Control_pic3.png) 
 
-By default, the standard ZennoModule (`com.zennolab.zennodroid`) is specified, but you can set any other one. For example, if a black screen is displayed instead of content, you can install the [FLAG_SECURE](https://github.com/VarunS2002/Xposed-Disable-FLAG_SECURE/releases/tag/2.0.0) module (`com.varuns2002.disable_flag_secure`), which allows you to view protected pages.  
+By default, the standard ZennoModule (`com.zennolab.zennodroid`) is specified, but you can set any other one. For example, if a black screen is displayed instead of content, you can install the [DisableFlagSecure](https://github.com/LSPosed/DisableFlagSecure/releases/latest) module (`io.github.lsposed.disableflagsecure`), which allows you to view protected pages.  
 
 #### Available parameters  
 - **Module name**.  
@@ -64,6 +66,8 @@ This saves the module settings (or the settings of all modules) so that you can 
 Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
 - **Save settings of all modules**.  
 The settings of all installed modules will be saved, not just a specific one.  
+:::warning When using LSPosed v2, the settings of all modules are always saved, regardless of the selected option
+:::
 - **Path to archive file**.  
 Here you specify the path where the application data will be saved in a `.gz` archive. You can specify a path on a computer or a smartphone (for example: `/sdcard/com.zennolab.zennodroid.gz`).  
 
@@ -77,6 +81,8 @@ This same action restores previous settings from the selected file.
 Since an LSPosed module is an application, you need to specify its identifier here. You can find it using the [Installed Applications](../Tools/Installed_App) tool.  
 - **Restore the settings of all modules**.  
 The settings of all installed modules will be restored, not just a specific one.  
+:::warning When using LSPosed v2, the settings of all modules are always restored, regardless of the selected option
+:::
 - **Path to archive file**.  
 Here you specify the path to the `.gz` archive from which the application data will be restored. You can specify a path on a computer or a smartphone (for example: `/sdcard/com.zennolab.zennodroid.gz`).  
 
@@ -91,6 +97,6 @@ We recommend enabling this option if a module was previously enabled or disabled
 _________________
 ## Useful links.  
 - Template for spoofing device parameters using actions and API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)  
-- [**Latest version of LSPosed Framework**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v.1.10.2_cli_auto)  
+- [**Latest version of LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)  
 - [**Connecting a real device to ZennoDroid**](./Connection).  
 - [**Device settings**](../Settings/Settings_for_Enterprise).

@@ -341,6 +341,23 @@ driver.ScrollToElementByUiAutomator("new UiSelector().text(\"Display\")", countS
 
 ---
 
+### GetRawSource
+
+- **`string GetRawSource()`**  
+    Returns the raw XML source of the current screen exactly as reported by the Appium driver, without any post-processing. Unlike [`Hierarchy.GetLayout()`](./Hierarchy#getlayout), element tag names keep their full Java package prefixes (e.g. `android.widget.TextView`).
+    
+    **Returns:**  
+    An XML string with the UI element hierarchy of the current screen.
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var xml = driver.GetRawSource(); // Get the raw XML of the current screen
+```
+
+---
+
 ### UpdateSettings
 
 - **`void UpdateSettings(string key, object value)`**  
