@@ -24,14 +24,12 @@ _________________
 ## Установка LSPosed Framework    
   
 <details>
-<summary>Для установки модуля необходим телефон с [**Magisk**](https://github.com/topjohnwu/Magisk) и активным [**LSPosed Framework**](https://github.com/LSPosed/LSPosed).</summary>  
+<summary>Начиная с версии ZennoDroid 2.5.0.0, для установки модуля необходим телефон с [**Magisk**](https://github.com/topjohnwu/Magisk) и активным [**LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0).</summary>  
 
  ![Magisk](./assets/LSPosed/LSPosed_pic1.png) ![zygisk](./assets/LSPosed/LSPosed_pic2.png) 
 </details>   
 
-Официальная версия LSPosed давно не обновляется и не работает на современных версиях Android. В связи с этим, рекомендуем использовать специальный билд LSPosed Framework с поддержкой API, подготовленный для работы с ZennoDroid.  
-
-> [**Специальный билд v1.11.0_CLI**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto)
+Актуальная официальная версия LSPosed распространяется через официальный [**Telegram канал**](https://t.me/LSPosed). Также последню версию LSPosed можно скачать по [**ссылке**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)
 
 <details>
 <summary> Этот билд нужно скачать на телефон в папку **sdcard/Download/** и установить с помощью стандартного меню.</summary>  
@@ -46,9 +44,9 @@ _________________
   
 _________________
 ## Установка модуля «ZennoDroid»  
-Модуль ZennoDroid устанавливается автоматически при первой попытке изменить параметры устройства.  
+Модуль ZennoDroid устанавливается автоматически при первой попытке изменить параметры устройства или при выполнении любого экшена из группы [Управление LSPosed](./LSPosed_Control).  
 
-При запуске на экране устройства возникнет запрос прав суперпользователя. Необходимо нажать на кнопку **«Разрешить»**.  
+При запуске на экране устройства возникнет запрос прав суперпользователя. Необходимо нажать на кнопку **«Разрешить»** (при использовании magisk, разрешение предоставляется автоматически).  
 
 ![Разрешить](./assets/LSPosed/LSPosed_pic6.png)  
 
@@ -74,7 +72,7 @@ _________________
 При удалении приложения оно также автоматически удаляется из списка подменяемых. Однако после повторной установки приложение автоматически не попадает в список подменяемых (галочка при этом стоит, но подмены не работают).
 :::     
   
-- По умолчанию в списке программ отображаются не все приложения. Если вы не видите нужного, например, Google Chrome, то нужно зайти в меню **Скрывать** и убрать галочку с нужной группы.  
+- По умолчанию в списке программ отображаются не все приложения. Если вы не видите нужного, например, Google Chrome, то нужно зайти в меню **Настройки** и выбрать нужную группу.  
 
 ![Системные](./assets/LSPosed/LSPosed_pic11.png)
 
@@ -98,13 +96,11 @@ _________________
 - получить информацию о LSPosed.
 
 ### Видеоинструкция  
-> Настройка модуля ZennoDroid и модуля [FLAG_SECURE](https://github.com/VarunS2002/Xposed-Disable-FLAG_SECURE/releases/tag/2.0.0), позволяющего просматривать защищенные страницы.  
+> Настройка модуля ZennoDroid и модуля [DisableFlagSecure](https://github.com/LSPosed/DisableFlagSecure/releases/latest) (`io.github.lsposed.disableflagsecure`), позволяющего просматривать защищенные страницы.  
 
 <VideoSample source={require("@site/static/video/LSPosedAPI.mp4").default}/>  
 
 Также примеры работы с API приведены в архиве [LSPosedAPI.zip](https://www.dropbox.com/scl/fi/xsw5q8ej1wtmhpg5695we/LSPosedAPI.zip?rlkey=menqd2q7a0g6qnmc1l3omq4fr&st=0byf2hwb&dl=0&roistat_visit=1429674).  
-
-Для работы требуется использовать наш [**Специальный билд v1.11.0**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto). После установки дополнительно включать ничего не нужно. Для использования с ZennoDroid в форк добавлен CLI с автоматическим включением; *подходит для актуальных версий Android*.  
 
 _________________
 ## **Управление LSPosed с помощью экшенов**
@@ -113,7 +109,7 @@ _________________
 _________________
 ## Полезные ссылки.  
 - Шаблон для подмены параметров устройства с помощью экшенов и API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)  
-- [**Последняя версия LSPosed Framework**](https://github.com/AnatolyJacobs/LSPosed_CLI/releases/tag/v1.11.0_cli_auto)  
+- [**Последняя версия LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)  
 - [**Подключение реального устройства к ZennoDroid**](./Connection).  
 - [**Настройки устройства**](../Settings/Settings_for_Enterprise).
 
