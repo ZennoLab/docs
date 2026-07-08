@@ -19,10 +19,10 @@ _______________________________________________
 ### GetLayout
 
 - **`string GetLayout()`**  
-    Returns the XML tree of the current screen.
+    Returns the XML tree of the current screen with the full UI element hierarchy and element attributes (`bounds`, `text`, `resource-id`, `class`, etc.). The XML is post-processed: fully-qualified Java package prefixes are stripped from element tag names, so node names stay short and human-readable (e.g. `android.widget.TextView` becomes `TextView`). To get the unprocessed XML, use [`AppiumDriver.GetRawSource()`](./AppiumDriver#getrawsource).
     
     **Returns:**  
-    An XML string with the UI element hierarchy.
+    An XML string with the UI element hierarchy (with package-name prefixes removed from tag names).
 
 #### Example  
 ```csharp
