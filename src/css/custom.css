@@ -355,6 +355,14 @@ a[class*='cardContainer'] {
   box-shadow: none;
 }
 
+/* Показываем названия и описания страниц в карточках оглавления полностью. */
+.theme-doc-card-title,
+.theme-doc-card-description {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
 @media (max-width: 436px) {
   .navbar__logo img {
     max-width: 180px;
