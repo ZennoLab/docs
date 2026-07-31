@@ -371,6 +371,42 @@ var packages = app.GetListUserPackages(); // Get list of all user-installed apps
 
 ---
 
+### GetApplicationsInfo
+
+- **`string GetApplicationsInfo()`**  
+    Returns detailed information about all installed applications in JSON format.
+    
+    **Returns:**  
+    A JSON string with application data: package name, launch activity, display name, version, and whether it is a system app.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var json = app.GetApplicationsInfo(); // Get detailed information about all applications
+project.Json.FromString(json); // Process JSON
+```
+
+---
+
+### GetLaunchableApplicationsInfo
+
+- **`string GetLaunchableApplicationsInfo()`**  
+    Returns detailed information in JSON format only for applications that can be launched (i.e. those exposing a launcher activity). The same set of fields as `GetApplicationsInfo`.
+    
+    **Returns:**  
+    A JSON string with data about launchable applications: package name, launch activity, display name, version, and whether it is a system app.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var json = app.GetLaunchableApplicationsInfo(); // Get information only about launchable applications
+project.Json.FromString(json); // Process JSON
+```
+
+---
+
 ### GetAllNotifications
 
 - **`string GetAllNotifications()`**  
