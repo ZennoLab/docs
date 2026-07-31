@@ -137,6 +137,7 @@ string Title { get; }
 string Name { get; }
 int UiPort { get; }
 string AddressPort { get; }
+bool IsRunning { get; }
 ```  
 ### IDroidInputAPI Input
 [**`IDroidInputAPI Input`**](./Input)  
@@ -186,6 +187,7 @@ void ZoomIn();
 void ZoomIn(int centerX, int centerY, double ratio);
 void ZoomOut();
 void ZoomOut(int centerX, int centerY, double ratio);
+void SetNativeEventMode(bool useNativeEvent);
 ```  
 ### IDroidProxyAPI Proxy
 [**`IDroidProxyAPI Proxy`**](./Proxy)  

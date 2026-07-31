@@ -526,4 +526,22 @@ var phone = "+79998007060";
 var message = "Hi!";
 input.SendSmsMessage(phone, message); // Simulate incoming SMS
 ```
+
+---
+
+### SetNativeEventMode
+
+- **`void SetNativeEventMode(bool useNativeEvent)`**  
+    Enables or disables native-event mode. When enabled (and the process actually runs as root), finger touches are injected through the kernel input layer (raw), which makes them visible to `getevent`.
+    
+    **Parameters:**
+    - `useNativeEvent` — `true` to inject touches via the kernel input layer; `false` to use the default method.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.SetNativeEventMode(true); // Inject touches via the kernel input layer
+input.Tap(100, 500); // The touch will be visible to getevent
+```
 _______________________________________________

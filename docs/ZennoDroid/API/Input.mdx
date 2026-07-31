@@ -526,4 +526,22 @@ var phone = "+79998007060";
 var message = "Привет!";
 input.SendSmsMessage(phone, message); // Эмуляция входящего SMS сообщения
 ```
+
+---
+
+### SetNativeEventMode
+
+- **`void SetNativeEventMode(bool useNativeEvent)`**  
+    Включает или выключает режим нативных событий. Когда режим включён (и процесс действительно выполняется с правами root), касания вводятся через уровень ввода ядра (raw), благодаря чему они становятся видимыми для `getevent`.
+    
+    **Параметры:**
+    - `useNativeEvent` — `true`, чтобы вводить касания через уровень ввода ядра; `false` — использовать способ по умолчанию.
+
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.SetNativeEventMode(true); // Включить ввод касаний через уровень ввода ядра
+input.Tap(100, 500); // Касание будет видно через getevent
+```
 _______________________________________________
