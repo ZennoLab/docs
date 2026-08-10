@@ -1,0 +1,354 @@
+---
+sidebar_position: 10
+sidebar_label: MCP setup for AI assistants
+title: "ZennoDroid MCP — Setup Guide for AI Assistants | ZennoDroid Documentation | ZennoLab"
+description: "How to connect external AI assistants (GitHub Copilot, Claude Code, OpenAI Codex) to the ZennoDroid MCP servers: ports, differences from ZennoPoster, and troubleshooting."
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# ZennoDroid MCP: Setup Guide for AI Assistants
+
+<DisclaimerNotice />
+
+> **Prerequisites:** **ProjectMaker ZennoDroid** must be running before you connect any AI assistant. The MCP servers start automatically with it and listen on:
+>
+> - **ProjectMCP** (project control) → `http://localhost:6117`
+> - **AndroidMCP** (Android device inspection) → `http://localhost:6118`
+
+:::caution ZennoDroid ports differ from ZennoPoster by +10
+This is intentional: ZennoPoster and ZennoDroid are often installed on the same machine and may be running at the same time. That is why every port of the ZennoDroid AI stack is shifted by **+10** from its ZennoPoster counterpart — there is no conflict, and you can keep both products open and connect them to different sets of MCP servers.
+
+If you copied the configuration from the [ZennoPoster MCP guide](/zennoposter/Hello/MCP_Setup) and specified `6107` / `6108`, your assistant will connect to **ZennoPoster**, not to ZennoDroid.
+:::
+
+---
+
+# 1. How ZennoDroid MCP differs from ZennoPoster MCP {#1-how-zennodroid-mcp-differs-from-zennoposter-mcp}
+
+There are two differences, and the second one matters more than the first.
+
+| | ZennoPoster | ZennoDroid |
+|---|---|---|
+| Project MCP | `http://localhost:6107` | `http://localhost:6117` |
+| Second server | **BrowserMCP** `6108` — controls the browser | **AndroidMCP** `6118` — reads the state of the Android device |
+| Recording mode | used — browser actions are written into cubes | **not used** — no ZennoDroid action requires recording |
+| UI control from MCP | yes: clicks, text input, navigation | **no**: reading device state only |
+
+**The key difference.** BrowserMCP in ZennoPoster can *act* — click, type, navigate. AndroidMCP in ZennoDroid can only *look*: get the XML tree of the screen, a screenshot, the screen resolution, the list of apps, the device state.
+
+Every action on the device in ZennoDroid is a **project cube**. The assistant adds cubes through ProjectMCP, and they run when the project is executed (F5). So "tap the button in the app" in ZennoDroid means "add a cube to the project that will tap this button", not "tap it right now".
+
+A practical consequence: an element that is not on the screen right now is not an obstacle. The cube is built from the element's name/text/attribute and fires while the project runs.
+
+> The exact list of tools each server provides, and their parameters, is something the assistant receives from the MCP servers itself, on connection. Just ask it — it will list what is available in your build.
+
+---
+
+# 2. GitHub Copilot {#2-github-copilot}
+
+## Steps
+
+1. Make sure ProjectMaker ZennoDroid is running.
+2. Open your user profile folder: press `Win + R`, type `%USERPROFILE%`, press Enter.
+3. Create a file named `.mcp.json` in that folder
+   (e.g. `C:\Users\YourName\.mcp.json`)
+4. Paste the following content:
+
+```json
+{
+  "servers": {
+    "AndroidMCP": {
+      "type": "http",
+      "url": "http://localhost:6118"
+    },
+    "ProjectMCP": {
+      "type": "http",
+      "url": "http://localhost:6117"
+    }
+  }
+}
+```
+
+5. Restart Visual Studio (or reload the Copilot extension).
+6. Copilot now has access to both MCP servers in all workspaces.
+
+:::tip If you work with both ZennoPoster and ZennoDroid
+You can keep all four servers in a single `.mcp.json` — the names must differ, the ports already do:
+
+```json
+{
+  "servers": {
+    "ProjectMCP_ZD": { "type": "http", "url": "http://localhost:6117" },
+    "AndroidMCP":    { "type": "http", "url": "http://localhost:6118" },
+    "ProjectMCP_ZP": { "type": "http", "url": "http://localhost:6107" },
+    "BrowserMCP":    { "type": "http", "url": "http://localhost:6108" }
+  }
+}
+```
+
+Keep in mind: the assistant will see the tools of both products at once and may reach for the wrong server. If that gets in the way, state which product you mean in your request, or keep only the set you need connected.
+:::
+
+---
+
+# 3. Claude Code (CLI) {#3-claude-code-cli}
+
+## Steps
+
+1. Make sure ProjectMaker ZennoDroid is running.
+2. Open a terminal.
+3. Run the following commands:
+
+```sh
+claude mcp add AndroidMCP --transport http http://localhost:6118
+claude mcp add ProjectMCP --transport http http://localhost:6117
+```
+
+4. Verify the servers are registered:
+
+```sh
+claude mcp list
+```
+
+5. The MCP servers are now available globally in all Claude Code sessions.
+
+> To remove them later:
+>
+> `claude mcp remove AndroidMCP`
+>
+> `claude mcp remove ProjectMCP`
+
+---
+
+# 4. OpenAI Codex CLI {#4-openai-codex-cli}
+
+## Steps
+
+1. Make sure ProjectMaker ZennoDroid is running.
+2. Open a terminal.
+3. Run the following commands:
+
+```sh
+codex mcp add AndroidMCP --url http://localhost:6118
+codex mcp add ProjectMCP --url http://localhost:6117
+```
+
+4. Verify:
+
+```sh
+codex mcp list
+```
+
+---
+
+# Troubleshooting {#troubleshooting}
+
+## The assistant connected, but it sees the ZennoPoster project instead of ZennoDroid
+
+The most common mistake when coming from the ZennoPoster guide: the configuration specifies ports `6107` / `6108`. Those are the ZennoPoster ports. ZennoDroid needs **`6117` and `6118`**.
+
+To check who is listening on which port:
+
+```powershell
+netstat -ano | findstr ":6107 :6108 :6117 :6118"
+```
+
+To map a PID to a process:
+
+```powershell
+Get-Process -Id <PID>
+```
+
+## Device-reading tools return an error or an empty result
+
+- **The device is not running.** Reading the screen, a screenshot, the list of apps and the resolution all require the device to be up. Ask the assistant to bring the device up first — that tool is idempotent and will not do anything extra.
+- **No device is selected.** For a real phone it must be connected and visible to ZennoDroid (see [connecting a device](../Enterprise/Connection)).
+
+## The `claude` or `codex` command is not recognized
+
+If the terminal shows an error like:
+
+```
+'claude' is not recognized as an internal or external command,
+operable program or batch file.
+```
+
+or (in PowerShell):
+
+```
+claude : The term 'claude' is not recognized as the name of a cmdlet,
+function, script file, or operable program.
+```
+
+(the same applies to `codex`), it means the folder containing the CLI executable is **not in the `PATH` environment variable**, or the CLI is not installed, or the terminal was not restarted after installing.
+
+> ⚠️ **Important:** the Claude Code website installer (native installer,
+> `irm https://claude.ai/install.ps1 | iex`) does **not** add itself to `PATH`
+> automatically. So "installed from the website but the command is not recognized"
+> is the most common case. Step 2 below fixes it.
+
+### Step 1. Find where the CLI is installed
+
+The location of the executable depends on the install method.
+
+**Claude Code:**
+
+| Install method | Folder containing `claude` |
+|---|---|
+| Website (native): `irm https://claude.ai/install.ps1 \| iex` | `%USERPROFILE%\.local\bin` (e.g. `C:\Users\YourName\.local\bin`) |
+| npm: `npm install -g @anthropic-ai/claude-code` | the npm folder, usually `%APPDATA%\npm` |
+
+**OpenAI Codex CLI:**
+
+| Install method | Folder containing `codex` |
+|---|---|
+| Website: `irm https://chatgpt.com/codex/install.ps1 \| iex` | the folder reported by the installer |
+| npm: `npm install -g @openai/codex` | the npm folder, usually `%APPDATA%\npm` |
+| Binary from [GitHub Releases](https://github.com/openai/codex/releases) | the folder where you extracted `codex.exe` |
+
+You can find the exact npm folder with:
+
+```powershell
+npm config get prefix
+```
+
+To check whether the system sees the command at all (empty output means it is not in `PATH`):
+
+```powershell
+where.exe claude
+where.exe codex
+```
+
+To check that the file exists (for the Claude website install):
+
+```powershell
+Test-Path "$env:USERPROFILE\.local\bin\claude.exe"
+```
+
+If the file is in none of those folders, the CLI is not installed. Install it using one of the methods from the tables above (npm requires [Node.js](https://nodejs.org/)).
+
+### Step 2. Add the folder you found to `PATH`
+
+Substitute the path from Step 1 (for example `%USERPROFILE%\.local\bin` for the Claude website install,
+or `%APPDATA%\npm` for an npm install).
+
+**Option A: through the Windows GUI**
+
+1. Press `Win + R`, type `sysdm.cpl`, press Enter.
+2. **"Advanced"** tab → **"Environment Variables"** button.
+3. Under **"User variables"** select the `Path` variable → **"Edit"**.
+4. Click **"New"** and paste the required path, for example:
+   `C:\Users\YourName\.local\bin`
+5. Click **OK** in all windows.
+
+**Option B: through PowerShell (adds to the user `PATH` permanently)**
+
+```powershell
+# example for the Claude Code website install:
+$p = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', "$p;$env:USERPROFILE\.local\bin", 'User')
+```
+
+> ⚠️ Replace the path with the one that applies to your case.
+> Do not run the command several times in a row, or you will duplicate entries in `PATH`.
+
+### Step 3. Restart the terminal and check
+
+`PATH` changes only take effect in **new** terminal windows. Close and reopen PowerShell / CMD (or Visual Studio), then check:
+
+```powershell
+claude --version
+codex --version
+```
+
+For Claude Code you can also run the built-in diagnostics (it checks `PATH`, conflicting installs, and so on):
+
+```powershell
+claude doctor
+```
+
+If the versions are displayed, the commands are recognized correctly and you can go back to the MCP setup steps above.
+
+### Common causes if that did not help
+
+- **The terminal was not restarted.** `PATH` changes only apply in newly opened windows.
+- **Several installs at once** (npm + native) conflict. Keep one and remove the rest.
+- **Only the VS Code extension is installed.** It does not add the `claude` command to the terminal. Install the standalone CLI from the website or via npm.
+
+---
+
+# Example requests {#example-requests}
+
+## Device inspection
+
+```
+Bring the device up and show information about it.
+```
+
+```
+Tell me the device's screen resolution.
+```
+
+```
+Get the element structure of the current screen
+and find the input field in it.
+```
+
+```
+Show the list of installed applications
+and find the exact package name for Chrome.
+```
+
+---
+
+## Building the project
+
+```
+Show the structure of the current project,
+list all actions with their IDs and types.
+```
+
+```
+Tell me whether my project targets the emulator or a real phone,
+and which action categories are available.
+```
+
+```
+Build a chain: select a random device,
+start it and open https://example.com.
+```
+
+```
+Add a check: if the text "Success" appeared on screen —
+go down the success branch, otherwise down the error branch.
+```
+
+```
+Show the current project execution logs
+and tell me whether there are any errors.
+```
+
+---
+
+## Combining device reads with project building
+
+```
+Read the screen structure, find the phone input field,
+and add a cube to the project that types {-Variable.phone-} into it.
+```
+
+```
+Determine the package name of WhatsApp from the installed list,
+then add a check to the project for whether it is installed.
+```
+
+```
+Read the real screen resolution
+and add a bottom-to-top swipe through the centre of the screen.
+```
+
+---
+
+:::note The built-in chat needs no setup
+Everything above is only needed for **external** assistants. The AI chat built into ProjectMaker ZennoDroid works with the same MCP servers out of the box — all it needs from you is a model API key. Details are in the [AI assistant in ZennoDroid](./AI_Complete_Guide) article.
+:::
