@@ -270,6 +270,26 @@ _______________________________________________
 
 ---
 
+### GetScreenSize
+
+- **`Size GetScreenSize()`**  
+    Returns the real screen resolution of the device in pixels. This is the physical resolution the device reports, not the size of the captured image, so it is the coordinate space used by touch, swipe and pixel operations.
+    
+    **Returns:**  
+    `Size` — screen width and height in pixels.
+
+#### Example
+```csharp
+var size = instance.DroidInstance.Screen.GetScreenSize();
+project.SendInfoToLog($"Screen resolution: {size.Width}x{size.Height}");
+```
+
+:::note
+The value is cached per device. After a resolution change (e.g. with `wm size WidthxHeight`), call `ResetScreen()` so it is read again.
+:::
+
+---
+
 ### ScreenshotAsArray
 
 - **`byte[] ScreenshotAsArray()`**  
