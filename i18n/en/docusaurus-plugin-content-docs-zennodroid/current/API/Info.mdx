@@ -63,6 +63,16 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Returns:**  
     A string in `IP:Port` format used for ADB connections (e.g. `127.0.0.1:21503` for MEmu). For physical phones, matches the value of the `Name` property.
 
+---
+
+### IsRunning
+
+- **`bool IsRunning { get; }`**  
+    Whether the device is ready for work.
+    
+    **Returns:**  
+    `true` if the device is ready for work: the screen is being captured, and for an emulator it is started and connected, for a physical phone it is connected; otherwise `false`.
+
 #### Example  
 ```csharp
 var info = instance.DroidInstance.Info;
@@ -72,4 +82,5 @@ string title = info.Title;
 string Name = info.Name;
 int uiPort = info.UiPort;
 string addressPort = info.AddressPort;
+bool isRunning = info.IsRunning;
 ```

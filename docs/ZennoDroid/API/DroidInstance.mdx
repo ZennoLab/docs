@@ -97,6 +97,8 @@ string DataDir(string packageName);
 string GetAccounts(string packageName);
 string GetAccounts(string packageName, string type);
 string GetAllNotifications();
+string GetApplicationsInfo();
+string GetLaunchableApplicationsInfo();
 string GetAppNotifications(string packageName);
 string GetCookie(string packageName);
 string GetCookiePath(string packageName);
@@ -150,6 +152,7 @@ string Title { get; }
 string Name { get; }
 int UiPort { get; }
 string AddressPort { get; }
+bool IsRunning { get; }
 ```  
 ### IDroidInputAPI Input
 [**`IDroidInputAPI Input`**](./Input)  
@@ -199,6 +202,7 @@ void ZoomIn();
 void ZoomIn(int centerX, int centerY, double ratio);
 void ZoomOut();
 void ZoomOut(int centerX, int centerY, double ratio);
+void SetNativeEventMode(bool useNativeEvent);
 ```  
 ### IDroidProxyAPI Proxy
 [**`IDroidProxyAPI Proxy`**](./Proxy)  
@@ -233,6 +237,7 @@ Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confi
 Rectangle FindImageGrayscale(string imageHash, Rectangle[] rectangles, int confidenceInterval, int searchTime);
 Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval);
 Rectangle FindImageGrayscale(string[] imageHashes, Rectangle[] rectangles, int confidenceInterval, int searchTime);
+Size GetScreenSize();
 byte[] ScreenshotAsArray();
 byte[] ScreenshotAsArray(Rectangle area);
 string ScreenshotAsBase64String();

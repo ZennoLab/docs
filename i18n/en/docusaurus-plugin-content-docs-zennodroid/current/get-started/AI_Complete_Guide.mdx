@@ -1,0 +1,492 @@
+---
+sidebar_position: 11
+sidebar_label: AI assistant
+title: "AI Assistant in ZennoDroid | ZennoDroid Documentation | ZennoLab"
+description: "The built-in ZennoDroid AI assistant (ProjectMaker): Assistant and Agent modes, connecting a model, limitations, and recommendations for using it effectively."
+slug: ai-assistant
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# AI Assistant in ZennoDroid
+
+<DisclaimerNotice />
+
+## Contents {#contents}
+
+1. [What is the AI assistant in ZennoDroid?](#1-what-is-the-ai-assistant-in-zennodroid)
+2. [Two operating modes: Assistant and Agent](#2-two-operating-modes-assistant-and-agent)
+3. [Turn limits and the continuation protocol](#3-turn-limits-and-the-continuation-protocol)
+4. [Context, memory and chat history](#4-context-memory-and-chat-history)
+5. [Connecting and choosing a model](#5-connecting-and-choosing-a-model)
+6. [Known limitations](#6-known-limitations)
+7. [Tips for phrasing tasks](#7-tips-for-phrasing-tasks)
+8. [Common mistakes and FAQ](#8-common-mistakes-and-faq)
+9. [Connecting external AI assistants (optional)](#9-connecting-external-ai-assistants-optional)
+10. [AI assistant development](#10-ai-assistant-development)
+
+---
+
+## 1. What is the AI assistant in ZennoDroid? {#1-what-is-the-ai-assistant-in-zennodroid}
+
+The AI assistant is a chat interface built into ProjectMaker that lets you:
+
+- **describe a task in words** → the agent will add the cubes to the project on its own;
+- **ask questions** about ZennoDroid, Android automation, and C#;
+- **debug and fix** projects that have already been built;
+- **read the state of the connected device** – the screen, a screenshot, the list of installed applications.
+
+Under the hood, the assistant uses a language model (LLM) through Semantic Kernel (Microsoft) and two MCP servers:
+
+| Server | Address | What it can do |
+|---|---|---|
+| **Project MCP** | `http://localhost:6117` | Read the project structure, add/edit cubes, manage lists, tables and variables |
+| **Android MCP** | `http://localhost:6118` | Read the state of the connected Android device |
+
+> MCP servers start automatically together with ProjectMaker. The port addresses are only needed if you are connecting an **external** AI assistant (see [section 9](#9-connecting-external-ai-assistants-optional)) – for the built-in chat nothing needs to be configured beyond the model API key.
+
+### The key difference from the AI assistant in ZennoPoster {#the-key-difference-from-zennoposter}
+
+In ZennoPoster the second MCP server controls the browser: it can click, type text and follow links – and those actions are recorded into cubes.
+
+In ZennoDroid **Android MCP can only look**. It does not tap, type or swipe. Every action on the device is a **project cube**: the agent adds cubes through Project MCP, and they run when the project is executed (F5).
+
+Two practical consequences follow:
+
+1. **There is no recording mode in ZennoDroid.** The agent does not "repeat your actions" – it assembles a chain of cubes.
+2. **The element may not be on the screen right now, and that is fine.** The cube is built from the element's name/text/attribute and fires at runtime.
+
+---
+
+## 2. Two operating modes: Assistant and Agent {#2-two-operating-modes-assistant-and-agent}
+
+Two modes are available in the ProjectMaker interface. These are **fundamentally different** things.
+
+### 2.1 Assistant – read-only {#21-assistant-read-only}
+
+Assistant works in **read-only** mode: it can see your project and the connected device and tell you everything about them, but it **does not change anything**. This is a safe mode for production scenarios – it cannot accidentally break the project.
+
+| Parameter | Value |
+|---|---|
+| Access to project | ✅ Read-only (structure, cubes, parameters) |
+| Changing the project | ❌ No |
+| Reading the device | ✅ Yes |
+| Acting on the device | ❌ No |
+| What it can do | Answer questions, explain, analyse, advise |
+
+**What Assistant can do:**
+- Read the project structure and explain what the selected cube does
+- Analyse errors from the last run and suggest the cause
+- Describe the available ZennoDroid actions and their parameters
+- Read the screen structure and suggest a working selector
+- Help with C# code for `OwnCode` cubes
+
+**Do not expect Assistant to:**
+- Add, change or delete cubes in the project
+- Do anything on the device itself
+- Build the automation on its own
+
+---
+
+### 2.2 Agent – full access {#22-agent-full-access}
+
+Agent has **full read and write access to the project**. It can, on its own:
+
+- **add, change, move and delete cubes**;
+- **wire connections** between cubes (by success/error), create and rename groups;
+- **create and fill tables, lists and variables**;
+- **read the device state** – to pick exact selectors and package names;
+- **execute individual cubes and read the logs** (only at your explicit request, "run" / "execute");
+- **write code for `OwnCode|CSharp` cubes**.
+
+| Parameter | Value |
+|---|---|
+| Tools (MCP) | ✅ Yes |
+| Access to project | ✅ Reads and changes the structure |
+| Reading the device | ✅ Yes |
+| Acting on the device | Only through project cubes, executed at run time |
+| What it can do | Build/edit projects autonomously |
+
+**Use Agent when:**
+- You want the AI to build an automation from scratch
+- You need to add new steps to an existing project
+- You want to debug/fix a project
+
+**Remember:**
+- The agent works step by step – every tool call is one "turn"
+- There is a turn limit per request (see [section 3](#3-turn-limits-and-the-continuation-protocol))
+- After the agent finishes, **check the result** – sometimes it needs adjusting
+
+:::caution There is no undo
+ProjectMaker has **no undo (Ctrl+Z) for the agent's actions**. Save a copy of the project before a complex task. If the agent did the wrong thing, ask it to delete the cubes it added by name/id, or delete them manually.
+
+Before deleting cubes, lists, tables, variables or a device, the agent will list exactly what is about to be removed and ask for confirmation – the deletion only starts after your explicit "yes".
+:::
+
+---
+
+## 3. Turn limits and the continuation protocol {#3-turn-limits-and-the-continuation-protocol}
+
+### What a "turn" is {#what-a-turn-is}
+
+Every tool call by the agent (reading the project structure, adding a cube, reading the screen) is one turn. The agent cannot make an unlimited number of turns for a single request.
+
+### The limits {#the-limits}
+
+| Situation | Behaviour |
+|---|---|
+| The task fits within the limit | The agent finishes and reports |
+| The task is unfinished and the limit is close | The agent stops at a logical boundary and asks you to continue |
+| Two consecutive errors or two calls with no progress | The agent stops and asks what to do |
+
+### How to continue {#how-to-continue}
+
+When the agent reports that it has stopped, write:
+
+```
+continue
+```
+
+The agent will read the current state of the project itself, work out what has already been done, and continue from where it stopped.
+
+> **⚠ There is no need** to repeat the whole task – the agent restores the context itself.
+
+If you write "continue" in a **new** chat where nothing happened before, the agent will not guess anything – it will say there is nothing to continue. In that case, provide the context again.
+
+---
+
+## 4. Context, memory and chat history {#4-context-memory-and-chat-history}
+
+### How memory works {#how-memory-works}
+
+An AI model has no long-term memory. It works with a "context window" – a certain number of tokens that fit into one request to the model.
+
+| Aspect | Reality |
+|---|---|
+| Are chats saved | ✅ Yes – the conversation history is written to disk and you can come back to it |
+| Does the model remember the start of a long dialogue | ⚠ Partly – early messages may drop out of the window |
+| Does it remember the project structure | ✅ Yes – it reads it afresh each time |
+| Does it remember the device state | ✅ Yes – it reads it afresh each time |
+
+### Conversation history {#conversation-history}
+
+The chat panel has a list of saved conversations: a **"New chat"** button, search across conversations, and conversation deletion. By default the last 100 conversations are kept.
+
+Note that the saved history is a **record of the conversation** available to you. When a dialogue continues, the model receives not all of it but a context window – in long dialogues the early messages drop out of it.
+
+### Practical consequences {#practical-consequences}
+
+1. **Long dialogues degrade.** If a chat has become very long, start a new one – the agent will read the project again anyway.
+2. **Do not rely on "you remember, right?"** Do not say "do it like last time" without saying what exactly.
+3. **The project structure and the device state come from tools, not from memory.** Any statement about the project or the device must be backed by a fresh read. If the agent quoted a cube count or a device type without reading anything, that is a fabrication and should be double-checked.
+
+---
+
+## 5. Connecting and choosing a model {#5-connecting-and-choosing-a-model}
+
+> **This is the required first step.** Without connecting at least one model, the AI assistant will not work – neither in Assistant mode nor in Agent mode. The model and access key are set once in the program settings.
+
+### Step 1. Open model settings {#step-1-open-model-settings}
+
+ZennoDroid main screen → **Settings** (gear icon) → **"AI"** tab → **"AI service modules settings"** block.
+
+### Step 2. Enter the key for the required service {#step-2-enter-the-key}
+
+**Built-in services.** Several providers are available "out of the box". Each has two fields – "Secret key" and "Additional parameters" (API server address):
+
+| Service | Server address ("Additional parameters") |
+|---|---|
+| **OpenAI** | `https://api.openai.com` |
+| **Claude** (Anthropic) | `https://api.anthropic.com` |
+| **DeepSeek** | `https://api.deepseek.com` |
+| **Gemini** (Google) | `https://generativelanguage.googleapis.com` |
+| **OpenRouter** | `https://openrouter.ai/api` |
+| **Perplexity Sonar** | `https://api.perplexity.ai` |
+
+Setup order:
+
+1. In the **"Secret key"** field, paste your API key for the selected service (for example, `sk-...` for DeepSeek, `sk-ant-...` for Claude).
+2. The **"Additional parameters"** field is the API server address. You only need to change it if you use a proxy or a compatible third-party endpoint; for official services, leave the default value.
+3. **Restart ZennoDroid** – without a restart the settings will not be applied (this is warned about by the red text at the top of the window: *"You need to restart the program for the settings to take effect"*).
+
+> **Where to get the key:** in the account dashboard of the relevant service (OpenAI Platform, Anthropic Console, DeepSeek, Google AI Studio, OpenRouter). The key is tied to your paid account.
+
+### Step 3. Which model to choose {#step-3-which-model-to-choose}
+
+We tested different models on real ZennoDroid tasks. In short:
+
+- **DeepSeek – recommended for most users.** The most economical option: **hundreds of requests cost less than a few dollars**. At the same time the results on ZennoDroid tasks are very good. On average a project request consumes 10,000–100,000 tokens, depending on the size of the project.
+- **Claude – the strongest model** (cleaner output, more reliable with loops, tidy stops), but noticeably more expensive to use.
+- The quality gap between them is **small**. So in terms of price/quality, DeepSeek is the better value for everyday work.
+
+| Model | When to choose it |
+|---|---|
+| **DeepSeek** | **By default** – the best balance of price and quality, very cheap at scale |
+| **Claude** | When you need maximum quality and cost is not critical |
+
+:::tip What is most noticeable on ZennoDroid tasks specifically
+Building an Android project means long chains of cubes with exact parameters: selectors, coordinates, package names. A stronger model tends to win here not through "intelligence" but through precision: it confuses similar actions less often, forgets to create a result variable less often, and comments on every step instead of producing a clean result less often.
+:::
+
+> **Bottom line:** start with **DeepSeek** – it is enough for the vast majority of tasks and the costs are minimal. Move to Claude only if you hit a quality ceiling on complex projects.
+
+### Adding a service {#adding-a-service}
+
+Click the **"Add your own service"** link – the **"Add new AI module"** window opens:
+
+| Field | What to enter |
+|---|---|
+| **Module name** | Any name under which the service will appear in the list |
+| **API** | The API format from the dropdown (for example, `DeepSeek`) – pick the one your service is compatible with |
+| **Token** | The access key for the service |
+| **Server** | The API server address (for example, `https://api.openai.com` or the address of your local server) |
+
+Click **"Add"** and restart the program. The module will then appear in the common list of services alongside the built-in ones, and can be selected for the agent to use.
+
+> ⚠ **Key security.** An API key is access to your paid account. Do not show it in screenshots or screen recordings, do not send it in chats, and do not store it in plain text. If a key has been exposed, revoke it immediately in the provider's dashboard and create a new one.
+
+---
+
+## 6. Known limitations {#6-known-limitations}
+
+### 6.1 What the agent does poorly or unreliably {#61-what-the-agent-does-poorly}
+
+| Limitation | Explanation | Workaround |
+|---|---|---|
+| **Fragile selectors** | On non-standard screens and in custom launchers the agent may pick an inexact selector | Check the selectors after building; ask it to read the screen and refine the attribute |
+| **Coordinate-based gestures** | Swipes and taps by coordinates depend on the resolution; on another device the points drift off | Insist on reading the device's real resolution; prefer tapping an element over tapping coordinates |
+| **Missing explicit waits** | The cube reads the screen instantly and misses content that is still loading | Ask it to add a wait before reading the screen |
+| **Long projects (100+ cubes)** | The project structure returns a lot of data – the model may lose the thread | Build the project in parts, give tasks in blocks |
+| **Editing blind** | If the agent edits a cube without reading its current parameters, they may be lost | Insist explicitly: "read the cube first, then edit" |
+| **Nested groups** | Deeply nested cube groups may be misinterpreted | Simplify the structure, work with a single nesting level |
+| **Invented actions and parameters** | The model may name an action or parameter that does not exist | Ask it to verify against the action catalog before you accept the answer |
+| **"Thinking aloud"** | On a long build the model (especially DeepSeek) comments on every step instead of producing a clean result | Not critical for the outcome, but hard to read. Ask for "the final cube summary only" |
+
+### 6.2 What the agent fundamentally cannot do {#62-what-the-agent-cannot-do}
+
+- **Act on the device directly** – taps, input and swipes exist only as project cubes
+- **Run the whole project** – it can execute an individual cube at your explicit request, but not launch the project
+- **Record your actions** – there is no recording mode in ZennoDroid
+- **Work with the ZennoPoster browser actions** – they are not in the ZennoDroid catalog
+- **Bypass the device-type split** – the emulator and a real phone have different sets of actions, and whatever your device type lacks must not be substituted. In that situation the agent must honestly say the capability does not exist, rather than offering a shell command or an external utility
+- **See the results of an already running task** (only the project structure and the live device state)
+- **Work with files on the PC disk** directly (only through project variables/lists and the corresponding cubes)
+
+---
+
+## 7. Tips for phrasing tasks {#7-tips-for-phrasing-tasks}
+
+### ✅ Good requests {#good-requests}
+
+**Specific, with details:**
+> "Open Chrome, go to https://example.com, find the search field by resource-id `com.android.chrome:id/search_box_text` and type `{-Variable.query-}` into it"
+
+**A chain is fine, and even better:**
+> "Select a random device, start it, install the APK from `C:\apk\app.apk`, launch the app and take a screenshot"
+
+**Stating the result:**
+> "Save the element text into the `title` variable"
+
+**Specifying the branching:**
+> "If the text `Success` appeared on screen – continue; if `Error` – stop the task"
+
+**Split into blocks:**
+> "First do only the login inside the app. When it is ready, tell me – I will check it and give you the next block"
+
+---
+
+### ❌ Bad requests {#bad-requests}
+
+**Too general:**
+> "Automate everything"
+
+*Problem: the agent does not know what exactly to do, in which app, with what data.*
+
+**No context:**
+> "Add a check"
+
+*Problem: what check? Where? After which cube?*
+
+**"Everything at once" on an open-ended task:**
+> "Scrape all 200 posts, process the data, write it to a database and send a report"
+
+*Problem: the agent will hit the turn limit. Better to go block by block.*
+
+**No insertion point:**
+> "Add a condition cube"
+
+*The agent does not know where exactly. Specify: "after the cube with id X" or "at the start of group Y".*
+
+**Demanding a workaround for a limitation:**
+> "Do a factory reset on the phone via adb"
+
+*Problem: this is exactly the workaround that will irreversibly wipe your device. The correct answer from the agent here is a refusal.*
+
+---
+
+### A template for a good request {#a-template-for-a-good-request}
+
+```
+[What to do] + [In which app / on which screen] + [How to find the element] +
+[With what data/variables] + [Branching conditions] + [What to save as the result]
+```
+
+**Example:**
+> "After the app-launch cube, add text input into the field with `resource-id com.app:id/login`, taking the value from `{-Variable.login-}`. Then tap the button with the text `Log in`. If the text `Error` appears – stop the task"
+
+---
+
+## 8. Common mistakes and FAQ {#8-common-mistakes-and-faq}
+
+### ❓ The agent does nothing – it just replies with text {#faq-agent-does-nothing}
+
+**Cause:** you are in **Assistant** mode, not Agent.
+**Solution:** switch to Agent mode.
+
+---
+
+### ❓ The agent asks "in which app?" even though I named the element {#faq-agent-asks-which-app}
+
+**Cause:** the element is not on the current screen, and the agent took that as missing information.
+**Solution:** this is incorrect behaviour – the cube fires at run time, not now. Write:
+```
+I named the element. Build the cube from that text and say that the selector was not verified on a live screen.
+```
+
+---
+
+### ❓ It worked while building, but not when the project runs {#faq-worked-while-building}
+
+**Cause:** while the agent was building the project it re-read the device several times itself – and those delays made it look as if everything had time to load. Those pauses do not exist in the built project: the cube fires instantly.
+
+**Solution:** ask it to add an explicit wait before reading the screen. This matters especially at the start of every scroll-loop iteration: without a wait, the loop reads the same screen every time.
+
+---
+
+### ❓ The selector does not find the element, even though it is visible on screen {#faq-selector-not-found}
+
+Ask the agent to re-read the screen and compare the selector against the element's real attributes. Common causes: the element has not rendered yet (no wait), the element is outside the visible viewport, the content is inside a WebView.
+
+---
+
+### ❓ The agent suggested a shell command or an external emulator manager {#faq-agent-suggested-shell}
+
+**Cause:** the action needed is missing from your device type's catalog, and the model tried to "reach" it by a workaround.
+
+**Solution:** this is a wrong answer, do not apply it. Ask directly:
+```
+Check against the catalog whether such an action exists for my device type.
+If not, say so plainly and do not offer a replacement.
+```
+Be especially careful with commands that wipe data – on a real phone they are irreversible.
+
+---
+
+### ❓ ``` appeared inside the code of a C# cube {#faq-markdown-fences}
+
+**Cause:** the agent inserted a markdown wrapper instead of clean code.
+**Solution:** remove the ` ```csharp ` line at the start and the ` ``` ` at the end manually. Or ask the agent:
+```
+Rewrite the code of the C# cube with id=X – remove the markdown wrappers, leave only clean C#
+```
+
+---
+
+### ❓ C# code in a cube fails on `instance.ActiveTab` / `instance.Profile` {#faq-instance-members}
+
+**Cause:** this is the browser ZennoPoster API. In ZennoDroid only `instance.DroidInstance.*` is available; the other `instance.*` members throw at run time – even though they are visible in the API reference.
+
+**Solution:** ask the agent to replace it with the ZennoDroid equivalent – the appropriate native cube or an `instance.DroidInstance.*` member.
+
+---
+
+### ❓ The agent added the cubes in the wrong place {#faq-wrong-place}
+
+**Cause:** the insertion position was not where you expected, or the cubes landed in different groups.
+**Solution:** state the position explicitly before adding:
+```
+Add the cubes after the cube with id=N, all in one group "Login"
+```
+
+---
+
+### ❓ The agent "invented" an action or parameter that does not exist {#faq-invented-action}
+
+**Cause:** the model hallucinates names, especially ZennoDroid-specific ones.
+
+**Solution:** insist on verification against the action catalog before you accept the answer. The catalog is the source of truth, and it is already filtered for your device type.
+
+---
+
+### ❓ The agent said an action does not exist. Should I believe it? {#faq-denied-action}
+
+Not always. Denying an existing action is as damaging as inventing a non-existent one. Ask it to check the catalog using several phrasings. Keep the opposite in mind too: if the action belongs to the other device type (emulator ↔ real phone), then you genuinely do not have it, and that is not a reason to look for a replacement.
+
+---
+
+### ❓ Can I work with the device while the agent is working? {#faq-parallel-work}
+
+Technically the agent only reads the device state, so the action conflict familiar from browser ZennoPoster does not arise. But if you switch screens while the agent is picking selectors, it will read the wrong screen and build the wrong cube. Better to wait until the turn finishes.
+
+---
+
+## 9. Connecting external AI assistants (optional) {#9-connecting-external-ai-assistants-optional}
+
+The chat built into ProjectMaker works out of the box – nothing needs configuring beyond the model API key. But the same MCP servers (Project MCP and Android MCP) can also be connected to **external** AI assistants, so you can manage the project and read the device from your own editor or terminal.
+
+> **These are two different things.** The built-in chat and an external assistant are independent entry points to the same MCP servers. If the built-in chat is enough for you, this section can be skipped.
+
+**Common requirement:** ProjectMaker ZennoDroid must be **running** – the MCP servers start with it and listen on:
+- **ProjectMCP** → `http://localhost:6117`
+- **AndroidMCP** → `http://localhost:6118`
+
+### GitHub Copilot {#github-copilot}
+
+1. Make sure ProjectMaker is running.
+2. Open your profile folder: `Win + R` → `%USERPROFILE%` → Enter.
+3. Create a `.mcp.json` file (for example, `C:\Users\YourName\.mcp.json`) with the following content:
+
+```json
+{
+  "servers": {
+    "AndroidMCP": { "type": "http", "url": "http://localhost:6118" },
+    "ProjectMCP": { "type": "http", "url": "http://localhost:6117" }
+  }
+}
+```
+
+4. Restart Visual Studio (or reload the Copilot extension).
+
+### Claude Code (CLI) {#claude-code-cli}
+
+```sh
+claude mcp add AndroidMCP --transport http http://localhost:6118
+claude mcp add ProjectMCP --transport http http://localhost:6117
+claude mcp list   # verify
+```
+
+To remove them later: `claude mcp remove AndroidMCP` and `claude mcp remove ProjectMCP`.
+
+### OpenAI Codex (CLI) {#openai-codex-cli}
+
+```sh
+codex mcp add AndroidMCP --url http://localhost:6118
+codex mcp add ProjectMCP --url http://localhost:6117
+codex mcp list   # verify
+```
+
+More details – including troubleshooting and running alongside ZennoPoster – are in the [MCP setup for AI assistants](./MCP_Setup) article.
+
+---
+
+## 10. AI assistant development {#10-ai-assistant-development}
+
+The AI assistant in ZennoDroid is under active development. We keep extending its capabilities, growing the toolset, improving the agent's stability and how well it understands tasks. As the language models themselves improve, the assistant becomes more accurate and faster too.
+
+This means the limitations described in [section 6](#6-known-limitations) will shrink over time, and the range of scenarios will grow.
+
+Right now we are actively working on:
+1. adding a limited free default model
+2. extending the set of device-reading tools
+3. other improvements to the AI assistant
+
+> **Your opinion matters to us.** We welcome comments and suggestions from users: what works well, what is missing, what errors come up, which tasks you would like to automate with AI. Your real experience directly shapes the direction we take the assistant. Share your feedback – it helps us make the tool better.

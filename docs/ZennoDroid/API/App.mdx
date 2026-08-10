@@ -371,6 +371,42 @@ var packages = app.GetListUserPackages(); // Получить массив вс�
 
 ---
 
+### GetApplicationsInfo
+
+- **`string GetApplicationsInfo()`**  
+    Возвращает подробную информацию обо всех установленных приложениях в формате JSON.
+    
+    **Возвращает:**  
+    Строку JSON с данными о приложениях: имя пакета, Activity для запуска, отображаемое имя, версия, а также признак системного приложения.
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var json = app.GetApplicationsInfo(); // Получить подробную информацию обо всех приложениях
+project.Json.FromString(json); // Обработать Json
+```
+
+---
+
+### GetLaunchableApplicationsInfo
+
+- **`string GetLaunchableApplicationsInfo()`**  
+    Возвращает подробную информацию в формате JSON только о приложениях, которые можно запустить (то есть имеющих activity для запуска). Набор полей такой же, как у `GetApplicationsInfo`.
+    
+    **Возвращает:**  
+    Строку JSON с данными о запускаемых приложениях: имя пакета, Activity для запуска, отображаемое имя, версия, а также признак системного приложения.
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var json = app.GetLaunchableApplicationsInfo(); // Получить информацию только о запускаемых приложениях
+project.Json.FromString(json); // Обработать Json
+```
+
+---
+
 ### GetAllNotifications
 
 - **`string GetAllNotifications()`**  
