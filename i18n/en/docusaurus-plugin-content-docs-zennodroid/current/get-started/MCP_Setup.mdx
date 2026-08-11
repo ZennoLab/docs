@@ -34,7 +34,7 @@ There are two differences, and the second one matters more than the first.
 | Recording mode | used — browser actions are written into cubes | **not used** — no ZennoDroid action requires recording |
 | UI control from MCP | yes: clicks, text input, navigation | **no**: reading device state only |
 
-**The key difference.** BrowserMCP in ZennoPoster can *act* — click, type, navigate. AndroidMCP in ZennoDroid can only *look*: get the XML tree of the screen, a screenshot, the screen resolution, the list of apps, the device state.
+**The key difference.** BrowserMCP in ZennoPoster can *act* — click, type, navigate. AndroidMCP in ZennoDroid can only *look*: get the XML tree of the screen, the screen resolution, the list of apps, the device state.
 
 Every action on the device in ZennoDroid is a **project cube**. The assistant adds cubes through ProjectMCP, and they run when the project is executed (F5). So "tap the button in the app" in ZennoDroid means "add a cube to the project that will tap this button", not "tap it right now".
 
@@ -161,7 +161,7 @@ Get-Process -Id <PID>
 
 ## Device-reading tools return an error or an empty result
 
-- **The device is not running.** Reading the screen, a screenshot, the list of apps and the resolution all require the device to be up. Ask the assistant to bring the device up first — that tool is idempotent and will not do anything extra.
+- **The device is not running.** Reading the screen, the list of apps and the resolution all require the device to be up. Ask the assistant to bring the device up first — that tool is idempotent and will not do anything extra.
 - **No device is selected.** For a real phone it must be connected and visible to ZennoDroid (see [connecting a device](../Enterprise/Connection)).
 
 ## The `claude` or `codex` command is not recognized
