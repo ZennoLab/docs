@@ -26,12 +26,12 @@ IBlueStacks5RootAPI BlueStacks5Root;
 IBlueStacks5SettingsAPI BlueStacks5Settings;
 IDeviceFilter DeviceFilter;
 IDeviceOptions DeviceOptions;
-IDeviceSummaryInfo IDeviceSummaryInfo;
 IDroidManagerAPI DroidManager;
 IDroidProxySettings DroidProxySettings;
 IFridaDeviceAPI FridaDevice;
 IFridaScriptAPI FridaScriptAPI;
 IFridaSessionAPI FridaSessionAPI;
+IDeviceSummaryInfo IDeviceSummaryInfo;
 ILSPosedAPI LSPosedHelper;
 IQRCodeManager QRCodeManager;
 ISqlite3API Sqlite3Helper;
@@ -43,28 +43,28 @@ ISqlite3API Sqlite3Helper;
 [**`IAndroidElementAPI AndroidElementAPI`**](./Element)  
 ```csharp
 string Id { get; }
-string Text { get; }
 bool IsDisplayed { get; }
 Rectangle Rectangle { get; }
+string Text { get; }
+void Clear();
+void Click();
 string GetAttribute(string name);
 bool GetBooleanAttribute(string name);
-void Click();
-void Clear();
-void SendText(string text);
-void SendKeys(string text);
 string GetScreenshot();
+void SendKeys(string text);
+void SendText(string text);
 ```
 
 ### IBlueStacks5API
 [**`IBlueStacks5API BlueStacks5`**](./BlueStacks5#ibluestacks5api)
 ```csharp
-void Start();
-void Stop();
+string AddressPort { get; }
+bool IsBootCompleted { get; }
+bool IsRunning { get; }
 void Connect();
 void Disconnect();
-string AddressPort { get; }
-bool IsRunning { get; }
-bool IsBootCompleted { get; }
+void Start();
+void Stop();
 ```
 
 ### IBlueStacks5ManagerAPI
@@ -80,12 +80,12 @@ string TitleToNameConverter(string title);
 ### IBlueStacks5RootAPI
 [**`IBlueStacks5RootAPI BlueStacks5Root`**](./BlueStacks5#ibluestacks5rootapi)
 ```csharp
-void Lock();
-void Unlock();
-void Patch();
-void InstallMagisk(string path);
-void FlashMagisk();
 void EnableZygisk();
+void FlashMagisk();
+void InstallMagisk(string path);
+void Lock();
+void Patch();
+void Unlock();
 ```
 
 ### IBlueStacks5SettingsAPI
@@ -98,12 +98,12 @@ void SetIMEI(string value);
 ### IDeviceFilter
 [**`IDeviceFilter DeviceFilter`**](./DeviceFilter)  
 ```csharp
-string Country { get; set; }
-string Manufacturer { get; set; }
 string Brand { get; set; }
+string Country { get; set; }
+string GpuVendor { get; set; }
+string Manufacturer { get; set; }
 string Model { get; set; }
 string Version { get; set; }
-string GpuVendor { get; set; }
 ```
 
 ### IDeviceOptions
@@ -119,22 +119,22 @@ bool? AddWiFiEmulation { get; set; }
 [**`IDeviceSummaryInfo IDeviceSummaryInfo`**](./DeviceSummaryInfo)
 ```csharp
 int Index { get; }
+bool IsBusy { get; }
+bool IsRunning { get; }
 string Name { get; }
 string Title { get; }
-bool IsRunning { get; }
-bool IsBusy { get; }
 ```
 
 ### IDroidManagerAPI
 [**`IDroidManagerAPI DroidManager`**](./DroidManager)
 ```csharp
-IDeviceSummaryInfo[] GetListDevices();
-int ConvertNameToIndex(string name);
-int[] GetListIndices();
 string BaseDirectory { get; }
 string ConvertIndexToName(int index);
 string ConvertIndexToTitle(int index);
+int ConvertNameToIndex(string name);
 string ConvertTitleToName(string title);
+IDeviceSummaryInfo[] GetListDevices();
+int[] GetListIndices();
 string[] GetListNames();
 string[] GetListTitles();
 void ReconnectOffline();
@@ -143,92 +143,92 @@ void ReconnectOffline();
 ### IDroidProxySettings
 [**`IDroidProxySettings DroidProxySettings.Proxifier`**](./DroidProxySettings#droidproxysettingsproxifier)
 ```csharp
-bool? BlockWebRtcLeak { get; set; }
 bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 ```
 [**`IDroidProxySettings DroidProxySettings.ProxifierViaPC`**](./DroidProxySettings#droidproxysettingsproxifierviapc)
 ```csharp
-bool? BlockWebRtcLeak { get; set; }
 bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
 ```
 [**`IDroidProxySettings DroidProxySettings.Redsocks`**](./DroidProxySettings#droidproxysettingsredsocks)
 ```csharp
+bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 string DnsServers { get; set; }
 bool? UseDnsTcp { get; set; }
 bool? UseDnsUdp { get; set; }
-bool? BlockWebRtcLeak { get; set; }
-bool? BlockUDPLeak { get; set; }
 string WebRtcLeakAddresses { get; set; }
 string WebUdpLeakAddresses { get; set; }
 ```
 [**`IDroidProxySettings DroidProxySettings.RedsocksViaPC`**](./DroidProxySettings#droidproxysettingsredsocksviapc)
 ```csharp
+bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 string DnsServers { get; set; }
+string LocalIPv4Address { get; set; }
 bool? UseDnsTcp { get; set; }
 bool? UseDnsUdp { get; set; }
-bool? BlockWebRtcLeak { get; set; }
-bool? BlockUDPLeak { get; set; }
 string WebRtcLeakAddresses { get; set; }
 string WebUdpLeakAddresses { get; set; }
-string LocalIPv4Address { get; set; }
 ```
 [**`IDroidProxySettings DroidProxySettings.Clash`**](./DroidProxySettings#droidproxysettingsclash)
 ```csharp
+string BlackList { get; set; }
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
 string LocalIPv6Address { get; set; }
-string WhiteList { get; set; }
-string BlackList { get; set; }
 string NetworkMode { get; set; }
 string Rules { get; set; }
+string WhiteList { get; set; }
 ```
 [**`IDroidProxySettings DroidProxySettings.ClashViaPC`**](./DroidProxySettings#droidproxysettingsclashviapc)
 ```csharp
+string BlackList { get; set; }
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
 string LocalIPv6Address { get; set; }
-string WhiteList { get; set; }
-string BlackList { get; set; }
 string NetworkMode { get; set; }
 string Rules { get; set; }
+string WhiteList { get; set; }
 ```
 
 ### IFridaDeviceAPI
 [**`IFridaDeviceAPI FridaDevice`**](./Frida#ifridadeviceapi)
 ```csharp
-string Name { get; }
 string Id { get; }
+string Name { get; }
 IFridaSessionAPI Attach(uint pid);
-uint Spawn(string packageName);
-void Resume(uint pid);
-void DetachSessionByScriptName(string scriptName);
 void DetachAllSessions();
+void DetachSessionByScriptName(string scriptName);
 void InstallAndRunServer();
 void KillServer();
 void LoadScriptToApp(string packageName, string source);
 void LoadScriptToFrontmost(string source);
+void Resume(uint pid);
+uint Spawn(string packageName);
 ```
 
 ### IFridaScriptAPI
 [**`IFridaScriptAPI FridaScriptAPI`**](./Frida#ifridascriptapi)
 ```csharp
-event EventHandler<FridaScriptMessageEventArgs> Message;
 string Name { get; }
-void Load();
-void Unload();
 void Eternalize();
+void Load();
+event EventHandler<FridaScriptMessageEventArgs> Message;
 void Post(string message);
 void PostWithData(string message, byte[] data);
+void Unload();
 ```
 
 ### IFridaSessionAPI
 [**`IFridaSessionAPI FridaSessionAPI`**](./Frida#ifridasessionapi)
 ```csharp
 uint Pid { get; }
-IFridaScriptAPI CreateScript(string source, string name);
 IFridaScriptAPI CreateScript(string source);
+IFridaScriptAPI CreateScript(string source, string name);
 void Detach();
 ```
 
@@ -236,18 +236,18 @@ void Detach();
 [**`ILSPosedAPI LSPosedHelper`**](./LSPosed)
 ```csharp
 string ModuleName { get; set; }
-void EnableModule();
-void DisableModule();
 void AddPackages(params string[] packageNames);
-void RemovePackages(params string[] packageNames);
-void SetPackages(params string[] packageNames);
-void BackupModule(string fileName);
 void BackupAllModules(string fileName);
-void RestoreModule(string fileName);
-void RestoreAllModules(string fileName);
-void Open();
+void BackupModule(string fileName);
 void Close();
+void DisableModule();
+void EnableModule();
 string GetCLIStatus();
+void Open();
+void RemovePackages(params string[] packageNames);
+void RestoreAllModules(string fileName);
+void RestoreModule(string fileName);
+void SetPackages(params string[] packageNames);
 ```
 
 ### IQRCodeManager
@@ -264,7 +264,7 @@ void SetViewfinderPosition(Rectangle rect);
 ### ISqlite3API
 [**`ISqlite3API Sqlite3Helper`**](./Sqlite3)
 ```csharp
-void Install();
 string ExecuteQuery(string database, string query);
 string ExecuteQuery(string database, string query, string options);
+void Install();
 ```  

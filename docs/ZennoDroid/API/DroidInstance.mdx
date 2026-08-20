@@ -24,16 +24,16 @@ instance.DroidInstance.Action.SelectRandom();
 _______________________________________________
 ## Список интерфейсов.  
 ```csharp
-IAppiumDriverAPI AppiumDriver { get; }
 IDroidActionAPI Action { get; }
 IDroidAppAPI App { get; }
+IAppiumDriverAPI AppiumDriver { get; }
+IFridaDeviceAPI FridaDevice { get; }
 IDroidHierarchyAPI Hierarchy { get; }
 IDroidInfoAPI Info { get; }
 IDroidInputAPI Input { get; }
 IDroidProxyAPI Proxy { get; }
 IDroidScreenAPI Screen { get; }
 IDroidSettingsAPI Settings { get; }
-IFridaDeviceAPI FridaDevice { get; }
 ISqlite3API Sqlite3 { get; }
 IWebViewAPI WebView { get; }
 ```
@@ -52,12 +52,12 @@ IAndroidElementAPI[] FindElementsByClassName(string className);
 IAndroidElementAPI[] FindElementsById(string id);
 IAndroidElementAPI[] FindElementsByUiAutomator(string uiSelector);
 IAndroidElementAPI[] FindElementsByXPath(string xpath);
+string GetScreenshot();
 void ScrollToElementByAccessibilityId(string id, int maxSwipes);
 void ScrollToElementByClassName(string className, int maxSwipes);
 void ScrollToElementByUiAutomator(string uiSelector, int maxSwipes);
 void UpdateSettings(string key, object value);
 void UpdateSettings(IEnumerable<KeyValuePair<string, object>> keyValuePairs);
-string GetScreenshot();
 ```
 ### IDroidActionAPI
 [**`IDroidActionAPI Action`**](./Action)  
@@ -79,12 +79,12 @@ void Stop();
 ```csharp
 int Clone();
 int Create(string version);
-int Import(string path);
 void DeleteByIndex(int index);
 void DeleteByName(string name);
 void DeleteByTitle(string title);
 void Export(string path);
 void FactoryReset(bool resetSystem);
+int Import(string path);
 void Rename(int index, string title);
 void Rename(string name, string title);
 void RenameTo(string title);
@@ -92,8 +92,22 @@ void RenameTo(string title);
 ### IDroidAppAPI
 [**`IDroidAppAPI App`**](./App)  
 ```csharp
+string Top { get; }
+uint TopPid { get; }
+bool AddAccount(string name, string type, string password);
+bool AddAccount(string name, string type, string password, string metadata);
 string AppDir(string packageName);
+void BackupAppData(string packageName, string pathToBackup);
+void BackupAppData(string packageName, string pathToBackup, bool savePermissions);
+void BackupAppData(string packageName, string pathToBackup, bool savePermissions, string accountType);
+void Clean(string packageName);
+void CleanCache(string packageName);
+void ClearAllNotifications();
+void ClearAppNotifications(string packageName);
+void Close(string packageName);
+void CloseAll();
 string DataDir(string packageName);
+void Delete(string packageName);
 string DeleteCookie(string packageName, string host = null, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false);
 string GetAccounts(string packageName);
 string GetAccounts(string packageName, string type);
@@ -104,27 +118,14 @@ string GetCookie(string packageName);
 string GetCookie(string packageName, string host, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false);
 string GetCookiePath(string packageName);
 string GetLaunchableApplicationsInfo();
+string[] GetListPackages();
+string[] GetListSystemPackages();
+string[] GetListUserPackages();
 string ImportCookie(string packageName, string cookies, bool replaceAll = false);
-string Top { get; }
-string Uid(string packageName);
-uint TopPid { get; }
-bool AddAccount(string name, string type, string password);
-bool AddAccount(string name, string type, string password, string metadata);
-bool IsInstalled(string packageName);
-bool RemoveAccount(string name, string type);
-void BackupAppData(string packageName, string pathToBackup);
-void BackupAppData(string packageName, string pathToBackup, bool savePermissions);
-void BackupAppData(string packageName, string pathToBackup, bool savePermissions, string accountType);
-void Clean(string packageName);
-void CleanCache(string packageName);
-void ClearAllNotifications();
-void ClearAppNotifications(string packageName);
-void Close(string packageName);
-void CloseAll();
-void Delete(string packageName);
 void InjectScript(string packageName, string script);
 void InstallApk(string path);
 void InstallApk(string path, bool useCache, bool useRoot);
+bool IsInstalled(string packageName);
 void Open(string packageName);
 void Open(string packageName, string activityName);
 void Open(string packageName, string activityName, string action);
@@ -133,14 +134,13 @@ void OpenAsRoot(string packageName, string activityName, string action);
 void OpenUrl(string url);
 void OpenUrl(string url, string packageName);
 void PatchFlutterLib(string packageName, string proxy);
+bool RemoveAccount(string name, string type);
 void RestoreAppData(string packageName, string pathToBackup);
 void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions);
 void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
 void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
 void RestoreFlutterLib(string packageName);
-string[] GetListPackages();
-string[] GetListSystemPackages();
-string[] GetListUserPackages();
+string Uid(string packageName);
 ```  
 ### IDroidHierarchyAPI Hierarchy
 [**`IDroidHierarchyAPI Hierarchy`**](./Hierarchy)  
@@ -150,12 +150,12 @@ string GetLayout();
 ### IDroidInfoAPI Info
 [**`IDroidInfoAPI Info`**](./Info)  
 ```csharp
-int Index { get; }
-int UiPort { get; }
 string AddressPort { get; }
+int Index { get; }
+bool IsRunning { get; }
 string Name { get; }
 string Title { get; }
-bool IsRunning { get; }
+int UiPort { get; }
 ```  
 ### IDroidInputAPI Input
 [**`IDroidInputAPI Input`**](./Input)  
@@ -168,6 +168,7 @@ void FingerMove(int x, int y, int fingerId);
 void FingerUp(int x, int y);
 void FingerUp(int x, int y, int fingerId);
 void FreeMove(string json, double speed);
+string GetClipboard();
 void LongTap(int x, int y);
 void LongTapAndSwipe(int x1, int y1, int x2, int y2);
 void LongTapAndSwipe(int x1, int y1, int x2, int y2, int duration);
@@ -177,6 +178,9 @@ void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2);
 void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2);
 void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration);
 void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration);
+string RootShell(string command);
+string RootShell(string command, int timeout);
+string RootShell(string command, int timeout, bool checkconnect);
 void SendKeyCode(int keyCode);
 void SendKeyCode(KeyCode keyCode);
 void SendSmsMessage(string phone, string message);
@@ -184,6 +188,9 @@ void SendText(string text);
 void SendText(string text, int latency);
 void SetClipboard(string text);
 void SetNativeEventMode(bool useNativeEvent);
+string Shell(string command);
+string Shell(string command, int timeout);
+string Shell(string command, int timeout, bool checkconnect);
 void Swipe(int x1, int y1, int x2, int y2);
 void Swipe(int x1, int y1, int x2, int y2, int duration);
 void SwipeCurved(int x1, int y1, int x2, int y2);
@@ -199,21 +206,14 @@ void ZoomIn();
 void ZoomIn(int centerX, int centerY, double ratio);
 void ZoomOut();
 void ZoomOut(int centerX, int centerY, double ratio);
-string GetClipboard();
-string RootShell(string command);
-string RootShell(string command, int timeout);
-string RootShell(string command, int timeout, bool checkconnect);
-string Shell(string command);
-string Shell(string command, int timeout);
-string Shell(string command, int timeout, bool checkconnect);
 ```  
 ### IDroidProxyAPI Proxy
 [**`IDroidProxyAPI Proxy`**](./Proxy)  
 ```csharp
-string GetProxy();
 void ClearProxy();
 void DisablePrivateDns();
 void EnablePrivateDns(string address);
+string GetProxy();
 void SetProxy(string proxy);
 void SetProxy(string proxy, IDroidProxySettings settings);
 ```  
@@ -241,18 +241,19 @@ Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation);
 Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime);
 Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime);
 Size GetScreenSize();
+void RefreshScreen();
+void ResetScreen();
 byte[] ScreenshotAsArray();
 byte[] ScreenshotAsArray(Rectangle area);
 string ScreenshotAsBase64String();
 string ScreenshotAsBase64String(Rectangle area);
-void RefreshScreen();
-void ResetScreen();
 void SetCaptureScreenQuality(int quality);
 ```  
 ### IDroidSettingsAPI
 [**`IDroidSettingsAPI Settings`**](./Settings)  
 ```csharp
 void ClearLSPosedSettings();
+string GenerateRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions options);
 void SetBaseband(string version);
 void SetGeo(double longitude, double latitude);
 void SetGeo(double longitude, double latitude, double altitude);
@@ -264,7 +265,6 @@ void SetRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions deviceOptions
 void SetTime(string dateTime);
 void SetTime(DateTime dateTime);
 void SetTimezone(string timezone);
-string GenerateRandomLSPosedSettings(IDeviceFilter filter, IDeviceOptions options);
 ```  
 ### IFridaDeviceAPI
 [**`IFridaDeviceAPI FridaDevice`**](./Frida)
@@ -291,9 +291,9 @@ void Install();
 ### IWebViewAPI
 [**`IWebViewAPI WebView`**](./WebView)  
 ```csharp
-string EvaluateScript(string script);
-string GetAttachedWebSocketUrl();
 void DisableForcedRenderWebView();
 void EnableForcedRenderWebView();
+string EvaluateScript(string script);
+string GetAttachedWebSocketUrl();
 void InjectSystemCertificate(string source);
 ```  
