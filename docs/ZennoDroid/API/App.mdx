@@ -565,12 +565,29 @@ app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
     **Возвращает:**  
     Строку с cookies.
 
+- **`string GetCookie(string packageName, string host, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false)`**  
+    Получает cookies приложения с фильтрацией. Фильтры применяются на устройстве до расшифровки значений, поэтому вариант удобен для больших хранилищ.
+    
+    **Параметры:**
+    - `packageName` — имя пакета;
+    - `host` — фильтр по домену: берутся cookies этого домена и его поддоменов, несколько доменов указываются через запятую. Пустое значение — любой домен;
+    - `name` — фильтр по имени cookie (точное совпадение), несколько имён указываются через запятую. Пустое значение — любое имя;
+    - `persistentOnly` — исключить сессионные cookies;
+    - `secureOnly` — оставить только cookies с флагом `Secure`;
+    - `httpOnly` — оставить только cookies с флагом `HttpOnly`.
+    
+    **Возвращает:**  
+    Строку с cookies в том же формате, что и `GetCookie(packageName)`.
+
 #### Пример.  
 ```csharp
 var app = instance.DroidInstance.App;
 
 var packageName = "com.google.chrome"; // Имя приложения
 var cookies = app.GetCookie(packageName); // Получить куки приложения
+
+// Только постоянные Secure-куки домена example.com и его поддоменов
+var filtered = app.GetCookie(packageName, "example.com", null, true, true);
 ```
 
 ---
@@ -593,6 +610,86 @@ var app = instance.DroidInstance.App;
 var packageName = "com.google.chrome"; // Имя приложения
 var pathCookie = app.GetCookiePath(packageName); // Получить путь хранения куки
 ```
+
+---
+
+### ImportCookie
+
+- **`string ImportCookie(string packageName, string cookies, bool replaceAll = false)`**  
+    Импортирует cookies в Chromium-хранилище приложения. Значения шифруются на устройстве по той же схеме, которую использует само приложение.
+    
+    **Параметры:**
+    - `packageName` — имя пакета;
+    - `cookies` — cookies в виде JSON-массива в формате ZennoLab (такой же, какой возвращает `GetCookie`);
+    - `replaceAll` — `true` — очистить хранилище перед импортом, `false` — дописать cookies и обновить существующие.
+    
+    **Возвращает:**  
+    JSON-отчёт об импорте: сколько cookies добавлено, заменено, пропущено и не удалось записать по каждой базе.
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Имя приложения
+
+var cookies = @"[{
+  ""domain"": "".example.com"",
+  ""name"": ""sid"",
+  ""value"": ""abc123"",
+  ""path"": ""/"",
+  ""expirationDate"": 1790000000,
+  ""httpOnly"": true,
+  ""secure"": true,
+  ""sameSite"": ""Lax"",
+  ""is_persistent"": true
+}]"; // Куки в формате ZennoLab
+
+var report = app.ImportCookie(packageName, cookies); // Дописать куки в хранилище приложения
+project.Json.FromString(report);
+```
+
+:::warning Важные замечания
+- Нужен **root**: при импорте приложение принудительно останавливается, а запись выполняется от его имени.
+- Приложение должно быть запущено хотя бы один раз, иначе хранилище cookies ещё не создано и метод вернёт ошибку.
+:::
+
+---
+
+### DeleteCookie
+
+- **`string DeleteCookie(string packageName, string host = null, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false)`**  
+    Удаляет cookies из Chromium-хранилища приложения. Фильтры совпадают с фильтрами `GetCookie` и применяются на устройстве.
+    
+    **Параметры:**
+    - `packageName` — имя пакета;
+    - `host` — фильтр по домену: удаляются cookies этого домена и его поддоменов, несколько доменов указываются через запятую. Пустое значение — любой домен;
+    - `name` — фильтр по имени cookie (точное совпадение), несколько имён указываются через запятую. Пустое значение — любое имя;
+    - `persistentOnly` — удалять только постоянные cookies, не трогая сессионные;
+    - `secureOnly` — удалять только cookies с флагом `Secure`;
+    - `httpOnly` — удалять только cookies с флагом `HttpOnly`.
+    
+    **Возвращает:**  
+    JSON-отчёт об удалении: сколько cookies проверено и удалено по каждой базе.
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Имя приложения
+
+// Удалить одну куку домена example.com и его поддоменов
+var report = app.DeleteCookie(packageName, "example.com", "sid");
+project.Json.FromString(report);
+
+// Полная очистка хранилища куки приложения
+app.DeleteCookie(packageName);
+```
+
+:::warning Важные замечания
+- Вызов **без фильтров удаляет все cookies** приложения.
+- Нужен **root**: при удалении приложение принудительно останавливается, а запись идёт в его каталог данных.
+- Если приложение ещё ни разу не запускалось, хранилище cookies не создано и метод вернёт пустую строку.
+:::
 
 ---
 

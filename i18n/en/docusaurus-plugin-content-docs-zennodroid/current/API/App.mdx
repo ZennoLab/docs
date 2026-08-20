@@ -565,12 +565,29 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
     **Returns:**  
     A string with cookies.
 
+- **`string GetCookie(string packageName, string host, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false)`**  
+    Gets the app's cookies with filtering. The filters are applied on the device before the values are decrypted, which makes this overload convenient for large stores.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `host` — domain filter: keeps cookies of this domain and its subdomains, several domains are separated by commas. An empty value means any domain;
+    - `name` — cookie name filter (exact match), several names are separated by commas. An empty value means any name;
+    - `persistentOnly` — exclude session cookies;
+    - `secureOnly` — keep only cookies with the `Secure` flag;
+    - `httpOnly` — keep only cookies with the `HttpOnly` flag.
+    
+    **Returns:**  
+    A string with cookies in the same format as `GetCookie(packageName)`.
+
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
 var packageName = "com.google.chrome"; // App name
 var cookies = app.GetCookie(packageName); // Get app cookies
+
+// Only persistent Secure cookies of example.com and its subdomains
+var filtered = app.GetCookie(packageName, "example.com", null, true, true);
 ```
 
 ---
@@ -593,6 +610,86 @@ var app = instance.DroidInstance.App;
 var packageName = "com.google.chrome"; // App name
 var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
 ```
+
+---
+
+### ImportCookie
+
+- **`string ImportCookie(string packageName, string cookies, bool replaceAll = false)`**  
+    Imports cookies into the app's Chromium store. The values are encrypted on the device with the same scheme the app itself uses.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `cookies` — cookies as a JSON array in the ZennoLab format (the same one `GetCookie` returns);
+    - `replaceAll` — `true` clears the store before the import, `false` adds the cookies and updates the existing ones.
+    
+    **Returns:**  
+    A JSON report of the import: how many cookies were inserted, replaced, skipped, and failed for each database.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+
+var cookies = @"[{
+  ""domain"": "".example.com"",
+  ""name"": ""sid"",
+  ""value"": ""abc123"",
+  ""path"": ""/"",
+  ""expirationDate"": 1790000000,
+  ""httpOnly"": true,
+  ""secure"": true,
+  ""sameSite"": ""Lax"",
+  ""is_persistent"": true
+}]"; // Cookies in the ZennoLab format
+
+var report = app.ImportCookie(packageName, cookies); // Add the cookies to the app's store
+project.Json.FromString(report);
+```
+
+:::warning Important notes
+- **Root** is required: the app is force-stopped during the import, and the store is written on its behalf.
+- The app has to be launched at least once, otherwise its cookie store does not exist yet and the method returns an error.
+:::
+
+---
+
+### DeleteCookie
+
+- **`string DeleteCookie(string packageName, string host = null, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false)`**  
+    Deletes cookies from the app's Chromium store. The filters are the same as in `GetCookie` and are applied on the device.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `host` — domain filter: deletes cookies of this domain and its subdomains, several domains are separated by commas. An empty value means any domain;
+    - `name` — cookie name filter (exact match), several names are separated by commas. An empty value means any name;
+    - `persistentOnly` — delete only persistent cookies, leaving session ones untouched;
+    - `secureOnly` — delete only cookies with the `Secure` flag;
+    - `httpOnly` — delete only cookies with the `HttpOnly` flag.
+    
+    **Returns:**  
+    A JSON report of the deletion: how many cookies were scanned and deleted for each database.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+
+// Delete a single cookie of example.com and its subdomains
+var report = app.DeleteCookie(packageName, "example.com", "sid");
+project.Json.FromString(report);
+
+// Wipe the app's cookie store completely
+app.DeleteCookie(packageName);
+```
+
+:::warning Important notes
+- A call **with no filters deletes every cookie** of the app.
+- **Root** is required: the app is force-stopped during the deletion, and its data directory is written to.
+- If the app has never been launched, its cookie store does not exist yet and the method returns an empty string.
+:::
 
 ---
 

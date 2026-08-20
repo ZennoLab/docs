@@ -86,7 +86,10 @@ string GetApplicationsInfo();
 string GetLaunchableApplicationsInfo();
 string GetAppNotifications(string packageName);
 string GetCookie(string packageName);
+string GetCookie(string packageName, string host, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false);
 string GetCookiePath(string packageName);
+string ImportCookie(string packageName, string cookies, bool replaceAll = false);
+string DeleteCookie(string packageName, string host = null, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false);
 string Top { get; }
 string Uid(string packageName);
 uint TopPid { get; }
