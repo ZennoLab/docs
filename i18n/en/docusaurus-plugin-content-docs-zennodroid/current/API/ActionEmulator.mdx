@@ -8,13 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # ActionEmulator API
 <DisclaimerNotice />
-
 ## Description
 
 `IDroidActionEmulatorAPI : IDroidActionAPI`
 
 The `IDroidActionEmulatorAPI` interface extends the base [`IDroidActionAPI`](./Action) and provides methods for managing **MEmu** and **LDPlayer** emulators in ZennoDroid. It allows you to create, clone, import, delete, and configure virtual devices.
-
 ## Properties
 
 ### Action
@@ -24,6 +22,7 @@ The `IDroidActionEmulatorAPI` interface extends the base [`IDroidActionAPI`](./A
 
 _______________________________________________
 ## Methods
+
 
 ### Clone
 
@@ -61,33 +60,6 @@ var index = droid.Action.Create("96");
 
 ---
 
-### Import
-
-- **`int Import(string path)`**  
-    Imports an emulator from a file.
-    
-    **Parameters:**
-    - `path` — path to the emulator file/archive.
-    
-    **Returns:**  
-    The index of the imported emulator.
-    
-    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
-
----
-
-### Export
-
-- **`void Export(string path)`**  
-    Exports the current emulator to a file.
-    
-    **Parameters:**
-    - `path` — path for saving.
-    
-    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
-
----
-
 ### DeleteByIndex
 
 - **`void DeleteByIndex(int index)`**  
@@ -105,6 +77,18 @@ var index = droid.Action.Create("96");
 
 ---
 
+### Export
+
+- **`void Export(string path)`**  
+    Exports the current emulator to a file.
+    
+    **Parameters:**
+    - `path` — path for saving.
+    
+    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+---
+
 ### FactoryReset
 
 - **`void FactoryReset(bool resetSystem)`**  
@@ -112,6 +96,21 @@ var index = droid.Action.Create("96");
     
     **Parameters:**
     - `resetSystem` — if `true`, a full reset including system data is performed; if `false`, only user data is reset.
+
+---
+
+### Import
+
+- **`int Import(string path)`**  
+    Imports an emulator from a file.
+    
+    **Parameters:**
+    - `path` — path to the emulator file/archive.
+    
+    **Returns:**  
+    The index of the imported emulator.
+    
+    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
 
 ---
 
@@ -127,4 +126,5 @@ var index = droid.Action.Create("96");
 
 - **`void RenameTo(string title)`**  
     Renames the current emulator.
+
 _______________________________________________

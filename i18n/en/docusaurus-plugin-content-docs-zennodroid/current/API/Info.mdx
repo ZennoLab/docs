@@ -8,52 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Info API
 <DisclaimerNotice />
-
 ## Description
 
 `IDroidInfoAPI` provides basic information about the device or emulator in ZennoDroid. Used to retrieve identifiers, network parameters, and data needed for connecting to and managing the device.
-
 ## Properties
 
-### Index
-
-- **`int Index { get; }`**  
-    Device index.
-    
-    **Returns:**  
-    Unique numeric identifier of the device. Mirrors the **Index** field in the [Device Manager](../Tools/Device_Manager) window.
-
----
-
-### Title
-
-- **`string Title { get; }`**  
-    Device display name.
-    
-    **Returns:**  
-    Human-readable device name. Mirrors the **Title** field in the [Device Manager](../Tools/Device_Manager) window.
-
----
-
-### Name
-
-- **`string Name { get; }`**  
-    Internal ADB device name.
-    
-    **Returns:**  
-    System name used by the API. Mirrors the **Device** field in the [Device Manager](../Tools/Device_Manager) window.
-
----
-
-### UiPort
-
-- **`int UiPort { get; }`**  
-    UI port of the device.
-    
-    **Returns:**  
-    Port used for UI interaction with the device. Only relevant when running a template in ZennoDroid.
-
----
 
 ### AddressPort
 
@@ -62,6 +21,16 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     
     **Returns:**  
     A string in `IP:Port` format used for ADB connections (e.g. `127.0.0.1:21503` for MEmu). For physical phones, matches the value of the `Name` property.
+
+---
+
+### Index
+
+- **`int Index { get; }`**  
+    Device index.
+    
+    **Returns:**  
+    Unique numeric identifier of the device. Mirrors the **Index** field in the [Device Manager](../Tools/Device_Manager) window.
 
 ---
 
@@ -84,3 +53,33 @@ int uiPort = info.UiPort;
 string addressPort = info.AddressPort;
 bool isRunning = info.IsRunning;
 ```
+
+---
+
+### Name
+
+- **`string Name { get; }`**  
+    Internal ADB device name.
+    
+    **Returns:**  
+    System name used by the API. Mirrors the **Device** field in the [Device Manager](../Tools/Device_Manager) window.
+
+---
+
+### Title
+
+- **`string Title { get; }`**  
+    Device display name.
+    
+    **Returns:**  
+    Human-readable device name. Mirrors the **Title** field in the [Device Manager](../Tools/Device_Manager) window.
+
+---
+
+### UiPort
+
+- **`int UiPort { get; }`**  
+    UI port of the device.
+    
+    **Returns:**  
+    Port used for UI interaction with the device. Only relevant when running a template in ZennoDroid.

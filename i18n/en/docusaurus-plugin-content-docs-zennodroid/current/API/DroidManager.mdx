@@ -8,11 +8,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # DroidManager API
 <DisclaimerNotice />
-
 ## Description
 
 `IDroidManagerAPI` is designed for managing the list of devices/emulators in ZennoDroid. It allows you to retrieve information about available devices, work with their identifiers, and perform basic management operations.
-
 ## Properties
 
 ### BaseDirectory
@@ -31,38 +29,6 @@ return new DroidManager().BaseDirectory;
 _______________________________________________
 ## Methods
 
-### GetListDevices
-
-- **`IDeviceSummaryInfo[] GetListDevices()`**  
-    Returns the list of all devices.
-    
-    **Returns:**  
-    An array of [`IDeviceSummaryInfo`](./DeviceSummaryInfo) with summary information about each device.
-
----
-
-### ConvertNameToIndex
-
-- **`int ConvertNameToIndex(string name)`**  
-    Converts a device name to its index.
-    
-    **Parameters:**
-    - `name` — internal device name.
-    
-    **Returns:**  
-    Device index.
-
----
-
-### GetListIndices
-
-- **`int[] GetListIndices()`**  
-    Returns the list of indices for all devices.
-    
-    **Returns:**  
-    Array of indices (`int[]`).
-
----
 
 ### ConvertIndexToName
 
@@ -90,6 +56,19 @@ _______________________________________________
 
 ---
 
+### ConvertNameToIndex
+
+- **`int ConvertNameToIndex(string name)`**  
+    Converts a device name to its index.
+    
+    **Parameters:**
+    - `name` — internal device name.
+    
+    **Returns:**  
+    Device index.
+
+---
+
 ### ConvertTitleToName
 
 - **`string ConvertTitleToName(string title)`**  
@@ -100,6 +79,26 @@ _______________________________________________
     
     **Returns:**  
     Internal device name.
+
+---
+
+### GetListDevices
+
+- **`IDeviceSummaryInfo[] GetListDevices()`**  
+    Returns the list of all devices.
+    
+    **Returns:**  
+    An array of [`IDeviceSummaryInfo`](./DeviceSummaryInfo) with summary information about each device.
+
+---
+
+### GetListIndices
+
+- **`int[] GetListIndices()`**  
+    Returns the list of indices for all devices.
+    
+    **Returns:**  
+    Array of indices (`int[]`).
 
 ---
 

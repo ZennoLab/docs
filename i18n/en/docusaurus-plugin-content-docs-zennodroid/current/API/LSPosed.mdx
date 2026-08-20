@@ -8,11 +8,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # LSPosed API
 <DisclaimerNotice />
-
 ## Description
 
 `ILSPosedAPI` is designed for managing **LSPosed** modules on an Android device within ZennoDroid. It allows you to enable/disable modules, manage the list of applications they apply to, and perform backups and restores.
-
 ## Properties
 
 ### ModuleName
@@ -26,19 +24,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 _______________________________________________
 ## Methods
 
-### EnableModule
-
-- **`void EnableModule()`**  
-    Enables the specified module.
-
----
-
-### DisableModule
-
-- **`void DisableModule()`**  
-    Disables the specified module.
-
----
 
 ### AddPackages
 
@@ -47,36 +32,6 @@ _______________________________________________
     
     **Parameters:**
     - `packageNames` — array of application package names.
-
----
-
-### RemovePackages
-
-- **`void RemovePackages(params string[] packageNames)`**  
-    Removes applications from the module's scope list.
-    
-    **Parameters:**
-    - `packageNames` — array of package names.
-
----
-
-### SetPackages
-
-- **`void SetPackages(params string[] packageNames)`**  
-    Sets the complete list of applications for the module (replaces the existing list).
-    
-    **Parameters:**
-    - `packageNames` — array of package names.
-
----
-
-### BackupModule
-
-- **`void BackupModule(string fileName)`**  
-    Creates a backup of the current module's settings.
-    
-    **Parameters:**
-    - `fileName` — file name for saving.
 
 ---
 
@@ -90,30 +45,13 @@ _______________________________________________
 
 ---
 
-### RestoreModule
+### BackupModule
 
-- **`void RestoreModule(string fileName)`**  
-    Restores a module's settings from a file.
+- **`void BackupModule(string fileName)`**  
+    Creates a backup of the current module's settings.
     
     **Parameters:**
-    - `fileName` — path to the backup file.
-
----
-
-### RestoreAllModules
-
-- **`void RestoreAllModules(string fileName)`**  
-    Restores all modules from a backup.
-    
-    **Parameters:**
-    - `fileName` — path to the file.
-
----
-
-### Open
-
-- **`void Open()`**  
-    Opens the LSPosed interface.
+    - `fileName` — file name for saving.
 
 ---
 
@@ -121,6 +59,20 @@ _______________________________________________
 
 - **`void Close()`**  
     Closes the LSPosed interface.
+
+---
+
+### DisableModule
+
+- **`void DisableModule()`**  
+    Disables the specified module.
+
+---
+
+### EnableModule
+
+- **`void EnableModule()`**  
+    Enables the specified module.
 
 ---
 
@@ -137,6 +89,54 @@ _______________________________________________
 var lspHelper = new LSPosedHelper(instance.DroidInstance);
 return lspHelper.GetCLIStatus();
 ```
+
+---
+
+### Open
+
+- **`void Open()`**  
+    Opens the LSPosed interface.
+
+---
+
+### RemovePackages
+
+- **`void RemovePackages(params string[] packageNames)`**  
+    Removes applications from the module's scope list.
+    
+    **Parameters:**
+    - `packageNames` — array of package names.
+
+---
+
+### RestoreAllModules
+
+- **`void RestoreAllModules(string fileName)`**  
+    Restores all modules from a backup.
+    
+    **Parameters:**
+    - `fileName` — path to the file.
+
+---
+
+### RestoreModule
+
+- **`void RestoreModule(string fileName)`**  
+    Restores a module's settings from a file.
+    
+    **Parameters:**
+    - `fileName` — path to the backup file.
+
+---
+
+### SetPackages
+
+- **`void SetPackages(params string[] packageNames)`**  
+    Sets the complete list of applications for the module (replaces the existing list).
+    
+    **Parameters:**
+    - `packageNames` — array of package names.
+
 _______________________________________________
 
 :::warning Important Notes

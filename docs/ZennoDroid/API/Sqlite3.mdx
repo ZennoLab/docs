@@ -8,7 +8,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Sqlite3 API
 <DisclaimerNotice />
-
 ## Описание
 
 `ISqlite3API` предназначен для работы с базами данных **SQLite** на Android-устройстве в среде ZennoDroid. Позволяет устанавливать необходимые инструменты и выполнять SQL-запросы напрямую к файлам баз данных.
@@ -16,15 +15,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 _______________________________________________
 ## Методы
 
-### Install
-
-- **`void Install()`**  
-    Устанавливает или инициализирует SQLite-инструменты на устройстве.
-    
-    **Описание:**  
-    Используется перед выполнением запросов, если SQLite отсутствует или не настроен.
-
----
 
 ### ExecuteQuery
 
@@ -57,4 +47,15 @@ var path = instance.DroidInstance.App.GetCookiePath("com.android.chrome");
 var cookie = instance.DroidInstance.Sqlite3.ExecuteQuery(path, "SELECT * FROM cookies", "-json");
 return cookie;
 ```
+
+---
+
+### Install
+
+- **`void Install()`**  
+    Устанавливает или инициализирует SQLite-инструменты на устройстве.
+    
+    **Описание:**  
+    Используется перед выполнением запросов, если SQLite отсутствует или не настроен.
+
 _______________________________________________

@@ -8,22 +8,16 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Element API
 <DisclaimerNotice />
-
 ## Description
 
 `IAndroidElementAPI` represents an Android UI element in ZennoDroid (via Appium). Provides properties and methods for retrieving element information and interacting with it.
-
 ## Properties
+
 
 ### Id
 
 - **`string Id { get; }`**  
     Unique element identifier (GUID).
-
-### Text
-
-- **`string Text { get; }`**  
-    Text content of the element.
 
 ### IsDisplayed
 
@@ -49,8 +43,50 @@ bool isDisplayed = de.IsDisplayed; // Get the IsDisplayed property value
 Rectangle rectangle = de.Rectangle; // Get the Rectangle property value
 ```
 
+### Text
+
+- **`string Text { get; }`**  
+    Text content of the element.
+
 _______________________________________________
 ## Methods
+
+
+### Clear
+
+- **`void Clear()`**  
+    Clears the element's content (typically a text field).
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+de.Clear(); // Clear the element's value
+```
+
+---
+
+### Click
+
+- **`void Click()`**  
+    Clicks the element.
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
+if (de == null)
+    throw new Exception("Element not found");
+
+de.Click(); // Click on the element
+```
+
+---
 
 ### GetAttribute
 
@@ -84,39 +120,20 @@ var text = de.GetAttribute("text"); // Get the "text" attribute value
 
 ---
 
-### Click
+### GetScreenshot
 
-- **`void Click()`**  
-    Clicks the element.
-
-#### Example  
-```csharp
-var driver = instance.DroidInstance.AppiumDriver;
-
-var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
-if (de == null)
-    throw new Exception("Element not found");
-
-de.Click(); // Click on the element
-```
+- **`string GetScreenshot()`**  
+    Takes a screenshot of the element's bounding area and returns it as a Base64 string.
 
 ---
 
-### Clear
+### SendKeys
 
-- **`void Clear()`**  
-    Clears the element's content (typically a text field).
-
-#### Example  
-```csharp
-var driver = instance.DroidInstance.AppiumDriver;
-
-var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find element by XPath
-if (de == null)
-    throw new Exception("Element not found");
-
-de.Clear(); // Clear the element's value
-```
+- **`void SendKeys(string text)`**  
+    Enters text character by character. More "realistic" input than `SendText`.
+    
+    **Parameters:**
+    - `text` — string to enter.
 
 ---
 
@@ -138,20 +155,3 @@ if (de == null)
 
 de.SendText("Hello world!"); // Enter text into the element's field
 ```
-
----
-
-### SendKeys
-
-- **`void SendKeys(string text)`**  
-    Enters text character by character. More "realistic" input than `SendText`.
-    
-    **Parameters:**
-    - `text` — string to enter.
-
----
-
-### GetScreenshot
-
-- **`string GetScreenshot()`**  
-    Takes a screenshot of the element's bounding area and returns it as a Base64 string.

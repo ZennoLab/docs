@@ -8,7 +8,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # BlueStacks5 API
 <DisclaimerNotice />
-
 ## Description
 
 A set of interfaces for managing the **BlueStacks 5** emulator in ZennoDroid Enterprise.
@@ -21,7 +20,6 @@ A set of interfaces for managing the **BlueStacks 5** emulator in ZennoDroid Ent
 | `IBlueStacks5ManagerAPI` | Creating and deleting instances via the manager |
 
 _______________________________________________
-
 ## IBlueStacks5API
 
 Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
@@ -34,13 +32,7 @@ Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
     **Returns:**  
     A string in `IP:Port` format (e.g. `127.0.0.1:5555`).
 
-### IsRunning
-
-- **`bool IsRunning { get; }`**  
-    Checks whether the emulator is running.
-    
-    **Returns:**  
-    `true` if the emulator is running; otherwise `false`.
+---
 
 ### IsBootCompleted
 
@@ -49,6 +41,30 @@ Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
     
     **Returns:**  
     `true` if the system is fully loaded and ready to use.
+
+---
+
+### IsRunning
+
+- **`bool IsRunning { get; }`**  
+    Checks whether the emulator is running.
+    
+    **Returns:**  
+    `true` if the emulator is running; otherwise `false`.
+
+---
+
+### Connect
+
+- **`void Connect()`**  
+    Connects to the emulator (typically via ADB).
+
+---
+
+### Disconnect
+
+- **`void Disconnect()`**  
+    Disconnects from the emulator.
 
 ---
 
@@ -69,20 +85,6 @@ new BlueStacks5("Rvc64_1", "nxt").Start();
 - **`void Stop()`**  
     Stops the emulator.
 
----
-
-### Connect
-
-- **`void Connect()`**  
-    Connects to the emulator (typically via ADB).
-
----
-
-### Disconnect
-
-- **`void Disconnect()`**  
-    Disconnects from the emulator.
-
 :::note Important Notes
 - After `Start()`, it is recommended to check `IsBootCompleted` before performing any actions.
 - `Connect()` should be called after the emulator has started.
@@ -90,7 +92,6 @@ new BlueStacks5("Rvc64_1", "nxt").Start();
 :::
 
 _______________________________________________
-
 ## IBlueStacks5SettingsAPI
 
 Modifying system parameters of the BlueStacks 5 emulator.
@@ -132,10 +133,39 @@ new BlueStacks5Settings("Rvc64_1", "nxt").SetGeo(-73.572604, 40.651980);
 :::
 
 _______________________________________________
-
 ## IBlueStacks5RootAPI
 
 Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
+
+### EnableZygisk
+
+- **`void EnableZygisk()`**  
+    Enables Zygisk — a Magisk module for injecting into processes via Zygote. Supported on Android 9 (Pie) and above.
+    
+    **Description:**  
+    Allows using advanced modules and hooks (e.g. for bypassing root detection).
+
+---
+
+### FlashMagisk
+
+- **`void FlashMagisk()`**  
+    Flashes (installs) Magisk into the system.
+    
+    **Description:**  
+    Applies Magisk at the system level after installation.
+
+---
+
+### InstallMagisk
+
+- **`void InstallMagisk(string path)`**  
+    Installs Magisk from the specified file.
+    
+    **Parameters:**
+    - `path` — path to the Magisk file (`.apk`).
+
+---
 
 ### Lock
 
@@ -144,6 +174,16 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     
     **Description:**  
     Disables root, making the system more "clean" (e.g. for bypassing application checks).
+
+---
+
+### Patch
+
+- **`void Patch()`**  
+    Applies a patch to prepare the system for root.
+    
+    **Description:**  
+    Modifies emulator system components to support root access.
 
 ---
 
@@ -160,46 +200,6 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
 new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
 ```
 
----
-
-### Patch
-
-- **`void Patch()`**  
-    Applies a patch to prepare the system for root.
-    
-    **Description:**  
-    Modifies emulator system components to support root access.
-
----
-
-### InstallMagisk
-
-- **`void InstallMagisk(string path)`**  
-    Installs Magisk from the specified file.
-    
-    **Parameters:**
-    - `path` — path to the Magisk file (`.apk`).
-
----
-
-### FlashMagisk
-
-- **`void FlashMagisk()`**  
-    Flashes (installs) Magisk into the system.
-    
-    **Description:**  
-    Applies Magisk at the system level after installation.
-
----
-
-### EnableZygisk
-
-- **`void EnableZygisk()`**  
-    Enables Zygisk — a Magisk module for injecting into processes via Zygote. Supported on Android 9 (Pie) and above.
-    
-    **Description:**  
-    Allows using advanced modules and hooks (e.g. for bypassing root detection).
-
 :::warning Important Notes
 - Root operations may affect emulator stability or break application functionality.
 - After changes, restarting the emulator and verifying root status is recommended.
@@ -207,7 +207,6 @@ new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
 :::
 
 _______________________________________________
-
 ## IBlueStacks5ManagerAPI
 
 Managing BlueStacks 5 instances via the manager: creating, deleting, starting/stopping the service.

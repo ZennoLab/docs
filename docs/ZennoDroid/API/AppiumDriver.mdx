@@ -8,14 +8,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # AppiumDriver API
 <DisclaimerNotice />
-
 ## Описание
 
 `IAppiumDriverAPI` предоставляет доступ к возможностям **Appium-драйвера** в ZennoDroid. Используется для поиска элементов интерфейса и взаимодействия с ними через стандартные механизмы автоматизации Android (UIAutomator, XPath и др.).
 
 При успешном поиске возвращается объект `IAndroidElementAPI`, если элемент не найден — `null`.
-
 ## Методы
+
 
 ### ActiveElement
 
@@ -178,30 +177,6 @@ var count = des.Length; // Количество найденных элемен�
 
 ---
 
-### FindElementsById
-
-- **`IAndroidElementAPI[] FindElementsById(string id)`**  
-    Находит все элементы по resource-id.
-    
-    **Параметры:**
-    - `id` — идентификатор ресурса.
-    
-    **Возвращает:**  
-    Массив элементов.
-
-#### Пример.  
-```csharp
-var driver = instance.DroidInstance.AppiumDriver;
-
-var des = driver.FindElementsById("com.android.chrome:id/title"); // Найти массив элементов по свойству resource-id
-if (des == null)
-    throw new Exception("Элементы не найдены");
-
-var count = des.Length; // Количество найденных элементов.
-```
-
----
-
 ### FindElementsByClassName
 
 - **`IAndroidElementAPI[] FindElementsByClassName(string className)`**  
@@ -218,6 +193,30 @@ var count = des.Length; // Количество найденных элемен�
 var driver = instance.DroidInstance.AppiumDriver;
 
 var des = driver.FindElementsByClassName("android.widget.EditText"); // Найти массив элементов по имени класса
+if (des == null)
+    throw new Exception("Элементы не найдены");
+
+var count = des.Length; // Количество найденных элементов.
+```
+
+---
+
+### FindElementsById
+
+- **`IAndroidElementAPI[] FindElementsById(string id)`**  
+    Находит все элементы по resource-id.
+    
+    **Параметры:**
+    - `id` — идентификатор ресурса.
+    
+    **Возвращает:**  
+    Массив элементов.
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var des = driver.FindElementsById("com.android.chrome:id/title"); // Найти массив элементов по свойству resource-id
 if (des == null)
     throw new Exception("Элементы не найдены");
 
@@ -271,6 +270,33 @@ if (des == null)
 
 var count = des.Length; // Количество найденных элементов.
 ```
+
+---
+
+### GetRawSource
+
+- **`string GetRawSource()`**  
+    Возвращает исходный XML-код текущего экрана в том виде, в котором его отдаёт драйвер Appium, без постобработки. В отличие от [`Hierarchy.GetLayout()`](./Hierarchy#getlayout), имена тегов сохраняют полные префиксы Java-пакетов (например, `android.widget.TextView`).
+    
+    **Возвращает:**  
+    XML-строку с иерархией элементов интерфейса текущего экрана.
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var xml = driver.GetRawSource(); // Получить необработанный XML текущего экрана
+```
+
+---
+
+### GetScreenshot
+
+- **`string GetScreenshot()`**  
+    Делает скриншот текущего экрана устройства.
+    
+    **Возвращает:**  
+    Изображение в виде строки Base64.
 
 ---
 
@@ -331,33 +357,6 @@ driver.ScrollToElementByUiAutomator("new UiSelector().text(\"Display\")", countS
 
 ---
 
-### GetScreenshot
-
-- **`string GetScreenshot()`**  
-    Делает скриншот текущего экрана устройства.
-    
-    **Возвращает:**  
-    Изображение в виде строки Base64.
-
----
-
-### GetRawSource
-
-- **`string GetRawSource()`**  
-    Возвращает исходный XML-код текущего экрана в том виде, в котором его отдаёт драйвер Appium, без постобработки. В отличие от [`Hierarchy.GetLayout()`](./Hierarchy#getlayout), имена тегов сохраняют полные префиксы Java-пакетов (например, `android.widget.TextView`).
-    
-    **Возвращает:**  
-    XML-строку с иерархией элементов интерфейса текущего экрана.
-
-#### Пример.  
-```csharp
-var driver = instance.DroidInstance.AppiumDriver;
-
-var xml = driver.GetRawSource(); // Получить необработанный XML текущего экрана
-```
-
----
-
 ### UpdateSettings
 
 - **`void UpdateSettings(string key, object value)`**  
@@ -395,4 +394,5 @@ var settings = new KeyValuePair<string, object>[]
 
 driver.UpdateSettings(settings);
 ```
+
 _______________________________________________

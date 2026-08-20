@@ -8,7 +8,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Frida API
 <DisclaimerNotice />
-
 ## Description
 
 A set of interfaces for dynamic analysis and application instrumentation via **Frida** in ZennoDroid.
@@ -20,7 +19,6 @@ A set of interfaces for dynamic analysis and application instrumentation via **F
 | `IFridaScriptAPI` | Script lifecycle and message exchange |
 
 _______________________________________________
-
 ## IFridaDeviceAPI
 
 Designed for working with the **Frida** dynamic analysis tool on an Android device. Allows you to manage Frida Server, connect to processes, and inject scripts.
@@ -108,19 +106,6 @@ Designed for working with the **Frida** dynamic analysis tool on an Android devi
 
 ---
 
-### Spawn
-
-- **`uint Spawn(string packageName)`**  
-    Launches an application in a suspended state (until `Resume` is called).
-    
-    **Parameters:**
-    - `packageName` — application package name.
-    
-    **Returns:**  
-    The `pid` of the created process.
-
----
-
 ### Resume
 
 - **`void Resume(uint pid)`**  
@@ -149,8 +134,20 @@ Contents of the `script` variable (prints a message to the log):
 console.log('hello!')
 ```
 
-_______________________________________________
+---
 
+### Spawn
+
+- **`uint Spawn(string packageName)`**  
+    Launches an application in a suspended state (until `Resume` is called).
+    
+    **Parameters:**
+    - `packageName` — application package name.
+    
+    **Returns:**  
+    The `pid` of the created process.
+
+_______________________________________________
 ## IFridaSessionAPI
 
 Represents a session connected to a process via Frida. Acts as the intermediate layer between `IFridaDeviceAPI` (device) and `IFridaScriptAPI` (scripts).
@@ -197,18 +194,9 @@ Represents a session connected to a process via Frida. Acts as the intermediate 
     Terminates the current Frida session and releases resources.
 
 _______________________________________________
-
 ## IFridaScriptAPI
 
 Represents an individual Frida script. Manages the script lifecycle and message exchange between C# code and injected JavaScript.
-
-### Message
-
-- **`EventHandler<FridaScriptMessageEventArgs> Message`**  
-    Event: message from the script.
-    
-    **Description:**  
-    Messages from the script (via `send()` or `console.log()`) are handled in C# through this event.
 
 ### Name
 
@@ -217,6 +205,16 @@ Represents an individual Frida script. Manages the script lifecycle and message 
     
     **Returns:**  
     String name identifying the script.
+
+---
+
+### Eternalize
+
+- **`void Eternalize()`**  
+    Makes the script "permanent".
+    
+    **Description:**  
+    The script continues running even after the session ends or the client disconnects.
 
 ---
 
@@ -230,23 +228,13 @@ Represents an individual Frida script. Manages the script lifecycle and message 
 
 ---
 
-### Unload
+### Message
 
-- **`void Unload()`**  
-    Unloads the script.
+- **`EventHandler<FridaScriptMessageEventArgs> Message`**  
+    Event: message from the script.
     
     **Description:**  
-    Stops execution and removes the script from the process.
-
----
-
-### Eternalize
-
-- **`void Eternalize()`**  
-    Makes the script "permanent".
-    
-    **Description:**  
-    The script continues running even after the session ends or the client disconnects.
+    Messages from the script (via `send()` or `console.log()`) are handled in C# through this event.
 
 ---
 
@@ -274,4 +262,15 @@ Represents an individual Frida script. Manages the script lifecycle and message 
     
     **Description:**  
     Allows passing binary data (e.g. files, buffers).
+
+---
+
+### Unload
+
+- **`void Unload()`**  
+    Unloads the script.
+    
+    **Description:**  
+    Stops execution and removes the script from the process.
+
 _______________________________________________

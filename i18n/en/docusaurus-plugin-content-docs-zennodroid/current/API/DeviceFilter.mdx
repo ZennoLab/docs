@@ -8,32 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Device Filter
 <DisclaimerNotice />
-
 ## Description
 
 `IDeviceFilter` is used to set filters when selecting or generating a device in ZennoDroid. It allows you to restrict device parameters by various characteristics such as region, manufacturer, model, and hardware features.
-
 ## Properties
 
-### Country
-
-- **`string Country { get; set; }`**  
-    Device country.
-    
-    **Description:**  
-    Sets the device region (e.g. `us`, `ru`, `de` or `us|ru|de`).
-
----
-
-### Manufacturer
-
-- **`string Manufacturer { get; set; }`**  
-    Device manufacturer.
-    
-    **Description:**  
-    E.g. `Samsung`, `Xiaomi`, `Poco` or `Samsung|Xiaomi|Poco`.
-
----
 
 ### Brand
 
@@ -45,23 +24,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ---
 
-### Model
+### Country
 
-- **`string Model { get; set; }`**  
-    Device model.
+- **`string Country { get; set; }`**  
+    Device country.
     
     **Description:**  
-    E.g. `SM-A505F`.
-
----
-
-### Version
-
-- **`string Version { get; set; }`**  
-    Android version.
-    
-    **Description:**  
-    E.g. `12`, `13`, `14` or `12|13|14`.
+    Sets the device region (e.g. `us`, `ru`, `de` or `us|ru|de`).
 
 ---
 
@@ -87,6 +56,37 @@ options.AddGpu = true; // Add fake GPU
 var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Generate random data for LSPosed spoofing based on the filter and options
 instance.DroidInstance.Settings.SetLSPosedSettings(json); // Apply the spoofed data
 ```
+
+---
+
+### Manufacturer
+
+- **`string Manufacturer { get; set; }`**  
+    Device manufacturer.
+    
+    **Description:**  
+    E.g. `Samsung`, `Xiaomi`, `Poco` or `Samsung|Xiaomi|Poco`.
+
+---
+
+### Model
+
+- **`string Model { get; set; }`**  
+    Device model.
+    
+    **Description:**  
+    E.g. `SM-A505F`.
+
+---
+
+### Version
+
+- **`string Version { get; set; }`**  
+    Android version.
+    
+    **Description:**  
+    E.g. `12`, `13`, `14` or `12|13|14`.
+
 _______________________________________________
 ## Useful links  
 - [**IDroidSettingsAPI**](./Settings).

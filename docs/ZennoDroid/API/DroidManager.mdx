@@ -8,11 +8,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # DroidManager API
 <DisclaimerNotice />
-
 ## Описание
 
 `IDroidManagerAPI` предназначен для управления списком устройств/эмуляторов в ZennoDroid. Позволяет получать информацию о доступных устройствах, работать с их идентификаторами и выполнять базовые операции управления.
-
 ## Свойства
 
 ### BaseDirectory
@@ -31,38 +29,6 @@ return new DroidManager().BaseDirectory;
 _______________________________________________
 ## Методы
 
-### GetListDevices
-
-- **`IDeviceSummaryInfo[] GetListDevices()`**  
-    Возвращает список всех устройств.
-    
-    **Возвращает:**  
-    Массив [`IDeviceSummaryInfo`](./DeviceSummaryInfo) с краткой информацией о каждом устройстве.
-
----
-
-### ConvertNameToIndex
-
-- **`int ConvertNameToIndex(string name)`**  
-    Преобразует имя устройства в его индекс.
-    
-    **Параметры:**
-    - `name` — внутреннее имя устройства.
-    
-    **Возвращает:**  
-    Индекс устройства.
-
----
-
-### GetListIndices
-
-- **`int[] GetListIndices()`**  
-    Возвращает список индексов всех устройств.
-    
-    **Возвращает:**  
-    Массив индексов (`int[]`).
-
----
 
 ### ConvertIndexToName
 
@@ -90,6 +56,19 @@ _______________________________________________
 
 ---
 
+### ConvertNameToIndex
+
+- **`int ConvertNameToIndex(string name)`**  
+    Преобразует имя устройства в его индекс.
+    
+    **Параметры:**
+    - `name` — внутреннее имя устройства.
+    
+    **Возвращает:**  
+    Индекс устройства.
+
+---
+
 ### ConvertTitleToName
 
 - **`string ConvertTitleToName(string title)`**  
@@ -100,6 +79,26 @@ _______________________________________________
     
     **Возвращает:**  
     Внутреннее имя устройства.
+
+---
+
+### GetListDevices
+
+- **`IDeviceSummaryInfo[] GetListDevices()`**  
+    Возвращает список всех устройств.
+    
+    **Возвращает:**  
+    Массив [`IDeviceSummaryInfo`](./DeviceSummaryInfo) с краткой информацией о каждом устройстве.
+
+---
+
+### GetListIndices
+
+- **`int[] GetListIndices()`**  
+    Возвращает список индексов всех устройств.
+    
+    **Возвращает:**  
+    Массив индексов (`int[]`).
 
 ---
 
