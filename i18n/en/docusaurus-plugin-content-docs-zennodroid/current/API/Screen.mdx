@@ -8,13 +8,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Screen API
 <DisclaimerNotice />
-
 ## Description
 
 `IDroidScreenAPI` provides methods for analyzing the device screen: searching for images and pixels, taking screenshots, and managing screen capture.
 
 _______________________________________________
 ## Methods
+
 
 ### FindImage
 
@@ -63,106 +63,6 @@ _______________________________________________
     
     **Returns:**  
     `Rectangle` — the found area.
-
----
-
-### FindPixel
-
-- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation)`**  
-    Searches for a pixel of the specified color.
-    
-    **Parameters:**
-    - `color` — the target color (`Color`);
-    - `rectangles` — search areas;
-    - `variation` — allowed color deviation.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
-
-- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Searches for a pixel with a time limit.
-    
-    **Parameters:**
-    - `color` — color;
-    - `rectangles` — search areas;
-    - `variation` — color deviation;
-    - `searchTime` — search time.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
-
-- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation)`**  
-    Searches for a pixel by HTML-format color.
-    
-    **Parameters:**
-    - `htmlColor` — color as a string (e.g. `#FF0000`);
-    - `rectangles` — search areas;
-    - `variation` — allowed deviation.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
-
-- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Searches for an HTML color with a timeout.
-    
-    **Parameters:**
-    - `htmlColor` — color;
-    - `rectangles` — search areas;
-    - `variation` — deviation;
-    - `searchTime` — search time.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
-
----
-
-### FindPixels
-
-- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation)`**  
-    Searches for a pixel from a set of colors.
-    
-    **Parameters:**
-    - `colors` — array of colors;
-    - `rectangles` — search areas;
-    - `variation` — allowed deviation.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
-
-- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Searches for one of the colors with a time limit.
-    
-    **Parameters:**
-    - `colors` — array of colors;
-    - `rectangles` — search areas;
-    - `variation` — deviation;
-    - `searchTime` — search time.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
-
-- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation)`**  
-    Searches for a pixel from a set of HTML colors.
-    
-    **Parameters:**
-    - `htmlColors` — array of colors in string format;
-    - `rectangles` — search areas;
-    - `variation` — deviation.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
-
-- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Searches for HTML colors with a timeout.
-    
-    **Parameters:**
-    - `htmlColors` — array of colors;
-    - `rectangles` — search areas;
-    - `variation` — deviation;
-    - `searchTime` — search time.
-    
-    **Returns:**  
-    `Point` — coordinates of the found pixel.
 
 ---
 
@@ -270,6 +170,106 @@ _______________________________________________
 
 ---
 
+### FindPixel
+
+- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel of the specified color.
+    
+    **Parameters:**
+    - `color` — the target color (`Color`);
+    - `rectangles` — search areas;
+    - `variation` — allowed color deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for a pixel with a time limit.
+    
+    **Parameters:**
+    - `color` — color;
+    - `rectangles` — search areas;
+    - `variation` — color deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel by HTML-format color.
+    
+    **Parameters:**
+    - `htmlColor` — color as a string (e.g. `#FF0000`);
+    - `rectangles` — search areas;
+    - `variation` — allowed deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for an HTML color with a timeout.
+    
+    **Parameters:**
+    - `htmlColor` — color;
+    - `rectangles` — search areas;
+    - `variation` — deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+---
+
+### FindPixels
+
+- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel from a set of colors.
+    
+    **Parameters:**
+    - `colors` — array of colors;
+    - `rectangles` — search areas;
+    - `variation` — allowed deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for one of the colors with a time limit.
+    
+    **Parameters:**
+    - `colors` — array of colors;
+    - `rectangles` — search areas;
+    - `variation` — deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation)`**  
+    Searches for a pixel from a set of HTML colors.
+    
+    **Parameters:**
+    - `htmlColors` — array of colors in string format;
+    - `rectangles` — search areas;
+    - `variation` — deviation.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Searches for HTML colors with a timeout.
+    
+    **Parameters:**
+    - `htmlColors` — array of colors;
+    - `rectangles` — search areas;
+    - `variation` — deviation;
+    - `searchTime` — search time.
+    
+    **Returns:**  
+    `Point` — coordinates of the found pixel.
+
+---
+
 ### GetScreenSize
 
 - **`Size GetScreenSize()`**  
@@ -287,6 +287,20 @@ project.SendInfoToLog($"Screen resolution: {size.Width}x{size.Height}");
 :::note
 The value is cached per device. After a resolution change (e.g. with `wm size WidthxHeight`), call `ResetScreen()` so it is read again.
 :::
+
+---
+
+### RefreshScreen
+
+- **`void RefreshScreen()`**  
+    Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`).
+
+---
+
+### ResetScreen
+
+- **`void ResetScreen()`**  
+    Resets screen capture parameters and starts a new capture process. Used to restart capture when conditions change (e.g. after changing the resolution with `wm size WidthxHeight`).
 
 ---
 
@@ -336,20 +350,6 @@ using (var bmp = new Bitmap(ms))
 
 ---
 
-### RefreshScreen
-
-- **`void RefreshScreen()`**  
-    Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`).
-
----
-
-### ResetScreen
-
-- **`void ResetScreen()`**  
-    Resets screen capture parameters and starts a new capture process. Used to restart capture when conditions change (e.g. after changing the resolution with `wm size WidthxHeight`).
-
----
-
 ### SetCaptureScreenQuality
 
 - **`void SetCaptureScreenQuality(int quality)`**  
@@ -357,4 +357,5 @@ using (var bmp = new Bitmap(ms))
     
     **Parameters:**
     - `quality` — quality level (affects speed and accuracy). Allowed values are 0 to 10.
+
 _______________________________________________

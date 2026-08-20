@@ -8,12 +8,66 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Settings API
 <DisclaimerNotice />
-
 ## Description
 
 `IDroidSettingsAPI` is designed for modifying Android device system settings in ZennoDroid. It allows you to manage geolocation, time, language, baseband firmware, and LSPosed settings.
-
 ## Methods
+
+
+### SetBaseband
+
+- **`void SetBaseband(string version)`**  
+    Sets the baseband version.
+    
+    **Parameters:**
+    - `version` — modem/firmware version.
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetBaseband("G9300ZCU2API3"); // Set GSM module
+```
+
+---
+
+### SetGeo
+
+- **`void SetGeo(double longitude, double latitude)`**  
+    Sets geolocation.
+    
+    **Parameters:**
+    - `longitude` — longitude;
+    - `latitude` — latitude.
+
+- **`void SetGeo(double longitude, double latitude, double altitude)`**  
+    Sets geolocation with altitude.
+    
+    **Parameters:**
+    - `longitude` — longitude;
+    - `latitude` — latitude;
+    - `altitude` — altitude.
+
+- **`void SetGeo(double longitude, double latitude, double altitude, double bearing)`**  
+    Sets geolocation with bearing.
+    
+    **Parameters:**
+    - `longitude` — longitude;
+    - `latitude` — latitude;
+    - `altitude` — altitude;
+    - `bearing` — direction of movement (in degrees).
+
+- **`void SetGeo(double longitude, double latitude, double altitude, double bearing, double speed)`**  
+    Sets geolocation with full telemetry.
+    
+    **Parameters:**
+    - `longitude` — longitude;
+    - `latitude` — latitude;
+    - `altitude` — altitude;
+    - `bearing` — direction;
+    - `speed` — movement speed.
+
+---
 
 ### SetLanguage
 
@@ -70,63 +124,23 @@ var settings = instance.DroidInstance.Settings;
 settings.SetTimezone("Europe/Moscow"); // Set time zone
 ```
 
----
+_______________________________________________
+## Working with LSPosed in ZennoDroid Enterprise  
 
-### SetBaseband
 
-- **`void SetBaseband(string version)`**  
-    Sets the baseband version.
-    
-    **Parameters:**
-    - `version` — modem/firmware version.
+### ClearLSPosedSettings
+
+- **`void ClearLSPosedSettings()`**  
+    Clears LSPosed settings.
 
 #### Example  
 ```csharp
 var settings = instance.DroidInstance.Settings;
 
-settings.SetBaseband("G9300ZCU2API3"); // Set GSM module
+settings.ClearLSPosedSettings(); // Clear LSPosed spoofed data
 ```
 
 ---
-
-### SetGeo
-
-- **`void SetGeo(double longitude, double latitude)`**  
-    Sets geolocation.
-    
-    **Parameters:**
-    - `longitude` — longitude;
-    - `latitude` — latitude.
-
-- **`void SetGeo(double longitude, double latitude, double altitude)`**  
-    Sets geolocation with altitude.
-    
-    **Parameters:**
-    - `longitude` — longitude;
-    - `latitude` — latitude;
-    - `altitude` — altitude.
-
-- **`void SetGeo(double longitude, double latitude, double altitude, double bearing)`**  
-    Sets geolocation with bearing.
-    
-    **Parameters:**
-    - `longitude` — longitude;
-    - `latitude` — latitude;
-    - `altitude` — altitude;
-    - `bearing` — direction of movement (in degrees).
-
-- **`void SetGeo(double longitude, double latitude, double altitude, double bearing, double speed)`**  
-    Sets geolocation with full telemetry.
-    
-    **Parameters:**
-    - `longitude` — longitude;
-    - `latitude` — latitude;
-    - `altitude` — altitude;
-    - `bearing` — direction;
-    - `speed` — movement speed.
-
-_______________________________________________
-## Working with LSPosed in ZennoDroid Enterprise  
 
 ### GenerateRandomLSPosedSettings
 
@@ -206,19 +220,6 @@ options.AddCanvasNoise = true;
 settings.SetRandomLSPosedSettings(filter, options);
 ```
 
----
-
-### ClearLSPosedSettings
-
-- **`void ClearLSPosedSettings()`**  
-    Clears LSPosed settings.
-
-#### Example  
-```csharp
-var settings = instance.DroidInstance.Settings;
-
-settings.ClearLSPosedSettings(); // Clear LSPosed spoofed data
-```
 _______________________________________________
 ## Useful links
 - [**IDeviceFilter**](./DeviceFilter).

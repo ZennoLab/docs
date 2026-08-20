@@ -8,7 +8,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Extra API
 <DisclaimerNotice />
-
 ## Description  
 This section contains a list of interfaces that are not included in the main [DroidInstance API](./DroidInstance) container and that also have their own classes for creating objects.  
 
@@ -38,6 +37,8 @@ IQRCodeManager QRCodeManager;
 ISqlite3API Sqlite3Helper;
 ```
 ## Interface properties and methods.  
+
+
 ### IAndroidElementAPI
 [**`IAndroidElementAPI AndroidElementAPI`**](./Element)  
 ```csharp
@@ -53,6 +54,7 @@ void SendText(string text);
 void SendKeys(string text);
 string GetScreenshot();
 ```
+
 ### IBlueStacks5API
 [**`IBlueStacks5API BlueStacks5`**](./BlueStacks5#ibluestacks5api)
 ```csharp
@@ -64,6 +66,7 @@ string AddressPort { get; }
 bool IsRunning { get; }
 bool IsBootCompleted { get; }
 ```
+
 ### IBlueStacks5ManagerAPI
 [**`IBlueStacks5ManagerAPI BlueStacks5Manager`**](./BlueStacks5#ibluestacks5managerapi)
 ```csharp
@@ -73,6 +76,7 @@ void StartManager();
 void StopManager();
 string TitleToNameConverter(string title);
 ```
+
 ### IBlueStacks5RootAPI
 [**`IBlueStacks5RootAPI BlueStacks5Root`**](./BlueStacks5#ibluestacks5rootapi)
 ```csharp
@@ -83,12 +87,14 @@ void InstallMagisk(string path);
 void FlashMagisk();
 void EnableZygisk();
 ```
+
 ### IBlueStacks5SettingsAPI
 [**`IBlueStacks5SettingsAPI BlueStacks5Settings`**](./BlueStacks5#ibluestacks5settingsapi)
 ```csharp
 void SetGeo(double longitude, double latitude);
 void SetIMEI(string value);
 ```
+
 ### IDeviceFilter
 [**`IDeviceFilter DeviceFilter`**](./DeviceFilter)  
 ```csharp
@@ -99,6 +105,7 @@ string Model { get; set; }
 string Version { get; set; }
 string GpuVendor { get; set; }
 ```
+
 ### IDeviceOptions
 [**`IDeviceOptions DeviceOptions`**](./DeviceOptions)  
 ```csharp
@@ -107,6 +114,7 @@ bool? AddGpu { get; set; }
 bool? AddWebView { get; set; }
 bool? AddWiFiEmulation { get; set; }
 ```
+
 ### IDeviceSummaryInfo
 [**`IDeviceSummaryInfo IDeviceSummaryInfo`**](./DeviceSummaryInfo)
 ```csharp
@@ -116,6 +124,7 @@ string Title { get; }
 bool IsRunning { get; }
 bool IsBusy { get; }
 ```
+
 ### IDroidManagerAPI
 [**`IDroidManagerAPI DroidManager`**](./DroidManager)
 ```csharp
@@ -130,6 +139,7 @@ string[] GetListNames();
 string[] GetListTitles();
 void ReconnectOffline();
 ```
+
 ### IDroidProxySettings
 [**`IDroidProxySettings DroidProxySettings.Proxifier`**](./DroidProxySettings#droidproxysettingsproxifier)
 ```csharp
@@ -184,6 +194,7 @@ string BlackList { get; set; }
 string NetworkMode { get; set; }
 string Rules { get; set; }
 ```
+
 ### IFridaDeviceAPI
 [**`IFridaDeviceAPI FridaDevice`**](./Frida#ifridadeviceapi)
 ```csharp
@@ -199,6 +210,7 @@ void KillServer();
 void LoadScriptToApp(string packageName, string source);
 void LoadScriptToFrontmost(string source);
 ```
+
 ### IFridaScriptAPI
 [**`IFridaScriptAPI FridaScriptAPI`**](./Frida#ifridascriptapi)
 ```csharp
@@ -210,6 +222,7 @@ void Eternalize();
 void Post(string message);
 void PostWithData(string message, byte[] data);
 ```
+
 ### IFridaSessionAPI
 [**`IFridaSessionAPI FridaSessionAPI`**](./Frida#ifridasessionapi)
 ```csharp
@@ -218,6 +231,7 @@ IFridaScriptAPI CreateScript(string source, string name);
 IFridaScriptAPI CreateScript(string source);
 void Detach();
 ```
+
 ### ILSPosedAPI
 [**`ILSPosedAPI LSPosedHelper`**](./LSPosed)
 ```csharp
@@ -235,6 +249,7 @@ void Open();
 void Close();
 string GetCLIStatus();
 ```
+
 ### IQRCodeManager
 [**`IQRCodeManager QRCodeManager`**](./QRCodeManager)
 ```csharp
@@ -245,6 +260,7 @@ void DrawImage(string fileName, Rectangle area, Rectangle background);
 void PressQRCodeScanButton();
 void SetViewfinderPosition(Rectangle rect);
 ```
+
 ### ISqlite3API
 [**`ISqlite3API Sqlite3Helper`**](./Sqlite3)
 ```csharp

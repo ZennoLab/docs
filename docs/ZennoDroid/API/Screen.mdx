@@ -8,13 +8,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Screen API
 <DisclaimerNotice />
-
 ## Описание
 
 `IDroidScreenAPI` предоставляет методы для анализа экрана устройства: поиск изображений, пикселей, получение скриншотов и управление захватом экрана.
 
 _______________________________________________
 ## Методы
+
 
 ### FindImage
 
@@ -63,106 +63,6 @@ _______________________________________________
     
     **Возвращает:**  
     `Rectangle` — найденная область.
-
----
-
-### FindPixel
-
-- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation)`**  
-    Ищет пиксель заданного цвета.
-    
-    **Параметры:**
-    - `color` — искомый цвет (`Color`);
-    - `rectangles` — области поиска;
-    - `variation` — допустимое отклонение цвета.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
-
-- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Поиск пикселя с ограничением времени.
-    
-    **Параметры:**
-    - `color` — цвет;
-    - `rectangles` — области поиска;
-    - `variation` — отклонение цвета;
-    - `searchTime` — время поиска.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
-
-- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation)`**  
-    Ищет пиксель по цвету в HTML-формате.
-    
-    **Параметры:**
-    - `htmlColor` — цвет в формате строки (например `#FF0000`);
-    - `rectangles` — области поиска;
-    - `variation` — допустимое отклонение.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
-
-- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Поиск HTML-цвета с таймаутом.
-    
-    **Параметры:**
-    - `htmlColor` — цвет;
-    - `rectangles` — области поиска;
-    - `variation` — отклонение;
-    - `searchTime` — время поиска.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
-
----
-
-### FindPixels
-
-- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation)`**  
-    Ищет пиксель из набора цветов.
-    
-    **Параметры:**
-    - `colors` — массив цветов;
-    - `rectangles` — области поиска;
-    - `variation` — допустимое отклонение.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
-
-- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Поиск одного из цветов с ограничением времени.
-    
-    **Параметры:**
-    - `colors` — массив цветов;
-    - `rectangles` — области поиска;
-    - `variation` — отклонение;
-    - `searchTime` — время поиска.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
-
-- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation)`**  
-    Ищет пиксель из набора HTML-цветов.
-    
-    **Параметры:**
-    - `htmlColors` — массив цветов в строковом формате;
-    - `rectangles` — области поиска;
-    - `variation` — отклонение.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
-
-- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime)`**  
-    Поиск HTML-цветов с таймаутом.
-    
-    **Параметры:**
-    - `htmlColors` — массив цветов;
-    - `rectangles` — области поиска;
-    - `variation` — отклонение;
-    - `searchTime` — время поиска.
-    
-    **Возвращает:**  
-    `Point` — координаты найденного пикселя.
 
 ---
 
@@ -270,6 +170,106 @@ _______________________________________________
 
 ---
 
+### FindPixel
+
+- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation)`**  
+    Ищет пиксель заданного цвета.
+    
+    **Параметры:**
+    - `color` — искомый цвет (`Color`);
+    - `rectangles` — области поиска;
+    - `variation` — допустимое отклонение цвета.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+- **`Point FindPixel(Color color, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Поиск пикселя с ограничением времени.
+    
+    **Параметры:**
+    - `color` — цвет;
+    - `rectangles` — области поиска;
+    - `variation` — отклонение цвета;
+    - `searchTime` — время поиска.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation)`**  
+    Ищет пиксель по цвету в HTML-формате.
+    
+    **Параметры:**
+    - `htmlColor` — цвет в формате строки (например `#FF0000`);
+    - `rectangles` — области поиска;
+    - `variation` — допустимое отклонение.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+- **`Point FindPixel(string htmlColor, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Поиск HTML-цвета с таймаутом.
+    
+    **Параметры:**
+    - `htmlColor` — цвет;
+    - `rectangles` — области поиска;
+    - `variation` — отклонение;
+    - `searchTime` — время поиска.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+---
+
+### FindPixels
+
+- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation)`**  
+    Ищет пиксель из набора цветов.
+    
+    **Параметры:**
+    - `colors` — массив цветов;
+    - `rectangles` — области поиска;
+    - `variation` — допустимое отклонение.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+- **`Point FindPixels(Color[] colors, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Поиск одного из цветов с ограничением времени.
+    
+    **Параметры:**
+    - `colors` — массив цветов;
+    - `rectangles` — области поиска;
+    - `variation` — отклонение;
+    - `searchTime` — время поиска.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation)`**  
+    Ищет пиксель из набора HTML-цветов.
+    
+    **Параметры:**
+    - `htmlColors` — массив цветов в строковом формате;
+    - `rectangles` — области поиска;
+    - `variation` — отклонение.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+- **`Point FindPixels(string[] htmlColors, Rectangle[] rectangles, int variation, int searchTime)`**  
+    Поиск HTML-цветов с таймаутом.
+    
+    **Параметры:**
+    - `htmlColors` — массив цветов;
+    - `rectangles` — области поиска;
+    - `variation` — отклонение;
+    - `searchTime` — время поиска.
+    
+    **Возвращает:**  
+    `Point` — координаты найденного пикселя.
+
+---
+
 ### GetScreenSize
 
 - **`Size GetScreenSize()`**  
@@ -287,6 +287,20 @@ project.SendInfoToLog($"Разрешение экрана: {size.Width}x{size.He
 :::note
 Значение кэшируется для устройства. После изменения разрешения (например, командой `wm size WidthxHeight`) вызовите `ResetScreen()`, чтобы оно было прочитано заново.
 :::
+
+---
+
+### RefreshScreen
+
+- **`void RefreshScreen()`**  
+    Обновляет изображение на экране. Используется если выбран тип захвата экрана, который требует ручного обновления (`captureScreenMethod = "off"`).
+
+---
+
+### ResetScreen
+
+- **`void ResetScreen()`**  
+    Сбрасывает параметры захвата экрана и запускает новый процесс захвата. Используется для перезапуска захвата при изменении условий (например, при смене разрешения экрана командой `wm size WidthxHeight`).
 
 ---
 
@@ -336,20 +350,6 @@ using (var bmp = new Bitmap(ms))
 
 ---
 
-### RefreshScreen
-
-- **`void RefreshScreen()`**  
-    Обновляет изображение на экране. Используется если выбран тип захвата экрана, который требует ручного обновления (`captureScreenMethod = "off"`).
-
----
-
-### ResetScreen
-
-- **`void ResetScreen()`**  
-    Сбрасывает параметры захвата экрана и запускает новый процесс захвата. Используется для перезапуска захвата при изменении условий (например, при смене разрешения экрана командой `wm size WidthxHeight`).
-
----
-
 ### SetCaptureScreenQuality
 
 - **`void SetCaptureScreenQuality(int quality)`**  
@@ -357,4 +357,5 @@ using (var bmp = new Bitmap(ms))
     
     **Параметры:**
     - `quality` — уровень качества (влияет на скорость и точность). Допустимые значения от 0 до 10.
+
 _______________________________________________

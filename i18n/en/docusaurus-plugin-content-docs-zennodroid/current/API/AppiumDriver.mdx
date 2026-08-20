@@ -8,14 +8,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # AppiumDriver API
 <DisclaimerNotice />
-
 ## Description
 
 `IAppiumDriverAPI` provides access to **Appium driver** capabilities in ZennoDroid. Used for finding UI elements and interacting with them via standard Android automation mechanisms (UIAutomator, XPath, etc.).
 
 When an element is successfully found, it returns an `IAndroidElementAPI` object; if not found — `null`.
-
 ## Methods
+
 
 ### ActiveElement
 
@@ -178,30 +177,6 @@ var count = des.Length; // Number of elements found
 
 ---
 
-### FindElementsById
-
-- **`IAndroidElementAPI[] FindElementsById(string id)`**  
-    Finds all elements by resource-id.
-    
-    **Parameters:**
-    - `id` — resource identifier.
-    
-    **Returns:**  
-    Array of elements.
-
-#### Example  
-```csharp
-var driver = instance.DroidInstance.AppiumDriver;
-
-var des = driver.FindElementsById("com.android.chrome:id/title"); // Find array of elements by resource-id property
-if (des == null)
-    throw new Exception("Elements not found");
-
-var count = des.Length; // Number of elements found
-```
-
----
-
 ### FindElementsByClassName
 
 - **`IAndroidElementAPI[] FindElementsByClassName(string className)`**  
@@ -218,6 +193,30 @@ var count = des.Length; // Number of elements found
 var driver = instance.DroidInstance.AppiumDriver;
 
 var des = driver.FindElementsByClassName("android.widget.EditText"); // Find array of elements by class name
+if (des == null)
+    throw new Exception("Elements not found");
+
+var count = des.Length; // Number of elements found
+```
+
+---
+
+### FindElementsById
+
+- **`IAndroidElementAPI[] FindElementsById(string id)`**  
+    Finds all elements by resource-id.
+    
+    **Parameters:**
+    - `id` — resource identifier.
+    
+    **Returns:**  
+    Array of elements.
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var des = driver.FindElementsById("com.android.chrome:id/title"); // Find array of elements by resource-id property
 if (des == null)
     throw new Exception("Elements not found");
 
@@ -271,6 +270,33 @@ if (des == null)
 
 var count = des.Length; // Number of elements found
 ```
+
+---
+
+### GetRawSource
+
+- **`string GetRawSource()`**  
+    Returns the raw XML source of the current screen exactly as reported by the Appium driver, without any post-processing. Unlike [`Hierarchy.GetLayout()`](./Hierarchy#getlayout), element tag names keep their full Java package prefixes (e.g. `android.widget.TextView`).
+    
+    **Returns:**  
+    An XML string with the UI element hierarchy of the current screen.
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var xml = driver.GetRawSource(); // Get the raw XML of the current screen
+```
+
+---
+
+### GetScreenshot
+
+- **`string GetScreenshot()`**  
+    Takes a screenshot of the current device screen.
+    
+    **Returns:**  
+    Image as a Base64 string.
 
 ---
 
@@ -331,33 +357,6 @@ driver.ScrollToElementByUiAutomator("new UiSelector().text(\"Display\")", countS
 
 ---
 
-### GetScreenshot
-
-- **`string GetScreenshot()`**  
-    Takes a screenshot of the current device screen.
-    
-    **Returns:**  
-    Image as a Base64 string.
-
----
-
-### GetRawSource
-
-- **`string GetRawSource()`**  
-    Returns the raw XML source of the current screen exactly as reported by the Appium driver, without any post-processing. Unlike [`Hierarchy.GetLayout()`](./Hierarchy#getlayout), element tag names keep their full Java package prefixes (e.g. `android.widget.TextView`).
-    
-    **Returns:**  
-    An XML string with the UI element hierarchy of the current screen.
-
-#### Example  
-```csharp
-var driver = instance.DroidInstance.AppiumDriver;
-
-var xml = driver.GetRawSource(); // Get the raw XML of the current screen
-```
-
----
-
 ### UpdateSettings
 
 - **`void UpdateSettings(string key, object value)`**  
@@ -395,4 +394,5 @@ var settings = new KeyValuePair<string, object>[]
 
 driver.UpdateSettings(settings);
 ```
+
 _______________________________________________

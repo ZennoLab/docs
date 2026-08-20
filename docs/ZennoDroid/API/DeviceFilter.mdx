@@ -8,32 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Device Filter
 <DisclaimerNotice />
-
 ## Описание
 
 `IDeviceFilter` используется для задания фильтров при выборе или генерации устройства в ZennoDroid. Позволяет ограничить параметры устройства по различным характеристикам, таким как регион, производитель, модель и аппаратные особенности.
-
 ## Свойства
 
-### Country
-
-- **`string Country { get; set; }`**  
-    Страна устройства.
-    
-    **Описание:**  
-    Задаёт регион устройства (например: `us`, `ru`, `de` или `us|ru|de`).
-
----
-
-### Manufacturer
-
-- **`string Manufacturer { get; set; }`**  
-    Производитель устройства.
-    
-    **Описание:**  
-    Например: `Samsung`, `Xiaomi`, `Poco` или `Samsung|Xiaomi|Poco`.
-
----
 
 ### Brand
 
@@ -45,23 +24,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ---
 
-### Model
+### Country
 
-- **`string Model { get; set; }`**  
-    Модель устройства.
+- **`string Country { get; set; }`**  
+    Страна устройства.
     
     **Описание:**  
-    Например: `SM-A505F`.
-
----
-
-### Version
-
-- **`string Version { get; set; }`**  
-    Версия Android.
-    
-    **Описание:**  
-    Например: `12`, `13`, `14` или `12|13|14`.
+    Задаёт регион устройства (например: `us`, `ru`, `de` или `us|ru|de`).
 
 ---
 
@@ -87,6 +56,37 @@ options.AddGpu = true; // Добавить поддельный GPU
 var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Сгенерировать случайные данные для подмены LSPosed на основе фильтра и опций
 instance.DroidInstance.Settings.SetLSPosedSettings(json); // Применить подменённые данные
 ```
+
+---
+
+### Manufacturer
+
+- **`string Manufacturer { get; set; }`**  
+    Производитель устройства.
+    
+    **Описание:**  
+    Например: `Samsung`, `Xiaomi`, `Poco` или `Samsung|Xiaomi|Poco`.
+
+---
+
+### Model
+
+- **`string Model { get; set; }`**  
+    Модель устройства.
+    
+    **Описание:**  
+    Например: `SM-A505F`.
+
+---
+
+### Version
+
+- **`string Version { get; set; }`**  
+    Версия Android.
+    
+    **Описание:**  
+    Например: `12`, `13`, `14` или `12|13|14`.
+
 _______________________________________________
 ## Полезные ссылки.  
 - [**IDroidSettingsAPI**](./Settings).

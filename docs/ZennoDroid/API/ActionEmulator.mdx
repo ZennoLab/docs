@@ -8,13 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # ActionEmulator API
 <DisclaimerNotice />
-
 ## Описание
 
 `IDroidActionEmulatorAPI : IDroidActionAPI`
 
 Интерфейс `IDroidActionEmulatorAPI` расширяет базовый [`IDroidActionAPI`](./Action) и предоставляет методы для управления эмуляторами **MEmu** и **LDPlayer** в ZennoDroid. Позволяет создавать, клонировать, импортировать, удалять и настраивать виртуальные устройства.
-
 ## Свойства
 
 ### Action
@@ -24,6 +22,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 _______________________________________________
 ## Методы
+
 
 ### Clone
 
@@ -61,33 +60,6 @@ var index = droid.Action.Create("96");
 
 ---
 
-### Import
-
-- **`int Import(string path)`**  
-    Импортирует эмулятор из файла.
-    
-    **Параметры:**
-    - `path` — путь к файлу/архиву эмулятора.
-    
-    **Возвращает:**  
-    Индекс импортированного эмулятора.
-    
-    Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
-
----
-
-### Export
-
-- **`void Export(string path)`**  
-    Экспортирует текущий эмулятор в файл.
-    
-    **Параметры:**
-    - `path` — путь для сохранения.
-    
-    Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
-
----
-
 ### DeleteByIndex
 
 - **`void DeleteByIndex(int index)`**  
@@ -105,6 +77,18 @@ var index = droid.Action.Create("96");
 
 ---
 
+### Export
+
+- **`void Export(string path)`**  
+    Экспортирует текущий эмулятор в файл.
+    
+    **Параметры:**
+    - `path` — путь для сохранения.
+    
+    Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+---
+
 ### FactoryReset
 
 - **`void FactoryReset(bool resetSystem)`**  
@@ -112,6 +96,21 @@ var index = droid.Action.Create("96");
     
     **Параметры:**
     - `resetSystem` — если `true`, выполняется полный сброс с системными данными; если `false` — сбрасываются только пользовательские данные.
+
+---
+
+### Import
+
+- **`int Import(string path)`**  
+    Импортирует эмулятор из файла.
+    
+    **Параметры:**
+    - `path` — путь к файлу/архиву эмулятора.
+    
+    **Возвращает:**  
+    Индекс импортированного эмулятора.
+    
+    Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
 
 ---
 
@@ -127,4 +126,5 @@ var index = droid.Action.Create("96");
 
 - **`void RenameTo(string title)`**  
     Переименовывает текущий эмулятор.
+
 _______________________________________________

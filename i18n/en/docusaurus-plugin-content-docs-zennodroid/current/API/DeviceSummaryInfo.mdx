@@ -8,12 +8,11 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # DeviceSummaryInfo
 <DisclaimerNotice />
-
 ## Description
 
 `IDeviceSummaryInfo` contains summary information about a device or emulator. Used to retrieve basic state and identification data about a device without requiring a full connection.
-
 ## Properties
+
 
 ### Index
 
@@ -22,6 +21,26 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     
     **Returns:**  
     A numeric identifier used to address the device within the system.
+
+---
+
+### IsBusy
+
+- **`bool IsBusy { get; }`**  
+    Indicates whether the device is busy.
+    
+    **Returns:**  
+    `true` if the device is in use (e.g. a scenario is running); otherwise `false`.
+
+---
+
+### IsRunning
+
+- **`bool IsRunning { get; }`**  
+    Whether the device is ready for work.
+    
+    **Returns:**  
+    `true` if the device is ready for work: the screen is being captured, and for an emulator it is started and connected, for a physical phone it is connected; otherwise `false`.
 
 ---
 
@@ -43,23 +62,4 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Returns:**  
     A human-readable name (e.g. one set by the user).
 
----
-
-### IsRunning
-
-- **`bool IsRunning { get; }`**  
-    Whether the device is ready for work.
-    
-    **Returns:**  
-    `true` if the device is ready for work: the screen is being captured, and for an emulator it is started and connected, for a physical phone it is connected; otherwise `false`.
-
----
-
-### IsBusy
-
-- **`bool IsBusy { get; }`**  
-    Indicates whether the device is busy.
-    
-    **Returns:**  
-    `true` if the device is in use (e.g. a scenario is running); otherwise `false`.
 _______________________________________________

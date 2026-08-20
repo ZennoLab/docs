@@ -8,15 +8,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Device Options
 <DisclaimerNotice />
-
 ## Описание.  
 **`IDeviceOptions`**
 
 Используется вместе с DeviceFilter при генерации JSON-данных для подмены информации об устройстве в LSPosed.  
 
 С помощью этого класса можно настроить уровни подмены помимо базовой фильтрации устройств.
-
 ## Свойства
+
 
 ### AddCanvasNoise
 
@@ -70,6 +69,7 @@ options.AddWiFiEmulation = true; // Эмулировать WiFi при откл�
 var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Сгенерировать случайные данные для подмены LSPosed на основе фильтра и опций
 instance.DroidInstance.Settings.SetLSPosedSettings(json); // Применить подменённые данные
 ```
+
 _______________________________________________
 ## Полезные ссылки.  
 - [**IDroidSettingsAPI**](./Settings).

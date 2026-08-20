@@ -8,7 +8,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Proxy API
 <DisclaimerNotice />
-
 ## Описание
 
 `IDroidProxyAPI` предназначен для управления настройками прокси-сервера на устройстве в ZennoDroid. Позволяет настроить базовые параметры прокси, а также дополнительные параметры для тонкой конфигурации подключения.
@@ -16,43 +15,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 _______________________________________________
 ## Методы
 
-### SetProxy
-
-- **`void SetProxy(string proxy, IDroidProxySettings settings)`**  
-    Устанавливает прокси с параметрами подключения.
-    
-    **Параметры:**
-    - `proxy` — значение прокси (формат: `login:pass@IP:port`);
-    - `settings` — параметры прокси (например: `new DroidProxySettings.ClashViaPC()`).
-
-#### Пример.  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-// Установить прокси
-var settings = new DroidProxySettings.ClashViaPC();
-settings.DnsServers = "1.1.1.1";
-instance.DroidInstance.Proxy.SetProxy("socks5://login:pass@100.20.30.40:8080", settings);
-```
-
----
-
-### GetProxy
-
-- **`string GetProxy()`**  
-    Возвращает прокси, заданный в проекте.
-    
-    **Возвращает:**  
-    Строку с текущим значением прокси.
-
-#### Пример.  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-var projectProxy = proxy.GetProxy(); // Получить прокси проекта
-```
-
----
 
 ### ClearProxy
 
@@ -64,6 +26,20 @@ var projectProxy = proxy.GetProxy(); // Получить прокси проек
 var proxy = instance.DroidInstance.Proxy;
 
 proxy.ClearProxy(); // Очистить прокси проекта
+```
+
+---
+
+### DisablePrivateDns
+
+- **`void DisablePrivateDns()`**  
+    Отключает частный DNS.
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.DisablePrivateDns(); // Отключить частный DNS
 ```
 
 ---
@@ -85,15 +61,40 @@ proxy.EnablePrivateDns("dns.google"); // Включить частный DNS
 
 ---
 
-### DisablePrivateDns
+### GetProxy
 
-- **`void DisablePrivateDns()`**  
-    Отключает частный DNS.
+- **`string GetProxy()`**  
+    Возвращает прокси, заданный в проекте.
+    
+    **Возвращает:**  
+    Строку с текущим значением прокси.
 
 #### Пример.  
 ```csharp
 var proxy = instance.DroidInstance.Proxy;
 
-proxy.DisablePrivateDns(); // Отключить частный DNS
+var projectProxy = proxy.GetProxy(); // Получить прокси проекта
 ```
+
+---
+
+### SetProxy
+
+- **`void SetProxy(string proxy, IDroidProxySettings settings)`**  
+    Устанавливает прокси с параметрами подключения.
+    
+    **Параметры:**
+    - `proxy` — значение прокси (формат: `login:pass@IP:port`);
+    - `settings` — параметры прокси (например: `new DroidProxySettings.ClashViaPC()`).
+
+#### Пример.  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+// Установить прокси
+var settings = new DroidProxySettings.ClashViaPC();
+settings.DnsServers = "1.1.1.1";
+instance.DroidInstance.Proxy.SetProxy("socks5://login:pass@100.20.30.40:8080", settings);
+```
+
 _______________________________________________

@@ -8,14 +8,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Device Options
 <DisclaimerNotice />
-
 ## Description  
 **`IDeviceOptions`**
 
 This is used with DeviceFilter when generating JSON data to spoof device information with LSPosed.
 With this class, you can customize spoofing layers beyond basic device filtering.
-
 ## Properties
+
 
 ### AddCanvasNoise
 
@@ -69,6 +68,7 @@ options.AddWiFiEmulation = true; // Emulate WiFi
 var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Generate random data for LSPosed spoofing based on the filter and options
 instance.DroidInstance.Settings.SetLSPosedSettings(json); // Apply the spoofed data
 ```
+
 _______________________________________________
 ## Useful links  
 - [**IDroidSettingsAPI**](./Settings).
