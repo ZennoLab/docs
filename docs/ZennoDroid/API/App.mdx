@@ -109,7 +109,7 @@ _______________________________________________
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var pathSave = @"/dir/bakups/name_bakup"; // Путь куда сохранить бэкап
 app.BackupAppData(packageName, pathSave); // Сделать бэкап
 ```
@@ -128,7 +128,7 @@ app.BackupAppData(packageName, pathSave); // Сделать бэкап
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 app.Clean(packageName); // Очистить данные приложения
 ```
 
@@ -146,7 +146,7 @@ app.Clean(packageName); // Очистить данные приложения
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 app.CleanCache(packageName); // Очистить кэш приложения
 ```
 
@@ -178,7 +178,7 @@ app.ClearAllNotifications(); // Очистить все уведомления
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 app.ClearAppNotifications(packageName); // Очистить уведомления приложения
 ```
 
@@ -196,7 +196,7 @@ app.ClearAppNotifications(packageName); // Очистить уведомлени
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 app.Close(packageName); // Закрыть приложение
 ```
 
@@ -231,7 +231,7 @@ app.CloseAll(); // Закрыть все приложения
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var directory = app.DataDir(packageName); // Получить директорию хранения данных приложения.
 ```
 
@@ -249,7 +249,7 @@ var directory = app.DataDir(packageName); // Получить директори
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 app.Delete(packageName); // Удалить приложение
 ```
 
@@ -318,7 +318,7 @@ app.DeleteCookie(packageName);
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var json = app.GetAccounts(packageName); // Получить аккаунты приложения
 ```
 
@@ -375,7 +375,7 @@ project.Json.FromString(json); // Обработать Json
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var json = app.GetAppNotifications(packageName); // Получить все уведомления
 project.Json.FromString(json); // Обработать Json
 ```
@@ -411,7 +411,7 @@ project.Json.FromString(json); // Обработать Json
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var cookies = app.GetCookie(packageName); // Получить куки приложения
 
 // Только постоянные Secure-куки домена example.com и его поддоменов
@@ -435,7 +435,7 @@ var filtered = app.GetCookie(packageName, "example.com", null, true, true);
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var pathCookie = app.GetCookiePath(packageName); // Получить путь хранения куки
 ```
 
@@ -642,7 +642,7 @@ app.InstallApk(pathApk); // Установить приложение
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var isApk = app.IsInstalled(packageName); // Проверка установлено ли приложение
 
 if (!isApk) // Если нет, то установим
@@ -699,13 +699,13 @@ if (!isApk) // Если нет, то установим
 //#1
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 app.Open(packageName); // Открыть приложение
 
 //#2
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var activity = ".MainActivity"; // Активити хрома.(Не рабочий пример!)
 app.Open(packageName, activity); // Открыть приложение
 ```
@@ -731,7 +731,7 @@ app.Open(packageName, activity); // Открыть приложение
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var url = "http://ya.ru";
 app.OpenUrl(url, packageName); // Открыть Chrome и зайти на сайт ya.ru
 ```
@@ -804,7 +804,7 @@ app.OpenUrl(url, packageName); // Открыть Chrome и зайти на са�
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var pathLoad = @"/dir/bakups/name_bakup"; // Путь хранения бэкапа
 app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
 ```
@@ -836,7 +836,7 @@ app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // Имя приложения
+var packageName = "com.android.chrome"; // Имя приложения
 var uid = app.Uid(packageName); // Получить uid приложения
 ```
 

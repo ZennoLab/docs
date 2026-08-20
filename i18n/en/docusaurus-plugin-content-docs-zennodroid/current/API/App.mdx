@@ -109,7 +109,7 @@ _______________________________________________
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var pathSave = @"/dir/bakups/name_bakup"; // Where to save the backup
 app.BackupAppData(packageName, pathSave); // Make a backup
 ```
@@ -128,7 +128,7 @@ app.BackupAppData(packageName, pathSave); // Make a backup
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 app.Clean(packageName); // Clear app data
 ```
 
@@ -146,7 +146,7 @@ app.Clean(packageName); // Clear app data
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 app.CleanCache(packageName); // Clear app cache
 ```
 
@@ -178,7 +178,7 @@ app.ClearAllNotifications(); // Clear all notifications
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 app.ClearAppNotifications(packageName); // Clear app notifications
 ```
 
@@ -196,7 +196,7 @@ app.ClearAppNotifications(packageName); // Clear app notifications
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 app.Close(packageName); // Close the app
 ```
 
@@ -231,7 +231,7 @@ app.CloseAll(); // Close all apps
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var directory = app.DataDir(packageName); // Get app data directory
 ```
 
@@ -249,7 +249,7 @@ var directory = app.DataDir(packageName); // Get app data directory
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 app.Delete(packageName); // Uninstall the app
 ```
 
@@ -318,7 +318,7 @@ app.DeleteCookie(packageName);
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var json = app.GetAccounts(packageName); // Get app accounts
 ```
 
@@ -375,7 +375,7 @@ project.Json.FromString(json); // Process JSON
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var json = app.GetAppNotifications(packageName); // Get app notifications
 project.Json.FromString(json); // Process JSON
 ```
@@ -411,7 +411,7 @@ project.Json.FromString(json); // Process JSON
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var cookies = app.GetCookie(packageName); // Get app cookies
 
 // Only persistent Secure cookies of example.com and its subdomains
@@ -435,7 +435,7 @@ var filtered = app.GetCookie(packageName, "example.com", null, true, true);
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
 ```
 
@@ -642,7 +642,7 @@ app.InstallApk(pathApk); // Install the app
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var isApk = app.IsInstalled(packageName); // Check if the app is installed
 
 if (!isApk) // If not, install it
@@ -699,13 +699,13 @@ if (!isApk) // If not, install it
 //#1
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 app.Open(packageName); // Open the app
 
 //#2
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var activity = ".MainActivity"; // Chrome's main activity (not a working example!)
 app.Open(packageName, activity); // Open app with specific activity
 ```
@@ -731,7 +731,7 @@ app.Open(packageName, activity); // Open app with specific activity
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var url = "http://ya.ru";
 app.OpenUrl(url, packageName); // Open Chrome and navigate to ya.ru
 ```
@@ -804,7 +804,7 @@ In such cases you need to retrieve accounts from the app and forcibly remove the
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var pathLoad = @"/dir/bakups/name_bakup"; // Backup storage path
 app.RestoreAppData(packageName, pathLoad); // Load the backup
 ```
@@ -836,7 +836,7 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var uid = app.Uid(packageName); // Get app UID
 ```
 
