@@ -1,0 +1,89 @@
+---
+sidebar_position: 93
+title: "ZennoDroid 2.6.0.0"
+description: ""
+date: "2026-08-27"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+27.08.2026
+
+**Added:**
+
+[+] Added an **AI assistant** to ProjectMaker. An integrated chat panel for communicating with large language models (OpenAI, Claude, Gemini, DeepSeek, Perplexity). Two operating modes are available:
+
+- **Assistant** — read-only mode. The assistant answers questions, explains what the selected action block does, analyzes errors from the last run, and provides information about available parameters. The project is not modified, making this mode safe for production scenarios.
+- **Agent** — full-access mode. The assistant can independently:
+    - add, modify, move and delete action blocks of any type from the ZennoPoster catalog;
+    - create connections between them, including success and error branches, as well as create and rename groups;
+    - create and populate tables, lists and variables, and link tables to Google Sheets;
+    - control the running browser: open and switch between tabs, navigate to URLs, read the DOM, click, enter text and generate events;
+    - run individual action blocks and read their logs to iteratively debug the scenario;
+    - write code for OwnCode|CSharp blocks — the assistant knows the current C# API of the project (`IZennoPosterProjectModel`, `Instance` and other classes).
+
+Documentation: [AI Assistant](../get-started/ai-assistant) · [MCP Setup](../get-started/MCP_Setup).
+
+[+] A **new AI action block** has also been added. This new action type allows you to call an LLM directly from a scenario: the same providers as in the chat, with centralized API key management in the program settings. It suits text generation, classification, data extraction and translation, and integrates into existing projects without external scripts.
+
+[+] Added the ability to run ProjectMaker for ZennoDroid and ProjectMaker for ZennoPoster simultaneously (**AI agents and MCP services do not interfere with each other**).
+
+[+] **ZD PRO.** Added support for the **new emulator** [LDPlayer 14](https://www.ldplayer.net/) (based on Android 14).
+
+[+] **ZD ENTERPRISE.** Added the ability to use a running **LDPlayer 14 emulator** as a device.
+
+[+] **ZD PRO.** Added the ability to execute commands that require **superuser privileges** without enabling the corresponding setting (Root).
+
+[+] **ZD PRO.** Android interface animations are now disabled to **improve performance**.
+
+[+] **All help information** in the program now links to the new documentation.
+
+[+] The **Action Builder** has been moved to a separate dock panel, whose position you can configure as you prefer.
+
+[+] **Scrcpy** updated to version 4.1.0.
+
+[+] Added **realistic touch emulation** (it works on protected pages, the touches are visible through `getevent`, and each touch has a size).
+It is enabled on the Settings tab with the "Use enhanced touches" option, or through C# code executed before connecting to the device:
+
+```csharp
+instance.DroidInstance.Input.SetNativeEventMode(true);
+```
+
+[+] **ZD ENTERPRISE.** Added the ability to emulate realistic touches on devices without a display (touchpad).
+
+[+] When the **Get application cookies** action is executed, encrypted values (`encrypted_value`) are now decrypted automatically.
+
+[+] Added new methods for working with cookies through C# code: [retrieving](../API/App#getcookie), [importing](../API/App#importcookie), [deleting](../API/App#deletecookie).
+
+```csharp
+string GetCookie(string packageName, string host, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false);
+
+string ImportCookie(string packageName, string cookies, bool replaceAll = false);
+
+string DeleteCookie(string packageName, string host = null, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false);
+```
+
+**Fixed:**
+
+[\] **ZD ENTERPRISE.** Fixed a bug that prevented ZennoDroid from detecting devices on the local network when VPN was enabled. The scan range specified in the Device Manager is now saved: after a restart, ZennoDroid searches for devices in the last scanned range.
+
+[\] Fixed a bug that prevented the **Clash whitelist/blacklist** from being applied on the first installation.
+
+[\] **ZD ENTERPRISE.** Fixed the **Clash** installation when using KernelSU.
+
+[\] **ZD PRO.** Fixed **sending and receiving files** with spaces in their names in LDPlayer.
+
+[\] Fixed an issue that caused the **template execution to stop** when the connection to the device was lost.
+
+[\] Fixed a **ZennoDroid crash when stopping multiple templates simultaneously** due to a lost Internet connection.
+
+[\] Fixed **Adb Shell command execution being interrupted** after a timeout.
+
+[\] Fixed a bug that could cause a mouse cursor to appear when using realistic touch emulation.
+
+[\] **ZD PRO.** Fixed a full reset when using the LDPlayer 14 emulator.
+
+[\] Fixed **high idle resource usage** when installing ZennoBrowser.
