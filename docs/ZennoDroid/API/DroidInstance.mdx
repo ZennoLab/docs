@@ -52,6 +52,7 @@ IAndroidElementAPI[] FindElementsByClassName(string className);
 IAndroidElementAPI[] FindElementsById(string id);
 IAndroidElementAPI[] FindElementsByUiAutomator(string uiSelector);
 IAndroidElementAPI[] FindElementsByXPath(string xpath);
+string GetRawSource();
 string GetScreenshot();
 void ScrollToElementByAccessibilityId(string id, int maxSwipes);
 void ScrollToElementByClassName(string className, int maxSwipes);
