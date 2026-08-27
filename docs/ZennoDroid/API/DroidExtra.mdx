@@ -65,6 +65,9 @@ void Connect();
 void Disconnect();
 void Start();
 void Stop();
+bool WaitForBoot(int timeout);
+bool WaitForConnect(int timeout);
+bool WaitForStop(int timeout);
 ```
 
 ### IBlueStacks5ManagerAPI
@@ -72,20 +75,34 @@ void Stop();
 ```csharp
 string Create(string imageName, int cpus, int ram, string graphicEngine, string graphicRenderer, string deviceProfile, string abiList);
 void DeleteByName(string name);
+bool Exists(string name);
+string[] GetListNames();
+string[] GetListTitles();
+string NameToTitleConverter(string name);
+void SetupRoot(string title, string magiskApk, string zygiskModule, int timeout);
+void SetupRootOffline(string title, string magiskApk, string zygiskModule, int timeout);
 void StartManager();
 void StopManager();
 string TitleToNameConverter(string title);
+void Unroot(string title, int timeout);
 ```
 
 ### IBlueStacks5RootAPI
 [**`IBlueStacks5RootAPI BlueStacks5Root`**](./BlueStacks5#ibluestacks5rootapi)
 ```csharp
+bool IsRooted { get; }
 void EnableZygisk();
+void EnableZygisk(string modulePath);
 void FlashMagisk();
 void InstallMagisk(string path);
+void InstallMagiskOffline(string magiskApk);
+void InstallModule(string path);
+bool InstallModuleOffline(string modulePath);
 void Lock();
 void Patch();
 void Unlock();
+void Unlock(bool patchImage);
+bool WaitForRoot(int timeout);
 ```
 
 ### IBlueStacks5SettingsAPI
