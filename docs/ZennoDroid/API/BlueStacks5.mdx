@@ -32,6 +32,13 @@ _______________________________________________
     **Возвращает:**  
     Строку в формате `IP:Port` (например: `127.0.0.1:5555`).
 
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+string addressPort = bs.AddressPort; // 127.0.0.1:5555
+```
+
 ---
 
 ### IsBootCompleted
@@ -41,6 +48,14 @@ _______________________________________________
     
     **Возвращает:**  
     `true`, если система полностью загружена и готова к работе.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+if (!bs.IsBootCompleted)
+    throw new Exception("Android ещё не загрузился");
+```
 
 ---
 
@@ -52,6 +67,13 @@ _______________________________________________
     **Возвращает:**  
     `true`, если эмулятор запущен; иначе `false`.
 
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+if (!bs.IsRunning) bs.Start();
+```
+
 ---
 
 ### Connect
@@ -59,12 +81,23 @@ _______________________________________________
 - **`void Connect()`**  
     Подключается к эмулятору (обычно через ADB).
 
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Connect();
+```
+
 ---
 
 ### Disconnect
 
 - **`void Disconnect()`**  
     Разрывает соединение с эмулятором.
+
+#### Пример.
+```csharp
+new BlueStacks5("Rvc64_1", "nxt").Disconnect();
+```
 
 ---
 
@@ -84,6 +117,13 @@ new BlueStacks5("Rvc64_1", "nxt").Start();
 
 - **`void Stop()`**  
     Останавливает эмулятор.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+bs.WaitForStop(60);
+```
 
 ---
 
@@ -124,6 +164,13 @@ if (!bs.WaitForBoot(120)) throw new Exception("Эмулятор не загру�
     **Описание:**  
     `Connect()` завершается успешно раньше, чем эмулятор готов отвечать, и первая команда после него возвращает пустой результат или ошибку — этот метод берёт такую команду на себя.
 
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Connect();
+if (!bs.WaitForConnect(60)) throw new Exception("Соединение по ADB не отвечает");
+```
+
 ---
 
 ### WaitForStop
@@ -139,6 +186,13 @@ if (!bs.WaitForBoot(120)) throw new Exception("Эмулятор не загру�
     
     **Описание:**  
     Вызывайте после каждого `Stop()`: тот только просит плеер завершиться, а диски инстанса остаются заблокированными, пока процесс жив — именно этого ждут операции над остановленным инстансом, в том числе `Unlock()` и `Lock()`.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+if (!bs.WaitForStop(60)) throw new Exception("Эмулятор не завершился");
+```
 
 :::note Важные замечания
 - После `Start()` дождитесь загрузки через `WaitForBoot()` (или проверяйте `IsBootCompleted`), прежде чем выполнять действия.
@@ -182,6 +236,11 @@ new BlueStacks5Settings("Rvc64_1", "nxt").SetGeo(-73.572604, 40.651980);
     **Описание:**  
     Используется для подмены идентификатора устройства.
 
+#### Пример.
+```csharp
+new BlueStacks5Settings("Rvc64_1", "nxt").SetIMEI("356938035643809");
+```
+
 :::warning Важные замечания
 - Некорректные значения IMEI могут вызывать ошибки в приложениях или определяться как недействительные.
 - После изменения параметров рекомендуется перезапустить эмулятор и переподключиться.
@@ -204,6 +263,13 @@ _______________________________________________
     **Описание:**  
     Проверка выполняется так же, как её выполняют шаги получения root, поэтому результат верен для любого `su`, который в итоге оказался на инстансе. Для остановленного, ещё загружающегося или просто не рутованного инстанса возвращает `false` и не выбрасывает исключение.
 
+#### Пример.
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bool rooted = root.IsRooted;
+```
+
 ---
 
 ### EnableZygisk
@@ -213,6 +279,11 @@ _______________________________________________
     
     **Описание:**  
     Позволяет использовать продвинутые модули и хуки (например, для обхода детекта root).
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").EnableZygisk();
+```
 
 ---
 
@@ -225,6 +296,12 @@ _______________________________________________
     **Описание:**  
     Изменения вступают в силу после перезапуска эмулятора. На Android 7 вызов отклоняется, а не выполняется вхолостую: в этом образе Zygisk нет вообще, хотя root на нём работает.
 
+#### Пример.
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+root.EnableZygisk(MagiskSource.DefaultZygiskModule);
+```
+
 ---
 
 ### FlashMagisk
@@ -235,6 +312,11 @@ _______________________________________________
     **Описание:**  
     Применяет Magisk на уровне системы после установки.
 
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").FlashMagisk();
+```
+
 ---
 
 ### InstallMagisk
@@ -244,6 +326,11 @@ _______________________________________________
     
     **Параметры:**
     - `path` — путь к файлу Magisk (`.apk`).
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").InstallMagisk(MagiskSource.DefaultApk);
+```
 
 ---
 
@@ -258,6 +345,20 @@ _______________________________________________
     **Описание:**  
     Заменяет связку `Patch()` + `InstallMagisk()` + `FlashMagisk()` вместе с нужными им перезапусками: root поднимается на следующей загрузке из init-триггера, который записывает этот метод. Инстанс должен быть остановлен (запущенный плеер держит свои образы) и пройти через `Unlock(bool)` — метод пишет в клон системного диска, который создаёт разблокировка. Из apk читаются только бинарные файлы; приложение-менеджер по-прежнему устанавливается методом `InstallMagisk()` на уже загруженном инстансе.
 
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bs.Stop();
+bs.WaitForStop(60);
+root.Unlock(patchImage: false);
+root.InstallMagiskOffline(MagiskSource.DefaultApk);
+bs.Start();
+bs.WaitForBoot(120);
+root.WaitForRoot(60);
+```
+
 ---
 
 ### InstallModule
@@ -270,6 +371,11 @@ _______________________________________________
     
     **Описание:**  
     Модули применяются после перезапуска эмулятора.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").InstallModule(@"C:\Modules\LSPosed.zip");
+```
 
 ---
 
@@ -287,6 +393,16 @@ _______________________________________________
     **Описание:**  
     Модуль работает уже на следующей загрузке, а не через одну. `false` — не ошибка: значит, писать пока некуда. Android размечает `/data` на самой первой загрузке инстанса и снёс бы всё, записанное до этого, поэтому нужно загрузиться один раз и вызвать метод снова — именно так поступает `SetupRootOffline()`. На Android 7 выбрасывает исключение: обеспечивать там Zygisk нечем.
 
+#### Пример.
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+if (!root.InstallModuleOffline(MagiskSource.DefaultZygiskModule))
+{
+    // /data ещё не размечен — загрузиться один раз и повторить вызов
+}
+```
+
 ---
 
 ### Lock
@@ -297,6 +413,15 @@ _______________________________________________
     **Описание:**  
     Отключает root, делая систему более «чистой» (например, для обхода проверок приложений).
 
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+bs.WaitForStop(60);
+
+new BlueStacks5Root("Rvc64_1", "nxt").Lock();
+```
+
 ---
 
 ### Patch
@@ -306,6 +431,11 @@ _______________________________________________
     
     **Описание:**  
     Модифицирует системные компоненты эмулятора для поддержки root-доступа.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Patch();
+```
 
 ---
 
@@ -333,6 +463,11 @@ new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
     **Описание:**  
     Патч нужен только онлайн-установке root — именно так root получают на **запущенном** инстансе, чтобы можно было копировать файлы. Офлайн-установка передаёт `false` и оставляет образ заводским.
 
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Unlock(patchImage: false);
+```
+
 ---
 
 ### WaitForRoot
@@ -348,6 +483,16 @@ new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
     
     **Описание:**  
     Root появляется не в тот момент, когда Android сообщает о завершении загрузки: демон `su` поднимается сам через несколько секунд, поэтому единственная проверка `IsRooted` сразу после перезапуска ничего не говорит.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bs.Start();
+bs.WaitForBoot(120);
+if (!root.WaitForRoot(60)) throw new Exception("Root не поднялся");
+```
 
 :::warning Важные замечания
 - Операции с root могут повлиять на стабильность эмулятора или нарушить работу приложений.
@@ -428,6 +573,11 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     **Параметры:**
     - `name` — имя инстанса.
 
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").DeleteByName("Rvc64_1");
+```
+
 ---
 
 ### Exists
@@ -444,6 +594,13 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     **Описание:**  
     Обращение к несуществующему инстансу — `new BlueStacks5(name)` и подобные — это ошибка, поэтому спрашивать следует заранее.
 
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+if (!mgr.Exists("Rvc64_1")) throw new Exception("Инстанс не найден");
+```
+
 ---
 
 ### GetListNames
@@ -457,6 +614,14 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     **Описание:**  
     В список входят и базовые образы — именно из них клонируются новые инстансы, и перечисляются они так же, как обычный инстанс.
 
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+foreach (var name in mgr.GetListNames())
+    project.SendInfoToLog(name); // Rvc64, Rvc64_1, Pie64, ...
+```
+
 ---
 
 ### GetListTitles
@@ -466,6 +631,17 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     
     **Возвращает:**  
     Массив названий в том же порядке, что и у `GetListNames()`.
+
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+var names = mgr.GetListNames();
+var titles = mgr.GetListTitles();
+
+for (int i = 0; i < names.Length; i++)
+    project.SendInfoToLog($"{titles[i]} -> {names[i]}");
+```
 
 ---
 
@@ -479,6 +655,11 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     
     **Возвращает:**  
     Отображаемое название инстанса.
+
+#### Пример.
+```csharp
+string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1");
+```
 
 ---
 
@@ -569,12 +750,22 @@ mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
 - **`void StartManager()`**  
     Запускает менеджер BlueStacks (службу управления инстансами).
 
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").StartManager();
+```
+
 ---
 
 ### StopManager
 
 - **`void StopManager()`**  
     Останавливает менеджер BlueStacks.
+
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").StopManager();
+```
 
 ---
 
@@ -589,6 +780,11 @@ mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
     **Возвращает:**  
     Внутреннее имя инстанса, используемое системой.
 
+#### Пример.
+```csharp
+string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks Rvc64");
+```
+
 ---
 
 ### Unroot
@@ -602,6 +798,11 @@ mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
     
     **Описание:**  
     Записываемый клон системного диска, тот, в который был установлен Magisk, удаляется, а на его место возвращается заводской образ в режиме только для чтения. Выполняется `bs.Stop()` + `bs.WaitForStop(timeout)`, затем `root.Lock()`; инстанс остаётся остановленным, потому что именно в этом состоянии `Lock()` его и требует, а запускать его снова — дело вызывающего. Root живёт на системном образе, поэтому этого достаточно: записанное в `/data` (в том числе приложение-менеджер Magisk) остаётся, но без бинарных файлов ничего не делает. Инстанс, который никогда не был рутован, — не ошибка: возвращается тот же образ, что и был смонтирован.
+
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").Unroot("BlueStacks Rvc64", 120);
+```
 
 :::note Важные замечания
 - Перед созданием/удалением инстансов рекомендуется запустить менеджер (`StartManager()`).

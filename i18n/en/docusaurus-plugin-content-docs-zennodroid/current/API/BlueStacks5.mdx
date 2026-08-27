@@ -32,6 +32,13 @@ Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
     **Returns:**  
     A string in `IP:Port` format (e.g. `127.0.0.1:5555`).
 
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+string addressPort = bs.AddressPort; // 127.0.0.1:5555
+```
+
 ---
 
 ### IsBootCompleted
@@ -41,6 +48,14 @@ Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
     
     **Returns:**  
     `true` if the system is fully loaded and ready to use.
+
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+if (!bs.IsBootCompleted)
+    throw new Exception("Android has not booted yet");
+```
 
 ---
 
@@ -52,6 +67,13 @@ Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
     **Returns:**  
     `true` if the emulator is running; otherwise `false`.
 
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+if (!bs.IsRunning) bs.Start();
+```
+
 ---
 
 ### Connect
@@ -59,12 +81,23 @@ Managing the startup, shutdown, and connection of the BlueStacks 5 emulator.
 - **`void Connect()`**  
     Connects to the emulator (typically via ADB).
 
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Connect();
+```
+
 ---
 
 ### Disconnect
 
 - **`void Disconnect()`**  
     Disconnects from the emulator.
+
+#### Example
+```csharp
+new BlueStacks5("Rvc64_1", "nxt").Disconnect();
+```
 
 ---
 
@@ -84,6 +117,13 @@ new BlueStacks5("Rvc64_1", "nxt").Start();
 
 - **`void Stop()`**  
     Stops the emulator.
+
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+bs.WaitForStop(60);
+```
 
 ---
 
@@ -124,6 +164,13 @@ if (!bs.WaitForBoot(120)) throw new Exception("The emulator did not boot");
     **Description:**  
     `Connect()` succeeds before the emulator is ready to answer, and the first command after it comes back empty or as an error — this method spends that command itself.
 
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Connect();
+if (!bs.WaitForConnect(60)) throw new Exception("The ADB connection does not answer");
+```
+
 ---
 
 ### WaitForStop
@@ -139,6 +186,13 @@ if (!bs.WaitForBoot(120)) throw new Exception("The emulator did not boot");
     
     **Description:**  
     Call it after every `Stop()`: that only asks the player to shut down, and the instance disks stay locked until the process is actually gone — which is what operations on a stopped instance, `Unlock()` and `Lock()` among them, wait for.
+
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+if (!bs.WaitForStop(60)) throw new Exception("The emulator did not shut down");
+```
 
 :::note Important Notes
 - After `Start()`, wait for the boot with `WaitForBoot()` (or check `IsBootCompleted`) before performing any actions.
@@ -182,6 +236,11 @@ new BlueStacks5Settings("Rvc64_1", "nxt").SetGeo(-73.572604, 40.651980);
     **Description:**  
     Used to spoof the device identifier.
 
+#### Example
+```csharp
+new BlueStacks5Settings("Rvc64_1", "nxt").SetIMEI("356938035643809");
+```
+
 :::warning Important Notes
 - Invalid IMEI values may cause errors in applications or be detected as invalid.
 - After changing parameters, it is recommended to restart the emulator and reconnect.
@@ -204,6 +263,13 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     **Description:**  
     It is asked the same way the root steps ask it, so it holds for whichever `su` the instance ended up with. For an instance that is stopped, still booting, or simply not rooted it returns `false` and never throws.
 
+#### Example
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bool rooted = root.IsRooted;
+```
+
 ---
 
 ### EnableZygisk
@@ -213,6 +279,11 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     
     **Description:**  
     Allows using advanced modules and hooks (e.g. for bypassing root detection).
+
+#### Example
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").EnableZygisk();
+```
 
 ---
 
@@ -225,6 +296,12 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     **Description:**  
     Takes effect after the emulator is restarted. On Android 7 the call is refused rather than quietly doing nothing: that image has no Zygisk at all, although root does work on it.
 
+#### Example
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+root.EnableZygisk(MagiskSource.DefaultZygiskModule);
+```
+
 ---
 
 ### FlashMagisk
@@ -235,6 +312,11 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     **Description:**  
     Applies Magisk at the system level after installation.
 
+#### Example
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").FlashMagisk();
+```
+
 ---
 
 ### InstallMagisk
@@ -244,6 +326,11 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     
     **Parameters:**
     - `path` — path to the Magisk file (`.apk`).
+
+#### Example
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").InstallMagisk(MagiskSource.DefaultApk);
+```
 
 ---
 
@@ -258,6 +345,20 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     **Description:**  
     Replaces `Patch()` + `InstallMagisk()` + `FlashMagisk()` together with the restarts they need: root comes up on the next boot, from the init trigger this method writes. The instance has to be stopped (a running player holds its images) and has to have been through `Unlock(bool)` — what this writes into is the clone of the system disk that unlock puts in place. The apk is read for its binaries only; the manager app is still installed with `InstallMagisk()`, on the booted instance.
 
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bs.Stop();
+bs.WaitForStop(60);
+root.Unlock(patchImage: false);
+root.InstallMagiskOffline(MagiskSource.DefaultApk);
+bs.Start();
+bs.WaitForBoot(120);
+root.WaitForRoot(60);
+```
+
 ---
 
 ### InstallModule
@@ -270,6 +371,11 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     
     **Description:**  
     Modules are applied when the emulator is restarted.
+
+#### Example
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").InstallModule(@"C:\Modules\LSPosed.zip");
+```
 
 ---
 
@@ -287,6 +393,16 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     **Description:**  
     The module is live on the next boot instead of the one after it. `false` is not a failure: it means `/data` is not there to write into yet. Android lays it out on the very first boot of an instance and would take anything written before that along with it, so the answer is to boot once and call the method again — which is what `SetupRootOffline()` does. On Android 7 it throws: there is no Zygisk there to provide for.
 
+#### Example
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+if (!root.InstallModuleOffline(MagiskSource.DefaultZygiskModule))
+{
+    // /data has not been laid out yet - boot once and call it again
+}
+```
+
 ---
 
 ### Lock
@@ -297,6 +413,15 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     **Description:**  
     Disables root, making the system more "clean" (e.g. for bypassing application checks).
 
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+bs.WaitForStop(60);
+
+new BlueStacks5Root("Rvc64_1", "nxt").Lock();
+```
+
 ---
 
 ### Patch
@@ -306,6 +431,11 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     
     **Description:**  
     Modifies emulator system components to support root access.
+
+#### Example
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Patch();
+```
 
 ---
 
@@ -333,6 +463,11 @@ new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
     **Description:**  
     That patch serves the online root and nothing else — it is how root is got on a **running** instance so that files can be copied in — so an offline install passes `false` and leaves the image stock.
 
+#### Example
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Unlock(patchImage: false);
+```
+
 ---
 
 ### WaitForRoot
@@ -348,6 +483,16 @@ new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
     
     **Description:**  
     Root is not there the moment Android reports the boot as complete — the `su` daemon comes up on its own a few seconds later — so a single `IsRooted` right after a restart says nothing.
+
+#### Example
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bs.Start();
+bs.WaitForBoot(120);
+if (!root.WaitForRoot(60)) throw new Exception("Root did not come up");
+```
 
 :::warning Important Notes
 - Root operations may affect emulator stability or break application functionality.
@@ -428,6 +573,11 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     **Parameters:**
     - `name` — instance name.
 
+#### Example
+```csharp
+new BlueStacks5Manager("nxt").DeleteByName("Rvc64_1");
+```
+
 ---
 
 ### Exists
@@ -444,6 +594,13 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     **Description:**  
     Addressing one that does not exist — `new BlueStacks5(name)` and the like — is an error, so this is the way to ask first.
 
+#### Example
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+if (!mgr.Exists("Rvc64_1")) throw new Exception("The instance was not found");
+```
+
 ---
 
 ### GetListNames
@@ -457,6 +614,14 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     **Description:**  
     Base images are among them — those are what new instances are cloned from, and they are listed exactly as an instance would be.
 
+#### Example
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+foreach (var name in mgr.GetListNames())
+    project.SendInfoToLog(name); // Rvc64, Rvc64_1, Pie64, ...
+```
+
 ---
 
 ### GetListTitles
@@ -466,6 +631,17 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     
     **Returns:**  
     An array of titles, in the same order as `GetListNames()`.
+
+#### Example
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+var names = mgr.GetListNames();
+var titles = mgr.GetListTitles();
+
+for (int i = 0; i < names.Length; i++)
+    project.SendInfoToLog($"{titles[i]} -> {names[i]}");
+```
 
 ---
 
@@ -479,6 +655,11 @@ var name = new BlueStacks5Manager("nxt").Create("Rvc64",
     
     **Returns:**  
     Display title of the instance.
+
+#### Example
+```csharp
+string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1");
+```
 
 ---
 
@@ -569,12 +750,22 @@ mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
 - **`void StartManager()`**  
     Starts the BlueStacks manager (instance management service).
 
+#### Example
+```csharp
+new BlueStacks5Manager("nxt").StartManager();
+```
+
 ---
 
 ### StopManager
 
 - **`void StopManager()`**  
     Stops the BlueStacks manager.
+
+#### Example
+```csharp
+new BlueStacks5Manager("nxt").StopManager();
+```
 
 ---
 
@@ -589,6 +780,11 @@ mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
     **Returns:**  
     Internal instance name used by the system.
 
+#### Example
+```csharp
+string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks Rvc64");
+```
+
 ---
 
 ### Unroot
@@ -602,6 +798,11 @@ mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
     
     **Description:**  
     The writable clone of the system disk, the one Magisk was written to, is dropped and the factory image goes back in its place, read-only. `bs.Stop()` + `bs.WaitForStop(timeout)` runs, then `root.Lock()`; the instance is left stopped, because that is the state `Lock()` needs it in and starting it again is the caller's business. Root lives on the system image, so this is all there is to being rid of it: what was written to `/data` — the Magisk manager app among it — stays there and none of it does anything with the binaries gone. An instance that was never rooted is not an error: the disk put back is the one already mounted.
+
+#### Example
+```csharp
+new BlueStacks5Manager("nxt").Unroot("BlueStacks Rvc64", 120);
+```
 
 :::note Important Notes
 - Before creating/deleting instances, it is recommended to start the manager (`StartManager()`).
