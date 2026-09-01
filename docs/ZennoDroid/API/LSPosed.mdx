@@ -19,7 +19,23 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     Имя модуля.
     
     **Описание:**  
-    Указывает модуль, с которым выполняются операции.
+    Указывает модуль, с которым выполняются операции. Если свойство не задано, используется основной модуль ZennoDroid.
+    
+    ZennoDroid работает с тремя модулями:
+    - `com.zennolab.zennodroid` — основной модуль **ZennoDroid**, значение по умолчанию;
+    - `com.zennolab.zennovcam` — **ZennoVCam**, подмена камеры видеофайлом для метода [**SetVideoForFakeCamera**](./App#setvideoforfakecamera);
+    - `com.zennolab.zennobackup` — **ZennoBackup**, делает шифрование данных приложения обратимым, чтобы их можно было переносить между устройствами.
+    
+    Устанавливать модуль заранее не нужно: `SetPackages`, `AddPackages` и `RemovePackages` доставляют apk модуля на устройство, если его там ещё нет.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Работать с модулем ZennoVCam
+lspHelper.SetPackages("com.example.app1"); // Задать список приложений модуля
+lspHelper.EnableModule(); // Включить модуль
+```
 
 _______________________________________________
 ## Методы
@@ -33,6 +49,12 @@ _______________________________________________
     **Параметры:**
     - `packageNames` — массив имён пакетов приложений.
 
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.AddPackages("com.example.app1", "com.example.app2"); // Добавить приложения в список модуля
+```
+
 ---
 
 ### BackupAllModules
@@ -41,7 +63,13 @@ _______________________________________________
     Создаёт резервную копию всех модулей.
     
     **Параметры:**
-    - `fileName` — имя файла.
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.BackupAllModules(@"C:\lsposed\all_modules.gz"); // Сохранить архив на компьютере
+```
 
 ---
 
@@ -51,7 +79,14 @@ _______________________________________________
     Создаёт резервную копию настроек текущего модуля.
     
     **Параметры:**
-    - `fileName` — имя файла для сохранения.
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Модуль, настройки которого сохраняем
+lspHelper.BackupModule("/sdcard/Download/zennovcam.gz"); // Сохранить архив на устройстве
+```
 
 ---
 
@@ -60,6 +95,11 @@ _______________________________________________
 - **`void Close()`**  
     Закрывает интерфейс LSPosed.
 
+#### Пример.
+```csharp
+new LSPosedHelper(instance.DroidInstance).Close(); // Закрыть интерфейс LSPosed
+```
+
 ---
 
 ### DisableModule
@@ -67,12 +107,25 @@ _______________________________________________
 - **`void DisableModule()`**  
     Отключает указанный модуль.
 
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.DisableModule(); // Отключить основной модуль ZennoDroid
+```
+
 ---
 
 ### EnableModule
 
 - **`void EnableModule()`**  
     Включает указанный модуль.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages("com.example.app1"); // Список приложений задаётся до включения
+lspHelper.EnableModule(); // С пустым списком метод завершится ошибкой Add any package!
+```
 
 ---
 
@@ -97,6 +150,11 @@ return lspHelper.GetCLIStatus();
 - **`void Open()`**  
     Открывает интерфейс LSPosed.
 
+#### Пример.
+```csharp
+new LSPosedHelper(instance.DroidInstance).Open(); // Открыть интерфейс LSPosed
+```
+
 ---
 
 ### RemovePackages
@@ -107,6 +165,12 @@ return lspHelper.GetCLIStatus();
     **Параметры:**
     - `packageNames` — массив пакетов.
 
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.RemovePackages("com.example.app2"); // Убрать приложение из списка модуля
+```
+
 ---
 
 ### RestoreAllModules
@@ -115,7 +179,13 @@ return lspHelper.GetCLIStatus();
     Восстанавливает все модули из резервной копии.
     
     **Параметры:**
-    - `fileName` — путь к файлу.
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.RestoreAllModules(@"C:\lsposed\all_modules.gz"); // Восстановить все модули из архива на компьютере
+```
 
 ---
 
@@ -125,7 +195,14 @@ return lspHelper.GetCLIStatus();
     Восстанавливает настройки модуля из файла.
     
     **Параметры:**
-    - `fileName` — путь к файлу бэкапа.
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Модуль, настройки которого восстанавливаем
+lspHelper.RestoreModule("/sdcard/Download/zennovcam.gz"); // Восстановить из архива на устройстве
+```
 
 ---
 
@@ -136,6 +213,12 @@ return lspHelper.GetCLIStatus();
     
     **Параметры:**
     - `packageNames` — массив пакетов.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages("com.example.app1", "com.example.app2"); // Заменить список приложений модуля
+```
 
 _______________________________________________
 

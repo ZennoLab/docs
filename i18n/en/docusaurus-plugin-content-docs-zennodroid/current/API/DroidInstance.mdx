@@ -126,6 +126,8 @@ void RestoreAppData(string packageName, string pathToBackup, bool restorePermiss
 void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
 void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
 void RestoreFlutterLib(string packageName);
+void SetVideoForFakeCamera(string packageName, string videoSource);
+void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo);
 string Uid(string packageName);
 ```  
 ### IDroidHierarchyAPI Hierarchy
