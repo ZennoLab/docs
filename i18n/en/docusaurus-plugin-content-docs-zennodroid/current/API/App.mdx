@@ -823,6 +823,9 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
 
 ### SetVideoForFakeCamera
 
+:::info **Available starting from ZennoDroid 2.6.1.0.**
+:::
+
 - **`void SetVideoForFakeCamera(string packageName, string videoSource)`**  
     Feeds a video file to the app's camera instead of the real sensor, so the app receives the video frames as if they came from the device camera. The video plays in a loop, without sound, and every frame lane stays virtual. Use the overload with playback options if the app also needs to save photos.
     
@@ -863,8 +866,24 @@ app.SetVideoForFakeCamera(packageName, "/sdcard/Download/source.mp4", false, fal
 app.SetVideoForFakeCamera(packageName, "");
 ```
 
+The substitution starts working only once the **ZennoVCam** module is enabled in LSPosed and the target app is on its list. That is done through the [**LSPosed API**](./LSPosed) — here it is turned on for the default Camera app:
+```csharp
+var packageName = "com.android.camera2"; // The default Camera app
+
+instance.DroidInstance.App.Close(packageName); // Close the app
+
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Work with the ZennoVCam module
+lspHelper.SetPackages(packageName); // Put the app on the scope list of the ZennoVCam module
+lspHelper.EnableModule(); // Enable the ZennoVCam module
+
+instance.DroidInstance.App.SetVideoForFakeCamera(packageName, @"c:\source.mp4"); // Feed the video to the camera
+
+instance.DroidInstance.App.Open(packageName); // Open the app
+```
+The scope list is set **before** the module is enabled: with an empty list `EnableModule` fails with *Add any package!*. The module itself does not have to be installed by hand — `SetPackages` delivers it to the device if it is not there yet.
+
 :::warning Important notes
-- The **ZennoVCam** module is required: it has to be installed, enabled and scoped to the target app.
 - `photo` is off by default because it is a trade rather than a strict improvement: to get the save through, the module hands the small helper frame lanes (metering, thumbnails) back to the real camera. Leave it `false` for a scanner or KYC app that reads frames through one of those lanes, since it would otherwise receive the real camera image.
 :::
 

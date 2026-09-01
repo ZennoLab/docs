@@ -19,7 +19,23 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     The name of the module.
     
     **Description:**  
-    Specifies the module on which operations are performed.
+    Specifies the module on which operations are performed. When the property is not set, the main ZennoDroid module is used.
+    
+    ZennoDroid works with three modules:
+    - `com.zennolab.zennodroid` — the main **ZennoDroid** module, the default value;
+    - `com.zennolab.zennovcam` — **ZennoVCam**, the video substitution for the camera used by [**SetVideoForFakeCamera**](./App#setvideoforfakecamera);
+    - `com.zennolab.zennobackup` — **ZennoBackup**, makes the encryption of the app data reversible so that the data can be moved between devices.
+    
+    The module does not have to be installed in advance: `SetPackages`, `AddPackages` and `RemovePackages` deliver its apk to the device if it is not there yet.
+
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Work with the ZennoVCam module
+lspHelper.SetPackages("com.example.app1"); // Set the scope list of the module
+lspHelper.EnableModule(); // Enable the module
+```
 
 _______________________________________________
 ## Methods
@@ -33,6 +49,12 @@ _______________________________________________
     **Parameters:**
     - `packageNames` — array of application package names.
 
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.AddPackages("com.example.app1", "com.example.app2"); // Add the apps to the scope list of the module
+```
+
 ---
 
 ### BackupAllModules
@@ -41,7 +63,13 @@ _______________________________________________
     Creates a backup of all modules.
     
     **Parameters:**
-    - `fileName` — file name.
+    - `fileName` — path to the archive: on the computer or, when it starts with `/`, on the device. The `.gz` extension is appended automatically.
+
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.BackupAllModules(@"C:\lsposed\all_modules.gz"); // Save the archive on the computer
+```
 
 ---
 
@@ -51,7 +79,14 @@ _______________________________________________
     Creates a backup of the current module's settings.
     
     **Parameters:**
-    - `fileName` — file name for saving.
+    - `fileName` — path to the archive: on the computer or, when it starts with `/`, on the device. The `.gz` extension is appended automatically.
+
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // The module whose settings are saved
+lspHelper.BackupModule("/sdcard/Download/zennovcam.gz"); // Save the archive on the device
+```
 
 ---
 
@@ -60,6 +95,11 @@ _______________________________________________
 - **`void Close()`**  
     Closes the LSPosed interface.
 
+#### Example
+```csharp
+new LSPosedHelper(instance.DroidInstance).Close(); // Close the LSPosed interface
+```
+
 ---
 
 ### DisableModule
@@ -67,12 +107,25 @@ _______________________________________________
 - **`void DisableModule()`**  
     Disables the specified module.
 
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.DisableModule(); // Disable the main ZennoDroid module
+```
+
 ---
 
 ### EnableModule
 
 - **`void EnableModule()`**  
     Enables the specified module.
+
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages("com.example.app1"); // The scope list is set before enabling
+lspHelper.EnableModule(); // With an empty list the method fails with Add any package!
+```
 
 ---
 
@@ -97,6 +150,11 @@ return lspHelper.GetCLIStatus();
 - **`void Open()`**  
     Opens the LSPosed interface.
 
+#### Example
+```csharp
+new LSPosedHelper(instance.DroidInstance).Open(); // Open the LSPosed interface
+```
+
 ---
 
 ### RemovePackages
@@ -107,6 +165,12 @@ return lspHelper.GetCLIStatus();
     **Parameters:**
     - `packageNames` — array of package names.
 
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.RemovePackages("com.example.app2"); // Take the app off the scope list of the module
+```
+
 ---
 
 ### RestoreAllModules
@@ -115,7 +179,13 @@ return lspHelper.GetCLIStatus();
     Restores all modules from a backup.
     
     **Parameters:**
-    - `fileName` — path to the file.
+    - `fileName` — path to the archive: on the computer or, when it starts with `/`, on the device. The `.gz` extension is appended automatically.
+
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.RestoreAllModules(@"C:\lsposed\all_modules.gz"); // Restore every module from the archive on the computer
+```
 
 ---
 
@@ -125,7 +195,14 @@ return lspHelper.GetCLIStatus();
     Restores a module's settings from a file.
     
     **Parameters:**
-    - `fileName` — path to the backup file.
+    - `fileName` — path to the archive: on the computer or, when it starts with `/`, on the device. The `.gz` extension is appended automatically.
+
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // The module whose settings are restored
+lspHelper.RestoreModule("/sdcard/Download/zennovcam.gz"); // Restore from the archive on the device
+```
 
 ---
 
@@ -136,6 +213,12 @@ return lspHelper.GetCLIStatus();
     
     **Parameters:**
     - `packageNames` — array of package names.
+
+#### Example
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages("com.example.app1", "com.example.app2"); // Replace the scope list of the module
+```
 
 _______________________________________________
 

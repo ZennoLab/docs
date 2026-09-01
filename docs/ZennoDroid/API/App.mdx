@@ -823,6 +823,9 @@ app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
 
 ### SetVideoForFakeCamera
 
+:::info **Доступно начиная с версии ZennoDroid 2.6.1.0.**
+:::
+
 - **`void SetVideoForFakeCamera(string packageName, string videoSource)`**  
     Подменяет камеру приложения видеофайлом: приложение получает кадры видео так, как будто они пришли с камеры устройства. Видео проигрывается по кругу, без звука, все потоки кадров остаются виртуальными. Если приложению нужно ещё и сохранять фотографии, используйте перегрузку с параметрами воспроизведения.
     
@@ -863,8 +866,24 @@ app.SetVideoForFakeCamera(packageName, "/sdcard/Download/source.mp4", false, fal
 app.SetVideoForFakeCamera(packageName, "");
 ```
 
+Подмена начинает работать только после того, как модуль **ZennoVCam** включён в LSPosed, а целевое приложение добавлено в его список. Сделать это можно через [**LSPosed API**](./LSPosed) — включим подмену для стандартного приложения «Камера»:
+```csharp
+var packageName = "com.android.camera2"; // Стандартное приложение «Камера»
+
+instance.DroidInstance.App.Close(packageName); // Закрыть приложение
+
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Работать с модулем ZennoVCam
+lspHelper.SetPackages(packageName); // Задать приложение в списке подмены модуля ZennoVCam
+lspHelper.EnableModule(); // Включить модуль ZennoVCam
+
+instance.DroidInstance.App.SetVideoForFakeCamera(packageName, @"c:\source.mp4"); // Подменить камеру видео
+
+instance.DroidInstance.App.Open(packageName); // Открыть приложение
+```
+Список приложений задаётся **до** включения модуля: с пустым списком `EnableModule` завершится ошибкой *Add any package!*. Устанавливать модуль вручную не нужно — `SetPackages` доставит его на устройство, если он ещё не установлен.
+
 :::warning Важные замечания
-- Нужен модуль **ZennoVCam**: он должен быть установлен, включён и добавлен в список подмены для целевого приложения.
 - Параметр `photo` по умолчанию выключен, потому что это компромисс, а не улучшение: чтобы сохранение фотографии прошло, модуль отдаёт реальной камере вспомогательные потоки кадров (замер экспозиции, миниатюры). Оставьте `false` для сканеров и KYC-приложений, которые читают кадры через такие потоки, — иначе они получат изображение реальной камеры.
 :::
 
