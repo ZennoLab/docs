@@ -14,6 +14,11 @@ This tab contains various settings for configuring Android in Memu and LDPlayer 
 
 ![working with Memu](./assets/Settings_for_Android/Settings_for_Android_pic1.png)
 _______________________________________________
+### Emulator type.
+The list above the settings picks the emulator ZennoDroid works with: **Memu**, **LDPlayer9** or **LDPlayer14**. Only the emulators installed on the computer are listed, and some of the settings below depend on the type you pick.
+:::info **While at least one device is running the list is locked, and the hint *It is necessary to stop all running devices* shows up next to it**
+:::
+_______________________________________________
 ### Use default device.
 This setting lets you choose the device that Project Maker will use by default—as long as no other device is selected. ZennoDroid will ignore this device when randomly picking from the available list.
 
@@ -21,13 +26,26 @@ If you want to use the selected device for running projects in ZennoDroid, turn 
 :::info **The 'Refresh' button updates the device list**
 :::
 
-### Image capture. 
-This is an **alternative methods of capturing images** from the device. You should only enable this if running the device through ZennoDroid always ends in an error and the log shows ***`Failed to capture image`***.  
+### Image capture method.
+Sets how ZennoDroid gets the picture from the emulator:
+- **H.264** — the default one, the picture comes over as a video stream.
+- **MJPEG** — an alternative method. You should only pick it if running the device through ZennoDroid always ends in an error and the log shows ***`Failed to capture image`***.
+- **Manually** — nothing is captured continuously, the picture is only refreshed on demand: with the refresh button in the [**Device window**](../pm/Interface/DeviceWindow) or the [**RefreshScreen**](../API/Screen#refreshscreen) method. Handy when you don't need the picture all the time, as it saves computer resources.
+:::info The capture method can also be set when the device starts, with the [Start](../API/Action#start) method
+:::
+_______________________________________________
+### Image capture quality.
+Three levels: **Very low**, **Low** and **High**. The lower the quality, the lighter the load on the CPU — which tells when you run a lot of threads.
 
-You can also lower the quality to **Low** if the system is sluggish.
+The setting is unavailable while the capture method is **Manually**. In code the quality is changed with the [**SetCaptureScreenQuality**](../API/Screen#setcapturescreenquality) method.
 _______________________________________________
 ### Timeout waiting for device loading.
 This is the amount of time the emulator gets to boot up. If the device doesn't boot within this time, execution will fail with an error.
+_______________________________________________
+### Use improved taps.
+Turns on the emulation of real screen taps: they are injected through the kernel input layer, so they are visible to `getevent`, have a size of their own and work on protected pages.
+
+In code the mode is turned on with the [**SetNativeEventMode**](../API/Input#setnativeeventmode) method — before connecting to the device.
 _______________________________________________
 ### Random click deflection.
 Allows clicks to happen with a slight offset from the set parameters. Used in these actions:
@@ -43,10 +61,18 @@ _______________________________________________
 ### Delay before and after character input.
 Just like the previous setting, used in [**Keyboard Emulation**](../Android/pro-lite/Keyboard) and [**Set Value**](../Android/pro-lite/SetValue) actions to set the delay.
 _______________________________________________
-### Traffic proxying.
+### The method of traffic proxying.
 ZennoDroid lets you choose how to proxy traffic for the [**Set Proxy**](../Android/pro-lite/setting#how-to-set-up-a-proxy) action. By default, Proxifier is used.
 
 ![Traffic proxying](./assets/Settings_for_Android/Settings_for_Android_pic3.png)
+- **Proxifier** — the traffic of the emulator is routed to the computer and proxied there.
+- **Redsocks** — a transparent redirector of TCP/UDP connections into a proxy, on the device itself. Works on Android 7x64, 9 and 12 only.
+- **Clash** — rule-based proxying that wraps the whole of the UDP traffic.
+
+Every method is described in detail in [**Traffic Proxying**](./Proxy_Traffic).
+_______________________________________________
+### Disable animation.
+This option lets you turn off all system animations. We recommend checking this box since smooth transitions really slow the device down.
 _______________________________________________
 ### Limit frame rate.
 This changes the FPS of the running emulators. If enabled, all emulators will be forced to run at the set frame rate.
@@ -59,6 +85,9 @@ It's best to always keep this on, as it reduces the load on your graphics card.
 _______________________________________________  
 ### Disable ads.
 Memu launcher has ads built in. They can mess up your templates since the ads show up over all windows. It's always best to turn them off.  
+_______________________________________________  
+### Fix build.prop errors.
+In an emulator some of the device properties are left as `unknown`. With this setting on, ZennoDroid takes the manufacturer, the brand, the model, the board, the `hardware`, the baseband and the fingerprint from the emulator configuration before the first boot completes and writes them into `build.prop`, so that apps and sites do not see `unknown` among the device properties.
 _______________________________________________  
 ### Mute microphone.  
 Lets you turn off microphone in the emulators.  
@@ -85,3 +114,4 @@ _______________________________________________
 ## Useful links.
 - [**Installing Memu**](../pro-lite/Memu_Install).
 - [**Device settings**](../Android/pro-lite/setting).
+- [**Traffic Proxying**](./Proxy_Traffic).
