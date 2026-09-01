@@ -140,6 +140,14 @@ const config = {
             to: '/zennoproxy/getting-started',
             from: ['/zennoproxy/basics/getting-started', '/zennoproxy/intro'],
           },
+          {
+            to: '/zennodroid/introduction/ai-assistant',
+            from: ['/zennodroid/get-started/ai-assistant'],
+          },
+          {
+            to: '/zennodroid/introduction/MCP_Setup',
+            from: ['/zennodroid/get-started/MCP_Setup'],
+          },
         ],
         // FIXME: createRedirects function creates circular redirects (path -> same path)
         // This causes 100+ warnings and build failures because:
