@@ -821,6 +821,55 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
 
 ---
 
+### SetVideoForFakeCamera
+
+- **`void SetVideoForFakeCamera(string packageName, string videoSource)`**  
+    Feeds a video file to the app's camera instead of the real sensor, so the app receives the video frames as if they came from the device camera. The video plays in a loop, without sound, and every frame lane stays virtual. Use the overload with playback options if the app also needs to save photos.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `videoSource` — path to the video. Either a local path on the PC (e.g. `c:\source.mp4`), which is pushed to the device, or a path that already exists on the device (starts with `/`, e.g. `/sdcard/Download/source.mp4`), which is copied without a PC transfer. An empty string disables the substitution and returns the real camera.
+    
+    **Description:**  
+    Any container MediaCodec can decode works (`.mp4`, `.mkv`, `.webm`, `.3gp`, `.m4v`, `.mov`), and the resolution of the video need not match what the app requests.
+    
+    The video is cached on the device by its content hash, so pushing the same file again — or reusing it for another app — does not transfer it a second time.
+    
+    The video can be replaced while the camera is running: a subsequent call switches playback without restarting the app or its camera session.
+
+- **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo)`**  
+    The same, with explicit playback options.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `videoSource` — path to the video on the PC or on the device, or an empty string to disable the substitution;
+    - `loop` — restart the video when it ends. When `false`, the last frame remains on screen;
+    - `mute` — suppress the audio track of the video. Pass `false` to play the sound;
+    - `photo` — let a camera app finish saving a photo.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+
+// A video from the PC: pushed to the device, played in a loop and without sound
+app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
+
+// A video that is already on the device: with sound, without looping, photos allowed
+app.SetVideoForFakeCamera(packageName, "/sdcard/Download/source.mp4", false, false, true);
+
+// Return the real camera
+app.SetVideoForFakeCamera(packageName, "");
+```
+
+:::warning Important notes
+- The **ZennoVCam** module is required: it has to be installed, enabled and scoped to the target app.
+- `photo` is off by default because it is a trade rather than a strict improvement: to get the save through, the module hands the small helper frame lanes (metering, thumbnails) back to the real camera. Leave it `false` for a scanner or KYC app that reads frames through one of those lanes, since it would otherwise receive the real camera image.
+:::
+
+---
+
 ### Uid
 
 - **`string Uid(string packageName)`**  
