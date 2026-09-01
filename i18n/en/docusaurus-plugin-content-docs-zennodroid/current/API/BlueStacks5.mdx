@@ -139,7 +139,7 @@ bs.WaitForStop(60);
     `true` if the emulator booted; `false` if the time ran out.
     
     **Description:**  
-    Call it after every `Start()`: that only asks the player to come up and returns immediately, without waiting for the boot.
+    Call it after every `Start()`: that one returns immediately, without waiting for the boot.
 
 #### Example
 ```csharp
@@ -162,7 +162,7 @@ if (!bs.WaitForBoot(120)) throw new Exception("The emulator did not boot");
     `true` if the connection answers; `false` if the time ran out.
     
     **Description:**  
-    `Connect()` succeeds before the emulator is ready to answer, and the first command after it comes back empty or as an error — this method spends that command itself.
+    Call it after `Connect()`: the emulator does not start answering commands right away.
 
 #### Example
 ```csharp
@@ -185,7 +185,7 @@ if (!bs.WaitForConnect(60)) throw new Exception("The ADB connection does not ans
     `true` if the process is gone; `false` if the time ran out.
     
     **Description:**  
-    Call it after every `Stop()`: that only asks the player to shut down, and the instance disks stay locked until the process is actually gone — which is what operations on a stopped instance, `Unlock()` and `Lock()` among them, wait for.
+    Call it after every `Stop()`: operations on a stopped instance, `Unlock()` and `Lock()` among them, need the process to be gone.
 
 #### Example
 ```csharp
@@ -259,9 +259,6 @@ Managing root access, Magisk, and patches in the BlueStacks 5 emulator.
     
     **Returns:**  
     `true` if root answers; otherwise `false`.
-    
-    **Description:**  
-    It is asked the same way the root steps ask it, so it holds for whichever `su` the instance ended up with. For an instance that is stopped, still booting, or simply not rooted it returns `false` and never throws.
 
 #### Example
 ```csharp
@@ -294,7 +291,7 @@ new BlueStacks5Root("Rvc64_1", "nxt").EnableZygisk();
     - `modulePath` — path to the Zygisk provider module `.zip` file (NeoZygisk).
     
     **Description:**  
-    Takes effect after the emulator is restarted. On Android 7 the call is refused rather than quietly doing nothing: that image has no Zygisk at all, although root does work on it.
+    Takes effect after the emulator is restarted. Not supported on Android 7.
 
 #### Example
 ```csharp
@@ -343,7 +340,7 @@ new BlueStacks5Root("Rvc64_1", "nxt").InstallMagisk(MagiskSource.DefaultApk);
     - `magiskApk` — path to the Magisk `.apk` to take the binaries from.
     
     **Description:**  
-    Replaces `Patch()` + `InstallMagisk()` + `FlashMagisk()` together with the restarts they need: root comes up on the next boot, from the init trigger this method writes. The instance has to be stopped (a running player holds its images) and has to have been through `Unlock(bool)` — what this writes into is the clone of the system disk that unlock puts in place. The apk is read for its binaries only; the manager app is still installed with `InstallMagisk()`, on the booted instance.
+    The instance has to be stopped and unlocked with `Unlock(patchImage: false)`. The Magisk manager app is installed separately, with `InstallMagisk()`.
 
 #### Example
 ```csharp
@@ -391,7 +388,7 @@ new BlueStacks5Root("Rvc64_1", "nxt").InstallModule(@"C:\Modules\LSPosed.zip");
     `true` if the module was written; `false` if `/data` has never been initialised.
     
     **Description:**  
-    The module is live on the next boot instead of the one after it. `false` is not a failure: it means `/data` is not there to write into yet. Android lays it out on the very first boot of an instance and would take anything written before that along with it, so the answer is to boot once and call the method again — which is what `SetupRootOffline()` does. On Android 7 it throws: there is no Zygisk there to provide for.
+    When the method returns `false`, boot the instance once and call it again. Not supported on Android 7.
 
 #### Example
 ```csharp
@@ -459,9 +456,6 @@ new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
     
     **Parameters:**
     - `patchImage` — `true` is what `Unlock()` does; `false` skips the patch.
-    
-    **Description:**  
-    That patch serves the online root and nothing else — it is how root is got on a **running** instance so that files can be copied in — so an offline install passes `false` and leaves the image stock.
 
 #### Example
 ```csharp
@@ -482,7 +476,7 @@ new BlueStacks5Root("Rvc64_1", "nxt").Unlock(patchImage: false);
     `true` if root answers; `false` if the time ran out.
     
     **Description:**  
-    Root is not there the moment Android reports the boot as complete — the `su` daemon comes up on its own a few seconds later — so a single `IsRooted` right after a restart says nothing.
+    Call it after `WaitForBoot()`: root does not start answering the moment Android is up.
 
 #### Example
 ```csharp
@@ -640,7 +634,7 @@ var names = mgr.GetListNames();
 var titles = mgr.GetListTitles();
 
 for (int i = 0; i < names.Length; i++)
-    project.SendInfoToLog($"{titles[i]} -> {names[i]}");
+    project.SendInfoToLog($"{titles[i]} -> {names[i]}"); // BlueStacks App Player 1 -> Rvc64_1
 ```
 
 ---
@@ -658,7 +652,7 @@ for (int i = 0; i < names.Length; i++)
 
 #### Example
 ```csharp
-string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1");
+string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1"); // BlueStacks App Player 1
 ```
 
 ---
@@ -673,36 +667,11 @@ string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1");
     - `magiskApk` — path to the Magisk `.apk`. Empty takes `MagiskSource.DefaultApk`, the copy that ships with ZennoDroid;
     - `zygiskModule` — path to a Zygisk provider module `.zip` (NeoZygisk), which is what the Magisk builds whose own Zygisk cannot work on an emulator need; `MagiskSource.DefaultZygiskModule` is the copy that ships with ZennoDroid. Empty turns on Magisk's own Zygisk instead;
     - `timeout` — how long each wait in the sequence may take, in seconds.
-    
-    **Description:**  
-    Every step of the pipeline is a method of this API and every wait is one too, so the same thing can be done step by step. With `name = TitleToNameConverter(title)`, `bs = new BlueStacks5(name, oem)` and `root = new BlueStacks5Root(name, oem)`, this is exactly what runs:
-
-```csharp
-bs.Stop();  bs.WaitForStop(timeout);   // Unlock needs the disks free
-root.Unlock();
-bs.Start(); bs.WaitForBoot(timeout);   // Patch needs Android up
-root.Patch();
-root.InstallMagisk(magiskApk);
-root.FlashMagisk();
-bs.Stop();  bs.WaitForStop(timeout);   // the Magisk daemon only starts on boot
-bs.Start(); bs.WaitForBoot(timeout);
-if (!root.WaitForRoot(timeout))        // whether Patch has to be repeated — see below
-    root.Patch();
-root.EnableZygisk(zygiskModule);
-bs.Stop();  bs.WaitForStop(timeout);   // a Zygisk loader is only picked up by a zygote
-bs.Start(); bs.WaitForBoot(timeout);   // that starts after the daemon
-```
-
-Root is bind mounts and those do not survive a boot, so with some Magisk builds the patch has to be made again after the restart. But the system-mode flash of upstream Magisk installs a boot trigger that remakes it, and patching on top of that only fights with it — so which one it is is asked (`WaitForRoot()`) rather than assumed.
-
-On Android 7 the Zygisk step is skipped and everything before it still runs: that image has no Zygisk, and root on it is worth having on its own.
-
-Throws if a step fails or a wait runs out of time; the message names the stage it stopped at.
 
 #### Example
 ```csharp
 var mgr = new BlueStacks5Manager("nxt");
-mgr.SetupRoot("BlueStacks Rvc64", "", "", 120);
+mgr.SetupRoot("BlueStacks App Player 1", "", "", 120);
 ```
 
 ---
@@ -715,32 +684,13 @@ mgr.SetupRoot("BlueStacks Rvc64", "", "", 120);
     **Parameters:**
     - `title` — display title as shown in the BlueStacks interface (a system name is accepted too);
     - `magiskApk` — the Magisk `.apk`: both the source of the binaries written into the image and the manager installed afterwards. Empty takes `MagiskSource.DefaultApk`;
-    - `zygiskModule` — path to a Zygisk provider module `.zip` (NeoZygisk); `MagiskSource.DefaultZygiskModule` is the copy that ships with ZennoDroid. Empty installs Magisk alone — offline there is no built-in Zygisk to fall back on, since nothing here runs on the device;
+    - `zygiskModule` — path to a Zygisk provider module `.zip` (NeoZygisk); `MagiskSource.DefaultZygiskModule` is the copy that ships with ZennoDroid. Empty installs Magisk alone, without Zygisk;
     - `timeout` — how long each stop, boot and root wait may take, in seconds.
-    
-    **Description:**  
-    Nothing in it needs root to already exist, so the hex patch of the image, the unpacking of the apk on the device and two of the three restarts all go: the instance is stopped once, both images are written, and the first boot comes up rooted. With `name = TitleToNameConverter(title)`, `bs = new BlueStacks5(name, oem)` and `root = new BlueStacks5Root(name, oem)`, this is exactly what runs:
-
-```csharp
-bs.Stop();  bs.WaitForStop(timeout);      // the images have to be free
-root.Unlock(patchImage: false);           // clone the system disk, do not patch it
-root.InstallMagiskOffline(magiskApk);     // lay Magisk out on the clone
-root.InstallModuleOffline(zygiskModule);  // and the Zygisk provider on the data disk
-bs.Start(); bs.WaitForBoot(timeout);
-root.WaitForRoot(timeout);                // the init trigger brings the daemon up
-root.InstallMagisk(magiskApk);            // the manager app, and it goes last
-```
-
-One boot, then — except on an instance that has never been started: Android lays `/data` out on its first boot and would take a module written before that along with it, so there the module goes in on a second pass and it takes two.
-
-The manager is installed after that second pass, on the boot the caller is left with, and not before it. What an install carries with it — the icon on the desktop, the permission to post notifications — Android writes when it gets round to it, and an instance stopped moments later comes back without either.
-
-On Android 7 the module is not written at all — that image has no Zygisk — and the rest still runs. Throws if a step fails or a wait runs out of time; the message names the stage it stopped at.
 
 #### Example
 ```csharp
 var mgr = new BlueStacks5Manager("nxt");
-mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
+mgr.SetupRootOffline("BlueStacks App Player 1", "", "", 120);
 ```
 
 ---
@@ -775,14 +725,14 @@ new BlueStacks5Manager("nxt").StopManager();
     Converts an emulator display name to its system name.
     
     **Parameters:**
-    - `title` — display name (as shown in the BlueStacks interface).
+    - `title` — display name as shown in the BlueStacks interface: `BlueStacks App Player 1`, `BlueStacks App Player 2` and so on.
     
     **Returns:**  
     Internal instance name used by the system.
 
 #### Example
 ```csharp
-string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks Rvc64");
+string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks App Player 1");
 ```
 
 ---
@@ -790,18 +740,15 @@ string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks Rvc
 ### Unroot
 
 - **`void Unroot(string title, int timeout)`**  
-    Takes root back off the instance — the counterpart of `SetupRoot()` and `SetupRootOffline()`.
+    Takes root back off the instance — the counterpart of `SetupRoot()` and `SetupRootOffline()`. The instance is stopped and left stopped.
     
     **Parameters:**
     - `title` — display title as shown in the BlueStacks interface (a system name is accepted too);
     - `timeout` — how long the stop may take, in seconds.
-    
-    **Description:**  
-    The writable clone of the system disk, the one Magisk was written to, is dropped and the factory image goes back in its place, read-only. `bs.Stop()` + `bs.WaitForStop(timeout)` runs, then `root.Lock()`; the instance is left stopped, because that is the state `Lock()` needs it in and starting it again is the caller's business. Root lives on the system image, so this is all there is to being rid of it: what was written to `/data` — the Magisk manager app among it — stays there and none of it does anything with the binaries gone. An instance that was never rooted is not an error: the disk put back is the one already mounted.
 
 #### Example
 ```csharp
-new BlueStacks5Manager("nxt").Unroot("BlueStacks Rvc64", 120);
+new BlueStacks5Manager("nxt").Unroot("BlueStacks App Player 1", 120);
 ```
 
 :::note Important Notes
