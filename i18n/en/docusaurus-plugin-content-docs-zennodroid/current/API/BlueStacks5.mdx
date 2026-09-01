@@ -634,7 +634,7 @@ var names = mgr.GetListNames();
 var titles = mgr.GetListTitles();
 
 for (int i = 0; i < names.Length; i++)
-    project.SendInfoToLog($"{titles[i]} -> {names[i]}");
+    project.SendInfoToLog($"{titles[i]} -> {names[i]}"); // BlueStacks App Player 1 -> Rvc64_1
 ```
 
 ---
@@ -652,7 +652,7 @@ for (int i = 0; i < names.Length; i++)
 
 #### Example
 ```csharp
-string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1");
+string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1"); // BlueStacks App Player 1
 ```
 
 ---
@@ -671,7 +671,7 @@ string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1");
 #### Example
 ```csharp
 var mgr = new BlueStacks5Manager("nxt");
-mgr.SetupRoot("BlueStacks Rvc64", "", "", 120);
+mgr.SetupRoot("BlueStacks App Player 1", "", "", 120);
 ```
 
 ---
@@ -690,7 +690,7 @@ mgr.SetupRoot("BlueStacks Rvc64", "", "", 120);
 #### Example
 ```csharp
 var mgr = new BlueStacks5Manager("nxt");
-mgr.SetupRootOffline("BlueStacks Rvc64", "", "", 120);
+mgr.SetupRootOffline("BlueStacks App Player 1", "", "", 120);
 ```
 
 ---
@@ -725,14 +725,14 @@ new BlueStacks5Manager("nxt").StopManager();
     Converts an emulator display name to its system name.
     
     **Parameters:**
-    - `title` — display name (as shown in the BlueStacks interface).
+    - `title` — display name as shown in the BlueStacks interface: `BlueStacks App Player 1`, `BlueStacks App Player 2` and so on.
     
     **Returns:**  
     Internal instance name used by the system.
 
 #### Example
 ```csharp
-string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks Rvc64");
+string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks App Player 1");
 ```
 
 ---
@@ -748,7 +748,7 @@ string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks Rvc
 
 #### Example
 ```csharp
-new BlueStacks5Manager("nxt").Unroot("BlueStacks Rvc64", 120);
+new BlueStacks5Manager("nxt").Unroot("BlueStacks App Player 1", 120);
 ```
 
 :::note Important Notes
