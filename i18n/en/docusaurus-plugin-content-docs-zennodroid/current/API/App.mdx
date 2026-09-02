@@ -854,7 +854,7 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.android.chrome"; // App name
+var packageName = "com.android.camera"; // The default Camera app
 
 // A video from the PC: pushed to the device, played in a loop and without sound
 app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
@@ -865,6 +865,7 @@ app.SetVideoForFakeCamera(packageName, "/sdcard/Download/source.mp4", false, fal
 // Return the real camera
 app.SetVideoForFakeCamera(packageName, "");
 ```
+The package name of the default Camera app differs from device to device. To find it, open the camera on the device and then the [**Installed Apps**](../Tools/Installed_App) tool — the identifier is in the *Active application in the foreground* group.
 
 The substitution starts working only once the **ZennoVCam** module is enabled in LSPosed and the target app is on its list. That is done through the [**LSPosed API**](./LSPosed) — here it is turned on for the default Camera app:
 ```csharp
