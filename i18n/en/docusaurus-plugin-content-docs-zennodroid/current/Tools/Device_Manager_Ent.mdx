@@ -85,24 +85,26 @@ Every device counts the interval from its own last attempt rather than from a sh
 
 ### Description of available elements  
 #### Columns:  
-- **Check**. What is happening to the device right now. While an attempt runs the cell draws a progress bar, and between attempts a countdown to the next one: *in 13 s*, or *in 2:05* when the wait is over a minute.  
+- **Check**. What is happening to the device right now. While an attempt runs the cell draws a progress bar, and between attempts a countdown to the next one: *in 13 s*, or *in 2:05* when the wait is over a minute. *queued* means the time has come but the monitor is waiting for a free slot: only so many devices are checked at once. For a device that has spent its attempt limit the cell is empty: there will be no next attempt.  
 - **Device**. The serial number of the device (USB) or its address with a port (network). The cell has a copy button.  
 - **Model**. The phone model. Filled in for connected devices only: there is nobody to ask about a device that was not found.  
 - **State**. *Connected*, *Not found*, *Unauthorized*, *Checking…*  
 - **Reconnect**. The checkbox switches automatic reconnection on for that one device. It is ticked by default for every new device. An unticked box is remembered, but only while the device stays in the list: take it out and add it again, and the tick comes back.  
-- **Attempts**. How many attempts in a row did not end in a connection. Resets as soon as the device connects.  
+- **Attempts**. How many attempts in a row did not end in a connection. Resets as soon as the device connects. Once the counter reaches the **Max connection attempts** setting, the monitor stops connecting that device.  
 - **Checked**. When the last attempt ended. An empty cell means an attempt is running right now, or that none was ever needed.  
 - **Note**. Why the attempt failed:  
     - *no TCP response* — nobody answers at that address: the device is switched off, it left the network, or debugging over the network is not enabled on it;  
     - *confirm USB debugging on the device* — the debugging prompt is waiting to be confirmed on the phone;  
     - *adb connect failed*, *adb reconnect failed* — adb refused;  
-    - *the device is not connected* — there is nothing to reconnect.  
+    - *the device is not connected* — there is nothing to reconnect;  
+    - *Attempt limit reached: 5* — the monitor no longer connects the device: the limit set on the "Settings" tab is spent.  
 - **List**. The **+** button adds the device to the list from the "Settings" tab, **−** takes it out. **+** is only shown for devices that can be written into the list: an address goes into the "Network" column, a serial number into the "USB" one.  
 
 #### Row colour and weight:  
 - **green** — the device is connected,  
 - **red** — not found,  
 - **orange** — unauthorized,  
+- **red-brown** — the monitor gave up on the device: its attempt limit is spent,  
 - **bold** — a device the monitor is actually keeping alive (the "Reconnect" box is ticked). Everything else stays regular, devices outside the list included: there is nothing to bring back for them yet.  
 
 #### Switches:  
@@ -113,6 +115,7 @@ Every device counts the interval from its own last attempt rather than from a sh
 - **Search**. Scans the ranges from the "Settings" tab once and switches on showing devices outside the list. Available while reconnecting is off — otherwise the monitor is doing the scanning itself.  
 - **Reconnect**. Reconnects every offline device without waiting out their intervals.  
 - **Add to the list**. Writes every device found into the list at once, so you do not have to press **+** on each row.  
+- **Reset attempts**. Zeroes the attempt counters and takes the devices the limit stopped back into the loop: those are checked at once, without waiting out their intervals. The button is unavailable while there is nothing to clear — no device has made any attempts. How many counters were cleared shows up in the status bar: *Attempts reset: 7*.  
 
 _______________________________________________  
 ## The "Settings" tab  
@@ -149,6 +152,7 @@ Bad lines do not abort the parse: the program reads the rest and reports below t
 #### The remaining elements:  
 - **Reconnect interval, sec**. How many seconds after a failed attempt the monitor tries again. 30 by default, anything from 1 to 3600 is allowed.  
 - **Default port**. Appended to the addresses written without a port. 5555 by default.  
+- **Max connection attempts**. How many failed attempts in a row the monitor makes before it stops connecting the device. `0` — no limit, which is the default; 1000 at most. The counter clears itself when the device comes back, and by hand with **Reset attempts** on the "Monitor" tab.  
 - **Devices recognized**. How many devices came out of both columns after parsing — a handy number for checking that a range says what you meant it to.  
 - **Apply**. Saves the lists and the settings and hands them to the monitor.  
 
