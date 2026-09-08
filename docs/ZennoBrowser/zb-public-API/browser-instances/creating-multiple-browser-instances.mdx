@@ -19,6 +19,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | keepAlive | логическое значение |  | true | Показывает, должны ли экземпляры браузера оставаться активными после создания. Установите `true`, чтобы экземпляры оставались активными; в противном случае `false`. Значение по умолчанию — `true` (`true` или `false`). |
 | environmentTags | string |  | (empty) | Теги для конфигурации окружения экземпляра браузера. |
 | commandLineArguments | string |  | (empty) | Пользовательские дополнительные аргументы командной строки, которые будут переданы браузеру при запуске. |
+| customFeatures | string |  | (empty) | Необязательный JSON-объект с переопределениями функций браузера. Переопределяет функции, прочитанные из окружения. |
 | body | JSON-Array  |  |  | Массив UUID профилей, для которых нужно создать экземпляры браузера. Пример: `["uuid1", "uuid2"]` |
 
 #### **Пример запроса:**
@@ -27,7 +28,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu' \
+curl 'http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu&customFeatures=%7B%7D' \
   --request POST \
   --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
@@ -44,7 +45,7 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu"),
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop%201&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu&customFeatures=%7B%7D"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -67,7 +68,7 @@ using (var response = await client.SendAsync(request))
 
 **Cube:**  
 ```
-http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop 1&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu
+http://localhost:8160/v1/browser_instances/create_bulk?workspaceId=-1&desktopName=Desktop 1&keepAlive=true&environmentTags=&commandLineArguments=--disable-gpu&customFeatures={}
 ```
 **Body (JSON):**
 ```json

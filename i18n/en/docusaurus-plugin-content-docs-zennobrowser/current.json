@@ -95,6 +95,10 @@
     "message": "Proxy Management",
     "description": "The generated-index page title for category Управление прокси in sidebar zennobrowserSidebar"
   },
+  "sidebar.zennobrowserSidebar.category.Управление прокси.link.generated-index.description": {
+    "message": "Operations for creating, updating, and deleting proxies.",
+    "description": "The generated-index page description for category Управление прокси in sidebar zennobrowserSidebar"
+  },
   "sidebar.zennobrowserSidebar.category.Управление прокси-папками": {
     "message": "Proxy Folders Management",
     "description": "The label for category Управление прокси-папками in sidebar zennobrowserSidebar"
@@ -110,6 +114,10 @@
   "sidebar.zennobrowserSidebar.category.Экземпляры браузера.link.generated-index.title": {
     "message": "Browser Instances",
     "description": "The generated-index page title for category Экземпляры браузера in sidebar zennobrowserSidebar"
+  },
+  "sidebar.zennobrowserSidebar.category.Экземпляры браузера.link.generated-index.description": {
+    "message": "Operations for starting, stopping, and retrieving browser instance information.",
+    "description": "The generated-index page description for category Экземпляры браузера in sidebar zennobrowserSidebar"
   },
   "sidebar.zennobrowserSidebar.category.Управление потоками": {
     "message": "Thread Management",

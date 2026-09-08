@@ -40,6 +40,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | commandLineArguments | string |  | (empty) | Пользовательские дополнительные аргументы командной строки, которые будут переданы браузеру при запуске. |
 | proxyServerId | string |  | (empty) | Настройка идентификатора прокси-сервера. Используйте `null`, чтобы оставить значение без изменений, пустую строку — чтобы очистить прокси, или корректный GUID — чтобы установить новый прокси-сервер. |
 | presetId | string |  | (empty) | Идентификатор пресета для применения. Используйте `null`, чтобы оставить значение без изменений, пустую строку — чтобы снять пресет, или GUID — чтобы установить новый пресет. |
+| imagesVideosDownload | string |  | (empty) | Настройка загрузки изображений и видео. Допустимые значения: `on` — включить, `off` — отключить. Пустая строка сохраняет текущее значение. |
 
 :::note
 ID профиля для обновления должен быть указан в фигурных скобках `{ }` в пути URL.
@@ -51,7 +52,7 @@ ID профиля для обновления должен быть указан
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000' \
+curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000&imagesVideosDownload=on' \
   --request PUT \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
 ```
@@ -64,7 +65,7 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Put,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000"),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000&imagesVideosDownload=on"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -80,7 +81,7 @@ using (var response = await client.SendAsync(request))
 
 **Cube:**  
 ```
-http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created from API&tags=tag1 tag2&screen=1920 x 1080&cpu=8/16&memory=8&language=en-US&geoLocation=55.7558,37.6176&timeZone=Europe/Moscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1,1,1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000
+http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created from API&tags=tag1 tag2&screen=1920 x 1080&cpu=8/16&memory=8&language=en-US&geoLocation=55.7558,37.6176&timeZone=Europe/Moscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1,1,1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000&imagesVideosDownload=on
 ```
 
 ![](../assets/image16.png)
