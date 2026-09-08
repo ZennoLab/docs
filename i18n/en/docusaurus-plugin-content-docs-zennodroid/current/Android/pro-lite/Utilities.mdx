@@ -60,6 +60,8 @@ _______________________________________________
 ![WiFi](../assets/Utilities/Utilities_pic5.png)  
 
 This action lets you change the WiFi network name (SSID) the emulator is "connected" to.
+:::info **On LDPlayer the action does nothing - the list marks it *(not supported)*.**
+:::
 _______________________________________________
 ### Reset Google Advert ID
 ![Advert](../assets/Utilities/Utilities_pic6.png)  
@@ -76,6 +78,16 @@ Lets you get the on-screen element structure as an XML string. It's the same inf
 - position and size (the **bounds** attribute),
 - displayed text (the **text** attribute),
 - whether the element is visible (**displayed** attribute).
+_______________________________________________
+### Appium settings  
+:::info **Added in ZennoDroid v2.4.3.0.**
+:::
+Changes which elements make it into the device's element tree.  
+![Appium settings](../assets/Utilities/Utilities_pic18.png)  
+#### Available parameters:  
+- *Allow invisible webview.* Fixes the case where the element tree stops being built while a large page is open.  
+- *Allow invisible elements.* The element tree shows every element of the screen, including the ones beyond its edges.  
+- *Ignore unimportant views.* The tree is built without the secondary elements that carry no useful information.  
 _______________________________________________
 ### Scaling  
 This action lets you scale: **Zoom Out** (shrink) or **Zoom In** (enlarge).  

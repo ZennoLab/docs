@@ -87,6 +87,55 @@ _______________________________________________
 :::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
 ::: 
 _______________________________________________
+## Настройка Bluetooth  
+Задаёт MAC-адрес Bluetooth-адаптера устройства.  
+![Настройка Bluetooth](../assets/setting/Android_Setting_pic31.png)  
+
+- *MAC адрес Bluetooth адаптера*. Формат - через двоеточие: XX:XX:XX:XX:XX:XX, либо без него: XXXXXXXXXXXX (12 знаков).  
+
+:::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
+:::
+_______________________________________________
+## Media DRM ID  
+Задаёт идентификатор Media DRM - по нему устройство узнают приложения, которые работают с защищённым контентом.  
+![Media DRM ID](../assets/setting/Android_Setting_pic32.png)  
+
+- *Media DRM ID*. Строка из 64 шестнадцатеричных символов.  
+
+:::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
+:::
+_______________________________________________
+## Google Services Framework ID  
+Задаёт Google Services Framework ID - идентификатор, по которому устройство узнают сервисы Google.  
+![Google Services Framework ID](../assets/setting/Android_Setting_pic33.png)  
+
+- *Google Services Framework ID*. Значение, которое будут получать сервисы Google.  
+
+:::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
+:::
+_______________________________________________
+## Серийный номер устройства  
+Задаёт серийный номер, который приложения получают у устройства.  
+![Серийный номер устройства](../assets/setting/Android_Setting_pic34.png)  
+
+- *Серийный номер устройства*. Значение, которое будет отдаваться приложениям.  
+
+:::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
+:::
+_______________________________________________
+## Настройка GPU  
+Подменяет данные видеоускорителя, которые получают приложения и сайты.  
+![Настройка GPU](../assets/setting/Android_Setting_pic35.png)  
+
+- *GPU Vendor*. Производитель видеоускорителя.  
+- *GPU Renderer*. Модель видеоускорителя.  
+- *Добавить шум к Canvas Fingerprint*. Отпечаток canvas у устройства становится уникальным.  
+
+В коде те же значения задаются методами [**AddGpu**](../../API/DeviceOptions#addgpu) и [**AddCanvasNoise**](../../API/DeviceOptions#addcanvasnoise).  
+
+:::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
+:::
+_______________________________________________
 ## Выбор языка системы:  
 Данная настройка меняет язык подключённого смартфона.   
 Доступные значения: ***en, ko, de, ja, fr, ru, es, pt, hr, cn, sr, it, cs, th, in, pl, tr, uk, ar, vi, fil***  
@@ -119,6 +168,21 @@ _______________________________________________
 | Доступ к WebView выключен      | ![image2](../assets/setting/image-20251115-161200.png) |
 | :-----------: | ----------- |
 |  **Включен**   | ![image3](../assets/setting/image-20251115-161937.png)      |
+
+:::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
+:::
+_______________________________________________ 
+## Эмуляция подключения к Wi-Fi  
+:::info **Добавлено в версии ZennoDroid 2.4.8.0.**
+:::
+
+Устройство сообщает приложениям, что интернет-подключение идёт по Wi-Fi.  
+![Эмуляция подключения к Wi-Fi](../assets/setting/Android_Setting_pic36.png)  
+
+- *Выключена*. Приложения видят подключение как есть.  
+- *Включена*. Приложения видят подключение как Wi-Fi.  
+
+В коде то же самое включается методом [**AddWiFiEmulation**](../../API/DeviceOptions#addwifiemulation).  
 
 :::warning **Требуется установленный [*модуль «ZennoDroid» для LSPosed*](../../Enterprise/LSPosed#установка-модуля-zennodroid).**
 :::

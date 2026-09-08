@@ -72,7 +72,7 @@ It might be easier to reset the current device and generate new IDs instead (see
 ### Available options:
 - ***Version***  
 Here, you need to specify the Android version for the new device.  
-Available: **5.1, 7.1, 7.1 x64, 9.0 and 12.0**, or some **Random** of them.
+On MEmu: **5.1, 7.1, 7.1 x64, 9.0 x64, 12.0 x64** and **Random**, which picks one of the installed images. On LDPlayer 9 the only value is **9.0 x64**, on LDPlayer 14 - **14.0 x64**.
 :::tip By default, only version **7.1** is available.
 *To use other versions, you'll need to download them first.*
 :::
@@ -113,6 +113,8 @@ This action creates a full copy of a device with all its settings and saves it t
 ![Export](../assets/action/action_pic4.png)
 
 ***Path to .ova file*** Specify where the device copy will be saved.
+:::info **On LDPlayer the copy is saved to an *.ldbk* file, and the field is called "Path to LDBK file".**
+:::
 :::warning **The device must be turned off!**
 :::
 _______________________________________________
@@ -124,6 +126,8 @@ This lets you load a device from a file you saved in the previous step.
 #### Available options:
 - ***Path to .ova file***  
 The path to the file where the device is stored.
+:::info **On LDPlayer an *.ldbk* file is picked.**
+:::
 - ***Name***  
 Set a name for the imported device. Leave blank to use the default.
 - ***Put index/name to a variable***  
