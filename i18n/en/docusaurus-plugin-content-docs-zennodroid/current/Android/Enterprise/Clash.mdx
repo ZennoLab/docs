@@ -14,6 +14,10 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 Clash lets you set up a transparent proxy on Android devices with Root. It's part of the Box for Root module for Magisk.
 
 You'll need this program to [Set up a proxy in Clash mode](../../Settings/Proxy_Traffic_Ent).
+
+:::warning **Clash needs BusyBox version 1.36.1 or newer.**
+On emulators ZennoDroid puts its own copy of busybox in place, while on a real device BusyBox has to be installed by hand — see [**Installing BusyBox**](../../Enterprise/BusyBox). Otherwise installing Clash ends with the *Please Update BusyBox to version 1.36.1+* error.
+:::
 _______________________________________________
 ## Automatic Installation
 The **Box for Root** module is installed automatically when configuring a proxy in Clash mode for the first time.

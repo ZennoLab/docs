@@ -54,7 +54,7 @@ _______________________________________________
     **Parameters:**
     - `name` — account name (e.g. email or login);
     - `type` — account type (e.g. `com.google`, `com.facebook.auth.login`);
-    - `password` — account password.
+    - `password` — the account password in encrypted form, exactly as [**GetAccounts**](#getaccounts) returns it. A plain-text password is not accepted. An empty string and `null` mean the same thing: no password is set.
     
     **Returns:**  
     `true` if the account was added successfully; otherwise `false`.
@@ -65,8 +65,8 @@ _______________________________________________
     **Parameters:**
     - `name` — account name;
     - `type` — account type;
-    - `password` — password;
-    - `metadata` — additional account data (e.g. tokens, auth parameters in JSON or string form).
+    - `password` — the account password in encrypted form, exactly as [**GetAccounts**](#getaccounts) returns it;
+    - `metadata` — additional account data exactly as [**GetAccounts**](#getaccounts) returned it: that is what carries the account, authorisation and all, to another device. Arbitrary text or your own JSON will not do.
     
     **Returns:**  
     `true` if the account was added successfully; otherwise `false`.
@@ -302,7 +302,7 @@ app.DeleteCookie(packageName);
     - `packageName` — package name.
     
     **Returns:**  
-    A string with account data.
+    A JSON array of accounts, each with `name`, `type`, `password` and `metadata`. The password and the metadata come back encrypted - which is the form `AddAccount` takes them in. An empty string when there are none.
 
 - **`string GetAccounts(string packageName, string type)`**  
     Gets accounts of a specific type.
@@ -312,7 +312,7 @@ app.DeleteCookie(packageName);
     - `type` — account type (e.g. `com.google`).
     
     **Returns:**  
-    A string with accounts.
+    A JSON array of the accounts of that type, in the same shape. An empty string when there are none.
 
 #### Example  
 ```csharp
@@ -854,7 +854,7 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.android.chrome"; // App name
+var packageName = "com.android.camera"; // The default Camera app
 
 // A video from the PC: pushed to the device, played in a loop and without sound
 app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
@@ -865,6 +865,7 @@ app.SetVideoForFakeCamera(packageName, "/sdcard/Download/source.mp4", false, fal
 // Return the real camera
 app.SetVideoForFakeCamera(packageName, "");
 ```
+The package name of the default Camera app differs from device to device. To find it, open the camera on the device and then the [**Installed Apps**](../Tools/Installed_App) tool — the identifier is in the *Active application in the foreground* group.
 
 The substitution starts working only once the **ZennoVCam** module is enabled in LSPosed and the target app is on its list. That is done through the [**LSPosed API**](./LSPosed) — here it is turned on for the default Camera app:
 ```csharp

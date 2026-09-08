@@ -102,6 +102,8 @@ _______________________________________________
 Switching between OpenGL and DirectX. This setting mostly matters when you're running games in the emulator. The best setting depends on trial and error or what others say online. Some games work better with OpenGL, others with DirectX. Your graphics card and its drivers also affect performance.  
 
 ![Rendering](../assets/setting/Android_Setting_pic12.png)
+:::info **On LDPlayer the setting does nothing - the list marks it *(not supported)*.**
+:::
 :::warning **Before changing settings, make sure the device is powered off.**
 :::  
 _______________________________________________ 
@@ -127,6 +129,22 @@ You can set up paths to shared folders in Windows here. This makes it easy to mo
  ***USERNAME** — use the Windows account name you're logged in as.*
 :::warning **Before changing settings, make sure the device is powered off.**
 :::   
+_______________________________________________
+## GPU settings  
+:::info **Available for emulators starting from ZennoDroid v2.6.1.0.**
+:::
+
+Substitutes the graphics adapter data that apps and sites receive.  
+![GPU settings](../assets/setting/Android_Setting_pic35.png)  
+
+- *GPU Vendor*. Vendor of the graphics adapter.  
+- *GPU Renderer*. Model of the graphics adapter.  
+- *Add noise to canvas fingerprint*. Makes the device's canvas fingerprint unique.  
+
+In code the same values are set with [**AddGpu**](../../API/DeviceOptions#addgpu) and [**AddCanvasNoise**](../../API/DeviceOptions#addcanvasnoise).  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
 _______________________________________________
 ## System language selection:  
 This setting changes the emulator's language.  
@@ -155,6 +173,8 @@ Available options:
 - **Virtual**: Used automatically if you don't have a physical one. It's built into the emulator and lets you scan QR codes from your screen.  
 
 ![camera](../assets/setting/Android_Setting_pic18.png)  
+:::info **On LDPlayer the setting does nothing - the list marks it *(not supported)*.**
+:::
 _______________________________________________ 
 ## How to select system disk connection type:
 Available options:  
