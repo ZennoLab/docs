@@ -126,7 +126,7 @@ Returns the accounts added on the device in JSON.
 #### Available parameters:  
 - *Application name.* The app the accounts are asked from. The field is required. You can find the name using the [**Installed Apps**](../../Tools/Installed_App) tool.  
 - *Account type.* **Selected** - accounts of the given type only, e.g. `com.google`. **All** - accounts of any type.  
-- *Save the result to a variable.* Receives a JSON array with the name, type, password and metadata of every account.  
+- *Save the result to a variable.* Receives a JSON array: name, type, password and metadata for every account. The metadata from this result is what the **Add account** action expects.  
 :::warning **Root is required.**
 :::
 _______________________________________________ 
@@ -136,8 +136,8 @@ Adds an account to the device.
 #### Available parameters:  
 - *Account name.* Typically an email address.  
 - *Account type.* For example `com.google`.  
-- *Account password.* Fill it in when the account type needs one.  
-- *Account metadata.* Extra data of the account - a token, for instance.  
+- *Account password.* Goes in encrypted, exactly as the **Get accounts** action returns it - a plain-text password will not do. An empty field means no password is set.  
+- *Account metadata.* The extra data of the account exactly as the **Get accounts** action returned it: that is what carries the account, authorisation and all, to another device. Arbitrary text or your own JSON will not do.  
 :::warning **Root is required.**
 :::
 _______________________________________________ 
