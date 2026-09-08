@@ -1,0 +1,88 @@
+---
+sidebar_position: 5
+sidebar_label: Deleting Proxy Folder with Contents
+title: Deleting Proxy Folder with Contents
+description: Deletes the specified proxy folder together with all proxies it contains — comprehensive guide for ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method deletes the specified proxy folder together with all proxies it contains. The proxyFolderId value must match an existing folder in the specified workspace.
+
+:::warning
+This operation deletes both the folder and every proxy inside it.
+:::
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| proxyFolderId | string | uuid | (required) | The identifier of the proxy folder to be deleted. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+
+#### **Example request:**
+
+**DELETE**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/proxy_folders/123e4567-e89b-12d3-a456-426614174000/cascade?workspaceId=-1' \
+  --request DELETE \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders/123e4567-e89b-12d3-a456-426614174000/cascade?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/proxy_folders/123e4567-e89b-12d3-a456-426614174000/cascade?workspaceId=-1
+```
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `409 Conflict` | Resource state conflict |
+| `422 Unprocessable Content` | The request cannot be processed |
+| `500 Internal Server Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No response body.
+
+**Error Response:**
+
+```json
+{
+  "message": null
+}
+```
+
+---

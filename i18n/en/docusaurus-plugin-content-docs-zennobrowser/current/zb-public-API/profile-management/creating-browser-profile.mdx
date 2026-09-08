@@ -39,6 +39,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | mediaDevices | string |  | (empty) | Media devices settings. The allowed values are: auto to use value from fingerprint, ignore to use real values or custom location values. You can specify from one to three integer numbers that represent the following values: AudioInput, AudioOutput and VideoInput The numbers can be skipped. For example, the following values are valid: 1,,5 - means AudioInput = 1, AudioOutput = random, VideoInput = 5 |
 | commandLineArguments | string |  | (empty) | Custom command line arguments to pass to the browser on startup |
 | presetId | string | uuid | (empty) | Optional preset identifier used to initialize the profile configuration. |
+| osVersion | string |  | (empty) | OS version for fingerprint selection. Allowed values: `win10` or `win11`. If empty, the server auto-detects the host OS. |
+| imagesVideosDownload | string |  | (empty) | Images and videos download configuration. Allowed values: `on` to enable or `off` to disable. |
 
 #### **Example request:**
 
@@ -46,7 +48,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles/create?name=ApiEntity&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&proxyServerId=123e4567-e89b-12d3-a456-426614174000&speechVoices=on&notes=Created%20from%20API&tags=tag1%20tag2&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&presetId=123e4567-e89b-12d3-a456-426614174000' \
+curl 'http://localhost:8160/v1/profiles/create?name=ApiEntity&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&proxyServerId=123e4567-e89b-12d3-a456-426614174000&speechVoices=on&notes=Created%20from%20API&tags=tag1%20tag2&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&presetId=123e4567-e89b-12d3-a456-426614174000&osVersion=win11&imagesVideosDownload=on' \
   --request POST \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
 
@@ -60,7 +62,7 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles/create?name=ApiEntity&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&proxyServerId=123e4567-e89b-12d3-a456-426614174000&speechVoices=on&notes=Created%20from%20API&tags=tag1%20tag2&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&presetId=123e4567-e89b-12d3-a456-426614174000"),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/create?name=ApiEntity&workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&proxyServerId=123e4567-e89b-12d3-a456-426614174000&speechVoices=on&notes=Created%20from%20API&tags=tag1%20tag2&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&presetId=123e4567-e89b-12d3-a456-426614174000&osVersion=win11&imagesVideosDownload=on"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -76,7 +78,7 @@ using (var response = await client.SendAsync(request))
 
 **Cube:**  
 ```
-http://localhost:8160/v1/profiles/create?name=ApiProfile&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&cookies=&notes=&tags=
+http://localhost:8160/v1/profiles/create?name=ApiProfile&workspaceId=-1&folderId=&screen=&cpu=&memory=&language=&geoLocation=&timeZone=&webGl=&webGpu=&webRtc=&domRect=&audio=&fonts=&battery=&plugins=&proxyServerId=&speechVoices=&notes=&tags=&canvas=&mediaDevices=&commandLineArguments=&presetId=&osVersion=&imagesVideosDownload=
 ```
 
 ![](../assets/image14.png)
