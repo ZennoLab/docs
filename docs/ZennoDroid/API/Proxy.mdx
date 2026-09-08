@@ -80,11 +80,17 @@ var projectProxy = proxy.GetProxy(); // Получить прокси проек
 
 ### SetProxy
 
+- **`void SetProxy(string proxy)`**  
+    Устанавливает прокси без дополнительных параметров - способ проксирования берётся из настроек ZennoDroid.
+    
+    **Параметры:**
+    - `proxy` — значение прокси (формат: `protocol://login:pass@IP:port` или `protocol://IP:port`).
+
 - **`void SetProxy(string proxy, IDroidProxySettings settings)`**  
     Устанавливает прокси с параметрами подключения.
     
     **Параметры:**
-    - `proxy` — значение прокси (формат: `login:pass@IP:port`);
+    - `proxy` — значение прокси (формат: `protocol://login:pass@IP:port`);
     - `settings` — параметры прокси (например: `new DroidProxySettings.ClashViaPC()`).
 
 #### Пример.  

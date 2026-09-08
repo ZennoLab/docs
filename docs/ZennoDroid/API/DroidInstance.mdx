@@ -76,7 +76,7 @@ void Start(bool applyProfile, string captureScreenMethod);
 void Stop();
 ```  
 ### IDroidActionEmulatorAPI: IDroidActionAPI
-[**`IDroidActionAPI Action`**](./Action)  
+[**`IDroidActionEmulatorAPI Action`**](./ActionEmulator)  
 ```csharp
 int Clone();
 int Create(string version);
@@ -145,12 +145,12 @@ void SetVideoForFakeCamera(string packageName, string videoSource);
 void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo);
 string Uid(string packageName);
 ```  
-### IDroidHierarchyAPI Hierarchy
+### IDroidHierarchyAPI
 [**`IDroidHierarchyAPI Hierarchy`**](./Hierarchy)  
 ```csharp
 string GetLayout();
 ```  
-### IDroidInfoAPI Info
+### IDroidInfoAPI
 [**`IDroidInfoAPI Info`**](./Info)  
 ```csharp
 string AddressPort { get; }
@@ -160,7 +160,7 @@ string Name { get; }
 string Title { get; }
 int UiPort { get; }
 ```  
-### IDroidInputAPI Input
+### IDroidInputAPI
 [**`IDroidInputAPI Input`**](./Input)  
 ```csharp
 void ClearText();
@@ -210,7 +210,7 @@ void ZoomIn(int centerX, int centerY, double ratio);
 void ZoomOut();
 void ZoomOut(int centerX, int centerY, double ratio);
 ```  
-### IDroidProxyAPI Proxy
+### IDroidProxyAPI
 [**`IDroidProxyAPI Proxy`**](./Proxy)  
 ```csharp
 void ClearProxy();
