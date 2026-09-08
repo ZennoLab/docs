@@ -40,6 +40,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | commandLineArguments | string |  | (empty) | Custom command line arguments to pass to the browser on startup |
 | proxyServerId | string |  | (empty) | Proxy server ID configuration. Use null to keep unchanged, empty string to clear the proxy, or provide a valid GUID to set a new proxy server |
 | presetId | string |  | (empty) | Preset identifier to apply. Use null to keep unchanged, empty string to remove the preset, or a GUID to set a new preset. |
+| imagesVideosDownload | string |  | (empty) | Images and videos download configuration. Allowed values: `on` to enable or `off` to disable. Use an empty string to keep the current value. |
 
 :::note
 The ID of the profile to update should be specified inside curly braces `{ }` in the URL path.
@@ -51,7 +52,7 @@ The ID of the profile to update should be specified inside curly braces `{ }` in
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000' \
+curl 'http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000&imagesVideosDownload=on' \
   --request PUT \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
 
@@ -65,7 +66,7 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Put,
-    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000"),
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&notes=Created%20from%20API&tags=tag1%20tag2&screen=1920%20x%201080&cpu=8%2F16&memory=8&language=en-US&geoLocation=55.7558%2C37.6176&timeZone=Europe%2FMoscow&webGl=auto&webGpu=on&webRtc=Emulate&domRect=Noise&audio=on&fonts=on&battery=on&plugins=on&speechVoices=on&canvas=Noise&mediaDevices=1%2C1%2C1&commandLineArguments=--disable-gpu&proxyServerId=123e4567-e89b-12d3-a456-426614174000&presetId=123e4567-e89b-12d3-a456-426614174000&imagesVideosDownload=on"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -81,7 +82,7 @@ using (var response = await client.SendAsync(request))
 
 **Cube:**  
 ```
-http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2
+http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1&folderId=a2f76986-8064-4c2f-b109-64a84b4ce137&name=NewName&notes=Note123&tags=tag1 tag2&imagesVideosDownload=on
 ```
 
 ![](../assets/image16.png)

@@ -20,6 +20,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | threadToken | string |  | (empty) | Токен потока для экземпляра браузера. Чтобы создать новый поток выполнения (необязательно), передайте пустую строку (значение по умолчанию). |
 | environmentTags | string |  | (empty) | Теги для конфигурации окружения экземпляра браузера. |
 | commandLineArguments | string |  | (empty) | Пользовательские дополнительные аргументы командной строки, которые будут переданы браузеру при запуске. |
+| customFeatures | string |  | (empty) | Необязательный JSON-объект с переопределениями функций браузера. Переопределяет функции, прочитанные из окружения. |
 
 #### **Пример запроса:**
 
@@ -27,7 +28,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/browser_instances/create?profileId=123e4567-e89b-12d3-a456-426614174000&workspaceId=-1&desktopName=Desktop%201&threadToken=thread-token-1&environmentTags=&commandLineArguments=--disable-gpu' \
+curl 'http://localhost:8160/v1/browser_instances/create?profileId=123e4567-e89b-12d3-a456-426614174000&workspaceId=-1&desktopName=Desktop%201&threadToken=thread-token-1&environmentTags=&commandLineArguments=--disable-gpu&customFeatures=%7B%7D' \
   --request POST \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
 ```
@@ -40,7 +41,7 @@ var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create?profileId=123e4567-e89b-12d3-a456-426614174000&workspaceId=-1&desktopName=Desktop%201&threadToken=thread-token-1&environmentTags=&commandLineArguments=--disable-gpu"),
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/create?profileId=123e4567-e89b-12d3-a456-426614174000&workspaceId=-1&desktopName=Desktop%201&threadToken=thread-token-1&environmentTags=&commandLineArguments=--disable-gpu&customFeatures=%7B%7D"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -56,7 +57,7 @@ using (var response = await client.SendAsync(request))
 
 **Cube:**  
 ```
-http://localhost:8160/v1/browser_instances/create?profileId=PROFILE_ID&workspaceId=-1&desktopName=Desktop 1&threadToken=thread-token-1&environmentTags=&commandLineArguments=--disable-gpu
+http://localhost:8160/v1/browser_instances/create?profileId=PROFILE_ID&workspaceId=-1&desktopName=Desktop 1&threadToken=thread-token-1&environmentTags=&commandLineArguments=--disable-gpu&customFeatures={}
 ```
 
 ![](../assets/image29.png)
