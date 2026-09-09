@@ -21,12 +21,26 @@ _______________________________________________
 - **`void CloseQRCodeScanWindow()`**  
     Closes the QR code scan window.
 
+#### Example  
+```csharp
+var qr = new QRCodeManager();
+
+qr.CloseQRCodeScanWindow(); // Close the QR code scan window
+```
+
 ---
 
 ### CloseViewfinderWindow
 
 - **`void CloseViewfinderWindow()`**  
     Closes the viewfinder (camera) window.
+
+#### Example  
+```csharp
+var qr = new QRCodeManager();
+
+qr.CloseViewfinderWindow(); // Close the viewfinder window
+```
 
 ---
 
@@ -39,6 +53,17 @@ _______________________________________________
     - `image` — byte array of the image;
     - `area` — area in which the image will be displayed;
     - `background` — background area (for positioning/rendering).
+
+#### Example  
+```csharp
+var qr = new QRCodeManager();
+
+var area = new Rectangle(100, 200, 400, 400); // Where the image goes
+var background = new Rectangle(0, 0, 720, 1280); // Background area
+
+qr.DrawImage(project.Path + "qrcode.png", area, background); // From a file
+qr.DrawImage(File.ReadAllBytes(project.Path + "qrcode.png"), area, background); // From a byte array
+```
 
 ---
 
@@ -72,5 +97,12 @@ qr.PressQRCodeScanButton();
     
     **Parameters:**
     - `rect` — area where the window is placed.
+
+#### Example  
+```csharp
+var qr = new QRCodeManager();
+
+qr.SetViewfinderPosition(new Rectangle(100, 200, 400, 400)); // Place the viewfinder window
+```
 
 _______________________________________________

@@ -62,4 +62,15 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Возвращает:**  
     Человекочитаемое имя (например, заданное пользователем).
 
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+foreach (var device in manager.GetListDevices())
+{
+	project.SendInfoToLog(device.Index + " - " + device.Title + " (" + device.Name + ")");
+	project.SendInfoToLog("запущено: " + device.IsRunning + ", занято: " + device.IsBusy);
+}
+```
+
 _______________________________________________

@@ -39,16 +39,47 @@ input.ClearText(); // очистить текст элемента
     **Параметры:**
     - `fingerId` — ID пальца.
 
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.FingerDown(100, 500); // Опустить палец на экран
+input.FingerMove(150, 420); // Каждый вызов - одна точка траектории
+input.FingerMove(220, 300);
+input.FingerMove(300, 200);
+input.FingerUp(300, 200); // Убрать палец
+```
+
 ### FingerMove
 
 - **`void FingerMove(int x, int y)`**  
-    Перемещает активный палец в новую точку.
+    Перемещает активный палец в новую точку. Траектория между предыдущей и новой точкой не воспроизводится: палец оказывается в указанной точке сразу, поэтому для непрерывного движения метод вызывают для каждой точки пути. Готовую траекторию строят [**Swipe**](#swipe), [**SwipeCurved**](#swipecurved) и [**FreeMove**](#freemove).
 
 - **`void FingerMove(int x, int y, int fingerId)`**  
     Перемещает конкретный палец.
     
     **Параметры:**
     - `fingerId` — ID пальца.
+
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+// Один вызов перемещает палец сразу в указанную точку, поэтому линию
+// задаём сами - точка за точкой
+input.FingerDown(100, 500);
+for (int x = 110; x <= 300; x += 10)
+	input.FingerMove(x, 500 - (x - 100));
+input.FingerUp(300, 300);
+
+// Мультитач: у каждого пальца свой fingerId
+input.FingerDown(100, 500, 0);
+input.FingerDown(400, 500, 1);
+input.FingerMove(200, 500, 0);
+input.FingerMove(300, 500, 1);
+input.FingerUp(200, 500, 0);
+input.FingerUp(300, 500, 1);
+```
 
 ### FingerUp
 
@@ -61,6 +92,14 @@ input.ClearText(); // очистить текст элемента
     **Параметры:**
     - `fingerId` — ID пальца.
 
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.FingerDown(100, 500); // Опустить палец
+input.FingerUp(100, 500); // Убрать в той же точке - получится обычное нажатие
+```
+
 ---
 
 ### FreeMove
@@ -71,6 +110,17 @@ input.ClearText(); // очистить текст элемента
     **Параметры:**
     - `json` — JSON-описание траектории движения;
     - `speed` — скорость выполнения жеста.
+
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+// Траектория - массив жестов, в каждом жесте точки вида [время в мс, X, Y]
+var json = "[[[0,100,500],[100,150,420],[200,220,300],[300,300,200]]]";
+
+input.FreeMove(json, 1); // Скорость 1 - как в траектории
+input.FreeMove(json, 2); // Скорость 2 - вдвое быстрее
+```
 
 ---
 
@@ -99,6 +149,14 @@ var text = input.GetClipboard(); // Получить текст из буфер�
     **Параметры:**
     - `x` — координата по X;
     - `y` — координата по Y.
+
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+Point point = new Point() { X = 100, Y = 500 }; // Точка
+input.LongTap(point.X, point.Y); // Долгое нажатие по координатам
+```
 
 ---
 
@@ -171,6 +229,19 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
     - `xPivot`, `yPivot` — координаты контрольной точки кривой;
     - `duration` — длительность свайпа в миллисекундах.
 
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+Point start = new Point() { X = 100, Y = 500 }; // Точка старта
+Point end = new Point() { X = 300, Y = 200 }; // Точка конца
+
+input.LongTapAndSwipeCurved(start.X, start.Y, end.X, end.Y); // Долгий тап и свайп по кривой
+input.LongTapAndSwipeCurved(start.X, start.Y, end.X, end.Y, 500); // С длительностью в мс
+input.LongTapAndSwipeCurved(start.X, start.Y, 0.5, end.X, end.Y); // С коэффициентом изгиба
+input.LongTapAndSwipeCurved(start.X, start.Y, 200, 250, end.X, end.Y); // Через контрольную точку
+```
+
 ---
 
 ### RootShell
@@ -198,6 +269,16 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // долгое
     - `command` — команда;
     - `timeout` — таймаут выполнения (мс);
     - `checkconnect` — проверять подключение к устройству перед выполнением.
+
+#### Пример.  
+```csharp
+var input = instance.DroidInstance.Input;
+
+var model = input.RootShell("getprop ro.product.model"); // Выполнить команду с правами root
+var packages = input.RootShell("pm list packages", 30000); // С таймаутом в мс
+
+project.SendInfoToLog(model);
+```
 
 ---
 

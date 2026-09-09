@@ -41,6 +41,13 @@ _______________________________________________
     **Returns:**  
     Device name.
 
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+var name = manager.ConvertIndexToName(0); // Internal name of the first device in the list
+```
+
 ---
 
 ### ConvertIndexToTitle
@@ -53,6 +60,13 @@ _______________________________________________
     
     **Returns:**  
     Human-readable device name.
+
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+var title = manager.ConvertIndexToTitle(0); // Display title of the first device
+```
 
 ---
 
@@ -67,6 +81,13 @@ _______________________________________________
     **Returns:**  
     Device index.
 
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+var index = manager.ConvertNameToIndex("emulator-5554"); // Device index by its name
+```
+
 ---
 
 ### ConvertTitleToName
@@ -80,6 +101,13 @@ _______________________________________________
     **Returns:**  
     Internal device name.
 
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+var name = manager.ConvertTitleToName("Samsung_S23"); // Internal device name by its title
+```
+
 ---
 
 ### GetListDevices
@@ -89,6 +117,14 @@ _______________________________________________
     
     **Returns:**  
     An array of [`IDeviceSummaryInfo`](./DeviceSummaryInfo) with summary information about each device.
+
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+foreach (var device in manager.GetListDevices())
+	project.SendInfoToLog(device.Index + " - " + device.Title + ", running: " + device.IsRunning);
+```
 
 ---
 
@@ -100,6 +136,14 @@ _______________________________________________
     **Returns:**  
     Array of indices (`int[]`).
 
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+var indices = manager.GetListIndices(); // Indices of every device
+project.SendInfoToLog("Devices in the list: " + indices.Length);
+```
+
 ---
 
 ### GetListNames
@@ -109,6 +153,14 @@ _______________________________________________
     
     **Returns:**  
     Array of strings with internal names.
+
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+var names = manager.GetListNames(); // Internal names of every device
+project.SendInfoToLog(string.Join(", ", names));
+```
 
 ---
 
@@ -120,6 +172,14 @@ _______________________________________________
     **Returns:**  
     Array of strings with display names.
 
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+var titles = manager.GetListTitles(); // Titles of every device
+project.SendInfoToLog(string.Join(", ", titles));
+```
+
 ---
 
 ### ReconnectOffline
@@ -129,6 +189,13 @@ _______________________________________________
     
     **Description:**  
     Used to restore the connection (e.g. via ADB) to devices that are temporarily unavailable.
+
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+manager.ReconnectOffline(); // Try to reconnect every offline device
+```
 
 _______________________________________________
 

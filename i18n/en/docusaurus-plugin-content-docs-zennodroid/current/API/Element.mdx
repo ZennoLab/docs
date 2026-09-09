@@ -118,12 +118,38 @@ var text = de.GetAttribute("text"); // Get the "text" attribute value
     **Parameters:**
     - `name` — attribute name.
 
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find the element by xPath
+if (de == null)
+    throw new Exception("Element not found");
+
+bool clickable = de.GetBooleanAttribute("clickable"); // Whether the element can be clicked
+bool enabled = de.GetBooleanAttribute("enabled"); // Whether the element is enabled
+```
+
 ---
 
 ### GetScreenshot
 
 - **`string GetScreenshot()`**  
     Takes a screenshot of the element's bounding area and returns it as a Base64 string.
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find the element by xPath
+if (de == null)
+    throw new Exception("Element not found");
+
+var data = Convert.FromBase64String(de.GetScreenshot()); // Screenshot of the element's area
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+    bmp.Save(project.Path + "element.png");
+```
 
 ---
 
@@ -134,6 +160,17 @@ var text = de.GetAttribute("text"); // Get the "text" attribute value
     
     **Parameters:**
     - `text` — string to enter.
+
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Find the element by xPath
+if (de == null)
+    throw new Exception("Element not found");
+
+de.SendKeys("ZennoDroid"); // Send text to the element
+```
 
 ---
 

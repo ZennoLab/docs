@@ -31,6 +31,13 @@ _______________________________________________
     **Возвращает:**  
     Строку с ID устройства (например, ADB serial).
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+project.SendInfoToLog(device.Id); // Серийный номер устройства
+```
+
 ### Name
 
 - **`string Name { get; }`**  
@@ -38,6 +45,13 @@ _______________________________________________
     
     **Возвращает:**  
     Человекочитаемое название устройства или эмулятора.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+project.SendInfoToLog(device.Name); // Название устройства
+```
 
 ---
 
@@ -52,12 +66,28 @@ _______________________________________________
     **Возвращает:**  
     Объект [`IFridaSessionAPI`](#ifridasessionapi), представляющий активную сессию.
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var pid = device.Spawn("com.android.settings");
+var session = device.Attach(pid); // Подключиться к процессу по PID
+```
+
 ---
 
 ### DetachAllSessions
 
 - **`void DetachAllSessions()`**  
     Отключает все активные Frida-сессии на устройстве.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+device.DetachAllSessions(); // Закрыть все сессии Frida на устройстве
+```
 
 ---
 
@@ -69,6 +99,18 @@ _______________________________________________
     **Параметры:**
     - `scriptName` — имя скрипта, по которому производится поиск и отключение.
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+script.Load();
+
+device.DetachSessionByScriptName("myScript"); // Закрыть сессию скрипта по его имени
+```
+
 ---
 
 ### InstallAndRunServer
@@ -76,12 +118,26 @@ _______________________________________________
 - **`void InstallAndRunServer()`**  
     Устанавливает (если необходимо) и запускает Frida Server на устройстве.
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+device.InstallAndRunServer(); // Установить и запустить frida-server на устройстве
+```
+
 ---
 
 ### KillServer
 
 - **`void KillServer()`**  
     Останавливает Frida Server.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+device.KillServer(); // Остановить frida-server на устройстве
+```
 
 ---
 
@@ -94,6 +150,15 @@ _______________________________________________
     - `packageName` — имя пакета приложения;
     - `source` — исходный код Frida-скрипта (JavaScript).
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+// Внедрить скрипт в приложение
+device.LoadScriptToApp("com.android.settings", project.Variables["script"].Value);
+```
+
 ---
 
 ### LoadScriptToFrontmost
@@ -103,6 +168,15 @@ _______________________________________________
     
     **Параметры:**
     - `source` — исходный код скрипта.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+// Внедрить скрипт в приложение, открытое на переднем плане
+device.LoadScriptToFrontmost(project.Variables["script"].Value);
+```
 
 ---
 
@@ -147,6 +221,17 @@ console.log('hello!')
     **Возвращает:**  
     `pid` созданного процесса.
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var pid = device.Spawn("com.android.settings"); // Запустить приложение приостановленным
+var session = device.Attach(pid);
+
+device.Resume(pid); // Продолжить выполнение
+```
+
 _______________________________________________
 ## IFridaSessionAPI
 
@@ -159,6 +244,16 @@ _______________________________________________
     
     **Возвращает:**  
     `pid` процесса.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+
+project.SendInfoToLog(session.Pid.ToString()); // PID процесса, к которому подключена сессия
+```
 
 ---
 
@@ -183,6 +278,18 @@ _______________________________________________
     **Возвращает:**  
     Объект [`IFridaScriptAPI`](#ifridascriptapi).
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var source = project.Variables["script"].Value;
+
+var named = session.CreateScript(source, "myScript"); // С именем - его закрывает DetachSessionByScriptName
+var script = session.CreateScript(source); // Без имени
+```
+
 ---
 
 ### Detach
@@ -192,6 +299,16 @@ _______________________________________________
     
     **Описание:**  
     Завершает текущую сессию Frida и освобождает ресурсы.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+
+session.Detach(); // Отключиться от процесса и освободить сессию
+```
 
 _______________________________________________
 ## IFridaScriptAPI
@@ -206,6 +323,17 @@ _______________________________________________
     **Возвращает:**  
     Строковое имя, идентифицирующее скрипт.
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+project.SendInfoToLog(script.Name); // myScript
+```
+
 ---
 
 ### Eternalize
@@ -215,6 +343,19 @@ _______________________________________________
     
     **Описание:**  
     Скрипт продолжает работать даже после завершения сессии или отключения клиента.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Load();
+script.Eternalize(); // Скрипт продолжит работать и после закрытия сессии
+session.Detach();
+```
 
 ---
 
@@ -226,6 +367,18 @@ _______________________________________________
     **Описание:**  
     После вызова скрипт начинает выполняться.
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Message += (o, e) => project.SendInfoToLog(e.Message); // Подписаться нужно до Load
+script.Load(); // Запустить скрипт в процессе
+```
+
 ---
 
 ### Message
@@ -235,6 +388,18 @@ _______________________________________________
     
     **Описание:**  
     Сообщения от скрипта (через `send()` или `console.log()`) обрабатываются в C# через это событие.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Message += (o, e) => project.SendInfoToLog(e.Message); // Скрипт вызвал send() или console.log()
+script.Load(); // Подписка нужна до Load, иначе первые сообщения будут потеряны
+```
 
 ---
 
@@ -248,6 +413,18 @@ _______________________________________________
     
     **Описание:**  
     Используется для передачи данных в JavaScript (обрабатывается через `recv()`).
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+script.Load();
+
+script.Post("{\"action\":\"ping\"}"); // В скрипте сообщение принимает recv()
+```
 
 ---
 
@@ -263,6 +440,19 @@ _______________________________________________
     **Описание:**  
     Позволяет передавать бинарные данные (например, файлы, буферы).
 
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+script.Load();
+
+var data = File.ReadAllBytes(project.Path + "payload.bin");
+script.PostWithData("{\"action\":\"write\"}", data); // Сообщение вместе с бинарными данными
+```
+
 ---
 
 ### Unload
@@ -272,5 +462,17 @@ _______________________________________________
     
     **Описание:**  
     Останавливает выполнение и удаляет скрипт из процесса.
+
+#### Пример.  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Load();
+script.Unload(); // Остановить скрипт и убрать его из процесса
+```
 
 _______________________________________________

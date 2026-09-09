@@ -298,6 +298,16 @@ var xml = driver.GetRawSource(); // Get the raw XML of the current screen
     **Returns:**  
     Image as a Base64 string.
 
+#### Example  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var data = Convert.FromBase64String(driver.GetScreenshot());
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+	bmp.Save(project.Path + "myScreen.png");
+```
+
 ---
 
 ### ScrollToElementByAccessibilityId

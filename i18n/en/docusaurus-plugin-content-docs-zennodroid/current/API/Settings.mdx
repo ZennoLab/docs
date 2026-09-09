@@ -67,6 +67,16 @@ settings.SetBaseband("G9300ZCU2API3"); // Set GSM module
     - `bearing` — direction;
     - `speed` — movement speed.
 
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetGeo(37.617, 55.756); // Longitude and latitude
+settings.SetGeo(37.617, 55.756, 150); // With altitude in metres
+settings.SetGeo(37.617, 55.756, 150, 90); // With bearing
+settings.SetGeo(37.617, 55.756, 150, 90, 60); // With bearing and speed
+```
+
 ---
 
 ### SetLanguage

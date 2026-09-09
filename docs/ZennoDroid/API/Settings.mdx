@@ -67,6 +67,16 @@ settings.SetBaseband("G9300ZCU2API3"); // Установить модуль св
     - `bearing` — направление;
     - `speed` — скорость движения.
 
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.SetGeo(37.617, 55.756); // Долгота и широта
+settings.SetGeo(37.617, 55.756, 150); // С высотой в метрах
+settings.SetGeo(37.617, 55.756, 150, 90); // С направлением движения
+settings.SetGeo(37.617, 55.756, 150, 90, 60); // С направлением и скоростью
+```
+
 ---
 
 ### SetLanguage

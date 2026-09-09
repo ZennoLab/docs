@@ -71,6 +71,24 @@ _______________________________________________
     **Возвращает:**  
     `true`, если аккаунт успешно добавлен; иначе `false`.
 
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+// Забираем аккаунт с одного устройства
+var json = app.GetAccounts("com.android.chrome");
+project.Json.FromString(json);
+
+var name = project.Json[0].name;
+var type = project.Json[0].type;
+var password = project.Json[0].password;
+var metadata = project.Json[0].metadata;
+
+// И добавляем на другом
+app.AddAccount(name, type, password); // Только аккаунт
+app.AddAccount(name, type, password, metadata); // Вместе с авторизацией
+```
+
 ---
 
 ### AppDir
@@ -80,6 +98,14 @@ _______________________________________________
     
     **Параметры:**
     - `packageName` — имя пакета приложения (например: `com.android.chrome`).
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var dir = app.AppDir("com.android.chrome"); // Каталог приложения на устройстве
+project.SendInfoToLog(dir);
+```
 
 ---
 
@@ -677,6 +703,17 @@ if (!isApk) // Если нет, то установим
     - `activityName` — имя Activity;
     - `action` — действие Intent (например: `android.intent.action.VIEW`).
 
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Имя приложения
+
+app.Open(packageName); // Запустить приложение
+app.Open(packageName, "com.google.android.apps.chrome.Main"); // Открыть конкретную Activity
+app.Open(packageName, "com.google.android.apps.chrome.Main", "android.intent.action.VIEW"); // С действием Intent
+```
+
 ### OpenAsRoot
 
 - **`void OpenAsRoot(string packageName, string activityName)`**  
@@ -747,6 +784,16 @@ app.OpenUrl(url, packageName); // Открыть Chrome и зайти на са�
     - `packageName` — имя пакета приложения;
     - `proxy` — адрес прокси (например: `10.0.2.2:8083`).
 
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.app.flutter"; // Имя приложения на Flutter
+
+app.PatchFlutterLib(packageName, "10.0.2.2:8083"); // Направить трафик приложения в BurpSuite
+app.Open(packageName);
+```
+
 ---
 
 ### RemoveAccount
@@ -766,6 +813,13 @@ app.OpenUrl(url, packageName); // Открыть Chrome и зайти на са�
 
 В таких случаях нужно достать аккаунты из приложения и принудительно их удалить.
 :::
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.RemoveAccount("mymail@gmail.com", "com.google"); // Удалить аккаунт с устройства
+```
 
 ---
 
@@ -790,6 +844,18 @@ app.OpenUrl(url, packageName); // Открыть Chrome и зайти на са�
     **Параметры:**
     - `restorePermissions` — восстанавливать разрешения;
     - `restoreAccount` — восстанавливать связанные аккаунты.
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Имя приложения
+var pathSave = @"/dir/bakups/name_bakup"; // Путь к бэкапу
+
+app.RestoreAppData(packageName, pathSave); // Восстановить данные
+app.RestoreAppData(packageName, pathSave, true); // Вместе с разрешениями
+app.RestoreAppData(packageName, pathSave, true, true); // Вместе с разрешениями и аккаунтами
+```
 
 ### RestoreDetachedAppData
 
@@ -818,6 +884,13 @@ app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
     
     **Параметры:**
     - `packageName` — имя пакета приложения.
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.RestoreFlutterLib("com.app.flutter"); // Вернуть оригинальную библиотеку приложения
+```
 
 ---
 
@@ -854,20 +927,14 @@ app.RestoreAppData(packageName, pathLoad); // Загрузить бэкап
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.android.camera"; // Стандартное приложение «Камера»
+var packageName = "com.android.camera2"; // Стандартное приложение «Камера»
 
 // Видео с ПК: отправляется на устройство, проигрывается по кругу и без звука
 app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
-
-// Видео, которое уже лежит на устройстве: со звуком, без повтора, с сохранением фото
-app.SetVideoForFakeCamera(packageName, "/sdcard/Download/source.mp4", false, false, true);
-
-// Вернуть реальную камеру
-app.SetVideoForFakeCamera(packageName, "");
 ```
 Имя стандартного приложения «Камера» на разных устройствах отличается. Чтобы его узнать, откройте камеру на устройстве, а затем инструмент [**Установленные приложения**](../Tools/Installed_App) — идентификатор будет в группе *«Активное приложение на переднем плане»*.  
 
-Подмена начинает работать только после того, как модуль **ZennoVCam** включён в LSPosed, а целевое приложение добавлено в его список. Сделать это можно через [**LSPosed API**](./LSPosed) — включим подмену для стандартного приложения «Камера»:
+Подмена начинает работать только после того, как модуль **ZennoVCam** включён в LSPosed, а целевое приложение добавлено в его список. Сделать это можно через [**LSPosed API**](./LSPosed) — включив подмену для стандартного приложения «Камера»:
 ```csharp
 var packageName = "com.android.camera2"; // Стандартное приложение «Камера»
 
@@ -883,6 +950,9 @@ instance.DroidInstance.App.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
 instance.DroidInstance.App.Open(packageName); // Открыть приложение
 ```
 Список приложений задаётся **до** включения модуля: с пустым списком `EnableModule` завершится ошибкой *Add any package!*. Устанавливать модуль вручную не нужно — `SetPackages` доставит его на устройство, если он ещё не установлен.
+
+:::info Включить ZennoVCam можно без кода — экшеном [**Настройка модуля LSPosed**](../Enterprise/LSPosed_Control#настройка-модуля-lsposed). В поле *«Имя модуля»* указывается `com.zennolab.zennovcam`, в *«Приложения»* — приложение, которому подменяется камера, и включается сам модуль.
+:::
 
 :::warning Важные замечания
 - Параметр `photo` по умолчанию выключен, потому что это компромисс, а не улучшение: чтобы сохранение фотографии прошло, модуль отдаёт реальной камере вспомогательные потоки кадров (замер экспозиции, миниатюры). Оставьте `false` для сканеров и KYC-приложений, которые читают кадры через такие потоки, — иначе они получат изображение реальной камеры.
