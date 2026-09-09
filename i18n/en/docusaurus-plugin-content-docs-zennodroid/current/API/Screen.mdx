@@ -36,7 +36,7 @@ _______________________________________________
     - `imageHash` — image hash;
     - `rectangles` — search areas;
     - `confidenceInterval` — match accuracy;
-    - `searchTime` — maximum search time in milliseconds.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Rectangle` — the found area.
@@ -59,10 +59,24 @@ _______________________________________________
     - `imageHashes` — array of hashes;
     - `rectangles` — search areas;
     - `confidenceInterval` — match accuracy;
-    - `searchTime` — search time in milliseconds.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Rectangle` — the found area.
+
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var hash = project.Variables["imageHash"].Value; // Hash of the reference image
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Where to search - the whole screen here
+
+var found = screen.FindImage(hash, areas, 90); // Match accuracy of 90
+if (found.IsEmpty)
+	throw new Exception("Image not found");
+
+var waited = screen.FindImage(hash, areas, 90, 10); // Wait up to 10 seconds for it to appear
+```
 
 ---
 
@@ -88,7 +102,7 @@ _______________________________________________
     - `rectangles` — areas;
     - `confidenceInterval` — accuracy;
     - `threshold` — threshold;
-    - `searchTime` — search time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Rectangle` — the area where the image was found.
@@ -113,10 +127,22 @@ _______________________________________________
     - `rectangles` — areas;
     - `confidenceInterval` — accuracy;
     - `threshold` — threshold;
-    - `searchTime` — time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Rectangle` — the area where the image was found.
+
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var hash = project.Variables["imageHash"].Value; // Hash of the reference image
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Search area
+
+var found = screen.FindImageBlackWhite(hash, areas, 90, 128); // Binarization threshold of 128
+if (found.IsEmpty)
+	throw new Exception("Image not found");
+```
 
 ---
 
@@ -140,7 +166,7 @@ _______________________________________________
     - `imageHash` — hash;
     - `rectangles` — areas;
     - `confidenceInterval` — accuracy;
-    - `searchTime` — time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Rectangle` — the area where the image was found.
@@ -163,10 +189,22 @@ _______________________________________________
     - `imageHashes` — array;
     - `rectangles` — areas;
     - `confidenceInterval` — accuracy;
-    - `searchTime` — time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Rectangle` — the area where the image was found.
+
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var hash = project.Variables["imageHash"].Value; // Hash of the reference image
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Search area
+
+var found = screen.FindImageGrayscale(hash, areas, 90); // Compared in grayscale
+if (found.IsEmpty)
+	throw new Exception("Image not found");
+```
 
 ---
 
@@ -190,7 +228,7 @@ _______________________________________________
     - `color` — color;
     - `rectangles` — search areas;
     - `variation` — color deviation;
-    - `searchTime` — search time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Point` — coordinates of the found pixel.
@@ -213,10 +251,23 @@ _______________________________________________
     - `htmlColor` — color;
     - `rectangles` — search areas;
     - `variation` — deviation;
-    - `searchTime` — search time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Point` — coordinates of the found pixel.
+
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Search area
+
+var point = screen.FindPixel("#FF0000", areas, 10); // A red pixel, deviation of 10
+if (point.IsEmpty)
+	throw new Exception("Pixel not found");
+
+var waited = screen.FindPixel(Color.Red, areas, 10, 10); // The same, but waiting up to 10 seconds
+```
 
 ---
 
@@ -240,7 +291,7 @@ _______________________________________________
     - `colors` — array of colors;
     - `rectangles` — search areas;
     - `variation` — deviation;
-    - `searchTime` — search time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Point` — coordinates of the found pixel.
@@ -263,10 +314,22 @@ _______________________________________________
     - `htmlColors` — array of colors;
     - `rectangles` — search areas;
     - `variation` — deviation;
-    - `searchTime` — search time.
+    - `searchTime` — maximum search time in seconds.
     
     **Returns:**  
     `Point` — coordinates of the found pixel.
+
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Search area
+var colors = new[] { "#FF0000", "#00FF00" }; // Any one of the colours will do
+
+var point = screen.FindPixels(colors, areas, 10);
+if (point.IsEmpty)
+	throw new Exception("None of the colours was found");
+```
 
 ---
 
@@ -295,12 +358,28 @@ The value is cached per device. After a resolution change (e.g. with `wm size Wi
 - **`void RefreshScreen()`**  
     Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`).
 
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+instance.DroidInstance.Action.Start("off"); // Start the device without continuous capture
+screen.RefreshScreen(); // Update the image manually
+```
+
 ---
 
 ### ResetScreen
 
 - **`void ResetScreen()`**  
     Resets screen capture parameters and starts a new capture process. Used to restart capture when conditions change (e.g. after changing the resolution with `wm size WidthxHeight`).
+
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+instance.DroidInstance.Input.RootShell("wm size 720x1280"); // Change the screen resolution
+screen.ResetScreen(); // Restart the capture for the new resolution
+```
 
 ---
 
@@ -348,6 +427,19 @@ using (var bmp = new Bitmap(ms))
     **Returns:**  
     A Base64 string.
 
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var base64 = screen.ScreenshotAsBase64String(); // The whole screen
+var area = screen.ScreenshotAsBase64String(new Rectangle(0, 0, 300, 300)); // One area only
+
+var data = Convert.FromBase64String(base64);
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+	bmp.Save(project.Path + "myScreen.png");
+```
+
 ---
 
 ### SetCaptureScreenQuality
@@ -357,5 +449,13 @@ using (var bmp = new Bitmap(ms))
     
     **Parameters:**
     - `quality` — quality level (affects speed and accuracy). Allowed values are 0 to 10.
+
+#### Example  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+screen.SetCaptureScreenQuality(10); // Highest quality - more accurate search, but slower
+screen.SetCaptureScreenQuality(0); // Lowest quality - faster
+```
 
 _______________________________________________

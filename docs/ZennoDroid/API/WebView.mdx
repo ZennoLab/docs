@@ -22,6 +22,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Описание:**  
     Восстанавливает стандартное поведение Chromium `AutoDisableAccessibilityV2`, позволяя браузеру отключать дерево элементов при отсутствии программ чтения с экрана.
 
+#### Пример.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+webView.DisableForcedRenderWebView(); // Вернуть стандартное поведение дерева элементов
+```
+
 ---
 
 ### EnableForcedRenderWebView
@@ -31,6 +38,15 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
     **Описание:**  
     Обходит функцию Chromium `AutoDisableAccessibilityV2`, которая автоматически отключает дерево элементов, если не обнаруживает активных программ чтения с экрана (например, TalkBack). Вызовите этот метод перед работой с WebView через Appium, если элементы не обнаруживаются.
+
+#### Пример.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+webView.EnableForcedRenderWebView(); // Включить рендеринг дерева элементов
+var html = webView.EvaluateScript("return document.body.innerHTML;");
+webView.DisableForcedRenderWebView(); // Вернуть стандартное поведение
+```
 
 ---
 
@@ -45,6 +61,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Возвращает:**  
     Результат выполнения скрипта в виде строки.
 
+#### Пример.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var html = webView.EvaluateScript("return document.body.innerHTML;"); // Выполнить JavaScript в WebView
+var title = webView.EvaluateScript("return document.title;");
+```
+
 ---
 
 ### GetAttachedWebSocketUrl
@@ -57,6 +81,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     
     **Описание:**  
     Используется для отладки и анализа соединения WebView (например, для подключения DevTools).
+
+#### Пример.  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var url = webView.GetAttachedWebSocketUrl(); // Адрес WebSocket активной страницы WebView
+project.SendInfoToLog(url);
+```
 
 ---
 

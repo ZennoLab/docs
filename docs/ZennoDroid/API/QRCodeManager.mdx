@@ -21,12 +21,26 @@ _______________________________________________
 - **`void CloseQRCodeScanWindow()`**  
     Закрывает окно сканирования QR-кода.
 
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+qr.CloseQRCodeScanWindow(); // Закрыть окно сканирования QR-кода
+```
+
 ---
 
 ### CloseViewfinderWindow
 
 - **`void CloseViewfinderWindow()`**  
     Закрывает окно видоискателя (камеры).
+
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+qr.CloseViewfinderWindow(); // Закрыть окно видоискателя
+```
 
 ---
 
@@ -39,6 +53,17 @@ _______________________________________________
     - `image` — массив байтов изображения;
     - `area` — область, в которой будет отображено изображение;
     - `background` — область фона (для позиционирования/отрисовки).
+
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+var area = new Rectangle(100, 200, 400, 400); // Куда поместить изображение
+var background = new Rectangle(0, 0, 720, 1280); // Область фона
+
+qr.DrawImage(project.Path + "qrcode.png", area, background); // Из файла
+qr.DrawImage(File.ReadAllBytes(project.Path + "qrcode.png"), area, background); // Из массива байтов
+```
 
 ---
 
@@ -72,5 +97,12 @@ qr.PressQRCodeScanButton();
     
     **Параметры:**
     - `rect` — область расположения окна.
+
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+qr.SetViewfinderPosition(new Rectangle(100, 200, 400, 400)); // Разместить окно видоискателя
+```
 
 _______________________________________________

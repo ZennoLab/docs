@@ -58,4 +58,12 @@ return cookie;
     **Description:**  
     Used before executing queries if SQLite is missing or not configured.
 
+#### Example  
+```csharp
+var sqlite = instance.DroidInstance.Sqlite3;
+
+sqlite.Install(); // Install sqlite3 on the device
+var users = sqlite.ExecuteQuery("/data/data/com.app/databases/db.sqlite", "SELECT * FROM users");
+```
+
 _______________________________________________

@@ -118,12 +118,38 @@ var text = de.GetAttribute("text"); // Получить значение сво�
     **Параметры:**
     - `name` — имя атрибута.
 
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+bool clickable = de.GetBooleanAttribute("clickable"); // Можно ли нажать на элемент
+bool enabled = de.GetBooleanAttribute("enabled"); // Активен ли элемент
+```
+
 ---
 
 ### GetScreenshot
 
 - **`string GetScreenshot()`**  
     Делает скриншот области, занимаемой элементом, и возвращает его в виде строки Base64.
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+var data = Convert.FromBase64String(de.GetScreenshot()); // Скриншот области элемента
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+    bmp.Save(project.Path + "element.png");
+```
 
 ---
 
@@ -134,6 +160,17 @@ var text = de.GetAttribute("text"); // Получить значение сво�
     
     **Параметры:**
     - `text` — строка.
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.SendKeys("ZennoDroid"); // Отправить текст элементу
+```
 
 ---
 

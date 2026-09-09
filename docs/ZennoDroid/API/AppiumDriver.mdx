@@ -298,6 +298,16 @@ var xml = driver.GetRawSource(); // Получить необработанны�
     **Возвращает:**  
     Изображение в виде строки Base64.
 
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var data = Convert.FromBase64String(driver.GetScreenshot());
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+	bmp.Save(project.Path + "myScreen.png");
+```
+
 ---
 
 ### ScrollToElementByAccessibilityId

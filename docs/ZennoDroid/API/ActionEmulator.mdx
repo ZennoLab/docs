@@ -20,6 +20,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 - **`IDroidActionEmulatorAPI Action`**  
     Действия с эмулятором. Кроме перечисленных ниже доступны все базовые действия из [`IDroidActionAPI`](./Action).
 
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // Базовое действие из IDroidActionAPI
+var index = droid.Action.Clone(); // Действие, которое есть только у эмулятора
+```
+
 _______________________________________________
 ## Методы
 
@@ -31,6 +39,14 @@ _______________________________________________
     
     **Возвращает:**  
     Индекс нового эмулятора.
+
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // Выбрать эмулятор, с которого снимаем копию
+var index = droid.Action.Clone(); // Индекс копии
+```
 
 ---
 
@@ -65,15 +81,36 @@ var index = droid.Action.Create("96");
 - **`void DeleteByIndex(int index)`**  
     Удаляет эмулятор по индексу.
 
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.DeleteByIndex(2); // Удалить эмулятор с индексом 2
+```
+
 ### DeleteByName
 
 - **`void DeleteByName(string name)`**  
     Удаляет эмулятор по имени.
 
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.DeleteByName("MEmu_1"); // Удалить эмулятор по внутреннему имени
+```
+
 ### DeleteByTitle
 
 - **`void DeleteByTitle(string title)`**  
     Удаляет эмулятор по отображаемому названию.
+
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.DeleteByTitle("Samsung_S23"); // Удалить эмулятор по отображаемому названию
+```
 
 ---
 
@@ -87,6 +124,14 @@ var index = droid.Action.Create("96");
     
     Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
 
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // Выбрать эмулятор
+droid.Action.Export(project.Path + "Samsung_S23.ova"); // Сохранить копию в файл
+```
+
 ---
 
 ### FactoryReset
@@ -96,6 +141,15 @@ var index = droid.Action.Create("96");
     
     **Параметры:**
     - `resetSystem` — если `true`, выполняется полный сброс с системными данными; если `false` — сбрасываются только пользовательские данные.
+
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // Выбрать эмулятор
+droid.Action.FactoryReset(false); // Сбросить только пользовательские данные
+droid.Action.FactoryReset(true); // Сбросить вместе с системными данными
+```
 
 ---
 
@@ -112,6 +166,15 @@ var index = droid.Action.Create("96");
     
     Формат файла бэкапа: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
 
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+var index = droid.Action.Import(project.Path + "Samsung_S23.ova"); // Индекс импортированного эмулятора
+droid.Action.SelectByIndex(index);
+droid.Action.Start();
+```
+
 ---
 
 ### Rename
@@ -122,9 +185,25 @@ var index = droid.Action.Create("96");
 - **`void Rename(string name, string title)`**  
     Переименовывает эмулятор по имени.
 
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.Rename(0, "Samsung_S23"); // Переименовать эмулятор с индексом 0
+droid.Action.Rename("MEmu_1", "Samsung_S23"); // Переименовать эмулятор по внутреннему имени
+```
+
 ### RenameTo
 
 - **`void RenameTo(string title)`**  
     Переименовывает текущий эмулятор.
+
+#### Пример.  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByIndex(0); // Выбрать эмулятор
+droid.Action.RenameTo("Samsung_S23"); // Переименовать выбранный эмулятор
+```
 
 _______________________________________________

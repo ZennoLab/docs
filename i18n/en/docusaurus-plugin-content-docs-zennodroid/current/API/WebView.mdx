@@ -22,6 +22,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Description:**  
     Restores Chromium's default `AutoDisableAccessibilityV2` behavior, allowing the browser to shut down the accessibility tree when no screen readers are connected.
 
+#### Example  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+webView.DisableForcedRenderWebView(); // Restore the default element tree behaviour
+```
+
 ---
 
 ### EnableForcedRenderWebView
@@ -31,6 +38,15 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
     **Description:**  
     Bypasses Chromium's `AutoDisableAccessibilityV2` feature, which automatically shuts down the accessibility tree when no screen readers (such as TalkBack) are detected as active. Call this method before interacting with WebView elements via Appium if elements are not being found.
+
+#### Example  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+webView.EnableForcedRenderWebView(); // Turn on element tree rendering
+var html = webView.EvaluateScript("return document.body.innerHTML;");
+webView.DisableForcedRenderWebView(); // Restore the default behaviour
+```
 
 ---
 
@@ -45,6 +61,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Returns:**  
     The result of the script execution as a string.
 
+#### Example  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var html = webView.EvaluateScript("return document.body.innerHTML;"); // Run JavaScript in the WebView
+var title = webView.EvaluateScript("return document.title;");
+```
+
 ---
 
 ### GetAttachedWebSocketUrl
@@ -57,6 +81,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     
     **Description:**  
     Used for debugging and analyzing WebView connections (e.g. for attaching DevTools).
+
+#### Example  
+```csharp
+var webView = instance.DroidInstance.WebView;
+
+var url = webView.GetAttachedWebSocketUrl(); // WebSocket address of the active WebView page
+project.SendInfoToLog(url);
+```
 
 ---
 

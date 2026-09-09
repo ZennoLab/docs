@@ -62,4 +62,15 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
     **Returns:**  
     A human-readable name (e.g. one set by the user).
 
+#### Example  
+```csharp
+var manager = new DroidManager();
+
+foreach (var device in manager.GetListDevices())
+{
+	project.SendInfoToLog(device.Index + " - " + device.Title + " (" + device.Name + ")");
+	project.SendInfoToLog("running: " + device.IsRunning + ", busy: " + device.IsBusy);
+}
+```
+
 _______________________________________________

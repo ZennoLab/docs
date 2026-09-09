@@ -41,6 +41,13 @@ _______________________________________________
     **Возвращает:**  
     Имя устройства.
 
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var name = manager.ConvertIndexToName(0); // Внутреннее имя первого устройства в списке
+```
+
 ---
 
 ### ConvertIndexToTitle
@@ -53,6 +60,13 @@ _______________________________________________
     
     **Возвращает:**  
     Человекочитаемое название устройства.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var title = manager.ConvertIndexToTitle(0); // Отображаемое название первого устройства
+```
 
 ---
 
@@ -67,6 +81,13 @@ _______________________________________________
     **Возвращает:**  
     Индекс устройства.
 
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var index = manager.ConvertNameToIndex("emulator-5554"); // Индекс устройства по его имени
+```
+
 ---
 
 ### ConvertTitleToName
@@ -80,6 +101,13 @@ _______________________________________________
     **Возвращает:**  
     Внутреннее имя устройства.
 
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var name = manager.ConvertTitleToName("Samsung_S23"); // Внутреннее имя устройства по названию
+```
+
 ---
 
 ### GetListDevices
@@ -89,6 +117,14 @@ _______________________________________________
     
     **Возвращает:**  
     Массив [`IDeviceSummaryInfo`](./DeviceSummaryInfo) с краткой информацией о каждом устройстве.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+foreach (var device in manager.GetListDevices())
+	project.SendInfoToLog(device.Index + " - " + device.Title + ", запущено: " + device.IsRunning);
+```
 
 ---
 
@@ -100,6 +136,14 @@ _______________________________________________
     **Возвращает:**  
     Массив индексов (`int[]`).
 
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var indices = manager.GetListIndices(); // Индексы всех устройств
+project.SendInfoToLog("Устройств в списке: " + indices.Length);
+```
+
 ---
 
 ### GetListNames
@@ -109,6 +153,14 @@ _______________________________________________
     
     **Возвращает:**  
     Массив строк с внутренними именами.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var names = manager.GetListNames(); // Внутренние имена всех устройств
+project.SendInfoToLog(string.Join(", ", names));
+```
 
 ---
 
@@ -120,6 +172,14 @@ _______________________________________________
     **Возвращает:**  
     Массив строк с названиями.
 
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var titles = manager.GetListTitles(); // Названия всех устройств
+project.SendInfoToLog(string.Join(", ", titles));
+```
+
 ---
 
 ### ReconnectOffline
@@ -129,6 +189,13 @@ _______________________________________________
     
     **Описание:**  
     Используется для восстановления соединения (например, через ADB) с устройствами, которые временно недоступны.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+manager.ReconnectOffline(); // Попробовать переподключить все оффлайн-устройства
+```
 
 _______________________________________________
 

@@ -71,6 +71,24 @@ _______________________________________________
     **Returns:**  
     `true` if the account was added successfully; otherwise `false`.
 
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+// Take the account from one device
+var json = app.GetAccounts("com.android.chrome");
+project.Json.FromString(json);
+
+var name = project.Json[0].name;
+var type = project.Json[0].type;
+var password = project.Json[0].password;
+var metadata = project.Json[0].metadata;
+
+// And add it on another one
+app.AddAccount(name, type, password); // The account alone
+app.AddAccount(name, type, password, metadata); // Along with the authorisation
+```
+
 ---
 
 ### AppDir
@@ -80,6 +98,14 @@ _______________________________________________
     
     **Parameters:**
     - `packageName` — package name (e.g. `com.android.chrome`).
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var dir = app.AppDir("com.android.chrome"); // The application's directory on the device
+project.SendInfoToLog(dir);
+```
 
 ---
 
@@ -677,6 +703,17 @@ if (!isApk) // If not, install it
     - `activityName` — Activity name;
     - `action` — Intent action (e.g. `android.intent.action.VIEW`).
 
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Application name
+
+app.Open(packageName); // Launch the application
+app.Open(packageName, "com.google.android.apps.chrome.Main"); // Open a specific Activity
+app.Open(packageName, "com.google.android.apps.chrome.Main", "android.intent.action.VIEW"); // With an Intent action
+```
+
 ### OpenAsRoot
 
 - **`void OpenAsRoot(string packageName, string activityName)`**  
@@ -747,6 +784,16 @@ app.OpenUrl(url, packageName); // Open Chrome and navigate to ya.ru
     - `packageName` — package name;
     - `proxy` — proxy address (e.g. `10.0.2.2:8083`).
 
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.app.flutter"; // Name of the Flutter application
+
+app.PatchFlutterLib(packageName, "10.0.2.2:8083"); // Send the app's traffic to BurpSuite
+app.Open(packageName);
+```
+
 ---
 
 ### RemoveAccount
@@ -766,6 +813,13 @@ For example, Yandex Go, Yandex Mail, and Yandex Music share the same auth system
 
 In such cases you need to retrieve accounts from the app and forcibly remove them.
 :::
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.RemoveAccount("mymail@gmail.com", "com.google"); // Remove the account from the device
+```
 
 ---
 
@@ -790,6 +844,18 @@ In such cases you need to retrieve accounts from the app and forcibly remove the
     **Parameters:**
     - `restorePermissions` — restore permissions;
     - `restoreAccount` — restore linked accounts.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Application name
+var pathSave = @"/dir/bakups/name_bakup"; // Path to the backup
+
+app.RestoreAppData(packageName, pathSave); // Restore the data
+app.RestoreAppData(packageName, pathSave, true); // Along with the permissions
+app.RestoreAppData(packageName, pathSave, true, true); // Along with the permissions and accounts
+```
 
 ### RestoreDetachedAppData
 
@@ -818,6 +884,13 @@ app.RestoreAppData(packageName, pathLoad); // Load the backup
     
     **Parameters:**
     - `packageName` — package name.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.RestoreFlutterLib("com.app.flutter"); // Put the application's original library back
+```
 
 ---
 

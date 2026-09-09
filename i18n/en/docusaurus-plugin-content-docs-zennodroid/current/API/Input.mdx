@@ -39,16 +39,47 @@ input.ClearText(); // Clear element text
     **Parameters:**
     - `fingerId` — finger ID.
 
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.FingerDown(100, 500); // Put a finger down on the screen
+input.FingerMove(150, 420); // Every call is one point of the path
+input.FingerMove(220, 300);
+input.FingerMove(300, 200);
+input.FingerUp(300, 200); // Lift the finger
+```
+
 ### FingerMove
 
 - **`void FingerMove(int x, int y)`**  
-    Moves the active finger to a new point.
+    Moves the active finger to a new point. The path between the previous point and the new one is not replayed: the finger lands on the given point at once, so a continuous movement means calling the method for every point of the path. A ready-made trajectory is built by [**Swipe**](#swipe), [**SwipeCurved**](#swipecurved) and [**FreeMove**](#freemove).
 
 - **`void FingerMove(int x, int y, int fingerId)`**  
     Moves a specific finger.
     
     **Parameters:**
     - `fingerId` — finger ID.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+// A single call puts the finger straight at the point, so the line
+// has to be laid out point by point
+input.FingerDown(100, 500);
+for (int x = 110; x <= 300; x += 10)
+	input.FingerMove(x, 500 - (x - 100));
+input.FingerUp(300, 300);
+
+// Multi-touch: every finger has its own fingerId
+input.FingerDown(100, 500, 0);
+input.FingerDown(400, 500, 1);
+input.FingerMove(200, 500, 0);
+input.FingerMove(300, 500, 1);
+input.FingerUp(200, 500, 0);
+input.FingerUp(300, 500, 1);
+```
 
 ### FingerUp
 
@@ -61,6 +92,14 @@ input.ClearText(); // Clear element text
     **Parameters:**
     - `fingerId` — finger ID.
 
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.FingerDown(100, 500); // Put a finger down
+input.FingerUp(100, 500); // Lift it at the same point, which makes a plain tap
+```
+
 ---
 
 ### FreeMove
@@ -71,6 +110,17 @@ input.ClearText(); // Clear element text
     **Parameters:**
     - `json` — JSON description of the movement trajectory;
     - `speed` — gesture execution speed.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+// The trajectory is an array of gestures, each a list of [time in ms, X, Y] points
+var json = "[[[0,100,500],[100,150,420],[200,220,300],[300,300,200]]]";
+
+input.FreeMove(json, 1); // Speed 1 plays the trajectory as recorded
+input.FreeMove(json, 2); // Speed 2 plays it twice as fast
+```
 
 ---
 
@@ -99,6 +149,14 @@ var text = input.GetClipboard(); // Get text from clipboard
     **Parameters:**
     - `x` — X coordinate;
     - `y` — Y coordinate.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+Point point = new Point() { X = 100, Y = 500 }; // The point
+input.LongTap(point.X, point.Y); // Long tap at the coordinates
+```
 
 ---
 
@@ -171,6 +229,19 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
     - `xPivot`, `yPivot` — coordinates of the curve control point;
     - `duration` — swipe duration in milliseconds.
 
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+Point start = new Point() { X = 100, Y = 500 }; // Start point
+Point end = new Point() { X = 300, Y = 200 }; // End point
+
+input.LongTapAndSwipeCurved(start.X, start.Y, end.X, end.Y); // Long tap and a curved swipe
+input.LongTapAndSwipeCurved(start.X, start.Y, end.X, end.Y, 500); // With a duration in ms
+input.LongTapAndSwipeCurved(start.X, start.Y, 0.5, end.X, end.Y); // With a bending factor
+input.LongTapAndSwipeCurved(start.X, start.Y, 200, 250, end.X, end.Y); // Through a control point
+```
+
 ---
 
 ### RootShell
@@ -198,6 +269,16 @@ input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and
     - `command` — command;
     - `timeout` — execution timeout (ms);
     - `checkconnect` — check device connection before executing.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+var model = input.RootShell("getprop ro.product.model"); // Run a command with root rights
+var packages = input.RootShell("pm list packages", 30000); // With a timeout in ms
+
+project.SendInfoToLog(model);
+```
 
 ---
 

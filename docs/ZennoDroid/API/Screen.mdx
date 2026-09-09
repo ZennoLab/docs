@@ -36,7 +36,7 @@ _______________________________________________
     - `imageHash` — хэш изображения;
     - `rectangles` — области поиска;
     - `confidenceInterval` — точность совпадения;
-    - `searchTime` — максимальное время поиска в миллисекундах.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Rectangle` — найденная область.
@@ -59,10 +59,24 @@ _______________________________________________
     - `imageHashes` — массив хэшей;
     - `rectangles` — области поиска;
     - `confidenceInterval` — точность совпадения;
-    - `searchTime` — время поиска в миллисекундах.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Rectangle` — найденная область.
+
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var hash = project.Variables["imageHash"].Value; // Хэш эталонного изображения
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Где искать - здесь весь экран
+
+var found = screen.FindImage(hash, areas, 90); // Точность совпадения 90
+if (found.IsEmpty)
+	throw new Exception("Изображение не найдено");
+
+var waited = screen.FindImage(hash, areas, 90, 10); // Ждать появления до 10 секунд
+```
 
 ---
 
@@ -88,7 +102,7 @@ _______________________________________________
     - `rectangles` — области;
     - `confidenceInterval` — точность;
     - `threshold` — порог;
-    - `searchTime` — время поиска.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
@@ -113,10 +127,22 @@ _______________________________________________
     - `rectangles` — области;
     - `confidenceInterval` — точность;
     - `threshold` — порог;
-    - `searchTime` — время.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
+
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var hash = project.Variables["imageHash"].Value; // Хэш эталонного изображения
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Область поиска
+
+var found = screen.FindImageBlackWhite(hash, areas, 90, 128); // Порог бинаризации 128
+if (found.IsEmpty)
+	throw new Exception("Изображение не найдено");
+```
 
 ---
 
@@ -140,7 +166,7 @@ _______________________________________________
     - `imageHash` — хэш;
     - `rectangles` — области;
     - `confidenceInterval` — точность;
-    - `searchTime` — время.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
@@ -163,10 +189,22 @@ _______________________________________________
     - `imageHashes` — массив;
     - `rectangles` — области;
     - `confidenceInterval` — точность;
-    - `searchTime` — время.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Rectangle` — область найденного изображения.
+
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var hash = project.Variables["imageHash"].Value; // Хэш эталонного изображения
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Область поиска
+
+var found = screen.FindImageGrayscale(hash, areas, 90); // Сравнение в оттенках серого
+if (found.IsEmpty)
+	throw new Exception("Изображение не найдено");
+```
 
 ---
 
@@ -190,7 +228,7 @@ _______________________________________________
     - `color` — цвет;
     - `rectangles` — области поиска;
     - `variation` — отклонение цвета;
-    - `searchTime` — время поиска.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
@@ -213,10 +251,23 @@ _______________________________________________
     - `htmlColor` — цвет;
     - `rectangles` — области поиска;
     - `variation` — отклонение;
-    - `searchTime` — время поиска.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
+
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Область поиска
+
+var point = screen.FindPixel("#FF0000", areas, 10); // Красный пиксель, допуск 10
+if (point.IsEmpty)
+	throw new Exception("Пиксель не найден");
+
+var waited = screen.FindPixel(Color.Red, areas, 10, 10); // То же, но ждать до 10 секунд
+```
 
 ---
 
@@ -240,7 +291,7 @@ _______________________________________________
     - `colors` — массив цветов;
     - `rectangles` — области поиска;
     - `variation` — отклонение;
-    - `searchTime` — время поиска.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
@@ -263,10 +314,22 @@ _______________________________________________
     - `htmlColors` — массив цветов;
     - `rectangles` — области поиска;
     - `variation` — отклонение;
-    - `searchTime` — время поиска.
+    - `searchTime` — максимальное время поиска в секундах.
     
     **Возвращает:**  
     `Point` — координаты найденного пикселя.
+
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var areas = new[] { new Rectangle(0, 0, 720, 1280) }; // Область поиска
+var colors = new[] { "#FF0000", "#00FF00" }; // Подойдёт любой из цветов
+
+var point = screen.FindPixels(colors, areas, 10);
+if (point.IsEmpty)
+	throw new Exception("Ни один из цветов не найден");
+```
 
 ---
 
@@ -295,12 +358,28 @@ project.SendInfoToLog($"Разрешение экрана: {size.Width}x{size.He
 - **`void RefreshScreen()`**  
     Обновляет изображение на экране. Используется если выбран тип захвата экрана, который требует ручного обновления (`captureScreenMethod = "off"`).
 
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+instance.DroidInstance.Action.Start("off"); // Запустить устройство без постоянного захвата
+screen.RefreshScreen(); // Обновить изображение вручную
+```
+
 ---
 
 ### ResetScreen
 
 - **`void ResetScreen()`**  
     Сбрасывает параметры захвата экрана и запускает новый процесс захвата. Используется для перезапуска захвата при изменении условий (например, при смене разрешения экрана командой `wm size WidthxHeight`).
+
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+instance.DroidInstance.Input.RootShell("wm size 720x1280"); // Сменить разрешение экрана
+screen.ResetScreen(); // Перезапустить захват под новое разрешение
+```
 
 ---
 
@@ -348,6 +427,19 @@ using (var bmp = new Bitmap(ms))
     **Возвращает:**  
     Base64 строку.
 
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var base64 = screen.ScreenshotAsBase64String(); // Весь экран
+var area = screen.ScreenshotAsBase64String(new Rectangle(0, 0, 300, 300)); // Только область
+
+var data = Convert.FromBase64String(base64);
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+	bmp.Save(project.Path + "myScreen.png");
+```
+
 ---
 
 ### SetCaptureScreenQuality
@@ -357,5 +449,13 @@ using (var bmp = new Bitmap(ms))
     
     **Параметры:**
     - `quality` — уровень качества (влияет на скорость и точность). Допустимые значения от 0 до 10.
+
+#### Пример.  
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+screen.SetCaptureScreenQuality(10); // Максимальное качество - точнее поиск, но медленнее
+screen.SetCaptureScreenQuality(0); // Минимальное качество - быстрее
+```
 
 _______________________________________________
