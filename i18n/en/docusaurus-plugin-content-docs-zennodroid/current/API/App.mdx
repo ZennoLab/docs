@@ -927,16 +927,10 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.android.camera"; // The default Camera app
+var packageName = "com.android.camera2"; // The default Camera app
 
 // A video from the PC: pushed to the device, played in a loop and without sound
 app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
-
-// A video that is already on the device: with sound, without looping, photos allowed
-app.SetVideoForFakeCamera(packageName, "/sdcard/Download/source.mp4", false, false, true);
-
-// Return the real camera
-app.SetVideoForFakeCamera(packageName, "");
 ```
 The package name of the default Camera app differs from device to device. To find it, open the camera on the device and then the [**Installed Apps**](../Tools/Installed_App) tool — the identifier is in the *Active application in the foreground* group.
 
@@ -956,6 +950,9 @@ instance.DroidInstance.App.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
 instance.DroidInstance.App.Open(packageName); // Open the app
 ```
 The scope list is set **before** the module is enabled: with an empty list `EnableModule` fails with *Add any package!*. The module itself does not have to be installed by hand — `SetPackages` delivers it to the device if it is not there yet.
+
+:::info **The same can be done without code** - with the [**LSPosed module settings**](../Enterprise/LSPosed_Control#lsposed-module-settings) action. Put `com.zennolab.zennovcam` in *Module name*, the app whose camera is being replaced in *Applications*, and switch the module on.
+:::
 
 :::warning Important notes
 - `photo` is off by default because it is a trade rather than a strict improvement: to get the save through, the module hands the small helper frame lanes (metering, thumbnails) back to the real camera. Leave it `false` for a scanner or KYC app that reads frames through one of those lanes, since it would otherwise receive the real camera image.
