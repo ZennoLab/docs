@@ -105,6 +105,13 @@ html {
   --ifm-h3-font-size: 1.25rem;
 }
 
+/* Use the theme link color inside admonitions, without an underline. */
+.markdown .alert {
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--ifm-color-primary-dark);
+  --ifm-link-decoration: none;
+}
+
 .alert p {
   color: #1E232D;
 }
@@ -287,6 +294,8 @@ img[alt*="-eighty"] { width: 80%; }
 
 div[class^='admonitionHeading'] {
   margin-bottom: 1rem !important;
+  font-size: 16px;
+  text-transform: none;
 }
 
 .alert--info p code, .alert--info ul code{
