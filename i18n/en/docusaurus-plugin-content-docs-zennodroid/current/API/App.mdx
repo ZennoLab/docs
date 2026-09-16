@@ -923,6 +923,17 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
     - `mute` — suppress the audio track of the video. Pass `false` to play the sound;
     - `photo` — let a camera app finish saving a photo.
 
+- **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo, bool synth)`**  
+    The same, with a choice of which camera the app sees.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `videoSource` — path to the video on the PC or on the device, or an empty string to disable the substitution;
+    - `loop` — restart the video when it ends;
+    - `mute` — suppress the audio track of the video;
+    - `photo` — let a camera app finish saving a photo;
+    - `synth` — show the app the camera the module creates instead of the device's own cameras. Off by default, and needed only on an emulated device, where the substitution usually does not work without it.
+
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
