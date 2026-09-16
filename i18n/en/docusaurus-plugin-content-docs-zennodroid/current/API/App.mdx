@@ -923,6 +923,17 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
     - `mute` — suppress the audio track of the video. Pass `false` to play the sound;
     - `photo` — let a camera app finish saving a photo.
 
+- **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo, bool synth)`**  
+    The same, with the option to emulate a camera of our own.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `videoSource` — path to the video on the PC or on the device, or an empty string to disable the substitution;
+    - `loop` — restart the video when it ends;
+    - `mute` — suppress the audio track of the video;
+    - `photo` — let a camera app finish saving a photo;
+    - `synth` — emulate a camera of our own. Off by default; turn it on when the device has no camera.
+
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
@@ -933,6 +944,21 @@ var packageName = "com.android.camera2"; // The default Camera app
 app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
 ```
 The package name of the default Camera app differs from device to device. To find it, open the camera on the device and then the [**Installed Apps**](../Tools/Installed_App) tool — the identifier is in the *Active application in the foreground* group.
+
+#### Example with every parameter  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.camera2"; // The default Camera app
+
+app.SetVideoForFakeCamera(
+	packageName,
+	"/sdcard/Download/source.mp4", // A video that is already on the device
+	true,  // loop - repeat
+	true,  // mute - mute the sound
+	false, // photo - going through KYC
+	true); // synth - the device has no camera, emulate our own
+```
 
 The substitution starts working only once the **ZennoVCam** module is enabled in LSPosed and the target app is on its list. That is done through the [**LSPosed API**](./LSPosed) — here it is turned on for the default Camera app:
 ```csharp
