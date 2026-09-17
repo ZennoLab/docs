@@ -924,7 +924,7 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
     - `photo` — let a camera app finish saving a photo.
 
 - **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo, bool synth)`**  
-    The same, with the option to emulate a camera of our own.
+    The same, with a choice of where the app gets its camera from.
     
     **Parameters:**
     - `packageName` — package name of the target app;
@@ -932,7 +932,7 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
     - `loop` — restart the video when it ends;
     - `mute` — suppress the audio track of the video;
     - `photo` — let a camera app finish saving a photo;
-    - `synth` — emulate a camera of our own. Off by default; turn it on when the device has no camera.
+    - `synth` — hand the app the module's camera instead of intercepting the one the device opens. Off by default. It is for a device whose cameras are listed and answer questions about themselves but never deliver a frame: an emulated phone, or a handset with a broken camera.
 
 #### Example  
 ```csharp
@@ -957,7 +957,7 @@ app.SetVideoForFakeCamera(
 	true,  // loop - repeat
 	true,  // mute - mute the sound
 	false, // photo - going through KYC
-	true); // synth - the device has no camera, emulate our own
+	true); // synth - the cameras are listed but never deliver a frame
 ```
 
 The substitution starts working only once the **ZennoVCam** module is enabled in LSPosed and the target app is on its list. That is done through the [**LSPosed API**](./LSPosed) — here it is turned on for the default Camera app:
