@@ -1,0 +1,277 @@
+---
+sidebar_position: 9
+title: "Public API and MCP Servers"
+description: "ZennoPoster and ProjectMaker PublicAPI, permission-based API keys, and public MCP servers for external AI assistants."
+date: "2026-09-17"
+slug: public-api-mcp
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+ZennoPoster and ProjectMaker 7.9.2 introduced a public HTTP API (PublicApi) and a suite of public MCP servers. You can control the product externally from your own scripts and applications or through an AI assistant, with access permissions defined by your API key.
+
+:::info Requirements
+ZennoPoster 7.9.2 or newer; ZennoDroid 2.6.1 or newer for Android workflows. Windows x64. ProjectMaker must be running with the required project open.
+:::
+
+_______________________________________________
+
+## 1. What’s New in 7.9.2
+
+**Public REST API (PublicApi)** — more than 100 operations under a unified contract:
+
+- working with a project in ProjectMaker: action tree, variables, lists, tables, and static data;
+- managing tasks and execution sessions in ZennoPoster;
+- controlling a browser instance: navigation, clicks, text input, and screenshots.
+
+The contract is described in OpenAPI, and you can generate a client for any language from the specification.
+
+**API keys with flexible permissions.** Keys are issued in ProjectMaker. Each key has its own set of permissions (scopes) and maximum operation tier, ranging from strictly read-only access to full control.
+
+**Public MCP servers** built on top of this API: download them, enter your key, and connect them to your AI client. The assistant’s permissions are determined by your key, and connections are accepted only from the local machine.
+
+The product’s built-in AI chat runs on the same infrastructure: the same API and the same permission model, with no hidden privileged channels. To learn more about the chat itself, see [AI Assistant](./AI_Complete_Guide.mdx).
+
+_______________________________________________
+
+## 2. Two Sets of MCP Servers
+
+This is the most important thing to understand before setup. There are two sets of servers, and they serve different purposes.
+
+| | Internal servers | Public servers |
+|---|---|---|
+| **Ports** | `6107` ProjectMCP, `6108` BrowserMCP | `6207`-`6211` |
+| **Startup** | Automatically with ProjectMaker | Manually, downloaded separately |
+| **API key** | Not required | Required, with permissions defined by you |
+| **Coverage** | ProjectMaker project and browser | Project, browser, ZennoPoster tasks, ZennoDroid |
+| **Setup** | [Setup Guide for AI Assistants](./MCP_Setup.mdx) | This page |
+
+The internal servers support the built-in AI chat. You can also connect an external assistant to them if you only need to work with the ProjectMaker project and browser without granular access control.
+
+The public servers are needed when you want to manage ZennoPoster tasks, work with ZennoDroid, or control exactly what the assistant is allowed to do.
+
+:::warning Do Not Use Ports 6107-6113
+The product’s internal infrastructure uses this port range. Do not run your own processes on these ports, or the built-in AI chat will stop working.
+:::
+
+_______________________________________________
+
+## 3. API Keys: Permissions and Tiers
+
+Keys are issued in ProjectMaker under **Settings → API Keys → Add**. In the dialog, specify:
+
+- **Label** — a name that will help you identify who the key was issued to.
+- **Maximum tier** — the highest operation severity level allowed. `T0` permits read-only access, while higher tiers enable changes.
+- **Permissions (scopes)** — a set of access areas. By default, only read permissions are enabled.
+
+:::caution The Key Is Shown Only Once
+Copy and save the key as soon as you create it. You cannot view it again; if you lose it, the easiest solution is to delete it and issue a new one.
+:::
+
+If a key does not have sufficient permissions, the API returns a structured error specifying the exact permission or tier that is missing.
+
+**Recommended workflow:**
+
+1. Issue a key with the `T0` tier and read-only permissions.
+2. Make sure the assistant can see the project and answer questions about it.
+3. Issue a second key with write permissions and use it when changes are needed.
+
+Using a separate key for each client and machine makes revocation easier: if something goes wrong, you will know exactly which key to delete.
+
+_______________________________________________
+
+## 4. Installing Public Servers
+
+### Step 1. Choose the Servers You Need
+
+| Task | Server | Port |
+|---|---|---|
+| Read and edit the project: blocks, connections, variables, lists, tables | MCP.ProjectMaker | `6207` |
+| Control the browser open in ProjectMaker | MCP.Instance | `6208` |
+| Control the browser within ZennoPoster tasks | MCP.Instance, second copy | `6209` |
+| Create and manage tasks: start, threads, stop, logs | MCP.ZennoPoster | `6210` |
+| Work with Android devices through ZennoDroid | MCP.Android | `6211` |
+
+You do not need to install everything at once. If you are starting with a single server, choose **MCP.ProjectMaker**.
+
+### Step 2. Download and Extract
+
+The archives are available on the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases) and follow a naming pattern such as `MCP.ProjectMaker-v0.2.0-win-x64.zip`. Extract the archive to a convenient folder, such as `C:\ZennoMCP\`. These are ready-to-use, self-contained builds, so you do not need to install .NET separately.
+
+### Step 3. Start the Server with Your Key
+
+Open the folder containing the extracted server, type `powershell` in the File Explorer address bar, and press Enter. Replace `zp_xxx` with your key.
+
+```powershell title="ProjectMaker, port 6207"
+.\ZennoLab.AI.MCP.ProjectMaker.exe --NeuroBot:ApiKey=zp_xxx
+```
+
+```powershell title="Browser in ProjectMaker, port 6208"
+.\ZennoLab.AI.MCP.Instance.exe --Instance:ApiKey=zp_xxx
+```
+
+```powershell title="ZennoPoster tasks, port 6210"
+.\ZennoLab.AI.MCP.ZennoPoster.exe --ZennoPosterApi:ApiKey=zp_xxx
+```
+
+```powershell title="Android, port 6211"
+.\ZennoLab.AI.MCP.Android.exe --Android:ApiKey=zp_xxx
+```
+
+The console window must remain open: if the server stops running, the assistant loses access.
+
+:::tip Starting Without Entering the Key
+Enter the key in the `ApiKey` field in the `appsettings.json` file next to the program, and you will be able to start the server by double-clicking the exe. You can also pass the key through an environment variable such as `NeuroBot__ApiKey`. The command-line argument takes precedence over the environment variable and the settings file.
+:::
+
+### Browser Within ZennoPoster Tasks, Port 6209
+
+This is a second copy of the Instance server with different parameters. Extract the archive into a second folder and start it as follows:
+
+```powershell
+.\ZennoLab.AI.MCP.Instance.exe --urls http://localhost:6209 `
+  --Instance:Target=zennoposter --Instance:BaseUrl=http://localhost:5300/api/v1 `
+  --Instance:ApiKey=zp_xxx
+```
+
+_______________________________________________
+
+## 5. Connecting an AI Client
+
+Ready-made installation buttons for Cursor and VS Code, along with commands for Claude Code, are available on the [installation page](https://zennolab.github.io/zennoposter-mcp/install.html). The same steps are shown manually below.
+
+### Claude Code
+
+```sh
+claude mcp add --transport http projectmaker http://localhost:6207
+claude mcp list
+```
+
+### GitHub Copilot, Cursor, VS Code
+
+Add the following to the `.mcp.json` file in your profile folder (`Win + R` → `%USERPROFILE%`):
+
+```json
+{
+  "servers": {
+    "projectmaker": { "type": "http", "url": "http://localhost:6207" },
+    "zennoposter": { "type": "http", "url": "http://localhost:6210" }
+  }
+}
+```
+
+Restart the client after editing the file: the configuration is loaded at startup.
+
+### LM Studio, Local Model
+
+You need LM Studio 0.3.17 or newer; earlier versions do not support MCP. Choose a model that supports tool use, otherwise it will not be able to execute commands. Add the block to the `mcp.json` file using the editor inside the program; the relevant section has a different name there:
+
+```json
+{
+  "mcpServers": {
+    "projectmaker": { "url": "http://localhost:6207" }
+  }
+}
+```
+
+:::note
+Local models are less capable than cloud-based ones: they are more likely to get lost in large projects and sometimes call the wrong tools. They are sufficient for reading and explaining a project, but a cloud model is better for complex changes.
+:::
+
+### Testing the Connection
+
+Ask the assistant:
+
+```text
+Which ZennoPoster tools are available to you? List them.
+```
+
+If it lists the available tools, everything is working.
+
+_______________________________________________
+
+## 6. What an External Assistant Can Do {#6-what-an-external-assistant-can-do}
+
+### Read the Project as a Graph
+
+- `get_project_structure` returns nodes (type, label, starting point, switch, disabled state, whether they belong to an error branch, `groupId`, and `actionId`) and edges (`OnSuccess`, `OnError`, `Default`, `Case-N`, including implicit transitions). The response has three levels: a group overview, a single-group snapshot, or the complete graph, preventing excessive output for large templates.
+- `find_path(from, to)` finds the shortest path between two blocks.
+- `get_action_connections(actionId)` shows all incoming and outgoing connections for a specific block.
+
+This allows the assistant to answer questions such as “how does execution reach this block?” and “what will break if this branch is removed?”
+
+### Saving and Verifying File State
+
+- `save_project` and `open_project` return `fileHash` (the SHA-256 hash of the .zp file contents, calculated after writing), `fileSizeBytes`, and `lastWriteTimeUtc`. Opening the same file again produces an identical hash, allowing you to verify that the file on disk is exactly what you expected.
+- `get_project_info` includes the `hasUnsavedChanges` flag; the hash is calculated only when there are no unsaved changes.
+- By default, `close_project` will not close a project with unsaved changes. It returns `409 failed_precondition` to prevent your work from being silently lost. To close it and discard the changes, you must explicitly pass `discardUnsavedChanges: true`.
+
+### Tasks, Browser, and Data
+
+- ZennoPoster tasks and sessions: starting, threads, stopping, statuses, and logs.
+- Browser instance: navigation, clicks, text input, DOM interaction, and screenshots.
+- Project data: variables, lists, tables, and static data.
+
+The complete operation reference, interactive OpenAPI contract, error codes, and versioning policy are available in the [PublicApi documentation](https://zennolab.github.io/zennoposter-mcp/).
+
+_______________________________________________
+
+## 7. Example Prompts
+
+Start with read-only requests: this lets you see how well the assistant understands the project without risking any changes.
+
+**Understand the project:**
+
+```text
+Describe step by step what the open project does. Where can it fail?
+
+Build a path from the start block to the block that submits the form.
+
+Show all incoming and outgoing connections of the selected block and where the error branches go.
+```
+
+**Edit and debug:**
+
+```text
+After the login block, add a captcha check. If a captcha appears, route
+execution to a separate retry branch.
+
+Find blocks that have no OnError branch filled in, and suggest what to put there.
+
+Save the project and confirm that the file on disk was updated.
+```
+
+**Run and investigate failures:**
+
+```text
+Run this task with 3 threads, wait for it to finish, and show which block
+it failed on and what the variable values were at that moment.
+```
+
+:::tip
+Before making changes through the assistant, save a copy of the project: changes can arrive quickly and in batches.
+:::
+
+_______________________________________________
+
+## 8. Troubleshooting
+
+| Symptom | Cause | What to Do |
+|---|---|---|
+| The client says no tools are available | The server is not running, or the configuration was added to the wrong program | Check the server window and restart the client; the configuration is loaded at startup |
+| `401` error | The key is invalid or was not passed correctly | Make sure the entire key is specified without extra spaces or quotation marks. If the key is lost, issue a new one |
+| `403` error | The key does not have the required permission or tier | The error message specifies exactly what is missing. Issue a key with the required scopes and a tier above `T0` |
+| `409` error when closing the project | The project has unsaved changes | Save the project or explicitly pass `discardUnsavedChanges: true` |
+| The server does not start because the port is in use | The port is being used by another copy of the server or a third-party program | Close the extra copy. Do not use the `6107`-`6113` range; it is reserved for internal services |
+| The assistant cannot see the project | ProjectMaker is closed or no project is open in it | Start ProjectMaker, open the project, and try again |
+| The archive cannot be downloaded from GitHub | Your provider imposes restrictions in your region | Try a different connection. If that does not work, contact support and they will send you the file directly |
+
+_______________________________________________
+
+## Useful Links
+
+- [AI Assistant](./AI_Complete_Guide.mdx) — built-in chat in ProjectMaker.
+- [Setup Guide for AI Assistants](./MCP_Setup.mdx) — connecting to internal servers without keys.
+- [PublicApi and MCP Documentation](https://zennolab.github.io/zennoposter-mcp/) — operation reference and OpenAPI.
+- [Server Repository](https://github.com/ZennoLab/zennoposter-mcp) — source code and releases.
