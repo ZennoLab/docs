@@ -823,6 +823,26 @@ app.RemoveAccount("mymail@gmail.com", "com.google"); // Remove the account from 
 
 ---
 
+### ResetFakeCameraFraming
+
+:::info **Available starting from ZennoDroid 2.6.1.0.**
+:::
+
+- **`void ResetFakeCameraFraming(string packageName)`**  
+    Returns the framing to its defaults: the video fills the frame from the middle, unturned and unmagnified.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.ResetFakeCameraFraming("com.android.camera2"); // Back to the default framing
+```
+
+---
+
 ### RestoreAppData
 
 - **`void RestoreAppData(string packageName, string pathToBackup)`**  
@@ -894,6 +914,43 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
 
 ---
 
+### SetFakeCameraFraming
+
+:::info **Available starting from ZennoDroid 2.6.1.0.**
+:::
+
+- **`void SetFakeCameraFraming(string packageName, double anchorX, double anchorY, double zoom, int rotate, bool fit)`**  
+    Decides how the video sits inside the frame the app asked for. The video itself is not changed.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `anchorX` — which part of the video survives a horizontal trim, `0` to `1`: `0` keeps the left edge, `1` the right, `0.5` the middle. Only has an effect when there is something to trim;
+    - `anchorY` — the same vertically: `0` keeps the top, `1` the bottom;
+    - `zoom` — magnification with the proportions kept, `0.1` to `10`. `1` is no magnification, `2` shows the middle of the video at twice the size. Below `1` the video stands back: the trimmed edges come back into shot first, and only then do black bars appear;
+    - `rotate` — a quarter turn of the video, clockwise: `0`, `90`, `180` or `270`. For a video shot or saved the wrong way up;
+    - `fit` — `true` shows the whole video, adding black bars where it does not reach the edges of the frame. Off by default; worth turning on where the alternative is worse. An app that asks for a wide frame, is given a portrait video and then crops it again into a round viewfinder can leave a face out of shot entirely.
+    
+    **Description:**  
+    A video and the app's frame are rarely the same shape, so when they differ part of the video is trimmed - these settings say which part. Where the shapes agree the settings change nothing, so the first thing worth trying is a video shaped like what the app asks for.
+
+    Out-of-range values are brought into range rather than refused. The setting takes effect while the camera is running, without restarting the app or its camera session, and survives a later change of video.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.camera2"; // The default Camera app
+
+app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
+
+app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 0, false); // The middle of the video, unturned and unmagnified
+app.SetFakeCameraFraming(packageName, 0.5, 0.3, 1.5, 0, false); // Higher up and closer in
+app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 90, false); // A quarter turn clockwise
+app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 0, true); // The whole video, with black bars
+```
+
+---
+
 ### SetVideoForFakeCamera
 
 :::info **Available starting from ZennoDroid 2.6.1.0.**
@@ -912,6 +969,17 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
     The video is cached on the device by its content hash, so pushing the same file again — or reusing it for another app — does not transfer it a second time.
     
     The video can be replaced while the camera is running: a subsequent call switches playback without restarting the app or its camera session.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.camera2"; // The default Camera app
+
+// A video from the PC: pushed to the device, played in a loop and without sound
+app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
+```
+The package name of the default Camera app differs from device to device. To find it, open the camera on the device and then the [**Installed Apps**](../Tools/Installed_App) tool — the identifier is in the *Active application in the foreground* group.
 
 - **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo)`**  
     The same, with explicit playback options.
@@ -933,17 +1001,6 @@ app.RestoreFlutterLib("com.app.flutter"); // Put the application's original libr
     - `mute` — suppress the audio track of the video;
     - `photo` — let a camera app finish saving a photo;
     - `synth` — hand the app the module's camera instead of intercepting the one the device opens. Off by default. It is for a device whose cameras are listed and answer questions about themselves but never deliver a frame: an emulated phone, or a handset with a broken camera.
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.android.camera2"; // The default Camera app
-
-// A video from the PC: pushed to the device, played in a loop and without sound
-app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
-```
-The package name of the default Camera app differs from device to device. To find it, open the camera on the device and then the [**Installed Apps**](../Tools/Installed_App) tool — the identifier is in the *Active application in the foreground* group.
 
 #### Example with every parameter  
 ```csharp

@@ -141,6 +141,8 @@ void RestoreAppData(string packageName, string pathToBackup, bool restorePermiss
 void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
 void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount);
 void RestoreFlutterLib(string packageName);
+void ResetFakeCameraFraming(string packageName);
+void SetFakeCameraFraming(string packageName, double anchorX, double anchorY, double zoom, int rotate, bool fit);
 void SetVideoForFakeCamera(string packageName, string videoSource);
 void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo);
 void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo, bool synth);
