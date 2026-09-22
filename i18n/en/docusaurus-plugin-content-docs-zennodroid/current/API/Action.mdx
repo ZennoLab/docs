@@ -177,3 +177,37 @@ var action = instance.DroidInstance.Action;
 action.SelectByTitle("Name");
 action.Stop();
 ```
+
+---
+
+### WaitForUserAction
+
+:::info **Available starting from ZennoDroid 2.6.1.0.**
+:::
+
+- **`void WaitForUserAction(int timeout)`**  
+    Stops the project and hands the device over to a person: a bar with a **Continue** button appears at the top of the device window, and whatever the template should not do itself can be done on the device by hand. The same as the [**Waiting for user actions**](../project-editor/logic/Wait_for_User_Action) action.
+    
+    The project stands on this line until the person presses **Continue**, until the timeout runs out, or until the template is stopped.
+    
+    **Parameters:**
+    - `timeout` — seconds allowed for the manual work. A negative value waits until the person presses **Continue**.
+
+- **`void WaitForUserAction(int timeout, string comment)`**  
+    The same, with a message for the person.
+    
+    **Parameters:**
+    - `timeout` — seconds allowed for the manual work. A negative value waits until the person presses **Continue**;
+    - `comment` — the text the person sees in the device window. This is where you write what exactly has to be done.
+
+#### Example  
+```csharp
+var action = instance.DroidInstance.Action;
+
+action.WaitForUserAction(120, "Input login and password manually"); // Two minutes for the manual work
+```  
+```csharp
+var action = instance.DroidInstance.Action;
+
+action.WaitForUserAction(-1); // Wait until the person presses Continue
+```
