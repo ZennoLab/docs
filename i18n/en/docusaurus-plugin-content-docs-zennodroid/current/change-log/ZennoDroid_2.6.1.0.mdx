@@ -1,0 +1,120 @@
+---
+sidebar_position: 92
+title: "ZennoDroid 2.6.1.0"
+description: ""
+date: "2026-09-29"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+29.09.2026
+
+**Added:**
+
+[+] ZennoDroid and ProjectMaker now have a **public HTTP API and a set of MCP servers**. The product can be controlled externally — from your own scripts and applications, or directly from an AI assistant (Claude Code, Cursor, and any other MCP client): read and edit projects, schedule tasks for execution, and control the browser.
+
+- **Public REST API (PublicAPI)** — more than 100 operations under a single contract: working with a project in ProjectMaker (action tree, variables, lists, tables, static data), managing tasks and execution sessions in ZennoDroid, and device information (element tree, installed applications). The contract is described in OpenAPI, so a client for any language can be generated from the specification.
+- **API keys with flexible permissions.** Keys are issued in ProjectMaker (Settings → API Keys). Each key has a set of permissions (scopes) and a maximum operation level (tier), from strictly read-only to full control. The key is shown once, when it is created. The API returns every authorization error in a structured form and states exactly which permissions were missing.
+- **MCP servers for AI assistants.** Three servers — ProjectMaker (project editing), Android (device information), and ZennoDroid (tasks and sessions) — are published as ready-made self-contained builds: download one, enter your API key, and connect it to your LLM client. The assistant's permissions are defined by your key. The servers accept connections only from the local machine.
+
+The product's built-in AI chat runs on the same infrastructure: the same permission model and the same API, with no hidden privileged channels.
+
+Public servers are in the repository [README](https://github.com/ZennoLab/zennoposter-mcp/blob/main/README.md).  
+Documentation (integrator guide, interactive OpenAPI contract, operation reference, error codes, and versioning policy): [zennolab.github.io/zennoposter-mcp](https://zennolab.github.io/zennoposter-mcp/). MCP server releases are published in the same GitHub repository.
+
+:::warning
+Ports used by ZennoDroid are shifted by **+10** from the ports used by ZennoPoster.
+:::
+
+[+] Added **tools for saving, loading, and closing a ProjectMaker project**.
+
+- `save_project` and `open_project` return a file freshness mark: `fileHash` (SHA-256 of the .zp contents on disk, calculated after the write), `fileSizeBytes`, and `lastWriteTimeUtc`. Opening the same file again produces an identical hash, so you can confirm that the file on disk is the one you expected.
+- `get_project_info` now includes the `hasUnsavedChanges` flag and the same fields. The hash is calculated only when there are no unsaved changes.
+- `close_project` closes the open project. By default, a project with unsaved changes is not closed: the call returns `409 failed_precondition`, so work is not discarded silently. To close and drop the changes, pass `discardUnsavedChanges: true` explicitly.
+
+[+] Improved the **project structure reading tools**.
+
+- `get_project_structure` returns a graph: nodes (type, label, start point, switch, disabled state, membership in the error branch, groupId/actionId) and edges (OnSuccess/OnError/Default/Case-N, including implicit transitions). The response has three levels — a group overview, a slice of one group, or the full graph — so large templates do not inflate the response.
+- `find_path(from, to)` — the shortest route between two action blocks.
+- `get_action_connections(actionId)` — every incoming and outgoing connection and branch of a specific action block.
+
+[+] The **Appium** application package has been renamed. The default name `io.appium.uiautomator2.server`, which applications could use to detect automation, has been changed. The application's default port, which could also be used for detection, has been changed as well.
+
+[+] Added the [**Visual Studio Project**](../project-editor/custom-code/Visual_Studio_Project) action. It lets a ZennoDroid project use projects created in Microsoft Visual Studio 2022/2026.
+
+[+] **ZD ENTERPRISE.** Added a new text input method: [**ZennoKeyboard**](../Settings/InputMethods#zennokeyboard). It is installed automatically when connecting to a device and enters characters as if they were typed on a keyboard. It exchanges data with the program directly, and the device confirms the input result: if the field did not accept the text or the application closed, the action fails immediately instead of continuing as if the text had been entered.
+
+[+] **ZD ENTERPRISE.** **Emulation of a phone being held in the hands.** Antidetect for phones that sit still on a rack. It turns on automatically when device spoofing is used.
+
+[+] **ZD ENTERPRISE.** Extended the **API for controlling BlueStacks 5 and MSI App Player 5 emulators**. You can now obtain root offline, without rebooting the emulator, using [**SetupRootOffline**](../API/BlueStacks5#setuprootoffline). Magisk 30.7 and NeoZygisk are supported and installed automatically.
+
+[+] **ZD ENTERPRISE.** Added **camera emulation (beta)**. The **ZennoVCam** 3.3.31 module replaces an application's camera with a video file: the application receives video frames as if they came from the device camera. [Custom C# code](../API/App#setvideoforfakecamera).
+
+Camera emulation on farms **without a physical camera** (beta). [Custom C# code](../API/App#setvideoforfakecamera).
+
+**Rotation**, **zoom**, and **position** of the video for the virtual camera. [Custom C# code](../API/App#setfakecameraframing).
+
+[+] **ZD ENTERPRISE.** **Device monitoring** has been added to [Device Manager](../Tools/Device_Manager_Ent). The monitor polls devices from the list at a set interval and reconnects those that have dropped. This is the main tool for working with a device pool over the network: addresses are listed once on the Settings tab, and the monitor keeps them connected without manual intervention.
+
+[+] **ZD ENTERPRISE.** Network device monitoring now has a limit on the maximum number of connection attempts.
+
+[+] **ZD ENTERPRISE.** The **ZennoDroid** module has been updated to version 3.1.5.
+
+- Low-level spoofing has been fully reworked. Device model, GPU, noise, and other parameters persist after the phone reboots and continue to work in the browser and in applications.
+- A large number of new hooks have been added for better concealment. Bugs that were found have been fixed.
+- Hiding of developer-mode detection and of enabled USB/Wi-Fi debugging has been improved.
+- Motion of a device that is "being held" has been strengthened (antidetect).
+- Fixed an issue that caused the module state to be detected incorrectly.
+- Mutual consistency of the hooks has been improved significantly.
+- GL Version spoofing has been added, depending on the GPU model in use.
+- Hiding of debugging mode when connecting over Wi-Fi has been fixed.
+
+[+] **ZD PRO.** You can now set **GPU Vendor/Renderer and noise** in the MEmu and LDPlayer emulators, so the emulators are not detected as the same device. The values are generated in the profile (GpuVendor, GpuRender).
+
+[+] **ZD PRO.** **Faster startup of the MEmu emulator (Android 12).** The "Fix build.prop errors" setting now works correctly.
+
+[+] **ZD PRO.** **Faster startup of the LDPlayer 14 emulator.** Various problems on the first launch have been fixed.
+
+[+] **ZD PRO.** Added the [**Disable animation**](../Settings/Settings_for_Android#disable-animation) setting.
+
+[+] **ZD PRO.** The profile now has **GpuVendor** and **GpuRender** fields (generated automatically). The values can be used in the [GPU settings](../Android/pro-lite/setting#gpu-settings) action.
+
+[+] **Proxy setup is faster** in Clash mode. Clash has been updated to 1.19.31.
+
+**Fixed:**
+
+[\] **ZD ENTERPRISE.** Fixed a bug that prevented a **fingerprint longer than 92 characters** from being applied.
+
+[\] **ZD ENTERPRISE.** Fixed **image capture** on some Xiaomi devices when real taps are used.
+
+[\] **ZD ENTERPRISE.** Fixed a bug that prevented **JavaScript injection** into recent versions of the Yandex browser.
+
+[\] A **detailed error** is now shown when an attempt is made to launch an application that has no start activity.
+
+[\] **ZD ENTERPRISE.** Fixed **improved taps** mode on the MSI App Player emulator.
+
+[\] Fixes for the **Microsoft Visual Studio** integration:
+
+- Fixed an issue where the device screen could "escape" into another window (when two or more Visual Studio projects were open at the same time).
+- Fixed the `No format header found` error when using the slnx format.
+- Fixed an issue where the device screen returned to ProjectMaker shifted into a corner (without Dock).
+- Fixed an issue that could make reconnecting to a solution take 30 seconds.
+- Fixed the `RPC_E_CALL_REJECTED` error when creating a solution.
+- Fixed the missing `*.slnx` format in the solution selection menu.
+- Fixed a bug that opened the start window when a new solution was created.
+- Fixed a solution creation error: "Object reference not set to an instance of an object".
+
+[\] Fixed **C# conversion** of the "Waiting for user actions" action. Fixed closing the "Waiting for user actions" window through MCP.ZennoPoster: [`POST /sessions/{id}/complete`](https://zennolab.github.io/zennoposter-mcp/api-reference.html#post-sessionsidcomplete).
+
+[\] Fixed a **ZennoDroid crash** when capturing an image in h264 mode.
+
+[\] Fixed an exit via **BadEnd** when instance execution was interrupted.
+
+[\] **ZD PRO.** Fixed **GPU spoofing** in LDPlayer 9.
+
+[\] **ZD PRO.** Fixed a bug that prevented the **profile from being applied** after the emulator type was changed in ProjectMaker.
+
+[\] **ZD PRO.** Fixed a **critical error** on ProjectMaker startup ("Object reference not set to an instance of an object").
