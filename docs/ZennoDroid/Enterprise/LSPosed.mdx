@@ -23,46 +23,94 @@ export const VideoSample = ({source}) => (
 _________________  
 ## Установка LSPosed Framework    
   
-Начиная с версии ZennoDroid 2.5.0.0, для установки модуля необходим телефон с [**Magisk**](https://github.com/topjohnwu/Magisk/releases/latest) и активным [**LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0).  
+Начиная с версии ZennoDroid 2.5.0.0, для установки модуля необходим [**Magisk**](https://github.com/topjohnwu/Magisk/releases/latest) с активным **Zygisk** и **LSPosed v.2**.  
 
 <details>
-<summary>Активация Zygisk в Magisk</summary>
+<summary>**Активация Zygisk в Magisk.**</summary>
 
  ![Magisk](./assets/LSPosed/LSPosed_pic1.png) ![zygisk](./assets/LSPosed/LSPosed_pic2.png) 
 </details>   
 
-Актуальная официальная версия LSPosed распространяется через официальный [**Telegram канал**](https://t.me/LSPosed). Также последнюю версию LSPosed можно скачать по [**ссылке**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)
+### Установка через меню действий (ZennoDroid 2.6.2+)
+**LSPosed v.2** поставляется вместе с ZennoDroid, установить его можно прямо из ProjectMaker через Меню действий:  
+
+1. В [**меню действий**](../pm/Interface/DeviceWindow#меню-действий) окна устройства выбираем **Magisk / LSPosed** → **Модули...** - откроется окно [**Модули Magisk**](../pm/Interface/DeviceWindow#модули-magisk).  
+2. Нажимаем **Установить...** → **Установить LSPosed**.  
+3. Когда внизу окна появится надпись *Модуль установлен*, перезагружаем устройство, например пунктом меню [**Устройство** → **Перезагрузить**](../pm/Interface/DeviceWindow#устройство).  
 
 <details>
-<summary> Этот билд нужно скачать на телефон в папку **sdcard/Download/** и установить с помощью стандартного меню.</summary>  
+<summary>**Меню «Magisk / LSPosed» и окно «Модули Magisk».**</summary>
+<!--All you need is a blank line-->
 
-![Из хранилища](./assets/LSPosed/LSPosed_pic3.png) ![LSposed](./assets/LSPosed/LSPosed_pic4.png) 
+![Меню «Magisk / LSPosed»](./assets/LSPosed/LSPosed_pic13.png) ![Окно «Модули Magisk»](./assets/LSPosed/LSPosed_pic14.png)
 </details>
-:::warning **По умолчанию модуль LSPosed Framework не имеет иконки**
-**Открыть его можно, нажав на уведомление в шторке:**
 
-![Шторка](./assets/LSPosed/LSPosed_pic5.png)
-:::  
-  
+### Установка вручную
+Актуальная официальная версия **LSPosed** распространяется через официальный [**Telegram канал**](https://t.me/LSPosed). Также последнюю версию LSPosed можно скачать по [**ссылке**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0). Этот билд нужно скачать на телефон в папку **sdcard/Download/** и установить с помощью стандартного меню.  
+
+<details>
+<summary>**Установка модуля в Magisk.**</summary>
+<!--All you need is a blank line-->
+
+![Из хранилища](./assets/LSPosed/LSPosed_pic3.png) ![LSposed](./assets/LSPosed/LSPosed_pic4.png)
+</details>
+ 
 _________________
 ## Установка модуля «ZennoDroid»  
+### Установка через меню действий (ZennoDroid 2.6.2+)
+Модуль ZennoDroid проще всего установить прямо из ProjectMaker:  
+
+1. В [**меню действий**](../pm/Interface/DeviceWindow#меню-действий) окна устройства выбираем **Magisk / LSPosed** → **Настройка модуля...** - откроется окно [**Настройка модуля LSPosed**](../pm/Interface/DeviceWindow#настройка-модуля-lsposed).  
+2. Оставляем в поле **Модуль** `com.zennolab.zennodroid`, ставим флажок **Включить модуль** и отмечаем приложения, к которым будет применяться подмена параметров устройства.  
+3. Нажимаем **Применить**.  
+
+ZennoDroid сам установит модуль и включит его для отмеченных приложений.  
+
+<details>
+<summary>**Меню «Magisk / LSPosed» и окно «Настройка модуля LSPosed».**</summary>
+<!--All you need is a blank line-->
+
+![Меню «Magisk / LSPosed»](./assets/LSPosed/LSPosed_pic13.png) ![Окно «Настройка модуля LSPosed»](./assets/LSPosed/LSPosed_pic15.png)
+</details>
+
+### Установка вручную
 Модуль ZennoDroid устанавливается автоматически при первой попытке изменить параметры устройства или при выполнении любого экшена из группы [Управление LSPosed](./LSPosed_Control).  
 
 При запуске на экране устройства возникнет запрос прав суперпользователя. Необходимо нажать на кнопку **«Разрешить»** (при использовании magisk, разрешение предоставляется автоматически).  
 
-![Разрешить](./assets/LSPosed/LSPosed_pic6.png)  
+<details>
+<summary>**Запрос прав суперпользователя.**</summary>
+<!--All you need is a blank line-->
+
+![Разрешить](./assets/LSPosed/LSPosed_pic6.png)
+</details>
 
 Если вы не успели этого сделать или случайно нажали на кнопку **«Запретить»**, тогда нужно открыть **Magisk**. Там переходим на вкладку **Superuser (Суперпользователь)** и включаем *автоматическую выдачу прав суперпользователя для ZennoDroid*.  
 
-![Вручную](./assets/LSPosed/LSPosed_pic7.png)  
+<details>
+<summary>**Вкладка Superuser в Magisk.**</summary>
+<!--All you need is a blank line-->
+
+![Вручную](./assets/LSPosed/LSPosed_pic7.png)
+</details>
 
 После запуска модуля на экране устройства появится уведомление о том, что он выключен.  
 
-![Модуль выключен](./assets/LSPosed/LSPosed_pic8.png)  
- 
-Нам нужно запустить LSPosed через меню в шторке, переключиться на вкладку **Модули** и включить *модуль ZennoDroid*.    
+<details>
+<summary>**Модуль ZennoDroid выключен.**</summary>
+<!--All you need is a blank line-->
 
-![Шторка открыть](./assets/LSPosed/LSPosed_pic9.png) ![Включить модуль](./assets/LSPosed/LSPosed_pic10.png) 
+![Модуль выключен](./assets/LSPosed/LSPosed_pic8.png)
+</details>
+
+Нам нужно запустить LSPosed через меню в шторке, переключиться на вкладку **Модули** и включить *модуль ZennoDroid*.  
+
+<details>
+<summary>**Включение модуля в LSPosed.**</summary>
+<!--All you need is a blank line-->
+
+![Шторка открыть](./assets/LSPosed/LSPosed_pic9.png) ![Включить модуль](./assets/LSPosed/LSPosed_pic10.png)
+</details>
 
 После этого можно будет выбрать программы, к которым будет применяться подмена параметров устройства.  
 _________________
@@ -76,11 +124,21 @@ _________________
   
 - По умолчанию в списке программ отображаются не все приложения. Если вы не видите нужного, например, Google Chrome, то нужно зайти в меню **Настройки** и выбрать нужную группу.  
 
+<details>
+<summary>**Выбор группы приложений.**</summary>
+<!--All you need is a blank line-->
+
 ![Системные](./assets/LSPosed/LSPosed_pic11.png)
+</details>
 
 - После выбора приложений для подмены нужно вернуться в модуль ZennoDroid и нажать на кнопку **«Перезапустить»**. Далее при перезапуске на экран устройства будет выведено уведомление о том, что модуль готов к работе. Можно менять параметры устройства с помощью экшенов.  
 
-![Модуль включен](./assets/LSPosed/LSPosed_pic12.png)  
+<details>
+<summary>**Модуль готов к работе.**</summary>
+<!--All you need is a blank line-->
+
+![Модуль включен](./assets/LSPosed/LSPosed_pic12.png)
+</details>
 
 - Завершите работу нужных приложений после подмены параметров устройства. Предпочтительно делать это экшеном **«Закрыть приложение»**.   
 
@@ -88,7 +146,11 @@ _________________
 Но тогда некоторые системные приложения тут же перезапускаются, поэтому могут считать старые параметры.
 :::  
 _________________
-## API для управления LSPosed
+## Управление LSPosed с помощью экшенов (ZennoDroid 2.4.6+)
+В версии **ZennoDroid 2.4.6** была добавлена возможность удобного [**управления LSPosed**](./LSPosed_Control) с помощью группы экшенов.
+
+_________________
+## API для управления LSPosed (ZennoDroid 2.4.0+)
 В версии **ZennoDroid 2.4.0** мы добавили API для управления LSPosed.
 
 Основные функции:
@@ -97,7 +159,7 @@ _________________
 - создать и восстановить бэкап настроек (поддерживается сохранение как на телефон, так и на компьютер);  
 - получить информацию о LSPosed.
 
-### Видеоинструкция  
+### Видеоинструкция (пример работы с API) 
 > Настройка модуля ZennoDroid и модуля [DisableFlagSecure](https://github.com/LSPosed/DisableFlagSecure/releases/latest) (`io.github.lsposed.disableflagsecure`), позволяющего просматривать защищенные страницы.  
 
 <VideoSample source={require("@site/static/video/LSPosedAPI.mp4").default}/>  
@@ -105,13 +167,9 @@ _________________
 Также примеры работы с API приведены в архиве [LSPosedAPI.zip](https://www.dropbox.com/scl/fi/xsw5q8ej1wtmhpg5695we/LSPosedAPI.zip?rlkey=menqd2q7a0g6qnmc1l3omq4fr&st=0byf2hwb&dl=0&roistat_visit=1429674).  
 
 _________________
-## **Управление LSPosed с помощью экшенов**
-В версии 2.4.6 была добавлена возможность удобного [**управления LSPosed**](./LSPosed_Control) с помощью группы экшенов.
-
-_________________
 ## Полезные ссылки.  
 - Шаблон для подмены параметров устройства с помощью экшенов и API: [**fakeDeviceBrief.droid**](https://www.dropbox.com/scl/fi/xkyhg4e72l9su4xvqsdn9/fakeDeviceBrief.droid?rlkey=583ltzuficlyh0kxrma83qodb&dl=0)  
-- [**Последняя версия LSPosed Framework v2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)  
+- [**Последняя версия LSPosed Framework v.2**](https://www.dropbox.com/scl/fo/bve4et0ilt6bocnbi7ba9/AI0JuEpsjOHkKKlYMgx9aM0?rlkey=je4fi8u0np6267i0e5iblsyu3&st=rlrsg76a&dl=0)  
 - [**Подключение реального устройства к ZennoDroid**](./Connection).  
 - [**Настройки устройства**](../Settings/Settings_for_Enterprise).
 
