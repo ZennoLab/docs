@@ -18,19 +18,38 @@ export const VideoSample = ({source}) => (
 ## Описание. 
 Модуль ZennoDroid необходим для подмены основных параметров устройства: IMEI, Android ID, сотового оператора, модели, WiFi, Bluetooth и других.  
 :::info **Для функционирования модуля необходимы Root-права**
-Поддерживаются телефоны с Android 8.1-16 
+Поддерживаются телефоны с Android 9-16 
 :::  
-_________________  
-## Установка LSPosed Framework    
-  
+
 Начиная с версии ZennoDroid 2.5.0.0, для установки модуля необходим [**Magisk**](https://github.com/topjohnwu/Magisk/releases/latest) с активным **Zygisk** и **LSPosed v.2**.  
+_________________  
+## Активация Zygisk
+### Активация встроенного Zygisk
+Открываем настройки Magisk, включаем **Zygisk** и перезагружаем устройство.  
 
 <details>
-<summary>**Активация Zygisk в Magisk.**</summary>
+<summary>**Настройки Magisk.**</summary>
+<!--All you need is a blank line-->
 
- ![Magisk](./assets/LSPosed/LSPosed_pic1.png) ![zygisk](./assets/LSPosed/LSPosed_pic2.png) 
-</details>   
+![Magisk](./assets/LSPosed/LSPosed_pic1.png) ![zygisk](./assets/LSPosed/LSPosed_pic2.png)
+</details>
 
+### Активация стороннего Zygisk
+Для улучшения антидетекта Magisk рекомендуется использовать сторонний Zygisk (например, [**Zygisk Next**](https://github.com/LSPosed/ZygiskNext/releases/latest)) вместо встроенного в Magisk.  
+
+1. Скачиваем модуль Zygisk Next. В [**меню действий**](../pm/Interface/DeviceWindow#меню-действий) окна устройства выбираем **Magisk / LSPosed** → **Установить модуль...**, указываем скачанный файл и нажимаем **Установить**.  
+2. Открываем настройки Magisk и выключаем встроенный **Zygisk**.  
+3. Перезагружаем устройство.  
+
+<details>
+<summary>**Окно «Установить модуль Magisk» и настройки Magisk.**</summary>
+<!--All you need is a blank line-->
+
+![Magisk](./assets/LSPosed/LSPosed_pic1.png) ![Встроенный Zygisk выключен](./assets/LSPosed/LSPosed_pic17.png) ![Окно «Установить модуль Magisk»](./assets/LSPosed/LSPosed_pic16.png) 
+</details>
+
+_________________
+## Установка LSPosed Framework    
 ### Установка через меню действий (ZennoDroid 2.6.2+)
 **LSPosed v.2** поставляется вместе с ZennoDroid, установить его можно прямо из ProjectMaker через Меню действий:  
 
