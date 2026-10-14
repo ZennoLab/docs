@@ -18,6 +18,27 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 _______________________________________________
 ## Методы
 
+### Reboot
+
+:::info **Доступно начиная с версии ZennoDroid 2.6.2.0.**
+:::
+
+- **`void Reboot()`**  
+    Перезагружает телефон. Перед перезагрузкой устройство останавливается, как при [`Stop`](#stop), и после загрузки само не запускается — запустите его снова через [`Start`](#start).
+    
+    Только для реальных телефонов: на эмуляторах вызов завершается ошибкой.
+
+#### Пример.  
+```csharp
+var action = instance.DroidInstance.Action;
+
+action.Reboot(); // Перезагрузить телефон
+System.Threading.Thread.Sleep(60000); // Дать телефону загрузиться
+action.Start(); // Запустить устройство снова
+```
+
+---
+
 ### SelectByIndex
 
 - **`void SelectByIndex(int index)`**  

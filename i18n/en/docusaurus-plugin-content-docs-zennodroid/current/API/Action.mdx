@@ -18,6 +18,27 @@ It mirrors how the **Device Actions** block works for the [**Lite/Pro**](../Andr
 _______________________________________________
 ## Methods
 
+### Reboot
+
+:::info **Available starting from ZennoDroid 2.6.2.0.**
+:::
+
+- **`void Reboot()`**  
+    Reboots the phone. The device is stopped first, as by [`Stop`](#stop), and does not start by itself once the phone has booted: start it again with [`Start`](#start).
+    
+    Real phones only: on emulators the call fails with an error.
+
+#### Example  
+```csharp
+var action = instance.DroidInstance.Action;
+
+action.Reboot(); // Reboot the phone
+System.Threading.Thread.Sleep(60000); // Give the phone time to boot
+action.Start(); // Start the device again
+```
+
+---
+
 ### SelectByIndex
 
 - **`void SelectByIndex(int index)`**  

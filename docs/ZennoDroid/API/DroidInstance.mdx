@@ -63,6 +63,7 @@ void UpdateSettings(IEnumerable<KeyValuePair<string, object>> keyValuePairs);
 ### IDroidActionAPI
 [**`IDroidActionAPI Action`**](./Action)  
 ```csharp
+void Reboot();
 void SelectByIndex(int index);
 void SelectByName(string name);
 void SelectByTitle(string title);
@@ -221,6 +222,9 @@ void ZoomOut(int centerX, int centerY, double ratio);
 void ClearProxy();
 void DisablePrivateDns();
 void EnablePrivateDns(string address);
+string GetExternalIp(params string[] addresses);
+string GetExternalIpInBrowser();
+string GetExternalIpInBrowser(string packageName, params string[] addresses);
 string GetProxy();
 void SetProxy(string proxy);
 void SetProxy(string proxy, IDroidProxySettings settings);
