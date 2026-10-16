@@ -67,14 +67,16 @@ http://localhost:8160/v1/proxies?workspaceId=&start=&total=&folderId=&id=&name=&
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: токен из **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
 | Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успех |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 
@@ -89,7 +91,10 @@ Api-Token: токен из **UserArea2**.
       "proxyUri": null,
       "checkStatus": "Unknown",
       "checkStatusLastUpdateTime": null,
-      "ipChangeUrl": null
+      "ipChangeUrl": null,
+      "changeStatus": "Success",
+      "ipV4": "203.0.113.10",
+      "ipV6": null
     }
   ]
 }

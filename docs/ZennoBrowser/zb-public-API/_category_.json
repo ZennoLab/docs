@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "title": "ZennoBrowser API",
-    "description": "Документация по публичному API ZennoBrowser для автоматизации и программного управления браузером"
+    "description": "Документация по публичному API ZennoBrowser для автоматизации и программного управления браузером."
   }
-} 
+}

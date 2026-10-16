@@ -1,0 +1,108 @@
+---
+sidebar_position: 190
+sidebar_label: QRCodeManager API
+title: QRCodeManager API | Документация ZennoDroid | ZennoLab
+description: QRCodeManager API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# QRCodeManager API
+<DisclaimerNotice />
+## Описание
+
+`IQRCodeManager` предназначен для работы с QR-кодами в ZennoDroid. Позволяет управлять окном сканирования, отображать изображения (например, QR-коды) и взаимодействовать с интерфейсом камеры/сканера.
+
+_______________________________________________
+## Методы
+
+
+### CloseQRCodeScanWindow
+
+- **`void CloseQRCodeScanWindow()`**  
+    Закрывает окно сканирования QR-кода.
+
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+qr.CloseQRCodeScanWindow(); // Закрыть окно сканирования QR-кода
+```
+
+---
+
+### CloseViewfinderWindow
+
+- **`void CloseViewfinderWindow()`**  
+    Закрывает окно видоискателя (камеры).
+
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+qr.CloseViewfinderWindow(); // Закрыть окно видоискателя
+```
+
+---
+
+### DrawImage
+
+- **`void DrawImage(byte[] image, Rectangle area, Rectangle background)`**  
+    Отображает изображение на экране.
+    
+    **Параметры:**
+    - `image` — массив байтов изображения;
+    - `area` — область, в которой будет отображено изображение;
+    - `background` — область фона (для позиционирования/отрисовки).
+
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+var area = new Rectangle(100, 200, 400, 400); // Куда поместить изображение
+var background = new Rectangle(0, 0, 720, 1280); // Область фона
+
+qr.DrawImage(project.Path + "qrcode.png", area, background); // Из файла
+qr.DrawImage(File.ReadAllBytes(project.Path + "qrcode.png"), area, background); // Из массива байтов
+```
+
+---
+
+- **`void DrawImage(string fileName, Rectangle area, Rectangle background)`**  
+    Отображает изображение из файла.
+    
+    **Параметры:**
+    - `fileName` — путь к файлу изображения;
+    - `area` — область отображения;
+    - `background` — область фона.
+
+---
+
+### PressQRCodeScanButton
+
+- **`void PressQRCodeScanButton()`**  
+    Нажимает кнопку запуска сканирования QR-кода.
+
+#### Пример.
+```csharp
+var qr = new QRCodeManager();
+qr.PressQRCodeScanButton();
+```
+
+---
+
+### SetViewfinderPosition
+
+- **`void SetViewfinderPosition(Rectangle rect)`**  
+    Устанавливает позицию окна видоискателя.
+    
+    **Параметры:**
+    - `rect` — область расположения окна.
+
+#### Пример.  
+```csharp
+var qr = new QRCodeManager();
+
+qr.SetViewfinderPosition(new Rectangle(100, 200, 400, 400)); // Разместить окно видоискателя
+```
+
+_______________________________________________

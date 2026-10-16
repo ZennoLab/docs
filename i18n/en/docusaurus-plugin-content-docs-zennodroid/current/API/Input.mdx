@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 160
 sidebar_label: Input API
 title: Input API | ZennoDroid Documentation | ZennoLab
 description: Input API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -8,156 +8,174 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Input API
 <DisclaimerNotice />
+## Description
 
-## Description  
-**`IDroidInputAPI Input`**  
+`IDroidInputAPI` is designed to emulate user input on an Android device in ZennoDroid. Allows you to perform taps, swipes, text input, clipboard operations, and system events.
+## Methods
 
-Gives you access to emulate actions on your device for interacting with the interface and app elements. You use this interface to perform swipes, taps, and enter text, as well as execute [**ADB Shell commands**](../Android/pro-lite/Utilities#console-command-adb-shell).
-_______________________________________________
-## Methods 
-### Swipe the screen from point to point
-```csharp
-void Swipe(int x1, int y1, int x2, int y2) 
-```   
 
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int x2, int y2 // Coordinates of the second point.
-``` 
+### ClearText
 
-*Overload:*   
-```csharp
-int duration  // How long the swipe takes (speed).  
-```
-
-#### Example  
-```csharp
-//#1
-var input = instance.DroidInstance.Input;
-
-Point start = new Point() { X = 100, Y = 500 }; // Start point
-Point end = new Point() { X = 200, Y = 200 }; // End point
-input.Swipe(start.X, start.Y, end.X, end.Y); // Swipe by coordinates
-
-//#2
-var duration = 100;
-input.Swipe(start.X, start.Y, end.X, end.Y, duration); // Swipe with custom speed
-```
-_______________________________________________
-### Curved swipe from point to point
-```csharp
-void SwipeCurved(int x1, int y1, int x2, int y2, int duration) 
-```   
-
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int x2, int y2 // Coordinates of the second point.
-int duration  // Swipe speed. 
-``` 
+- **`void ClearText()`**  
+    Clears the text in the current active input field.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-Point start = new Point() { X = 100, Y = 500 }; // Start point
-Point end = new Point() { X = 200, Y = 200 }; // End point
-var duration = 100; // Swipe speed
-input.SwipeCurved(start.X, start.Y, end.X, end.Y, duration); // Curved swipe
+input.ClearText(); // Clear element text
 ```
-_______________________________________________
-### Curved swipe with bend control
-```csharp
-void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration) 
-```   
 
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int xPivot // X of the pivot point.
-int yPivot // Y of the pivot point.
-int x2, int y2 // Coordinates of the second point.
-int duration  // Swipe speed. 
-``` 
+---
+
+### FingerDown
+
+- **`void FingerDown(int x, int y)`**  
+    Simulates touching the screen (finger down) at point `(x, y)`.
+
+- **`void FingerDown(int x, int y, int fingerId)`**  
+    Simulates a touch with a specified finger ID (for multi-touch).
+    
+    **Parameters:**
+    - `fingerId` — finger ID.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-Point start = new Point() { X = 100, Y = 500 }; // Start point
-Point end = new Point() { X = 200, Y = 200 }; // End point
-var duration = 100; // Swipe speed
-var xPivot = 200; // X of the bend
-var yPivot = 700; // Y of the bend
-input.SwipeCurved(start.X, start.Y, xPivot, yPivot, end.X, end.Y, duration); // Curved swipe with bend settings
+input.FingerDown(100, 500); // Put a finger down on the screen
+input.FingerMove(150, 420); // Every call is one point of the path
+input.FingerMove(220, 300);
+input.FingerMove(300, 200);
+input.FingerUp(300, 200); // Lift the finger
 ```
-_______________________________________________
-### Tap by coordinates
-```csharp
-void Tap(int x, int y) 
-```   
 
-*Parameters:*   
-```csharp
-int x // X coordinate.
-int y // Y coordinate.
-``` 
+### FingerMove
 
-*Overload:*   
+- **`void FingerMove(int x, int y)`**  
+    Moves the active finger to a new point. The path between the previous point and the new one is not replayed: the finger lands on the given point at once, so a continuous movement means calling the method for every point of the path. A ready-made trajectory is built by [**Swipe**](#swipe), [**SwipeCurved**](#swipecurved) and [**FreeMove**](#freemove).
+
+- **`void FingerMove(int x, int y, int fingerId)`**  
+    Moves a specific finger.
+    
+    **Parameters:**
+    - `fingerId` — finger ID.
+
+#### Example  
 ```csharp
-int duration  // Duration of the tap.  
+var input = instance.DroidInstance.Input;
+
+// A single call puts the finger straight at the point, so the line
+// has to be laid out point by point
+input.FingerDown(100, 500);
+for (int x = 110; x <= 300; x += 10)
+	input.FingerMove(x, 500 - (x - 100));
+input.FingerUp(300, 300);
+
+// Multi-touch: every finger has its own fingerId
+input.FingerDown(100, 500, 0);
+input.FingerDown(400, 500, 1);
+input.FingerMove(200, 500, 0);
+input.FingerMove(300, 500, 1);
+input.FingerUp(200, 500, 0);
+input.FingerUp(300, 500, 1);
 ```
+
+### FingerUp
+
+- **`void FingerUp(int x, int y)`**  
+    Lifts the finger from the screen (ends the touch).
+
+- **`void FingerUp(int x, int y, int fingerId)`**  
+    Ends the touch for a specific finger.
+    
+    **Parameters:**
+    - `fingerId` — finger ID.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.FingerDown(100, 500); // Put a finger down
+input.FingerUp(100, 500); // Lift it at the same point, which makes a plain tap
+```
+
+---
+
+### FreeMove
+
+- **`void FreeMove(string json, double speed)`**  
+    Performs a custom gesture along a defined trajectory.
+    
+    **Parameters:**
+    - `json` — JSON description of the movement trajectory;
+    - `speed` — gesture execution speed.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+// The trajectory is an array of gestures, each a list of [time in ms, X, Y] points
+var json = "[[[0,100,500],[100,150,420],[200,220,300],[300,300,200]]]";
+
+input.FreeMove(json, 1); // Speed 1 plays the trajectory as recorded
+input.FreeMove(json, 2); // Speed 2 plays it twice as fast
+```
+
+---
+
+### GetClipboard
+
+- **`string GetClipboard()`**  
+    Retrieves the clipboard contents.
+    
+    **Returns:**  
+    The string from the clipboard.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+var text = input.GetClipboard(); // Get text from clipboard
+```
+
+---
+
+### LongTap
+
+- **`void LongTap(int x, int y)`**  
+    Performs a long press at the given coordinates.
+    
+    **Parameters:**
+    - `x` — X coordinate;
+    - `y` — Y coordinate.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
 Point point = new Point() { X = 100, Y = 500 }; // The point
-input.Tap(point.X, point.Y); // Tap by coordinates
-
-var duration = 100; // Tap duration
-input.Tap(point.X, point.Y, duration); // Long tap by coordinates
+input.LongTap(point.X, point.Y); // Long tap at the coordinates
 ```
-_______________________________________________
-### Tap by coordinates with extra options
-```csharp
-void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)
-```   
 
-*Parameters:*   
-```csharp
-int xMin, int yMin // Lower point coordinates.
-int xMax, int yMax // Upper point coordinates.
-bool longPress // Use a long tap
-string clickDistributionType // Click type: "Normal" or "Random". 
-``` 
+---
 
-#### Example  
-```csharp
-var input = instance.DroidInstance.Input;
+### LongTapAndSwipe
 
-Point start = new Point() { X = 100, Y = 500 }; // Start
-Point end = new Point() { X = 200, Y = 200 }; // End
+- **`void LongTapAndSwipe(int x1, int y1, int x2, int y2)`**  
+    Long press followed by a swipe.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point.
 
-input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Tap with options
-```
-_______________________________________________
-### Long tap and swipe the screen
-```csharp
-void LongTapAndSwipe(int x1, int y1, int x2, int y2)
-```   
-
-*Parameters:*   
-```csharp
-int x1, int y1 // Coordinates of the first point.
-int x2, int y2 // Coordinates of the second point.
-``` 
-
-*Overload:*   
-```csharp
-int duration  // How long the swipe takes (speed).  
-```
+- **`void LongTapAndSwipe(int x1, int y1, int x2, int y2, int duration)`**  
+    Long press and swipe with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
 
 #### Example  
 ```csharp
@@ -169,85 +187,234 @@ Point end = new Point() { X = 200, Y = 200 }; // End point
 input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y); // Long tap and swipe
 
 var duration = 100; // Duration
-input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and swipe with swipe speed setting
+input.LongTapAndSwipe(start.X, start.Y, end.X, end.Y, duration); // Long tap and swipe with speed control
 ```
-_______________________________________________
-### Enter text into a field
-```csharp
-void SendText(string text)
-```   
 
-*Parameters:*   
-```csharp
-string text // Text to enter.
-``` 
+---
 
-*Overload:*   
+### LongTapAndSwipeCurved
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2)`**  
+    Performs a long tap at `(x1, y1)` and swipes to `(x2, y2)` along a curved path.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int x2, int y2, int duration)`**  
+    Same, but with gesture duration control.
+    
+    **Parameters:**
+    - `duration` — swipe duration in milliseconds.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2)`**  
+    Adds control over the curvature of the path.
+    
+    **Parameters:**
+    - `bending` — bend coefficient (the larger the value, the greater the deviation from a straight line).
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration)`**  
+    Adds control over the curvature of the path with duration specification.
+    
+    **Parameters:**
+    - `bending` — bend coefficient (the larger the value, the greater the deviation from a straight line);
+    - `duration` — swipe duration in milliseconds.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2)`**  
+    Performs a swipe along a curve passing through a specified intermediate pivot point.
+    
+    **Parameters:**
+    - `xPivot`, `yPivot` — coordinates of the curve control point.
+
+- **`void LongTapAndSwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration)`**  
+    Performs a swipe along a curve passing through a specified intermediate pivot point with duration control.
+    
+    **Parameters:**
+    - `xPivot`, `yPivot` — coordinates of the curve control point;
+    - `duration` — swipe duration in milliseconds.
+
+#### Example  
 ```csharp
-int latency // Delay between characters.  
+var input = instance.DroidInstance.Input;
+
+Point start = new Point() { X = 100, Y = 500 }; // Start point
+Point end = new Point() { X = 300, Y = 200 }; // End point
+
+input.LongTapAndSwipeCurved(start.X, start.Y, end.X, end.Y); // Long tap and a curved swipe
+input.LongTapAndSwipeCurved(start.X, start.Y, end.X, end.Y, 500); // With a duration in ms
+input.LongTapAndSwipeCurved(start.X, start.Y, 0.5, end.X, end.Y); // With a bending factor
+input.LongTapAndSwipeCurved(start.X, start.Y, 200, 250, end.X, end.Y); // Through a control point
 ```
+
+---
+
+### RootShell
+
+- **`string RootShell(string command)`**  
+    Executes a shell command with root access.
+    
+    **Parameters:**
+    - `command` — command to execute (e.g. `cat /system/build.prop`, `ls /data/data`).
+    
+    **Returns:**  
+    Command execution result (stdout) as a string.
+
+- **`string RootShell(string command, int timeout)`**  
+    Executes a root command with a time limit.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — maximum execution time (ms).
+
+- **`string RootShell(string command, int timeout, bool checkconnect)`**  
+    Extended variant with connection check.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — execution timeout (ms);
+    - `checkconnect` — check device connection before executing.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+var model = input.RootShell("getprop ro.product.model"); // Run a command with root rights
+var packages = input.RootShell("pm list packages", 30000); // With a timeout in ms
+
+project.SendInfoToLog(model);
+```
+
+---
+
+### SendKeyCode
+
+- **`void SendKeyCode(KeyCode keyCode)`**  
+    Sends a key via the [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME) enum.
+    
+    **Parameters:**
+    - `keyCode` — `KeyCode` enum value.
+
+- **`void SendKeyCode(int keyCode)`**  
+    Sends a key by numeric code.
+    
+    **Parameters:**
+    - `keyCode` — numeric key code.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+input.SendKeyCode(KeyCode.KEYCODE_HOME); // Send special key (by name)
+input.SendKeyCode(3); // Send special key (by numeric value)
+```
+
+---
+
+### SendSmsMessage
+
+- **`void SendSmsMessage(string phone, string message)`**  
+    Simulates receiving an incoming SMS on the device.
+    
+    **Parameters:**
+    - `phone` — sender phone number;
+    - `message` — message text.
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+var phone = "+79998007060";
+var message = "Hi!";
+input.SendSmsMessage(phone, message); // Simulate incoming SMS
+```
+
+---
+
+### SendText
+
+- **`void SendText(string text)`**  
+    Enters text into the active field.
+    
+    **Parameters:**
+    - `text` — string to enter.
+
+- **`void SendText(string text, int latency)`**  
+    Enters text with a delay between characters.
+    
+    **Parameters:**
+    - `text` — string to enter;
+    - `latency` — delay between characters (ms).
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
 var text = "Hello world!";
-input.SendText(text); // Enter text in a field
+input.SendText(text); // Enter text into the field
 
 var latency = 100; // Typing speed
-input.SendText(text, latency); // Enter text with typing speed specified
+input.SendText(text, latency); // Enter text with typing speed setting
 ```
-_______________________________________________
-### Enter special characters (via [KeyCode](https://developer.android.com/reference/android/view/KeyEvent?roistat_visit=869463#KEYCODE_HOME))
-```csharp
-void SendKeyCode(KeyCode keyCode)
-```   
 
-*Parameters:*   
-```csharp
-KeyCode keyCode // Special character identifier.
-``` 
+---
 
-*Overload:*   
-```csharp
-int keyCode // Numeric code for the special character.  
-```
+### SetClipboard
+
+- **`void SetClipboard(string text)`**  
+    Sets the clipboard contents.
+    
+    **Parameters:**
+    - `text` — string to write to the clipboard.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-input.SendKeyCode(KeyCode.KEYCODE_HOME); // Send special character (by name)
-input.SendKeyCode(3); // Send special character (by number)
+var text = "Hello world!";
+input.SetClipboard(text); // Copy text to clipboard
 ```
-_______________________________________________
-### Clear the text field
-```csharp
-void ClearText()
-```   
+
+---
+
+### SetNativeEventMode
+
+- **`void SetNativeEventMode(bool useNativeEvent)`**  
+    Enables or disables native-event mode. When enabled (and the process actually runs as root), finger touches are injected through the kernel input layer (raw), which makes them visible to `getevent`.
+    
+    **Parameters:**
+    - `useNativeEvent` — `true` to inject touches via the kernel input layer; `false` to use the default method.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-input.ClearText(); // Clear element text
+input.SetNativeEventMode(true); // Inject touches via the kernel input layer
+input.Tap(100, 500); // The touch will be visible to getevent
 ```
-_______________________________________________
-### Execute an [**ADB Shell**](../Android/pro-lite/Utilities#console-command-adb-shell) command
-```csharp
-string Shell(string command)
-```   
 
-*Parameters:*   
-```csharp
-string command // ADB command to run.
-``` 
+---
 
-*Overload:*   
-```csharp
-int timeout // Command timeout.  
-bool checkconnect // Whether to check device connection.
-```
+### Shell
+
+- **`string Shell(string command)`**  
+    Executes an [ADB Shell](../Android/pro-lite/Utilities#console-command-adb-shell) command.
+    
+    **Parameters:**
+    - `command` — command to execute.
+    
+    **Returns:**  
+    Command execution result.
+
+- **`string Shell(string command, int timeout)`**  
+    Executes a command with a timeout.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — wait time (ms).
+
+- **`string Shell(string command, int timeout, bool checkconnect)`**  
+    Executes a command with timeout and connection check.
+    
+    **Parameters:**
+    - `command` — command;
+    - `timeout` — wait time (ms);
+    - `checkconnect` — check device connection before executing.
 
 #### Example  
 ```csharp
@@ -262,95 +429,200 @@ input.Shell(adb, 1000); // Launch app and wait for execution
 var adb = "reboot"; // Reboot command
 input.Shell(adb, 1000, true); // Reboot with wait and connection check
 ```
-_______________________________________________
-### Get text from Clipboard
+
+---
+
+### Swipe
+
+- **`void Swipe(int x1, int y1, int x2, int y2)`**  
+    Performs a swipe across the screen.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point.
+
+- **`void Swipe(int x1, int y1, int x2, int y2, int duration)`**  
+    Swipe with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
+
+#### Example  
 ```csharp
-string GetClipboard()
-```   
+//#1
+var input = instance.DroidInstance.Input;
+
+Point start = new Point() { X = 100, Y = 500 }; // Start point
+Point end = new Point() { X = 200, Y = 200 }; // End point
+input.Swipe(start.X, start.Y, end.X, end.Y); // Swipe by coordinates
+
+//#2
+var duration = 100;
+input.Swipe(start.X, start.Y, end.X, end.Y, duration); // Swipe by coordinates with speed control
+```
+
+---
+
+### SwipeCurved
+
+- **`void SwipeCurved(int x1, int y1, int x2, int y2)`**  
+    Curved swipe.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point.
+
+- **`void SwipeCurved(int x1, int y1, int x2, int y2, int duration)`**  
+    Curved swipe with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
+
+- **`void SwipeCurved(int x1, int y1, double bending, int x2, int y2)`**  
+    Curved swipe with bend coefficient.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `bending` — bend coefficient;
+    - `x2`, `y2` — end point.
+
+- **`void SwipeCurved(int x1, int y1, double bending, int x2, int y2, int duration)`**  
+    Curved swipe with bend coefficient and duration.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `bending` — bend coefficient;
+    - `x2`, `y2` — end point;
+    - `duration` — duration.
+
+- **`void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2)`**  
+    Curved swipe through an intermediate pivot point.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `xPivot`, `yPivot` — curve pivot point;
+    - `x2`, `y2` — end point.
+
+- **`void SwipeCurved(int x1, int y1, int xPivot, int yPivot, int x2, int y2, int duration)`**  
+    Curved swipe through an intermediate pivot point with speed control.
+    
+    **Parameters:**
+    - `x1`, `y1` — start point;
+    - `xPivot`, `yPivot` — curve pivot point;
+    - `x2`, `y2` — end point;
+    - `duration` — swipe duration (ms).
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-var text = input.GetClipboard(); // Get text from clipboard
-```
-_______________________________________________
-### Copy text to Clipboard
-```csharp
-void SetClipboard(string text)
-```   
+Point start = new Point() { X = 100, Y = 500 }; // Start point
+Point end = new Point() { X = 200, Y = 200 }; // End point
+var duration = 100; // Swipe speed
+input.SwipeCurved(start.X, start.Y, end.X, end.Y, duration); // Curved swipe
 
-*Parameters:*   
-```csharp
-string text // Text to put in clipboard.
-``` 
+var xPivot = 200; // Bend X setting
+var yPivot = 700; // Bend Y setting
+input.SwipeCurved(start.X, start.Y, xPivot, yPivot, end.X, end.Y, duration); // Curved swipe with bend settings
+```
+
+---
+
+### Tap
+
+- **`void Tap(int x, int y)`**  
+    Performs a single tap at the given coordinates.
+    
+    **Parameters:**
+    - `x`, `y` — point coordinates.
+
+- **`void Tap(int x, int y, int duration)`**  
+    Tap at given coordinates with specified duration.
+    
+    **Parameters:**
+    - `x`, `y` — point coordinates;
+    - `duration` — tap duration (ms).
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
-var text = "Hello world!";
-input.SetClipboard(text); // Copy text to clipboard
-```
-_______________________________________________
-### Zoom in the screen
-```csharp
-void ZoomIn()
-```   
+Point point = new Point() { X = 100, Y = 500 }; // The point
+input.Tap(point.X, point.Y); // Tap by coordinates
 
-*Overload:*   
-```csharp
-int centerX // X of the center.
-int centerY // Y of the center.
-double ratio // Zoom amount. 
+var duration = 100; // Tap duration
+input.Tap(point.X, point.Y, duration); // Long tap by coordinates
 ```
+
+---
+
+### Touch
+
+- **`void Touch(int xMin, int yMin, int xMax, int yMax, bool longPress, string clickDistributionType)`**  
+    Tap within a specified area with additional options.
+    
+    **Parameters:**
+    - `xMin`, `yMin` — top-left corner of the area;
+    - `xMax`, `yMax` — bottom-right corner of the area;
+    - `longPress` — use a long press;
+    - `clickDistributionType` — click distribution type (`"Normal"` or `"Random"`).
+
+#### Example  
+```csharp
+var input = instance.DroidInstance.Input;
+
+Point start = new Point() { X = 100, Y = 500 }; // Start point
+Point end = new Point() { X = 200, Y = 200 }; // End point
+
+input.Touch(start.X, start.Y, end.X, end.Y, false, "Random"); // Tap with options
+```
+
+---
+
+### ZoomIn
+
+- **`void ZoomIn()`**  
+    Zooms in the screen.
+
+- **`void ZoomIn(int centerX, int centerY, double ratio)`**  
+    Zoom in with parameters.
+    
+    **Parameters:**
+    - `centerX`, `centerY` — zoom center;
+    - `ratio` — zoom ratio.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
 input.ZoomIn(); // Zoom in
-input.ZoomIn(-1, -1, 1.0); // Zoom in with additional settings
+input.ZoomIn(-1, -1, 1.0); // Zoom in with settings
 ```
-_______________________________________________
-### Zoom out the screen
-```csharp
-void ZoomOut()
-```   
 
-*Overload:*   
-```csharp
-int centerX // X of the center.
-int centerY // Y of the center.
-double ratio // Zoom out amount. 
-```
+---
+
+### ZoomOut
+
+- **`void ZoomOut()`**  
+    Zooms out the screen.
+
+- **`void ZoomOut(int centerX, int centerY, double ratio)`**  
+    Zoom out with parameters.
+    
+    **Parameters:**
+    - `centerX`, `centerY` — zoom center;
+    - `ratio` — zoom-out ratio.
 
 #### Example  
 ```csharp
 var input = instance.DroidInstance.Input;
 
 input.ZoomOut(); // Zoom out
-input.ZoomOut(-1, -1, 1.0); // Zoom out with additional settings
+input.ZoomOut(-1, -1, 1.0); // Zoom out with settings
 ```
+
 _______________________________________________
-### Simulate receiving an SMS on the device
-```csharp
-void SendSmsMessage(string phone, string message)
-```   
-
-*Parameters:*   
-```csharp
-string phone // Fake sender phone number.
-string message // The SMS text to be received.
-``` 
-
-#### Example  
-```csharp
-var input = instance.DroidInstance.Input;
-
-var phone = "+79998007060";
-var message = "Hi!";
-input.SendSmsMessage(phone, message); // Simulate incoming SMS
-```
-_______________________________________________
-You can read about the **difference between ways of sending keystrokes** in detail in the [**ADB Shell Commands**](../Android/pro-lite/Utilities#console-command-adb-shell).

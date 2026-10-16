@@ -1,0 +1,89 @@
+---
+sidebar_position: 6
+sidebar_label: Setting Browser Instance Visibility
+title: Setting Browser Instance Visibility
+description: Set browser instance visibility - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** Set browser instance visibility
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string |  | (required) | The unique identifier of the profile to associate with the browser instance. |
+| isVisible | boolean |  | (empty) | Visibility value, true - to show, false - to hide |
+| workspaceId | integer | int64 | -1 | Workspace ID. Use -1 for the default workspace |
+
+#### **Example request:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/browser_instances/123e4567-e89b-12d3-a456-426614174000/set_visibility?isVisible=true&workspaceId=-1' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/123e4567-e89b-12d3-a456-426614174000/set_visibility?isVisible=true&workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/browser_instances/123e4567-e89b-12d3-a456-426614174000/set_visibility?isVisible=true&workspaceId=-1
+```
+
+![](../assets/zp_browser_visibility.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+No response body.
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

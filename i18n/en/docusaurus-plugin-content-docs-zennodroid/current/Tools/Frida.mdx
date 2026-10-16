@@ -81,15 +81,15 @@ The script management window. Supports macros.
 (*You can only load after a successful **Create** press.*)  
  - **Unload**: Unloads the script. Scripts are also unloaded automatically when the app process closes.  
  _________________  
- ### Info (5):  
+### Info (5):  
  This window shows service info, messages during scripts, errors, etc.  
- #### Hotkeys:  
+#### Hotkeys:  
  - **(Ctrl + C)**: Copy highlighted messages.  
  - **(Del)**: Delete highlighted messages.  
  - **(Ctrl + Del)**: Delete all messages.  
  _________________  
 
- ## How to check if the Frida server is up and running  
+## How to check if the Frida server is up and running  
  1. Hit **“Start frida”** and wait for a “*Server started*” notification in the info window.  
  2. On the *Processes* panel, press **“Topmost”**. This will select the active process.  
  3. Click **“Connect”**.  
@@ -99,13 +99,13 @@ The script management window. Supports macros.
  7. You can then click **“Unload”**. Frida server is working!  
  _________________
 
- ## Typical scenarios  
- ### The app will be restarted even if it’s already running  
+## Typical scenarios  
+### The app will be restarted even if it’s already running  
  1. On the *Apps* panel, select the one you need (by name or using the **“Active”** button).  
  2. Press **“Start”**. The app will start (or restart if it was open), then pause. It’ll auto-connect to its process.  
  3. On the *Script* panel, click **“Select”** and open your desired script (*.js* file) in the dialog.  
  4. Press **“Resume”**. The app will keep running.  
- ### Connect to a running app process  
+### Connect to a running app process  
  1. On the *Processes* panel, hit **“Topmost”** to select the active process.  
  2. Click **“Connect”**.  
  3. On the *Script* panel, press **“Select”** and open your script (*.js* file).  

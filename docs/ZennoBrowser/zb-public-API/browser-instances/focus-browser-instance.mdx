@@ -1,0 +1,82 @@
+---
+sidebar_position: 8
+sidebar_label: Перевод окна браузера на передний план
+title: Перевод окна браузера на передний план
+description: Перевод окна браузера указанного профиля на передний план — подробное руководство по ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод переводит окно браузера указанного профиля на передний план.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Уникальный идентификатор профиля, окно браузера которого нужно перевести на передний план. |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства. Значение `-1` означает рабочее пространство по умолчанию. |
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/browser_instances/123e4567-e89b-12d3-a456-426614174000/focus?workspaceId=-1' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/123e4567-e89b-12d3-a456-426614174000/focus?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/browser_instances/123e4567-e89b-12d3-a456-426614174000/focus?workspaceId=-1
+```
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Тело ответа отсутствует.
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

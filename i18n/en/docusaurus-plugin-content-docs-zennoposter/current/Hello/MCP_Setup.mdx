@@ -10,7 +10,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-# ZennoPoster MCP — Setup Guide for AI Assistants
+# ZennoPoster MCP: Setup Guide for AI Assistants
 
 > **Prerequisites:** ProjectMaker must be running before connecting any AI assistant. The MCP servers start automatically with ProjectMaker and listen on:
 > - **BrowserMCP** (Browser control) → `http://localhost:6108`
@@ -93,6 +93,120 @@ codex mcp list
 
 ---
 
+## Troubleshooting
+
+### The `claude` or `codex` command is not recognized
+
+If the terminal shows an error like:
+
+```
+'claude' is not recognized as an internal or external command,
+operable program or batch file.
+```
+
+or (in PowerShell):
+
+```
+claude : The term 'claude' is not recognized as the name of a cmdlet,
+function, script file, or operable program.
+```
+
+(same applies to `codex`), it means the folder containing the CLI executable is **not in the `PATH` environment variable**, or the CLI is not installed, or the terminal was not restarted after installing.
+
+> **Important:** the Claude Code website installer (native installer,
+> `irm https://claude.ai/install.ps1 | iex`) does **not** add itself to `PATH`
+> automatically. So "installed from the website but the command is not recognized"
+> is the most common case. Step 2 below fixes it.
+
+### Step 1. Find where the CLI is installed
+
+The location of the executable depends on the install method.
+
+**Claude Code:**
+
+| Install method | Folder containing `claude` |
+|---|---|
+| Website (native): `irm https://claude.ai/install.ps1 \| iex` | `%USERPROFILE%\.local\bin` (e.g. `C:\Users\YourName\.local\bin`) |
+| npm: `npm install -g @anthropic-ai/claude-code` | the npm folder, usually `%APPDATA%\npm` |
+
+**OpenAI Codex CLI:**
+
+| Install method | Folder containing `codex` |
+|---|---|
+| Website: `irm https://chatgpt.com/codex/install.ps1 \| iex` | the folder reported by the installer |
+| npm: `npm install -g @openai/codex` | the npm folder, usually `%APPDATA%\npm` |
+| Binary from [GitHub Releases](https://github.com/openai/codex/releases) | the folder where you extracted `codex.exe` |
+
+You can find the exact npm folder with:
+
+```powershell
+npm config get prefix
+```
+
+Check whether the system sees the command at all (empty output means it is not in `PATH`):
+
+```powershell
+where.exe claude
+where.exe codex
+```
+
+Check that the file exists (for the Claude website install):
+
+```powershell
+Test-Path "$env:USERPROFILE\.local\bin\claude.exe"
+```
+
+If the file is not in any of these folders, the CLI is not installed. Install it using one of the methods from the tables above (npm requires [Node.js](https://nodejs.org/)).
+
+### Step 2. Add the folder to the `PATH` variable
+
+Use the path you found in Step 1 (e.g. `%USERPROFILE%\.local\bin` for the Claude website install, or `%APPDATA%\npm` for an npm install).
+
+**Option A: via the Windows GUI**
+
+1. Press `Win + R`, type `sysdm.cpl`, press Enter.
+2. **Advanced** tab -> **Environment Variables** button.
+3. Under **User variables**, select `Path` -> **Edit**.
+4. Click **New** and paste the folder, for example:
+   `C:\Users\YourName\.local\bin`
+5. Click **OK** in all windows.
+
+**Option B: via PowerShell (adds to the user `PATH` permanently)**
+
+```powershell
+# example for the Claude Code website install:
+$p = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', "$p;$env:USERPROFILE\.local\bin", 'User')
+```
+
+> Replace the path with the one relevant to your case.
+> Do not run the command several times in a row, or you will duplicate entries in `PATH`.
+
+### Step 3. Restart the terminal and verify
+
+`PATH` changes only take effect in **newly opened** terminal windows. Close and reopen PowerShell / CMD (or Visual Studio), then check:
+
+```powershell
+claude --version
+codex --version
+```
+
+For Claude Code you can also run the built-in diagnostics (checks `PATH`, conflicting installs, etc.):
+
+```powershell
+claude doctor
+```
+
+If the versions are shown, the commands are recognized correctly and you can go back to the MCP setup steps above.
+
+### Common causes if it still does not work
+
+- **Terminal not restarted.** `PATH` changes only apply in newly opened windows.
+- **Multiple installs at once** (npm + native) conflict. Keep one and remove the rest.
+- **Only the VS Code extension is installed.** It does not add the `claude` command to the terminal. Install the standalone CLI from the website or via npm.
+
+---
+
 ## Example Prompts
 
 ### Browser Automation
@@ -118,7 +232,7 @@ Navigate tab 2 to https://example.com, read the full page DOM text, and summariz
 ### Project Management
 
 ```
-Show me the structure of the current project → list all actions with their IDs and types.
+Show me the structure of the current project: list all actions with their IDs and types.
 ```
 
 ```

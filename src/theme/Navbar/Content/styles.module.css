@@ -2,3 +2,141 @@
   max-width: var(--ifm-container-width-xl);
   margin: 0 auto;
 }
+
+:global(.navbar) {
+  height: auto;
+  min-height: 3.75rem;
+}
+
+.navbarInner {
+  align-items: center;
+  column-gap: 0.5rem;
+  justify-content: flex-start;
+  row-gap: 0;
+}
+
+.brandItems {
+  flex: 0 0 auto;
+  min-width: auto;
+}
+
+.brandItems :global(.navbar__brand) {
+  flex: 0 0 auto;
+  min-width: max-content;
+  margin-right: 0;
+}
+
+.searchItems {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.searchItems :global(.DocSearch-Button) {
+  width: 15rem;
+}
+
+.productItems {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+.productItems :global(.navbar__link) {
+  white-space: nowrap;
+}
+
+.utilityItems {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 1380px) {
+  .navbarInner {
+    row-gap: 0.25rem;
+  }
+
+  .brandItems {
+    order: 1;
+  }
+
+  .searchItems {
+    order: 2;
+  }
+
+  .utilityItems {
+    order: 3;
+    margin-left: auto;
+  }
+
+  .productItems {
+    order: 4;
+    flex: 1 0 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 996px) {
+  .productItems :global(.navbar__item) {
+    display: inline-block;
+  }
+
+  .colorModeToggle {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchItems > * {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .searchItems :global(.DocSearch-Button) {
+    width: 2.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .searchItems :global(.DocSearch-Button-Placeholder),
+  .searchItems :global(.DocSearch-Button-Keys) {
+    display: none;
+  }
+
+  .searchItems :global(.navbar__search-input) {
+    width: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbarInner {
+    column-gap: 0.25rem;
+  }
+
+  .utilityItems :global(.navbar__item) {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .productItems {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 430px) {
+  .brandItems :global(.navbar__title) {
+    display: none;
+  }
+
+  .utilityItems :global(.dropdown > .navbar__link) {
+    font-size: 0;
+  }
+
+  .utilityItems :global(.dropdown > .navbar__link svg) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  .utilityItems :global(.dropdown > .navbar__link::after) {
+    border-width: 0.35rem 0.35rem 0;
+    margin-left: 0.2rem;
+  }
+}

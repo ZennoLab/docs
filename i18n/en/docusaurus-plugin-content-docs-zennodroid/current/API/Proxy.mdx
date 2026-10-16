@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 180
 sidebar_label: Proxy API
 title: Proxy API | ZennoDroid Documentation | ZennoLab
 description: Proxy API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -8,70 +8,18 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Proxy API
 <DisclaimerNotice />
+## Description
 
-## Description  
-**`IDroidProxyAPI Proxy`**  
+`IDroidProxyAPI` is designed to manage proxy server settings on the device in ZennoDroid. Allows you to configure basic proxy parameters as well as advanced settings for fine-tuning the connection.
 
-This interface is for managing your device's proxy server settings. It lets you set up basic proxy parameters as well as advanced options needed for more precise connection configuration.  
-
-### Properties  
-- **Block WebRTC leaks**  
-```csharp
-bool BlockWebRtcLeak { get; set; }
-```   
-
-- **Block UDP leaks**  
-```csharp
-bool BlockUDPLeak { get; set; }
-```   
-
-- **DNS requests over TCP**  
-```csharp
-bool UseDnsTcp { get; set; }
-```   
-
-- **DNS requests over UDP**  
-```csharp
-bool UseDnsUdp { get; set; }
-```  
 _______________________________________________
 ## Methods
-### Set Proxy
-```csharp
-void SetProxy(string proxy)
-```   
 
-*Parameters:*   
-```csharp
-string proxy // Proxy value. Format: login:pass@IP:port
-``` 
 
-#### Example  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
+### ClearProxy
 
-// Set up a proxy
-proxy.SetProxy("socks5://login:pass@100.20.30.40:8080");
-proxy.SetProxy("https://login:pass@100.20.30.40:8080");
-proxy.SetProxy("login:pass@100.20.30.40:8080");
-```
-_______________________________________________ 
-### Get Project Proxy
-```csharp
-string GetProxy()
-```    
-
-#### Example  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-var projectProxy = proxy.GetProxy(); // Get project proxy
-```
-_______________________________________________ 
-### Clear Proxy
-```csharp
-void ClearProxy()
-```    
+- **`void ClearProxy()`**  
+    Clears the proxy settings.
 
 #### Example  
 ```csharp
@@ -79,67 +27,13 @@ var proxy = instance.DroidInstance.Proxy;
 
 proxy.ClearProxy(); // Clear project proxy
 ```
-_______________________________________________ 
-### Set Your Own DNS Server
-```csharp
-void SetDnsServers(string dnsServers)
-```    
 
-*Parameters:*   
-```csharp
-string dnsServers // DNS value.
-``` 
+---
 
-#### Example  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
+### DisablePrivateDns
 
-proxy.SetDnsServers("1.1.1.1,8.8.4.4"); // Set DNS server
-```
-_______________________________________________ 
-### Set Local Address
-```csharp
-void SetLocalAddress(string address)
-```    
-
-*Parameters:*   
-```csharp
-string address // Local address.
-``` 
-
-#### Example  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-proxy.SetLocalAddress("192.168.20.0"); // Set local address
-```
-_______________________________________________ 
-### Enable Private DNS
-```csharp
-void EnablePrivateDns(string address)
-```    
-
-*Parameters:*   
-```csharp
-string address // Private DNS.
-``` 
-
-#### Example  
-```csharp
-var proxy = instance.DroidInstance.Proxy;
-
-proxy.EnablePrivateDns("dns.google"); // Enable private DNS
-```
-_______________________________________________ 
-### Disable Private DNS
-```csharp
-void DisablePrivateDns()
-```    
-
-*Parameters:*   
-```csharp
-string address // Private DNS.
-``` 
+- **`void DisablePrivateDns()`**  
+    Disables private DNS.
 
 #### Example  
 ```csharp
@@ -147,4 +41,142 @@ var proxy = instance.DroidInstance.Proxy;
 
 proxy.DisablePrivateDns(); // Disable private DNS
 ```
+
+---
+
+### EnablePrivateDns
+
+- **`void EnablePrivateDns(string address)`**  
+    Enables private DNS.
+    
+    **Parameters:**
+    - `address` — private DNS server address (e.g. `dns.google`).
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.EnablePrivateDns("dns.google"); // Enable private DNS
+```
+
+---
+
+### GetExternalIp
+
+:::info **Available starting from ZennoDroid 2.6.2.0.**
+:::
+
+- **`string GetExternalIp(params string[] addresses)`**  
+    Finds the external IP address the device goes online with. The IP-check service is asked from the device itself, which makes this a handy way to see whether the proxy works.
+    
+    **Parameters:**
+    - `addresses` — IP-check services. They are asked in turn until one of them returns an address. When none is given, `https://ipinfo.io/json` is used. A service may answer with JSON or with the bare address.
+    
+    **Returns:**  
+    JSON with `ip`, the address, and `source`, the service that returned it. Where the service tells more, `hostName`, `city`, `region`, `country`, `location`, `network`, `postalCode` and `timeZone` are added.
+    
+    **Description:**  
+    The request is not sent from an app, so when the proxy is set for chosen apps only, the check may show the address without the proxy. Use [`GetExternalIpInBrowser`](#getexternalipinbrowser) then.
+    
+    The method fails with an error when no service returns an address, or when the device has neither `curl` nor `wget`.
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+var json = proxy.GetExternalIp(); // Ask https://ipinfo.io/json
+project.SendInfoToLog(json); // {"ip":"203.0.113.7","source":"https://ipinfo.io/json","city":"Amsterdam",...}
+```  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+// ipinfo.io first, ipify if it does not answer
+var json = proxy.GetExternalIp("https://ipinfo.io/json", "https://api.ipify.org?format=json");
+project.SendInfoToLog(json); // {"ip":"203.0.113.7","source":"https://api.ipify.org?format=json"} when ipify answered
+```
+
+---
+
+### GetExternalIpInBrowser
+
+:::info **Available starting from ZennoDroid 2.6.2.0.**
+:::
+
+- **`string GetExternalIpInBrowser()`**  
+    The same as [`GetExternalIp`](#getexternalip), but the request is sent from Chrome (`com.android.chrome`) on the device.
+    
+    **Returns:**  
+    JSON of the same shape as `GetExternalIp` returns.
+    
+    **Description:**  
+    The request goes the way an app's traffic goes, so this is the check to use when the proxy is set for chosen apps only, with the browser among them.
+    
+    Each service opens in a tab of its own, which is closed once the answer has been read. A browser that was not running before the check is closed at the end; one that was keeps its other tabs as they were.
+    
+    Chrome and most Chromium-based browsers will do. The method fails with an error when the browser is not installed or the answer could not be read.
+
+- **`string GetExternalIpInBrowser(string packageName, params string[] addresses)`**  
+    The same in the given browser and through the given services.
+    
+    **Parameters:**
+    - `packageName` — the browser's package name, e.g. `com.android.chrome`. Chrome when empty;
+    - `addresses` — IP-check services, as for `GetExternalIp`.
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+var json = proxy.GetExternalIpInBrowser(); // The address Chrome goes online with
+```  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+// The same Chrome, through ipify
+var json = proxy.GetExternalIpInBrowser("com.android.chrome", "https://api.ipify.org?format=json");
+```
+
+---
+
+### GetProxy
+
+- **`string GetProxy()`**  
+    Returns the proxy set in the project.
+    
+    **Returns:**  
+    A string with the current proxy value.
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+var projectProxy = proxy.GetProxy(); // Get project proxy
+```
+
+---
+
+### SetProxy
+
+- **`void SetProxy(string proxy)`**  
+    Sets a proxy without extra parameters - the proxying method comes from the ZennoDroid settings.
+    
+    **Parameters:**
+    - `proxy` — proxy value (format: `protocol://login:pass@IP:port` or `protocol://IP:port`).
+
+- **`void SetProxy(string proxy, IDroidProxySettings settings)`**  
+    Sets a proxy with connection parameters.
+    
+    **Parameters:**
+    - `proxy` — proxy value (format: `protocol://login:pass@IP:port`);
+    - `settings` — proxy parameters (e.g. `new DroidProxySettings.ClashViaPC()`).
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+// Set proxy
+var settings = new DroidProxySettings.ClashViaPC();
+settings.DnsServers = "1.1.1.1";
+instance.DroidInstance.Proxy.SetProxy("socks5://login:pass@100.20.30.40:8080", settings);
+```
+
 _______________________________________________

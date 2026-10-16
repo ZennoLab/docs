@@ -1,25 +1,25 @@
-﻿---
-sidebar_position: 3
-sidebar_label: Editing Existing Proxy
-title: Editing Existing Proxy
-description: Update an existing proxy server's configuration and parameters - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+sidebar_position: 4
+sidebar_label: Editing an Existing Proxy
+title: Editing an Existing Proxy
+description: Modifies the configuration of an existing proxy server. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method modifies configuration of an existing proxy server based on specified parameters. 
+**Description:** This method modifies configuration of an existing proxy server based on specified parameters. Any parameters set to null will leave the corresponding property of the proxy unchanged.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| proxyId | string | uuid | (empty) |  Unique identifier of the proxy (Required) |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| proxyId | string | uuid | (required) | Unique identifier of the proxy (required). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 | folderId | string | uuid | (empty) | New folder for the proxy. Set to empty to leave the current value unchanged. |
 | name | string |  | (empty) | New name for the proxy. Set to null to retain the current name. |
-| proxyUrl | string |  | (empty) | Nnew URL for the proxy. |
-| ipChangeUrl | string |  | (empty) | New URL for IP rotation. |
+| proxyUri | string |  | (empty) | New URL for the proxy. Set to null to retain the current URL. |
+| ipChangeUrl | string |  | (empty) | New URL for IP rotation. Set to null to retain the current URL. |
 
 :::note
 The ID of the proxy to edit should be specified inside curly braces `{ }` in the URL path.
@@ -31,20 +31,21 @@ The ID of the proxy to edit should be specified inside curly braces `{ }` in the
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxies/{proxyId}?workspaceId=&folderId=&name=&proxyUri=&ipChangeUrl=' \
+curl 'http://localhost:8160/v1/proxies/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&proxyUri=http%3A%2F%2Flogin%3Apass%40127.0.0.1%3A8080&ipChangeUrl=https%3A%2F%2Fexample.com%2Fchange-ip' \
   --request PUT \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Put,
-    RequestUri = new Uri("http://localhost:8160/v1/proxies/{proxyId}?workspaceId=&folderId=&name=&proxyUri=&ipChangeUrl="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxies/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1&folderId=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&proxyUri=http%3A%2F%2Flogin%3Apass%40127.0.0.1%3A8080&ipChangeUrl=https%3A%2F%2Fexample.com%2Fchange-ip"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -69,18 +70,20 @@ http://localhost:8160/v1/proxies/{proxyId}?workspaceId=&folderId=&name=&proxyUri
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful update.
+No response body.
 
 **Error Response (500):**
 

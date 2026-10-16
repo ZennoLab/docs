@@ -1,0 +1,378 @@
+---
+sidebar_position: 2
+sidebar_label: CDP и WebSocket
+title: Работаем с ZennoBrowser и ZennoPoster через CDP и WebSocket | Документация ZennoBrowser | ZennoLab
+description: Работаем с ZennoBrowser и ZennoPoster через CDP и WebSocket — как подключать Playwright, Puppeteer, browser-use, MCP и AI-агентов к уже подготовленной браузерной сессии.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Работаем с ZennoBrowser и ZennoPoster через CDP и WebSocket
+<DisclaimerNotice />
+
+## Вступление
+
+AI-агенты и инструменты автоматизации браузера умеют многое: открывать сайты, нажимать кнопки, вводить текст, читать страницы, выполнять JavaScript и собирать данные.
+
+Но часто у них есть одна проблема: они запускают свой собственный «чистый» Chromium. В нем нет ваших cookies, авторизации, истории, прокси и настроенного fingerprint. Для простых задач этого хватает, но сайты с антибот-защитой такие сессии часто распознают как автоматизацию.
+
+Другой подход — не запускать новый браузер, а подключаться к уже подготовленному браузеру ZennoBrowser или ZennoPoster. В этом браузере уже могут быть:
+
+- нужный профиль;
+- cookies и авторизация;
+- прокси;
+- антидетект-настройки;
+- открытые вкладки;
+- прогретая сессия.
+
+Подключение делается через CDP и WebSocket. На практике это одна строка вида:
+
+```text
+ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2
+```
+
+Эту строку можно передать Playwright, Puppeteer, Browser-use, MCP-серверу или собственному AI-агенту.
+
+## Что такое CDP и WebSocket
+
+CDP расшифровывается как `Chrome DevTools Protocol`. Это протокол управления Chromium-браузером.
+
+Если говорить проще, CDP — это «пульт управления» браузером. Через него внешняя программа может делать почти то же, что делает пользователь:
+
+- открывать страницы;
+- кликать по элементам;
+- вводить текст;
+- выполнять JavaScript;
+- читать DOM;
+- делать скриншоты;
+- смотреть сетевые запросы;
+- работать с cookies, localStorage и вкладками.
+
+Именно через CDP работают Chrome DevTools, Playwright, Puppeteer и многие инструменты для браузерной автоматизации.
+
+**WebSocket** — это постоянное соединение между программой и браузером. Через него программа отправляет команды браузеру и сразу получает ответы или события.
+
+Обычно CDP-адрес выглядит так:
+
+```text
+ws://127.0.0.1:<port>/devtools/browser/<id>
+```
+
+Где:
+
+- `127.0.0.1` — означает, что подключение локальное, на этом же компьютере;
+- `<port>` — порт, который браузер открыл для CDP;
+- `<id>` — идентификатор конкретного экземпляра браузера.
+
+Важно: порт обычно меняется при каждом запуске браузера. Не нужно хардкодить `9222` или любой другой порт. Всегда берите готовую строку подключения из ZennoBrowser или ZennoPoster.
+
+## Как получить WebSocket в ZennoBrowser
+
+В ZennoBrowser WebSocket-строка возвращается при создании браузерного инстанса через Public API. Сам метод создания инстанса подробно описан в документации ZennoBrowser:
+
+[Создание экземпляра браузера](https://docs.zennolab.com/zennobrowser/zb-public-API/browser-instances/creating-browser-instance)
+
+После успешного запуска API возвращает данные инстанса. В ответе есть поле:
+
+```json
+{
+  "profileId": "1485fd76-34cc-457f-a77e-34c7d2b8403e",
+  "processId": 6752,
+  "connectionString": "ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2"
+}
+```
+
+Нужная WebSocket-строка находится в:
+
+```json
+"connectionString"
+```
+
+Именно ее нужно передавать внешним инструментам.
+
+Не копируйте порт из примеров вручную. Берите весь `connectionString` из ответа API: порт и идентификатор браузера могут меняться при каждом запуске.
+
+## Как получить WebSocket в ZennoPoster
+
+В ZennoPoster WebSocket-строка доступна из C#-кода проекта через свойство:
+
+```csharp
+instance.WsConnectionString
+```
+
+Пример:
+
+```csharp
+string ws = instance.WsConnectionString;
+project.SendInfoToLog(ws);
+```
+
+После выполнения в лог будет выведен адрес вида:
+
+```text
+ws://127.0.0.1:<port>/devtools/browser/<id>
+```
+
+Дальше эту строку можно передать во внешний скрипт, AI-агенту, MCP-серверу или любому инструменту, который умеет подключаться к браузеру через CDP.
+
+## Примеры подключения
+
+Во всех примерах ниже используется одна и та же переменная:
+
+```text
+CDP_WS=ws://127.0.0.1:<port>/devtools/browser/<id>
+```
+
+Это ваш `connectionString` из ZennoBrowser или `WsConnectionString` из ZennoPoster.
+
+### Для AI-агентов
+
+Логика простая:
+
+1. Запускаете браузер в ZennoBrowser или ZennoPoster.
+2. Получаете WebSocket-строку.
+3. Передаете ее агенту или инструменту.
+4. Агент работает не в своем новом браузере, а внутри вашей подготовленной сессии.
+
+Что получает агент:
+
+- текущие вкладки;
+- cookies;
+- авторизацию;
+- прокси профиля;
+- fingerprint;
+- доступ к DOM и JavaScript;
+- возможность кликать, вводить текст и читать страницу.
+
+**Главное правило**: WebSocket-строка дает полный доступ к браузеру. Относитесь к ней как к паролю от сессии. Не публикуйте ее и не пишите в продакшен-логи.
+
+### Playwright
+
+Playwright умеет подключаться к уже запущенному Chromium через `connectOverCDP`.
+
+```js
+import { chromium } from 'playwright';
+
+const ws = process.env.CDP_WS;
+
+const browser = await chromium.connectOverCDP(ws);
+const context = browser.contexts()[0];
+const page = context.pages()[0] ?? await context.newPage();
+
+await page.goto('https://example.com');
+console.log(await page.title());
+
+await browser.close();
+```
+
+В этом сценарии Playwright не запускает новый браузер. Он подключается к уже открытому браузеру ZennoBrowser или ZennoPoster.
+
+После `connectOverCDP` вызов `browser.close()` в Playwright завершает объект `Browser` на стороне Playwright и разрывает CDP-подключение. Это не является заменой остановки инстанса ZennoBrowser через Public API.
+
+Если инстанс был запущен через ZennoBrowser API, его жизненным циклом управляет ZennoBrowser. Поэтому после завершения автоматизации нужно отдельно вызвать [API остановки инстанса](https://docs.zennolab.com/zennobrowser/zb-public-API/browser-instances/deleting-browser-instance).
+
+### Puppeteer
+
+Для Puppeteer используйте `puppeteer-core` и метод `connect`.
+
+```js
+import puppeteer from 'puppeteer-core';
+
+const ws = process.env.CDP_WS;
+
+const browser = await puppeteer.connect({
+  browserWSEndpoint: ws,
+});
+
+const pages = await browser.pages();
+const page = pages[0] ?? await browser.newPage();
+
+await page.goto('https://example.com');
+console.log(await page.title());
+
+await browser.disconnect();
+```
+
+В Puppeteer важно использовать:
+
+```js
+await browser.disconnect();
+```
+
+А не:
+
+```js
+await browser.close();
+```
+
+`disconnect()` просто отключает Puppeteer от браузера. `close()` может закрыть сам Chromium-процесс.
+
+### browser-use (Python)
+
+`browser-use` — фреймворк для AI-агентов, которые работают с браузером.
+
+Пример ниже привязан к API `browser-use==0.12.7` и актуален на 2026-06-01. Перед использованием проверьте документацию пакета, потому что API `browser-use` быстро меняется.
+
+Пример подключения к существующему браузеру через CDP:
+
+```python
+import asyncio
+import os
+
+from browser_use import Agent
+from browser_use.browser import BrowserSession
+from browser_use.llm import ChatOpenAI
+
+
+async def main():
+    session = BrowserSession(cdp_url=os.environ["CDP_WS"])
+
+    agent = Agent(
+        task="Открой example.com, найди заголовок страницы и верни его текст.",
+        llm=ChatOpenAI(model="любая LLM"),
+        browser_session=session,
+    )
+
+    result = await agent.run()
+    print(result)
+
+
+asyncio.run(main())
+```
+
+Также у `browser-use` есть CLI-вариант:
+
+```bash
+browser-use --cdp-url "$CDP_WS" open https://example.com
+```
+
+В обоих случаях агент работает внутри сессии ZennoBrowser или ZennoPoster, а не в отдельном чистом браузере.
+
+### MCP-серверы
+
+MCP — это `Model Context Protocol`. Через MCP AI-клиент получает инструменты: открыть страницу, кликнуть, ввести текст, сделать скриншот, выполнить JavaScript.
+
+Для браузера удобно использовать MCP-сервер, который подключается к CDP.
+
+#### Playwright MCP
+
+Пример конфигурации:
+
+```jsonc
+{
+  "mcpServers": {
+    "browser": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--cdp-endpoint=ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2"
+      ]
+    }
+  }
+}
+```
+
+#### Chrome DevTools MCP
+
+Пример конфигурации:
+
+```jsonc
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--wsEndpoint=ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2"
+      ]
+    }
+  }
+}
+```
+
+После этого AI-клиент сможет управлять уже запущенным браузером через MCP-инструменты.
+
+## End-to-end пример
+
+Ниже полный пример: запускаем инстанс ZennoBrowser через API, получаем `connectionString`, подключаемся Playwright, открываем сайт и затем корректно закрываем инстанс.
+
+```js
+import { chromium } from 'playwright';
+
+const API = 'http://localhost:8160';
+const TOKEN = process.env.ZB_API_TOKEN;
+const PROFILE_ID = process.env.ZB_PROFILE_ID;
+
+async function zb(method, path) {
+  const response = await fetch(`${API}${path}`, {
+    method,
+    headers: {
+      'Api-Token': TOKEN,
+    },
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`${method} ${path} -> HTTP ${response.status}: ${text}`);
+  }
+
+  if (response.status === 204) {
+    return null;
+  }
+
+  return response.json();
+}
+
+const instance = await zb(
+  'POST',
+  `/v1/browser_instances/create?profileId=${PROFILE_ID}&workspaceId=-1`,
+);
+
+const ws = instance.connectionString;
+
+try {
+  const browser = await chromium.connectOverCDP(ws);
+  const context = browser.contexts()[0];
+  const page = context.pages()[0] ?? await context.newPage();
+
+  await page.goto('https://example.com');
+  console.log('Title:', await page.title());
+
+  await browser.close();
+} finally {
+  await zb('DELETE', `/v1/browser_instances/${PROFILE_ID}?workspaceId=-1`);
+}
+```
+
+Что здесь происходит:
+
+1. Скрипт обращается к ZennoBrowser API.
+2. ZennoBrowser запускает профиль.
+3. API возвращает `connectionString`.
+4. Playwright подключается к этому браузеру через CDP.
+5. Автоматизация выполняется внутри подготовленной сессии.
+6. В конце инстанс закрывается через API.
+
+Этот же принцип можно использовать с Puppeteer, Browser-use или MCP-сервером.
+
+## Итог
+
+CDP/WebSocket позволяет подключать внешние инструменты к уже запущенному браузеру ZennoBrowser или ZennoPoster.
+Вместо того чтобы запускать новый чистый Chromium, AI-агент, Playwright, Puppeteer, Browser-use или MCP-сервер работают внутри вашей подготовленной сессии:
+
+- с cookies;
+- с авторизацией;
+- с прокси;
+- с fingerprint;
+- с нужными вкладками и состоянием браузера.
+
+В ZennoBrowser для этого нужен `connectionString` из Public API. В ZennoPoster — `instance.WsConnectionString`.
+
+Дальше все сводится к простой схеме:
+
+1. Запустили браузер.
+2. Получили WebSocket.
+3. Передали его инструменту автоматизации.
+4. Выполнили задачу.
+5. Корректно закрыли инстанс.
+
+Это удобный способ совместить инфраструктуру ZennoBrowser / ZennoPoster с современными AI-агентами и инструментами browser automation.

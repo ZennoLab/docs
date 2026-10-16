@@ -1,8 +1,8 @@
-﻿---
+---
 sidebar_position: 2
 sidebar_label: Getting Accessible Workspaces
 title: Getting Accessible Workspaces
-description: Retrieve the list of workspaces accessible to the current user - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Retrieves the list of workspaces accessible to the current user. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -13,14 +13,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
-| :-----: | :-----: | :-----: | :-----: | :-----: |
-| start | integer | int32 | 0 | Start index for pagination |
-| total | integer | int32 | 1000 | Maximum number of results to return |
-| id | integer | int64 | (empty) | Optional workspace ID filter |
-| name | string |  | (empty) | Optional workspace name filter |
-| roles | string |  | (empty) | Optional roles filter |
-
-#### 
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| start | integer | int32 | (empty) | Start index for pagination. |
+| total | integer | int32 | (empty) | Maximum number of results to return. |
+| id | integer | int64 | (empty) | Optional workspace ID filter. |
+| name | string |  | (empty) | Optional workspace name filter. |
+| roles | string |  | (empty) | Optional roles filter. |
 
 #### **Example request:**
 
@@ -28,19 +26,20 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles=' \
+curl 'http://localhost:8160/v1/workspaces?start=0&total=1000&id=1&name=ApiEntity&roles=Owner' \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Get,
-    RequestUri = new Uri( "http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles="),
+    RequestUri = new Uri("http://localhost:8160/v1/workspaces?start=0&total=1000&id=1&name=ApiEntity&roles=Owner"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -54,21 +53,26 @@ using (var response = await client.SendAsync(request))
 }
 ```
 
-**Cube:** `http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles=`  
+**Cube:**  
+```
+http://localhost:8160/v1/workspaces?start=0&total=1000&id=&name=&roles=
+```
 ![](./assets/image7.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](./assets/image8.png)
+![](./assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
@@ -78,8 +82,8 @@ Api-Token: Token from **UserArea2**.
   "items": [
     {
       "workspaceId": 1,
-      "name": null,
-      "role": "Owner"
+      "name": "Sample Name",
+      "role": "string"
     }
   ]
 }
@@ -92,3 +96,5 @@ Api-Token: Token from **UserArea2**.
   "message": null
 }
 ```
+
+---

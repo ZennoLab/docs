@@ -1,0 +1,237 @@
+---
+sidebar_position: 92
+title: "ZennoPoster 7.9.0.0 25.06.2026"
+description: ""
+date: "2026-06-25"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.9.0.0 (25.06.2026) — AI Assistant in ProjectMaker
+
+**In short:** ProjectMaker now has a built-in AI assistant that understands your project and can assemble scenarios on its own — from registrations and forms to posting and working with data. Plus a new AI cube for calling an LLM directly from a scenario, a Chromium update, FunCaptcha recognition, and a large set of stability fixes.
+
+## Headline: AI Assistant in ProjectMaker
+
+A built-in panel for talking to an LLM (Claude, DeepSeek, the OpenRouter aggregator, or OpenAI) right in the project window. Two modes:
+
+**Assistant (read-only) — safe for production projects.**  
+Answers questions, explains what the selected cube does, analyzes errors from the last run, and suggests parameter values. **It does not change the project.**
+
+**Agent (full access) — builds the scenario for you.**  
+It can:
+
+- add, change, move, and delete cubes of any type from the ZennoPoster catalog;
+- build connections (success/error branches), create and rename groups;
+- create and fill tables, lists, and variables, and bind tables to Google Sheets;
+- control a running browser: tabs, URL navigation, reading the DOM, clicks, input, event generation;
+- run individual cubes and read their logs — to debug the scenario iteratively;
+- write code for `OwnCode|CSharp` cubes — the assistant knows the current C# project API (`IZennoPosterProjectModel`, `Instance`, and others).
+
+**The assistant also gained:**
+
+- **Chat history** — a list of past conversations, switching, and continuation; the chat refresh icon has been replaced with delete.
+- **LLM list management** — an unused service can be removed right in *Settings → AI* (trash icon + confirmation).
+- **Support for services without picking a specific model** — OpenRouter, for example.
+
+<details>
+<summary>Panel UI — what each control does</summary>
+
+**Start screen:**
+
+| Element | What it does |
+|---|---|
+| Clock icon (top) | **Chat history** — a list of past conversations with the assistant. Not yet tied to specific projects. |
+| Circular arrow | **Reset chat** — clears the conversation, deletes messages and context. |
+| Cross next to the “Model” row | **Delete model** — removes the current model and switches to the first one in the list. |
+| Service · Model · Mode | Dropdowns. Service and models come from settings and from those the AI discovered itself; if your model is not in the list, use “Enter manually”. Modes: **Assistant** and **Agent**. |
+
+**Response screen:**
+
+| Element | What it does |
+|---|---|
+| “N steps” | **Reasoning steps** — how many steps the assistant took to complete the request (you can expand this and inspect the trail). |
+| “… tokens” in the reply | **Reply tokens** — usage for this specific reply. |
+| “Session: … tokens” (bottom) | **Session tokens** — total usage for the entire current conversation. |
+
+</details>
+
+<details>
+<summary>Which requests work best</summary>
+
+The assistant is most confident on clearly stated, step-by-step tasks. In our tests these work reliably:
+
+- **Questions and explanations** — what a cube does, the difference between entities, analyzing an error (Assistant mode, the project is not changed).  
+  *For example: “How is a group different from a project?”, “Why does my XPath find nothing?”*
+- **Building step by step** — the assistant remembers context and extends the project command by command.  
+  *For example: “Create a quotes table with columns text, author” → “Open the site and collect the data into this table”.*
+- **Editing existing cubes** — it reads the cube first, then changes it.  
+  *For example: “Change the URL in the navigation cube to …”, “Set the timeout to 30 seconds”.*
+- **HTTP and data** — an API request, saving the response, parsing ready JSON.  
+  *For example: “Do a GET to this URL and save the response to a variable”, “Parse the JSON — extract id and title into a table”.*
+- **C# snippets** — the code is visible in the reply.  
+  *For example: “Write a snippet: a random email like user####@mail.com”.*
+
+:::tip
+Be specific: site + action + which fields. Not “scrape the site”, but “collect the price and title from this page into a table”. Drive large projects in steps. Complex catalog scraping and long loops “in one command” still need a double-check.
+:::
+
+</details>
+
+<details>
+<summary>Your own model and local LLMs — via MCP</summary>
+
+Besides the built-in chat, you can connect **your own AI client or a local model** to ProjectMaker and control the project from there. On startup, ProjectMaker 7.9 automatically starts two MCP servers:
+
+| Server | Address | Purpose |
+|---|---|---|
+| `ProjectMCP` | `http://127.0.0.1:6107` | project work: cubes, connections, tables, variables |
+| `BrowserMCP` | `http://127.0.0.1:6108` | control of the running browser |
+
+Connect any MCP-compatible client (Claude Desktop, a CLI agent, LM Studio, and so on) — add this to its `mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "ProjectMCP": { "url": "http://127.0.0.1:6107" },
+    "BrowserMCP": { "url": "http://127.0.0.1:6108" }
+  }
+}
+```
+
+After that you can ask from your own client: “create a cube”, “open the site”, “collect the data” — the commands go to ProjectMaker. The servers start on their own while ProjectMaker 7.9 is open — you can check by opening `http://127.0.0.1:6108` in a browser.
+
+Details and setup for different clients: [MCP Setup](../../../Hello/MCP_Setup.mdx) · [AI Assistant](../../../Hello/AI_Complete_Guide.mdx).
+
+:::warning
+This opens the door to **local models** (on your own hardware) and any external agents. Remember that quality depends heavily on the model — on weak local LLMs the assistant more often picks the wrong tools. For a reliable result, use DeepSeek-level models and above.
+:::
+
+</details>
+
+## How we measured this
+
+The assistant was run on 100+ different scenarios in 10 categories — from Q&A and building a project from scratch to loops, HTTP/JSON, C# snippets, and edge cases. On **DeepSeek-level and above** models the average score is about **8.7/10**: it handles explanations, code generation, and carefulness well (confirmation before deletion, an honest refusal when a site is unavailable, resistance to injections in data). Weaker areas are dynamic forms and large loops. On lightweight local models the same tasks drop by 1.5–2×, especially agent ones — which is why we recommend DeepSeek and above.
+
+:::tip
+For Agent mode we recommend **DeepSeek** — inexpensive and solid: one typical agent request ≈ a couple of cents.
+:::
+
+<details>
+<summary>What the assistant can already do — an honest capability matrix</summary>
+
+**🟢 Handles confidently**
+
+- **Registration and forms** — login, fields from variables, multi-step forms, following an activation link from an email.
+- **Posting and publishing** — signing in and publishing to social networks, WordPress posts step by step.
+- **Account warming** — visiting sites, scrolling, random pauses, loading a browser profile.
+- **Working with data** — tables/lists/variables (create, fill, read, delete), parsing ready JSON, reading and writing files.
+- **Simple C# snippets** — random strings and logins, extracting a domain, transforming data (review the complex ones).
+- **Editing existing cubes** — XPath, timeout, parameters. It reads the cube first, then changes it — it does not break the project.
+- **Carefulness** — asks for confirmation before deletion, continues an interrupted task without duplicates, replies in the language of the question.
+- **Thread and debugging tips** — a unique account per thread, write synchronization, typical reasons for an empty XPath.
+
+**🟡 Handles it, but the result should be checked**
+
+- **Parsing dynamic sites** — simple pages and APIs work well; heavy catalogs with lazy loading are unstable.
+- **Pagination and loops** — it builds a loop, but on large tasks it does not always close connections correctly.
+- **Complex data operations** — removing duplicates with sorting, conditionally deleting rows by a filter.
+- **Error handling** — switching proxy and retrying on 403/429, bulk mailings from a list.
+- **Deep diagnostics (Assistant)** — hangs after N iterations, “captcha is solved but the form does not submit”, an empty response with HTTP 200.
+
+**🔴 Not reliable yet**
+
+- **Complex scraping “in one command”** — large marketplace cards, collecting all links/elements from a page at once, multi-page pagination with parsing. Manual follow-up and review are often needed.
+
+</details>
+
+## Try it in 3 steps
+
+1. *Settings → AI* → add a service and an API key (we recommend DeepSeek).
+2. Open the AI panel in ProjectMaker and pick a mode: **Assistant** (safe) or **Agent**.
+3. State the task specifically: **site + action + which fields**. Drive large projects in steps and check the result.
+
+Docs: [AI Assistant](../../../Hello/AI_Complete_Guide.mdx) · [MCP Setup](../../../Hello/MCP_Setup.mdx).
+
+:::info
+This is a fresh release and it is being actively improved — some rough edges are possible. **We welcome reports:** what worked, what did not, which task you gave, and which sites you used. This feeds directly into the assistant’s development — write to support.
+:::
+
+## What else is new
+
+**New AI cube**  
+A new action type — calling an LLM directly from a scenario. The same providers as in chat, with a single API-key setup in the program settings. Suitable for text generation, classification, data extraction, and translation — it drops into existing projects without external scripts.
+
+**Browser and fingerprint**
+
+- Chromium updated to **149.0.7827.103**.
+- New User-Agent selection mode **“based on engine (binary) version”** for Chrome/Chromium — the UA always matches the engine version (enabled by default for a Chrome-type profile).
+- The Chromium and ChromiumFromZB wrapper now lives in a separate process **for ProjectMaker as well** (not only for ZennoPoster) — it does not affect the main processes and isolates resources.
+- Element screenshots when recording through the browser in ProjectMaker (Chromium / ChromiumFromZB) — not yet available via the Action designer.
+- Support for the `--component-updater` switch.
+- The “Parallel view” feature is disabled in the internal Chromium engine.
+
+**ZennoBrowser integration and extensions**
+
+- Working with browser extensions via API and cubes for browsers from the ZennoBrowser integration.
+- Improved ZennoPoster 7 ↔ ZennoBrowser integration (including when updating ZennoBrowser; integration breakages in 7.8.15 after 7.8.16 have been fixed).
+
+**Captcha**
+
+- New action **“FunCaptcha recognition”** — “In tab” and “Via SiteKey” modes. *(The “In tab” mode does not yet solve captchas with `data[blob]`.)*
+
+**Traffic and network**
+
+- In the Traffic window, search now covers not only URLs but also request/response bodies, headers, and cookies.
+
+**Cubes and API**
+
+- The “Image Processing → Save image → URL” cube can now work **through a proxy**.
+- New method `bool HtmlElement.HasAttribute(string attrName)` — checks whether an element has an attribute.
+
+## Fixes
+
+**Threads, profiles, and stability**
+
+- Threads are released correctly after parallel projects, and ZennoBrowser profiles **exit** when work finishes (they used to stay running).
+- Improved control of ZennoPoster child processes when the application closes.
+- Fixed Chromium hangs when working with tabs.
+- If there are problems with license files, the program will offer to **re-download** them without reinstalling (relevant when a subscription expired and was renewed).
+
+**Browser and fingerprint**
+
+- Fixed some Chromium/ChromiumFromZB rendering issues at scales other than 100%.
+- Screen sizes in fingerprints are normalized to real existing ones; desktop-profile screen emulation is improved.
+- Fixed font emulation: the `--zl-fonts-dir="<path>"` argument now works correctly.
+- Fixed Chromium browser preview display in ZennoPoster.
+- Fixed loading a profile folder caused by an incorrect `BrowserType` in `profiledata.zpdata`.
+- The “Stop instance” action no longer changes the ZennoPoster profile.
+
+:::danger Known issue — already in progress
+**Browser (instance) window rendering.**  
+We know about this and we hear you. In some cases the running browser window and its preview may open with a delay, flicker, or show rendering artifacts — more often when the screen scale is not 100%, and when the project is paused.
+
+Some of these cases are **already fixed** in this release.  
+The rest comes from the current way the browser window is shown. We are preparing a **major update**: switching to a native window without extra intermediate layers — that will remove these problems. **It will ship in one of the upcoming releases.**
+:::
+
+**Network and TLS**
+
+- Fixed saving cookies into the cookie container when working through the TLS client.
+- Fixed a memory leak when requesting images through the TLS client.
+
+**ProjectMaker, UI, and settings**
+
+- Fixed the “Debug Thread Error” when running the “Create ZB profile” cube.
+- The “Execution → Start unfinished projects on launch” setting now works.
+- The “Sort project variables alphabetically” setting is now applied in dropdowns in all actions.
+- On an empty result in “Text Processing → Regex” (with “Error on empty result” enabled), the log writes a text error with the action Id — you can find it in the project.
+- When loading a profile, missing variables no longer reset default values in the project.
+- The execution timeout (“Stop → Execution timeout”) no longer fires on the “Wait for user action” action.
+- Fixed autoscroll in the Traffic window when grouping by domain, and the Action designer layout.
+- ProjectMaker no longer steals focus and jumps to the foreground on startup.
+
+**Thank you for being with us. Update, try the AI assistant, and share your feedback.**

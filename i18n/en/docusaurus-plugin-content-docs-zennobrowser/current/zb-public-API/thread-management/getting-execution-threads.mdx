@@ -1,25 +1,24 @@
-﻿---
+---
 sidebar_position: 1
 sidebar_label: Getting Execution Threads
 title: Getting Execution Threads
-description: Retrieve the list of execution threads - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Retrieves execution threads for the specified workspace with optional filters and sorting. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method retrieves the list of execution threads for the specified workspace.  
-Threads can be filtered by token or type, limited by number of results, and sorted optionally.
+**Description:** This method retrieves the list of execution threads for the specified workspace. Threads can be filtered by token or type, limited by the number of results, and sorted using the provided parameters.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
-| start | integer | int32 | 0 | Starting index for pagination. |
-| total | integer | int32 | 1000 | Maximum number of threads to return. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| start | integer | int32 | (empty) | Starting index for pagination. |
+| total | integer | int32 | (empty) | Maximum number of threads to return. |
 | thread_token | string |  | (empty) | Filter by certain thread token (optional). |
-| type | string enum |  | (empty) | Filter by token type (`Manual`, `BrowserInstance`) (optional). |
+| type | string |  | (empty) | Filter by token type (Manual, BrowserInstance) (optional). |
 | sorting | string |  | (empty) | Sorting parameters: CreatedAt, ThreadToken, Type, WorkspaceId (optional). |
 
 #### **Example request:**
@@ -28,19 +27,20 @@ Threads can be filtered by token or type, limited by number of results, and sort
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/threads?workspaceId=&start=0&total=1000&thread_token=&type=&sorting=' \
+curl 'http://localhost:8160/v1/threads?workspaceId=-1&start=0&total=1000&thread_token=&type=&sorting=name%20ASC' \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Get,
-    RequestUri = new Uri("http://localhost:8160/v1/threads?workspaceId=&start=0&total=1000&thread_token=&type=&sorting="),
+    RequestUri = new Uri("http://localhost:8160/v1/threads?workspaceId=-1&start=0&total=1000&thread_token=&type=&sorting=name%20ASC"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -63,15 +63,18 @@ http://localhost:8160/v1/threads?workspaceId=&start=&total=&thread_token=&=&sort
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
@@ -81,9 +84,9 @@ Api-Token: Token from **UserArea2**.
   "items": [
     {
       "workspaceId": 1,
-      "threadToken": null,
-      "type": "Manual",
-      "createdAt": "2025-07-25T09:34:29.768Z"
+      "threadToken": "thread-token-1",
+      "type": "string",
+      "createdAt": "2026-05-19T10:00:00Z"
     }
   ]
 }

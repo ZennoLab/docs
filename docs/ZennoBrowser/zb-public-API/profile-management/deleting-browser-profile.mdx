@@ -55,21 +55,26 @@ using (var response = await client.SendAsync(request))
 ```
 
 **Cube:**  
-`http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1`
+```
+http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1
+```
 
 ![](../assets/image17.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
-| Response code | Result |
+| Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успешно |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 

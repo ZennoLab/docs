@@ -7,3 +7,4 @@
 .vs/
 docusaurus.config.js
 .*/
+*.log

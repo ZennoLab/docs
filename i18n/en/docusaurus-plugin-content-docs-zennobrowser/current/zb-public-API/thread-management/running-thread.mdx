@@ -1,20 +1,20 @@
-﻿---
+---
 sidebar_position: 2
-sidebar_label: Running Thread
-title: Running Thread
-description: Start a single execution thread - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+sidebar_label: Running a Thread
+title: Running a Thread
+description: Runs a new execution thread. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method runs a new execution thread.
+**Description:** This method runs a new execution thread in the specified workspace.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
 #### **Example request:**
 
@@ -25,12 +25,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 curl 'http://localhost:8160/v1/threads/create?workspaceId=-1' \
   --request POST \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
@@ -58,24 +59,27 @@ http://localhost:8160/v1/threads/create?workspaceId=-1
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
 ```json
 {
   "workspaceId": 1,
-  "threadToken": null,
-  "type": "Manual",
-  "createdAt": "2025-07-25T09:34:29.768Z"
+  "threadToken": "thread-token-1",
+  "type": "string",
+  "createdAt": "2026-05-19T10:00:00Z"
 }
 ```
 

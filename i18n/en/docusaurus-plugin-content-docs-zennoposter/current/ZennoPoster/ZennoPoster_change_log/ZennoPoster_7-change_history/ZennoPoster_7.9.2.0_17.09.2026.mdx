@@ -1,0 +1,155 @@
+---
+sidebar_position: 90
+title: "ZennoPoster 7.9.2.0 17.09.2026"
+description: ""
+date: "2026-09-17"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.9.2.0 (17.09.2026) — public API and MCP
+
+:::info
+ZennoPoster 7.9.2 is out!
+
+The headline update is a public HTTP API and a set of MCP servers for ZennoPoster and ProjectMaker: you can now control the product from outside — from your own scripts and apps, or directly from an AI assistant. The second major addition is agent mode in the [AI Agent](../../../ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/AI/AI_Agent.mdx) cube. The external browser window can also stay on top of the program, ProjectMaker starts about twice as fast, and browser threads are faster.
+:::
+
+## Added
+
+### Public HTTP API and a set of MCP servers
+
+ZennoPoster and ProjectMaker now have a public HTTP API and a set of MCP servers. You can control the product from outside — from your own scripts and apps, or directly from an AI assistant (Claude Code, Cursor, and any other MCP client): read and edit projects, enqueue tasks, and control the browser.
+
+- **Public REST API (PublicAPI)** — more than 100 operations under a single contract: working with a project in ProjectMaker (action tree, variables, lists, tables, static data), managing tasks and execution sessions in ZennoPoster, and controlling a browser instance (navigation, clicks, text input, screenshots). The contract is described in OpenAPI — you can generate a client for any language from the spec.
+- **API keys with flexible permissions.** Keys are issued in ProjectMaker (Settings → API Keys); each key gets a set of permissions (scopes) and a maximum operation level (tier) — from strictly read-only to full control. The key is shown once when created; all API authorization errors come back in a structured form, including which rights were missing.
+- **MCP servers for AI assistants.** Three servers — ProjectMaker (project editing), Instance (browser control), ZennoPoster (tasks and sessions) — are published as ready self-contained builds: download, paste your API key, connect to your LLM client. The assistant’s rights are defined by your key. The servers accept connections only from the local machine.
+
+The product’s built-in AI chat runs on the same infrastructure — the same permission model and the same API, with no hidden privileged channels.
+
+Public servers are in the [ZennoLab/zennoposter-mcp](https://github.com/ZennoLab/zennoposter-mcp) repository.  
+Documentation (integrator guide, interactive OpenAPI contract, operations reference, error codes, and versioning policy): [zennolab.github.io/zennoposter-mcp](https://zennolab.github.io/zennoposter-mcp/) — MCP server releases are on GitHub there as well.
+
+Help article: [Public API and MCP servers](../../../Hello/Public_API_and_MCP.mdx).
+
+**ProjectMaker tools for saving, loading, and closing a project.**
+
+- `save_project` and `open_project` return a freshness marker for the file: `fileHash` (SHA-256 of the .zp contents on disk, computed after write), `fileSizeBytes`, `lastWriteTimeUtc`. Opening the same file again yields an identical hash — so you can confirm the disk file is what you expected.
+- `get_project_info` now includes the `hasUnsavedChanges` flag and the same fields; the hash is computed only when there are no unsaved edits.
+- `close_project` closes the open project. By default a project with unsaved edits is not closed: the call returns `409 failed_precondition`, so work is not silently lost. To close and discard edits, you must explicitly pass `discardUnsavedChanges: true`.
+
+**Improved tools for reading project structure.**
+
+- `get_project_structure` returns a graph: nodes (type, label, start point, switch, disabled state, membership in an error branch, groupId/actionId) and edges (OnSuccess/OnError/Default/Case-N, including implicit transitions). The response has three levels — a group overview, a slice of one group, or the full graph — so large templates do not inflate the reply.
+- `find_path(from, to)` — the shortest route between two cubes.
+- `get_action_connections(actionId)` — all inbound and outbound connections and branches of a specific cube.
+
+**MCP ProjectMaker tools for editing the diagram and static project blocks** — some of them were added from your forum requests.
+
+- **Action properties.** `set_action_properties` reads and changes the “Disabled”, “Breakpoint”, and “Optional” flags and the cube comment; `get_action_details` and `get_project_structure` show them. Disabling a captcha cube, as in the editor, also disables its pair cube.
+- **Renaming.** `rename_action` and `rename_group` set the cube and group labels — the name appears immediately on the diagram and in the properties panel, and the edit can be undone with Ctrl+Z.
+- **Diagram layout.** `get_layout` returns coordinates and sizes of all groups; `set_group_position` moves one group, `set_layout` moves several at once, with a single redraw and a single undo step. If a group would overlap another, the request is rejected with a list of blocking groups — same as dragging in the editor. `add_action` accepts an insertion place (coordinates of a new group or a position inside an existing one), `copy_group` copies a group to a given point on the diagram.
+- **“Using directives and shared code” block.** `get_shared_code` and `set_shared_code` read and change directives, shared code, and the shared-code file path; `get_gac_references` and `set_gac_references` handle the GAC reference list. Edits appear immediately in the open block editor.
+- **Project input settings.** `get_input_settings`, `add_input_settings`, `update_input_settings`, `remove_input_settings`, and `reorder_input_settings` — read, add, change, delete, and reorder form fields; `remove_input_settings_block` removes the entire input-settings block. The input-settings icon on the project panel appears and disappears immediately, without reopening the project.
+- **Diagram image.** `get_diagram_image` returns an image of the full diagram or only the visible part — the agent can assess the layout after its edits and show the result.
+
+**MCP ZennoPoster tools for task management.**
+
+- Full task cycle: `tasks_create` adds a task from a project file that is already on disk (the task itself does not start), `tasks_start` and `tasks_stop` start and stop it, `tasks_delete` removes it.
+- Execution settings, threads, run count, and schedule are read and changed the same way as in the ZennoPoster UI, including infinite execution (-1). Changes appear immediately in the open ZennoPoster window.
+- `tasks_success_clear` and `tasks_fails_clear` reset the successful and failed run counters.
+
+**The project context menu in ZennoPoster now has “Copy GUID”** — the identifier is copied to the clipboard in the form accepted by API and MCP operations, so you can pass it to an agent right away.
+
+### Agent mode in the AI Agent cube
+
+The [AI Agent](../../../ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/AI/AI_Agent.mdx) cube has a new operating mode — agent mode. The **Mode** combobox now has two values: “Simple request” (previous behavior, unchanged) and “Automatic request with MCP tools”. In the second mode the model runs a “think → call a tool → inspect the result” loop and controls the browser of the task where the cube runs, as well as ZennoPoster tasks.
+
+- The loop is bounded by a mandatory iteration limit. When it trips, the cube stops predictably: partial text is saved to the output variable, and execution follows the OnError branch.
+- The agent outcome is parsed from the `RESULT: SUCCESS|FAILURE` verdict — the cube itself picks the OnSuccess or OnError branch.
+- Project variables are substituted into the prompt, and the loop result is written back to variables.
+- The decision trail is visible in the task log as it runs: agent steps, tool calls, and the outcome — a long loop no longer looks like a hang.
+- Stopping the cube or the task also interrupts the LLM loop itself. Previously the request lived to the end and kept spending tokens.
+- Multithreading: each agent is tightly bound to its task’s browser. Under a 10×10 load, sessions do not cross and cannot “enter” another instance — the server rejects the attempt.
+- The mode works the same in ProjectMaker and ZennoPoster.
+- The default token limit is raised from 400 to 2000; if temperature is above 1.0, a warning is written to the log.
+
+In this mode the agent has two tool sets: the browser of the task where the cube runs, and ZennoPoster task control (task list, start and stop, settings, schedule) — the second connects when ZennoPoster is running. Connecting your own MCP servers and giving the agent access to project state are planned for the next stage.
+
+### A detailed guide to AI in ZennoPoster
+
+It covers all four ways to work with AI — the built-in AI assistant, the AI Agent cube, an external agent via MCP, and PublicApi directly: how they differ, what to pick for a task, how to issue an API key and set permissions, step-by-step setup for Claude Code, Cursor, VS Code, and LM Studio, ready-made request scenarios, typical problems, and a glossary.
+
+- Guide: [Public API and MCP servers](../../../Hello/Public_API_and_MCP.mdx)
+- [AI Assistant](../../../Hello/AI_Complete_Guide.mdx) · [MCP Setup](../../../Hello/MCP_Setup.mdx)
+- Full documentation — integrator guide, interactive OpenAPI contract, operations reference, error codes, and versioning policy: [zennolab.github.io/zennoposter-mcp](https://zennolab.github.io/zennoposter-mcp/)
+- Install page with ready buttons for Cursor and VS Code: [install.html](https://zennolab.github.io/zennoposter-mcp/install.html)
+- MCP server releases: [github.com/ZennoLab/zennoposter-mcp/releases](https://github.com/ZennoLab/zennoposter-mcp/releases)
+
+**Agent mode in the AI Agent cube:**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HZkI05LjqwQ" title="AI Agent cube — agent mode" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+
+**MCP tools in action:**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LIgD_5L2Eyc" title="MCP tools in action" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+
+**The external browser window in ProjectMaker can stay on top of the program.**
+
+- An “Always on top” toggle next to “Snap”: the browser window and DevTools stay visible over ProjectMaker but do not steal focus — text typed in ProjectMaker goes to ProjectMaker. The setting is remembered.
+- A new placement mode: the browser window occupies the same area where the embedded browser used to appear, and follows ProjectMaker on move, resize, and minimize.
+- While a ProjectMaker dialog is open, the browser temporarily yields space so the dialog is not hidden under the window.
+
+**ProjectMaker starts about twice as fast:** action-settings cache preparation runs in the background while you are not using the UI.
+
+**Browser threads are faster** in Chromium and Chromium from ZennoBrowser, especially with a large number of threads. Tab-load wait methods `WaitInteractive` and `WaitPreComplete` are also fixed: previously, if the state was already reached, they waited the full navigation timeout.
+
+**Chromium browser updated to version 152.0.7977.83.**
+
+**The “Sort project variables alphabetically” option** now also sorts variables in the Variables window itself, not only in macro lists.
+
+## Fixed
+
+**AI assistant and the AI Agent cube**
+
+- The AI Agent cube with an empty request text or without a response variable no longer calls the LLM: a clear error is written to the log immediately.
+- The AI assistant no longer inserts nonexistent macros into an If cube — projects built by the assistant now branch correctly.
+- The AI assistant sees all branches of the “Logic | Switch” cube, not only Case0 and Default.
+- The AI assistant sets the HTTP cube timeout in seconds, not milliseconds. The same mismatches are fixed for “File exists”, “Check directory”, and ZennoDroid commands.
+- A manually added AI model is deleted permanently and does not come back after changing the provider or restarting the program. Built-in models no longer have a delete button, so they cannot be removed by accident.
+
+**Browser and instances**
+
+- In Chromium and in the ZennoBrowser integration, cubes added via the Action designer again show element thumbnails — in both browser display modes.
+- The “Wait for user action” cube banner no longer stays on screen or carries over to the next project run in ZennoPoster.
+- CEF-browser projects no longer hang in multi-thread mode on the “Wait for user action” cube: from the Instances tab you can again continue execution and expand the window.
+- The “Stop instance” cube in ProjectMaker with the CEF browser no longer shows the “An error occurred in the browser process” panel.
+- The “Hide” item in the Instances tab context menu again hides the browser window opened by the “Wait for user action” cube.
+- In Chromium and Chromium from ZennoBrowser, under high CPU/GPU load, instance launch no longer hangs with “Error occurs when applying profile to instance”.
+- In Chromium and Chromium from ZennoBrowser, clicking a file-upload button on some sites again opens the file picker — both from a cube and manually.
+- The virtual cursor in the external Chromium window and Chromium from ZennoBrowser displays stably.
+
+**Profiles**
+
+- The `instance.Launch` method with launch arguments now applies those arguments when working with Chromium profile folders — same as the launch-instance cube.
+- The profile window no longer hangs on an infinite load after stopping an instance without a browser.
+- Regenerating a profile no longer freezes ProjectMaker, and a project running in ZennoPoster at that time no longer fails with “Error preparing profile”.
+
+**ProjectMaker and UI**
+
+- The “Data” field in HTTP cubes again stretches with the properties window; typed text no longer slips under the bottom edge of the field.
+- Properties of the “Launch instance” cube open right after ProjectMaker starts, without an infinite loading indicator.
+- On a repeated project run, the “Project in project” cube opens the project specified in it.
+- The “Open in ZennoPoster” button in ProjectMaker adds the project to the task list even if ZennoPoster was not running beforehand.
+- The Esc key closes dialogs — for example “Regular expression tester”, “Content policy”, and “Menu settings”.
+
+:::info Where to download?
+ZennoPoster 7.9.2.0 is already available in your [personal account](https://account.zennolab.com/personal-area-main/)!
+
+The update will also be offered when you start ProjectMaker.
+
+Thank you for being with us. Update and share your feedback.
+:::

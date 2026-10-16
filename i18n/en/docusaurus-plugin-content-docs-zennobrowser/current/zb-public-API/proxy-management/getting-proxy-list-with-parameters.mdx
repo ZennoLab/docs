@@ -1,28 +1,27 @@
-﻿---
+---
 sidebar_position: 1
-sidebar_label: Getting Proxy List
+sidebar_label: Getting Proxy List with Parameters
 title: Getting Proxy List with Parameters
-description: Retrieve a list of proxy servers with filtering and pagination options - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Retrieves a list of proxies with filtering, sorting, and pagination options. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method provides functionality for filtering, sorting, and paginating proxies. It is used to utilize the available parameters to customize the output. If parameters are not specified, the response will return the default page with results in standard order.
+**Description:** This method provides functionality for filtering, sorting, and paginating proxies. It can filter results by workspace ID, folder ID, proxy ID, name, and sorting criteria. If parameters are not specified, the response returns the default page of proxies in standard order.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
-| start | integer | int32 | 0 | Starting index for the list of proxies to retrieve. |
-| total | integer | int32 | 1000 | Maximum number of proxies to retrieve. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| start | integer | int32 | (empty) | Starting index for the list of proxies to retrieve. |
+| total | integer | int32 | (empty) | Maximum number of proxies to retrieve. |
 | folderId | string | uuid | (empty) | Optional folder ID for filtering proxies. Pass null to ignore this filter. |
-| id | string | uuid | (empty) | Ooptional proxy ID to filter. Pass null to ignore this filter. |
+| id | string | uuid | (empty) | Optional proxy ID to filter. Pass null to ignore this filter. |
 | name | string |  | (empty) | Optional name for filtering proxies. Pass null to ignore this filter. |
-| sorting | string |  | (empty) | Ooptional sorting string to determine the order of the returned proxies. Pass null to ignore this filter. |
-
-#### 
+| sorting | string |  | (empty) | Optional sorting string to determine the order of the returned proxies. Pass an empty string for default sorting. |
+| proxyUri | string |  | (empty) | Optional proxy Uri address to filter proxies by. Pass empty string to ignore this filter. |
 
 #### **Example request:**
 
@@ -30,19 +29,20 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxies?workspaceId=&start=&total=&folderId=&id=&name=&sorting=' \
+curl 'http://localhost:8160/v1/proxies?workspaceId=-1&start=0&total=1000&folderId=123e4567-e89b-12d3-a456-426614174000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&sorting=name%20ASC&proxyUri=http%3A%2F%2Flogin%3Apass%40127.0.0.1%3A8080' \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Get,
-    RequestUri = new Uri("http://localhost:8160/v1/proxies?workspaceId=&start=&total=&folderId=&id=&name=&sorting="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxies?workspaceId=-1&start=0&total=1000&folderId=123e4567-e89b-12d3-a456-426614174000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&sorting=name%20ASC&proxyUri=http%3A%2F%2Flogin%3Apass%40127.0.0.1%3A8080"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -67,14 +67,16 @@ http://localhost:8160/v1/proxies?workspaceId=&start=&total=&folderId=&id=&name=&
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
@@ -85,11 +87,14 @@ Api-Token: Token from **UserArea2**.
     {
       "id": "123e4567-e89b-12d3-a456-426614174000",
       "folderId": "123e4567-e89b-12d3-a456-426614174000",
-      "name": null,
-      "proxyUri": null,
-      "checkStatus": "Unknown",
-      "checkStatusLastUpdateTime": null,
-      "ipChangeUrl": null
+      "name": "Sample Name",
+      "proxyUri": "http://login:pass@127.0.0.1:8080",
+      "checkStatus": "Ok",
+      "checkStatusLastUpdateTime": "2026-05-19T10:00:00Z",
+      "ipChangeUrl": "https://example.com",
+      "changeStatus": "Ok",
+      "ipV4": "string",
+      "ipV6": "string"
     }
   ]
 }

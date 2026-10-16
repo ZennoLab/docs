@@ -32,6 +32,12 @@ _______________________________________________
 
 Lets you launch an app you've already installed.
 _______________________________________________
+### Open URL.  
+![Open URL](../assets/App/App_pic17.png)  
+Lets you open a web page in a browser.  
+- *URL.* This is where you enter the web page address you want to open.  
+- *App name.* Put in the name of the app that can open links. You can find it using the [**Installed Apps**](../../Tools/Installed_App) tool. If you leave it blank, the page will open in the default browser.  
+_______________________________________________  
 ### Close application.
 ![Close an app](../assets/App/App_pic5.png)  
 
@@ -114,6 +120,36 @@ _______________________________________________
 
 This action checks if an app is installed on the device. If it's missing, the process will go down the error branch.
 _______________________________________________
+### Get accounts  
+![Get accounts](../assets/App/App_pic22.png)  
+Returns the accounts added on the device in JSON.  
+#### Available parameters:  
+- *Application name.* The app the accounts are asked from. The field is required. You can find the name using the [**Installed Apps**](../../Tools/Installed_App) tool.  
+- *Account type.* **Selected** - accounts of the given type only, e.g. `com.google`. **All** - accounts of any type.  
+- *Save the result to a variable.* Receives a JSON array: name, type, password and metadata for every account. The metadata from this result is what the **Add account** action expects.  
+:::warning **Root is required.**
+:::
+_______________________________________________ 
+### Add account  
+![Add account](../assets/App/App_pic23.png)  
+Adds an account to the device.  
+#### Available parameters:  
+- *Account name.* Typically an email address.  
+- *Account type.* For example `com.google`.  
+- *Account password.* Goes in encrypted, exactly as the **Get accounts** action returns it - a plain-text password will not do. An empty field means no password is set.  
+- *Account metadata.* The extra data of the account exactly as the **Get accounts** action returned it: that is what carries the account, authorisation and all, to another device. Arbitrary text or your own JSON will not do.  
+:::warning **Root is required.**
+:::
+_______________________________________________ 
+### Remove account  
+![Remove account](../assets/App/App_pic24.png)  
+Removes an account from the device.  
+#### Available parameters:  
+- *Account name.* **Selected** - one account is removed. **All** - every account of the chosen type is removed.  
+- *Account type.* **Selected** - accounts of the given type only. **All** - accounts of any type.  
+:::warning **Root is required.**
+:::
+_______________________________________________ 
 ## Useful links.
 - [**Getting Started with the Browser**](../../get-started/browser).
 - [**Debugging Projects**](../../pm/Debugging).

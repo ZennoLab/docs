@@ -1,0 +1,107 @@
+---
+sidebar_position: 16
+sidebar_label: Обновление прокси профилей (массово)
+title: Обновление прокси профилей (массово)
+description: Массовое обновление прокси профилей браузера — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод массово обновляет настройки прокси для одного или нескольких профилей браузера. Можно либо задать конкретный прокси-сервер, либо назначить прокси из контейнера.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| proxyServerId | string | uuid | (empty) | Идентификатор прокси-сервера для применения. Используйте `null`, чтобы удалить прокси у профилей. |
+| proxyContainerId | string | uuid | (empty) | Идентификатор контейнера прокси, из которого будут назначаться прокси. |
+| maxProfilesPerProxy | integer | int32 | (empty) | Максимальное количество профилей на один прокси при использовании контейнера прокси. |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства. Значение `-1` означает рабочее пространство по умолчанию. |
+
+#### **Тело запроса:**
+
+| Поле | Тип | Формат | Обязательность | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[string] | uuid | (optional) | Массив идентификаторов профилей, которые необходимо обновить. |
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/update_proxy_bulk?proxyServerId=123e4567-e89b-12d3-a456-426614174000&proxyContainerId=123e4567-e89b-12d3-a456-426614174000&maxProfilesPerProxy=3&workspaceId=-1' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '[
+  "123e4567-e89b-12d3-a456-426614174000"
+]'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/update_proxy_bulk?proxyServerId=123e4567-e89b-12d3-a456-426614174000&proxyContainerId=123e4567-e89b-12d3-a456-426614174000&maxProfilesPerProxy=3&workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+request.Content = new StringContent("[\n  \"123e4567-e89b-12d3-a456-426614174000\"\n]", Encoding.UTF8, "application/json");
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/profiles/update_proxy_bulk?proxyServerId=123e4567-e89b-12d3-a456-426614174000&proxyContainerId=123e4567-e89b-12d3-a456-426614174000&maxProfilesPerProxy=3&workspaceId=-1
+```
+
+**Body (JSON):**
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
+
+![](../assets/zp_profile_update_proxy_bulk.png)
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Тело ответа отсутствует.
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

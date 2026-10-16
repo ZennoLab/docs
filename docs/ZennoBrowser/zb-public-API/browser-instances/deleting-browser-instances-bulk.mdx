@@ -20,17 +20,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
 | body | JSON-Array |  |  | Массив UUID профилей тех экземпляров браузера, которые нужно удалить. Например: `["uuid1", "uuid2"]` |
 
-:::note
-Список идентификаторов профилей экземпляров браузера для удаления должен быть передан в теле запроса в виде массива в следующем формате:
-
-```json
-[
-  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
-  "d24eba34-12d6-4412-ab20-80fae618c264"
-]
-```
-:::
-
 #### **Пример запроса:**
 
 **DELETE**  
@@ -83,23 +72,30 @@ using (var response = await client.SendAsync(request))
 ```
 http://localhost:8160/v1/browser_instances/delete_bulk?workspaceId=-1
 ```
-**Data:**   
-`["uuid1", "uuid2"]`  
+**Body (JSON):**
+```json
+[
+  "uuid1",
+  "uuid2"
+]
+```
 
 ![](../assets/image32.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
+Api-Token: токен из **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
 | Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успех |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 

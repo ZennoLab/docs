@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "title": "Profile Management",
-    "description": " "
+    "description": "Operations for working with ZennoBrowser browser profiles."
   }
-} 
+}

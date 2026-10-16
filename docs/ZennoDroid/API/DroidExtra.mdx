@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 10
 sidebar_label: Extra API
 title: Extra API | Документация ZennoDroid | ZennoLab
 description: Extra API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
@@ -8,7 +8,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Дополнительный API
 <DisclaimerNotice />
-
 ## Описание. 
 В данном разделе представлен список интерфейсов не входящих в основной контейнер [DroidInstance API](./DroidInstance), а также имеющие собственные классы для создания объекта.  
 
@@ -27,78 +26,103 @@ IBlueStacks5RootAPI BlueStacks5Root;
 IBlueStacks5SettingsAPI BlueStacks5Settings;
 IDeviceFilter DeviceFilter;
 IDeviceOptions DeviceOptions;
-IDeviceSummaryInfo IDeviceSummaryInfo;
 IDroidManagerAPI DroidManager;
 IDroidProxySettings DroidProxySettings;
 IFridaDeviceAPI FridaDevice;
 IFridaScriptAPI FridaScriptAPI;
 IFridaSessionAPI FridaSessionAPI;
+IDeviceSummaryInfo IDeviceSummaryInfo;
 ILSPosedAPI LSPosedHelper;
 IQRCodeManager QRCodeManager;
 ISqlite3API Sqlite3Helper;
 ```
 ## Свойства и методы интерфейсов.  
+
+
 ### IAndroidElementAPI
 [**`IAndroidElementAPI AndroidElementAPI`**](./Element)  
 ```csharp
 string Id { get; }
-string Text { get; }
 bool IsDisplayed { get; }
 Rectangle Rectangle { get; }
+string Text { get; }
+void Clear();
+void Click();
 string GetAttribute(string name);
 bool GetBooleanAttribute(string name);
-void Click();
-void Clear();
-void SendText(string text);
-void SendKeys(string text);
 string GetScreenshot();
+void SendKeys(string text);
+void SendText(string text);
 ```
+
 ### IBlueStacks5API
-**`IBlueStacks5API BlueStacks5`**
+[**`IBlueStacks5API BlueStacks5`**](./BlueStacks5#ibluestacks5api)
 ```csharp
-void Start();
-void Stop();
+string AddressPort { get; }
+bool IsBootCompleted { get; }
+bool IsRunning { get; }
 void Connect();
 void Disconnect();
-string AddressPort { get; }
-bool IsRunning { get; }
-bool IsBootCompleted { get; }
+void Start();
+void Stop();
+bool WaitForBoot(int timeout);
+bool WaitForConnect(int timeout);
+bool WaitForStop(int timeout);
 ```
+
 ### IBlueStacks5ManagerAPI
-**`IBlueStacks5ManagerAPI BlueStacks5Manager`**
+[**`IBlueStacks5ManagerAPI BlueStacks5Manager`**](./BlueStacks5#ibluestacks5managerapi)
 ```csharp
 string Create(string imageName, int cpus, int ram, string graphicEngine, string graphicRenderer, string deviceProfile, string abiList);
 void DeleteByName(string name);
+bool Exists(string name);
+string[] GetListNames();
+string[] GetListTitles();
+string NameToTitleConverter(string name);
+void SetupRoot(string title, string magiskApk, string zygiskModule, int timeout);
+void SetupRootOffline(string title, string magiskApk, string zygiskModule, int timeout);
 void StartManager();
 void StopManager();
 string TitleToNameConverter(string title);
+void Unroot(string title, int timeout);
 ```
+
 ### IBlueStacks5RootAPI
-**`IBlueStacks5RootAPI BlueStacks5Root`**
+[**`IBlueStacks5RootAPI BlueStacks5Root`**](./BlueStacks5#ibluestacks5rootapi)
 ```csharp
-void Lock();
-void Unlock();
-void Patch();
-void InstallMagisk(string path);
-void FlashMagisk();
+bool IsRooted { get; }
 void EnableZygisk();
+void EnableZygisk(string modulePath);
+void FlashMagisk();
+void InstallMagisk(string path);
+void InstallMagiskOffline(string magiskApk);
+void InstallModule(string path);
+bool InstallModuleOffline(string modulePath);
+void Lock();
+void Patch();
+void Unlock();
+void Unlock(bool patchImage);
+bool WaitForRoot(int timeout);
 ```
+
 ### IBlueStacks5SettingsAPI
-**`IBlueStacks5SettingsAPI BlueStacks5Settings`**
+[**`IBlueStacks5SettingsAPI BlueStacks5Settings`**](./BlueStacks5#ibluestacks5settingsapi)
 ```csharp
 void SetGeo(double longitude, double latitude);
 void SetIMEI(string value);
 ```
+
 ### IDeviceFilter
 [**`IDeviceFilter DeviceFilter`**](./DeviceFilter)  
 ```csharp
-string Country { get; set; }
-string Manufacturer { get; set; }
 string Brand { get; set; }
+string Country { get; set; }
+string GpuVendor { get; set; }
+string Manufacturer { get; set; }
 string Model { get; set; }
 string Version { get; set; }
-string GpuVendor { get; set; }
 ```
+
 ### IDeviceOptions
 [**`IDeviceOptions DeviceOptions`**](./DeviceOptions)  
 ```csharp
@@ -107,136 +131,144 @@ bool? AddGpu { get; set; }
 bool? AddWebView { get; set; }
 bool? AddWiFiEmulation { get; set; }
 ```
+
 ### IDeviceSummaryInfo
-**`IDeviceSummaryInfo IDeviceSummaryInfo`**
+[**`IDeviceSummaryInfo IDeviceSummaryInfo`**](./DeviceSummaryInfo)
 ```csharp
 int Index { get; }
+bool IsBusy { get; }
+bool IsRunning { get; }
 string Name { get; }
 string Title { get; }
-bool IsRunning { get; }
-bool IsBusy { get; }
 ```
+
 ### IDroidManagerAPI
-**`IDroidManagerAPI DroidManager`**
+[**`IDroidManagerAPI DroidManager`**](./DroidManager)
 ```csharp
-IDeviceSummaryInfo[] GetListDevices();
-int ConvertNameToIndex(string name);
-int[] GetListIndices();
 string BaseDirectory { get; }
 string ConvertIndexToName(int index);
 string ConvertIndexToTitle(int index);
+int ConvertNameToIndex(string name);
 string ConvertTitleToName(string title);
+IDeviceSummaryInfo[] GetListDevices();
+int[] GetListIndices();
 string[] GetListNames();
 string[] GetListTitles();
 void ReconnectOffline();
 ```
+
 ### IDroidProxySettings
-**`IDroidProxySettings DroidProxySettings.Proxifier`**
+[**`IDroidProxySettings DroidProxySettings.Proxifier`**](./DroidProxySettings#droidproxysettingsproxifier)
 ```csharp
-bool? BlockWebRtcLeak { get; set; }
 bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.ProxifierViaPC`**
+[**`IDroidProxySettings DroidProxySettings.ProxifierViaPC`**](./DroidProxySettings#droidproxysettingsproxifierviapc)
 ```csharp
-bool? BlockWebRtcLeak { get; set; }
 bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.Redsocks`**
+[**`IDroidProxySettings DroidProxySettings.Redsocks`**](./DroidProxySettings#droidproxysettingsredsocks)
 ```csharp
+bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 string DnsServers { get; set; }
 bool? UseDnsTcp { get; set; }
 bool? UseDnsUdp { get; set; }
-bool? BlockWebRtcLeak { get; set; }
-bool? BlockUDPLeak { get; set; }
 string WebRtcLeakAddresses { get; set; }
 string WebUdpLeakAddresses { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.RedsocksViaPC`**
+[**`IDroidProxySettings DroidProxySettings.RedsocksViaPC`**](./DroidProxySettings#droidproxysettingsredsocksviapc)
 ```csharp
+bool? BlockUDPLeak { get; set; }
+bool? BlockWebRtcLeak { get; set; }
 string DnsServers { get; set; }
+string LocalIPv4Address { get; set; }
 bool? UseDnsTcp { get; set; }
 bool? UseDnsUdp { get; set; }
-bool? BlockWebRtcLeak { get; set; }
-bool? BlockUDPLeak { get; set; }
 string WebRtcLeakAddresses { get; set; }
 string WebUdpLeakAddresses { get; set; }
-string LocalIPv4Address { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.Clash`**
+[**`IDroidProxySettings DroidProxySettings.Clash`**](./DroidProxySettings#droidproxysettingsclash)
 ```csharp
+string BlackList { get; set; }
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
 string LocalIPv6Address { get; set; }
-string WhiteList { get; set; }
-string BlackList { get; set; }
 string NetworkMode { get; set; }
 string Rules { get; set; }
+string WhiteList { get; set; }
 ```
-**`IDroidProxySettings DroidProxySettings.ClashViaPC`**
+[**`IDroidProxySettings DroidProxySettings.ClashViaPC`**](./DroidProxySettings#droidproxysettingsclashviapc)
 ```csharp
+string BlackList { get; set; }
 string DnsServers { get; set; }
 string LocalIPv4Address { get; set; }
 string LocalIPv6Address { get; set; }
-string WhiteList { get; set; }
-string BlackList { get; set; }
 string NetworkMode { get; set; }
 string Rules { get; set; }
+string WhiteList { get; set; }
 ```
+
 ### IFridaDeviceAPI
-**`IFridaDeviceAPI FridaDevice`**
+[**`IFridaDeviceAPI FridaDevice`**](./Frida#ifridadeviceapi)
 ```csharp
-string Name { get; }
 string Id { get; }
+string Name { get; }
 IFridaSessionAPI Attach(uint pid);
-uint Spawn(string packageName);
-void Resume(uint pid);
-void DetachSessionByScriptName(string scriptName);
 void DetachAllSessions();
+void DetachSessionByScriptName(string scriptName);
 void InstallAndRunServer();
 void KillServer();
 void LoadScriptToApp(string packageName, string source);
 void LoadScriptToFrontmost(string source);
+void Resume(uint pid);
+uint Spawn(string packageName);
 ```
+
 ### IFridaScriptAPI
-**`IFridaScriptAPI FridaScriptAPI`**
+[**`IFridaScriptAPI FridaScriptAPI`**](./Frida#ifridascriptapi)
 ```csharp
-event EventHandler<FridaScriptMessageEventArgs> Message;
 string Name { get; }
-void Load();
-void Unload();
 void Eternalize();
+void Load();
+event EventHandler<FridaScriptMessageEventArgs> Message;
 void Post(string message);
 void PostWithData(string message, byte[] data);
+void Unload();
 ```
+
 ### IFridaSessionAPI
-**`IFridaSessionAPI FridaSessionAPI`**
+[**`IFridaSessionAPI FridaSessionAPI`**](./Frida#ifridasessionapi)
 ```csharp
 uint Pid { get; }
-IFridaScriptAPI CreateScript(string source, string name);
 IFridaScriptAPI CreateScript(string source);
+IFridaScriptAPI CreateScript(string source, string name);
 void Detach();
 ```
+
 ### ILSPosedAPI
-**`ILSPosedAPI LSPosedHelper`**
+[**`ILSPosedAPI LSPosedHelper`**](./LSPosed)
 ```csharp
 string ModuleName { get; set; }
-void EnableModule();
-void DisableModule();
 void AddPackages(params string[] packageNames);
-void RemovePackages(params string[] packageNames);
-void SetPackages(params string[] packageNames);
-void BackupModule(string fileName);
 void BackupAllModules(string fileName);
-void RestoreModule(string fileName);
-void RestoreAllModules(string fileName);
-void Open();
+void BackupModule(string fileName);
 void Close();
+void DisableModule();
+void EnableModule();
 string GetCLIStatus();
+void Open();
+void RemovePackages(params string[] packageNames);
+void RestoreAllModules(string fileName);
+void RestoreModule(string fileName);
+void SetPackages(params string[] packageNames);
 ```
+
 ### IQRCodeManager
-**`IQRCodeManager QRCodeManager`**
+[**`IQRCodeManager QRCodeManager`**](./QRCodeManager)
 ```csharp
 void CloseQRCodeScanWindow();
 void CloseViewfinderWindow();
@@ -245,10 +277,11 @@ void DrawImage(string fileName, Rectangle area, Rectangle background);
 void PressQRCodeScanButton();
 void SetViewfinderPosition(Rectangle rect);
 ```
+
 ### ISqlite3API
-**`ISqlite3API Sqlite3Helper`**
+[**`ISqlite3API Sqlite3Helper`**](./Sqlite3)
 ```csharp
-void Install();
 string ExecuteQuery(string database, string query);
 string ExecuteQuery(string database, string query, string options);
+void Install();
 ```  

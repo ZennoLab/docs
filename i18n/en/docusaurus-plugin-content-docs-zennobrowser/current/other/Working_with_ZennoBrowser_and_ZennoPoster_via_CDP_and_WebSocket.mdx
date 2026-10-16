@@ -1,0 +1,381 @@
+---
+sidebar_position: 2
+sidebar_label: CDP and WebSocket
+title: Working with ZennoBrowser and ZennoPoster via CDP and WebSocket | ZennoBrowser Documentation | ZennoLab
+description: Learn how to connect Playwright, Puppeteer, browser-use, MCP servers, and AI agents to an existing ZennoBrowser or ZennoPoster browser session via CDP and WebSocket.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Working with ZennoBrowser and ZennoPoster via CDP and WebSocket
+<DisclaimerNotice />
+
+## Introduction
+
+AI agents and browser automation tools can do a lot: open websites, click buttons, enter text, read pages, execute JavaScript, and collect data.
+
+But they often have one problem: they launch their own clean Chromium instance. It does not contain your cookies, authentication, history, proxy settings, or configured fingerprint. That is enough for simple tasks, but websites with anti-bot protection often recognize such sessions as automation.
+
+Another approach is not to launch a new browser, but to connect to an already prepared ZennoBrowser or ZennoPoster browser. That browser may already contain:
+
+- the required profile;
+- cookies and authentication;
+- proxy settings;
+- anti-detect configuration;
+- open tabs;
+- a warmed-up session.
+
+The connection is established through CDP and WebSocket. In practice, it looks like a single string such as:
+
+```text
+ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2
+```
+
+This string can be passed to Playwright, Puppeteer, Browser-use, an MCP server, or your own AI agent.
+
+## What CDP and WebSocket are
+
+CDP stands for `Chrome DevTools Protocol`. It is a protocol for controlling a Chromium-based browser.
+
+Put simply, CDP is a browser remote control. Through it, an external program can do almost everything a user does:
+
+- open pages;
+- click elements;
+- enter text;
+- execute JavaScript;
+- read the DOM;
+- take screenshots;
+- inspect network requests;
+- work with cookies, `localStorage`, and tabs.
+
+Chrome DevTools, Playwright, Puppeteer, and many browser automation tools all rely on CDP.
+
+**WebSocket** is a persistent connection between the program and the browser. Through it, the program sends commands to the browser and immediately receives responses or events.
+
+A CDP address usually looks like this:
+
+```text
+ws://127.0.0.1:<port>/devtools/browser/<id>
+```
+
+Where:
+
+- `127.0.0.1` means the connection is local and runs on the same machine;
+- `<port>` is the port opened by the browser for CDP;
+- `<id>` is the identifier of a specific browser instance.
+
+Important: the port usually changes every time the browser starts. Do not hardcode `9222` or any other port. Always use the ready-to-use connection string provided by ZennoBrowser or ZennoPoster.
+
+## How to get the WebSocket in ZennoBrowser
+
+In ZennoBrowser, the WebSocket string is returned when you create a browser instance through the Public API.
+
+The browser instance creation method is documented here:
+
+[Creating Browser Instance](https://docs.zennolab.com/en/zennobrowser/zb-public-API/browser-instances/creating-browser-instance)
+
+After a successful launch, the API returns the instance data. The response contains the following field:
+
+```json
+{
+  "profileId": "1485fd76-34cc-457f-a77e-34c7d2b8403e",
+  "processId": 6752,
+  "connectionString": "ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2"
+}
+```
+
+The required WebSocket string is stored in:
+
+```json
+"connectionString"
+```
+
+That is the value you should pass to external tools.
+
+Do not copy the port manually from examples. Always take the full `connectionString` from the API response: both the port and browser identifier can change every time the instance starts.
+
+## How to get the WebSocket in ZennoPoster
+
+In ZennoPoster, the WebSocket string is available in C# project code via the following property:
+
+```csharp
+instance.WsConnectionString
+```
+
+Example:
+
+```csharp
+string ws = instance.WsConnectionString;
+project.SendInfoToLog(ws);
+```
+
+After execution, the log will contain an address like:
+
+```text
+ws://127.0.0.1:<port>/devtools/browser/<id>
+```
+
+You can then pass that string to an external script, an AI agent, an MCP server, or any tool that can connect to a browser through CDP.
+
+## Connection examples
+
+All examples below use the same variable:
+
+```text
+CDP_WS=ws://127.0.0.1:<port>/devtools/browser/<id>
+```
+
+This is your `connectionString` from ZennoBrowser or `WsConnectionString` from ZennoPoster.
+
+### For AI agents
+
+The logic is simple:
+
+1. Start the browser in ZennoBrowser or ZennoPoster.
+2. Get the WebSocket string.
+3. Pass it to the agent or tool.
+4. The agent works not in its own new browser, but inside your prepared session.
+
+What the agent gets:
+
+- current tabs;
+- cookies;
+- authenticated state;
+- the profile proxy;
+- fingerprint;
+- access to the DOM and JavaScript;
+- the ability to click, enter text, and read the page.
+
+**The main rule**: the WebSocket string gives full access to the browser. Treat it as a session password. Do not publish it and do not write it to production logs.
+
+### Playwright
+
+Playwright can connect to an already running Chromium instance through `connectOverCDP`.
+
+```js
+import { chromium } from 'playwright';
+
+const ws = process.env.CDP_WS;
+
+const browser = await chromium.connectOverCDP(ws);
+const context = browser.contexts()[0];
+const page = context.pages()[0] ?? await context.newPage();
+
+await page.goto('https://example.com');
+console.log(await page.title());
+
+await browser.close();
+```
+
+In this scenario, Playwright does not launch a new browser. It connects to the already open ZennoBrowser or ZennoPoster browser.
+
+After `connectOverCDP`, calling `browser.close()` in Playwright closes the `Browser` object on the Playwright side and terminates the CDP connection. It is not a replacement for stopping the ZennoBrowser instance through the Public API.
+
+If the instance was launched through the ZennoBrowser API, its lifecycle is managed by ZennoBrowser. After the automation is complete, you should separately call the [browser instance stop API](https://docs.zennolab.com/en/zennobrowser/zb-public-API/browser-instances/deleting-browser-instance).
+
+### Puppeteer
+
+For Puppeteer, use `puppeteer-core` and the `connect` method.
+
+```js
+import puppeteer from 'puppeteer-core';
+
+const ws = process.env.CDP_WS;
+
+const browser = await puppeteer.connect({
+  browserWSEndpoint: ws,
+});
+
+const pages = await browser.pages();
+const page = pages[0] ?? await browser.newPage();
+
+await page.goto('https://example.com');
+console.log(await page.title());
+
+await browser.disconnect();
+```
+
+In Puppeteer, it is important to use:
+
+```js
+await browser.disconnect();
+```
+
+And not:
+
+```js
+await browser.close();
+```
+
+`disconnect()` only disconnects Puppeteer from the browser. `close()` may close the Chromium process itself.
+
+### browser-use (Python)
+
+`browser-use` is a framework for AI agents that operate in the browser.
+
+The example below targets `browser-use==0.12.7` and is current as of June 1, 2026. Check the package documentation before using it, because the `browser-use` API changes quickly.
+
+Example of connecting to an existing browser through CDP:
+
+```python
+import asyncio
+import os
+
+from browser_use import Agent
+from browser_use.browser import BrowserSession
+from browser_use.llm import ChatOpenAI
+
+
+async def main():
+    session = BrowserSession(cdp_url=os.environ["CDP_WS"])
+
+    agent = Agent(
+        task="Open example.com, find the page title, and return its text.",
+        llm=ChatOpenAI(model="any LLM"),
+        browser_session=session,
+    )
+
+    result = await agent.run()
+    print(result)
+
+
+asyncio.run(main())
+```
+
+`browser-use` also has a CLI variant:
+
+```bash
+browser-use --cdp-url "$CDP_WS" open https://example.com
+```
+
+In both cases, the agent works inside the ZennoBrowser or ZennoPoster session, not in a separate clean browser.
+
+### MCP servers
+
+MCP stands for `Model Context Protocol`. Through MCP, an AI client receives tools to open a page, click, enter text, take a screenshot, and execute JavaScript.
+
+For browser use cases, it is convenient to use an MCP server that connects to CDP.
+
+#### Playwright MCP
+
+Configuration example:
+
+```jsonc
+{
+  "mcpServers": {
+    "browser": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--cdp-endpoint=ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2"
+      ]
+    }
+  }
+}
+```
+
+#### Chrome DevTools MCP
+
+Configuration example:
+
+```jsonc
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--wsEndpoint=ws://127.0.0.1:61963/devtools/browser/c11b9b2c-4114-4bdd-af71-2398513143b2"
+      ]
+    }
+  }
+}
+```
+
+After that, the AI client will be able to control the already running browser through MCP tools.
+
+## End-to-end example
+
+Below is a complete example: launch a ZennoBrowser instance through the API, get the `connectionString`, connect with Playwright, open a site, and then properly stop the instance.
+
+```js
+import { chromium } from 'playwright';
+
+const API = 'http://localhost:8160';
+const TOKEN = process.env.ZB_API_TOKEN;
+const PROFILE_ID = process.env.ZB_PROFILE_ID;
+
+async function zb(method, path) {
+  const response = await fetch(`${API}${path}`, {
+    method,
+    headers: {
+      'Api-Token': TOKEN,
+    },
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`${method} ${path} -> HTTP ${response.status}: ${text}`);
+  }
+
+  if (response.status === 204) {
+    return null;
+  }
+
+  return response.json();
+}
+
+const instance = await zb(
+  'POST',
+  `/v1/browser_instances/create?profileId=${PROFILE_ID}&workspaceId=-1`,
+);
+
+const ws = instance.connectionString;
+
+try {
+  const browser = await chromium.connectOverCDP(ws);
+  const context = browser.contexts()[0];
+  const page = context.pages()[0] ?? await context.newPage();
+
+  await page.goto('https://example.com');
+  console.log('Title:', await page.title());
+
+  await browser.close();
+} finally {
+  await zb('DELETE', `/v1/browser_instances/${PROFILE_ID}?workspaceId=-1`);
+}
+```
+
+What happens here:
+
+1. The script calls the ZennoBrowser API.
+2. ZennoBrowser starts the profile.
+3. The API returns `connectionString`.
+4. Playwright connects to that browser through CDP.
+5. The automation runs inside the prepared session.
+6. In the end, the instance is stopped through the API.
+
+The same approach can be used with Puppeteer, Browser-use, or an MCP server.
+
+## Summary
+
+CDP and WebSocket allow external tools to connect to an already running ZennoBrowser or ZennoPoster browser.
+
+Instead of launching a new clean Chromium instance, an AI agent, Playwright, Puppeteer, `browser-use`, or an MCP server works inside your prepared session:
+
+- with cookies;
+- with authentication;
+- with proxy settings;
+- with fingerprinting settings;
+- with the required tabs and current browser state.
+
+In ZennoBrowser, you use the `connectionString` from the Public API. In ZennoPoster, you use `instance.WsConnectionString`.
+
+From there, everything follows a simple flow:
+
+1. Start the browser.
+2. Get the WebSocket string.
+3. Pass it to the automation tool.
+4. Run the task.
+5. Properly stop the instance.
+
+This is a convenient way to combine ZennoBrowser / ZennoPoster infrastructure with modern AI agents and browser automation tools.

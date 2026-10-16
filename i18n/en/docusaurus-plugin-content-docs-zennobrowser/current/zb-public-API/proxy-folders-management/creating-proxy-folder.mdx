@@ -1,22 +1,22 @@
-﻿---
+---
 sidebar_position: 2
 sidebar_label: Creating Proxy Folder
 title: Creating Proxy Folder
-description: Create a new folder for organizing proxy servers - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Creates a new proxy folder. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method creates a new proxy folder. 
+**Description:** This method creates a new proxy folder. The caller must ensure that the specified workspace ID and location are valid.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
-| ----- | ----- | ----- | ----- | ----- |
-| name | string |  | (empty) | The name of the new folder (Required) |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
-| location | string (enum) |  | Local | Storage location (Local or Cloud) |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| name | string |  | (required) | The name of the new folder (required). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| location | string |  | Local | Storage location "Local" or "Cloud"). Defaults to "Local". |
 
 #### **Example request:**
 
@@ -24,20 +24,21 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxy_folders?name=&workspaceId=&=' \
+curl 'http://localhost:8160/v1/proxy_folders?name=ApiEntity&workspaceId=-1&location=Local' \
   --request POST \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Post,
-    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders?name=&workspaceId=&="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders?name=ApiEntity&workspaceId=-1&location=Local"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -62,20 +63,20 @@ http://localhost:8160/v1/proxy_folders?name=&workspaceId=&=
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-Returns the ID of the newly created proxy folder:
-
-```
+```text
 123e4567-e89b-12d3-a456-426614174000
 ```
 

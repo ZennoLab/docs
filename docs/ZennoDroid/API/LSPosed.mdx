@@ -1,0 +1,235 @@
+---
+sidebar_position: 170
+sidebar_label: LSPosed API
+title: LSPosed API | Документация ZennoDroid | ZennoLab
+description: LSPosed API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# LSPosed API
+<DisclaimerNotice />
+## Описание
+
+`ILSPosedAPI` предназначен для управления модулями **LSPosed** на Android-устройстве в среде ZennoDroid. Позволяет включать/отключать модули, управлять списком приложений, к которым они применяются, а также выполнять резервное копирование и восстановление.
+## Свойства
+
+### ModuleName
+
+- **`string ModuleName { get; set; }`**  
+    Имя модуля.
+    
+    **Описание:**  
+    Указывает модуль, с которым выполняются операции. Если свойство не задано, используется основной модуль ZennoDroid.
+    
+    ZennoDroid работает с тремя модулями:
+    - `com.zennolab.zennodroid` — основной модуль **ZennoDroid**, значение по умолчанию;
+    - `com.zennolab.zennovcam` — **ZennoVCam**, подмена камеры видеофайлом для метода [**SetVideoForFakeCamera**](./App#setvideoforfakecamera);
+    - `com.zennolab.zennobackup` — **ZennoBackup**, делает шифрование данных приложения обратимым, чтобы их можно было переносить между устройствами.
+    
+    Устанавливать модуль заранее не нужно: `SetPackages`, `AddPackages` и `RemovePackages` доставляют apk модуля на устройство, если его там ещё нет.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Работать с модулем ZennoVCam
+lspHelper.SetPackages("com.example.app1"); // Задать список приложений модуля
+lspHelper.EnableModule(); // Включить модуль
+```
+
+_______________________________________________
+## Методы
+
+
+### AddPackages
+
+- **`void AddPackages(params string[] packageNames)`**  
+    Добавляет приложения, к которым применяется модуль.
+    
+    **Параметры:**
+    - `packageNames` — массив имён пакетов приложений.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.AddPackages("com.example.app1", "com.example.app2"); // Добавить приложения в список модуля
+```
+
+---
+
+### BackupAllModules
+
+- **`void BackupAllModules(string fileName)`**  
+    Создаёт резервную копию всех модулей.
+    
+    **Параметры:**
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.BackupAllModules(@"C:\lsposed\all_modules.gz"); // Сохранить архив на компьютере
+```
+
+---
+
+### BackupModule
+
+- **`void BackupModule(string fileName)`**  
+    Создаёт резервную копию настроек текущего модуля.
+    
+    **Параметры:**
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Модуль, настройки которого сохраняем
+lspHelper.BackupModule("/sdcard/Download/zennovcam.gz"); // Сохранить архив на устройстве
+```
+
+---
+
+### Close
+
+- **`void Close()`**  
+    Закрывает интерфейс LSPosed.
+
+#### Пример.
+```csharp
+new LSPosedHelper(instance.DroidInstance).Close(); // Закрыть интерфейс LSPosed
+```
+
+---
+
+### DisableModule
+
+- **`void DisableModule()`**  
+    Отключает указанный модуль.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.DisableModule(); // Отключить основной модуль ZennoDroid
+```
+
+---
+
+### EnableModule
+
+- **`void EnableModule()`**  
+    Включает указанный модуль.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages("com.example.app1"); // Список приложений задаётся до включения
+lspHelper.EnableModule(); // С пустым списком метод завершится ошибкой Add any package!
+```
+
+---
+
+### GetCLIStatus
+
+- **`string GetCLIStatus()`**  
+    Получает статус LSPosed через CLI.
+    
+    **Возвращает:**  
+    Строку со статусом (информация о версии Android, LSPosed, модель устройства).
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+return lspHelper.GetCLIStatus();
+```
+
+---
+
+### Open
+
+- **`void Open()`**  
+    Открывает интерфейс LSPosed.
+
+#### Пример.
+```csharp
+new LSPosedHelper(instance.DroidInstance).Open(); // Открыть интерфейс LSPosed
+```
+
+---
+
+### RemovePackages
+
+- **`void RemovePackages(params string[] packageNames)`**  
+    Удаляет приложения из списка применения модуля.
+    
+    **Параметры:**
+    - `packageNames` — массив пакетов.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.RemovePackages("com.example.app2"); // Убрать приложение из списка модуля
+```
+
+---
+
+### RestoreAllModules
+
+- **`void RestoreAllModules(string fileName)`**  
+    Восстанавливает все модули из резервной копии.
+    
+    **Параметры:**
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.RestoreAllModules(@"C:\lsposed\all_modules.gz"); // Восстановить все модули из архива на компьютере
+```
+
+---
+
+### RestoreModule
+
+- **`void RestoreModule(string fileName)`**  
+    Восстанавливает настройки модуля из файла.
+    
+    **Параметры:**
+    - `fileName` — путь к архиву: на компьютере или, если начинается с `/`, на устройстве. Расширение `.gz` добавляется автоматически.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Модуль, настройки которого восстанавливаем
+lspHelper.RestoreModule("/sdcard/Download/zennovcam.gz"); // Восстановить из архива на устройстве
+```
+
+---
+
+### SetPackages
+
+- **`void SetPackages(params string[] packageNames)`**  
+    Устанавливает полный список приложений для модуля (заменяет существующий).
+    
+    **Параметры:**
+    - `packageNames` — массив пакетов.
+
+#### Пример.
+```csharp
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.SetPackages("com.example.app1", "com.example.app2"); // Заменить список приложений модуля
+```
+
+_______________________________________________
+
+:::warning Важные замечания
+- Требуется:
+    - root-доступ;
+    - установленный LSPosed/Magisk.
+- Изменения модулей могут требовать:
+    - перезапуска приложения;
+    - или перезагрузки устройства.
+- Неправильная конфигурация может:
+    - привести к сбоям приложений;
+    - вызвать bootloop (в редких случаях).
+:::

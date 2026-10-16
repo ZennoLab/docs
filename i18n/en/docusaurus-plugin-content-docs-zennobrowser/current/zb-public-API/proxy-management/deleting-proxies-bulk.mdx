@@ -1,21 +1,26 @@
-﻿---
-sidebar_position: 5
+---
+sidebar_position: 6
 sidebar_label: Deleting Proxies (Bulk)
 title: Deleting Proxies (Bulk)
-description: Delete multiple proxy servers at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Deletes multiple proxies in a single operation. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method sends a bulk delete request to the API to remove specified proxies.
+**Description:** This method sends a bulk delete request to the API to remove the specified proxies. Ensure that the provided proxy IDs are valid and exist in the specified workspace.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
-| body | JSON array | GUID\[\] |  | The array of UUIDs containing the proxies to be deleted. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+
+#### **Request body:**
+
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[string] | uuid | (optional) | The array of UUIDs containing the proxies to be deleted. Must not be null or empty. |
 
 :::note
 The list of proxies to delete should be specified as an array in the request body using the following format:
@@ -34,36 +39,31 @@ The list of proxies to delete should be specified as an array in the request bod
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxies/delete_bulk?workspaceId=' \
+curl 'http://localhost:8160/v1/proxies/delete_bulk?workspaceId=-1' \
   --request DELETE \
-  --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
+
+  --header 'Content-Type: application/json' \
   --data '[
-  ""
+  "123e4567-e89b-12d3-a456-426614174000"
 ]'
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Delete,
-    RequestUri = new Uri("http://localhost:8160/v1/proxies/delete_bulk?workspaceId="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxies/delete_bulk?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("[\n  \"\"\n]")
-    {
-        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-    }
 };
+request.Content = new StringContent("[\n  \"123e4567-e89b-12d3-a456-426614174000\"\n]", Encoding.UTF8, "application/json");
 using (var response = await client.SendAsync(request))
 {
     response.EnsureSuccessStatusCode();
@@ -77,23 +77,33 @@ using (var response = await client.SendAsync(request))
 http://localhost:8160/v1/proxies/delete_bulk?workspaceId=
 ```
 
+**Body (JSON):**
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
+
 ![](../assets/image23.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful deletion.
+No response body.
 
 **Error Response (500):**
 

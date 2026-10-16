@@ -1,8 +1,8 @@
-﻿---
+---
 sidebar_position: 4
 sidebar_label: Deleting Profile Folder
 title: Deleting Profile Folder
-description: Delete a profile folder from the workspace - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Deletes the specified profile folder. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -14,8 +14,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| profileFolderId | string | uuid |  | Unique identifier of the profile folder to delete. |
-| workspaceId | integer | int64 | \-1 | The identifier of the workspace associated with the profile folder. Defaults to \-1 if not specified. |
+| profileFolderId | string | uuid | (required) | Unique identifier of the profile folder to delete. |
+| workspaceId | integer | int64 | -1 | The identifier of the workspace containing the profile folder. Defaults to -1 if not specified. |
 
 :::note
 The ID of the profile folder to delete should be specified inside curly braces `{ }` in the URL path.
@@ -27,20 +27,21 @@ The ID of the profile folder to delete should be specified inside curly braces `
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profile_folders/{profileFolderId}?workspaceId=-1' \
+curl 'http://localhost:8160/v1/profile_folders/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
   --request DELETE \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Delete,
-    RequestUri = new Uri("http://localhost:8160/v1/profile_folders/%7BprofileFolderId%7D"),
+    RequestUri = new Uri("http://localhost:8160/v1/profile_folders/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -63,19 +64,22 @@ http://localhost:8160/v1/profile_folders/{profileFolderId}?workspaceId=-1
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful deletion.
+No response body.
 
 **Error Response (500):**
 

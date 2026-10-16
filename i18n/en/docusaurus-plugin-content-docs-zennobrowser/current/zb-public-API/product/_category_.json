@@ -1,0 +1,9 @@
+{
+  "label": "Product",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "Product",
+    "description": "Operations for retrieving product, browser, limits, and tariff information."
+  }
+}

@@ -1,0 +1,87 @@
+---
+sidebar_position: 95
+title: "ZennoDroid 2.5.1.0"
+description: ""
+date: "2026-06-18"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+18.06.2026
+
+**Added:**
+
+[+] **ZD ENTERPRISE.** The [LSPosed Management](../Enterprise/LSPosed_Control) action now supports the original version of [**LSPosed** 2.0.4](https://www.dropbox.com/scl/fi/i03ks4pxhz0dvmygn7r8x/LSPosed-v2.0.4-7741-release.zip?rlkey=uw08x4ir7euwf9lxj5hd9kiom&st=ev6yi6lh&dl=0) (without CLI):
+
+- LSPosed information
+- Application list configuration
+- Enabling and disabling modules
+- Full backup and restore of the settings
+- Opening and closing LSPosed
+
+The ZennoLSPosed Helper module is used to work around the limitations caused by the lack of LSPosed control.
+
+[+] For the function that fixes the **WebView structure disappearing** from the element tree:
+
+```csharp
+instance.DroidInstance.WebView.EnableForcedRenderWebView();
+```
+
+The mode can now also be disabled (in case of any issues):
+
+```csharp
+instance.DroidInstance.WebView.DisableForcedRenderWebView();
+```
+
+[+] **ZD ENTERPRISE.** Disabled the Chrome notification shown when the **ForcedRenderWebView** mode is used. Chrome has to be added to the spoofing list of the ZennoDroid module.
+
+[+] **ZD ENTERPRISE.** Fixed a bug in the Yandex browser that prevented the **ForcedRenderWebView** mode from working. Yandex has to be added to the spoofing list of the ZennoDroid module.
+
+[+] Added **automatic update of Clash** to the current version.
+
+[+] **Clash** updated to 1.19.24.
+
+[+] **OpenCvSharp** updated to 4.13.
+
+[+] **FFMpeg** updated to 8.1.1.
+
+[+] **Appium Settings** updated to 7.0.28.
+
+[+] **UIAutomator** updated to 9.11.2.
+
+[+] **Frida** updated to 17.9.6.
+
+[+] **ZD ENTERPRISE.** The **ZennoDroid module** has been updated to version 2.3.3.
+Improved interaction with the LSPosed service.
+Added support for the ForcedRenderWebView mode.
+
+[+] **ZD ENTERPRISE.** The **ZennoBackup module** has been updated to version 2.0.0.
+Fixes for the interaction with the LSPosed service.
+
+[+] Added **XML comments** for all methods and properties of the `IDroidInstanceAPI` interface when using the "Custom C# code" action.
+
+[+] **The documentation has been expanded** with detailed descriptions of all methods included in the [main](../API/DroidInstance) and [additional](../API/DroidExtra) API.
+
+**Fixed:**
+
+[\] **ZD ENTERPRISE.** Fixed issues when working with the **ZennoDroid module**:
+
+- Fixed an error when executing the "Generate device (apply)" action.
+- Fixed an error that caused the "Module is disabled" message to be shown.
+
+[\] Fixed a **bug when installing** apk and bundle apk (apks, apkm, xapk) with caching.
+
+[\] Fixed a bug that caused the **element tree** to be displayed incompletely when the MultiWindows mode was enabled in UIAutomator:
+
+```csharp
+instance.DroidInstance.AppiumDriver.UpdateSettings("enableMultiWindows", true);
+```
+
+[\] **ZD ENTERPRISE.** Fixed a **critical bug when setting a proxy** that caused the device to disconnect and possibly go offline (when using devices connected over the network).
+
+[\] Fixed **incorrect termination of image capture** when running a project in ZennoDroid.
+
+[\] Fixed an error that occurred when the **destination folder** was missing while retrieving the bundle apk (apks) of an application.

@@ -1,0 +1,208 @@
+---
+sidebar_position: 100
+sidebar_label: DroidManager API
+title: DroidManager API | Документация ZennoDroid | ZennoLab
+description: DroidManager API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# DroidManager API
+<DisclaimerNotice />
+## Описание
+
+`IDroidManagerAPI` предназначен для управления списком устройств/эмуляторов в ZennoDroid. Позволяет получать информацию о доступных устройствах, работать с их идентификаторами и выполнять базовые операции управления.
+## Свойства
+
+### BaseDirectory
+
+- **`string BaseDirectory { get; }`**  
+    Базовая директория хранения данных устройств.
+    
+    **Возвращает:**  
+    Путь к каталогу, где хранятся данные эмуляторов/устройств.
+
+#### Пример.
+```csharp
+return new DroidManager().BaseDirectory;
+```
+
+_______________________________________________
+## Методы
+
+
+### ConvertIndexToName
+
+- **`string ConvertIndexToName(int index)`**  
+    Преобразует индекс устройства в его внутреннее имя.
+    
+    **Параметры:**
+    - `index` — индекс устройства.
+    
+    **Возвращает:**  
+    Имя устройства.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var name = manager.ConvertIndexToName(0); // Внутреннее имя первого устройства в списке
+```
+
+---
+
+### ConvertIndexToTitle
+
+- **`string ConvertIndexToTitle(int index)`**  
+    Преобразует индекс устройства в отображаемое название.
+    
+    **Параметры:**
+    - `index` — индекс устройства.
+    
+    **Возвращает:**  
+    Человекочитаемое название устройства.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var title = manager.ConvertIndexToTitle(0); // Отображаемое название первого устройства
+```
+
+---
+
+### ConvertNameToIndex
+
+- **`int ConvertNameToIndex(string name)`**  
+    Преобразует имя устройства в его индекс.
+    
+    **Параметры:**
+    - `name` — внутреннее имя устройства.
+    
+    **Возвращает:**  
+    Индекс устройства.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var index = manager.ConvertNameToIndex("emulator-5554"); // Индекс устройства по его имени
+```
+
+---
+
+### ConvertTitleToName
+
+- **`string ConvertTitleToName(string title)`**  
+    Преобразует отображаемое название устройства в внутреннее имя.
+    
+    **Параметры:**
+    - `title` — отображаемое название.
+    
+    **Возвращает:**  
+    Внутреннее имя устройства.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var name = manager.ConvertTitleToName("Samsung_S23"); // Внутреннее имя устройства по названию
+```
+
+---
+
+### GetListDevices
+
+- **`IDeviceSummaryInfo[] GetListDevices()`**  
+    Возвращает список всех устройств.
+    
+    **Возвращает:**  
+    Массив [`IDeviceSummaryInfo`](./DeviceSummaryInfo) с краткой информацией о каждом устройстве.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+foreach (var device in manager.GetListDevices())
+	project.SendInfoToLog(device.Index + " - " + device.Title + ", запущено: " + device.IsRunning);
+```
+
+---
+
+### GetListIndices
+
+- **`int[] GetListIndices()`**  
+    Возвращает список индексов всех устройств.
+    
+    **Возвращает:**  
+    Массив индексов (`int[]`).
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var indices = manager.GetListIndices(); // Индексы всех устройств
+project.SendInfoToLog("Устройств в списке: " + indices.Length);
+```
+
+---
+
+### GetListNames
+
+- **`string[] GetListNames()`**  
+    Возвращает список имён всех устройств.
+    
+    **Возвращает:**  
+    Массив строк с внутренними именами.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var names = manager.GetListNames(); // Внутренние имена всех устройств
+project.SendInfoToLog(string.Join(", ", names));
+```
+
+---
+
+### GetListTitles
+
+- **`string[] GetListTitles()`**  
+    Возвращает список отображаемых названий устройств.
+    
+    **Возвращает:**  
+    Массив строк с названиями.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+var titles = manager.GetListTitles(); // Названия всех устройств
+project.SendInfoToLog(string.Join(", ", titles));
+```
+
+---
+
+### ReconnectOffline
+
+- **`void ReconnectOffline()`**  
+    Выполняет попытку переподключения всех оффлайн-устройств.
+    
+    **Описание:**  
+    Используется для восстановления соединения (например, через ADB) с устройствами, которые временно недоступны.
+
+#### Пример.  
+```csharp
+var manager = new DroidManager();
+
+manager.ReconnectOffline(); // Попробовать переподключить все оффлайн-устройства
+```
+
+_______________________________________________
+
+:::note Важные замечания
+- Индекс, имя и title — это разные представления одного устройства:
+    - `Index` — числовой ID;
+    - `Name` — системное имя;
+    - `Title` — отображаемое имя.
+- Метод `ReconnectOffline()` полезен при нестабильных соединениях или после перезапуска ADB.
+:::

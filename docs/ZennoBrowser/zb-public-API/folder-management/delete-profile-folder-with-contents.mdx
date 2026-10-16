@@ -1,0 +1,89 @@
+---
+sidebar_position: 5
+sidebar_label: Удаление папки профилей с содержимым
+title: Удаление папки профилей с содержимым
+description: Удаление папки профилей вместе со всеми содержащимися в ней профилями — подробное руководство по ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод удаляет указанную папку профилей вместе со всеми содержащимися в ней профилями. Значение profileFolderId должно соответствовать существующей папке в указанном рабочем пространстве.
+
+:::warning
+Операция удаляет не только папку, но и все профили внутри неё.
+:::
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileFolderId | string | uuid | (required) | Уникальный идентификатор папки профилей, которую требуется удалить. |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства, содержащего папку профилей. Значение `-1` означает рабочее пространство по умолчанию. |
+
+#### **Пример запроса:**
+
+**DELETE**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profile_folders/123e4567-e89b-12d3-a456-426614174000/cascade?workspaceId=-1' \
+  --request DELETE \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:8160/v1/profile_folders/123e4567-e89b-12d3-a456-426614174000/cascade?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/profile_folders/123e4567-e89b-12d3-a456-426614174000/cascade?workspaceId=-1
+```
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `409 Conflict` | Конфликт состояния ресурса |
+| `422 Unprocessable Content` | Запрос не может быть обработан |
+| `423 Locked` | Ресурс заблокирован |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+Тело ответа отсутствует.
+
+**Ответ с ошибкой:**
+
+```json
+{
+  "message": null
+}
+```
+
+---

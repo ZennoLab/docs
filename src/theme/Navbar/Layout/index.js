@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useEffect, useRef} from 'react';
 import clsx from 'clsx';
 import {useThemeConfig} from '@docusaurus/theme-common';
 import {
@@ -24,10 +24,45 @@ export default function NavbarLayout({children}) {
   } = useThemeConfig();
   const mobileSidebar = useNavbarMobileSidebar();
   const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
+  const navbarElementRef = useRef(null);
+  const setNavbarRef = useCallback(
+    (node) => {
+      navbarElementRef.current = node;
+      navbarRef(node);
+    },
+    [navbarRef],
+  );
+
+  useEffect(() => {
+    const navbarElement = navbarElementRef.current;
+    if (!navbarElement) {
+      return undefined;
+    }
+
+    const updateNavbarHeight = () => {
+      const height = navbarElement.getBoundingClientRect().height;
+      document.documentElement.style.setProperty(
+        '--ifm-navbar-height',
+        `${height}px`,
+      );
+    };
+
+    updateNavbarHeight();
+
+    const resizeObserver = new ResizeObserver(updateNavbarHeight);
+    resizeObserver.observe(navbarElement);
+    window.addEventListener('resize', updateNavbarHeight);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateNavbarHeight);
+      document.documentElement.style.removeProperty('--ifm-navbar-height');
+    };
+  }, []);
 
   return (
     <nav
-      ref={navbarRef}
+      ref={setNavbarRef}
       aria-label={translate({
         id: 'theme.NavBar.navAriaLabel',
         message: 'Main',

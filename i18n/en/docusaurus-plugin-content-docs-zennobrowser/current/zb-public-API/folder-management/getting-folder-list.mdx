@@ -1,29 +1,26 @@
-﻿---
+---
 sidebar_position: 1
 sidebar_label: Getting Folder List
 title: Getting Folder List
-description: Retrieve a list of folders available in the specified workspace with optional filters and sorting - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Retrieves the list of profile folders available in the specified workspace. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This retrieves a list of folders available in the specified workspace.  
-Optionally, it is possible to limit the number of results, specify filters, or define sorting conditions.
+**Description:** This method retrieves a list of folders available in the specified workspace. Optionally, it is possible to limit the number of results, specify filters, or define sorting conditions. If no parameters are specified, the method returns the first page of profile folders in the default order.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | ID of the workspace where the profile folder will be created. Defaults to \-1 if not specified. |
-| start | integer | int32 | 0 | Index of the first folder (starting from zero). |
-| total | integer | int32 | 1000 | Maximum number of folders to retrieve. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+| start | integer | int32 | (empty) | Index of the first folder (zero-based). |
+| total | integer | int32 | (empty) | Maximum number of folders to retrieve. |
 | id | string | uuid | (empty) | Unique folder identifier (optional filter). |
 | name | string |  | (empty) | Folder name (optional filter). |
-| sorting | string |  | (empty) | Sorting condition: Id, Name, FolderType, Quantity (optional filter). |
-| location | string (enum) |  | Local | Folder location: `"Local"` or `"Cloud"`. |
-
-#### 
+| sorting | string |  | (empty) | Sorting condition: Id, Name, FolderType, Quantity (optional). |
+| location | string |  | (empty) | Folder location: "Local" or "Cloud". Defaults to null. |
 
 #### **Example request:**
 
@@ -31,19 +28,20 @@ Optionally, it is possible to limit the number of results, specify filters, or d
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/profile_folders?workspaceId=-1&start=0&total=1000&id=&name=&sorting=&location=' \
+curl 'http://localhost:8160/v1/profile_folders?workspaceId=-1&start=0&total=1000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&sorting=name%20ASC&location=Local' \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
-**С#:**
+**C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Get,
-    RequestUri = new Uri("http://localhost:8160/v1/profile_folders?workspaceId=-1&start=0&total=1000&id=&name=&sorting=&location="),
+    RequestUri = new Uri("http://localhost:8160/v1/profile_folders?workspaceId=-1&start=0&total=1000&id=123e4567-e89b-12d3-a456-426614174000&name=ApiEntity&sorting=name%20ASC&location=Local"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -65,16 +63,18 @@ http://localhost:8160/v1/profile_folders?workspaceId=-1&start=0&total=1000&id=&n
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
+Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
@@ -84,8 +84,8 @@ Api-Token: Token from **UserArea2**.
   "items": [
     {
       "id": "123e4567-e89b-12d3-a456-426614174000",
-      "name": null,
-      "location": "Local",
+      "name": "Sample Name",
+      "location": "string",
       "quantity": 1
     }
   ]

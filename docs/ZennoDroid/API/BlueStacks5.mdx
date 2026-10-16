@@ -1,0 +1,762 @@
+---
+sidebar_position: 60
+sidebar_label: BlueStacks5 API
+title: BlueStacks5 API | Документация ZennoDroid | ZennoLab
+description: BlueStacks5 API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# BlueStacks5 API
+<DisclaimerNotice />
+## Описание
+
+Набор интерфейсов для управления эмулятором **BlueStacks 5** в ZennoDroid Enterprise.
+
+| Интерфейс | Описание |
+|---|---|
+| `IBlueStacks5API` | Запуск, остановка и подключение к эмулятору |
+| `IBlueStacks5SettingsAPI` | Системные параметры: геолокация, IMEI |
+| `IBlueStacks5RootAPI` | Управление root-доступом и Magisk |
+| `IBlueStacks5ManagerAPI` | Создание и удаление инстансов через менеджер |
+
+_______________________________________________
+## IBlueStacks5API
+
+Управление запуском, остановкой и подключением к эмулятору BlueStacks 5.
+
+### AddressPort
+
+- **`string AddressPort { get; }`**  
+    Адрес и порт подключения к эмулятору.
+    
+    **Возвращает:**  
+    Строку в формате `IP:Port` (например: `127.0.0.1:5555`).
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+string addressPort = bs.AddressPort; // 127.0.0.1:5555
+```
+
+---
+
+### IsBootCompleted
+
+- **`bool IsBootCompleted { get; }`**  
+    Проверяет, завершена ли загрузка Android внутри эмулятора.
+    
+    **Возвращает:**  
+    `true`, если система полностью загружена и готова к работе.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+if (!bs.IsBootCompleted)
+    throw new Exception("Android ещё не загрузился");
+```
+
+---
+
+### IsRunning
+
+- **`bool IsRunning { get; }`**  
+    Проверяет, запущен ли эмулятор.
+    
+    **Возвращает:**  
+    `true`, если эмулятор запущен; иначе `false`.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+
+if (!bs.IsRunning) bs.Start();
+```
+
+---
+
+### Connect
+
+- **`void Connect()`**  
+    Подключается к эмулятору (обычно через ADB).
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Connect();
+```
+
+---
+
+### Disconnect
+
+- **`void Disconnect()`**  
+    Разрывает соединение с эмулятором.
+
+#### Пример.
+```csharp
+new BlueStacks5("Rvc64_1", "nxt").Disconnect();
+```
+
+---
+
+### Start
+
+- **`void Start()`**  
+    Запускает эмулятор BlueStacks.
+
+#### Пример.
+```csharp
+new BlueStacks5("Rvc64_1", "nxt").Start();
+```
+
+---
+
+### Stop
+
+- **`void Stop()`**  
+    Останавливает эмулятор.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+bs.WaitForStop(60);
+```
+
+---
+
+### WaitForBoot
+
+- **`bool WaitForBoot(int timeout)`**  
+    Ожидает завершения загрузки Android: процесс запущен, ADB подключен и `IsBootCompleted` возвращает `true`.
+    
+    **Параметры:**
+    - `timeout` — время ожидания в секундах (`0` — одна проверка без ожидания).
+    
+    **Возвращает:**  
+    `true`, если эмулятор загрузился; `false`, если время истекло.
+    
+    **Описание:**  
+    Вызывайте после каждого `Start()`: он возвращает управление, не дожидаясь загрузки.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Start();
+if (!bs.WaitForBoot(120)) throw new Exception("Эмулятор не загрузился");
+```
+
+---
+
+### WaitForConnect
+
+- **`bool WaitForConnect(int timeout)`**  
+    Подключается по ADB и ждёт, пока соединение действительно начнёт отвечать на команды.
+    
+    **Параметры:**
+    - `timeout` — время ожидания в секундах (`0` — одна проверка без ожидания).
+    
+    **Возвращает:**  
+    `true`, если соединение отвечает; `false`, если время истекло.
+    
+    **Описание:**  
+    Вызывайте после `Connect()`: эмулятор начинает отвечать на команды не сразу.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Connect();
+if (!bs.WaitForConnect(60)) throw new Exception("Соединение по ADB не отвечает");
+```
+
+---
+
+### WaitForStop
+
+- **`bool WaitForStop(int timeout)`**  
+    Ожидает, пока процесс эмулятора полностью завершится.
+    
+    **Параметры:**
+    - `timeout` — время ожидания в секундах (`0` — одна проверка без ожидания).
+    
+    **Возвращает:**  
+    `true`, если процесс завершился; `false`, если время истекло.
+    
+    **Описание:**  
+    Вызывайте после каждого `Stop()`: операции над остановленным инстансом, в том числе `Unlock()` и `Lock()`, требуют завершённого процесса.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+if (!bs.WaitForStop(60)) throw new Exception("Эмулятор не завершился");
+```
+
+:::note Важные замечания
+- После `Start()` дождитесь загрузки через `WaitForBoot()` (или проверяйте `IsBootCompleted`), прежде чем выполнять действия.
+- После `Stop()` дождитесь `WaitForStop()`: пока процесс жив, диски инстанса остаются заблокированными.
+- `Connect()` следует вызывать после запуска эмулятора, а готовность соединения проверять через `WaitForConnect()`.
+- В некоторых сценариях требуется повторное подключение при сбоях ADB.
+:::
+
+_______________________________________________
+## IBlueStacks5SettingsAPI
+
+Изменение системных параметров эмулятора BlueStacks 5.
+
+### SetGeo
+
+- **`void SetGeo(double longitude, double latitude)`**  
+    Устанавливает геолокацию устройства.
+    
+    **Параметры:**
+    - `longitude` — долгота (например: `37.6173`);
+    - `latitude` — широта (например: `55.7558`).
+    
+    **Описание:**  
+    Позволяет эмулировать нахождение устройства в заданной точке на карте.
+
+#### Пример.
+```csharp
+new BlueStacks5Settings("Rvc64_1", "nxt").SetGeo(-73.572604, 40.651980);
+```
+
+---
+
+### SetIMEI
+
+- **`void SetIMEI(string value)`**  
+    Устанавливает IMEI устройства.
+    
+    **Параметры:**
+    - `value` — строковое значение IMEI.
+    
+    **Описание:**  
+    Используется для подмены идентификатора устройства.
+
+#### Пример.
+```csharp
+new BlueStacks5Settings("Rvc64_1", "nxt").SetIMEI("356938035643809");
+```
+
+:::warning Важные замечания
+- Некорректные значения IMEI могут вызывать ошибки в приложениях или определяться как недействительные.
+- После изменения параметров рекомендуется перезапустить эмулятор и переподключиться.
+- Геолокация может дополнительно кешироваться приложениями — иногда требуется их перезапуск.
+:::
+
+_______________________________________________
+## IBlueStacks5RootAPI
+
+Управление root-доступом, Magisk и патчами в эмуляторе BlueStacks 5.
+
+### IsRooted
+
+- **`bool IsRooted { get; }`**  
+    Проверяет, отвечает ли root на инстансе в данный момент.
+    
+    **Возвращает:**  
+    `true`, если root отвечает; иначе `false`.
+
+#### Пример.
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bool rooted = root.IsRooted;
+```
+
+---
+
+### EnableZygisk
+
+- **`void EnableZygisk()`**  
+    Включает Zygisk — модуль Magisk для внедрения в процессы через Zygote. Поддерживается на Android 9 (Pie) и выше.
+    
+    **Описание:**  
+    Позволяет использовать продвинутые модули и хуки (например, для обхода детекта root).
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").EnableZygisk();
+```
+
+---
+
+- **`void EnableZygisk(string modulePath)`**  
+    Включает Zygisk через указанный модуль-провайдер — для сборок Magisk, чей собственный Zygisk не работает в эмуляторе. Модуль сначала устанавливается, затем Zygisk настраивается на обращение к нему.
+    
+    **Параметры:**
+    - `modulePath` — путь к `.zip` модуля-провайдера Zygisk (NeoZygisk).
+    
+    **Описание:**  
+    Изменения вступают в силу после перезапуска эмулятора. На Android 7 не поддерживается.
+
+#### Пример.
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+root.EnableZygisk(MagiskSource.DefaultZygiskModule);
+```
+
+---
+
+### FlashMagisk
+
+- **`void FlashMagisk()`**  
+    Выполняет прошивку (установку) Magisk в систему.
+    
+    **Описание:**  
+    Применяет Magisk на уровне системы после установки.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").FlashMagisk();
+```
+
+---
+
+### InstallMagisk
+
+- **`void InstallMagisk(string path)`**  
+    Устанавливает Magisk из указанного файла.
+    
+    **Параметры:**
+    - `path` — путь к файлу Magisk (`.apk`).
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").InstallMagisk(MagiskSource.DefaultApk);
+```
+
+---
+
+### InstallMagiskOffline
+
+- **`void InstallMagiskOffline(string magiskApk)`**  
+    Раскладывает Magisk по системному образу остановленного разблокированного инстанса, ничего не запуская.
+    
+    **Параметры:**
+    - `magiskApk` — путь к `.apk` Magisk, из которого берутся бинарные файлы.
+    
+    **Описание:**  
+    Инстанс должен быть остановлен и разблокирован методом `Unlock(patchImage: false)`. Приложение-менеджер Magisk устанавливается отдельно — методом `InstallMagisk()`.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bs.Stop();
+bs.WaitForStop(60);
+root.Unlock(patchImage: false);
+root.InstallMagiskOffline(MagiskSource.DefaultApk);
+bs.Start();
+bs.WaitForBoot(120);
+root.WaitForRoot(60);
+```
+
+---
+
+### InstallModule
+
+- **`void InstallModule(string path)`**  
+    Устанавливает модуль Magisk из указанного zip-файла (LSPosed, Vector и другие).
+    
+    **Параметры:**
+    - `path` — путь к `.zip` модуля.
+    
+    **Описание:**  
+    Модули применяются после перезапуска эмулятора.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").InstallModule(@"C:\Modules\LSPosed.zip");
+```
+
+---
+
+### InstallModuleOffline
+
+- **`bool InstallModuleOffline(string modulePath)`**  
+    Помещает модуль-провайдер Zygisk в data-образ остановленного инстанса — так, как разложил бы его установщик самого модуля.
+    
+    **Параметры:**
+    - `modulePath` — путь к `.zip` модуля-провайдера Zygisk.
+    
+    **Возвращает:**  
+    `true`, если модуль записан; `false`, если раздел `/data` ещё ни разу не инициализировался.
+    
+    **Описание:**  
+    Если метод вернул `false`, загрузите инстанс один раз и повторите вызов. На Android 7 не поддерживается.
+
+#### Пример.
+```csharp
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+if (!root.InstallModuleOffline(MagiskSource.DefaultZygiskModule))
+{
+    // /data ещё не размечен — загрузиться один раз и повторить вызов
+}
+```
+
+---
+
+### Lock
+
+- **`void Lock()`**  
+    Блокирует root-доступ в эмуляторе. Восстанавливает системный раздел к состоянию без root.
+    
+    **Описание:**  
+    Отключает root, делая систему более «чистой» (например, для обхода проверок приложений).
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+bs.Stop();
+bs.WaitForStop(60);
+
+new BlueStacks5Root("Rvc64_1", "nxt").Lock();
+```
+
+---
+
+### Patch
+
+- **`void Patch()`**  
+    Применяет патч для подготовки системы к работе с root.
+    
+    **Описание:**  
+    Модифицирует системные компоненты эмулятора для поддержки root-доступа.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Patch();
+```
+
+---
+
+### Unlock
+
+- **`void Unlock()`**  
+    Разблокирует root-доступ.
+    
+    **Описание:**  
+    Переводит системный раздел в режим записи. Позволяет вносить изменения для получения root-доступа.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Unlock();
+```
+
+---
+
+- **`void Unlock(bool patchImage)`**  
+    Та же разблокировка, но с выбором, патчить ли системный образ.
+    
+    **Параметры:**
+    - `patchImage` — `true` соответствует поведению `Unlock()`; `false` пропускает патч.
+
+#### Пример.
+```csharp
+new BlueStacks5Root("Rvc64_1", "nxt").Unlock(patchImage: false);
+```
+
+---
+
+### WaitForRoot
+
+- **`bool WaitForRoot(int timeout)`**  
+    Ожидает, пока root начнёт отвечать.
+    
+    **Параметры:**
+    - `timeout` — время ожидания в секундах (`0` — одна проверка без ожидания).
+    
+    **Возвращает:**  
+    `true`, если root отвечает; `false`, если время истекло.
+    
+    **Описание:**  
+    Вызывайте после `WaitForBoot()`: root начинает отвечать не сразу после загрузки Android.
+
+#### Пример.
+```csharp
+var bs = new BlueStacks5("Rvc64_1", "nxt");
+var root = new BlueStacks5Root("Rvc64_1", "nxt");
+
+bs.Start();
+bs.WaitForBoot(120);
+if (!root.WaitForRoot(60)) throw new Exception("Root не поднялся");
+```
+
+:::warning Важные замечания
+- Операции с root могут повлиять на стабильность эмулятора или нарушить работу приложений.
+- После изменений рекомендуется перезапуск эмулятора и проверка состояния root.
+- Используется совместно с [`IFridaDeviceAPI`](./Frida), [`IDroidAppAPI`](./App) и `RootShell` ([`IDroidInputAPI`](./Input#rootshell)).
+:::
+
+_______________________________________________
+## IBlueStacks5ManagerAPI
+
+Управление инстансами BlueStacks 5 через менеджер: создание, удаление, запуск/остановка службы.
+
+**Конструктор:** `BlueStacks5Manager(string oem)`
+
+- `oem` — строка, идентифицирующая версию BlueStacks:
+    - `"nxt"` — стандартная версия
+    - `"nxt_cn"` — версия для Китая
+    - `"msi5"` — версия от MSI (MSI App Player 5)
+
+### Create
+
+- **`string Create(string imageName, int cpus, int ram, string graphicEngine, string graphicRenderer, string deviceProfile, string abiList)`**  
+    Создаёт новый экземпляр эмулятора с заданными параметрами.
+    
+    **Параметры:**
+    - `imageName` — базовый образ эмулятора:
+        - `"Nougat32"` — Android 7.1 (x86)
+        - `"Nougat64"` — Android 7.1 (x64)
+        - `"Pie64"` — Android 9.0 (x64)
+        - `"Rvc64"` — Android 11.0 (x64)
+        - `"Tiramisu64"` — Android 13.0 (x64)
+    - `cpus` — количество выделенных CPU;
+    - `ram` — объём оперативной памяти (МБ);
+    - `graphicEngine` — графический движок (только для Android 7):
+        - `"aga"` — Compatibility
+        - `"pga"` — Performance
+    - `graphicRenderer` — тип рендера:
+        - `"gl"` — OpenGL
+        - `"dx"` — DirectX
+        - `"vlcn"` — Vulkan
+    - `deviceProfile` — профиль устройства:
+        - `"rogt"` — Asus ROG 2
+        - `"ptxg"` — Google Pixel 2XL
+        - `"optp"` — OnePlus 10 Pro
+        - `"opet"` — OnePlus 8T
+        - `"anfg"` — Samsung Galaxy A90 5G
+        - `"smtn"` — Samsung Galaxy S10
+        - `"stfg"` — Samsung Galaxy S10 5G
+        - `"stul"` — Samsung Galaxy S20 Ultra
+        - `"stwp"` — Samsung Galaxy S20+
+        - `"stou"` — Samsung Galaxy S21 Ultra
+        - `"sstt"` — Samsung Galaxy S22
+        - `"sttu"` — Samsung Galaxy S22 Ultra
+        - `"xitp"` — Xiaomi 11T Pro
+    - `abiList` — список поддерживаемых ABI (например: `"x86,x64,arm,arm64"`).
+    
+    **Возвращает:**  
+    Имя созданного инстанса.
+
+#### Пример.
+```csharp
+var name = new BlueStacks5Manager("nxt").Create("Rvc64", 
+	cpus:2, 
+	ram:2048,
+	graphicEngine:"aga",
+	graphicRenderer:"dx",
+	deviceProfile:"xitp", 
+	abiList:"x86,x64,arm,arm64");
+```
+
+---
+
+### DeleteByName
+
+- **`void DeleteByName(string name)`**  
+    Удаляет экземпляр эмулятора по имени.
+    
+    **Параметры:**
+    - `name` — имя инстанса.
+
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").DeleteByName("Rvc64_1");
+```
+
+---
+
+### Exists
+
+- **`bool Exists(string name)`**  
+    Проверяет, существует ли инстанс с указанным системным именем.
+    
+    **Параметры:**
+    - `name` — системное имя инстанса.
+    
+    **Возвращает:**  
+    `true`, если такой инстанс зарегистрирован.
+    
+    **Описание:**  
+    Обращение к несуществующему инстансу — `new BlueStacks5(name)` и подобные — это ошибка, поэтому спрашивать следует заранее.
+
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+if (!mgr.Exists("Rvc64_1")) throw new Exception("Инстанс не найден");
+```
+
+---
+
+### GetListNames
+
+- **`string[] GetListNames()`**  
+    Системные имена всего, что зарегистрировано для данного OEM.
+    
+    **Возвращает:**  
+    Массив системных имён.
+    
+    **Описание:**  
+    В список входят и базовые образы — именно из них клонируются новые инстансы, и перечисляются они так же, как обычный инстанс.
+
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+foreach (var name in mgr.GetListNames())
+    project.SendInfoToLog(name); // Rvc64, Rvc64_1, Pie64, ...
+```
+
+---
+
+### GetListTitles
+
+- **`string[] GetListTitles()`**  
+    Отображаемые названия того же списка.
+    
+    **Возвращает:**  
+    Массив названий в том же порядке, что и у `GetListNames()`.
+
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+
+var names = mgr.GetListNames();
+var titles = mgr.GetListTitles();
+
+for (int i = 0; i < names.Length; i++)
+    project.SendInfoToLog($"{titles[i]} -> {names[i]}"); // BlueStacks App Player 1 -> Rvc64_1
+```
+
+---
+
+### NameToTitleConverter
+
+- **`string NameToTitleConverter(string name)`**  
+    Преобразует внутреннее системное имя в отображаемое название, которое видно в интерфейсе.
+    
+    **Параметры:**
+    - `name` — системное имя инстанса.
+    
+    **Возвращает:**  
+    Отображаемое название инстанса.
+
+#### Пример.
+```csharp
+string title = new BlueStacks5Manager("nxt").NameToTitleConverter("Rvc64_1"); // BlueStacks App Player 1
+```
+
+---
+
+### SetupRoot
+
+- **`void SetupRoot(string title, string magiskApk, string zygiskModule, int timeout)`**  
+    Выполняет весь сценарий получения root на инстансе и оставляет его запущенным, рутованным, с работающим Zygisk.
+    
+    **Параметры:**
+    - `title` — отображаемое название инстанса, как оно показано в интерфейсе BlueStacks (системное имя тоже принимается);
+    - `magiskApk` — путь к `.apk` Magisk. Пустая строка берёт `MagiskSource.DefaultApk` — копию, поставляемую с ZennoDroid;
+    - `zygiskModule` — путь к `.zip` модуля-провайдера Zygisk (NeoZygisk), который нужен сборкам Magisk с неработающим в эмуляторе собственным Zygisk; `MagiskSource.DefaultZygiskModule` — копия из состава ZennoDroid. Пустая строка включает собственный Zygisk Magisk;
+    - `timeout` — предельное время каждого ожидания в сценарии, в секундах.
+
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+mgr.SetupRoot("BlueStacks App Player 1", "", "", 120);
+```
+
+---
+
+### SetupRootOffline
+
+- **`void SetupRootOffline(string title, string magiskApk, string zygiskModule, int timeout)`**  
+    Тот же результат, что у `SetupRoot()` — запущенный рутованный инстанс с работающим Zygisk, — но достигнутый записью Magisk прямо в образы дисков, а не установкой в запущенный Android.
+    
+    **Параметры:**
+    - `title` — отображаемое название инстанса, как оно показано в интерфейсе BlueStacks (системное имя тоже принимается);
+    - `magiskApk` — `.apk` Magisk: и источник бинарных файлов для образа, и менеджер, который ставится после. Пустая строка берёт `MagiskSource.DefaultApk`;
+    - `zygiskModule` — путь к `.zip` модуля-провайдера Zygisk (NeoZygisk); `MagiskSource.DefaultZygiskModule` — копия из состава ZennoDroid. Пустая строка устанавливает один Magisk, без Zygisk;
+    - `timeout` — предельное время каждой остановки, загрузки и ожидания root, в секундах.
+
+#### Пример.
+```csharp
+var mgr = new BlueStacks5Manager("nxt");
+mgr.SetupRootOffline("BlueStacks App Player 1", "", "", 120);
+```
+
+---
+
+### StartManager
+
+- **`void StartManager()`**  
+    Запускает менеджер BlueStacks (службу управления инстансами).
+
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").StartManager();
+```
+
+---
+
+### StopManager
+
+- **`void StopManager()`**  
+    Останавливает менеджер BlueStacks.
+
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").StopManager();
+```
+
+---
+
+### TitleToNameConverter
+
+- **`string TitleToNameConverter(string title)`**  
+    Преобразует отображаемое название эмулятора в его системное имя.
+    
+    **Параметры:**
+    - `title` — отображаемое имя, как в интерфейсе BlueStacks: `BlueStacks App Player 1`, `BlueStacks App Player 2` и так далее.
+    
+    **Возвращает:**  
+    Внутреннее имя инстанса, используемое системой.
+
+#### Пример.
+```csharp
+string name = new BlueStacks5Manager("nxt").TitleToNameConverter("BlueStacks App Player 1");
+```
+
+---
+
+### Unroot
+
+- **`void Unroot(string title, int timeout)`**  
+    Снимает root с инстанса — обратная операция к `SetupRoot()` и `SetupRootOffline()`. Инстанс останавливается и остаётся остановленным.
+    
+    **Параметры:**
+    - `title` — отображаемое название инстанса, как оно показано в интерфейсе BlueStacks (системное имя тоже принимается);
+    - `timeout` — предельное время остановки, в секундах.
+
+#### Пример.
+```csharp
+new BlueStacks5Manager("nxt").Unroot("BlueStacks App Player 1", 120);
+```
+
+:::note Важные замечания
+- Перед созданием/удалением инстансов рекомендуется запустить менеджер (`StartManager()`).
+- Параметры `cpus` и `ram` должны соответствовать возможностям хост-машины.
+- Некорректные значения графики могут привести к нестабильной работе.
+- Используется совместно с `IBlueStacks5API` для полного цикла: создание → запуск → автоматизация → удаление.
+:::
+_______________________________________________
+## Полезные ссылки.  
+- [**Работа с BlueStacks**](../Enterprise/BlueStacks).

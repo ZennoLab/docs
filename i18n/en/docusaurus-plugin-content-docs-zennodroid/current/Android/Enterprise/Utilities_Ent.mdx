@@ -75,6 +75,16 @@ Lets you grab the screen's element structure as an XML string. This is the same 
 - displayed text (the **`text`** or **`content-desc`** attribute)
 - element's unique id (the **`resource-id`** attribute)
 _______________________________________________
+### Appium settings  
+:::info **Added in ZennoDroid v2.4.3.0.**
+:::
+Changes which elements make it into the device's element tree.  
+![Appium settings](../assets/Utilities/Utilities_pic18.png)  
+#### Available parameters:  
+- *Allow invisible webview.* Fixes the case where the element tree stops being built while a large page is open.  
+- *Allow invisible elements.* The element tree shows every element of the screen, including the ones beyond its edges.  
+- *Ignore unimportant views.* The tree is built without the secondary elements that carry no useful information.  
+_______________________________________________
 ### Scaling
 ![Pinch/Zoom](../assets/Utilities/Utilities_pic8.png)  
 

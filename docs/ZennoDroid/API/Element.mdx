@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 120
 sidebar_label: Element API
 title: Element API | Документация ZennoDroid | ZennoLab
 description: Element API - раздел официальной документации ZennoDroid от ZennoLab. Подробные инструкции, примеры использования и руководство по настройке
@@ -8,24 +8,28 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Element API
 <DisclaimerNotice />
+## Описание
 
-## Описание.  
-**`IAndroidElementAPI`**  
+`IAndroidElementAPI` представляет элемент пользовательского интерфейса Android в ZennoDroid (через Appium). Предоставляет свойства и методы для получения информации об элементе и взаимодействия с ним.
+## Свойства
 
-Интерфейс предоставляет доступ к управлению элементами пользовательского интерфейса в Android приложениях. Он используется для выполнения различных операций с элементами, найденными с помощью методов интерфейса [IAppiumDriverAPI](./AppiumDriver).  
 
-### Свойства.  
-- **Значение свойства id элемента**.
-```csharp
-string Id { get; }
-```  
+### Id
 
-- **Значение свойства text элемента**.
-```csharp
-string Text { get; }
-```  
+- **`string Id { get; }`**  
+    Уникальный идентификатор элемента (GUID).
 
-#### Примеры:  
+### IsDisplayed
+
+- **`bool IsDisplayed { get; }`**  
+    Указывает, отображается ли элемент на экране в данный момент.
+
+### Rectangle
+
+- **`Rectangle Rectangle { get; }`**  
+    Геометрия элемента (позиция и размер) в координатах экрана.
+
+#### Пример.  
 ```csharp
 var driver = instance.DroidInstance.AppiumDriver;
 
@@ -33,20 +37,64 @@ var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти эл
 if (de == null)
     throw new Exception("Элемент не найден");
 
-var id = de.Id; // Получить значение свойства Id
-var text = de.Text; // Получить значение свойства text
+string id = de.Id; // Получить значение свойства Id
+string text = de.Text; // Получить значение свойства Text
+bool isDisplayed = de.IsDisplayed; // Получить значение свойства IsDisplayed
+Rectangle rectangle = de.Rectangle; // Получить значение свойства Rectangle
 ```
-_______________________________________________  
-## Методы.
-### Получает свойства элемента.
-```csharp
-string GetAttribute(string name)
-```   
 
-*Параметры:*   
+### Text
+
+- **`string Text { get; }`**  
+    Текстовое содержимое элемента.
+
+_______________________________________________
+## Методы
+
+
+### Clear
+
+- **`void Clear()`**  
+    Очищает содержимое элемента (обычно текстовое поле).
+
+#### Пример.  
 ```csharp
-string name // Имя свойства, значение которого хотим получить.
-``` 
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.Clear(); // Очисть значение поля элемента
+```
+
+---
+
+### Click
+
+- **`void Click()`**  
+    Выполняет клик по элементу.
+
+#### Пример.  
+```csharp
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.Click(); // Кликнуть по элементу
+```
+
+---
+
+### GetAttribute
+
+- **`string GetAttribute(string name)`**  
+    Возвращает значение указанного атрибута элемента (например: `content-desc`, `class`, `checked` и др.).
+    
+    **Параметры:**
+    - `name` — имя атрибута.
 
 #### Пример.  
 ```csharp
@@ -59,11 +107,16 @@ if (de == null)
 var bounds = de.GetAttribute("bounds"); // Получить значение свойства bounds
 var text = de.GetAttribute("text"); // Получить значение свойства text
 ```
-_______________________________________________ 
-### Кликает на найденный элемент.
-```csharp
-void Click()
-```   
+
+---
+
+### GetBooleanAttribute
+
+- **`bool GetBooleanAttribute(string name)`**  
+    Возвращает логическое значение атрибута (например: `enabled`, `clickable`, `checked`).
+    
+    **Параметры:**
+    - `name` — имя атрибута.
 
 #### Пример.  
 ```csharp
@@ -73,13 +126,16 @@ var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти эл
 if (de == null)
     throw new Exception("Элемент не найден");
 
-de.Click(); // Кликнуть по элементу
+bool clickable = de.GetBooleanAttribute("clickable"); // Можно ли нажать на элемент
+bool enabled = de.GetBooleanAttribute("enabled"); // Активен ли элемент
 ```
-_______________________________________________ 
-### Очищает значение элемента (например, текст, если он введён).
-```csharp
-void Clear()
-```   
+
+---
+
+### GetScreenshot
+
+- **`string GetScreenshot()`**  
+    Делает скриншот области, занимаемой элементом, и возвращает его в виде строки Base64.
 
 #### Пример.  
 ```csharp
@@ -89,18 +145,42 @@ var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти эл
 if (de == null)
     throw new Exception("Элемент не найден");
 
-de.Clear(); // Очисть значение поля элемента
+var data = Convert.FromBase64String(de.GetScreenshot()); // Скриншот области элемента
+using (var ms = new MemoryStream(data))
+using (var bmp = new Bitmap(ms))
+    bmp.Save(project.Path + "element.png");
 ```
-_______________________________________________ 
-### Вводит текст в поле элемента.
-```csharp
-void SendText(string text)
-```   
 
-*Параметры:*   
+---
+
+### SendKeys
+
+- **`void SendKeys(string text)`**  
+    Вводит текст посимвольно. Более «реалистичный» ввод, чем `SendText`.
+    
+    **Параметры:**
+    - `text` — строка.
+
+#### Пример.  
 ```csharp
-string text  // Значение, которое хотим ввести.
-``` 
+var driver = instance.DroidInstance.AppiumDriver;
+
+var de = driver.FindElementByXPath("//*[@text=\"Display\"]"); // Найти элемент по xPath
+if (de == null)
+    throw new Exception("Элемент не найден");
+
+de.SendKeys("ZennoDroid"); // Отправить текст элементу
+```
+
+---
+
+### SendText
+
+- **`void SendText(string text)`**  
+    Вводит текст в элемент.
+    
+    **Параметры:**
+    - `text` — текст для ввода.
 
 #### Пример.  
 ```csharp
@@ -112,13 +192,3 @@ if (de == null)
 
 de.SendText("Привет мир!"); // Вставить текст в поле элемента
 ```
-_______________________________________________ 
-### Вводит спецсимволов.
-```csharp
-void SendKeys(string text)
-```   
-
-*Параметры:*   
-```csharp
-string text  // Спецсимволы, которые хотим ввести.
-``` 

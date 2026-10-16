@@ -1,0 +1,209 @@
+---
+sidebar_position: 30
+sidebar_label: ActionEmulator API
+title: ActionEmulator API | ZennoDroid Documentation | ZennoLab
+description: ActionEmulator API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# ActionEmulator API
+<DisclaimerNotice />
+## Description
+
+`IDroidActionEmulatorAPI : IDroidActionAPI`
+
+The `IDroidActionEmulatorAPI` interface extends the base [`IDroidActionAPI`](./Action) and provides methods for managing **MEmu** and **LDPlayer** emulators in ZennoDroid. It allows you to create, clone, import, delete, and configure virtual devices.
+## Properties
+
+### Action
+
+- **`IDroidActionEmulatorAPI Action`**  
+    Emulator actions. Along with those listed below, every basic action from [`IDroidActionAPI`](./Action) is available except [`Reboot`](./Action#reboot), which is for real phones only.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // A basic action from IDroidActionAPI
+var index = droid.Action.Clone(); // An action only an emulator has
+```
+
+_______________________________________________
+## Methods
+
+
+### Clone
+
+- **`int Clone()`**  
+    Creates a copy of the current emulator.
+    
+    **Returns:**  
+    The index of the new emulator.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // Pick the emulator to copy
+var index = droid.Action.Clone(); // Index of the copy
+```
+
+---
+
+### Create
+
+- **`int Create(string version)`**  
+    Creates a new emulator with the specified Android version.
+    
+    **Parameters:**
+    - `version` — Android version.  
+    Possible values for **MEmu**:
+        - `"71"` — Android 7.1 (x86)
+        - `"76"` — Android 7.1 (x64)
+        - `"96"` — Android 9.0 (x64)
+        - `"120"` — Android 12.0 (x64)
+    
+    **LDPlayer** always creates an emulator with Android 9.
+    
+    **Returns:**  
+    The index of the created emulator.
+
+#### Example
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+var index = droid.Action.Create("96");
+```
+
+---
+
+### DeleteByIndex
+
+- **`void DeleteByIndex(int index)`**  
+    Deletes an emulator by index.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.DeleteByIndex(2); // Delete the emulator with index 2
+```
+
+### DeleteByName
+
+- **`void DeleteByName(string name)`**  
+    Deletes an emulator by name.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.DeleteByName("MEmu_1"); // Delete the emulator by its internal name
+```
+
+### DeleteByTitle
+
+- **`void DeleteByTitle(string title)`**  
+    Deletes an emulator by display name.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.DeleteByTitle("Samsung_S23"); // Delete the emulator by its display title
+```
+
+---
+
+### Export
+
+- **`void Export(string path)`**  
+    Exports the current emulator to a file.
+    
+    **Parameters:**
+    - `path` — path for saving.
+    
+    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // Pick the emulator
+droid.Action.Export(project.Path + "Samsung_S23.ova"); // Save a copy to a file
+```
+
+---
+
+### FactoryReset
+
+- **`void FactoryReset(bool resetSystem)`**  
+    Performs a factory reset of the emulator.
+    
+    **Parameters:**
+    - `resetSystem` — if `true`, a full reset including system data is performed; if `false`, only user data is reset.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByTitle("Samsung_S23"); // Pick the emulator
+droid.Action.FactoryReset(false); // Reset user data only
+droid.Action.FactoryReset(true); // Reset the system data too
+```
+
+---
+
+### Import
+
+- **`int Import(string path)`**  
+    Imports an emulator from a file.
+    
+    **Parameters:**
+    - `path` — path to the emulator file/archive.
+    
+    **Returns:**  
+    The index of the imported emulator.
+    
+    Backup file format: MEmu — `*.ova`, LDPlayer — `*.ldbk`.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+var index = droid.Action.Import(project.Path + "Samsung_S23.ova"); // Index of the imported emulator
+droid.Action.SelectByIndex(index);
+droid.Action.Start();
+```
+
+---
+
+### Rename
+
+- **`void Rename(int index, string title)`**  
+    Renames an emulator by index.
+
+- **`void Rename(string name, string title)`**  
+    Renames an emulator by name.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.Rename(0, "Samsung_S23"); // Rename the emulator with index 0
+droid.Action.Rename("MEmu_1", "Samsung_S23"); // Rename the emulator by its internal name
+```
+
+### RenameTo
+
+- **`void RenameTo(string title)`**  
+    Renames the current emulator.
+
+#### Example  
+```csharp
+var droid = instance.DroidInstance as IDroidInstanceEmulatorAPI;
+
+droid.Action.SelectByIndex(0); // Pick the emulator
+droid.Action.RenameTo("Samsung_S23"); // Rename the selected emulator
+```
+
+_______________________________________________

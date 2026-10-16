@@ -1,0 +1,94 @@
+---
+sidebar_position: 96
+title: "ZennoDroid 2.5.0.0"
+description: ""
+date: "2026-05-20"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+20.05.2026
+
+:::important
+**ZD ENTERPRISE.** For the parameter spoofing modules to work correctly, **LSPosed 2.0** or **Vector 2.0.3042** and above are required. These versions are still in testing and may be unstable.
+
+It is not recommended to use this version without prior testing on a limited number of devices.
+:::
+
+**Added:**
+
+[+] **ZD ENTERPRISE.** Added support for a completely **new API version** (libxposed.api 101).
+
+<details>
+<summary>**Disclaimer from the libxposed.api version 101 developers**</summary>
+
+Major behavioral changes:
+
+- Modules based on libxposed API 100 are no longer supported. Modules based on the rovo89 Xposed API are not affected.
+- Some modules hardcode stack depth when inspecting the call stack, such as AnyWebView. In chain-of-responsibility mode, the call stack becomes deeper and may exceed the range expected by those modules, which can cause functionality issues. This is a module issue; please report it to the module author.
+- Some modules attempt to detect the framework implementation through unsupported methods such as call stack inspection, such as XChat. This may conflict with the framework and cause functionality issues. This is a module issue; please report it to the module author.
+
+</details>
+
+[+] **ZD ENTERPRISE.** Added the **ability to use LSPosed** and **Vector 2.0** (with API 101 support).
+[Vector 2.0](https://github.com/JingMatrix/Vector) with CLI and support for control via [ZennoDroid actions](../Enterprise/LSPosed_Control) can be downloaded here: [Vector-v2.0-3043-Release.zip](https://www.dropbox.com/scl/fi/7dbab38uywc33hl98oosp/Vector-v2.0-3043-Release.zip?rlkey=t2zjvojit8q8dkfi954qjb2uq&st=dtfbdkg6&dl=0).
+[LSPosed 2.0](https://github.com/LSPosed/LSPosed) can be downloaded here: [LSPosed-v2.0.2-7668-release.zip](https://www.dropbox.com/scl/fi/wad3sradsvdcdkkdjnv22/LSPosed-v2.0.2-7668-release.zip?rlkey=qjroclbh3qtcnfngybv3ql4fv&st=3mapaezx&dl=0). LSPosed settings are managed manually.
+
+[+] **ZD ENTERPRISE.** The **ZennoDroid module has been updated** to version 2.2.0. The entire module code has been rewritten for the new API 101. Faster module operation and fixes for the issues found. The module **works only with LSPosed 2.0 or Vector 2.0.3042 and above**.
+
+[+] **ZD ENTERPRISE.** The **ZennoBackup module has been updated** to version 1.0.0. The entire module code has been rewritten for the new API 101. The module **works only with LSPosed 2.0 or Vector 2.0.3042 and above**.
+
+[+] Reworked the **internal implementation of device interaction over ADB**. Fixed the issues found, faster operation, lower CPU load, improved memory cleanup.
+
+[+] Significantly **faster execution of the actions** for working with accounts and for saving and restoring application data.
+
+[+] Faster **initial initialization** when executing the Start/Restart action.
+
+[+] Optimized **work with the element tree**, fixed the issues found.
+
+[+] Improved **command execution** when interacting with Appium.
+
+[+] Faster **command execution** for running JavaScript code on a page.
+
+[+] Optimized the **device generator**.
+
+[+] Optimized **image search**.
+
+[+] **ZD ENTERPRISE.** Improved **device discovery** on the network with ADB debugging enabled.
+
+[+] **ZD PRO.** Fixed a **memory leak** when working with the QR scanner via C# code.
+
+[+] **ZD PRO.** Reworked the interaction used for direct access to the internal **MEmu API**.
+
+[+] **ZD PRO.** Reworked the **interaction with LDPlayer emulators** through the command line interface.
+
+**Fixed:**
+
+[\] Added a patch that fixes the **WebView structure disappearing** from the element tree. C# code (run once on the device):
+
+```csharp
+instance.DroidInstance.WebView.EnableForcedRenderWebView();
+```
+
+[\] Fixed **slow screenshot capture** in manual mode.
+
+[\] Fixed **switching the image capture quality** from the settings menu.
+
+[\] **ZD ENTERPRISE.** Fixed a **Chrome crash** when emulating the Back action.
+
+[\] Replaced the **busybox** version so that it works correctly in emulators.
+
+[\] Fixed **ProjectMaker freezing** when searching for an element via the action builder.
+
+[\] Fixed an issue that prevented the **element tree menu** from opening.
+
+[\] **ZD ENTERPRISE.** Fixed the function that patches the **Flutter library** for intercepting application traffic — `instance.DroidInstance.App.PatchFlutterLib`.
+
+[\] **ZD ENTERPRISE.** Fixed a **Chrome crash** when using the ZennoDroid module.
+
+[\] **ZD PRO.** Improved the behavior of the "**Fix build.prop errors**" checkbox.
+
+[\] **ZD PRO.** Fixed **ProjectMaker freezing** when renaming a MEmu device via the "Device Manager" window.

@@ -1,35 +1,26 @@
 ---
 sidebar_position: 5
-sidebar_label: Stopping Instances (Bulk)
-title: Stopping Browser Instances (Bulk)
-description: Stop multiple browser instances at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+sidebar_label: Deleting Browser Instances (Bulk)
+title: Deleting Browser Instances (Bulk)
+description: Stopping browser instances (bulk). - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-### **Stopping browser instances (bulk)**
-
-**Description:** This method stops multiple existing browser instances associated with the specified profiles.  
-This operation permanently closes all specified browser instances and releases their resources.
+**Description:** This method stops multiple existing browser instances associated with the specified profiles. This operation permanently closes all specified browser instances and releases their resources.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
-| body | JSON-Array |  |  | The array of profile UUIDs of those browser instances which should be deleted. For example: `["uuid1", "uuid2"]` |
+| workspaceId | integer | int64 | -1 | Workspace ID. Use -1 for the default workspace |
 
-:::note
-The list of profile IDs for browser instances to delete should be specified as an array in the request body using the following format:
+#### **Request body:**
 
-```json
-[
-  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
-  "d24eba34-12d6-4412-ab20-80fae618c264"
-]
-```
-:::
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[string] | uuid | (optional) | The array of profile UUIDs of those browser instances which should be deleted. For example: ["uuid1", "uuid2"]. |
 
 #### **Example request:**
 
@@ -39,18 +30,18 @@ The list of profile IDs for browser instances to delete should be specified as a
 ```bash
 curl 'http://localhost:8160/v1/browser_instances/delete_bulk?workspaceId=-1' \
   --request DELETE \
-  --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
+
+  --header 'Content-Type: application/json' \
   --data '[
-    "uuid1",
-    "uuid2"
-  ]'
+  "123e4567-e89b-12d3-a456-426614174000"
+]'
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
@@ -60,17 +51,8 @@ var request = new HttpRequestMessage
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("[\n  " +
-                                "\"uuid1\"," +
-                                "\"uuid2\"," +
-                                "\n]")
-    {
-        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-    }
 };
+request.Content = new StringContent("[\n  \"123e4567-e89b-12d3-a456-426614174000\"\n]", Encoding.UTF8, "application/json");
 using (var response = await client.SendAsync(request))
 {
     response.EnsureSuccessStatusCode();
@@ -83,27 +65,34 @@ using (var response = await client.SendAsync(request))
 ```
 http://localhost:8160/v1/browser_instances/delete_bulk?workspaceId=-1
 ```
-**Data:**   
-`["uuid1", "uuid2"]`  
+**Body (JSON):**
+```json
+[
+  "uuid1",
+  "uuid2"
+]
+```
 
 ![](../assets/image32.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
+Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful deletion.
+No response body.
 
 **Error Response (500):**
 

@@ -1,0 +1,111 @@
+---
+sidebar_position: 18
+sidebar_label: Запуск Cookie Robot
+title: Запуск Cookie Robot
+description: Запуск Cookie Robot для указанных профилей браузера — подробное руководство по ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Этот метод запускает Cookie Robot для указанных профилей браузера. Робот открывает браузер каждого профиля и посещает переданные URL-адреса для сбора cookies.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| urls | array[string] |  | (empty) | Список URL-адресов, которые должен посетить Cookie Robot. Параметр можно передать несколько раз. |
+| shuffleUrls | boolean |  | false | Перемешивать ли список URL-адресов перед посещением. |
+| loadImages | boolean |  | false | Загружать ли изображения при посещении страниц. |
+| minVisitTimeSeconds | integer | int32 | 5 | Минимальное время посещения каждого URL-адреса в секундах. |
+| maxVisitTimeSeconds | integer | int32 | 10 | Максимальное время посещения каждого URL-адреса в секундах. |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства. Значение `-1` означает рабочее пространство по умолчанию. |
+
+#### **Тело запроса:**
+
+| Поле | Тип | Формат | Обязательность | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[string] | uuid | (optional) | Массив идентификаторов профилей, для которых требуется запустить Cookie Robot. |
+
+#### **Пример запроса:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/run_cookie_robot?urls=https%3A%2F%2Fexample.com&urls=https%3A%2F%2Fexample.org&shuffleUrls=false&loadImages=false&minVisitTimeSeconds=5&maxVisitTimeSeconds=10&workspaceId=-1' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '[
+  "123e4567-e89b-12d3-a456-426614174000"
+]'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/run_cookie_robot?urls=https%3A%2F%2Fexample.com&urls=https%3A%2F%2Fexample.org&shuffleUrls=false&loadImages=false&minVisitTimeSeconds=5&maxVisitTimeSeconds=10&workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+request.Content = new StringContent("[\n  \"123e4567-e89b-12d3-a456-426614174000\"\n]", Encoding.UTF8, "application/json");
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/profiles/run_cookie_robot?urls=https%3A%2F%2Fexample.com&urls=https%3A%2F%2Fexample.org&shuffleUrls=false&loadImages=false&minVisitTimeSeconds=5&maxVisitTimeSeconds=10&workspaceId=-1
+```
+
+**Body (JSON):**
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
+
+**Дополнительно:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: токен из **UserArea2**.
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Успешно |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
+
+**Успешный ответ (200 OK):**
+
+```json
+{
+  "runId": "223e4567-e89b-12d3-a456-426614174000"
+}
+```
+
+Значение `runId` используется в методе [получения статуса запуска](./get-script-run-status).
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

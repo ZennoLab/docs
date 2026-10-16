@@ -87,6 +87,55 @@ Format: use colons XX:XX:XX:XX:XX:XX, or just type it without colons XXXXXXXXXXX
 :::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
 ::: 
 _______________________________________________
+## Bluetooth settings  
+Sets the MAC address of the device's Bluetooth adapter.  
+![Bluetooth settings](../assets/setting/Android_Setting_pic31.png)  
+
+- *Bluetooth adapter MAC address*. Format: use colons XX:XX:XX:XX:XX:XX, or just type it without colons XXXXXXXXXXXX (12 characters).  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
+_______________________________________________
+## Media DRM ID  
+Sets the Media DRM identity - the one apps that deal with protected content recognise the device by.  
+![Media DRM ID](../assets/setting/Android_Setting_pic32.png)  
+
+- *Media DRM ID*. A string of 64 hexadecimal characters.  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
+_______________________________________________
+## Google Services Framework ID  
+Sets the Google Services Framework ID - the identifier Google services recognise the device by.  
+![Google Services Framework ID](../assets/setting/Android_Setting_pic33.png)  
+
+- *Google Services Framework ID*. The value Google services will receive.  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
+_______________________________________________
+## Device serial number  
+Sets the serial number apps get from the device.  
+![Device serial number](../assets/setting/Android_Setting_pic34.png)  
+
+- *Device serial number*. The value that will be handed to apps.  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
+_______________________________________________
+## GPU settings  
+Substitutes the graphics adapter data that apps and sites receive.  
+![GPU settings](../assets/setting/Android_Setting_pic35.png)  
+
+- *GPU Vendor*. Vendor of the graphics adapter.  
+- *GPU Renderer*. Model of the graphics adapter.  
+- *Add noise to canvas fingerprint*. Makes the device's canvas fingerprint unique.  
+
+In code the same values are set with [**AddGpu**](../../API/DeviceOptions#addgpu) and [**AddCanvasNoise**](../../API/DeviceOptions#addcanvasnoise).  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
+_______________________________________________
 ## System language selection:  
 This setting changes the language of the connected smartphone.   
 Available values: ***en, ko, de, ja, fr, ru, es, pt, hr, cn, sr, it, cs, th, in, pl, tr, uk, ar, vi, fil***  
@@ -123,6 +172,21 @@ By default, access to WebView in non-browser applications is always disabled. Th
 :::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
 ::: 
 
+_______________________________________________ 
+## Wi-Fi connection emulation  
+:::info **Added in ZennoDroid v2.4.8.0.**
+:::
+
+The device tells apps that its internet connection goes over Wi-Fi.  
+![Wi-Fi connection emulation](../assets/setting/Android_Setting_pic36.png)  
+
+- *Disabled*. Apps see the connection as it is.  
+- *Enabled*. Apps see the connection as Wi-Fi.  
+
+In code the same thing is switched on with [**AddWiFiEmulation**](../../API/DeviceOptions#addwifiemulation).  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
 _______________________________________________ 
 ## Generate a device
 :::info **Added in ZennoDroid v2.4.6.0.**

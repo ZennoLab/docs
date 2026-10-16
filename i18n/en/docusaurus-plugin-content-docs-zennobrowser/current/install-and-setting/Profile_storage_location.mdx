@@ -9,9 +9,15 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Profile Storage Location
 <DisclaimerNotice />
 
+By default, profiles are stored in the following directory: 
+```
+C:\Users\{USER}\AppData\Local\ZennoLab\Profiles
+```
+
 Currently, setting the profile storage path works like this:
 1. You need to create a `zp8.profilemanager.json` file in your Documents (if it doesn't already exist)
 2. Add a Paths section to the file
+
 Example:
 
 **To save to the TWST folder**
@@ -22,12 +28,12 @@ Example:
 ``` 
 
 
-**Or if you want to save profiles to the D drive in the %Name% folder, add the following:**
+**Or if you want to save profiles to the D drive in the Name folder, add the following:**
 ```json
 { "Paths": 
-    { "ProfilesRootPath": "D:/%Name%" } 
+    { "ProfilesRootPath": "D:/Name" } 
 }
 ```
 :::warning **Please note**
-The path in Explorer is written as `D:\%Name%`, but for JSON you need to use `D:/%Name%`.
+The path in Explorer is written as `D:\Name`, but for JSON you need to use `D:/Name`.
 :::

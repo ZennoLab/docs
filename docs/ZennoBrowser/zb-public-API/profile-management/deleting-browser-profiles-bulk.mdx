@@ -1,7 +1,7 @@
 ﻿---
 sidebar_position: 6
-sidebar_label: Массовое удаление профилей
-title: Массовое удаление браузерных профилей
+sidebar_label: Удаление браузерных профилей (массово)
+title: Удаление браузерных профилей (массово)
 description: Удаление нескольких браузерных профилей одновременно — подробное руководство по ZennoBrowser Public API. Детальные инструкции, примеры использования и руководство по настройке
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
@@ -16,17 +16,6 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | :-----: | :-----: | :-----: | :-----: | :----- |
 | workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. \-1 означает рабочее пространство по умолчанию. |
 | body | JSON-Array | UUID profiles |  | Идентификаторы целевых браузерных профилей. Пример: `["uuid1", "uuid2"]`  |
-
-:::note
-Список профилей для удаления должен быть указан в теле запроса как массив в следующем формате:
-
-```json
-[
-  "884d8f8d-9a4e-4b1e-9dd3-a028d3ae419b",
-  "d24eba34-12d6-4412-ab20-80fae618c264"
-]
-```
-:::
 
 #### **Пример запроса:**
 
@@ -80,22 +69,30 @@ using (var response = await client.SendAsync(request))
 ```
 http://localhost:8160/v1/profiles/{profileId}?workspaceId=-1
 ```  
-**Data:**    
-`["uuid1", "uuid2"]`
+**Body (JSON):**
+```json
+[
+  "uuid1",
+  "uuid2"
+]
+```
 
 ![](../assets/image18.png)
 
 **Дополнительно:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: токен из **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: токен из **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Ответ API:**
 
 | Код ответа | Результат |
 | :---: | :---: |
 | `200 OK` | Успешно |
-| `500 Error` | Внутренняя ошибка сервера |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
 
 **Успешный ответ (200 OK):**
 

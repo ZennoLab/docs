@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "title": "Folder Management",
-    "description": " "
+    "description": "Operations for working with ZennoBrowser profile folders."
   }
-} 
+}

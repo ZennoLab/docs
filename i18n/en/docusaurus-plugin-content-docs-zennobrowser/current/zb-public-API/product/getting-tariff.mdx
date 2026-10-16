@@ -1,0 +1,95 @@
+---
+sidebar_position: 4
+sidebar_label: Getting Tariff
+title: Getting Tariff
+description: Retrieves the workspace tariff. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method returns the current tariff for the specified workspace.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+
+#### **Example request:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/product/tariff?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/product/tariff?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/product/tariff?workspaceId=-1
+```
+
+![](../assets/zp_product_tarif.png)
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+```json
+{
+  "tariffName": "Sample Name",
+  "properties": [
+    "string"
+  ],
+  "limitThreads": 1,
+  "limitLocalProfiles": 1
+}
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

@@ -1,0 +1,108 @@
+---
+sidebar_position: 19
+sidebar_label: Getting Cookie Robot Run Status
+title: Getting Cookie Robot Run Status
+description: Retrieves the status of a previously started Cookie Robot run for each profile — comprehensive guide for ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method returns the status of a previously started Cookie Robot run for each profile. The request body contains the `runId` returned when Cookie Robot was started.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
+
+#### **Request body:**
+
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | string | uuid | (optional) | Run identifier returned by the Run Cookie Robot method. |
+
+#### **Example request:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/script_run_status?workspaceId=-1' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '"223e4567-e89b-12d3-a456-426614174000"'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/script_run_status?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+request.Content = new StringContent("\"223e4567-e89b-12d3-a456-426614174000\"", Encoding.UTF8, "application/json");
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/profiles/script_run_status?workspaceId=-1
+```
+
+**Body (JSON):**
+```json
+"223e4567-e89b-12d3-a456-426614174000"
+```
+
+**Additionally:**  
+User-Agent: `{-Profile.UserAgent-}`  
+Api-Token: Token from **UserArea2**.
+
+#### **Response API:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
+
+**Success Response (200 OK):**
+
+```json
+{
+  "statuses": [
+    {
+      "passed": 2,
+      "profileId": "123e4567-e89b-12d3-a456-426614174000",
+      "script": "CookieRobot",
+      "status": "InProgress",
+      "total": 5
+    }
+  ]
+}
+```
+
+**Error Response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---

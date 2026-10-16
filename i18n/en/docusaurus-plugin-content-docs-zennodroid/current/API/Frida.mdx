@@ -1,0 +1,478 @@
+---
+sidebar_position: 130
+sidebar_label: Frida API
+title: Frida API | ZennoDroid Documentation | ZennoLab
+description: Frida API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Frida API
+<DisclaimerNotice />
+## Description
+
+A set of interfaces for dynamic analysis and application instrumentation via **Frida** in ZennoDroid.
+
+| Interface | Description |
+|---|---|
+| `IFridaDeviceAPI` | Managing Frida Server and connecting to processes |
+| `IFridaSessionAPI` | Session for connecting to a specific process |
+| `IFridaScriptAPI` | Script lifecycle and message exchange |
+
+_______________________________________________
+## IFridaDeviceAPI
+
+Designed for working with the **Frida** dynamic analysis tool on an Android device. Allows you to manage Frida Server, connect to processes, and inject scripts.
+
+### Id
+
+- **`string Id { get; }`**  
+    Unique device identifier.
+    
+    **Returns:**  
+    A string with the device ID (e.g. ADB serial).
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+project.SendInfoToLog(device.Id); // Serial number of the device
+```
+
+### Name
+
+- **`string Name { get; }`**  
+    Device name.
+    
+    **Returns:**  
+    Human-readable name of the device or emulator.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+project.SendInfoToLog(device.Name); // Name of the device
+```
+
+---
+
+### Attach
+
+- **`IFridaSessionAPI Attach(uint pid)`**  
+    Attaches to an already running process.
+    
+    **Parameters:**
+    - `pid` — process identifier.
+    
+    **Returns:**  
+    An [`IFridaSessionAPI`](#ifridasessionapi) object representing the active session.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var pid = device.Spawn("com.android.settings");
+var session = device.Attach(pid); // Attach to the process by its PID
+```
+
+---
+
+### DetachAllSessions
+
+- **`void DetachAllSessions()`**  
+    Detaches all active Frida sessions on the device.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+device.DetachAllSessions(); // Close every Frida session on the device
+```
+
+---
+
+### DetachSessionByScriptName
+
+- **`void DetachSessionByScriptName(string scriptName)`**  
+    Detaches the session associated with the specified script.
+    
+    **Parameters:**
+    - `scriptName` — name of the script used to find and detach the session.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+script.Load();
+
+device.DetachSessionByScriptName("myScript"); // Close the script's session by its name
+```
+
+---
+
+### InstallAndRunServer
+
+- **`void InstallAndRunServer()`**  
+    Installs (if necessary) and starts Frida Server on the device.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+device.InstallAndRunServer(); // Install and start frida-server on the device
+```
+
+---
+
+### KillServer
+
+- **`void KillServer()`**  
+    Stops Frida Server.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+
+device.KillServer(); // Stop frida-server on the device
+```
+
+---
+
+### LoadScriptToApp
+
+- **`void LoadScriptToApp(string packageName, string source)`**  
+    Loads and executes a Frida script in the specified application.
+    
+    **Parameters:**
+    - `packageName` — application package name;
+    - `source` — Frida script source code (JavaScript).
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+// Inject the script into the application
+device.LoadScriptToApp("com.android.settings", project.Variables["script"].Value);
+```
+
+---
+
+### LoadScriptToFrontmost
+
+- **`void LoadScriptToFrontmost(string source)`**  
+    Loads and executes a script in the currently active application.
+    
+    **Parameters:**
+    - `source` — script source code.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+// Inject the script into the application in the foreground
+device.LoadScriptToFrontmost(project.Variables["script"].Value);
+```
+
+---
+
+### Resume
+
+- **`void Resume(uint pid)`**  
+    Resumes execution of a previously spawned process.
+    
+    **Parameters:**
+    - `pid` — process identifier.
+
+#### Example
+```csharp
+var source = project.Variables["script"].Value;
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+var pid = device.Spawn("com.android.settings");
+var session = device.Attach(pid);
+
+var script = session.CreateScript(source, "myScript");
+script.Message += (o, e) => project.SendInfoToLog(e.Message);
+script.Load();
+
+device.Resume(pid);
+```
+
+Contents of the `script` variable (prints a message to the log):
+```javascript
+console.log('hello!')
+```
+
+---
+
+### Spawn
+
+- **`uint Spawn(string packageName)`**  
+    Launches an application in a suspended state (until `Resume` is called).
+    
+    **Parameters:**
+    - `packageName` — application package name.
+    
+    **Returns:**  
+    The `pid` of the created process.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var pid = device.Spawn("com.android.settings"); // Start the app suspended
+var session = device.Attach(pid);
+
+device.Resume(pid); // Let it run
+```
+
+_______________________________________________
+## IFridaSessionAPI
+
+Represents a session connected to a process via Frida. Acts as the intermediate layer between `IFridaDeviceAPI` (device) and `IFridaScriptAPI` (scripts).
+
+### Pid
+
+- **`uint Pid { get; }`**  
+    Identifier of the process the session is connected to.
+    
+    **Returns:**  
+    Process `pid`.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+
+project.SendInfoToLog(session.Pid.ToString()); // PID of the process the session is attached to
+```
+
+---
+
+### CreateScript
+
+- **`IFridaScriptAPI CreateScript(string source, string name)`**  
+    Creates a Frida script with the specified name.
+    
+    **Parameters:**
+    - `source` — script source code (JavaScript);
+    - `name` — script name.
+    
+    **Returns:**  
+    An [`IFridaScriptAPI`](#ifridascriptapi) object.
+
+- **`IFridaScriptAPI CreateScript(string source)`**  
+    Creates a Frida script without an explicit name.
+    
+    **Parameters:**
+    - `source` — script source code.
+    
+    **Returns:**  
+    An [`IFridaScriptAPI`](#ifridascriptapi) object.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var source = project.Variables["script"].Value;
+
+var named = session.CreateScript(source, "myScript"); // Named - DetachSessionByScriptName closes it
+var script = session.CreateScript(source); // Without a name
+```
+
+---
+
+### Detach
+
+- **`void Detach()`**  
+    Detaches from the process.
+    
+    **Description:**  
+    Terminates the current Frida session and releases resources.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+
+session.Detach(); // Detach from the process and release the session
+```
+
+_______________________________________________
+## IFridaScriptAPI
+
+Represents an individual Frida script. Manages the script lifecycle and message exchange between C# code and injected JavaScript.
+
+### Name
+
+- **`string Name { get; }`**  
+    Script name.
+    
+    **Returns:**  
+    String name identifying the script.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+project.SendInfoToLog(script.Name); // myScript
+```
+
+---
+
+### Eternalize
+
+- **`void Eternalize()`**  
+    Makes the script "permanent".
+    
+    **Description:**  
+    The script continues running even after the session ends or the client disconnects.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Load();
+script.Eternalize(); // The script keeps running after the session is closed
+session.Detach();
+```
+
+---
+
+### Load
+
+- **`void Load()`**  
+    Loads and starts the script in the process.
+    
+    **Description:**  
+    After calling this, the script begins executing.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Message += (o, e) => project.SendInfoToLog(e.Message); // Subscribe before Load
+script.Load(); // Start the script inside the process
+```
+
+---
+
+### Message
+
+- **`EventHandler<FridaScriptMessageEventArgs> Message`**  
+    Event: message from the script.
+    
+    **Description:**  
+    Messages from the script (via `send()` or `console.log()`) are handled in C# through this event.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Message += (o, e) => project.SendInfoToLog(e.Message); // The script called send() or console.log()
+script.Load(); // Subscribe before Load, or the first messages are lost
+```
+
+---
+
+### Post
+
+- **`void Post(string message)`**  
+    Sends a message to the Frida script.
+    
+    **Parameters:**
+    - `message` — string message.
+    
+    **Description:**  
+    Used to pass data into JavaScript (handled via `recv()`).
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+script.Load();
+
+script.Post("{\"action\":\"ping\"}"); // recv() picks the message up inside the script
+```
+
+---
+
+### PostWithData
+
+- **`void PostWithData(string message, byte[] data)`**  
+    Sends a message with binary data.
+    
+    **Parameters:**
+    - `message` — string message;
+    - `data` — byte array.
+    
+    **Description:**  
+    Allows passing binary data (e.g. files, buffers).
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+script.Load();
+
+var data = File.ReadAllBytes(project.Path + "payload.bin");
+script.PostWithData("{\"action\":\"write\"}", data); // The message along with binary data
+```
+
+---
+
+### Unload
+
+- **`void Unload()`**  
+    Unloads the script.
+    
+    **Description:**  
+    Stops execution and removes the script from the process.
+
+#### Example  
+```csharp
+var device = instance.DroidInstance.FridaDevice;
+device.InstallAndRunServer();
+
+var session = device.Attach(device.Spawn("com.android.settings"));
+var script = session.CreateScript(project.Variables["script"].Value, "myScript");
+
+script.Load();
+script.Unload(); // Stop the script and remove it from the process
+```
+
+_______________________________________________

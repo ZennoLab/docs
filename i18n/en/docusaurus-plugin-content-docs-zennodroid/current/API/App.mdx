@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 40
 sidebar_label: App API
 title: App API | ZennoDroid Documentation | ZennoLab
 description: App API - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -8,109 +8,230 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # App API
 <DisclaimerNotice />
+## Description
 
-## Description  
-**`IDroidAppAPI App`**  
+`IDroidAppAPI` is designed to manage applications on an Android device in ZennoDroid. Provides methods for working with app data, accounts, notifications, cookies, and app state.
 
-Gives you access to manage apps on your device. With this interface you can install, uninstall, open, and close apps, as well as perform other app-related actions.  
-
-Most methods often need a *`packageName`* parameter — this is the app's name, which helps to identify and manage the right app. To find an app's package name, you can use the [**Installed Apps**](../Tools/Installed_App) tool.
+Most methods accept a `packageName` parameter — the app's package name. Use the [**Installed Apps**](../Tools/Installed_App) tool to find the right name.
 
 This follows the same logic as the **App Actions** block for the [**Lite/Pro**](../Android/pro-lite/App) and [**Enterprise**](../Android/Enterprise/App) versions.
-_______________________________________________  
-## Properties  
-- **Name of the current open app**.
-```csharp
-string Top { get; }
-```  
+## Properties
 
-- **Unique ID of the active Android process**.
-```csharp
-uint TopPid { get; }
-```  
 
-#### Examples:  
+### Top
+
+- **`string Top { get; }`**  
+    The currently active app.
+    
+    **Returns:**  
+    The package name of the foreground app.
+
+### TopPid
+
+- **`uint TopPid { get; }`**  
+    PID of the current app.
+    
+    **Returns:**  
+    The process identifier.
+
+#### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
 string top = app.Top;
 uint TopPid = app.TopPid;
 ```
-_______________________________________________  
-## Methods  
-### Open an app
-```csharp
-void Open(string packageName)  
-```   
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-```  
-
-*Overload:*   
-```csharp
-string activityName  // Activity to launch for the app.
-```
-
-#### Example  
-```csharp
-//#1
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
-app.Open(packageName); // Open the app
-
-//#2
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
-var activity = ".MainActivity"; // Chrome's main activity (not a working example!)
-app.Open(packageName, activity); // Open app with specific activity
-```
 _______________________________________________
-### Open an app with a specific URL
-```csharp
-void OpenUrl(string url, string packageName)  
-```   
+## Methods
 
-*Parameters:*   
-```csharp
-string url  // URL to open.
-string packageName // App name for this method to work.
-```  
+
+### AddAccount
+
+- **`bool AddAccount(string name, string type, string password)`**  
+    Adds an account to the device.
+    
+    **Parameters:**
+    - `name` — account name (e.g. email or login);
+    - `type` — account type (e.g. `com.google`, `com.facebook.auth.login`);
+    - `password` — the account password in encrypted form, exactly as [**GetAccounts**](#getaccounts) returns it. A plain-text password is not accepted. An empty string and `null` mean the same thing: no password is set.
+    
+    **Returns:**  
+    `true` if the account was added successfully; otherwise `false`.
+
+- **`bool AddAccount(string name, string type, string password, string metadata)`**  
+    Adds an account with additional metadata.
+    
+    **Parameters:**
+    - `name` — account name;
+    - `type` — account type;
+    - `password` — the account password in encrypted form, exactly as [**GetAccounts**](#getaccounts) returns it;
+    - `metadata` — additional account data exactly as [**GetAccounts**](#getaccounts) returned it: that is what carries the account, authorisation and all, to another device. Arbitrary text or your own JSON will not do.
+    
+    **Returns:**  
+    `true` if the account was added successfully; otherwise `false`.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
-var url = "http://ya.ru";
-app.OpenUrl(url, packageName); // Open Chrome and go to ya.ru
+// Take the account from one device
+var json = app.GetAccounts("com.android.chrome");
+project.Json.FromString(json);
+
+var name = project.Json[0].name;
+var type = project.Json[0].type;
+var password = project.Json[0].password;
+var metadata = project.Json[0].metadata;
+
+// And add it on another one
+app.AddAccount(name, type, password); // The account alone
+app.AddAccount(name, type, password, metadata); // Along with the authorisation
 ```
-_______________________________________________
-### Close a specific app
-```csharp
-void Close(string packageName)  
-```   
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-```  
+---
+
+### AppDir
+
+- **`string AppDir(string packageName)`**  
+    Returns the path to the app's installation directory on the device.
+    
+    **Parameters:**
+    - `packageName` — package name (e.g. `com.android.chrome`).
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var dir = app.AppDir("com.android.chrome"); // The application's directory on the device
+project.SendInfoToLog(dir);
+```
+
+---
+
+### BackupAppData
+
+- **`void BackupAppData(string packageName, string pathToBackup)`**  
+    Creates a backup of app data.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `pathToBackup` — path to save the backup.
+
+- **`void BackupAppData(string packageName, string pathToBackup, bool savePermissions)`**  
+    Creates a backup with the option to save app permissions.
+    
+    **Parameters:**
+    - `savePermissions` — whether to save the current app permissions.
+
+- **`void BackupAppData(string packageName, string pathToBackup, bool savePermissions, string accountType)`**  
+    Extended backup with account type support.
+    
+    **Parameters:**
+    - `savePermissions` — save permissions;
+    - `accountType` — account type (e.g. `com.yandex.passport`, `com.twitter.android.auth.login`). The account type can be found using the `GetAccounts(string packageName)` method.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+var pathSave = @"/dir/bakups/name_bakup"; // Where to save the backup
+app.BackupAppData(packageName, pathSave); // Make a backup
+```
+
+---
+
+### Clean
+
+- **`void Clean(string packageName)`**  
+    Completely clears app data (resets the app to its post-install state).
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+app.Clean(packageName); // Clear app data
+```
+
+---
+
+### CleanCache
+
+- **`void CleanCache(string packageName)`**  
+    Clears the app cache only.
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+app.CleanCache(packageName); // Clear app cache
+```
+
+---
+
+### ClearAllNotifications
+
+- **`void ClearAllNotifications()`**  
+    Clears all device notifications.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.ClearAllNotifications(); // Clear all notifications
+```
+
+---
+
+### ClearAppNotifications
+
+- **`void ClearAppNotifications(string packageName)`**  
+    Clears notifications for a specific app.
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+app.ClearAppNotifications(packageName); // Clear app notifications
+```
+
+---
+
+### Close
+
+- **`void Close(string packageName)`**  
+    Closes an app.
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
 app.Close(packageName); // Close the app
 ```
-_______________________________________________
-### Close all apps
-```csharp
-void CloseAll()  
-```   
+
+---
+
+### CloseAll
+
+- **`void CloseAll()`**  
+    Closes all apps.
 
 #### Example  
 ```csharp
@@ -118,180 +239,124 @@ var app = instance.DroidInstance.App;
 
 app.CloseAll(); // Close all apps
 ```
-_______________________________________________
-### Clear app data
-```csharp
-void Clean(string packageName)  
-```   
-This makes the app as fresh as after installation.
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
+---
 
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
+### DataDir
 
-var packageName = "com.google.chrome"; // App name
-app.Clean(packageName); // Clear app data
-```
-_______________________________________________
-### Clear app cache
-```csharp
-void CleanCache(string packageName)  
-```   
-
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
+- **`string DataDir(string packageName)`**  
+    Returns the app's data directory.
+    
+    **Parameters:**
+    - `packageName` — package name.
+    
+    **Returns:**  
+    Path to the data directory (typically `/data/data/...`).
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
-app.CleanCache(packageName); // Clear app cache
-```
-_______________________________________________
-### Install an app using an APK
-```csharp
-void InstallApk(string path)  
-```   
-
-*Parameters:*   
-```csharp
-string path // Path to the APK file.
-``` 
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var pathApk = @"\chrome.apk"; // APK file path
-app.InstallApk(pathApk); // Install the app
-```
-_______________________________________________
-### Check if an app is installed
-```csharp
-bool IsInstalled(string packageName)  
-```   
-
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
-var isApk = app.IsInstalled(packageName); // Check if app is installed
-
-if (!isApk) // If not, install it
-{
-    var pathApk = @"\chrome.apk"; // APK file path
-    app.InstallApk(pathApk); // Install the app
-}
-```
-_______________________________________________
-### Uninstall an app
-```csharp
-void Delete(string packageName)  
-```   
-
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
-app.Delete(packageName); // Uninstall the app
-```
-_______________________________________________
-### Get app's UID
-```csharp
-string Uid(string packageName)  
-```   
-
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
-var uid = app.Uid(packageName); // Get app UID
-```
-_______________________________________________
-### Get app data directory
-```csharp
-string DataDir(string packageName)  
-```   
-
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var directory = app.DataDir(packageName); // Get app data directory
 ```
-_______________________________________________
-### Get a list of all apps on the device
-```csharp
-string[] GetListPackages()  
-```   
+
+---
+
+### Delete
+
+- **`void Delete(string packageName)`**  
+    Uninstalls an app from the device.
+    
+    **Parameters:**
+    - `packageName` — package name.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packages = app.GetListPackages(); // Get list of all installed apps
+var packageName = "com.android.chrome"; // App name
+app.Delete(packageName); // Uninstall the app
 ```
-_______________________________________________
-### Get a list of all system apps on the device
-```csharp
-string[] GetListSystemPackages()  
-```   
+
+---
+
+### DeleteCookie
+
+- **`string DeleteCookie(string packageName, string host = null, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false)`**  
+    Deletes cookies from the app's Chromium store. The filters are the same as in `GetCookie` and are applied on the device.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `host` — domain filter: deletes cookies of this domain and its subdomains, several domains are separated by commas. An empty value means any domain;
+    - `name` — cookie name filter (exact match), several names are separated by commas. An empty value means any name;
+    - `persistentOnly` — delete only persistent cookies, leaving session ones untouched;
+    - `secureOnly` — delete only cookies with the `Secure` flag;
+    - `httpOnly` — delete only cookies with the `HttpOnly` flag.
+    
+    **Returns:**  
+    A JSON report of the deletion: how many cookies were scanned and deleted for each database.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packages = app.GetListSystemPackages(); // Get list of all system apps
+var packageName = "com.android.chrome"; // App name
+
+// Delete a single cookie of example.com and its subdomains
+var report = app.DeleteCookie(packageName, "example.com", "sid");
+project.Json.FromString(report);
+
+// Wipe the app's cookie store completely
+app.DeleteCookie(packageName);
 ```
-_______________________________________________
-### Get a list of all user-installed apps on the device
-```csharp
-string[] GetListUserPackages()  
-```   
+
+:::warning Important notes
+- A call **with no filters deletes every cookie** of the app.
+- **Root** is required: the app is force-stopped during the deletion, and its data directory is written to.
+- If the app has never been launched, its cookie store does not exist yet and the method returns an empty string.
+:::
+
+---
+
+### GetAccounts
+
+- **`string GetAccounts(string packageName)`**  
+    Gets the list of accounts for an app in JSON format.
+    
+    **Parameters:**
+    - `packageName` — package name.
+    
+    **Returns:**  
+    A JSON array of accounts, each with `name`, `type`, `password` and `metadata`. The password and the metadata come back encrypted - which is the form `AddAccount` takes them in. An empty string when there are none.
+
+- **`string GetAccounts(string packageName, string type)`**  
+    Gets accounts of a specific type.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `type` — account type (e.g. `com.google`).
+    
+    **Returns:**  
+    A JSON array of the accounts of that type, in the same shape. An empty string when there are none.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packages = app.GetListUserPackages(); // Get list of all user-installed apps
+var packageName = "com.android.chrome"; // App name
+var json = app.GetAccounts(packageName); // Get app accounts
 ```
-_______________________________________________
-### Get all notifications (in JSON format)
-```csharp
-string GetAllNotifications()  
-```   
+
+---
+
+### GetAllNotifications
+
+- **`string GetAllNotifications()`**  
+    Gets all device notifications in JSON format.
+    
+    **Returns:**  
+    A string with notification data.
 
 #### Example  
 ```csharp
@@ -300,208 +365,245 @@ var app = instance.DroidInstance.App;
 var json = app.GetAllNotifications(); // Get all notifications
 project.Json.FromString(json); // Process JSON
 ```
-_______________________________________________
-### Get notifications only for the selected app (in JSON format)
-```csharp
-string GetAppNotifications(string packageName)  
-```   
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
+---
+
+### GetApplicationsInfo
+
+- **`string GetApplicationsInfo()`**  
+    Returns detailed information about all installed applications in JSON format.
+    
+    **Returns:**  
+    A JSON string with application data: package name, launch activity, display name, version, and whether it is a system app.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
-var json = app.GetAppNotifications(packageName); // Get all notifications for the app
+var json = app.GetApplicationsInfo(); // Get detailed information about all applications
 project.Json.FromString(json); // Process JSON
 ```
-_______________________________________________
-### Clear all received notifications 
-```csharp
-void ClearAllNotifications()  
-```   
+
+---
+
+### GetAppNotifications
+
+- **`string GetAppNotifications(string packageName)`**  
+    Gets notifications for a specific app in JSON format.
+    
+    **Parameters:**
+    - `packageName` — package name.
+    
+    **Returns:**  
+    A string with notifications.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-app.ClearAllNotifications(); // Clear all notifications
+var packageName = "com.android.chrome"; // App name
+var json = app.GetAppNotifications(packageName); // Get app notifications
+project.Json.FromString(json); // Process JSON
 ```
-_______________________________________________
-### Clear notifications only for the selected app
-```csharp
-void ClearAppNotifications(string packageName)  
-```   
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
+---
 
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
+### GetCookie
 
-var packageName = "com.google.chrome"; // App name
-app.ClearAppNotifications(packageName); // Clear notifications for the app
-```
-_______________________________________________
-### Back up the data of a selected app
-```csharp
-void BackupAppData(string packageName, string pathToBackup)  
-```   
+- **`string GetCookie(string packageName)`**  
+    Gets the app's cookies.
+    
+    **Parameters:**
+    - `packageName` — package name.
+    
+    **Returns:**  
+    A string with cookies.
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-string pathToBackup // Path to save the backup.
-``` 
+- **`string GetCookie(string packageName, string host, string name = null, bool persistentOnly = false, bool secureOnly = false, bool httpOnly = false)`**  
+    Gets the app's cookies with filtering. The filters are applied on the device before the values are decrypted, which makes this overload convenient for large stores.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `host` — domain filter: keeps cookies of this domain and its subdomains, several domains are separated by commas. An empty value means any domain;
+    - `name` — cookie name filter (exact match), several names are separated by commas. An empty value means any name;
+    - `persistentOnly` — exclude session cookies;
+    - `secureOnly` — keep only cookies with the `Secure` flag;
+    - `httpOnly` — keep only cookies with the `HttpOnly` flag.
+    
+    **Returns:**  
+    A string with cookies in the same format as `GetCookie(packageName)`.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
-var pathSave = @"/dir/bakups/name_bakup"; // Where to save the backup
-app.BackupAppData(packageName, pathSave); // Make a backup
-```
-_______________________________________________
-### Restore app data from a backup
-```csharp
-void RestoreAppData(string packageName, string pathToBackup)  
-```   
-
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-string pathToBackup // Path to the backup.
-``` 
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
-var pathLoad = @"/dir/bakups/name_bakup"; // Backup storage path
-app.RestoreAppData(packageName, pathLoad); // Load the backup
-```
-_______________________________________________
-### Get app cookies
-```csharp
-string GetCookie(string packageName)  
-```   
-
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
-
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var cookies = app.GetCookie(packageName); // Get app cookies
-```
-_______________________________________________
-### Get the path where app cookies are stored
-```csharp
-string GetCookiePath(string packageName)  
-```   
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
+// Only persistent Secure cookies of example.com and its subdomains
+var filtered = app.GetCookie(packageName, "example.com", null, true, true);
+```
+
+---
+
+### GetCookiePath
+
+- **`string GetCookiePath(string packageName)`**  
+    Returns the path to the app's cookie file.
+    
+    **Parameters:**
+    - `packageName` — package name.
+    
+    **Returns:**  
+    Path to the cookie file.
 
 #### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
-var packageName = "com.google.chrome"; // App name
+var packageName = "com.android.chrome"; // App name
 var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
 ```
-_______________________________________________
-### Delete an account
+
+---
+
+### GetLaunchableApplicationsInfo
+
+- **`string GetLaunchableApplicationsInfo()`**  
+    Returns detailed information in JSON format only for applications that can be launched (i.e. those exposing a launcher activity). The same set of fields as `GetApplicationsInfo`.
+    
+    **Returns:**  
+    A JSON string with data about launchable applications: package name, launch activity, display name, version, and whether it is a system app.
+
+#### Example  
 ```csharp
-bool RemoveAccount(string name, string type)  
-```   
+var app = instance.DroidInstance.App;
 
-*Parameters:*   
+var json = app.GetLaunchableApplicationsInfo(); // Get information only about launchable applications
+project.Json.FromString(json); // Process JSON
+```
+
+---
+
+### GetListPackages
+
+- **`string[] GetListPackages()`**  
+    Returns a list of all packages on the device.
+    
+    **Returns:**  
+    Array of package names.
+
+#### Example  
 ```csharp
-string name // Account name.
-string type // Account type.
-``` 
+var app = instance.DroidInstance.App;
 
-:::tip **Often, an account is stored not in the app itself, but in the account manager.**
-For example, Yandex Go, Yandex Mail, and Yandex Music apps use a shared auth system. So, if you delete one of these apps, the other two can still access the account.
+var packages = app.GetListPackages(); // Get list of all installed apps
+```
 
-In these cases, you need to get the accounts from the app and force remove them.
+---
+
+### GetListSystemPackages
+
+- **`string[] GetListSystemPackages()`**  
+    Returns a list of system apps.
+    
+    **Returns:**  
+    Array of package names.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListSystemPackages(); // Get list of all system apps
+```
+
+---
+
+### GetListUserPackages
+
+- **`string[] GetListUserPackages()`**  
+    Returns a list of user-installed apps.
+    
+    **Returns:**  
+    Array of package names.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packages = app.GetListUserPackages(); // Get list of all user-installed apps
+```
+
+---
+
+### ImportCookie
+
+- **`string ImportCookie(string packageName, string cookies, bool replaceAll = false)`**  
+    Imports cookies into the app's Chromium store. The values are encrypted on the device with the same scheme the app itself uses.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `cookies` — cookies as a JSON array in the ZennoLab format (the same one `GetCookie` returns);
+    - `replaceAll` — `true` clears the store before the import, `false` adds the cookies and updates the existing ones.
+    
+    **Returns:**  
+    A JSON report of the import: how many cookies were inserted, replaced, skipped, and failed for each database.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+
+var cookies = @"[{
+  ""domain"": "".example.com"",
+  ""name"": ""sid"",
+  ""value"": ""abc123"",
+  ""path"": ""/"",
+  ""expirationDate"": 1790000000,
+  ""httpOnly"": true,
+  ""secure"": true,
+  ""sameSite"": ""Lax"",
+  ""is_persistent"": true
+}]"; // Cookies in the ZennoLab format
+
+var report = app.ImportCookie(packageName, cookies); // Add the cookies to the app's store
+project.Json.FromString(report);
+```
+
+:::warning Important notes
+- **Root** is required: the app is force-stopped during the import, and the store is written on its behalf.
+- The app has to be launched at least once, otherwise its cookie store does not exist yet and the method returns an error.
 :::
 
-#### Example  
-```csharp
-var app = instance.DroidInstance.App;
+---
 
-var packageName = "com.google.chrome"; // App name
-var pathCookie = app.GetCookiePath(packageName); // Get the cookie storage path
-```
-_______________________________________________
-### Get all app accounts (in JSON format)
-```csharp
-string GetAccounts(string packageName) 
-```   
+### InjectScript
 
-*Parameters:*   
-```csharp
-string packageName // App name for this method to work.
-``` 
-
-*Overload:*   
-```csharp
-string type  // Account type.
-```
+- **`void InjectScript(string packageName, string script)`**  
+    Injects a JavaScript script into an app that runs before page load.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `script` — script code.
 
 #### Example  
-```csharp
-var app = instance.DroidInstance.App;
-
-var packageName = "com.google.chrome"; // App name
-var json = app.GetAccounts(packageName); // Get app accounts
-```
-_______________________________________________
-### Injecting custom javascript before page load.
-```csharp
-void InjectScript(string packageName, string script);
-```   
-
-*Parameters:*   
-```csharp
-string packageName // Application name for the method to work.
-string script // javascript to be executed before the page loads
-``` 
-
-#### Example.  
 ```csharp
 var app = "com.android.chrome";
 var script = project.Variables["script"].Value;
 
-instance.DroidInstance.App.Close(app); // Close the application
+instance.DroidInstance.App.Close(app); // Close the app
 
 var lspHelper = new LSPosedHelper(instance.DroidInstance);
-lspHelper.SetPackages(app); // Set the application in the ZennoDroid module spoofing list
+lspHelper.SetPackages(app); // Set the app in the ZennoDroid module spoofing list
 lspHelper.EnableModule(); // Enable the ZennoDroid module
 
-instance.DroidInstance.Settings.SetLSPosedSettings("{ \\"UseInjectScript\\":true }"); // Enable the ability to execute javascript before page load
-instance.DroidInstance.App.InjectScript(app, script); // Set the script to be executed before loading
+instance.DroidInstance.Settings.SetLSPosedSettings("{ \"UseInjectScript\":true }"); // Enable JavaScript injection before page load
+instance.DroidInstance.App.InjectScript(app, script); // Set the script to execute before page load
 
-instance.DroidInstance.App.Open(app); // Open the application
+instance.DroidInstance.App.Open(app); // Open the app
 ```
-The project variable script contains the code to be executed.
+The project variable *script* contains the code to execute.
 ```javascript
 (() => {
   const ID = "hello-world-date-banner";
@@ -522,4 +624,442 @@ The project variable script contains the code to be executed.
   (document.body || document.documentElement).prepend(el);
 })();
 ```
+
+---
+
+### InstallApk
+
+- **`void InstallApk(string path)`**  
+    Installs an APK file.
+    
+    **Parameters:**
+    - `path` — path to the APK.
+
+- **`void InstallApk(string path, bool useCache, bool useRoot)`**  
+    Installs an APK with additional options.
+    
+    **Parameters:**
+    - `path` — path to the APK;
+    - `useCache` — use cache during installation;
+    - `useRoot` — use root access.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var pathApk = @"\chrome.apk"; // APK file path
+app.InstallApk(pathApk); // Install the app
+```
+
+---
+
+### IsInstalled
+
+- **`bool IsInstalled(string packageName)`**  
+    Checks whether an app is installed.
+    
+    **Parameters:**
+    - `packageName` — package name.
+    
+    **Returns:**  
+    `true` if installed; otherwise `false`.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+var isApk = app.IsInstalled(packageName); // Check if the app is installed
+
+if (!isApk) // If not, install it
+{
+    var pathApk = @"\chrome.apk"; // APK file path
+    app.InstallApk(pathApk); // Install the app
+}
+```
+
+---
+
+### Open
+
+- **`void Open(string packageName)`**  
+    Launches an app.
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+- **`void Open(string packageName, string activityName)`**  
+    Launches an app with a specific Activity.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `activityName` — Activity.
+
+- **`void Open(string packageName, string activityName, string action)`**  
+    Launches an app with a specific Activity and Intent Action.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `activityName` — Activity name;
+    - `action` — Intent action (e.g. `android.intent.action.VIEW`).
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Application name
+
+app.Open(packageName); // Launch the application
+app.Open(packageName, "com.google.android.apps.chrome.Main"); // Open a specific Activity
+app.Open(packageName, "com.google.android.apps.chrome.Main", "android.intent.action.VIEW"); // With an Intent action
+```
+
+### OpenAsRoot
+
+- **`void OpenAsRoot(string packageName, string activityName)`**  
+    Launches an app with root privileges and a specific Activity.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `activityName` — Activity name.
+
+- **`void OpenAsRoot(string packageName, string activityName, string action)`**  
+    Launches an app with root privileges, a specific Activity and Intent Action.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `activityName` — Activity name;
+    - `action` — Intent action (e.g. `android.intent.action.VIEW`).
+
+#### Example  
+```csharp
+//#1
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+app.Open(packageName); // Open the app
+
+//#2
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+var activity = ".MainActivity"; // Chrome's main activity (not a working example!)
+app.Open(packageName, activity); // Open app with specific activity
+```
+
+---
+
+### OpenUrl
+
+- **`void OpenUrl(string url)`**  
+    Opens a URL.
+    
+    **Parameters:**
+    - `url` — URL to open.
+
+- **`void OpenUrl(string url, string packageName)`**  
+    Opens a URL through a specific app.
+    
+    **Parameters:**
+    - `url` — URL to open;
+    - `packageName` — app to use.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+var url = "http://ya.ru";
+app.OpenUrl(url, packageName); // Open Chrome and navigate to ya.ru
+```
+
+---
+
+### PatchFlutterLib
+
+- **`void PatchFlutterLib(string packageName, string proxy)`**  
+    Patches the Flutter library (`libflutter.so`) for a given app to redirect network traffic to BurpSuite for further analysis.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `proxy` — proxy address (e.g. `10.0.2.2:8083`).
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.app.flutter"; // Name of the Flutter application
+
+app.PatchFlutterLib(packageName, "10.0.2.2:8083"); // Send the app's traffic to BurpSuite
+app.Open(packageName);
+```
+
+---
+
+### RemoveAccount
+
+- **`bool RemoveAccount(string name, string type)`**  
+    Removes an account.
+    
+    **Parameters:**
+    - `name` — account name;
+    - `type` — account type.
+    
+    **Returns:**  
+    `true` if successfully removed.
+
+:::tip **Accounts are often stored in the account manager, not in the app itself.**
+For example, Yandex Go, Yandex Mail, and Yandex Music share the same auth system. So deleting one of these apps won't remove access to the account from the other two.
+
+In such cases you need to retrieve accounts from the app and forcibly remove them.
+:::
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.RemoveAccount("mymail@gmail.com", "com.google"); // Remove the account from the device
+```
+
+---
+
+### ResetFakeCameraFraming
+
+:::info **Available starting from ZennoDroid 2.6.1.0.**
+:::
+
+- **`void ResetFakeCameraFraming(string packageName)`**  
+    Returns the framing to its defaults: the video fills the frame from the middle, unturned and unmagnified.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.ResetFakeCameraFraming("com.android.camera2"); // Back to the default framing
+```
+
+---
+
+### RestoreAppData
+
+- **`void RestoreAppData(string packageName, string pathToBackup)`**  
+    Restores app data from a backup.
+    
+    **Parameters:**
+    - `packageName` — package name;
+    - `pathToBackup` — path to the backup.
+
+- **`void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions)`**  
+    Restores app data with the option to restore permissions.
+    
+    **Parameters:**
+    - `restorePermissions` — whether to restore app permissions.
+
+- **`void RestoreAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount)`**  
+    Extended restore with the option to restore accounts.
+    
+    **Parameters:**
+    - `restorePermissions` — restore permissions;
+    - `restoreAccount` — restore linked accounts.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Application name
+var pathSave = @"/dir/bakups/name_bakup"; // Path to the backup
+
+app.RestoreAppData(packageName, pathSave); // Restore the data
+app.RestoreAppData(packageName, pathSave, true); // Along with the permissions
+app.RestoreAppData(packageName, pathSave, true, true); // Along with the permissions and accounts
+```
+
+### RestoreDetachedAppData
+
+- **`void RestoreDetachedAppData(string packageName, string pathToBackup, bool restorePermissions, bool restoreAccount)`**  
+    Restores app data without binding to the device on which the backup was made. Requires the ZennoBackup module.
+    
+    **Parameters:**
+    - `restorePermissions` — restore permissions;
+    - `restoreAccount` — restore linked accounts.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+var pathLoad = @"/dir/bakups/name_bakup"; // Backup storage path
+app.RestoreAppData(packageName, pathLoad); // Load the backup
+```
+
+---
+
+### RestoreFlutterLib
+
+- **`void RestoreFlutterLib(string packageName)`**  
+    Restores the original Flutter library (`libflutter.so`), reverting a previously applied patch.
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+app.RestoreFlutterLib("com.app.flutter"); // Put the application's original library back
+```
+
+---
+
+### SetFakeCameraFraming
+
+:::info **Available starting from ZennoDroid 2.6.1.0.**
+:::
+
+- **`void SetFakeCameraFraming(string packageName, double anchorX, double anchorY, double zoom, int rotate, bool fit)`**  
+    Decides how the video sits inside the frame the app asked for. The video itself is not changed.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `anchorX` — which part of the video survives a horizontal trim, `0` to `1`: `0` keeps the left edge, `1` the right, `0.5` the middle. Only has an effect when there is something to trim;
+    - `anchorY` — the same vertically: `0` keeps the top, `1` the bottom;
+    - `zoom` — magnification with the proportions kept, `0.1` to `10`. `1` is no magnification, `2` shows the middle of the video at twice the size. Below `1` the video stands back: the trimmed edges come back into shot first, and only then do black bars appear;
+    - `rotate` — a quarter turn of the video, clockwise: `0`, `90`, `180` or `270`. For a video shot or saved the wrong way up;
+    - `fit` — `true` shows the whole video, adding black bars where it does not reach the edges of the frame. Off by default; worth turning on where the alternative is worse. An app that asks for a wide frame, is given a portrait video and then crops it again into a round viewfinder can leave a face out of shot entirely.
+    
+    **Description:**  
+    A video and the app's frame are rarely the same shape, so when they differ part of the video is trimmed - these settings say which part. Where the shapes agree the settings change nothing, so the first thing worth trying is a video shaped like what the app asks for.
+
+    Out-of-range values are brought into range rather than refused. The setting takes effect while the camera is running, without restarting the app or its camera session, and survives a later change of video.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.camera2"; // The default Camera app
+
+app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
+
+app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 0, false); // The middle of the video, unturned and unmagnified
+app.SetFakeCameraFraming(packageName, 0.5, 0.3, 1.5, 0, false); // Higher up and closer in
+app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 90, false); // A quarter turn clockwise
+app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 0, true); // The whole video, with black bars
+```
+
+---
+
+### SetVideoForFakeCamera
+
+:::info **Available starting from ZennoDroid 2.6.1.0.**
+:::
+
+- **`void SetVideoForFakeCamera(string packageName, string videoSource)`**  
+    Feeds a video file to the app's camera instead of the real sensor, so the app receives the video frames as if they came from the device camera. The video plays in a loop, without sound, and every frame lane stays virtual. Use the overload with playback options if the app also needs to save photos.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `videoSource` — path to the video. Either a local path on the PC (e.g. `c:\source.mp4`), which is pushed to the device, or a path that already exists on the device (starts with `/`, e.g. `/sdcard/Download/source.mp4`), which is copied without a PC transfer. An empty string disables the substitution and returns the real camera.
+    
+    **Description:**  
+    Any container MediaCodec can decode works (`.mp4`, `.mkv`, `.webm`, `.3gp`, `.m4v`, `.mov`), and the resolution of the video need not match what the app requests.
+    
+    The video is cached on the device by its content hash, so pushing the same file again — or reusing it for another app — does not transfer it a second time.
+    
+    The video can be replaced while the camera is running: a subsequent call switches playback without restarting the app or its camera session.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.camera2"; // The default Camera app
+
+// A video from the PC: pushed to the device, played in a loop and without sound
+app.SetVideoForFakeCamera(packageName, @"c:\source.mp4");
+```
+The package name of the default Camera app differs from device to device. To find it, open the camera on the device and then the [**Installed Apps**](../Tools/Installed_App) tool — the identifier is in the *Active application in the foreground* group.
+
+- **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo)`**  
+    The same, with explicit playback options.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `videoSource` — path to the video on the PC or on the device, or an empty string to disable the substitution;
+    - `loop` — restart the video when it ends. When `false`, the last frame remains on screen;
+    - `mute` — suppress the audio track of the video. Pass `false` to play the sound;
+    - `photo` — let a camera app finish saving a photo.
+
+- **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo, bool synth)`**  
+    The same, with a choice of where the app gets its camera from.
+    
+    **Parameters:**
+    - `packageName` — package name of the target app;
+    - `videoSource` — path to the video on the PC or on the device, or an empty string to disable the substitution;
+    - `loop` — restart the video when it ends;
+    - `mute` — suppress the audio track of the video;
+    - `photo` — let a camera app finish saving a photo;
+    - `synth` — hand the app the module's camera instead of intercepting the one the device opens. Off by default. It is for a device whose cameras are listed and answer questions about themselves but never deliver a frame: an emulated phone, or a handset with a broken camera.
+
+#### Example with every parameter  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.camera2"; // The default Camera app
+
+app.SetVideoForFakeCamera(
+	packageName,
+	"/sdcard/Download/source.mp4", // A video that is already on the device
+	true,  // loop - repeat
+	true,  // mute - mute the sound
+	false, // photo - going through KYC
+	true); // synth - the cameras are listed but never deliver a frame
+```
+
+The substitution starts working only once the **ZennoVCam** module is enabled in LSPosed and the target app is on its list. That is done through the [**LSPosed API**](./LSPosed) — here it is turned on for the default Camera app:
+```csharp
+var packageName = "com.android.camera2"; // The default Camera app
+
+instance.DroidInstance.App.Close(packageName); // Close the app
+
+var lspHelper = new LSPosedHelper(instance.DroidInstance);
+lspHelper.ModuleName = "com.zennolab.zennovcam"; // Work with the ZennoVCam module
+lspHelper.SetPackages(packageName); // Put the app on the scope list of the ZennoVCam module
+lspHelper.EnableModule(); // Enable the ZennoVCam module
+
+instance.DroidInstance.App.SetVideoForFakeCamera(packageName, @"c:\source.mp4"); // Feed the video to the camera
+
+instance.DroidInstance.App.Open(packageName); // Open the app
+```
+The scope list is set **before** the module is enabled: with an empty list `EnableModule` fails with *Add any package!*. The module itself does not have to be installed by hand — `SetPackages` delivers it to the device if it is not there yet.
+
+:::info ZennoVCam can be enabled without code - with the [**LSPosed module settings**](../Enterprise/LSPosed_Control#lsposed-module-settings) action. Put `com.zennolab.zennovcam` in *Module name*, the app whose camera is being replaced in *Applications*, and switch the module on.
+:::
+
+:::warning Important notes
+- `photo` is off by default because it is a trade rather than a strict improvement: to get the save through, the module hands the small helper frame lanes (metering, thumbnails) back to the real camera. Leave it `false` for a scanner or KYC app that reads frames through one of those lanes, since it would otherwise receive the real camera image.
+:::
+
+---
+
+### Uid
+
+- **`string Uid(string packageName)`**  
+    Gets the app's UID.
+    
+    **Parameters:**
+    - `packageName` — package name.
+    
+    **Returns:**  
+    The app's UID.
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+var uid = app.Uid(packageName); // Get app UID
+```
+
 _______________________________________________

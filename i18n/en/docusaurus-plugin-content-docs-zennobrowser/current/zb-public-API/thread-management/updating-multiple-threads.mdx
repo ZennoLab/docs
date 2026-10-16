@@ -1,32 +1,26 @@
-﻿---
+---
 sidebar_position: 5
-sidebar_label: Updating Threads (Bulk)
-title: Updating Multiple Threads
-description: Update multiple execution threads at once - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+sidebar_label: Continuing Multiple Execution Threads
+title: Continuing Multiple Execution Threads
+description: Continues work of multiple execution threads. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-**Description:** This method is used to update the specified execution threads allowing them to continue working. The threadTokens parameter should contain the array of valid tokens with existing workspace ID’s.
+**Description:** This method is used to update the specified execution threads, allowing them to continue working. The threadTokens parameter should contain the array of valid tokens with existing workspace IDs.
 
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
-| body | JSON-Array |  |  | The array of thread tokens to update execution threads. Cannot be null or empty. Example: `["uuid1", "uuid2"]` |
+| workspaceId | integer | int64 | -1 | The identifier of the workspace associated with the execution threads. Defaults to -1 if not specified. |
 
-:::note
-The list of thread tokens to update should be specified as an array in the request body using the following format:
+#### **Request body:**
 
-```json
-[
-  "threadToken1",
-  "threadToken2"
-]
-```
-:::
+| Field | Type | Format | Required | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| body | array[string] |  | (optional) | Array of thread tokens representing the execution threads to update. Cannot be null or empty. |
 
 #### **Example request:**
 
@@ -36,18 +30,18 @@ The list of thread tokens to update should be specified as an array in the reque
 ```bash
 curl 'http://localhost:8160/v1/threads/use_bulk?workspaceId=-1' \
   --request PUT \
-  --header 'Content-Type: application/json' \
   --header 'Api-Token: YOUR_SECRET_TOKEN' \
+
+  --header 'Content-Type: application/json' \
   --data '[
-    "threadToken1",
-    "threadToken2"
-  ]'
+  "string"
+]'
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
@@ -57,14 +51,8 @@ var request = new HttpRequestMessage
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
     },
-    Content = new StringContent("[\n  \"threadToken1\",\n  \"threadToken2\"\n]")
-    {
-        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-    }
 };
+request.Content = new StringContent("[\n  \"string\"\n]", Encoding.UTF8, "application/json");
 using (var response = await client.SendAsync(request))
 {
     response.EnsureSuccessStatusCode();
@@ -77,26 +65,34 @@ using (var response = await client.SendAsync(request))
 ```
 http://localhost:8160/v1/threads/use_bulk?workspaceId=-1
 ```  
-**Data:**   
-`["threadToken1", "threadToken2"]`
+**Body (JSON):**
+```json
+[
+  "threadToken1",
+  "threadToken2"
+]
+```
 
 ![](../assets/image37.png)
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful update.
+No response body.
 
 **Error Response (500):**
 

@@ -1,0 +1,115 @@
+---
+sidebar_position: 91
+title: "ZennoPoster 7.9.1.0 11.08.2026"
+description: ""
+date: "2026-08-11"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+# ZennoPoster 7.9.1.0 (11.08.2026) — native browser window
+
+:::info
+ZennoPoster 7.9.1 is out.  
+The headline update is a new browser mode with a native window: faster and more accurate rendering, and it fixes known issues from previous versions. Plus MCP improvements, proxy traffic accounting from the project, flexible ZennoBrowser profile generation, and a large set of fixes. You can update from your personal account.
+:::
+
+## Added
+
+### New browser mode: native window or the familiar embedded view — your choice
+
+This is the major rendering update we wrote about in [7.9.0.0](./ZennoPoster_7.9.0.0_25.06.2026.mdx). Previously the instance was always drawn inside the ProjectMaker window; now for Chromium and ChromiumFromZB you can use a **native browser window** — it is faster and more accurate in rendering.
+
+**Why this is needed.** The native window fixes the known rendering issues from 7.9.0 — delays when opening the window and preview, flickering, and artifacts at screen scales other than 100%. If you ran into this, turn the mode on in **[Settings → Instance](../../../ProjectMaker/ProjectMaker Settings/Instance_PM.mdx)**. The familiar embedded view stays the default and works as before.
+
+- **Mode switch.** Settings → Instance now has the “Use external native browser” switch. The default is the familiar embedded view. The setting is saved and applied to new instances without restarting the program.
+- **Browser window snapping.** The window “sticks” to ProjectMaker and follows it — it does not get lost among other windows and stays at hand. The chosen snap side is remembered and restored on the next launch.
+- **Context menu** of the native browser matches the familiar one. All tools work the same as in the embedded view.
+- **User-action recording** also works in the native browser and supports the same set of actions as embedding.
+- **“Wait for user action” — right in the native browser.** In native-window mode, waiting for user action is integrated directly into the browser window. This also works in ZennoPoster for Chromium and ChromiumFromZB.
+
+:::info
+What we are still finishing in the native window (coming closer to the next releases): we plan to move the mode switch to a more visible and convenient place.
+:::
+
+**Chromium browser updated to version 150.0.7871.115.**
+
+**Project MCP: create, save, and run a project.**  
+Project MCP now has tools to create a new project, save it, and run it (the equivalent of the “From start” button). We continue moving toward full ZennoPoster control via MCP.
+
+Details: [MCP Setup](../../../Hello/MCP_Setup.mdx) · [AI Assistant](../../../Hello/AI_Complete_Guide.mdx).
+
+**Proxy control with a volume limit — from the project.**  
+ZennoPoster counts inbound and outbound traffic in bytes per proxy: both for the browser (Chromium/ChromiumFromZB, including WebSocket traffic; cached responses are not counted) and for HTTP requests. HTTP traffic is counted at the HTTP Executor level, so all request cubes are included regardless of the transfer method — regular, alternative, or TLS.  
+The API now has the `ZennoPoster.ProxyTrafficInfo` object with methods to get traffic information for each proxy used during the program session.
+
+**“Create ZennoBrowser profiles” cube: full profile-generation settings.**  
+The “Default” mode has been reworked and renamed to “Configure profile”: generation parameters can now be set as flexibly as in the ZennoBrowser UI — without leaving ProjectMaker.
+
+**“Get ZennoBrowser profiles” cube: output format selection.**  
+As before — full JSON into a variable, or only profile ids into a list (same idea as profile creation).
+
+**Cookie import: time format is detected automatically.**  
+The `expirationDate` field arrives in different formats — Unix time in seconds and milliseconds, fractional and negative values, WebKit timestamp. Previously this could make import fail and cookies had to be prepared by hand; now ZennoPoster parses all common formats itself.
+
+**HTTP cubes: “Error on empty response” option.**  
+GET, POST, and the other request actions now have a checkbox: when enabled, an empty response body fails the action.
+
+**Improved recording of clicks and text input** for Chromium and ChromiumFromZB: clickable-element detection is broader (tags, ARIA roles, handlers, `cursor:pointer`), and Enter keypresses are recorded — for example submitting a Bing or Google search when there is no “Search” button.
+
+**“Center the canvas on the selected action when switching mode” setting.**  
+When enabled, switching “Without browser” / “With browser” automatically centers the canvas on the selected action.
+
+**“Show selected action” button** in the bottom-right corner of the canvas — centers the canvas on the chosen action.
+
+## Fixed
+
+**Browser and instances**
+
+- Fixed issues with opening and closing instance windows in ZennoPoster.
+- Instance preview updates in ZennoPoster are no longer affected by browser actions — for example text input and other long operations.
+- The inspected-element highlight no longer drifts when the native browser window is resized.
+- Fixed ProjectMaker startup in native-window mode: the browser window appeared on screen before ProjectMaker itself opened.
+- Fixed mobile profiles: if the browser profile was set to a mobile platform, profiles stopped being issued or failed validation, and the project ran indefinitely with errors in the log.
+- Geodata and time-zone emulation now use both IPv4 and IPv6 — ZennoPoster correctly emulates data for IPv6 proxies.
+
+**Network, HTTP, and TLS**
+
+- Fixed an issue where a POST request to an image through the TLS client returned a load error, while the alternative method returned 200. Both methods now behave the same.
+
+**Memory and optimization**
+
+- Fixed a memory leak in the HTTP Executor process when requesting images.
+- Optimized file handling: lists and tables bound to files no longer stay in memory after the thread finishes. Previously, long multi-thread runs filled memory with unused data.
+
+**AI agent (MCP)**
+
+- Fixed execution of some projects created by the AI agent via MCP. The symptom: only the first cube ran — actions sat in a group but behaved as standalone, and rebuilding the group did not help. Such projects now run from start to finish.
+- Fixed configuration of the “Work with databases” cube via MCP: when MySqlClient was requested, the agent set SqlClient. All data providers are now set to the ones requested.
+
+**ProjectMaker and UI**
+
+- Fixed issues that reset ProjectMaker dock panels.
+- Fixed hangs and crashes when switching between requests in the Traffic window and working with request-property tabs.
+- Localized the search box in the ProjectMaker Traffic monitor.
+- The GPU indicator has been removed from the ZennoPoster system-load bar: GPU monitoring is temporarily disabled, and showing an empty metric is pointless. When the feature returns, the indicator will return as well.
+
+**Integrations and modules**
+
+- Fixed various ZP7 ↔️ ZennoBrowser integration reconnect issues.
+- Fixed launching a ZennoBrowser profile with a socks5 proxy in the integration — previously the launch timed out.
+- The “Create ZennoBrowser profiles” cube now creates the profile in the specified folder — previously the profile could end up in the donor profile’s folder.
+- Fixed the default address for the 5sim SMS module.
+
+**API and C#**
+
+- ZennoPoster.Ftp methods now report errors correctly: previously a failed FTP operation still followed the “green” branch, and the error appeared only in the log.
+
+**Installation and licenses**
+
+- Fixed silent installation of ZennoPoster (including `--activateHardware=false`). An already activated license on working hardware is no longer reset when that argument is used.
+
+**Thank you for being with us. Update and share your feedback.**

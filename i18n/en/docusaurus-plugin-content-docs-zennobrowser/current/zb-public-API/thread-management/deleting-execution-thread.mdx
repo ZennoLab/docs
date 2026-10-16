@@ -1,8 +1,8 @@
 ---
 sidebar_position: 6
-sidebar_label: Stopping Execution Thread
-title: Stopping Execution Thread
-description: Stop a single execution thread - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+sidebar_label: Deleting an Execution Thread
+title: Deleting an Execution Thread
+description: Stopping Execution Thread. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -15,7 +15,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
 | threadToken | string |  | (required) | Target thread token (required). |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
 :::note
 The thread token to delete should be specified inside curly braces `{ }` in the URL path.
@@ -27,20 +27,21 @@ The thread token to delete should be specified inside curly braces `{ }` in the 
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/threads/{threadToken}?workspaceId=-1' \
+curl 'http://localhost:8160/v1/threads/thread-token-1?workspaceId=-1' \
   --request DELETE \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Delete,
-    RequestUri = new Uri("http://localhost:8160/v1/threads/{threadToken}?workspaceId=-1"),
+    RequestUri = new Uri("http://localhost:8160/v1/threads/thread-token-1?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -63,19 +64,22 @@ http://localhost:8160/v1/threads/{threadToken}?workspaceId=-1
 
 **Additionally:**  
 User-Agent: `{-Profile.UserAgent-}`  
-Api-Token: Token from **UserArea2**.  
-![](../assets/image8.png)
+Api-Token: Token from **UserArea2**.
+
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful deletion.
+No response body.
 
 **Error Response (500):**
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 70
 sidebar_label: Device Filter
 title: Device Filter | ZennoDroid Documentation | ZennoLab
 description: Device Filter - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
@@ -8,56 +8,39 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Device Filter
 <DisclaimerNotice />
+## Description
 
-## Description  
-**`IDeviceFilter`**
+`IDeviceFilter` is used to set filters when selecting or generating a device in ZennoDroid. It allows you to restrict device parameters by various characteristics such as region, manufacturer, model, and hardware features.
+## Properties
 
-This is used to work with filter settings when generating JSON data to spoof device information with LSPosed.
 
-With this API, you can set filter parameters to pick the right data when generating devices.
+### Brand
 
-### Properties  
-- **Country**
-```csharp
-string Country { get; set; }
+- **`string Brand { get; set; }`**  
+    Device brand.
+    
+    **Description:**  
+    May match the manufacturer or differ (e.g. `Redmi`, `POCO` or `Redmi|Poco`).
 
-// Examples: us|ru|de|fr
-```
+---
 
-- **Phone Manufacturer**
-```csharp
-string Manufacturer { get; set; }
+### Country
 
-// Examples: Samsung|Xiaomi
-```
+- **`string Country { get; set; }`**  
+    Device country.
+    
+    **Description:**  
+    Sets the device region (e.g. `us`, `ru`, `de` or `us|ru|de`).
 
-- **Phone Brand**
-```csharp
-string Brand { get; set; }
+---
 
-// Examples: Redmi|Poco
-```
+### GpuVendor
 
-- **Phone Model**
-```csharp
-string Model { get; set; }
-
-// Examples: SM-A505F
-```
-
-- **Android Version**
-```csharp
-string Version { get; set; }
-
-// Examples: 12|13|14|15|16
-```
-
-- **GPU Vendor**
-```csharp
-string GpuVendor { get; set; }
-
-// Examples: Qualcomm|ARM
-```
+- **`string GpuVendor { get; set; }`**  
+    GPU manufacturer.
+    
+    **Description:**  
+    E.g. `ARM`, `Qualcomm`.
 
 #### Examples  
 ```csharp
@@ -73,6 +56,37 @@ options.AddGpu = true; // Add fake GPU
 var json = instance.DroidInstance.Settings.GenerateRandomLSPosedSettings(filter, options); // Generate random data for LSPosed spoofing based on the filter and options
 instance.DroidInstance.Settings.SetLSPosedSettings(json); // Apply the spoofed data
 ```
+
+---
+
+### Manufacturer
+
+- **`string Manufacturer { get; set; }`**  
+    Device manufacturer.
+    
+    **Description:**  
+    E.g. `Samsung`, `Xiaomi`, `Poco` or `Samsung|Xiaomi|Poco`.
+
+---
+
+### Model
+
+- **`string Model { get; set; }`**  
+    Device model.
+    
+    **Description:**  
+    E.g. `SM-A505F`.
+
+---
+
+### Version
+
+- **`string Version { get; set; }`**  
+    Android version.
+    
+    **Description:**  
+    E.g. `12`, `13`, `14` or `12|13|14`.
+
 _______________________________________________
 ## Useful links  
 - [**IDroidSettingsAPI**](./Settings).

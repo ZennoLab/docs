@@ -1,8 +1,8 @@
-﻿---
+---
 sidebar_position: 4
 sidebar_label: Deleting Proxy Folder
 title: Deleting Proxy Folder
-description: Delete a proxy folder from the workspace - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
+description: Deletes the specified proxy folder. - comprehensive guide for ZennoBrowser Public API. Detailed instructions, usage examples, and configuration guide
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -14,8 +14,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | Parameter | Type | Format | Default | Description |
 | :-----: | :-----: | :-----: | :-----: | :----- |
-| proxyFolderId | string | uuid | (empty) | The identifier of the proxy folder to be deleted (Required) |
-| workspaceId | integer | int64 | \-1 | Workspace identifier. \-1 means the default workspace. |
+| proxyFolderId | string | uuid | (required) | The identifier of the proxy folder to be deleted (required). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the default workspace. |
 
 :::note
 The ID of the proxy folder to delete should be specified inside curly braces `{ }` in the URL path.
@@ -27,20 +27,21 @@ The ID of the proxy folder to delete should be specified inside curly braces `{ 
 **CURL:**
 
 ```bash
-curl 'http://localhost:8160/v1/proxy_folders/{proxyFolderId}?workspaceId=' \
+curl 'http://localhost:8160/v1/proxy_folders/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
   --request DELETE \
   --header 'Api-Token: YOUR_SECRET_TOKEN'
+
 ```
 
 **C#:**
 
 ```csharp
-using System.Net.Http.Headers;
+using System.Text;
 var client = new HttpClient();
 var request = new HttpRequestMessage
 {
     Method = HttpMethod.Delete,
-    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders/{proxyFolderId}?workspaceId="),
+    RequestUri = new Uri("http://localhost:8160/v1/proxy_folders/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1"),
     Headers =
     {
         { "Api-Token", "YOUR_SECRET_TOKEN" },
@@ -54,8 +55,10 @@ using (var response = await client.SendAsync(request))
 }
 ```
 
-**Cube:**   
-[`http://localhost:8160/v1/proxy_folders/{proxyFolderId}?workspaceId=`](http://localhost:8160/v1/proxy_folders/{proxyFolderId}?workspaceId=)
+**Cube:**  
+```
+http://localhost:8160/v1/proxy_folders/{proxyFolderId}?workspaceId=
+```
 
 ![](../assets/image27.png)
 
@@ -63,18 +66,20 @@ using (var response = await client.SendAsync(request))
 User-Agent: `{-Profile.UserAgent-}`  
 Api-Token: Token from **UserArea2**.
 
-![](../assets/image8.png)
+![](../assets/http_headers.png)
 
 #### **Response API:**
 
 | Response code | Result |
 | :---: | :---: |
-| `200 OK` | Success |
-| `500 Error` | Internal Server Error |
+| `200 OK` | OK |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Forbidden |
+| `500 Internal Server Error` | Internal Server Error |
 
 **Success Response (200 OK):**
 
-No content returned on successful deletion.
+No response body.
 
 **Error Response (500):**
 
