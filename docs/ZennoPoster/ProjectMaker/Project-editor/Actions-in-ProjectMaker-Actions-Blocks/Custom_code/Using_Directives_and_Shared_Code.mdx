@@ -15,6 +15,10 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 _______________________________________________  
 ## Описание
+:::note На заметку
+Начиная с версии ZennoPoster 7.3.2.0 появилась возможность подключить Visual Studio. Подробная инструкция приведена в статье [Проект Visual Studio](./Visual_Studio_Project.mdx).
+:::
+
 **Общий код** - это функционал, расширяющий возможности стандартных кубиков C#. Он используется для вставки дополнительных классов и функций.   
 
 А **Using-директивы** нужны для доступа к функциям и классам, а также для создания пространства имён (*namespaсes*).  
@@ -62,4 +66,92 @@ _______________________________________________
 Перейдя на эту вкладку, вы увидите перед собой два поля:  
 - **Верхнее**. Служит для добавления *namespaces*, которые используются при выполнении кода в экшенах C#. Например, для парсинга XML нужно написать `using System.Xml;`.  
 - **Нижнее**. Здесь перечислены все *using*, которые используются проектом по умолчанию. Их нельзя редактировать.  
+_______________________________________________
+## Тонкая настройка внешнего вида редактора кода
 
+:::info Информация
+Добавлено в ZennoPoster 7.2.1.0.
+:::
+
+:::warning Внимание
+Эти настройки влияют как на «Директивы using и общий код», так и на отображение кода в экшене [C# код](./CSharp_Code.mdx).
+:::
+
+Цвета оформления редактора кода можно настроить самостоятельно. Файл `SyntaxEditorColors.json` находится в директории `%AppData%\ZennoLab\ZennoPoster\7\ProjectMaker`. Цвета для светлой и тёмной темы настраиваются отдельно, в формате RGB или по именам.
+
+![Настройка цветов редактора кода](./assets/Using_Directives_and_Shared_Code/Using_Directives_and_Shared_Code_pic4.png)
+
+_______________________________________________
+## Пример работы.
+
+### Передача instance в общий код: HtmlClick
+
+В этом примере объект `instance` передаётся в функцию `HtmlClick` через аргумент. Функция ищет HTML-элемент по атрибутам и кликает по нему. Если элемент найден, возвращается строка `success`, иначе — `fail`.
+
+```csharp
+namespace ZennoLab.OwnCode
+{
+    public class CommonCode
+    {
+        public static string HtmlClick(Instance instance)
+        {
+            HtmlElement element = instance.ActiveTab.FindElementByAttribute("div", "class", "html", "regexp", 0);
+            if (element.IsVoid)
+            {
+                return "fail";
+            }
+
+            element.Click();
+            return "success";
+        }
+    }
+}
+```
+
+Для вызова функции из [кубика C#](./CSharp_Code.mdx) используйте:
+
+```csharp
+return ZennoLab.OwnCode.CommonCode.HtmlClick(instance);
+```
+
+Такое использование удобно, если в проекте есть много мест, где требуется кликнуть по одному и тому же элементу.
+
+### Изменение прозрачности изображения: SetImageOpacity
+
+Подадим изображение и коэффициент прозрачности на вход метода `SetImageOpacity`. В результате мы получим картинку с эффектом полупрозрачности, которую можно сохранить на диск.  
+```C
+public static Image SetImageOpacity(Image image, float opacity)  
+{  
+    try  {  
+		Bitmap bmp = new Bitmap(image.Width, image.Height);
+        //создание графики из картинки
+        using (Graphics gfx = Graphics.FromImage(bmp)) {
+            //создание объекта color matrix  
+            ColorMatrix matrix = new ColorMatrix();      
+            //установка прозрачности 
+            matrix.Matrix33 = opacity;  
+            //создание новых атрибутов
+            ImageAttributes attributes = new ImageAttributes();      
+            //установка цвета прозрачности картинки
+            attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);    
+            //отрисовываем картинку
+            gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+        }
+        return bmp;  
+    }  
+    catch (Exception ex) {  
+        return null;  
+    }  
+} 
+```  
+
+А вот так эта функция вызывается из [**экшена C#**](./CSharp_Code):  
+`Image img = OwnCode.CommonCode.SetImageOpacity(Image.FromFile(project.Directory + "//image.jpg"), .5f);`
+_______________________________________________
+
+## Полезные ссылки
+
+- [Проект Visual Studio](./Visual_Studio_Project.mdx)
+- [Ссылки из GAC](./References_from_GAC.mdx)
+- [Директива using (справочник по C#)](https://learn.microsoft.com/ru-ru/dotnet/csharp/language-reference/keywords/using-directive)
+- [C# код (Си шарп код .net)](./CSharp_Code.mdx)

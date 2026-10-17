@@ -1,9 +1,9 @@
 {
-  "label": "ZennoPoster and ProxyChecker Settings",
+  "label": "Настройки ZennoPoster",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "title": "Настройки ZennoPoster и ProxyChecker",
+    "title": "Настройки ZennoPoster",
     "description": "Глобальный раздел настроек: включает подраздел «Настройки ZennoPoster» и статью «Настройки ProxyChecker».",
     "slug": "/category/settings-zennoposter-proxychecker"
   }
