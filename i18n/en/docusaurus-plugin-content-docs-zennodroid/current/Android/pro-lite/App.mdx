@@ -4,6 +4,7 @@ sidebar_label: Actions with Application
 title: Actions with Application | ZennoDroid Documentation | ZennoLab
 description: Actions with Application - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
 ---
+import Link from '@docusaurus/Link';
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Actions with Application
@@ -17,11 +18,15 @@ Let's go over the available functions for working directly inside the virtual ma
 ![Add to project](../assets/App/App_pic1.png)
 _______________________________________________
 ## Available actions.
+<Link id="установка-приложения" />
+
 ### Install application.
 ![Install an app](../assets/App/App_pic2.png)  
 
 This action lets you install an app from an APK file. Supported formats: ***.xapk, .apkm, .apks***
 _______________________________________________
+<Link id="удаление-приложения" />
+
 ### Uninstall application.
 ![Uninstall an app](../assets/App/App_pic3.png)  
 
@@ -38,11 +43,15 @@ Lets you open a web page in a browser.
 - *URL.* This is where you enter the web page address you want to open.  
 - *App name.* Put in the name of the app that can open links. You can find it using the [**Installed Apps**](../../Tools/Installed_App) tool. If you leave it blank, the page will open in the default browser.  
 _______________________________________________  
+<Link id="закрыть-приложение" />
+
 ### Close application.
 ![Close an app](../assets/App/App_pic5.png)  
 
 Closes an app (similar to the command `adb shell am force-stop com.package`).
 _______________________________________________
+<Link id="очистка-приложения" />
+
 ### Application cleanup.  
 Use this action to wipe all user data.  
 
@@ -50,6 +59,8 @@ Use this action to wipe all user data.
 
 If you check ***Clear only cache***, only the cache will be deleted, leaving everything else intact.
 _______________________________________________
+<Link id="сохранить-данные-приложения" />
+
 ### Saving of application's data.  
 This action saves all app data.  
 
@@ -64,6 +75,8 @@ Before saving data, it's best to close the app by using the Keyboard Emulation a
 
 #### Why close the app before saving data?
 If the app is open while you're saving its data, some files might still be in memory and not in the file system, so they might not get saved. Also, you shouldn't close the app with the **Close app** action for this purpose, as it kills the process abruptly and could result in data loss.
+
+<Link id="восстановить-данные-приложения" />
 
 ### Restoring of application's data.  
 This lets you load app data previously saved using the ***Save app data*** action.  
