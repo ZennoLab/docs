@@ -1,6 +1,6 @@
-﻿---
+---
 sidebar_position: 18
-title: "Other Settings (PM)"
+title: "Other settings (PM)"
 description: ""
 date: "2025-08-25"
 converted: true
@@ -14,7 +14,125 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608855/PM)** — Source of this material
 
 _______________________________________________  
+![image-20210905-134736](../../ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/assets/Other_ZennoPoster_Settings/Other_ZennoPoster_Settings_pic1.png)
 
-This tab displays the same settings as in ZennoPoster:
+## General settings
+### Disable program error reports (globally)
+Sometimes, a browser error causes an instance to crash. ZennoPoster detects the crash and automatically restarts the instance. However, an error message window may prevent it from restarting.
 
-### [❗→ View ZennoPoster Settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/808779861/ZennoPoster "https://zennolab.atlassian.net/wiki/spaces/RU/pages/808779861/ZennoPoster")
+Enable this setting to prevent these windows from appearing.
+### Disable the project settings recovery dialog
+After a crash, ZennoPoster may offer to restore project settings. This option disables the recovery window.
+
+:::info We recommend keeping the recovery window enabled
+Disable it only if it interferes with ZennoPoster starting automatically
+:::
+
+### Skip scheduled task execution for tasks that are already running
+If a project is still running when its scheduled start time arrives, the scheduler will wait for the current run to finish before starting the task.  
+
+### Minimize ZennoPoster to the tray
+When you minimize the program window, it will be sent to the tray.  
+
+:::tip **What is the tray?**
+***The tray** is an area of the Windows taskbar that opens when you click the arrow at the right edge of the taskbar. It's used for programs that run for a long time but aren't used constantly.* 
+::: 
+
+### Track thread status
+Enables the collection of thread status statistics. This information helps [support](https://helpdesk.zennolab.com/ru/conversation/new) troubleshoot the program.
+
+> **Enable this setting only if requested by support.**  
+
+### Compact the large object heap
+Sets the compaction interval for the large object heap — a memory area where large objects, such as long strings, are stored.  
+
+### Automatically resume active tasks after restart
+After ZennoPoster restarts, it will automatically resume tasks that were active before the program was closed.
+_______________________________________________ 
+## Theme
+### Light
+
+![image-20210619-142504](../../ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/assets/Other_ZennoPoster_Settings/Other_ZennoPoster_Settings_pic2.png)
+
+### Dark
+
+![image-20210619-142801](../../ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/assets/Other_ZennoPoster_Settings/Other_ZennoPoster_Settings_pic3.png)
+_______________________________________________ 
+## Setting the project download directory
+Projects you receive from other users will be saved to this folder. The developers' email addresses or ZennoLab IDs will be used as folder names.  
+
+:::warning Do not copy projects into this folder manually!
+:::
+
+_______________________________________________ 
+## Log settings
+The log is an event journal where ZennoPoster stores messages about project activity.  
+
+### Disable automatic log scrolling only when clicking a log entry
+When new entries appear, the log automatically scrolls down.  
+
+If this setting is enabled, you can stop automatic scrolling only by clicking an entry.
+
+### Show notifications in the log only
+Messages from the “[Notification](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Logic/Notification_Log_Entry)” action will appear only in the log, without pop-up windows.  
+
+> *This setting works independently of the action's own parameters.*  
+
+### Show the date in the log
+Adds the date to log entries.
+
+### Show notifications in the log when a project completes successfully
+Adds an entry to the log when a project completes successfully.
+
+### Show notifications in the log when a project fails
+Adds an entry to the log when a project fails.
+
+### Keep log entries for this many hours
+Sets the maximum time, in hours, that log entries are kept.
+
+### Maximum number of entries to keep for one task
+Sets the maximum number of entries kept in the log for one task.
+
+:::info Maximum value: `9999`
+:::
+
+### Maximum log entry size
+Limits the maximum size, in kilobytes, of an entry that can be *displayed* in the **Log window**. 
+
+### Limit the maximum size of an entry in the log file
+:::tip **We recommend enabling this**
+*If you work with large amounts of data and don't need the full log, **we recommend enabling this limit**. This will improve performance and reduce memory usage.*  
+:::   
+This setting limits the size of an entry that can be *saved* to the log file.  
+:::info **Logs**
+Log files are stored in the **Logs** folder in the ZennoDroid installation directory.  
+Example path: `C:\Program Files\ZennoLab\RU\ZennoDroid Pro\2.3.8.0\Progs\Logs\`  
+:::   
+
+:::warning **The program must be restarted for the changes to take effect**
+:::  
+  
+_______________________________________________ 
+## Miscellaneous
+### Detailed log (debug information for developers)
+
+Records detailed information about program activity that may be needed when contacting **Support**.
+
+### BuildID  
+The combination of letters and numbers in this field displays the current program version and release date.  
+:::tip **You can select and copy the value in this field using the context menu**
+:::  
+![uS7JkqZjox](../../ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/assets/Other_ZennoPoster_Settings/Other_ZennoPoster_Settings_pic4.gif)
+
+### Available buttons  
+#### Diagnostics  
+Opens the `diagnostic.exe` utility, which displays information when problems occur. After it runs, a `report.zip` file will be created in the ZennoDroid installation directory.  
+
+#### Save settings  
+Saves the program's current settings. To use it, click the button first, then close the program.  
+
+#### Restore settings  
+Restores the most recently saved settings. Again, click this button first, then restart the program.  
+
+#### Reset settings  
+Resets the current settings to their default values.  

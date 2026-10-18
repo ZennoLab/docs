@@ -14,176 +14,172 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337/XPath)** — Source of this material
 
 _______________________________________________  
-
 ## Description
+The Action Constructor is a tool for working with web page elements. You can use it to choose the properties ZennoPoster uses to find an element, then perform an action on it: for example, click a button, fill in a field, or retrieve text.
 
-The Action Constructor is a universal tool for working with page elements, allowing you to select the most suitable identifiers for finding them.
-
-:::warning Attention
-To use this feature, you’ll need some basic knowledge of HTML markup.
+:::warning Basic knowledge of HTML is recommended for this feature
+It will help you understand the page structure, element names, and their attributes.
 :::
 
-  
-
-## How to open it?
-
+### How to open it?
 There are two ways to open the constructor:
 
-1. Right-click the element you’re interested in on the page and choose *Send to Action Constructor from the [❗→ context menu](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373#%D0%9A%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B5%D0%BD%D1%8E).
+#### Method 1. From the page context menu
+Right-click the desired element on the page and select **Send to Action Constructor**:
 
 ![image-20200809-145400](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic1.png)
 
-
-
-2. The second way is from the [❗→ Element Tree](https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777355 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777355") window. Right-click the desired element and select *Send to Action Constructor.
+#### Method 2. From the Element Tree
+Open the [Element Tree](/zennoposter/ProjectMaker/Program-interface/Element_Tree_Window) window, then right-click the desired element and select **Send to Action Constructor**:
 
 ![image-20200809-164607](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic2.png)
 
-
-
-  
-
-:::note Note
-When you add an element to the Action Constructor, its available properties and attributes are automatically added to the Properties window.
+:::tip Note
+When you add an element to the Action Constructor, its available properties and values automatically appear in the **Element Properties** window.
 :::
-
-## Search parameters
+_______________________________________________ 
+## Search parameters 
+There are two ways to search for elements: classic search and XPath search.  
 
 ### Classic Search
+This method finds an element by its HTML tag, attributes, and their values.  
 
 ![image-20200809-152818](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic3.png)
 
+#### Document number
+Enter `-1` to search for the element in all documents on the page. This makes the search more versatile.
 
+#### Form number
+Enter `-1` to search for the element in all forms on the page. If you specify a particular form number, the template may stop working when the site structure changes.  
 
-#### **Document number**
+<details>
+  <summary><b>Example</b></summary>
 
-It’s recommended to set the value to -1 (search in all documents on the page).
+The page contains three forms: search, registration, and product order. The order form is number 2 because numbering starts at zero.  
 
-#### **Form number**
+If the developers add a login form before it, the order form will have a different number. As a result, ZennoPoster may fail to find the required button or perform the action on a different element.
+</details>
 
-It’s also best to set this to -1 (search in all forms on the page). By doing this, your template will be more universal.
-
-&gt; 
-&gt; Example: There are 3 forms on the page—search, registration, and product order. Suppose you need to click a button in the order form, and you select “Form” value as 2 (index starts at zero). Sometime later, a new login form appears on the site and is inserted before the order form. Now number 2 will be the login form, and your template will either throw an error saying it can’t find the button, or (even worse) it’ll click a different button in a different form.
-
-:::note Note
-In the program settings (Settings → Recording), you can check “Search in all forms on the page” and “Search in all documents on the page” so that the number for document and form will always be -1 when finding elements.
+:::tip Search in all forms/documents on the page
+If you enable these options in **Recording Settings**, the form and document numbers will always default to `-1`.
 :::
 
 #### **Tag**
+The HTML tag of the element to find.
 
-The HTML tag you want to find.
-
-Example:  
-`<div class="visible" id="username"></div>`  
-`div` is the tag.
+For example:  
+```
+<div class="visible" id="username"></div>
+```
+In this example, `div` is the tag name.
 
 #### **Attribute name**
+The HTML tag attribute ZennoPoster uses to find the element.
 
-The attribute of the HTML tag you’ll search by.
+In our example:  
+```
+<div class="visible" id="username"></div>
+``` 
 
-`<div class="visible" id="username"></div>`  
-`class` and `id` are attributes.
+`class` and `id` are attribute names.
 
 #### **Value**
+The value of the selected attribute.
 
-The value of the selected HTML tag’s attribute.
-
-`<div class="visible" id="username"></div>`  
-`visible` and `username` are attribute values.
+In the example above:  
+- **`visible`** is the value of the *`class`* attribute;
+- **`username`** is the value of the *`id`* attribute.
 
 #### **Search type**
+Three search types are available:  
+- *`text`* — the attribute value must fully or partially match the specified text;
+- *`notext`* — the attribute value must not contain the specified text;
+- *`regexp`* — search using a regular expression.  
 
-1. text - search by full or partial text
-2. notext - searches for elements that do not contain the specified text
-3. regexp - search using [❗→ regular expressions](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111")
-By default, the search is case-insensitive. To make a regular expression case-sensitive, add `(?-i)` at the start of the expression (this disables case-insensitive search).
+The search is case-insensitive by default. For example, `Username` and `username` are treated as identical.  
 
-As shown in the screenshot, after clicking the *Search button, three elements were found. This isn’t ideal—always try to pick search parameters so that only one element is found.
+> *To make a regular expression case-sensitive, add `(?-i)` at the beginning.*
 
+:::info In the screenshot above, clicking **Search** found three elements.
+Where possible, choose parameters that leave only the desired element in the results. Otherwise, ZennoPoster may perform the action on the wrong element.
+:::
+ 
 ### XPath Search
-
-With [❗→ XPath expressions](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419/"), you can create a more universal and robust element search algorithm compared to classic search or regular expressions.
+XPath finds elements by their position and properties within the HTML document structure. It lets you create a more flexible search that is more resilient to changes in the site's layout.
 
 ![image-20200809-153104](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic4.png)
 
+**Document number** and **Form number** work the same way as in classic search. To search all documents and forms, set both to `-1`.
 
-
-Document number and Form number work the same as in Classic Search.
-
-#### XPath
-
-Field for entering your [❗→ XPath](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419") expression.
+#### XPath 
+The field for entering the XPath expression ZennoPoster uses to find the element.
 
 #### Variants
+You can select one of the XPath expressions generated automatically by the **Action Constructor**.
 
-Here you can select one of the suggested *Constructor expressions.
-
-:::note Note
-If none of the suggested options suit you, you can write your own XPath expression.
+:::tip If the suggested options do not suit your needs
+You can write your own XPath expression and enter it in the XPath field.
 :::
-
+_______________________________________________
 ## Choosing an action
+After configuring the search, choose the action ZennoPoster should perform on the element it finds. Three options are available: **Set**, **Get**, and **Rise**.
 
-You can select one of three possible actions
+### Set (set a value)
+The [Set value](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Setting_Value) action changes the value of the selected attribute.
 
-**Set** - [❗→ Set value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117")  
 ![image-20200809-170409](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic5.png)
 
-- *Attribute* — the attribute of the element where you want to set a new value
-- *Value* — the text you want to insert. You can use plain text or project variables like `{ -Variable.someVar- }`, `{ -Profile.Name- }`.
+- **Attribute** — the element attribute to assign a new value to.
+- **Value** — the data to write to the attribute. You can use plain text or project variables, such as `{-Variable.someVar-}` or `{-Profile.Name-}`.
 
-**Get** — [❗→ Get value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124")  
+### Get (get a value)
+An action for [getting the value](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Getting_Value) of the selected attribute.  
+
 ![image-20200809-155322](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic6.png)
 
-- *Attribute* — the attribute whose value you want to get.
-- *Value* — this will display the value of the found attribute.
+- **Attribute** — the attribute whose value you want to get.
+- **Value** — the value of the attribute found.
 
+### Rise (perform an event)
+[Performs an action](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Perform_Event) on the element found. For example, you can click it or trigger another available action from the list.  
 
-**Rise** — [❗→ Perform action](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211")  
-![image-20200809-155243](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic7.png)  
-- here you can choose the necessary action to perform on the found element.
+![image-20200809-155243](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic7.png)   
 
-![image-20200809-170449](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic8.png)  
-
-- For *drag and *drop actions, there are two extra fields for coordinates.
-
-  
-
+> *For **drag** and **drop** actions, two additional fields appear for specifying coordinates.*  
+>
+> ![image-20200809-170449](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic8.png) 
+_______________________________________________
 ## Final steps
+After configuring the search and choosing an action, we recommend checking the result and adding a clear comment before saving the action to the project.
 
 ![image-20200809-155614](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic9.png)
 
-
-
 ### Testing
+Once you have configured the search parameters and the action, click the test button. This lets you check in advance that ZennoPoster finds the right element and performs the selected action correctly.  
 
-After picking the necessary search parameters and selecting the needed action, it’s a good idea to test your parameters by clicking the corresponding button.
+:::info If the wrong element is found or the action is performed incorrectly
+Return to the settings and change the search parameters.
+:::
 
 ### Comment
+Add a short, clear comment to the action.  
 
-It’s a good idea to leave a comment for the action, since automatic comments tend not to be very informative.
+Default automatic comments do not always make it easy to understand what an action does.
 
-Default
-comments
-
-![image-20200809-161201](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic10.png)
-
-
-
-The same actions,
-but with your own comments
-
-![image-20200809-161401](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic11.png)
-
+| Default comments | Custom comments |
+| :--------: | :-------: |
+| ![image-20200809-161201](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic10.png) | ![image-20200809-161401](./assets/Action_Constructor_and_XPath_Search/Action_Constructor_and_XPath_Search_pic11.png) |
 
 
 ### Adding to project
+Make sure that:
+- the search parameters are configured;
+- ZennoPoster finds the right element;
+- the correct action is selected;
+- the test has passed.
 
-Once you’ve chosen the right parameters, found the element, and selected and tested the needed action, you can click *Add to project.
-
-  
-
+Then click **Add to project**. The new action will appear in the project, ready to use. 
+_______________________________________________
 ## Useful links
 
 - [❗→ XPath](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419")
@@ -191,5 +187,5 @@ Once you’ve chosen the right parameters, found the element, and selected and t
 - [❗→ Set value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117")
 - [❗→ Perform event](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211")
 - [❗→ Get value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124")
-- [❗→ Element property window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879")
+- [❗→ Element Properties window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879")
 - [ZennoPoster + xPath with Yandex.Market example](https://zennolab.com/discussion/threads/obzor-zennoposter-xpath-na-primere-jandeks-marketa.37497/ "https://zennolab.com/discussion/threads/obzor-zennoposter-xpath-na-primere-jandeks-marketa.37497/") (contest article from the forum)

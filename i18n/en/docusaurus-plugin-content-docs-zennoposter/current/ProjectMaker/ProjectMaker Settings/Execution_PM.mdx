@@ -14,7 +14,113 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777297/PM)** — Source of this material
 
 _______________________________________________  
+![image-20210328-152401](../../ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/assets/Project_Execution_Settings/Project_Execution_Settings_pic1.png)
 
-This tab shows the same settings as in ZennoPoster.
+### Inter-process communication buffer size
+Sets the size of the buffer used to exchange data between processes. The allowed range is **10** to **1000** MB.  
 
-### [❗→ View ZennoPoster settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/809074766 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/809074766")
+The default is **10** MB. There is no need to change it unless you have been advised to do so when troubleshooting a specific problem.
+
+:::warning This setting does not limit the maximum size of lists or tables
+Used in the project.
+:::
+
+### FTP operation timeout (sec)
+Sets how long, in seconds, the program waits for an FTP operation to complete.
+
+### Number of HTTP request attempts
+Sets the number of attempts to execute an [HTTP request](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Http/HTTP-request).  
+
+### Use an alternative HTTP request method
+> This is a global program setting that applies to all new projects.  
+
+Enables the alternative HTTP request method by default.
+
+:::info Two HTTP request methods are available:
+- standard — using the third-party Chilkat library;
+- alternative — ZennoLab's own implementation.
+:::
+
+If HTTP requests do not work correctly with the standard method, try switching to the alternative.  
+
+> *You can also do this in an individual project's settings.*
+
+### Use HTTP Connection Pool
+Enables an optimized HTTP connection mechanism that improves request stability.
+
+### Maximum number of HTTP Connection Pool connections
+Limits the number of connections that ZennoPoster and ProjectMaker can use simultaneously. This helps stabilize the program when handling a large number of HTTP requests.  
+
+### Respect group order in classic element search
+When enabled, condition groups are processed sequentially according to their numbers in the **Group** column.
+
+![image-20200817-143705](../../ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/assets/Project_Execution_Settings/Project_Execution_Settings_pic2.png)
+
+### Save files safely
+Helps prevent damage to files and lists when the server suddenly becomes overloaded.
+
+### Look for a .zp project when executing the “Project in Project” action
+If the [Project in Project](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Project/Project_in_Project_Nested_Projects) action specifies a project in the old `.xmlz` format but the file cannot be found, the program tries to find a project with the same name and the `.zp` extension.
+
+:::info Added in version 7.4.0.0
+:::
+
+### Keep an empty file in UTF8 encoding
+Preserves UTF-8 encoding if the list linked to a file becomes empty during project execution.
+
+### Run unfinished projects on startup
+When the program starts, it resumes projects that had not finished before the program was last closed.  
+
+Projects are restarted only if you selected the corresponding option when closing the program.
+
+### High-priority threads interrupt requests from lower-priority threads
+Takes thread priority into account when processing requests during multithreaded project execution.  
+
+Requests from high-priority threads can interrupt requests from lower-priority threads.
+
+### Check entered data
+:::warning Removed from the program starting with 7.1.7.0
+:::
+
+In earlier versions, this setting checked data entered into web element fields. If a field on a website was filled twice, disabling this setting was recommended.
+
+### Reset task failures when adding attempts
+Resets the task's failed execution counter when new attempts are added.
+
+### Detailed email log
+Enables detailed logging of email operations.
+
+### Detailed FTP log
+Enables detailed logging of FTP operations.
+
+### Detailed HTTP log
+Enables detailed logging of HTTP request operations.
+
+### File change handling policy
+Determines how the program handles external changes to files linked to lists and tables:
+
+#### Always load changes from the file while running
+The program automatically loads changes made to the linked file while the project is running.
+
+#### Never load external changes while running
+The program loads the file contents when the project starts, but ignores subsequent external changes.
+
+#### Ask the user
+When external changes are detected, the program asks for confirmation before loading them.
+
+### C# thread culture
+Determines the regional settings used when executing and debugging projects, including [C# blocks](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Custom_code/CSharp_Code).
+
+> **A restart is required to apply changes**
+
+The selected culture can affect the handling of:
+- dates and times;
+- numbers;
+- decimal separators;
+- other culture-dependent formats.  
+
+> The Russian version of the program uses the `ru-RU` culture by default.
+
+:::info To use `InvariantCulture`  
+Clear the input field completely and leave it empty.
+:::

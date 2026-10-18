@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 17
-title: "Settings. Plugins"
+title: "Plugin settings"
 description: ""
 date: "2025-08-25"
 converted: true
@@ -14,61 +14,57 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735379481)** — Source of this material
 
 _______________________________________________  
-
-:::note Note
-This article describes the Plugin settings. For a detailed description of the plugins themselves, see here Plugins
+:::info This page describes plugin settings
+For more information about the plugins themselves, see the [article](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Plugins).
 :::
 
 ![image-20210503-132825](./assets/Settings_Plugins/Settings_Plugins_pic1.png)
 
+## Plugin directory
+Specifies the folder where installed plugins are stored.
 
-
-## Plugin Directory
-
-The directory where installed plugins will be saved.
-
-:::warning Attention
-If you already had plugins installed and you changed the directory where they are saved using this setting, you will need to move the old plugins to the new folder manually.
+:::warning When changing the directory after installing plugins
+You need to move previously installed plugins to the new folder **manually**.
 :::
 
-## Local Plugins
+_______________________________________________
+## Local plugins
+This table displays all plugins installed in ProjectMaker.
 
 ![image-20210503-132915](./assets/Settings_Plugins/Settings_Plugins_pic2.png)
 
+Here you can view their names, open detailed information, or delete plugins you no longer need.
 
+### Plugin name
+The name of the plugin used in the ProjectMaker interface.
 
-This table displays all plugins installed in ProjectMaker.
+### File name
+The name of the file under which the plugin is stored on your computer. It may differ from the plugin name shown in the program.
 
-### Plugin Name
-
-This is the name under which the plugin is displayed in ProjectMaker.
-
-### File Name
-
-This is the name under which the plugin is saved on your computer.
-
-### Plugin Context Menu
+### Plugin context menu
+To view the available actions, right-click the desired plugin in the table.
 
 ![image-20210503-133024](./assets/Settings_Plugins/Settings_Plugins_pic3.png)
 
-
-
-When you right-click on a plugin, a context menu will appear.
-
 #### Details
+Opens a window with detailed information about the selected plugin.  
 
 ![image-20210503-133303](./assets/Settings_Plugins/Settings_Plugins_pic4.png)
 
-
-
-Selecting this item will open a window with detailed information about the plugin (provided that the developer has filled in this information).
+> The contents of this window depend on the information provided by the developer.  
+> If no information was provided, there will be no detailed description.
 
 #### Delete
+Removes the selected plugin from the program. Use this option if you no longer need the plugin.
+_______________________________________________
+## Add plugin
+To install a plugin, click the **Add plugin** button. A standard file selection window will open — find the file for the plugin you need and confirm your selection.  
 
-With this menu item, you can delete the plugin from the program.
+:::tip Add multiple plugins
+To install several plugins, select their files in the same window. The program will add them all at once.
+:::
 
-## Add Plugin
+During installation, ProjectMaker checks file names. If a file with the same name is already among the installed plugins, the new one will not be added. The program will display a window listing the plugins that could not be installed.
 
-After clicking the "Add Plugin" button, the standard file selection window will open.
-
-You can select multiple files at once and install them all together. If you try to add a plugin with a filename that matches an already installed plugin, a window will appear listing the plugins that could not be installed. After adding, the plugins are immediately ready to use.
+Successfully added plugins are ready to use right away — you don't need to restart ProjectMaker after installation.
+_______________________________________________

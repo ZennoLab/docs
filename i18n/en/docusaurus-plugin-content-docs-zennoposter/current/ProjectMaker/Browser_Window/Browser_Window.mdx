@@ -14,258 +14,208 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373)** — Source of this material
 
 _______________________________________________  
+## Description
+The browser window is one of the main elements in ProjectMaker for building web automation templates. Essentially, it is a fully functional browser instance with additional tools to make project development easier and faster.  
 
 ![image-20211205-041946](./assets/Browser_Window/Browser_Window_pic1.png)
 
-## Description
-
-The browser window is one of the main elements in ProjectMaker for building website automation templates. Essentially, a browser window is an instance of a browser with additional tools to make your project development easier and faster.
-
-The window consists of top and bottom toolbars and the main viewing area or workspace of the browser. In many ways, the functionality and usage of this window are similar to a regular browser.
+The interface consists of three main parts: the top and bottom toolbars and the central workspace (viewing area). In many ways, interacting with this window and using its basic functionality is similar to working in a regular web browser.  
 
 ## Tools
-
-Let's look at all the tools available in the browser window.
+Let's look at each tool in the browser window.
 
 ### Open Tabs Area
 
 ![image-20211205-042159](./assets/Browser_Window/Browser_Window_pic2.png)
 
+The **panel (1)** displays all currently open tabs. The button on the right side of the **panel (2)** opens a list for quick navigation among open tabs.
 
-
-The panel (1) displays all browser tabs currently open. By clicking the button on the right side of the panel (2), you can open a list for quick navigation among the tabs.
-
-You can create, activate, and close tabs via the action [❗→ Manage Browser Tab](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020201 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020201")
+> *You can create, activate, and close tabs using the [Manage Browser Tab](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser_tab_management) action.*
 
 ### “Back” Button
-
 ![image-20210511-105057](./assets/Browser_Window/Browser_Window_pic3.png)
 
+Navigates through your browsing history and returns you to the previous page.  
 
-
-This is used to navigate back through your browsing history and returns you to the previous page. You can achieve the same with code:
-C#: `instance.ActiveTab.GoBack();`
-JS: `history.back();`
+> *You can do the same with code:*  
+> *C#: `instance.ActiveTab.GoBack();`*  
+> *JS: `history.back();`*  
 
 ### “Refresh” Button
-
 ![image-20210511-105207](./assets/Browser_Window/Browser_Window_pic4.png)
 
-
-
-Reloads the current page. While the page is loading, the icon changes to a cross; clicking it can stop the loading process.
+Reloads the current page. While data is being retrieved, the icon changes to a cross; clicking it stops loading.
 
 ### Address Bar
-
 ![image-20211205-042304](./assets/Browser_Window/Browser_Window_pic5.png)
 
-
-
-A field for entering, editing, and displaying the page URL. It works just like the address bar in regular browsers.
+A field for entering, editing, and displaying the page URL. It works just like the address bar in regular browsers. 
 
 ### Go to Page
-
 ![image-20211205-042538](./assets/Browser_Window/Browser_Window_pic6.png)
 
+Clicking this button navigates to the address you entered. You can also simply press Enter instead of clicking the button.
 
-
-Confirms navigation to the URL entered in the address bar. The same thing happens if you simply press ENTER.
-
-The main way to open a link in the browser is using the action [❗→ Go To Page (Open Page/Navigate)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052989 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534052989")
+> *Within a project, use the [Go to Page](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Navigate_to_Page) action to open the websites you need.* 
 
 ### Open a New Tab
-
 ![image-20211205-042607](./assets/Browser_Window/Browser_Window_pic7.png)
 
+Opens a modal window where you enter the name of the new tab.  
 
-
-Opens a modal window where you can enter the name of the new tab. You can do the same with the "cube" [❗→ Manage Browser Tab](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020201 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020201")
+> *You can do the same using the [Manage Browser Tab](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser_tab_management) action block.* 
 
 ### Input Mode
-
 ![image-20211205-042705](./assets/Browser_Window/Browser_Window_pic8.png)
 
+Lets you choose how to interact with the browser: using a regular mouse or emulating a touchscreen.  
 
-
-Switches the input mode between “mouse” and “touch.” It mainly serves one purpose: in “touch” mode, when recording is enabled, blocks with [❗→ touch events](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735674386/Touch") are created, and vice versa.
+This primarily affects template recording. In touch mode, all your taps and swipes automatically become blocks with touch events. In mouse mode, regular clicks are recorded instead.
 
 ### Extensions
-
 ![image-20211109-135003](./assets/Browser_Window/Browser_Window_pic9.png)
 
+Allows you to interact with installed extensions (activate them, configure settings, view details, and remove them). You can install new extensions from crx files.
 
-
-Allows you to interact with installed extensions (Activate, Settings, Details, Remove). You can also install new extensions via crx files.
-
-You can read more about working with extensions in the article [❗→ Working with Extensions](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2081423361 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2081423361")
+> *Read more about [Working with Extensions](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Working_with_extensions).*
 
 ### Web Developer Tools
-
 ![image-20211205-042950](./assets/Browser_Window/Browser_Window_pic10.png)
 
+Opens the [Web Developer Tools](/zennoposter/ProjectMaker/Browser_Window/Web_Developer_Tools_DevTools) window, similar to the one in Chrome. It is used for advanced work with the DOM, applications, and page traffic.
 
-
-Opens the [❗→ Web Developer Tools window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1331134465 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1331134465") similar to the one in Chrome. This is used for advanced work with the DOM, applications, and page traffic.
-
-:::warning Attention
-This window opens for the currently active tab!
+:::warning This window applies only to the active tab
 :::
 
 ### View Page Source
-
 ![image-20211205-043351](./assets/Browser_Window/Browser_Window_pic11.png)
 
+This button opens the [page structure viewer](/zennoposter/ProjectMaker/Browser_Window/View_Page_Text) for the active tab. Three data formats are available: source code, the DOM tree, and visible page text.
 
-
-[❗→ Opens the page source window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903769 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903769"), showing the DOM and page text for the active tab. You can also get the DOM, page source, and text via project environment variables:
+You can also retrieve this information during execution without opening the window, using these special environment variables:  
 
 `{ -Page.Dom- }`
 `{ -Page.Source- }`
 `{ -Page.Text- }`
 
 ### Clear Cache
-
 ![image-20211205-043405](./assets/Browser_Window/Browser_Window_pic12.png)
 
-
-
-Provides quick access to functionality similar to the corresponding "cube"—it clears all browser cache. You can also clear cache using the action [❗→ Clear Cache](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572").
+Provides quick access to the functionality of the [corresponding action block](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser_settings#clear-cache): clearing the entire browser cache. 
 
 ### Clear Cookies
-
 ![image-20211205-043425](./assets/Browser_Window/Browser_Window_pic13.png)
 
+Clears all cookies in the instance.  
 
+> *You can also do this with the [Clear Cookies](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser_settings#clear-cookies) action.*
 
-Provides quick access to the same functionality as the corresponding cube—it clears all instance cookies. You can also perform this using the action [❗→ Clear Cookies](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572").
-
-:::info Info
-In ZennoPoster 7.3.1.0, a new action was added for working with cookies, which allows you not only to clear, but also to load and save cookies in various formats.
+:::info [New action for working with cookies](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser-cookies/Working_with_Cookies) 
+Added in ZennoPoster 7.3.1.0, this action lets you not only clear cookies but also load and save them in various formats.
 :::
 
 ### Page Loading Status Indicator
-
 ![image-20210511-110438](./assets/Browser_Window/Browser_Window_pic14.png)
 
-
-
 It has three states:
-
-- **Ready** – when fully loaded;
-- **Loading** – while loading;
-- **Finishing Up** – loading data with scripts and plugins.
+- **Ready** — loading is complete;
+- **Loading** — loading is in progress;
+- **Finishing Up** — scripts and plugins are loading additional data.
 
 ### Current Browser Type
-
 ![image-20210511-110541](./assets/Browser_Window/Browser_Window_pic15.png)
 
-
-
-Shows the browser type set for the instance.
+Shows the browser type set for the instance. 
 
 You can change the browser type in several ways:
 
-- globally, for all new projects through [❗→ program settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/808845378#%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80-%D0%BF%D0%BE-%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E "https://zennolab.atlassian.net/wiki/spaces/RU/pages/808845378#%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80-%D0%BF%D0%BE-%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E");
-- in the [❗→ current project settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477#%D0%A2%D0%B8%D0%BF-%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%D0%B0 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477#%D0%A2%D0%B8%D0%BF-%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%D0%B0");
-- via the action [❗→ Browser=&gt;Settings=&gt;Start Instance](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C-%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%81 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C-%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%81") you can change the browser type while running a project.
+- globally, for all new projects through [program settings](/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Instance_Settings);
+- in the [current project settings](/zennoposter/ProjectMaker/Project-editor/Static_blocks/Project_Settings#browser-type);
+- using the [Start Instance](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser_settings#start-instance) action to change it while a project is running.
 
 ### Browser Proxy
+Shows the current proxy.  
 
 ![image-20210511-112108](./assets/Browser_Window/Browser_Window_pic16.png)
 
+:::tip You can set a proxy by clicking this button 
+Available since version 7.3.2.0.
+:::
 
-
-Shows the current proxy.
-
-Starting from version 7.3.2.0, you can also set the proxy by simply clicking this button.
-
-You can also set a proxy via [❗→ Profile Window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903758#%D0%92%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0-%E2%80%9C%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%E2%80%9D "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903758#%D0%92%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0-%E2%80%9C%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%E2%80%9D"), or with the “**Browser**“ cube → “**Settings**“ → “[❗→ **Set Proxy**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8")“.
+> *You can also set a proxy through the [Profile Window](/zennoposter/ProjectMaker/Program-interface/Profile_Window),  
+> or using the [Set Proxy](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser_settings#set-proxy) action block.*
 
 ### Content Loading Rules
+This button opens a menu where you can use checkboxes to allow or block specific types of web page content.  
 
 ![Clip2net_200805180321](./assets/Browser_Window/Browser_Window_pic17.png)
 
+This helps optimize performance: for example, disabling images and CSS styles significantly speeds up page loading and saves resources.
 
-
-Opens a dropdown list where you can use checkboxes to allow/deny certain types of content to load. You can do the same via the “**Project Settings**” button → “[❗→ **Browser**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477")” or with cubes: “**Add Action**” → “**Browser**” → “**Settings**” → “[❗→ **Images**”/“**Media**”/“**Ads**”/“**Style Loading**”/“**JavaScript**”/“**Popup Blocker**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572")”
-
-For example, you can disable images and CSS styles for faster resource loading.
+You can manage these rules not only in the window interface but also in other ways:  
+- [globally for the entire template](/zennoposter/ProjectMaker/Project-editor/Static_blocks/Project_Settings#do-not-use-browser);  
+- [programmatically using actions](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Browser/Browser_settings).
 
 ### Set Timeout
+![image-20210511-112400](./assets/Browser_Window/Browser_Window_pic18.png)  
 
-![image-20210511-112400](./assets/Browser_Window/Browser_Window_pic18.png)
+Opens a window where you can limit the maximum time in seconds allowed for the current page to load. If loading takes too long and exceeds the limit, it stops, preventing the template from hanging indefinitely.    
 
-
-
-Opens a window where you can set the time in seconds for ZennoPoster to wait for the active tab to fully load.
-You can also set a timeout using the action “**Add Action**” → “**Tab**” → “[❗→ **Settings**](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020228/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020228/")”
+> *You can also [configure](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Web_Page_Settings) this parameter within the project.* 
 
 ### Mouse Cursor Coordinates
+Shows the exact X and Y coordinates of the cursor in pixels, where (**0;0**) is the top-left corner of the active page. 
 
 ![image-20210511-112925](./assets/Browser_Window/Browser_Window_pic19.png)
 
-
-
-Shows the X and Y mouse coordinates in pixels. The coordinates (0;0) are at the top left of the workspace. This helps you quickly determine the location of HTML elements on the page.
-
+Use this feature to quickly determine the location of web elements when developing a template.
+_______________________________________________ 
 ## Context Menu
-
-Unlike other browsers, the browser in ProjectMaker has a completely different context menu, which you can open by right-clicking in the browser workspace.
+Right-clicking inside the ProjectMaker workspace opens a context menu that differs significantly from those in regular browsers such as Chrome or Firefox.  
 
 ![image-20211205-044254](./assets/Browser_Window/Browser_Window_pic20.png)
 
+Instead of basic user commands, it contains functions designed specifically for automation and extracting data from page elements.  
 
-
-### Set Value from Profile (Variable)
-
-These options appear when you open the context menu on a text field.
-They let you quickly paste text from the [❗→ profile](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1976762378/ZennoPoster#%D0%9F%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1976762378/ZennoPoster#%D0%9F%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C") or from a [❗→ project variable](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/486309922").
+### Set Value from Profile/Variable
+These options are available when you right-click a text field. They let you quickly fill it with profile data or the value of an existing variable.  
 
 ### Inspect Element
-
-This opens the [❗→ element tree window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777355 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777355") and the [❗→ element properties window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879"). There, you can study the document structure and the parameters of the selected HTML element in detail. Afterwards, you can move it to the [❗→ action builder](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337/XPath "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337/XPath") to perform actions like ([❗→ click](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211"), [❗→ set value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117"), [❗→ get value](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124")).
+Opens the Element Tree and Element Properties panels. You can examine the page's HTML structure and the selected node's attributes in detail, then send it to the Action Constructor to configure a click, text input, or data extraction.  
 
 ### Follow Cursor
+In this mode, hovering over page elements automatically highlights them with an outline (unless disabled in the settings). This lets you quickly find the required blocks on a site and track their properties in the properties window in real time.  
 
-When you select “Follow Cursor” mode and move your mouse over the page, an outline will appear around HTML elements (if this [❗→ is not disabled in the program settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777290#%D0%92%D1%8B%D0%B4%D0%B5%D0%BB%D1%8F%D1%82%D1%8C-%D1%82%D0%B5%D0%BA%D1%83%D1%89%D0%B8%D0%B9-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82-%D0%B2-%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%D0%B5 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/727777290#%D0%92%D1%8B%D0%B4%D0%B5%D0%BB%D1%8F%D1%82%D1%8C-%D1%82%D0%B5%D0%BA%D1%83%D1%89%D0%B8%D0%B9-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82-%D0%B2-%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%D0%B5")). And you can check their properties live in the [❗→ relevant window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608879").
-
-### To Action Builder
-
-[❗→ Action Builder and XPath Search](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337") 
+### Send to Action Constructor
+Sends the selected HTML element to the [Action Constructor](/zennoposter/ProjectMaker/Browser_Window/Action_Constructor_and_XPath_Search) window to configure interaction with it in detail, such as clicking or entering text.  
 
 ### XPath Search
-
-This opens the [❗→ action builder](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337/") with search mode enabled for finding HTML elements using [❗→ XPath](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419").
+Opens the Action Constructor with the mode for finding the required element using an XPath expression automatically enabled.  
 
 ### Parse Data
-
-[❗→ Parse Data](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053279 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053279") 
+Creates an action for quickly extracting the required information (text or attribute values) from the selected page element.  
 
 ### This is a Captcha!
+This item is available when you open the context menu on an image. It marks the selected image as a captcha and automatically adds the [corresponding recognition action](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Captcha_Recognition) to the canvas.  
 
-This menu item appears when you open the context menu for an image. This element is marked as a captcha, and the corresponding [❗→ action](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053026 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053026") is placed onto the action canvas.
-
-:::warning Attention
-Works only with simple text captchas!
+:::warning Works only with simple text captchas
 :::
 
 ### Create Check for Selected Text
+Automatically creates an [action that checks](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Text_Presence_Check) whether the text you selected is present on the current web page.  
 
-Starting with version 7.3.1.0 and above – [❗→ Check for Text Presence](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1308426253 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1308426253")
-
-Up to version 7.3.1.0 – [❗→ Create Check for Selected Text](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053296 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053296")
+> *This tool works slightly differently depending on the program version (**updated in version 7.3.1.0**).*  
 
 ### Image Search
-
-[❗→ Image Search](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492044304") 
+Adds an action for finding an element on the page by its visual sample (image). This is a useful alternative when you cannot use HTML code or XPath to identify it.  
 
 ## Useful Links
 
 
-- [❗→ View Page Text](/wiki/spaces/RU/pages/735903769)
- - [❗→ Action Builder and XPath Search](/wiki/spaces/RU/pages/483426337/XPath)
- - [❗→ Parse Data](/wiki/spaces/RU/pages/534053279)
- - [❗→ Create Check for Selected Text](/wiki/spaces/RU/pages/534053296)
- - [❗→ Image Search](/wiki/spaces/RU/pages/492044304)
- - [❗→ Web Developer Tools (DevTools)](/wiki/spaces/RU/pages/1331134465/web-+DevTools)
- - [❗→ Font Emulation](/wiki/spaces/RU/pages/2131066881)
+- [❗→ View Page Text](/zennoposter/ProjectMaker/Browser_Window/View_Page_Text)
+ - [❗→ Action Constructor and XPath Search](/zennoposter/ProjectMaker/Browser_Window/Action_Constructor_and_XPath_Search)
+ - [❗→ Parse Data](/zennoposter/ProjectMaker/Browser_Window/Parse_Data)
+ - [❗→ Create Check for Selected Text](/zennoposter/ProjectMaker/Browser_Window/Create_Selected_Text_Check)
+ - [❗→ Image Search](/zennoposter/ProjectMaker/Browser_Window/Image_Search)
+ - [❗→ Web Developer Tools (DevTools)](/zennoposter/ProjectMaker/Browser_Window/Web_Developer_Tools_DevTools)
+ - [❗→ Font Emulation](/zennoposter/ProjectMaker/Browser_Window/Font_Emulation)

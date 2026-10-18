@@ -14,34 +14,31 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494829586)** — Source of this material
 
 _______________________________________________  
+## Description
+:::tip **The word *tracing* comes from the French *tracer*, meaning *to track*.**
+:::   
 
-This feature can be helpful when debugging projects, measuring the execution speed of actions, finding where a project hangs, and other tasks related to analyzing how projects work in ZennoPoster.
+Here, tracing means tracking project execution by recording or displaying the sequence of steps performed by the program. It helps you analyze a template: debug it, measure execution speed, and locate errors.  
 
-You can enable execution tracing in the task's context menu:
+To start tracing in ZennoPoster, use the task panel: **right-click the task → Trace execution**. 
 
 ![image-20210223-161342](./assets/Project_Tracing/Project_Tracing_pic1.png)
 
-
-
-Tracing begins working immediately after it is enabled, recording the current action and then proceeding in order.
+Tracing begins working immediately after it is enabled, recording the current action and then proceeding in order.  
 
 ### File save location for results
-
 The files are located in your user directory: C:\Users\&lt;USERNAME&gt;\Documents\ZennoLab\Traces and are organized by task.
 
 ### The log format is as follows
-
 &lt;Event Time&gt;|&lt;Message Status&gt;|&lt;Action ID&gt;|&lt;Execution Time (ms)&gt;
 
 ### Possible message statuses
-
 **Info** - informational message;  
 **In** - indicates the start of executing the action with the specified ID;  
 **Good** - successful execution of the action with the specified ID, moving to the green branch;  
-**Bad** - unsuccessful execution of the action with the specified ID, moving to the red branch.
+**Bad** - unsuccessful execution of the action with the specified ID, moving to the red branch.  
 
 ### Example contents of a trace file
-
 ```23-02-2021 06:08:59.3600|Info|---Project Start Execute---|
 23-02-2021 06:09:17.9110|In |cca-1035|
 23-02-2021 06:09:20.5203|Good|cca-1035|2520
@@ -61,5 +58,4 @@ The files are located in your user directory: C:\Users\&lt;USERNAME&gt;\Document
 ```
 
 ### Example usage
-
-Sometimes a task may get stuck on a certain action, and visually there's no way to tell which action is causing the problem. In this case, you just need to enable tracing for the task, and the current action will immediately be recorded to the file.
+Sometimes task execution hangs, and the standard interface does not show exactly where it stopped. Tracing helps in these less obvious situations. As soon as you enable it, the system immediately records the problematic step and writes detailed information about the current action to the log file for further analysis.
