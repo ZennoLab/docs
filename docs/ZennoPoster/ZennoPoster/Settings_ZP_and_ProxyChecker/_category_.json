@@ -1,10 +1,10 @@
 {
-  "label": "ZennoPoster and ProxyChecker Settings",
+  "label": "Настройки ZennoPoster и ProxyChecker",
   "position": 2,
   "link": {
     "type": "generated-index",
     "title": "Настройки ZennoPoster и ProxyChecker",
-    "description": "Глобальный раздел настроек: включает подраздел «Настройки ZennoPoster» и статью «Настройки ProxyChecker».",
+    "description": "Глобальные настройки ZennoPoster и ProxyChecker: выполнение проектов, инстансы, сервисы и другие параметры программ.",
     "slug": "/category/settings-zennoposter-proxychecker"
   }
 }

@@ -15,154 +15,113 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 _______________________________________________  
 
-:::info Information
-This article is copied from the ZennoProxyChecker help section, since the settings are identical in both programs. Original - [❗→ Main settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020624). You may come across screenshots, internal help links, and other things related to ZennoProxyChecker in this article.
-:::
-
-Table of Contents
-
-  
-
 ![image-20210710-093906](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic1.png)
-
-
-
-## Proxy Check Server Address
+_______________________________________________ 
+## Proxy check server address
+In this section, you can select the server the program will use to check whether proxies are working.  
 
 ![image-20210710-093950](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic2.png)
 
-
-
-Select a proxy check server from the list of addresses.
-
 ### List
+Contains the URLs of proxy check servers.  
 
-The URL addresses the program uses to check proxies. 
-By default, three addresses are listed here, but you can add your own.
+By default, the list contains three addresses. You can add your own if needed.
 
-### Test Button
+### “Test” button
+Checks the addresses in the list one by one.  
 
-When you click it, the program will sequentially check the addresses from the **List** above for availability.
-The test will end when the first working check server is found. Or when all addresses in the list have been tried.
+The check ends:
+- when the program finds the first working server;
+- when all addresses have been checked, if none of them are working.
 
 ### Selected
+Displays the server address that will be used to check whether all proxies are working.
 
-Here you will see the address that will be used to check if all proxies are alive or not.
-The first working address from the **List** appears here.
-
-  
-
-## Behavior Settings
-
+The first working address in the list is automatically entered in this field.
+_______________________________________________ 
+## Behavior settings
 ![image-20210710-094640](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic3.png)
 
+### Treat non-anonymous proxies as dead
+Excludes non-anonymous proxies from the results. The program will treat them as nonworking and use only anonymous proxies.
 
+### Delete proxies when closing the program
+Clears the proxy list when the program closes.
 
-### Consider Non-anonymous Proxies Dead
+### Threads per process
+Sets the number of threads used by each process to check proxies.
 
-The program will filter out non-anonymous proxies and only show anonymous ones.
-
-### Remove Proxies on Program Exit
-
-Clears the proxy list when the program is closed.
-
-### Number of Threads per Process
-
-Sets the number of threads used for checking.
-
-:::warning Attention
-You need to restart the program for changes to take effect.
+:::warning Restart the program to apply changes
 :::
-
-  
-
-## Proxy Parsing Settings
+_______________________________________________ 
+## Proxy parsing settings
+In this section, you can add new and edit existing proxy parsing structures. Each structure consists of a set of regular expressions.  
 
 ![image-20210710-094958](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic4.png)
 
+To configure structures, click **Open builder**.
 
-
-Here you can add new and edit existing proxy parsing structures (a structure is essentially regular expressions).
-To open the *parsing structure builder*, click the **Open builder** button.
-
-### Proxy Parsing Structure Builder
-
+### Proxy parsing structure builder
 ![image-20210710-095346](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic5.png)
 
-
-
-#### "Structure List" Tab
-
-By default, there are already 2 regular expressions added here.
-You can also use your own regular expressions by clicking the **Add (1)** or **Delete (2)** button. 
+#### “Structure list” tab
+By default, the list contains two structures with regular expressions.
 
 ![image-20210710-095742](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic6.png)
 
+On this tab, you can:
+- create your own structure using the **Add (1)** button;
+- delete an existing structure using the **Delete (2)** button;
+- view descriptions of the available fields using the **Structure fields help (3)** button.  
 
+The proxy format may vary from site to site. If needed, you can create a structure for almost any format and then test it on a specific source.
 
-Some websites may have their own proxy markup, so if necessary, you can create your own parsing structure for almost any format and test it on a specific source using the tester. By clicking the **Structure fields reference (3)** button, you can get a description of the available fields.
-
-#### "Test Source" Tab
+#### “Test source” tab
+On this tab, you can test the parsing structure you created.  
 
 ![image-20210710-100405](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic7.png)
 
+**Source address** — enter the address of the website the program should get proxies from.
 
+**Selected structure** — select a parsing structure previously added on the **Structure list** tab.
 
-**Source address** - here you should specify the website address from which proxies will be parsed.
+After filling in the fields, click **Test**. Proxies found using the selected structure will appear in the **Test results** window.
 
-**Selected structure** - select the parsing rule you added earlier from the *Structure List* tab.
-
-Then, click the **Test** button to start testing.
-
-In the *Test result* window, you will see the proxies found according to the parsing rule.
-
-:::warning Attention
-After closing the Builder window or clicking cancel, parsing results will not be saved.
+:::warning Parsing results are not saved
+When you close the builder or click **Cancel**
 :::
-
-  
-
-## Auto Search Settings
+_______________________________________________ 
+## Automatic search settings
 
 ![image-20210710-100544](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic8.png)
 
+### Detailed automatic search log
+Enables detailed logging of ZennoProxyChecker when running in automatic search mode.
 
+### Stop if more than XXX proxies are queued for checking
+Stops automatic search when the number of proxies queued for checking exceeds the specified value.
 
-### Detailed Autosearch Log
+### Stop if the database contains more than XXX proxies
+Stops automatic search when the number of proxies in the database exceeds the specified value.
 
-If you check this box, you'll see a detailed report of **ZennoProxyChecker**'s work in autosearch mode.
+### Stop if the database contains more than XXX sources
+Stops automatic search when the number of sources in the database exceeds the specified value.
 
-### Stop if More Than XXX Proxies Waiting for Check
+### Default source settings
+Sets the parameters that will be applied automatically to all new sources.  
 
-If the number of proxies in the check queue exceeds this value, autosearch will stop.
-
-### Stop if More Than XXX Proxies in the Database
-
-If the number of proxies in the database exceeds this value, autosearch will stop.
-
-### Stop if More Than XXX Sources in the Database
-
-If the number of sources in the database exceeds this value, autosearch will stop.
-
-### Default Source Settings
-
-These settings will apply to all newly added sources. You can read more about these features and settings in the article [❗→ Source Settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1892876309 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1892876309") 
-
-  
-
-## Proxy Check Settings
-
+For more information about the available parameters, see [Source settings](/zennoproxychecker/Program%20interface/Sources/Source_settings).  
+_______________________________________________ 
+## Proxy check settings
 ![image-20210710-100950](./assets/ProxyChecker_Settings/ProxyChecker_Settings_pic9.png)
 
-
-
-### Use .NET Process for Proxy Checking
-
-If checked, proxies will be checked using the .NET implementation CheckingProcessor (restart required).
-
+### Use .NET process to check proxies
+Uses the `CheckingProcessor` implementation on the .NET platform to check proxies.
   
+:::warning Restart the program to apply this setting
+:::  
+_______________________________________________ 
+## Useful links
 
-## Useful Links
-
-- [❗→ Working with Proxies](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086266 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086266")
-- [❗→ Source Settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1892876309 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1892876309")
+- [❗→ Working with proxies](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086266 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086266")
+- [❗→ Source settings](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1892876309 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1892876309")

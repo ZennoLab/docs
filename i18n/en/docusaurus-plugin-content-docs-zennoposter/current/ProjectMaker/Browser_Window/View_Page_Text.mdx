@@ -11,94 +11,101 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903769)** — source of this material
+> 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735903769)** — Source of this material
 
 _______________________________________________  
-
 ## Description
+This tool lets you view the source code (Source), DOM model, and visible text of the web page loaded in the browser.  
 
-With this tool, you can easily view the source code (Source), DOM model, and displayed text of the page loaded in the [❗→ browser](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373").
-
-:::note Note
-You can read about the difference between the DOM and the source code in the note Difference between Source and DOM
+:::tip When using the *chrome* engine in your project
+You can use the standard web developer tools (DevTools) as an alternative.
 :::
 
-:::note Note
-If you're working in the Chrome engine, you can also use developer tools as an alternative
-:::
+### What is this used for?
+The viewer lets you analyze the page structure in depth in the following situations:
+- **Identifying elements:** finding unique attributes or data to configure actions precisely (clicking, reading, or setting a value).
+- **Complex data extraction:** extracting information you cannot access through the standard Action Constructor.  
+- **Debugging:** quickly copying source code, DOM, or text directly into the [Regular Expression Tester](/zennoposter/ProjectMaker/Tools/Regular_Expression_Tester) to check your logic.
 
-  
-
-## What is this used for?
-
-This tool is useful when you need to better understand the structure of a page:
-
-- Finding data so you can “attach” to an element for a [❗→ click](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534020211")/[❗→ get](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315124")/[❗→ set](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315117") value
-- Parsing data you can’t access using the [❗→ action builder](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337/.+XPath "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337/.+XPath")
-- Quickly copying source code, DOM, or text into the [❗→ Regex Tester](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111")
-
-  
-
-## How do you open the window?
-
-The button to enable this window is to the right of the browser’s address bar.
+### How to open the window?
+The button for this tool is on the toolbar, to the right of the browser's address bar.
 
 ![image-20211226-162058](./assets/View_Page_Text/View_Page_Text_pic1.png)
-
-
-
-  
-
-## How to use the window?
-
-When you click the icon, the window opens:
+_______________________________________________ 
+## How it works
+Clicking the tool icon opens the following window:
 
 ![image-20200815-142918](./assets/View_Page_Text/View_Page_Text_pic2.png)
 
+### Selecting content (1)
+Lets you select the format in which to display data: **DOM** (selected by default), **source code** (Source), or the page's **visible text**.  
 
+### Word wrap (2)
+Enables automatic wrapping of long text lines. When disabled, text extends beyond the right edge of the window, and you need to scroll horizontally to view it in full.  
 
-### Selecting content
-
-Here, you need to select what you want to view: **DOM** (default), **source code**, or **visible text** on the page ([❗→ difference between Source and DOM](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840#%D0%A0%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-Source-%D0%B8-Dom "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840#%D0%A0%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-Source-%D0%B8-Dom")).
-
-### Word wrap
-
-When this option is enabled, if a line is too long, it will be wrapped to the next line instead of hidden outside the window boundary. Here's a screenshot of the same window but with this option enabled:
+An example of the window with word wrap enabled:  
 
 ![image-20200815-143611](./assets/View_Page_Text/View_Page_Text_pic3.png)
 
-
-
-### Copy to Regex Builder
-
-When you click this button, the [❗→ Regex Builder](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111") will open, and the window’s contents will be automatically copied there.
-
-  
-
+### Copy to Regex Builder (3)
+Automatically opens the [Regex Builder](/zennoposter/ProjectMaker/Tools/Regular_Expression_Tester) and copies the window's entire current contents into it for further work and testing.
+_______________________________________________ 
 ## Usage Example
+Suppose you need to retrieve all `<meta>` tags with the property attribute from a [ZennoLab forum topic page](https://zennolab.com/discussion/threads/capmonster-cloud-novyj-servis-avtomaticheskogo-raspoznavanija-kapch.59736/). These tags are not displayed on the page itself, so the **Action Constructor** cannot find them. Instead, we will work with the page code.  
 
-Let’s say you need to parse `<meta>` tags with the `property` attribute from a [ZennoLab forum topic page](https://zennolab.com/discussion/threads/capmonster-cloud-novyj-servis-avtomaticheskogo-raspoznavanija-kapch.59736/ "https://zennolab.com/discussion/threads/capmonster-cloud-novyj-servis-avtomaticheskogo-raspoznavanija-kapch.59736/"). The [❗→ action builder](https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/483426337") can’t access them, since these tags aren’t displayed anywhere. Here’s what you do:
+### Step 1. Find the required tags in the page code  
+Open the required page and launch the code viewer.  
 
-- Go to the required page
-- Launch the code viewing window (in this case, you can use either DOM or source code; it won’t affect the result) and look for the required tags (there are several, but just one is shown here):
+> In this example, you can use either the DOM or the page source code: the result will be the same.  
+
+Find the `<meta>` tags with the `property` attribute. The screenshot shows one of them:  
 
 ![image-20200815-150735](./assets/View_Page_Text/View_Page_Text_pic4.png)
 
+The tags we need have a similar structure:  
+- the tag starts with `<meta property="`;  
+- `property` is followed by the property name;  
+- the `content` attribute contains its value;  
+- the tag ends with `>`.
 
+### Step 2. Create a regular expression  
+Copy the page contents into the [Regex Builder](/zennoposter/ProjectMaker/Tools/Regular_Expression_Tester). Use the following regular expression to find the required values:
 
- All these tags have the same structure: they always start with `<meta property="` and end with `>` in quotes, immediately after `property,` is the property name, and in the `content` attribute is the value.
-- Copy the content into the [❗→ Regex Builder](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111") using the button with the same name. Based on our analysis, we’ll create a regex: `(?<=<meta\ property=)"([a-z:]+)"\s+content="(.*?)"(?=>)`
+```
+(?<=<meta\ property=)"([a-z:]+)"\s+content="(.*?)"(?=>)
+```
+It uses two groups:  
+1. `([a-z:]+)` — retrieves the value of the property attribute.  
+2. `(.*?)` — retrieves the contents of the content attribute.
 
-- Using the [❗→ Text Processing](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793") action and its Regex functionality, pull the values you need from the page code and save them in a table:
+### Step 3. Save the values found  
+Add the [Text Processing](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Data/Text_Processing) action and select the **Regex** operation.  
+
+Enter the regular expression you created, search the page code, and save the values found to a table:  
 
 ![image-20200815-153331](./assets/View_Page_Text/View_Page_Text_pic5.png)
 
+In this example, the regular expression is applied to the DOM of the current tab. The page contents are available through special variables:  
+- `{-Page.Dom-}` — the DOM of the current tab;  
+- `{-Page.Source-}` — the page source code;  
+- `{-Page.Text-}` — the visible page text.
 
+> *You can find other available variables in the [Variables Window](/zennoposter/ProjectMaker/Program-interface/Variables_Window).*
 
-A few notes on this screenshot:
+#### Why exclude column 0?
+The regular expression uses two groups:  
+```
+([a-z:]+)
+(.*?)
+```
+However, the result contains three columns:  
+- *column `0`* contains the entire match;  
+- *column `1`* contains the value of the `property` attribute;
+- *column `2`* contains the value of the `content` attribute.
 
-- `{ -Page.Dom- }` — this variable stores the DOM of the tab. For source code, it’s `{ -Page.Source- }`, for text — `{ -Page.Text- }`. You can find others in the [❗→ variables window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872#%D0%9E%D0%BA%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608872#%D0%9E%D0%BA%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5").
-- *Why was the column with index zero excluded?* The [❗→ regular expression](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111") used bracket grouping (**(?&lt;=&lt;meta\ property=)"([a-z:]+)"\s+content="(.\*?)"(?=&gt;)** — two groups highlighted in red). When testing in the Regex Builder, if you go to the *Groups* tab, you’ll notice three groups were found, even though we only have two: the very first group is the text of the *full* match, then come the groups you defined. Since numbering starts from zero, we exclude the column with index 0, not 1.
+In other words, numbering starts at zero. If you do not need the full match, exclude column `0`.  
+
+You can view the groups found on the **Groups** tab in the Regex Builder:
 
 ![image-20200815-155656](./assets/View_Page_Text/View_Page_Text_pic6.png)
 
@@ -108,7 +115,7 @@ A few notes on this screenshot:
 
 ## Useful links
 
-- [❗→ Regex Tester](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111")
+- [❗→ Regular Expression Tester](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534086111")
 - [❗→ XPath](https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/862093419")
 - [❗→ Text Processing](https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/488865793")
-- [❗→ 💻Browser window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373")
+- [❗→ 💻Browser Window](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315373")

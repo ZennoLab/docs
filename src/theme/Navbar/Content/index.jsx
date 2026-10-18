@@ -26,7 +26,7 @@ function getVideoCourseUrl(pathname) {
   }
 
   if (pathname.includes('/zennoposter/')) {
-    return '/zennoposter/hello/zennoposter-video-course';
+    return '/zennoposter/Hello/zennoposter-video-course';
   }
 
   if (pathname.includes('/zennobrowser/')) {

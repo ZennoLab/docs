@@ -1,6 +1,6 @@
 ﻿---
 sidebar_position: 4
-title: "Re-recording Problematic Sections"
+title: "Updating Problematic Actions"
 description: ""
 date: "2025-08-18"
 converted: true
@@ -14,11 +14,15 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494731287)** — Source of this material
 
 _______________________________________________  
+## Description
+If the target site changes the structure or code of its pages, existing actions may stop working (for example, an element's attributes may change, or the element may disappear altogether).  
 
-Sometimes, a site you previously worked with might change the structure or code of its pages, and your template will no longer run successfully.
+In such cases, you can re-record outdated actions while keeping the main project structure intact.
 
-In such cases, you have the option to add new actions without changing the main structure of the template.
-
-To do this, open the template and run it **From the Beginning** (1) up to the breakpoint or by clicking **To the End** (2) (in this case, execution will stop at the first breakpoint). If an error occurs (for example, an element's attributes have changed, or the element is no longer on the page), you can click **Record** (3) in real time and record new actions instead of the old ones that, for some reason, no longer work correctly.
+### How to update actions:  
+1. Open the template and start debugging with **From the Beginning (1)** or **To the End (2)**. Execution stops at the first breakpoint or at a step that fails.  
+2. When you reach the problematic section, enable **Record (3)** mode.  
+3. Perform the required actions in the browser in real time to record new, up-to-date actions to replace the ones that no longer work.  
 
 ![image-20210223-151911](./assets/Re-recording_Problematic_Sections/Re-recording_Problematic_Sections_pic1.png)
+

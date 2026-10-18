@@ -14,67 +14,67 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2131066881)** — Source of this material
 
 _______________________________________________  
+## Description
+Font emulation lets you specify which fonts are available to the browser. This helps you configure the browser environment more precisely and improve the quality of its emulation.
 
-## What is this?
+:::info If this setting is not used, the browser uses *system fonts*.
+:::
+_______________________________________________ 
+## How it works
+### Setup
+To use a custom font set, add the `--zl-fonts-dir` argument when launching the browser. Specify the path to the folder containing the fonts in this argument.  
 
-Allows you to set a list of fonts available to the browser.
+:::tip For example:
+`--zl-fonts-dir=Z:\Fonts`
 
-## What is it used for?
+In this case, the browser will use the fonts found in **Z:\Fonts**.
+:::
 
-This feature helps to improve the quality of browser emulation.
+The specified folder must contain at least one font from this list:  
+- *Sans*
+- *Arial*
+- *MS UI Gothic*
+- *Microsoft Sans Serif*
+- *Segoe UI*
+- *Calibri*
+- *Times New Roman*
+- *Courier New*
 
-## How do I set up the font list?
+If the `--zl-fonts-dir` argument is not specified, the fonts installed on the system are used.
 
-You can set the font list by adding the `--zl-fonts-dir` argument when launching the browser. This argument specifies the directory from which all found fonts will be used.
+### Where to specify the launch argument
+There are two ways to do this:
 
-Examples:
-
-- `--zl-fonts-dir=Z:\Fonts` - fonts will be loaded from `Z:\Fonts`.
-
-If the argument is not set, system fonts will be used.
-
-The specified directory must also contain at least one of the following fonts:
-
-- Sans
-- Arial
-- MS UI Gothic
-- Microsoft Sans Serif
-- Segoe UI
-- Calibri
-- Times New Roman
-- Courier New
-
-## Where do I specify the browser launch argument?
-
-There are two places where you can set the argument:
-
-1. Static block - [❗→ Project Settings | Arguments](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534315477#%D0%90%D1%80%D0%B3%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B)
+#### Method 1. In the project settings  
+Open the [Project Settings | Arguments](/zennoposter/ProjectMaker/Project-editor/Static_blocks/Project_Settings#arguments) static block and enter the argument in the corresponding field:
 
 ![image-20220228-134910](./assets/Font_Emulation/Font_Emulation_pic1.png)
 
-
-2. Action `Settings|Launch instance` - [❗→ Browser Settings | Arguments](https://zennolab.atlassian.net/wiki/spaces/RU/pages/489324572#%D0%90%D1%80%D0%B3%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B)
+#### Method 2. In the action that starts the instance
+Add the **Settings → Start Instance** action and enter the argument in the dedicated section:  
 
 ![image-20220228-135137](./assets/Font_Emulation/Font_Emulation_pic2.png)
-
-
-
-## Where can I get a list of fonts?
-
-You can download ready-made font packs from the internet. Examples of sets with download links:
+_______________________________________________ 
+## Font sets
+### Ready-made sets
+You can use ready-made font sets for different Windows 10 configurations:
 
 - Clean Windows 10 Pro - [ru.zip](https://www.dropbox.com/s/jzigwy17p0v9z34/ru.zip?dl=0) and [en.zip](https://www.dropbox.com/s/jw2jzyuxtqddzx2/en.zip?dl=0)
 - Windows 10 Pro + Office - [ru.zip](https://www.dropbox.com/s/4fyudzexzp7pmpl/ru.zip?dl=0) and [en.zip](https://www.dropbox.com/s/5n46v94h2nweve1/en.zip?dl=0)
 - Windows 10 Pro + VisualStudio 2022 - [ru.zip](https://www.dropbox.com/s/ertyj80yajtv333/ru.zip?dl=0) and [en.zip](https://www.dropbox.com/s/mhvb5pvqt0u0vqq/en.zip?dl=0)
 - Windows 10 Pro + Office + VisualStudio 2022 - [ru.zip](https://www.dropbox.com/s/00pocd1edahsfrs/ru.zip?dl=0) and [en.zip](https://www.dropbox.com/s/foi7lb37cdt914u/en.zip?dl=0)
 
-:::info Info
-These font sets emulate a specific OS with installed programs. This means you do NOT need to have Windows 10 Pro installed to use them.
+:::info These archives contain only the font sets needed to emulate the corresponding environment.
+You do not need to install Windows 10 Pro, Office, or Visual Studio on the computer running ZennoPoster.
 :::
 
-Alternatively, you can create your own font set by installing and configuring Windows:
+### Custom sets
+You can also prepare your own font set for the Windows configuration you need:  
+1. Install Windows on a virtual machine.
+2. Install the applications whose font set you want to emulate. *Some applications add their own fonts to the system during installation.*
+3. Open `C:\Windows\Fonts`, which contains most installed fonts. Copy the fonts you need to a separate folder.
+4. Transfer this folder to the computer running ZennoPoster. Specify its path in the --zl-fonts-dir argument.  
 
-1. Install Windows on a virtual machine
-2. Install the necessary set of applications, as some of them may add additional fonts to the system
-3. Download the fonts used by this OS. Most of them are located at `C:\Windows\Fonts`
-4. Copy them to the computer where ZennoPoster is installed to enable emulation
+:::tip Keep different font sets in separate folders.
+This lets you quickly switch between configurations by changing only the path in the launch argument.
+:::

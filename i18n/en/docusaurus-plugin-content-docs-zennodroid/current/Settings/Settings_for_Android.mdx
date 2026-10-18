@@ -4,6 +4,7 @@ sidebar_label: Android Settings (Lite/Pro)
 title: Android Settings (Lite/Pro) | ZennoDroid Documentation | ZennoLab
 description: Android Settings (Lite/Pro) - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
 ---
+import Link from '@docusaurus/Link';
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Android Settings (Lite/Pro)
@@ -14,6 +15,8 @@ This tab contains various settings for configuring Android in Memu and LDPlayer 
 
 ![working with Memu](./assets/Settings_for_Android/Settings_for_Android_pic1.png)
 _______________________________________________
+<Link id="тип-эмулятора" />
+
 ### Emulator type.
 The list above the settings picks the emulator ZennoDroid works with: **Memu**, **LDPlayer9** or **LDPlayer14**. Only the emulators installed on the computer are listed, and some of the settings below depend on the type you pick.
 :::info **While at least one device is running the list is locked, and the hint *It is necessary to stop all running devices* shows up next to it**
@@ -25,6 +28,8 @@ This setting lets you choose the device that Project Maker will use by default�
 If you want to use the selected device for running projects in ZennoDroid, turn off this setting, otherwise you'll get the ***Device is busy in Project Maker*** error.
 :::info **The 'Refresh' button updates the device list**
 :::
+
+<Link id="способ-захвата-изображения" />
 
 ### Image capture method.
 Sets how ZennoDroid gets the picture from the emulator:
@@ -61,6 +66,8 @@ _______________________________________________
 ### Delay before and after character input.
 Just like the previous setting, used in [**Keyboard Emulation**](../Android/pro-lite/Keyboard) and [**Set Value**](../Android/pro-lite/SetValue) actions to set the delay.
 _______________________________________________
+<Link id="способ-проксирования-трафика" />
+
 ### The method of traffic proxying.
 ZennoDroid lets you choose how to proxy traffic for the [**Set Proxy**](../Android/pro-lite/setting#how-to-set-up-a-proxy) action. By default, Proxifier is used.
 

@@ -149,18 +149,36 @@ const config = {
             from: ['/zennodroid/get-started/MCP_Setup'],
           },
         ],
-        // FIXME: createRedirects function creates circular redirects (path -> same path)
-        // This causes 100+ warnings and build failures because:
-        // - replace('/?', '/') only works if literal '?' exists in path (rarely true)
-        // - replace('//////', '/') only works if 6 slashes exist (almost never true)
-        // Result: returns [existingPath, existingPath] for most paths -> circular redirect
-        // Commented out until proper implementation is needed
-        // createRedirects(existingPath) {
-        //   return [
-        //     existingPath.replace('/?', '/'),
-        //     existingPath.replace('//////', '/'),
-        //   ]
-        // }
+        createRedirects(existingPath) {
+          const settingsPath = '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/';
+          const settingsPages = [
+            'Captchas', 'Content_Creation_Modules', 'Google_Sheets',
+            'Instance_Settings', 'Mail', 'Other_ZennoPoster_Settings',
+            'Plugin_Settings', 'Poster_Thread_Settings', 'Project_Execution_Settings',
+            'Proxy_Services', 'SMS_Services', 'ZennoPoster_Hotkeys',
+            'ZennoPoster_Translators',
+          ];
+          if (settingsPages.some((page) => existingPath === `${settingsPath}${page}`)) {
+            return [existingPath.replace(settingsPath, `${settingsPath}Settings_ZennoPoster/`)];
+          }
+          const actionsPath = '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/';
+          const mailPath = `${actionsPath}Mail/`;
+          if (['Google.com', 'Mail.ru', 'Yandex.ru'].some((page) => existingPath === `${mailPath}${page}`)) {
+            return [existingPath.replace(mailPath, `${mailPath}Mail_send/Connection_settings/`)];
+          }
+          if (existingPath === `${mailPath}PM_Editor_Actions_SendMail`) {
+            return [`${mailPath}Mail_send/PM_Editor_Actions_SendMail`, `${mailPath}Mail_send/Send_mail`, `${mailPath}Send_mail`];
+          }
+          const staticPath = '/zennoposter/ProjectMaker/Project-editor/Static_blocks/';
+          const legacyPaths = {
+            [`${actionsPath}Ftp/FTP_Connection`]: [`${staticPath}FTP_Settings`],
+            [`${actionsPath}Custom_code/References_from_GAC`]: [`${staticPath}References_from_GAC`],
+            [`${actionsPath}Custom_code/Using_Directives_and_Shared_Code`]: [`${staticPath}Using_Directives_and_Shared_Code`],
+            '/zennoposter/category/settings-zennoposter-proxychecker': ['/zennoposter/category/zennoposter-settings'],
+            '/zennoposter/category/actions-mail': ['/zennoposter/category/actions-send-mail', '/zennoposter/category/actions-mail-connection-settings'],
+          };
+          return legacyPaths[existingPath];
+        },
       }
     ],
   ],

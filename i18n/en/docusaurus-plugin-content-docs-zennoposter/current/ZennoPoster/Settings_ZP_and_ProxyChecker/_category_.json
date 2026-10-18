@@ -4,7 +4,7 @@
   "link": {
     "type": "generated-index",
     "title": "ZennoPoster and ProxyChecker Settings",
-    "description": "Global settings section: includes the 'ZennoPoster Settings' subsection and the 'ProxyChecker Settings' article.",
+    "description": "Global settings for ZennoPoster and ProxyChecker: project execution, instances, services, and other program options.",
     "slug": "/category/settings-zennoposter-proxychecker"
   }
 }

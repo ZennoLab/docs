@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 14
 title: "Mail (PM)"
 description: ""
@@ -14,140 +14,102 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2096660481/PM)** — Source of this material
 
 _______________________________________________  
+## Description  
+This settings section is used to connect mailboxes that you can then use to [**send emails**](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/PM_Editor_Actions_SendMail). 
 
 ![image-20211207-054653](./assets/Mail_PM/Mail_PM_pic1.png)
+_______________________________________________
+## “Add” button
+Clicking this button opens a window for adding a new connection.
 
-## Description
-
-In this section, you can set up connections to email accounts, which can later be used to send notifications to yourself using the [❗→ Send email](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500") action.
-
-  
-
-## Add
-
-Clicking this button will open a window for adding a new connection.
-
-![image-20220111-113545](./assets/Mail_PM/Mail_PM_pic2.png)
-
+![Add](./assets/Mail_PM/Mail_PM_pic2.png)
 
 
 ### Service name
+A custom name for this account that you choose yourself. It will appear under this name in the list of available accounts, for example, in the [**Send email**](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/PM_Editor_Actions_SendMail) action.  
 
-This name will be displayed in the list of available services and in the [❗→ Send email](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500") action.
-
-:::warning Attention
-The service name is a required field and must be unique within the program.
-:::
+:::warning **This is a required parameter and must be unique within the program**
+:::  
 
 ### Sender name
-
-The text that will be shown in the "Sender name" field to the recipient.
+This is the name that will appear in the sender field for the recipient.
 
 ### Email
+The full email address that will be used to send mail.  
 
-The full email address from which the emails will be sent.
+:::info **It must be a real address, otherwise the program will display an error**
+:::  
 
 ### Password
+The password for this mailbox.
 
-Password for the email address.
+Some email providers set a special password for connecting third-party programs for security reasons. This is called an **App password**. You can get one in the settings of the selected service.  
 
-Some email providers set a separate password for connecting to your mailbox via third-party applications (an app password).
-Instructions for some programs can be found in the article [❗→ at this link](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2084569120 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2084569120"). 
+### “Sign in to email” button
+When clicked, the connection details for the SMTP server will be checked. 
 
-### Log in to mail
+> *The Email-Password combination is not checked.*
 
-When you click this button, it checks whether the connection data for the SMTP server is correct.
-It does not check if the email-password pair is valid.
-
-If the information is entered correctly, a message will appear at the bottom of the window: “**Connection successful! Account ready to use**“:
+If the connection is successful, a green message will appear at the bottom of the window:
 
 ![image-20211114-101602](./assets/Mail_PM/Mail_PM_pic3.png)
 
-
-
-If the program was unable to connect to the server, a pop-up window with an error will appear:
+If the program cannot connect to the server, an error popup will appear:
 
 ![image-20211114-102731](./assets/Mail_PM/Mail_PM_pic4.png)
 
+In this case, you need to configure the connection manually. To do this, uncheck the **Detect settings automatically** option.  
 
-
-In this case, you’ll need to configure the connection manually. To do this, uncheck the “Detect settings automatically” option (this setting is described below).
-
-### Detect settings automatically
+### Detect settings automatically  
+When this setting is enabled, the program will try to automatically determine the SMTP server connection settings based on the email address you entered.
 
 ![image-20211114-104407](./assets/Mail_PM/Mail_PM_pic5.png)
 
-
-
-If this setting is enabled, the program will try to automatically select the SMTP server connection settings based on the email address you entered.
-
-If there is a connection error, you can enter the connection details manually by unchecking this option. You can find the connection settings on your email provider’s website.
+If you get an error after the settings are detected automatically, uncheck the box and enter the settings manually, using the information on your provider's website as a guide.  
 
 ### Default
+When this option is enabled, the current connection will be used by default in all [Send email](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/PM_Editor_Actions_SendMail) blocks, unless specified otherwise.  
 
-When this option is enabled, the current connection will be used as the default. This means for all “[❗→ Send email](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500")“ actions where another service isn’t specified, this email service will be used to send messages.
+### Do not check server certificates
+In some cases, you may get this error when connecting an account:  
+**`An error occured while attempting to establish an SSL or TLS connection`**.  
 
-### Don’t check server certificates
+This error most often occurs when establishing an unencrypted connection to the mail server. The provider then refuses the connection because the system cannot verify the authenticity of the SSL/TLS certificates.  
 
-:::info Information
-Added in ZennoPoster 7.7.0.0
-:::
+There can be various causes. Here are the most common ones:  
+- An outdated version of Windows with long-unupdated trusted certificates;  
+- Antivirus software that replaces server certificates to decrypt and inspect incoming traffic;  
+- An enabled firewall.  
 
-Sometimes, when trying to connect an account, you may get an error: “**An error occured while attempting to establish an SSL or TLS connection**“. 
+The solution depends on the specific cause. You can update Windows or disable the firewall. If antivirus software is the cause, pay special attention to its incoming traffic and email scanning settings.  
 
-This error most often occurs when there is a connection between your computer and the mail server, but a secure connection cannot be established. This can happen because, for some reason, the system can’t verify the authenticity of the server’s SSL/TLS certificates and therefore refuses to establish the connection.
+If nothing helps, enable this setting. After that, any certificates sent by the server to establish the connection will not be checked, and the connection will be marked as secure.  
 
-There can be various reasons for this, for example: 
+:::warning **If you disable certificate checking, your traffic with the email provider may be intercepted.**
+::: 
 
-- Windows hasn’t been updated in a long time, so the trusted certificate stores are outdated,
-- the antivirus checks all incoming traffic and, in order to decrypt it, substitutes its own certificates for the server’s,
-- firewall or similar software.
+### “Send test email” button
+When clicked, ZennoPoster will try to send an email to your address using the specified SMTP server. This is used to check whether the entered details are valid.  
 
-The solution is pretty clear from the warning: you can update Windows, disable your antivirus (and pay particular attention to settings related to checking incoming traffic or email), or disable your firewall.
+If the account credentials are correct, the following status will appear: **`Test email sent successfully`**. This means the email service is ready to use in the program.  
 
-If nothing helps, you can enable this setting. In that case, any certificates that the mail server sends when establishing a connection will not be checked, and a secure connection will be established successfully.
+If you enter incorrect information, an error will appear: **`Failed to send test email`**. You can see a more detailed description in the window.  
 
-:::warning Attention
-Keep in mind that if you disable certificate checking, the traffic between you and your email provider can be intercepted!
-:::
+:::tip **Some email providers require you to explicitly enable email access for third-party programs**
+You can find the appropriate settings yourself by searching for:  
+`smtp настройки подключения <НАЗВАНИЕ_ВАШЕГО_ПРОВЙДЕРА>`
+:::  
+_______________________________________________  
+## Additional buttons
+### “Edit”
+Use this button to edit previously added email accounts
 
-### Send test email
+### “Default”
+This option lets you change the account that will be used by default
 
-To check if the entered data works, click the “Send test email” button.
-Zennoposter will then try to send an email to your address using the specified SMTP server and the credentials you provided.
-
-If all credentials are correct, you’ll see the status: “**Test email sent successfully**“. After that, the email service is ready for use in the [❗→ block](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500").
-If the credentials are incorrect, for example, if the password for the mailbox is wrong, you’ll see the status “**Failed to send test email**“, and a modal window will show a more detailed error description.
-
-#### Note
-
-Keep in mind that some email providers require you to explicitly enable access for third-party programs. Connection settings for some providers can be found on [❗→ this page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/2084569120 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/2084569120").
-You can also search for the settings yourself by entering something like
-```xml
-smtp настройки подключения &lt;ВАШ_ПРОВАЙДЕР&gt;
-```
-—for example: `smtp настройки подключения aol`
-
-* * *
-
-## Edit
-
-You can use this button to edit existing email accounts.
-
-* * *
-
-## Default
-
-This setting allows you to change the default account.
-
-* * *
-
-## Delete
-
+### “Delete”
 Removes the selected account from the program settings.
-
-* * *
-
+_______________________________________________ 
 ## Useful links
 
 - [❗→ Send email](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1399914500")

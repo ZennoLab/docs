@@ -20,7 +20,7 @@ _______________________________________________
 
 ## Description
 
-This action is used for automatic captcha solving via [❗→ services](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385") or [❗→ manually](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215").
+This action is used for automatic captcha solving via [❗→ services](/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Captchas "/wiki/spaces/RU/pages/808845385") or [❗→ manually](/zennoposter/ProjectMaker/Tools/Manual_Captcha_Entry "/wiki/spaces/RU/pages/534053215").
 
 A captcha (from CAPTCHA — **C**ompletely **A**utomated **P**ublic **T**uring test to tell **C**omputers and **H**umans **A**part) is a computer test used to determine whether the user is human or a bot.
 
@@ -36,13 +36,13 @@ There are several ways to add this action to your project.
 
 ### Via the BROWSER context menu
 
-To add the captcha recognition action using the [❗→ browser](/wiki/spaces/RU/pages/534315373 "/wiki/spaces/RU/pages/534315373")ProjectMaker context menu, right-click on the image on the site and choose *This is a captcha!*
+To add the captcha recognition action using the [❗→ browser](/zennoposter/ProjectMaker/Browser_Window/ "/wiki/spaces/RU/pages/534315373")ProjectMaker context menu, right-click on the image on the site and choose *This is a captcha!*
 
 ![image-20200819-180955](./assets/Captcha_Recognition/Captcha_Recognition_pic2.png)
 
 
 
-Once the action is added, the [❗→ manual captcha recognition](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215") window will immediately pop up, which you can close for now and move on to configuring the action.
+Once the action is added, the [❗→ manual captcha recognition](/zennoposter/ProjectMaker/Tools/Manual_Captcha_Entry "/wiki/spaces/RU/pages/534053215") window will immediately pop up, which you can close for now and move on to configuring the action.
 
 ### Via the **PROJECT** context menu
 
@@ -68,7 +68,7 @@ Or you can use the [❗→ smart search](https://zennolab.atlassian.net/wiki/spa
 
 Choose the module (captcha service) through which the captcha will be recognized.
 
-From the dropdown list, select the desired captcha recognition service (you’ll need to specify its [❗→ API key in the settings](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385") first). By default, *MonkeyEnter.dll* is used — [❗→ manual input](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215").
+From the dropdown list, select the desired captcha recognition service (you’ll need to specify its [❗→ API key in the settings](/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Captchas "/wiki/spaces/RU/pages/808845385") first). By default, *MonkeyEnter.dll* is used — [❗→ manual input](/zennoposter/ProjectMaker/Tools/Manual_Captcha_Entry "/wiki/spaces/RU/pages/534053215").
 
 :::note Keep in mind
 You can use project variables in this field.
@@ -76,7 +76,7 @@ You can use project variables in this field.
 
 #### Settings
 
-Clicking the *Settings* button opens the program settings, in the [❗→ captcha service tab](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385").
+Clicking the *Settings* button opens the program settings, in the [❗→ captcha service tab](/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Captchas "/wiki/spaces/RU/pages/808845385").
 
 #### Element search
 
@@ -165,7 +165,7 @@ It’s always important to try and choose your search conditions so only one ele
 
 #### Save the result to a variable
 
-The recognition result will be saved into the specified [❗→ project variable](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922").
+The recognition result will be saved into the specified [❗→ project variable](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Data/Variable_Processing "/wiki/spaces/RU/pages/486309922").
 
   
 
@@ -294,7 +294,7 @@ Please don’t abuse this feature and only use it when a worker actually made a 
 
 These options let you save the captcha image and answer to the specified folder.
 
-- *Folder -* the directory where images will be saved (you can use [❗→ variables](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922"))
+- *Folder -* the directory where images will be saved (you can use [❗→ variables](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Data/Variable_Processing "/wiki/spaces/RU/pages/486309922"))
 - *Answers -* where to save the answers to captchas:
 
  - *In the filename -* handy, but may not always work since captchas might contain characters that cannot be used in Windows filenames.
@@ -305,7 +305,7 @@ These options let you save the captcha image and answer to the specified folder.
 ##### Where this can be useful:
 
 - if you want to [create your own module](https://zennolab.atlassian.net/wiki/pages/createpage.action?spaceKey=APIS&amp;title=%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F "https://zennolab.atlassian.net/wiki/pages/createpage.action?spaceKey=APIS&amp;title=%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F") for the [CapMonster Cloud](https://capmonster.cloud/ "https://capmonster.cloud/") service.
-- when using [❗→ CapMonster 2](/wiki/spaces/RU/pages/475332615 "/wiki/spaces/RU/pages/475332615") (a program for automatic captcha recognition) — this software supports many captchas out of the box, but there are some for which you need to [❗→ create modules yourself](/wiki/spaces/RU/pages/515932198 "/wiki/spaces/RU/pages/515932198"). To create a module, you need a base of correctly solved captchas — that’s where these action options come in: solve captchas (manually or via services), save the captchas and answers, and then train CapMonster 2 on them.
+- when using [❗→ CapMonster 2](https://zennolab.atlassian.net/wiki/spaces/RU/pages/475332615 "/wiki/spaces/RU/pages/475332615") (a program for automatic captcha recognition) — this software supports many captchas out of the box, but there are some for which you need to [❗→ create modules yourself](https://zennolab.atlassian.net/wiki/spaces/RU/pages/515932198 "/wiki/spaces/RU/pages/515932198"). To create a module, you need a base of correctly solved captchas — that’s where these action options come in: solve captchas (manually or via services), save the captchas and answers, and then train CapMonster 2 on them.
 
 * * *
 
@@ -313,15 +313,15 @@ These options let you save the captcha image and answer to the specified folder.
 
 ### Text captchas
 
-Quite often, especially on poorly protected resources, you’ll encounter text captchas. Unlike an ordinary (graphic) captcha, these aren’t drawn on an image — they’re just text. Such captchas don’t need to be sent anywhere, you can just extract (parse) them directly from the page text. To do this, get the page text via the [❗→ Data](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840/- "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840/-") action, select the page text, check “parse result”, and enter a [❗→ regular expression](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111") in the parameters for parsing the page.
+Quite often, especially on poorly protected resources, you’ll encounter text captchas. Unlike an ordinary (graphic) captcha, these aren’t drawn on an image — they’re just text. Such captchas don’t need to be sent anywhere, you can just extract (parse) them directly from the page text. To do this, get the page text via the [❗→ Data](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840/- "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534085840/-") action, select the page text, check “parse result”, and enter a [❗→ regular expression](/zennoposter/ProjectMaker/Tools/Regular_Expression_Tester "/wiki/spaces/RU/pages/534086111") in the parameters for parsing the page.
 
 ### Math captcha
 
-You might also encounter math text captchas. These are just like text captchas, except they usually show a math expression like 58+63. You could turn this text into an image and send it for recognition, or you can use JavaScript. To solve such a captcha, you can use the [❗→ JavaScript](/wiki/spaces/RU/pages/489259137 "/wiki/spaces/RU/pages/489259137") action from the “Your code” category. In the code field, insert a link to the variable that contains the parsed expression (like 58+63), and after execution, the action will return the result (121).
+You might also encounter math text captchas. These are just like text captchas, except they usually show a math expression like 58+63. You could turn this text into an image and send it for recognition, or you can use JavaScript. To solve such a captcha, you can use the [❗→ JavaScript](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Custom_code/JavaScript_Code "/wiki/spaces/RU/pages/489259137") action from the “Your code” category. In the code field, insert a link to the variable that contains the parsed expression (like 58+63), and after execution, the action will return the result (121).
 
 ### Flash captcha or captcha from any other element
 
-If you come across a flash captcha, you can render it as a regular image and also send it for recognition. Find this element in the [❗→ elements tree](/wiki/spaces/RU/pages/727777355 "/wiki/spaces/RU/pages/727777355"), right-click to open the action menu, and choose “This is a captcha” — that’s it!
+If you come across a flash captcha, you can render it as a regular image and also send it for recognition. Find this element in the [❗→ elements tree](/zennoposter/ProjectMaker/Program-interface/Element_Tree_Window "/wiki/spaces/RU/pages/727777355"), right-click to open the action menu, and choose “This is a captcha” — that’s it!
 
 ### How to take a browser screenshot using the Recognize Captcha action?
 
@@ -336,7 +336,7 @@ To do this:
 - add the Recognize Captcha action to your project (make sure to do it via the browser context menu ![Warning](https://pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net/atlassian/productivityEmojis/exclamation-32px.png), i.e., right-click any image on the site)
 - for the recognition module, select *CaptchaSaver.dll*
 - specify the search criteria for the element you want to screenshot
-- on the *Additional* tab, in the *Module Parameters* field, specify the full path for saving the image (you can use [❗→ variable macros](/wiki/spaces/RU/pages/486309922 "/wiki/spaces/RU/pages/486309922"))
+- on the *Additional* tab, in the *Module Parameters* field, specify the full path for saving the image (you can use [❗→ variable macros](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Data/Variable_Processing "/wiki/spaces/RU/pages/486309922"))
 
 <details>
 <summary>Example action settings to screenshot the entire site</summary>
@@ -358,13 +358,13 @@ To do this:
 
 - Right-click (RMB) on the captcha image and choose *This is a captcha!* from the context menu
 
- - right after adding this action, the [❗→ manual recognition window](/wiki/spaces/RU/pages/534053215 "/wiki/spaces/RU/pages/534053215") will pop up — you can close it
+ - right after adding this action, the [❗→ manual recognition window](/zennoposter/ProjectMaker/Tools/Manual_Captcha_Entry "/wiki/spaces/RU/pages/534053215") will pop up — you can close it
 - select the desired recognition module (by default, *MonkeyEnter.dll* - manual input)
 
- - make sure you’ve entered the API key in the [❗→ settings](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385") and funded your service account
-- Right-click in the input field where the captcha answer should go and select *Field for captcha recognition result* to add another [❗→ action](/wiki/spaces/RU/pages/486342706 "/wiki/spaces/RU/pages/486342706") for inputting the captcha answer (recording must be enabled in the project).
+ - make sure you’ve entered the API key in the [❗→ settings](/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Captchas "/wiki/spaces/RU/pages/808845385") and funded your service account
+- Right-click in the input field where the captcha answer should go and select *Field for captcha recognition result* to add another [❗→ action](https://zennolab.atlassian.net/wiki/spaces/RU/pages/486342706 "/wiki/spaces/RU/pages/486342706") for inputting the captcha answer (recording must be enabled in the project).
 
- - Or, you can find the field manually using the [❗→ Action Builder](/wiki/spaces/RU/pages/483426337 "/wiki/spaces/RU/pages/483426337") and input the answer using a [❗→ Set value](/wiki/spaces/RU/pages/534315117 "/wiki/spaces/RU/pages/534315117") action.
+ - Or, you can find the field manually using the [❗→ Action Builder](/zennoposter/ProjectMaker/Browser_Window/Action_Constructor_and_XPath_Search "/wiki/spaces/RU/pages/483426337") and input the answer using a [❗→ Set value](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Tabs/Setting_Value "/wiki/spaces/RU/pages/534315117") action.
 
 ### Combining
 
@@ -438,7 +438,7 @@ First, merge all the images into one. Then, for the final action, select the req
 ## Useful links
 
 - [❗→ ReCaptcha2 action](https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053033/ReCaptcha "https://zennolab.atlassian.net/wiki/spaces/RU/pages/534053033/ReCaptcha")
-- [❗→ Captcha service settings](/wiki/spaces/RU/pages/808845385 "/wiki/spaces/RU/pages/808845385")
+- [❗→ Captcha service settings](/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Captchas "/wiki/spaces/RU/pages/808845385")
 - [Pages with different types of captchas](https://lessons.zennolab.com/captchas/ "https://lessons.zennolab.com/captchas/")
-- [❗→ Browser](/wiki/spaces/RU/pages/534315373 "/wiki/spaces/RU/pages/534315373")
-- [❗→ Regex tester](/wiki/spaces/RU/pages/534086111 "/wiki/spaces/RU/pages/534086111")
+- [❗→ Browser](/zennoposter/ProjectMaker/Browser_Window/ "/wiki/spaces/RU/pages/534315373")
+- [❗→ Regex tester](/zennoposter/ProjectMaker/Tools/Regular_Expression_Tester "/wiki/spaces/RU/pages/534086111")

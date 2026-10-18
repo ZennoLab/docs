@@ -4,6 +4,7 @@ sidebar_label: Device Settings
 title: Device Settings | ZennoDroid Documentation | ZennoLab
 description: Device Settings - section of the official ZennoDroid documentation by ZennoLab. Detailed guides, setup instructions, and usage examples
 ---
+import Link from '@docusaurus/Link';
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # Device Settings
@@ -246,6 +247,8 @@ If you make the last digit of the address zero (for example, `192.168.20.0`), a 
 Right here, you can set the device's local IPv6 address.
 
 Example: `fdfe:dcba:9806::1/126`. If you use something like `fdfe:dcba:0::1/126`, the **`0`** will be swapped for a random hex value.
+
+<Link id="белый-список" />
 
 #### Whitelist
 A list of apps whose traffic *will* go through the proxy (list each one separated by a comma). All other apps will use a direct connection (no proxy).

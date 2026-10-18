@@ -14,141 +14,110 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/725385223)** — Source of this material
 
 _______________________________________________  
+## Project Editor Settings
 
 ![image-20200807-170908](./assets/Editor/Editor_pic1.png)
 
-## Project Editor Settings
-
 ### Open previously opened projects on startup
-
-All projects that were open before you last closed the program will be reopened.
+When ProjectMaker starts, all projects that were open before you last closed the program will be reopened automatically.
 
 ### Draw an element screenshot (if available)
-
-The action block will display a screenshot of the corresponding element. This increases the template size, but helps you navigate it more easily.
+The action block will display a screenshot of the corresponding page element. 
 
 ![image-20200817-133641](./assets/Editor/Editor_pic2.png)
 
-
+> **This helps you navigate the project more easily, but increases the template file size.**
 
 ### Do not fill action settings cache
-
-Disables caching action settings to speed up program startup.
+Disables preloading the action settings cache. This speeds up program startup.
 
 ### Show resulting variable in action description
+If an action saves its result to a variable, the variable name is displayed directly in the block description:  
 
-In the comments of some action blocks—where a result is returned into a variable—`action name → {variable}` will be shown.
+`Название действия → {-Variable.ИмяПеременной-}`
 
 ![image-20200817-135346](./assets/Editor/Editor_pic3.png)
 
-
+This lets you see where the result is saved without opening the action settings.
 
 ### Sort project variables alphabetically
-
-Variables will be listed in alphabetical order.
+Lists project variables in alphabetical order, making it easier to find the variable you need in large projects.
 
 ### Use autocomplete in dropdown lists
-
-When entering the name of a variable or a list/table in a dropdown, autocomplete will trigger. This saves you from typing the full name and lets you fill in the field quickly.
+When you enter the name of a variable, list, or table, ProjectMaker suggests matching items. You do not need to type the full name — just select it from the list.  
 
 ![nsk-17-08-2020-17-01-33](./assets/Editor/Editor_pic4.gif)
 
-
-
-:::info Information
-A restart is required
+:::info Restart the program to apply this setting
 :::
 
 ### Do not prompt to save new project
-
-Removes the save dialog for new projects after clicking the [❗→ "From the beginning" button](https://zennolab.atlassian.net/wiki/spaces/RU/pages/494731265#%D0%A1-%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/494731265#%D0%A1-%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0").
+Disables the prompt to save a new project after clicking the **From Start** button.  
 
 ### Offer to create actions for a new line
-
-Automatically shows a list of actions to add when you create a new line from a block.
-
-![](https://media-cdn.atlassian.com/file/410e88b8-aa23-4c3d-ac6a-05e047a53ce8/image/cdn?allowAnimated=true&amp;client=a39ef20a-45b0-4258-a1f9-dace57692ad1&amp;collection=contentId-725385223&amp;height=307&amp;max-age=2592000&amp;mode=full-fit&amp;source=mediaCard&amp;token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhMzllZjIwYS00NWIwLTQyNTgtYTFmOS1kYWNlNTc2OTJhZDEiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpjb2xsZWN0aW9uOmNvbnRlbnRJZC03MjUzODUyMjMiOlsicmVhZCJdfSwiZXhwIjoxNzUzMDgyMjk0LCJuYmYiOjE3NTMwNzk0MTR9.P_Zmfrwbw6Fn8Yf0zFgxy2uJGqOXs_M2RrmwH0XyrKE&amp;width=760)
+Automatically opens a list of available actions when you create a new line from a block. You can select the next action from this list and add it directly to the project.
 
 ### Show quick actions window
-
-When you hover over line connection points, a quick actions window appears.
-
-![](https://media-cdn.atlassian.com/file/366ece27-27bd-43e8-86ae-fb529584e604/image/cdn?allowAnimated=true&amp;client=a39ef20a-45b0-4258-a1f9-dace57692ad1&amp;collection=contentId-725385223&amp;height=341&amp;max-age=2592000&amp;mode=full-fit&amp;source=mediaCard&amp;token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhMzllZjIwYS00NWIwLTQyNTgtYTFmOS1kYWNlNTc2OTJhZDEiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpjb2xsZWN0aW9uOmNvbnRlbnRJZC03MjUzODUyMjMiOlsicmVhZCJdfSwiZXhwIjoxNzUzMDgyMjk0LCJuYmYiOjE3NTMwNzk0MTR9.P_Zmfrwbw6Fn8Yf0zFgxy2uJGqOXs_M2RrmwH0XyrKE&amp;width=760)
-
+When you hover over a block's connection point, a window for quickly navigating to other actions appears. This makes it easier to work with connections between project blocks.
+_______________________________________________ 
 ## Action Properties
-
 ### Limit action property width
-
-Control the layout of the "Action Properties" window—choose between a fixed or flexible grid so the contents can adapt to the window width.
+Determines how the grid width changes in the **Action Properties** window:  
+- when enabled, the width is fixed;
+- when disabled, the content adapts to the window size.
 
 ### Open multiple action settings at once in "..." mode
+Lets you open the settings of several actions at once, next to their corresponding blocks.
 
-Lets you open several action settings at once next to the block. By default, this is only enabled in "No browser" mode.
-
-![](https://media-cdn.atlassian.com/file/fd883c77-1b9f-432d-ae79-8866bb871edd/image/cdn?allowAnimated=true&amp;client=a39ef20a-45b0-4258-a1f9-dace57692ad1&amp;collection=contentId-725385223&amp;height=599&amp;max-age=2592000&amp;mode=full-fit&amp;source=mediaCard&amp;token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhMzllZjIwYS00NWIwLTQyNTgtYTFmOS1kYWNlNTc2OTJhZDEiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpjb2xsZWN0aW9uOmNvbnRlbnRJZC03MjUzODUyMjMiOlsicmVhZCJdfSwiZXhwIjoxNzUzMDgyMjk0LCJuYmYiOjE3NTMwNzk0MTR9.P_Zmfrwbw6Fn8Yf0zFgxy2uJGqOXs_M2RrmwH0XyrKE&amp;width=760)
-
+> **By default, this is only enabled in *No browser* mode.**  
+_______________________________________________
 ## Other
-
 ### Max log message height before scroll
+Sets the maximum height of a single log entry.  
 
-Height of a log entry before scrolling appears.
+If a message does not fit in this area, a scrollbar appears within it.
 
 ### Variable list cell height before scroll
-
-Cell height in the Variables window before a scrollbar appears.
+Sets the maximum cell height in the Variables window. A scrollbar appears if the content does not fit.
 
 ### Number of rows in static blocks before scroll
-
-How many rows are shown in the static blocks section before scrolling appears.
+Determines how many rows are visible in a static block. A scrollbar appears if there are more rows than the specified value.
 
 ### Remember number of recently opened projects
-
-Lets you set how many recent projects show up on the [❗→ start page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608964 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/735608964").
+Determines how many recently opened projects appear on the [start page](/zennoposter/ProjectMaker/Start_Page).  
 
 ### Autosave timeout
-
-Time after which the project is auto-saved (set in minutes).
+Sets the interval, in minutes, at which the project is saved automatically.
 
 ### C# Snippet Directory
+Specifies the folder from which ProjectMaker loads [C# snippets](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Custom_code/CSharp_Code).  
 
-Directory from which you can automatically load [❗→ C# snippets](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/") into the program.
+**The following folder is used by default:**
+`C:\Users\USERNAME\AppData\Roaming\ZennoLab\ZennoPoster\7\Snippets\` 
 
-The default directory is `c:\Users\USERNAME\AppData\Roaming\ZennoLab\ZennoPoster\7\Snippets\` (replace `USERNAME` with the name of your Windows user account)
+> *`USERNAME` is the Windows user account under which the program is running.*
 
 ### C# code font
+Lets you select the font and size for the [C# code](/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Custom_code/CSharp_Code) editor.  
 
-The font used in the [❗→ C# block](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/"). By default, Lucida Console, size 8 is used.
+> **The default is *Lucida Console*, size *8*.**
 
 ### Remember cursor position in C# block
+When enabled, the editor opens the code at the line where the cursor was when you closed the block.  
 
-The code will open at the line where you last finished editing. If this option is off, the last edited position is remembered instead.
+When disabled, the editor returns to the location of the last code change.
 
 ### Line numbering in C# block by default
-
-Enables automatic line numbering in the [❗→ C# block](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/") by default.
+Automatically displays line numbers in new C# blocks.  
 
 ![image-20200817-142029](./assets/Editor/Editor_pic5.png)
 
-
-
 ### Line wrapping in C# block by default
+Automatically wraps long lines of code that do not fit the window width. The code itself does not change — only its display in the editor changes.
 
-Enables automatic word wrap in the action properties window for [❗→ C# code](https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/ "https://zennolab.atlassian.net/wiki/spaces/RU/pages/492011596/") if a line doesn’t fit the current window.
-
-Below you can see an example of the same window with word wrap enabled and disabled.
-
-Option enabled
-
-![image-20210322-150740](./assets/Editor/Editor_pic6.png)
-
-
-
-Option disabled
-
-![image-20210322-150746](./assets/Editor/Editor_pic7.png)
-
-
+| With line wrapping enabled: | Line wrapping disabled: |
+| -------- | ------- |
+| ![image-20210322-150740](./assets/Editor/Editor_pic6.png) | ![image-20210322-150746](./assets/Editor/Editor_pic7.png) |
 
 ### Bulk encryption of projects
-
-This option lets you [❗→ encrypt](http://zennolab.atlassian.net/wiki/spaces/RU/pages/534315498 "http://zennolab.atlassian.net/wiki/spaces/RU/pages/534315498") all open projects.
+Lets you encrypt all projects currently open in ProjectMaker at once.

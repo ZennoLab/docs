@@ -14,56 +14,42 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 > 🔗 **[Original page](https://zennolab.atlassian.net/wiki/spaces/RU/pages/735576090/Google+PM)** — Source of this material
 
 _______________________________________________  
+## Configuring Google Sheets.  
+This article covers **only** *configuring Google Sheets* in the program. [The connection process is described here](/zennoposter/ProjectMaker/Recording-and-creating-projects/Setting_Up_Google_Sheets_Connection).  
 
-:::warning Attention
-This article describes the Google Sheets settings in the program. Instructions on how to connect can be found here - Setting up Google Sheets Connection
-:::
-
+### Appearance.
 ![image-20210504-110452](./assets/Google_Sheets_PM/Google_Sheets_PM_pic1.png)
 
+### Path to the Google OAuth key.  
+Here, select the path to the file with [Google API connection settings](/zennoposter/ProjectMaker/Recording-and-creating-projects/Setting_Up_Google_Sheets_Connection).  
 
+:::warning **The file must have the `.json` extension.**
+:::  
 
-### Specify the path to the Google OAuth key
+### Timeout for clearing unused Google Sheets.  
+This setting determines how long a sheet is kept in memory.  
 
-Here you need to select the path to the file with your Google API connection settings.
+If no project in ZennoPoster uses a Google Sheet for the number of minutes specified in this setting, the sheet will be unloaded from memory to save computer resources.  
 
-:::note Note
-You can read how to get an OAuth key and set up the connection in the article Setting up Google Sheets Connection
-:::
+A **long timeout** can be useful when there’s a pause between runs of a particular project (for example, when it runs hourly on a schedule). This way, the sheet won’t need to be downloaded from the cloud each time.  
 
-:::warning Attention
-The file must have the .json extension
-:::
+A **short timeout** is useful if each time the project runs, it generates a report that’s saved to a new sheet. In this case, there’s no need to keep these sheets in memory after the data has been uploaded.  
 
-### Timeout for clearing unused Google Sheets
+### Timeout for downloading a sheet from the cloud.  
+Here, specify how long to allow for downloading a sheet from the cloud.
 
-If no project in ZennoPoster uses a Google Sheet within the number of minutes specified in this setting, that sheet will be unloaded from memory to save your computer’s resources.
+If a sheet is large, synchronization can sometimes take a long time. This can cause a download error because the request takes too long to complete.  
 
-:::note Note
-A long timeout can be useful if there is a break between runs of a particular project working with a Google Sheet (for example, on a schedule, every hour). Then you won’t have to download the sheet from the cloud each time.  
-A short timeout may be useful, for example, if every run of a project generates a report in a new sheet and there’s no need to keep sheets in memory after unloading their data.
-:::
+### Sheet changes processing policy.  
+This setting lets you choose whether ZennoPoster should download external changes to a sheet while working with it.  
 
-### Timeout for loading a sheet from the cloud
+If you select **Never download external changes while working**, the program will *only send* local data without comparing it with the data in the cloud. This means the program won’t spend your time or computer resources on this. This is useful for large sheets.  
 
-Time allotted to load a sheet from the cloud.
-
-:::note Note
-If the sheet is very large, synchronization may take a long time, and without changing this setting, a loading error will occur as the request takes too long.
-:::
-
-### Sheet change handling policy
-
-In this setting, you can choose whether ZennoPoster should load any external changes to the sheet while working with it.
-
-:::note Note
-If the sheet is large, loading it can take a lot of time. If you select Never load external changes while working, the program will only send data, not try to match local data with the cloud, in other words, it won’t spend time and resources syncing.  
-Turning off synchronization can be useful, for example, when parsing data when you don’t need up-to-date information in the sheet.
-:::
-
+Disabling synchronization is also useful when parsing data if you don’t need the latest data from the cloud.
+_______________________________________________ 
 ## Useful links:
 
-- [❗→ Setting up Google Sheets Connection](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1667727363 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1667727363")
-- [❗→ Operations with Google Sheets](https://zennolab.atlassian.net/wiki/spaces/RU/pages/509411347 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/509411347")
+- [❗→ Configuring the Google Sheets connection](https://zennolab.atlassian.net/wiki/spaces/RU/pages/1667727363 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/1667727363")
+- [❗→ Google Sheets operations](https://zennolab.atlassian.net/wiki/spaces/RU/pages/509411347 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/509411347")
 - [❗→ Google Sheet](https://zennolab.atlassian.net/wiki/spaces/RU/pages/724566092 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/724566092")
-- [❗→ Multithreaded Work with Google Sheets (Version 7.1.7.0 and above)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/851673094 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/851673094")
+- [❗→ Multithreaded work with Google Sheets (version 7.1.7.0 and later)](https://zennolab.atlassian.net/wiki/spaces/RU/pages/851673094 "https://zennolab.atlassian.net/wiki/spaces/RU/pages/851673094")
