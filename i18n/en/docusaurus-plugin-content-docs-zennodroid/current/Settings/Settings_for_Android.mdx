@@ -11,14 +11,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 <DisclaimerNotice />
 
 ## Description.
-This tab contains various settings for configuring Android in Memu and LDPlayer emulators.
+This tab contains various settings for configuring Android in Memu, LDPlayer and MuMu emulators.
 
 ![working with Memu](./assets/Settings_for_Android/Settings_for_Android_pic1.png)
 _______________________________________________
 <Link id="тип-эмулятора" />
 
 ### Emulator type.
-The list above the settings picks the emulator ZennoDroid works with: **Memu**, **LDPlayer9** or **LDPlayer14**. Only the emulators installed on the computer are listed, and some of the settings below depend on the type you pick.
+The list above the settings picks the emulator ZennoDroid works with: **Memu**, **LDPlayer9**, **LDPlayer14** or **MuMu**. Only the emulators installed on the computer are listed, and some of the settings below depend on the type you pick.
 :::info **While at least one device is running the list is locked, and the hint *It is necessary to stop all running devices* shows up next to it**
 :::
 _______________________________________________
@@ -35,7 +35,7 @@ If you want to use the selected device for running projects in ZennoDroid, turn 
 Sets how ZennoDroid gets the picture from the emulator:
 - **H.264** — the default one, the picture comes over as a video stream.
 - **MJPEG** — an alternative method. You should only pick it if running the device through ZennoDroid always ends in an error and the log shows ***`Failed to capture image`***.
-- **Manually** — nothing is captured continuously, the picture is only refreshed on demand: with the refresh button in the [**Device window**](../pm/Interface/DeviceWindow) or the [**RefreshScreen**](../API/Screen#refreshscreen) method. Handy when you don't need the picture all the time, as it saves computer resources.
+- **Manually** — nothing is captured continuously, the picture is only refreshed on demand: with the refresh button in the [**Device window**](../pm/Interface/DeviceWindowEmulator) or the [**RefreshScreen**](../API/Screen#refreshscreen) method. Handy when you don't need the picture all the time, as it saves computer resources.
 :::info The capture method can also be set when the device starts, with the [Start](../API/Action#start) method
 :::
 _______________________________________________
@@ -49,6 +49,7 @@ This is the amount of time the emulator gets to boot up. If the device doesn't b
 _______________________________________________
 ### Use improved taps.
 Turns on the emulation of real screen taps: they are injected through the kernel input layer, so they are visible to `getevent`, have a size of their own and work on protected pages.
+The gestures move like a finger: the pressure and the touch size change during a gesture, and the swipe speed and the gaps between events are uneven, so a repeated gesture never matches the previous one exactly.
 
 In code the mode is turned on with the [**SetNativeEventMode**](../API/Input#setnativeeventmode) method — before connecting to the device.
 _______________________________________________
@@ -83,6 +84,7 @@ This option lets you turn off all system animations. We recommend checking this 
 _______________________________________________
 ### Limit frame rate.
 This changes the FPS of the running emulators. If enabled, all emulators will be forced to run at the set frame rate.
+In ProjectMaker the frame rate of MEmu and MuMu isn't limited — only when projects run in ZennoDroid.
 _______________________________________________
 ### Disable audio output.
 Lets you turn off sound in the emulators. Muting sound reduces CPU usage.
@@ -92,9 +94,16 @@ It's best to always keep this on, as it reduces the load on your graphics card.
 _______________________________________________  
 ### Disable ads.
 Memu launcher has ads built in. They can mess up your templates since the ads show up over all windows. It's always best to turn them off.  
+In MuMu the switch removes the ads from the player's loading screen, and the MuMu store with its ads from the devices' home screen. For MuMu it is on by default. The switch changes the shared MuMu system image, so stop all MuMu devices before changing it. While the image is being changed, the settings panel is covered with the message *Changing the MuMu image, please wait...*.
+_______________________________________________
+### MuMu image patch.
+The **Patch the MuMu image: spoof android_id, the operator and the SIM** switch is there only when the MuMu emulator is chosen. Without it MuMu devices don't get the android_id, operator, IMSI and SIM serial number set for them.
+
+The patch changes the shared MuMu system image too: stop all MuMu devices before changing it, otherwise the message *It is necessary to stop all running devices* appears. A MuMu update replaces the image and removes the patch: the switch is then off again, and it has to be turned on once more. More about working with MuMu is in [**Installing MuMu**](../pro-lite/MuMu_Install).
 _______________________________________________  
 ### Fix build.prop errors.
 In an emulator some of the device properties are left as `unknown`. With this setting on, ZennoDroid takes the manufacturer, the brand, the model, the board, the `hardware`, the baseband and the fingerprint from the emulator configuration before the first boot completes and writes them into `build.prop`, so that apps and sites do not see `unknown` among the device properties.
+The setting is there only for MEmu and LDPlayer: with the MuMu emulator chosen, it isn't shown.
 _______________________________________________  
 ### Mute microphone.  
 Lets you turn off microphone in the emulators.  
@@ -120,5 +129,6 @@ By default, the battery is always ***Charging*** and stays at 100%. If you turn 
 _______________________________________________
 ## Useful links.
 - [**Installing Memu**](../pro-lite/Memu_Install).
+- [**Installing MuMu**](../pro-lite/MuMu_Install).
 - [**Device settings**](../Android/pro-lite/setting).
 - [**Traffic Proxying**](./Proxy_Traffic).

@@ -29,6 +29,8 @@ _______________________________________________
 With this feature, you can change things like [IMEI](https://ru.wikipedia.org/wiki/IMEI), Android ID (device ID), [IMSI](https://ru.wikipedia.org/wiki/IMSI), and Sim Serial (SIM card serial number).
 
 ![Device Identifiers](../assets/setting/Android_Setting_pic1.png)  
+:::info **On MuMu the values take effect at the next device start, and Android ID, IMSI and Sim Serial only with the [*MuMu image patch*](../../Settings/Settings_for_Android#mumu-image-patch) on.**
+:::
 _______________________________________________ 
 ## How do I add a mobile operator?
 
@@ -43,6 +45,8 @@ You can find all the info you need for this action [**on this site**](https://ww
 - ***Operator Code***: Combine MCC and MNC columns (for example, 25002 for Megafon).  
 - ***Operator Name***: The Network column (Baykal Westcom, BeeLine/VimpelCom, MTS).  
 - ***Phone Number***: Start without the "+" sign, just 79*** and so on.  
+:::info **On MuMu the values take effect at the next device start. The phone number is always set, and the operator code and name only with the [*MuMu image patch*](../../Settings/Settings_for_Android#mumu-image-patch) on.**
+:::
 _______________________________________________ 
 ## How do I specify the device model?
 
@@ -53,6 +57,8 @@ _______________________________________________
 - ***ro.product.brand***: If this field is empty, just copy in the Manufacturer.  
 - ***ro.product.board***: For newer phones, this isn't important; you can leave it blank.  
 - ***ro.hardware*** and ***ro.build.fingerprint***: Get these from build.prop.  
+:::info **MuMu takes the manufacturer, the model and the brand, and builds the fingerprint from the brand and the model itself: *ro.product.board*, *ro.hardware* and *ro.build.fingerprint* don't change on MuMu. New values take effect at the next device start.**
+:::
 
 ### Where to find data in build.prop:  
 Search in Google like this:  
@@ -81,6 +87,7 @@ Here you can set how much of your computer's resources will be allocated to the 
 - ***Processors***: Number of CPU cores dedicated to the emulator.  
 - ***RAM (MB)***: Amount of RAM in megabytes you can allocate to the emulator. *Minimum is 512MB, maximum is 65,636MB.*  
 **Important!** More than 4GB can only be given to Android x64. On x86, 4GB is the limit.  
+On MuMu you can set 1 to 32 cores, and the memory is rounded to the nearest MuMu value, from 0.75 to 16 GB.  
 :::info **Usually, 1-2 CPU cores + 1-2GB RAM is enough.**
 Since your PC's resources are being used for the emulation, if you set the numbers too high, things might start to lag. We recommend starting with the minimum and increasing as needed.
 :::    
@@ -105,6 +112,8 @@ Switching between OpenGL and DirectX. This setting mostly matters when you're ru
 ![Rendering](../assets/setting/Android_Setting_pic12.png)
 :::info **On LDPlayer the setting does nothing - the list marks it *(not supported)*.**
 :::
+:::info **On MuMu OpenGL is unavailable: you can choose DirectX or Vulkan. The mode takes effect at the next device start.**
+:::
 :::warning **Before changing settings, make sure the device is powered off.**
 :::  
 _______________________________________________ 
@@ -112,12 +121,16 @@ _______________________________________________
 Lets you turn **root access** on or off for your device.  
 
 ![Root](../assets/setting/Android_Setting_pic13.png)  
+:::info **On MuMu the switch only decides whether apps on the device see root: ZennoDroid gets superuser rights without it.**
+:::
 :::warning **Before changing settings, make sure the device is powered off.**
 ::: 
 _______________________________________________
 ## Shared folders access:  
 You can set up paths to shared folders in Windows here. This makes it easy to move files into and out of the emulator.
 :::info **You can set up no more than 4 shared folders for one virtual machine.**
+:::
+:::info **On MuMu the setting does nothing - the list marks it *(not supported)*. MuMu has one shared folder for all devices, `Documents\MuMuSharedFolder`: on the device these are the Download, Pictures, Music, Movies and Screenshots folders.**
 :::
  
 ![Shared folders](../assets/setting/Android_Setting_pic14.png)  
@@ -150,8 +163,8 @@ This setting changes the emulator's language.
 Available values: ***en, ko, de, ja, fr, ru, es, pt, hr, cn, sr, it, cs, th, in, pl, tr, uk, ar, vi, fil***  
 
 ![Language selection](../assets/setting/Android_Setting_pic15.png)  
-:::warning **Before changing settings, make sure the device is powered off.**
-:::
+You can also change the language in the device window: the [**Device → Change system language...**](../../pm/Interface/DeviceWindowEmulator#system-language) item shows the languages in the emulator's firmware and can add this action to the project.  
+On MuMu the language changes only on a running device.  
 _______________________________________________
 ## Set time zone:  
 Lets you choose the device's time zone.  
@@ -159,12 +172,14 @@ Use this format: ***Europe/Moscow*** or ***America/New_York*** etc.
 
 ![timezone](../assets/setting/Android_Setting_pic16.png)  
 You can see the complete list of time zones [**here**](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)  
+If the device has no such time zone, the action ends with the error *Unknown time zone ...*, and the device's time zone doesn't change.  
 _______________________________________________ 
 ## How do I set the date and time?  
 You can set whatever you want: **year, month, day, hour, minute, and second**.  
 
 ![time](../assets/setting/Android_Setting_pic17.png)    
 If you leave all fields empty, it will sync automatically to the current time.  
+The device clock shows exactly the time you set, in the time zone set on the device.  
 _______________________________________________ 
 ## Camera type:
 Available options:  
@@ -172,7 +187,7 @@ Available options:
 - **Virtual**: Used automatically if you don't have a physical one. It's built into the emulator and lets you scan QR codes from your screen.  
 
 ![camera](../assets/setting/Android_Setting_pic18.png)  
-:::info **On LDPlayer the setting does nothing - the list marks it *(not supported)*.**
+:::info **On LDPlayer and MuMu the setting does nothing - the list marks it *(not supported)*.**
 :::
 _______________________________________________ 
 ## How to select system disk connection type:
@@ -236,7 +251,9 @@ This is an advanced proxy client that lets you route traffic with rules.
 ![Clash](../assets/setting/Android_Setting_pic25.png) 
 
 #### DNS addresses
-Here too you can set DNS server addresses. If there are several, separate with a comma `,`.
+Here too you can set DNS server addresses. If there are several, separate them with a comma `,`, a semicolon `;`, a space or a line break.
+
+Clash queries servers with a `tcp://`, `tls://` or `https://` prefix, for example `tls://1.1.1.1`, through the proxy. Servers without a prefix or with `udp://` are queried directly.
 
 #### Local IP
 Set the device's local IP address.
@@ -251,7 +268,7 @@ Example: `fdfe:dcba:9806::1/126`. If you use something like `fdfe:dcba:0::1/126`
 <Link id="белый-список" />
 
 #### Whitelist
-A list of apps whose traffic *will* go through the proxy (list each one separated by a comma). All other apps will use a direct connection (no proxy).
+A list of apps whose traffic *will* go through the proxy (separated by a comma, a semicolon, a space or a line break). All other apps will use a direct connection (no proxy).
 
 You can find the app's package name using [Installed Apps](../../Tools/Installed_App).
 
@@ -266,4 +283,4 @@ If you fill in both, only the whitelist will be used.
 _______________________________________________  
 ## Useful links      
 - [**Launching the emulator**](../../pro-lite/Memu_Start)   
-- [**Device window**](../../pm/Interface/DeviceWindow)
+- [**Device window**](../../pm/Interface/DeviceWindowEmulator)

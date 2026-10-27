@@ -11,6 +11,8 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ## Description
 
 `IDroidInputAPI` is designed to emulate user input on an Android device in ZennoDroid. Allows you to perform taps, swipes, text input, clipboard operations, and system events.
+
+The `Tap`, `LongTap`, `Touch`, `Swipe`, `SwipeCurved`, `LongTapAndSwipe`, `LongTapAndSwipeCurved`, `ZoomIn` and `ZoomOut` methods check the starting point: if it is outside the device screen, the method throws an exception, for example *Point (1200, 300) is outside the device screen 1080x2400*. The end point of a swipe may go past the edge of the screen, and [**Touch**](#touch) taps in the part of the area that is on the screen.
 ## Methods
 
 
@@ -309,7 +311,7 @@ input.SendKeyCode(3); // Send special key (by numeric value)
 ### SendSmsMessage
 
 - **`void SendSmsMessage(string phone, string message)`**  
-    Simulates receiving an incoming SMS on the device.
+    Simulates receiving an incoming SMS on the device. The message is received by an SMS app, for example Google Messages: if the device has none, the method throws the exception *There is no app on the device to receive SMS*.
     
     **Parameters:**
     - `phone` — sender phone number;

@@ -9,117 +9,466 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Device Window
 <DisclaimerNotice />
 
-## Getting Started
-In this window, you can interact with both the emulator and a real device.  
-When you launch ProjectMaker, the device window will look like this:  
+## Getting started.
+The device window is where you work with a connected phone or emulator: it shows the device screen, you can click and swipe on it with the mouse, and with **Recording** on everything you do is added to the project as actions.
 
-![Getting Started.](./assets/DeviceWindow/DeviceWindow_pic1.png)
+Working with MEmu, LDPlayer and MuMu emulators in ZennoDroid Pro and Lite is described in [**Device Window (Emulators)**](./DeviceWindowEmulator).
 
-To get started, you need to click **Run Device**. If **Recording** is enabled for the project, two actions will be added to the actions canvas: **Select Device** and **Start/restart Device**.
+Before the device is started, the window looks like this:
+
+<details>
+<summary>**The device window before the start.**</summary>
+<!--All you need is a blank line-->
+
+![The device window before the start](./assets/DeviceWindow/DeviceWindow_pic1.png)
+</details>
+
+To get started, click **Run device**. If the project's **Recording** is on, two actions are added to the canvas: **Select device** and **Run/restart device**.
+
+If the device fails to start, the reason appears under the button. Fix it and click the button again.
+
+{/* SCREENSHOT 2: the reason for a failed start under the Run device button. */}
+
+:::info **The reason for a failed start is shown starting with ZennoDroid 2.6.2.0.**
+:::
 _______________________________________________
-## Window Components
-This is what the window looks like after a successful device launch:  
+## Window components.
+This is the window you see once the device has started:
 
-![Window Components.](./assets/DeviceWindow/DeviceWindow_pic2.png)
+<details>
+<summary>**The window of a running device.**</summary>
+<!--All you need is a blank line-->
 
-Here, you can interact with the device directly: click, swipe, open apps—everything you do will be reflected. And if recording is enabled, these actions will also show up on the canvas as corresponding actions.
+![The window of a running device](./assets/DeviceWindow/DeviceWindow_pic3.png)
+</details>
+
+You can work with the screen directly: click, swipe, open apps — everything is passed on to the device. And if recording is on, your actions are also added to the canvas as the matching actions.
 _______________________________________________
-### Emulator Control Buttons
-![Emulator Control Buttons.](./assets/DeviceWindow/DeviceWindow_pic3.png)
+### Control buttons.
+![Control buttons](./assets/DeviceWindow/DeviceWindow_pic4.png)
 
-| Button      | Description |
+| Button | Description |
 | ----------- | ----------- |
-| ![Go Back.](./assets/DeviceWindow/DeviceWindow_minipic1.png) | Go back to the previous screen. |
-| ![Go Home.](./assets/DeviceWindow/DeviceWindow_minipic2.png)   | Return to the home screen. |
-| ![Show Recents.](./assets/DeviceWindow/DeviceWindow_minipic3.png)   | Show recent apps. |
-| ![Zoom In.](./assets/DeviceWindow/DeviceWindow_minipic4.png)   | Zoom in*   |
-| ![Zoom Out.](./assets/DeviceWindow/DeviceWindow_minipic5.png)   | Zoom out*      |
-| ![Close Area.](./assets/DeviceWindow/DeviceWindow_minipic6.png)   | Close part of the image. Used for testing image search.      |
-| ![Start Mouse Recording.](./assets/DeviceWindow/DeviceWindow_minipic7.png)   | Start recording mouse movements      |  
-:::info **(*) Note:**
-You can also zoom by double-clicking the mouse wheel in the emulator window while holding ***Ctrl***.
+| **Back** | Go to the previous screen. |
+| **Home** | Return to the home screen. |
+| **Recent applications** | Open the list of recent apps. |
+| **Refresh screen** | Refresh the screen picture. The button is shown only while the picture is refreshed by hand: the [**Manually**](../../Settings/Settings_for_Enterprise#image-capture-method) capture method is chosen, or the phone was started with [**Safe start → Manual refresh**](#safe-start). |
+| **Actions** (three dots) | Open the [**actions menu**](#actions-menu). |
+
+The **Cover part of image**, **Zoom in**, **Zoom out** and **Mouse movements record** buttons have moved to the actions menu, under [**Other actions**](#other-actions).
+_______________________________________________
+### Current device.
+![Current device](./assets/DeviceWindow/DeviceWindow_pic5.png)
+
+A button with the name of the current device. Clicking it opens the [**Device Manager**](../../Tools/Device_Manager_Ent), where you can pick another device.
+_______________________________________________
+### Proxy.
+![Proxy](./assets/DeviceWindow/DeviceWindow_pic6.png)
+
+The button shows the proxy set on the device, or **Without proxy**. Clicking it opens the **Set proxy** window:
+
+![The Set proxy window](./assets/DeviceWindow/DeviceWindow_pic7.png)
+
+- **Proxy address** — the proxy string, for example `255.255.255.255:8080` or `protocol://login:pass@IP:port`.
+- **Proxy type** — the proxying method: **Default** (as set in the [**settings**](../../Settings/Proxy_Traffic_Ent)), **Proxifier**, **Redsocks** or **Clash**.
+- **Use the computer's Internet connection** — route the phone's traffic through the computer ([**more**](../../Settings/Proxy_Traffic_Ent#use-computers-internet-connection-gnirehtet)). The checkbox is there for Redsocks and Clash only.
+
+The **OK** button applies the proxy to the device.
+
+:::info **Choosing the proxy type in this window is available starting with ZennoDroid 2.6.2.0.**
 :::
 _______________________________________________
-### Current Device/Emulator Name
-![Current Device/Emulator Name.](./assets/DeviceWindow/DeviceWindow_pic4.png)
+### Mouse coordinates.
+![Mouse coordinates](./assets/DeviceWindow/DeviceWindow_pic8.png)
 
-This is the device that's currently active.
+While the cursor is over the device screen, its current coordinates (X, Y) are shown here.  
+You can use them in the [**Swipe Emulation**](../../Android/Enterprise/Swipe) and [**Touch Emulation**](../../Android/Enterprise/Touch_Emulation) actions.
 _______________________________________________
-### Configured Proxy
-![Configured Proxy.](./assets/DeviceWindow/DeviceWindow_pic5.png)
-
-Shows the currently set proxy.
-_______________________________________________
-### Mouse Coordinates
-![Mouse Coordinates.](./assets/DeviceWindow/DeviceWindow_pic6.png)
-
-If the cursor is inside the device window, the current coordinates (X, Y) will be shown here.  
-You can use these coordinates in the [**Swipe Emulation**](../../Android/pro-lite/Swipe) and [**Touch Emulation**](../../Android/pro-lite/Touch_Emulation) actions.
-_______________________________________________
-### Context Menu
-![Context Menu.](./assets/DeviceWindow/DeviceWindow_pic7.png)
-
-Right-click anywhere in the window to open the context menu.
-#### Available Buttons:
-- **Clear Text**  
-Lets you clear everything in an input field.
-If recording is on, the [**Keyboard Emulation**](../../Android/pro-lite/Keyboard) action will be added to your project with this content: `{AndroidKeys.CLEAR}`
-- **Set Value from Profile**  
-Lets you set an input field value from the project's **Profile**.
-If recording is on, a [**Set Value**](../../Android/pro-lite/SetValue) action with the selected profile macro will be added.
-- **Set Variable Value**  
-Lets you set an input field value from a user variable.
-If recording is on, a [**Set Value**](../../Android/pro-lite/SetValue) action with the selected variable macro will be added.
-:::info **The first three buttons we've just covered show up only for input fields.**
+## Actions menu.
+:::info **The actions menu appeared in ZennoDroid 2.6.2.0.**
 :::
-- **Inspect Element**  
-Opens the [**Element Properties**](./ElementProp) window for a closer look at the element. The chosen element will also be highlighted in the [**Element Tree**](./ElementTree) window.
-- **Follow the Cursor**  
-When turned on, the element under the cursor will be highlighted, and its properties will show up in the [**Element Properties Window**](./ElementProp).
+
+The **Actions** button with three dots opens a menu of frequently used device actions:
+
+![The actions menu](./assets/DeviceWindow/DeviceWindow_pic9.png)
+
+Items with a **red dot** on their icon are recorded into the project: if **Recording** is on, the action you perform is added to the canvas as the matching action. What exactly is added is shown in the table [**below**](#what-is-recorded-in-the-project).
+
+Most items are available only while the device is running. **Unlock the screen**, **Clear logcat**, **Run diagnostics...** and **Run command...** also work with a device that is not started, as long as it is reachable over adb.
+
+The menu's windows open one at a time: while one of them is open, the **Actions** button is unavailable. The device screen keeps working meanwhile.
+_______________________________________________
+### Apps.
+![Apps](./assets/DeviceWindow/DeviceWindow_pic10.png)
+
+- **Install APK...** — opens the [**app installation**](#installing-an-apk) window.
+- **Close all apps** — removes every app from the recent apps.
+
+The items under the **Active app** header work with the app open on the screen:
+- **Clear data** — clears the app's data. ZennoDroid asks for confirmation first.
+- **Clear cache** — clears only the app's cache.
+- **Close** — closes the app.
+- **Uninstall** — removes the app from the device, also after a confirmation.
+- **Back up...** — saves the app's data to a file.
+- **Restore from a backup...** — restores the app's data from a backup file.
+- **Get APK...** — saves the app's APK to the computer: [**more**](#get-apk).
+- **Info...** — shows the app's ID, name and version.
+
+#### Installing an APK.
+![The Install APK window](./assets/DeviceWindow/DeviceWindow_pic11.png)
+
+- **APK file** — the app file on the computer: `.apk`, `.apks`, `.apkm` or `.xapk`.
+- **Cache** — keep the file on the device: installing the same APK again won't copy it over again.
+- **With superuser privileges** — install as root.
+
+#### Backup and restore.
+Both windows work with the app open on the screen: its ID is shown in the **App** line.
+
+<details>
+<summary>**The Back up and Restore from a backup windows.**</summary>
+<!--All you need is a blank line-->
+
+![The Back up window](./assets/DeviceWindow/DeviceWindow_pic12.png)
+
+![The Restore from a backup window](./assets/DeviceWindow/DeviceWindow_pic13.png)
+</details>
+
+- **Where the backup is kept** — **On the computer** or **On the device**.
+- **Backup file** — the path to the file.
+- When backing up: **Save the permissions**, **Save the linked account** and **Account type**.
+- When restoring: **Restore the permissions**, **Restore the linked account** and **Use the ZennoBackup module**.
+
+These options repeat the options of the [**Actions with Application**](../../Android/Enterprise/App#save-applications-data) action.
+
+#### Get APK.
+<details>
+<summary>**The Get APK window.**</summary>
+<!--All you need is a blank line-->
+
+![The Get APK window](./assets/DeviceWindow/DeviceWindow_pic41.png)
+</details>
+
+The window saves the APK of the app open on the screen to the computer: its ID is shown in the **App** line. The **Where to save on the computer** field sets the file. At first it holds a file named after the app ID, in the folder the last APK was saved to, or in the Documents folder the first time.
+
+If the app is installed from several APKs (split APK), they are saved as one `.apks` file, which can be installed back with [**Install APK...**](#installing-an-apk). The **Get** button saves the file, and a long transfer can be stopped with **Stop**.
+_______________________________________________
+### Files.
+![Files](./assets/DeviceWindow/DeviceWindow_pic14.png)
+
+- **Send file...** — copies files from the computer to the device. The window takes the **File on the computer** and **Where to put the file on the device**.
+- **Get file...** — copies a file from the device to the computer. The window takes **Which file to take from the device** and **Where to save on the computer**.
+- **Device files...** — opens the device's [**file manager**](#device-files).
+
+Both transfer windows have a **With superuser privileges** checkbox. A long transfer can be stopped with **Stop**.
+
+<details>
+<summary>**The Send file and Get file windows.**</summary>
+<!--All you need is a blank line-->
+
+![The Send file window](./assets/DeviceWindow/DeviceWindow_pic15.png)
+
+![The Get file window](./assets/DeviceWindow/DeviceWindow_pic16.png)
+</details>
+
+#### Device files.
+<details>
+<summary>**The Device files window.**</summary>
+<!--All you need is a blank line-->
+
+![The Device files window](./assets/DeviceWindow/DeviceWindow_pic17.png)
+</details>
+
+The file manager shows the device's folders and files with their size, permissions, owner, group, SELinux context and modification date. The buttons above the list open the root `/` and the `/data` and `/sdcard` folders. The star button adds the open folder to the favorites or removes it from them, and the arrow next to it opens the list of favorite folders.
+
+Everything you can do with a file or folder is in its right-click menu:
+
+![The file menu](./assets/DeviceWindow/DeviceWindow_pic39.png)
+
+- **Open** — open a folder. A file is handed to the device's apps: the app for this file type opens it, or the device screen offers a choice of apps.
+- **Get...** — copy the file to the computer.
+- **New folder**, **Rename**, **Delete**.
+- **Owner and group...**, **Permissions...**, **SELinux context...** — change the owner and group, the permissions and the SELinux context.
+
+The most frequent of these actions also have buttons at the bottom of the window. To send files to the device, drag them from Explorer into the window: they land in the open folder.
+
+In the **Permissions** window the permissions are set with checkboxes or as a number:
+
+![The Permissions window](./assets/DeviceWindow/DeviceWindow_pic18.png)
+_______________________________________________
+### Magisk / LSPosed.
+![Magisk / LSPosed](./assets/DeviceWindow/DeviceWindow_pic19.png)
+
+**Magisk:**
+- **Open Magisk** — opens the Magisk app, even when it is hidden under another name.
+- **Install module...** — installs a Magisk module from a file **On the computer** or **On the device**. The module works after the device reboots.
+- **Modules...** — opens the [**list of modules**](#magisk-modules).
+- **Quick setup...** — installs every Magisk module (`.zip`) and app (`.apk`) from a folder on the computer, in the order of the file names.
+
+![The Install Magisk module window](./assets/DeviceWindow/DeviceWindow_pic20.png)
+
+In the **Magisk quick setup** window, choose the folder: ZennoDroid shows how many modules and APKs it holds and installs them with the **Install** button.
+
+<details>
+<summary>**The Magisk quick setup window.**</summary>
+<!--All you need is a blank line-->
+
+![The Magisk quick setup window](./assets/DeviceWindow/DeviceWindow_pic21.png)
+</details>
+
+**LSPosed:**
+- **Open LSPosed** — opens the LSPosed manager.
+- **Module settings...** — turns an LSPosed module on for the chosen apps: [**more**](#lsposed-module-settings).
+- **Generate device...** — picks the parameters of a new device by filters and applies them to the phone: [**more**](#device-generator).
+- **Clear device profile** — removes the parameters the ZennoDroid module spoofs, and the phone shows apps its own ones again. In code the [**ClearLSPosedSettings**](../../API/Settings#clearlsposedsettings) method does the same.
+
+#### Magisk modules.
+<details>
+<summary>**The Magisk modules window.**</summary>
+<!--All you need is a blank line-->
+
+![The Magisk modules window](./assets/DeviceWindow/DeviceWindow_pic22.png)
+</details>
+
+The table lists the installed modules with their name, ID, version and state. A module can be switched with **Turn on** and **Turn off**, removed with **Delete**, or brought back after removal with **Restore**. Changes take effect after a reboot, and until then the **State** column shows what will happen: *Works after a reboot*, *Removed at the next reboot*.
+
+The **Install...** button opens a list of two items, **Install Busybox** and **Install LSPosed**. They install the modules that come with ZennoDroid, so you don't need to download them separately (see [**BusyBox**](../../Enterprise/BusyBox) and [**LSPosed**](../../Enterprise/LSPosed)). Working with modules needs root.
+
+#### LSPosed module settings.
+<details>
+<summary>**The LSPosed module settings window.**</summary>
+<!--All you need is a blank line-->
+
+![The LSPosed module settings window](./assets/DeviceWindow/DeviceWindow_pic23.png)
+</details>
+
+- **Module** — the module name, that is its package name, for example `com.zennolab.zennodroid`.
+- **Enable the module** — turn the module on or off.
+- The list of apps — check the apps to enable the module for. At the top are the apps already chosen and the app open on the screen. The **Launchable apps only** checkbox leaves only the apps that can be opened.
+- The buttons in an app's row — copy its ID or name, open or close the app, and clear its data.
+
+The **Apply** button sets up the module on the device right away. The **Add to project** button adds the [**LSPosed module settings**](../../Enterprise/LSPosed_Control#lsposed-module-settings) action with the chosen values to the canvas, even if recording is off.
+
+#### Device generator.
+![The Generate device window](./assets/DeviceWindow/DeviceWindow_pic24.png)
+
+- **Country**, **Manufacturer**, **Android version** — filters. In each one you can check several values in the list or enter a regular expression.
+- **Add noise to the Canvas fingerprint**.
+- **Generate GPU** — spoof the GPU too. **GPU Vendor** limits the GPU manufacturer, an empty field means any.
+
+The **Apply** button picks a device matching the filters and applies it to the phone. The **Add to project** button adds the [**Device Settings → Generate a device**](../../Android/Enterprise/setting#generate-a-device) action with these filters to the canvas, also regardless of recording. The action puts the generated device into the `GeneratedDevice` variable.
+
+:::info **After the parameters are set for the first time, the phone needs one reboot. After that the spoofing works without reboots.**
+:::
+_______________________________________________
+### Other actions.
+![Other actions](./assets/DeviceWindow/DeviceWindow_pic25.png)
+
+- **Take a screenshot** — saves a picture of the device screen as PNG. ZennoDroid asks where to save the file and remembers the folder.
+- **Cover part of image** — covers part of the screen picture. Used to test image search. The checkmark at the item shows whether a part is covered right now.
+- **Zoom in** and **Zoom out** — zoom the picture in and out in the app open on the device.
+- **Mouse movements record** — records the mouse movements over the device screen. While recording, the window shows a recording icon with the tooltip *Recording mouse movements. Click to stop*: clicking it stops the recording.
+_______________________________________________
+### Device.
+![Device](./assets/DeviceWindow/DeviceWindow_pic26.png)
+
+- **Start** and **Stop** — start and stop the device.
+- **Restart** — close the current connection and start the device again, as the **Start** action does.
+- **Reboot** — stop the device, closing all its connections, and reboot the phone. After the boot the device doesn't start by itself: click **Start**.
+- **Unlock the screen** — wakes the device and puts the lock screen away. A PIN, password or pattern on it is entered by hand.
+- **Enable adb over Wi-Fi** — Wi-Fi debugging stays on after a reboot too. Root is required. Switching it on restarts adb on the device, and the connection drops for a moment.
+- **Disable adb over Wi-Fi** — Wi-Fi debugging stays off after a reboot too. Root and a USB connection are required. Switching it off also drops the connection for a moment.
+- **Change system language...** — changes the phone's language without a reboot: [**more**](#system-language).
+
+#### System language.
+![The Change system language window](./assets/DeviceWindow/DeviceWindow_pic42.png)
+
+The **Language** field lists the languages in the phone's firmware, with their codes, for example `ru-RU` or `en-US`. On Android 10 and earlier the firmware doesn't give such a list, and the field has all languages. To find the one you need, start typing its code or name. When the window opens, the field holds the phone's current language.
+
+<details>
+<summary>**The list of languages.**</summary>
+<!--All you need is a blank line-->
+
+![The list of languages](./assets/DeviceWindow/DeviceWindow_pic43.png)
+</details>
+
+The **Apply** button changes the language right away, and the line above the buttons tells whether it is applied. The **Add to project** button adds the [**Device Settings → System language selection**](../../Android/Enterprise/setting#system-language-selection) action with the chosen language to the canvas, even if recording is off.
+
+On realme, OPPO and OnePlus phones the phone's region changes together with the language, and this needs root. Their list only has the languages of the regions present in the firmware.
+_______________________________________________
+### Diagnostics.
+![Diagnostics](./assets/DeviceWindow/DeviceWindow_pic27.png)
+
+- **Device information...** — the device type (*RealPhone*), state, name, title, index and address. The text can be copied with **Copy to the clipboard**.
+- **Clear logcat** — clears the logcat log on the device.
+- **Run diagnostics...** — collects logcat, dmesg and the latest tombstone into one ZIP archive. dmesg and the tombstone need root.
+- **Check the IP address** — shows the device's external IP address and, for comparison, the computer's. The request doesn't come from an app, so a proxy turned on only for chosen apps may not apply to it. Best used when the proxy has no [**white list**](../../Android/Enterprise/setting#white-list).
+- **Check the IP address in Chrome** — opens the check address in Chrome and reads the page's answer: the IP address as apps see it. Then it closes the tab, and Chrome too if it wasn't running before the check.
+- **IP check addresses...** — the services both checks ask.
+- **Safe start** — starts a phone that doesn't grant root: [**more**](#safe-start).
+
+![The Device information window](./assets/DeviceWindow/DeviceWindow_pic28.png)
+
+Besides the addresses themselves, the IP check shows what the check service reports about them: country, region, city, coordinates, provider, postal code and time zone, and sometimes the host name.
+
+<details>
+<summary>**The IP check result (the data on the screenshot is hidden).**</summary>
+<!--All you need is a blank line-->
+
+![The IP check result](./assets/DeviceWindow/DeviceWindow_pic29.png)
+</details>
+
+<details>
+<summary>**The IP check addresses window.**</summary>
+<!--All you need is a blank line-->
+
+![The IP check addresses window](./assets/DeviceWindow/DeviceWindow_pic30.png)
+</details>
+
+The addresses go one per line, `http` or `https`. The check asks them from the top down and shows the first answer with an IP address in it: JSON, as ipinfo.io gives, or plain text. An empty list means ipinfo.io. The **Default** button brings back the original list.
+
+In project code the [**GetExternalIp**](../../API/Proxy#getexternalip) and [**GetExternalIpInBrowser**](../../API/Proxy#getexternalipinbrowser) methods do the same.
+
+#### Safe start.
+![Safe start](./assets/DeviceWindow/DeviceWindow_pic44.png)
+
+Starts the phone without setting up the proxy and the input method and without installing APKs. This is for a phone that doesn't grant root: the screen is shown, and root can be enabled by hand. The item is available while the device is stopped and offers two image capture methods:
+- **H.264 capture** — the picture comes as a video stream.
+- **Manual refresh** — for especially hard cases: the picture is refreshed only with the [**Refresh screen**](#control-buttons) button.
+_______________________________________________
+### Run command.
+<details>
+<summary>**The Run command window.**</summary>
+<!--All you need is a blank line-->
+
+![The Run command window](./assets/DeviceWindow/DeviceWindow_pic31.png)
+</details>
+
+The **Run command...** item opens a window for adb shell commands. The device's answer appears in the **Command output** field, and the commands you run are kept in the **Command history**. Clicking a command in the history puts it into the field, double-clicking runs it at once, and the **Remove from history** button removes the ones you don't need.
+- **With superuser privileges** — run the command as root.
+- **Do not check the connection** — don't check the connection to the device before running the command.
+_______________________________________________
+### Drag and drop.
+You can drag files onto the device window straight from Explorer. If all the files are apps (`.apk`, `.apks`, `.apkm`, `.xapk`), the [**APK installation**](#installing-an-apk) window opens, otherwise the window for [**sending files**](#files) to the device.
+
+{/* SCREENSHOT 32 (GIF): dragging an APK from Explorer onto the device window and the installation window that opens. */}
+_______________________________________________
+### What is recorded in the project.
+| Menu item | Action in the project |
+| ----------- | ----------- |
+| **Install APK...** | [**Actions with Application**](../../Android/Enterprise/App#install-application) → Install application |
+| **Close all apps** | [**Actions with Application**](../../Android/Enterprise/App#close-application) → Close application with an empty **App name** field |
+| **Clear data**, **Clear cache** | [**Actions with Application**](../../Android/Enterprise/App#application-cleanup) → Application cleanup |
+| **Close** | [**Actions with Application**](../../Android/Enterprise/App#close-application) → Close application |
+| **Uninstall** | [**Actions with Application**](../../Android/Enterprise/App#uninstall-application) → Uninstall application |
+| **Back up...** | [**Actions with Application**](../../Android/Enterprise/App#save-applications-data) → Save application's data |
+| **Restore from a backup...** | [**Actions with Application**](../../Android/Enterprise/App#restore-applications-data) → Restore application's data |
+| **Get APK...** | [**Actions with Application**](../../Android/Enterprise/App#get-apk-of-the-application) → Get APK of the application |
+| **Send file...**, **Get file...** | [**Working with Files**](../../Android/Enterprise/Files) → Push file or Pull file |
+| **Clear device profile** | [**C# Code**](../../project-editor/custom-code/С): `instance.DroidInstance.Settings.ClearLSPosedSettings();` |
+| **Take a screenshot** | [**Image Processing**](../../Data/Images): the screenshot is saved to the chosen file |
+| **Zoom in**, **Zoom out** | [**Utils**](../../Android/Enterprise/Utilities_Ent#scaling) → Scaling |
+| **Start**, **Restart** | [**Actions with Device**](../../Android/Enterprise/action#how-to-start-or-restart-a-device) → Run/restart device |
+| **Stop** | [**Actions with Device**](../../Android/Enterprise/action#how-to-stop-a-device) → Stop device |
+| **Reboot** | [**C# Code**](../../project-editor/custom-code/С): `instance.DroidInstance.Action.Reboot();` |
+| **Check the IP address** | [**C# Code**](../../project-editor/custom-code/С): `return instance.DroidInstance.Proxy.GetExternalIp();`, the answer goes to the `ExternalIp` variable |
+| **Check the IP address in Chrome** | [**C# Code**](../../project-editor/custom-code/С): `return instance.DroidInstance.Proxy.GetExternalIpInBrowser();`, the answer goes to the `ExternalIp` variable |
+| **Run command...** | [**Utils**](../../Android/Enterprise/Utilities_Ent#console-command-adb-shell) → Console Command (ADB Shell), the answer goes to the `AdbResult` variable |
+| **Module settings...** → **Add to project** | [**LSPosed Management**](../../Enterprise/LSPosed_Control#lsposed-module-settings) → LSPosed module settings |
+| **Generate device...** → **Add to project** | [**Device Settings**](../../Android/Enterprise/setting#generate-a-device) → Generate a device, the result goes to the `GeneratedDevice` variable |
+| **Change system language...** → **Add to project** | [**Device Settings**](../../Android/Enterprise/setting#system-language-selection) → System language selection |
+
+The last three items add the action with the **Add to project** button in their window, even if recording is off. The others are recorded only while **Recording** is on.
+_______________________________________________
+## Context menu.
+Right-click an element on the device screen to open the context menu. Its items depend on the element. For example, this is the menu on an input field:
+
+![The context menu on an input field](./assets/DeviceWindow/DeviceWindow_pic33.png)
+
+#### Items for input fields:
+- **Remove text**.  
+Clears the input field.  
+If recording is on, the [**Keyboard Emulation**](../../Android/Enterprise/Keyboard) action with this content is added to the project: `{AndroidKeys.CLEAR}`.
+- **Paste text from the Windows Clipboard**.  
+Pastes the text from the computer's clipboard into the field. If the clipboard is empty, nothing happens.  
+If recording is on, the [**Keyboard Emulation**](../../Android/Enterprise/Keyboard) action with this text is added to the project. If the action right before it is a keyboard emulation too, the text is appended to that one: for example, **Remove text** followed by **Paste text from the Windows Clipboard** give one action with the content `{AndroidKeys.CLEAR}text`.
+- **Set the value from profile**.  
+Puts a value from the project's **Profile** into the field.  
+If recording is on, the [**Set Value**](../../Android/Enterprise/SetValue) action with the macro of the chosen profile field is added to the project.
+- **Set Variable Value**.  
+Puts the value of a project variable into the field. The item appears only if the project has at least one variable.  
+If recording is on, the [**Set Value**](../../Android/Enterprise/SetValue) action with the macro of the chosen variable is added to the project.
+
+#### Items for any element:
+- **Inspect element**.  
+Opens the [**Element Properties**](./ElementProp) window for a closer look. The chosen element is also highlighted in the [**Element Tree**](./ElementTree) window.
+- **Follow the cursor**.  
+While the item is on, the element under the cursor is highlighted and its properties go to the [**Element Properties**](./ElementProp) window. To turn the highlighting off, choose the item again.
 
 <details>
 <summary>**Example.**</summary>
+<!--All you need is a blank line-->
 
-    ![Follow Cursor](./assets/DeviceWindow/DeviceWindow_pic8.gif)
+![Follow the cursor](./assets/DeviceWindow/DeviceWindow_pic34.gif)
 </details>
-- **To the Action Designer**  
-Sends the element to the [**Action Builder**](./ActionBuilder).
-- **xPath search**  
-Analyzes the element on the page and shows info in xPath format.
 
-![Find by xPath](./assets/DeviceWindow/DeviceWindow_pic9.png)
+- **To the action designer**.  
+Sends the element to the [**Action Designer**](./ActionBuilder).
+- **XPath search**.  
+Opens the [**Action Designer**](./ActionBuilder) in xPath mode: it already holds the XPath of the chosen element, and the element itself is outlined on the device screen.
 
-- **This is a CAPTCHA!**  
-Lets you mark the image as a captcha and send it either for manual solving or with a special module (for example, [**CapMonster.Cloud**](https://capmonster.cloud/)).
+<details>
+<summary>**The XPath search result in the Action Designer.**</summary>
+<!--All you need is a blank line-->
 
-![This is a captcha!](./assets/DeviceWindow/DeviceWindow_pic10.png)
+![XPath search](./assets/DeviceWindow/DeviceWindow_pic35.png)
+</details>
 
-- **Stick to the CAPTCHA**  
-Lets you combine multiple images into one and send the whole thing for captcha solving.
-- **CAPTCHA recognition result**  
-Enters the captcha result into the field and, if **Recording** is on, adds a [**Set Value**](../../Android/pro-lite/SetValue) action.
-- **Create text presence check**  
-Lets you check for specific text. Enter the text in the input window, then a special action will be created where you can set extra search parameters.
+- **This is a CAPTCHA!**.  
+Marks the element as a captcha and at once adds its recognition action to the project, even if recording is off. The action puts the answer into a new numbered `RecognitionResult` variable, for example `RecognitionResult0`. By default the captcha is entered by hand: a window with the element's picture opens, where you type the answer and press Enter. The recognition module can be changed in the action itself (for example, to [**CapMonster.Cloud**](https://capmonster.cloud/)).
 
-![Create text check](./assets/DeviceWindow/DeviceWindow_pic11.png)
+<details>
+<summary>**The manual captcha input window.**</summary>
+<!--All you need is a blank line-->
 
-- **Search by picture**  
-Searches by the selected image. A window opens for you to adjust the search settings.
+![The manual captcha input window](./assets/DeviceWindow/DeviceWindow_pic36.png)
+</details>
 
-![Find by image](./assets/DeviceWindow/DeviceWindow_pic12.png)  
+- **Stick to the CAPTCHA**.  
+Appears when the project already has a captcha marked with **This is a CAPTCHA!**. Adds one more picture to it: several separate pictures are joined into one and recognized together.
+- **CAPTCHA recognition result**.  
+Also appears only when the project has a captcha. Enters the captcha answer into the chosen element and, if **Recording** is on, adds the [**Set Value**](../../Android/Enterprise/SetValue) action with the answer variable.
+- **Create text presence check**.  
+Opens the **Checking for text presence** window with the element's text. The **OK** button adds an action checking this text to the project, even if recording is off. The action puts the check result into a new variable.
 
-- **Search by the pixel color**  
-This action allows you to find a pixel by the specified HEX color code within the selected area or across the entire device screen.
+![Checking for text presence](./assets/DeviceWindow/DeviceWindow_pic37.png)
 
-![Search by the pixel color](./assets/DeviceWindow/DeviceWindow_pic13.png) 
+- **Search by picture**.  
+Opens the **Search by picture** window with a screenshot: in it you select the picture and set the match accuracy, the color mode and the search area. If the picture is found, click **Yes** and then **Add to project**: an action clicking the picture is added to the project. If recording is off, ZennoDroid asks whether to add the action anyway. More in [**Search by picture**](../Creating/SearchByPic).
 
-- **Get the pixel color**  
-Allows you to copy the HEX color code of the selected pixel to the clipboard.
+<details>
+<summary>**The Search by picture window.**</summary>
+<!--All you need is a blank line-->
 
-![Get the pixel color](./assets/DeviceWindow/DeviceWindow_pic14.png)
+![The Search by picture window](./assets/DeviceWindow/DeviceWindow_pic38.png)
+</details>
 
+- **Search by the pixel color**.  
+Opens the **Pixel search** window, already with the color of the pixel under the cursor. Here you set the allowed color deviation and the search area, and the found pixel is outlined on the screen. If the pixel is found, click **Yes**: the tap settings, the offset and the **Test** and **Add to project** buttons appear. The action clicking the pixel is added to the project even if recording is off.
+
+<details>
+<summary>**The Pixel search window.**</summary>
+<!--All you need is a blank line-->
+
+![The Pixel search window](./assets/DeviceWindow/DeviceWindow_pic40.png)
+</details>
+
+- **Get the pixel color**.  
+Copies the color of the pixel under the cursor to the clipboard as `#RRGGBB`. Nothing is added to the project.
 _______________________________________________
-## Useful Links
-- [**Action Builder**](./ActionBuilder)
-- [**Device Actions**](../../Android/pro-lite/action)
-- [**Keyboard Emulation**](../../Android/pro-lite/Keyboard)
+## Useful links.
+- [**Action Designer**](./ActionBuilder).
+- [**Actions with Device**](../../Android/Enterprise/action).
+- [**Actions with Application**](../../Android/Enterprise/App).
+- [**Working with Files**](../../Android/Enterprise/Files).
+- [**LSPosed Management**](../../Enterprise/LSPosed_Control).
+- [**Keyboard Emulation**](../../Android/Enterprise/Keyboard).
