@@ -35,6 +35,7 @@ With this action, you can choose which device you want to work with.
 
 Enter the device name as it appears in the Multi-Memu window (1) or its index (2).
 Indexing starts from zero. If you leave this blank, a random device will be selected.
+On MuMu the device name and number are shown in the MuMuPlayer window.
 
 ![Multi-Memu](../assets/action/action_pic11.png)
 </details>
@@ -77,7 +78,7 @@ It might be easier to reset the current device and generate new IDs instead (see
 ### Available options:
 - ***Version***  
 Here, you need to specify the Android version for the new device.  
-On MEmu: **5.1, 7.1, 7.1 x64, 9.0 x64, 12.0 x64** and **Random**, which picks one of the installed images. On LDPlayer 9 the only value is **9.0 x64**, on LDPlayer 14 - **14.0 x64**.
+On MEmu: **5.1, 7.1, 7.1 x64, 9.0 x64, 12.0 x64** and **Random**, which picks one of the installed images. On LDPlayer 9 the only value is **9.0 x64**, on LDPlayer 14 - **14.0 x64**. On MuMu: **12.0 x64** and **15.0 x64**; if MuMu has no image of the chosen version, the action ends with the error *There is no Android ... image*.
 :::tip By default, only version **7.1** is available.
 *To use other versions, you'll need to download them first.*
 :::
@@ -109,6 +110,8 @@ Use this action to create a copy of the current device.
 Enter the name for the new copy. You can leave it blank to use a default name.
 - ***Put index/name to a variable***  
 Lets you save the name or index of the cloned device to variables.
+:::info **On MuMu only a stopped device can be cloned.**
+:::
 _______________________________________________
 ## How do I export a device?
 
@@ -118,7 +121,7 @@ This action creates a full copy of a device with all its settings and saves it t
 ![Export](../assets/action/action_pic4.png)
 
 ***Path to .ova file*** Specify where the device copy will be saved.
-:::info **On LDPlayer the copy is saved to an *.ldbk* file, and the field is called "Path to LDBK file".**
+:::info **On LDPlayer the copy is saved to an *.ldbk* file, and the field is called "Path to LDBK file". On MuMu it goes to a *.mumudata* file, and the field is called "Path to file (mumudata)".**
 :::
 :::warning **The device must be turned off!**
 :::
@@ -131,7 +134,7 @@ This lets you load a device from a file you saved in the previous step.
 #### Available options:
 - ***Path to .ova file***  
 The path to the file where the device is stored.
-:::info **On LDPlayer an *.ldbk* file is picked.**
+:::info **On LDPlayer an *.ldbk* file is picked, on MuMu a *.mumudata* one.**
 :::
 - ***Name***  
 Set a name for the imported device. Leave blank to use the default.
@@ -157,6 +160,8 @@ Writing to the system partition is only possible after explicit user confirmatio
 For example, when installing Xposed Framework, you'll need to check the box if you want to restore the device to its original state.
 :::tip **Enabling the *Restore system partition* option will make the reset take longer.**
 :::
+:::info **On MuMu a reset doesn't touch the Download, Pictures, Music, Movies and Screenshots folders: they are shared by all MuMu devices.**
+:::
 _______________________________________________
 ## How do I delete a device?
 
@@ -172,6 +177,9 @@ Indexing starts from zero.
 
 ![Multi-Memu](../assets/action/action_pic11.png)
 </details>
+
+:::info **On MuMu only a stopped device can be deleted.**
+:::
 _______________________________________________
 ## How do I get a list of devices?
 
@@ -197,4 +205,4 @@ _______________________________________________
 ## Useful links
 - [**Installing Memu**](../../pro-lite/Memu_Install)
 - [**App automation**](../../get-started/apps)
-- [**Device window**](../../pm/Interface/DeviceWindow)
+- [**Device window**](../../pm/Interface/DeviceWindowEmulator)

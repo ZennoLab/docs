@@ -41,6 +41,7 @@ This setting lets you set a timeout for connecting to the device.
 _______________________________________________ 
 ### Use improved taps  
 Turns on the emulation of real screen taps: they are injected through the kernel input layer, so they are visible to `getevent`, have a size of their own and work on protected pages. They also work on devices with no display (touchpad).
+The gestures move like a finger: the pressure and the touch size change during a gesture, and the swipe speed and the gaps between events are uneven, so a repeated gesture never matches the previous one exactly.
 
 In code the mode is turned on with the [**SetNativeEventMode**](../API/Input#setnativeeventmode) method — before connecting to the device.
 :::warning Only works on devices with root access

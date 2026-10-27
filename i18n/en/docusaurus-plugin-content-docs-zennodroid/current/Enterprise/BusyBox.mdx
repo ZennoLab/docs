@@ -13,37 +13,54 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 BusyBox is a collection of UNIX command line utilities. It's used for:
 - [Saving and restoring app data](../Android/Enterprise/App#save-applications-data)
 - [Setting up a proxy in Clash mode](../Android/Enterprise/setting#clash) *(BusyBox version 1.36.1 or newer required)*
-_______________________________________________  
-## Manual installation.
+
 To install the module, you'll need a smartphone with [**Magisk**](https://github.com/topjohnwu/Magisk).
+_______________________________________________
+## Installing from the actions menu (ZennoDroid 2.6.2+).
+BusyBox comes with ZennoDroid, so there is no need to download it.
 
-Download the [Busybox for Android NDK 1.36.1](https://www.dropbox.com/scl/fi/079hbifq0keal5gmu9d1i/UPDATE-Busybox.Installer.v1.36.1-ALL-signed.zip?rlkey=r76ihn7ez64lo0a2j6zq8zoph&st=h8da6r8y&dl=0) module to your phone's `sdcard/Download/` folder and install it using the standard menu.
+1. In the device window's [**actions menu**](../pm/Interface/DeviceWindow#actions-menu), choose **Magisk / LSPosed** → **Modules...**: the [**Magisk modules**](../pm/Interface/DeviceWindow#magisk-modules) window opens.
+2. Click **Install...** → **Install Busybox**.
+3. When *Module installed* appears at the bottom of the window, reboot the device, for example with the [**Device** → **Reboot**](../pm/Interface/DeviceWindow#device) menu item.
 
-### **1. Open Magisk → Modules → Install from storage.**
-![Install from storage](./assets/BusyBox/BusyBox_pic1.png)
+<details>
+<summary>**The Magisk / LSPosed menu and the Magisk modules window.**</summary>
+<!--All you need is a blank line-->
 
+![The Magisk / LSPosed menu](./assets/BusyBox/BusyBox_pic6.png) ![The Magisk modules window](./assets/BusyBox/BusyBox_pic7.png)
+</details>
 
-### **2. Find the installer among your downloaded files.**
-![Find the installer](./assets/BusyBox/BusyBox_pic2.png)
-
-
-### **3. Confirm the installation.**
-![Confirm installation](./assets/BusyBox/BusyBox_pic3.png)
-
-### **4. If the installation is successful, you'll see `Done!` in the log.**
-![Done! in log](./assets/BusyBox/BusyBox_pic4.png)
-
-:::warning **After installation, you need to reboot your device.**
-:::
-_______________________________________________ 
+_______________________________________________
 ## Automatic installation (ZennoDroid 2.4.2+).
 We've prepared a [**template for installing Busybox 1.36.1**](https://www.dropbox.com/scl/fi/s4era4cezuoykkf8ieh3r/busybox_installer.droid?rlkey=1nbwrvj4ko93jaakf6h9hxbei&st=cqy8narq&dl=0) to make it easier for you to install BusyBox on a large number of devices. It checks your current version, and if it's lower than 1.36.1, it'll automatically install the current module for Magisk.
 
 :::info **After installation, your phone will automatically reboot.**
 :::
 
-After that, just connect to the device again and run the template.
+After that, connect to the device again and run the template. The log message `OK: Busybox ver. 1.36.1` means BusyBox is installed and working correctly.
 
-| ![Log message](./assets/BusyBox/BusyBox_pic5.png)    | 
-| :--------: | 
-| **The log message `OK: Busybox ver. 1.36.1` means BusyBox is installed and working correctly.**  |
+<details>
+<summary>**The log message.**</summary>
+<!--All you need is a blank line-->
+
+![Log message](./assets/BusyBox/BusyBox_pic5.png)
+</details>
+
+_______________________________________________
+## Manual installation.
+Download the [Busybox for Android NDK 1.36.1](https://www.dropbox.com/scl/fi/079hbifq0keal5gmu9d1i/UPDATE-Busybox.Installer.v1.36.1-ALL-signed.zip?rlkey=r76ihn7ez64lo0a2j6zq8zoph&st=h8da6r8y&dl=0) module to your phone's `sdcard/Download/` folder and install it using the standard menu:
+
+1. Open Magisk → *Modules* → Install from storage.
+2. Find the installer among your downloaded files.
+3. Confirm the installation.
+4. If the installation is successful, you'll see `Done!` in the log.
+
+<details>
+<summary>**Installing the module in Magisk.**</summary>
+<!--All you need is a blank line-->
+
+![Install from storage](./assets/BusyBox/BusyBox_pic1.png) ![Find the installer](./assets/BusyBox/BusyBox_pic2.png) ![Confirm installation](./assets/BusyBox/BusyBox_pic3.png) ![Done! in log](./assets/BusyBox/BusyBox_pic4.png)
+</details>
+
+:::warning **After installation, you need to reboot your device.**
+:::

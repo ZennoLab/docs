@@ -176,7 +176,7 @@ Proxy settings via **Clash** — an advanced proxy client with traffic routing r
     DNS servers.
     
     **Description:**  
-    Specifies the DNS list (e.g. `8.8.8.8, 1.1.1.1`).
+    Specifies the DNS list (e.g. `8.8.8.8, 1.1.1.1`). The addresses are separated by a comma, a semicolon, a space or a line break. Clash queries servers with a `tcp://`, `tls://` or `https://` prefix through the proxy, and servers without a prefix or with `udp://` directly.
 
 ---
 
@@ -200,7 +200,7 @@ Proxy settings via **Clash** — an advanced proxy client with traffic routing r
     Whitelist.
     
     **Description:**  
-    List of applications whose traffic will be routed through the proxy.
+    List of applications whose traffic will be routed through the proxy. The app IDs are separated by a comma, a semicolon, a space or a line break.
 
 ---
 
@@ -208,7 +208,7 @@ Proxy settings via **Clash** — an advanced proxy client with traffic routing r
     Blacklist.
     
     **Description:**  
-    List of applications whose traffic will go directly, bypassing the proxy.
+    List of applications whose traffic will go directly, bypassing the proxy. The IDs are separated the same way as in `WhiteList`.
 
 ---
 

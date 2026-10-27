@@ -139,20 +139,20 @@ _______________________________________________
 ## System language selection:  
 This setting changes the language of the connected smartphone.   
 Available values: ***en, ko, de, ja, fr, ru, es, pt, hr, cn, sr, it, cs, th, in, pl, tr, uk, ar, vi, fil***  
-
-:::warning **Before changing these settings, make sure the device is powered off.**
-:::
+You can also change the language in the device window: the [**Device → Change system language...**](../../pm/Interface/DeviceWindow#system-language) item shows the languages in the phone's firmware and can add this action to the project.  
 _______________________________________________
 ## Setting the timezone:  
 Lets you pick the device's time zone.  
 The format is: ***Europe/Moscow*** or ***America/New_York***, etc.  
 ![Time zone](../assets/setting/Android_Setting_pic16.png)  
 You can check the full list of time zones [**here**](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)  
+If the device has no such time zone, the action ends with the error *Unknown time zone ...*, and the device's time zone doesn't change.  
 _______________________________________________ 
 ## How to set the date and time:  
 Set whatever you want: **year, month, day, hour, minute, and second**.  
 ![Time](../assets/setting/Android_Setting_pic17.png)    
 If you leave all fields empty, the time will sync automatically with the current time.  
+The device clock shows exactly the time you set, in the time zone set on the device.  
 _______________________________________________ 
 ## Access to WebView
 :::info **Added in ZennoDroid v2.4.6.0.**
@@ -299,7 +299,9 @@ When this is on, all traffic from the phone is routed through the computer.
 :::
 
 #### DNS addresses.  
-Here you can set DNS server addresses. If you have several, separate them with a comma `,`  
+Here you can set DNS server addresses. If you have several, separate them with a comma `,`, a semicolon `;`, a space or a line break.  
+
+Clash queries servers with a `tcp://`, `tls://` or `https://` prefix, for example `tls://1.1.1.1`, through the proxy. Servers without a prefix or with `udp://` are queried directly.  
 
 #### Local IP *(only if using the computer's internet connection)*.  
 *Set the device's local IP address.*  
@@ -313,7 +315,7 @@ Example: `fdfe:dcba:9806::1/126`
 If you use an address like `fdfe:dcba:0::1/126` then the **`0`** will be replaced with a random hexadecimal value.  
 
 #### White list.  
-A list of apps whose traffic goes through the proxy (list each app separated by a comma). All other apps will use a direct internet connection (no proxy).  
+A list of apps whose traffic goes through the proxy (separated by a comma, a semicolon, a space or a line break). All other apps will use a direct internet connection (no proxy).  
 
 You can find an app's identifier using the [Installed Apps](../../Tools/Installed_App) tool.  
 

@@ -100,7 +100,7 @@ This action lets you scale: **Zoom Out** (shrink) or **Zoom In** (enlarge).
 ![Pinch/Zoom](../assets/Utilities/Utilities_pic8.png)  
 
 #### Available options:
-- *Coordinates*. The point relative to which the scaling will happen.
+- *Coordinates*. The point relative to which the scaling will happen. It must be on the screen, otherwise the action ends with the error *Point (...) is outside the device screen ...*.
 - *Factor*. How much you want to zoom in/out.
 _______________________________________________
 ### Send SMS to the device  
@@ -112,7 +112,7 @@ This utility fakes sending an SMS to the device.
 - *Phone*. Sender's phone number.
 - *Message*. The message text you want to send.
 :::info **There needs to be a messaging app installed on the device.**
-For example, Google Messages, LineageOS Messaging, or any other.
+For example, Google Messages, LineageOS Messaging, or any other. Without it, the action ends with the error *There is no app on the device to receive SMS*.
 :::
 _______________________________________________
 ### Get ADB connection setting

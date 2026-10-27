@@ -28,7 +28,7 @@ Simulating a finger tap is helpful when it's difficult or impossible to trigger 
 _______________________________________________  
 ## How to work with the action  
 ### Coordinates  
-Here you enter the coordinates of the element you're interested in. You can find them in the [**Emulator Window**](../../pm/Interface/DeviceWindow); the current cursor position is shown at the bottom when the cursor is inside that window.
+Here you enter the coordinates of the element you're interested in. You can find them in the [**Emulator Window**](../../pm/Interface/DeviceWindowEmulator); the current cursor position is shown at the bottom when the cursor is inside that window.
 
 ![Coordinates.](../assets/Touch/Touch_pic3.png)
 
@@ -36,6 +36,7 @@ Here you enter the coordinates of the element you're interested in. You can find
 **Y (from, to)** — vertical coordinates
 
 *A Touch tap* will be performed at these coordinates.
+If the area partly goes past the edge of the screen, the tap lands in its part that is on the screen. If the whole area is outside the screen, the action ends with an error, for example *Point (1200, 300) is outside the device screen 1080x2400*.
 
 ### Long Tap  
 This does a long press, as if you're holding your finger on the screen.

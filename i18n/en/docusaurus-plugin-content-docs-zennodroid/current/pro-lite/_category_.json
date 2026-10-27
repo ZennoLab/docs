@@ -4,7 +4,7 @@
     "link": {
       "type": "generated-index",
       "title": "Setting up Lite and Pro versions",  
-      "description": "ZennoDroid Lite and Professional versions are designed only for working with Memu and LDPlayer emulators. For real device automation or Bluestacks, use the Enterprise version."
+      "description": "ZennoDroid Lite and Professional versions are designed only for working with Memu, LDPlayer and MuMu emulators. For real device automation or Bluestacks, use the Enterprise version."
     }
   }
   
