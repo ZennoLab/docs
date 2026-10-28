@@ -1,0 +1,80 @@
+---
+sidebar_position: 22
+sidebar_label: Restore profiles from wastebasket
+title: Restore profiles from wastebasket
+description: Restore multiple deleted browser profiles from the wastebasket with ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method returns multiple deleted browser profiles from the wastebasket to the main screen in the specified folder.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| folderId | string | uuid | (required) | Target folder: a local folder for local profiles or a cloud folder for cloud profiles. |
+| workspaceId | integer | int64 | \-1 | Workspace identifier. `-1` means the default workspace. |
+
+The request body is a JSON array of profile identifiers in UUID format.
+
+#### **Request example:**
+
+**POST**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/restore_bulk?folderId=223e4567-e89b-12d3-a456-426614174000&workspaceId=-1' \
+  --request POST \
+  --header 'Api-Token: YOUR_SECRET_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '["123e4567-e89b-12d3-a456-426614174000","323e4567-e89b-12d3-a456-426614174000"]'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/restore_bulk?folderId=223e4567-e89b-12d3-a456-426614174000&workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+request.Content = new StringContent("[\"123e4567-e89b-12d3-a456-426614174000\",\"323e4567-e89b-12d3-a456-426614174000\"]", Encoding.UTF8, "application/json");
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/profiles/restore_bulk?folderId=FOLDER_ID&workspaceId=-1
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Profiles restored; response body is empty |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Access forbidden |
+| `500 Internal Server Error` | Internal server error |
+
+**Error response (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
