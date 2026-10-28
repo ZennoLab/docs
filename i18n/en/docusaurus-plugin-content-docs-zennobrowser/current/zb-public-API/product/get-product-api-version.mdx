@@ -1,0 +1,68 @@
+---
+sidebar_position: 5
+sidebar_label: Get Product API version
+title: Get Product API version
+description: Retrieve the Product API document version with ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** This method returns the Product API document version. The version changes whenever this API document changes.
+
+#### **Request parameters:**
+
+This method does not require request parameters.
+
+#### **Request example:**
+
+**GET**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/product/api_version' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/product/api_version"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/product/api_version
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :---: | :---: |
+| `200 OK` | Product API document version |
+| `401 Unauthorized` | Unauthorized |
+| `403 Forbidden` | Access forbidden |
+
+**Successful response (200 OK):**
+
+```json
+"1.0"
+```
+
+---

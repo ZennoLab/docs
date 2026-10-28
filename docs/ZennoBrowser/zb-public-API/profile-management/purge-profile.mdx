@@ -1,0 +1,79 @@
+---
+sidebar_position: 23
+sidebar_label: Безвозвратное удаление профиля
+title: Безвозвратное удаление профиля из корзины
+description: Безвозвратное удаление профиля браузера из корзины через ZennoBrowser Public API
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Метод безвозвратно удаляет один профиль браузера из корзины вместе с его данными.
+
+:::warning
+После выполнения операции профиль и его данные невозможно восстановить.
+:::
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Идентификатор профиля в корзине, передаваемый в пути запроса. |
+| workspaceId | integer | int64 | \-1 | Идентификатор рабочего пространства. `-1` означает рабочее пространство по умолчанию. |
+
+#### **Пример запроса:**
+
+**DELETE**  
+**CURL:**
+
+```bash
+curl 'http://localhost:8160/v1/profiles/wastebasket/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
+  --request DELETE \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/wastebasket/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+```
+http://localhost:8160/v1/profiles/wastebasket/{profileId}?workspaceId=-1
+```
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :---: | :---: |
+| `200 OK` | Профиль удалён; тело ответа отсутствует |
+| `401 Unauthorized` | Не авторизован |
+| `403 Forbidden` | Доступ запрещен |
+| `500 Internal Server Error` | Внутренняя ошибка сервера |
+
+**Ответ с ошибкой (500):**
+
+```json
+{
+  "message": null
+}
+```
+
+---
