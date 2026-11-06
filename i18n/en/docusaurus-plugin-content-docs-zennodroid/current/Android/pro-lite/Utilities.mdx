@@ -100,8 +100,11 @@ This action lets you scale: **Zoom Out** (shrink) or **Zoom In** (enlarge).
 ![Pinch/Zoom](../assets/Utilities/Utilities_pic8.png)  
 
 #### Available options:
-- *Coordinates*. The point relative to which the scaling will happen. It must be on the screen, otherwise the action ends with the error *Point (...) is outside the device screen ...*.
+- *Coordinates*. The point relative to which the scaling will happen. It must be on the screen, otherwise the action ends with the error *Point (...) is outside the device screen ...*. The point can be set in pixels or in percent of the screen by the rules of [**Touch Emulation**](./Touch_Emulation#coordinates-in-percent): for example, `50%` and `50%` is the centre of the screen at any resolution.
 - *Factor*. How much you want to zoom in/out.
+
+:::info **Coordinates in percent are available starting with ZennoDroid 2.6.3.0.**
+:::
 _______________________________________________
 ### Send SMS to the device  
 This utility fakes sending an SMS to the device.  

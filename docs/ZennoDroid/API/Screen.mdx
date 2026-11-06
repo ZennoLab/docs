@@ -353,6 +353,69 @@ project.SendInfoToLog($"Разрешение экрана: {size.Width}x{size.He
 
 ---
 
+### PercentToPoint
+
+:::info **Доступно начиная с версии ZennoDroid 2.6.3.0.**
+:::
+
+- **`Point PercentToPoint(double x, double y)`**  
+    Переводит точку, заданную в процентах от экрана, в пиксели по тому же правилу, что и [**координаты в процентах**](../Android/pro-lite/Touch_Emulation#координаты-в-процентах) в экшенах: `0` - первый пиксель, `50` - середина, `100` - последний пиксель.
+    
+    **Параметры:**
+    - `x` - процент ширины экрана, от 0 до 100;
+    - `y` - процент высоты экрана, от 0 до 100.
+    
+    **Возвращает:**  
+    `Point` - точка в пикселях экрана. На экране 1080x2400 `PercentToPoint(50, 100)` возвращает (540, 2399).
+    
+    **Описание:**  
+    Проценты считаются от разрешения, которое возвращает [`GetScreenSize`](#getscreensize), поэтому после смены разрешения сначала вызовите `ResetScreen()`. Процент меньше 0, больше 100 или `NaN` вызывает `ArgumentOutOfRangeException` с именем параметра.
+
+#### Пример.
+```csharp
+var screen = instance.DroidInstance.Screen;
+var input = instance.DroidInstance.Input;
+
+var center = screen.PercentToPoint(50, 50); // Центр экрана на любом разрешении
+input.Tap(center.X, center.Y);
+
+var start = screen.PercentToPoint(50, 80); // Прокрутка вниз: от 80% высоты экрана к 20%
+var end = screen.PercentToPoint(50, 20);
+input.Swipe(start.X, start.Y, end.X, end.Y, 500);
+```
+
+---
+
+### PercentToRectangle
+
+:::info **Доступно начиная с версии ZennoDroid 2.6.3.0.**
+:::
+
+- **`Rectangle PercentToRectangle(double left, double top, double right, double bottom)`**  
+    Переводит область, заданную в процентах от экрана, в пиксели по правилу [`PercentToPoint`](#percenttopoint). Правая и нижняя стороны включают свой пиксель, поэтому `PercentToRectangle(0, 0, 100, 100)` - весь экран, `PercentToRectangle(0, 50, 100, 100)` - его нижняя половина, а `PercentToRectangle(50, 50, 50, 50)` - один пиксель в центре.
+    
+    **Параметры:**
+    - `left`, `top` - левая и верхняя стороны: проценты ширины и высоты экрана, от 0 до 100;
+    - `right`, `bottom` - правая и нижняя стороны, от 0 до 100.
+    
+    **Возвращает:**  
+    `Rectangle` - область в пикселях экрана. Если правая сторона левее левой или нижняя выше верхней, ширина или высота области равна 0.
+    
+    **Описание:**  
+    Процент меньше 0, больше 100 или `NaN` вызывает `ArgumentOutOfRangeException` с именем параметра.
+
+#### Пример.
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var lowerHalf = screen.PercentToRectangle(0, 50, 100, 100); // Нижняя половина экрана
+var point = screen.FindPixel("#FF0000", new[] { lowerHalf }, 10); // Искать красный пиксель только в ней
+if (point.IsEmpty)
+	throw new Exception("Пиксель не найден");
+```
+
+---
+
 ### RefreshScreen
 
 - **`void RefreshScreen()`**  
