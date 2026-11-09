@@ -1041,6 +1041,19 @@ The scope list is set **before** the module is enabled: with an empty list `Enab
 - `photo` is off by default because it is a trade rather than a strict improvement: to get the save through, the module hands the small helper frame lanes (metering, thumbnails) back to the real camera. Leave it `false` for a scanner or KYC app that reads frames through one of those lanes, since it would otherwise receive the real camera image.
 :::
 
+#### On emulators.  
+On MEmu, LDPlayer and MuMu the substitution works without the **ZennoVCam** module and without LSPosed - ZennoDroid feeds the frames itself, and nothing has to be switched on. For LDPlayer, turn on *Virtual camera from a file* in the [**Android settings**](../Settings/Settings_for_Android#virtual-camera-from-a-file) beforehand: it is a one-time patch of the installation's shared image, and until it is done the call changes nothing.
+
+What differs from a phone:
+- `packageName` is ignored - the camera is replaced for the whole machine, not for one app;
+- `mute` is ignored - a camera has no audio track;
+- `synth` is ignored;
+- `loop` and `photo` work the same way.
+
+The source can be a video or a picture (`.png`, `.jpg`, `.bmp`). A picture - and a video taken with `photo = true` - is served as a still, pixel for pixel, so a scanner gets exactly the image you fed it. A video is compressed frame by frame: a minute of it takes tens of megabytes.
+
+The frame reaches the app turned the way the device's sensor would have turned it, and with black bars when the source's proportions differ from the camera frame. An empty `videoSource` gives the machine its own camera back.
+
 ---
 
 ### Uid

@@ -101,6 +101,13 @@ The **Patch the MuMu image: spoof android_id, the operator and the SIM** switch 
 
 The patch changes the shared MuMu system image too: stop all MuMu devices before changing it, otherwise the message *It is necessary to stop all running devices* appears. A MuMu update replaces the image and removes the patch: the switch is then off again, and it has to be turned on once more. More about working with MuMu is in [**Installing MuMu**](../pro-lite/MuMu_Install).
 _______________________________________________  
+### Virtual camera from a file.
+The switch is there only when the LDPlayer emulator is chosen. It lets the device's camera be fed a picture or a video - with the action or with [**SetVideoForFakeCamera**](../API/App#setvideoforfakecamera). While it is off the call goes through without an error, but the app still sees the emulator's own camera.
+
+The switch changes the shared system image of the LDPlayer installation, so stop every device of that installation before changing it, otherwise the message *It is necessary to stop all running devices* appears. Devices pick the change up at their next boot. It costs no disk space - there is one image for the whole installation - and it does not get in the way of devices whose camera is not being replaced. Turning it off puts the image back as it was.
+
+MEmu and MuMu have no such switch and need none: there the call itself turns the substitution on.
+_______________________________________________  
 ### Fix build.prop errors.
 In an emulator some of the device properties are left as `unknown`. With this setting on, ZennoDroid takes the manufacturer, the brand, the model, the board, the `hardware`, the baseband and the fingerprint from the emulator configuration before the first boot completes and writes them into `build.prop`, so that apps and sites do not see `unknown` among the device properties.
 The setting is there only for MEmu and LDPlayer: with the MuMu emulator chosen, it isn't shown.
