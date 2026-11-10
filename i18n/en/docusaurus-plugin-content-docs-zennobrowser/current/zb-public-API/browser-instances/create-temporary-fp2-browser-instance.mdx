@@ -22,13 +22,13 @@ All emulation settings are optional and case-sensitive. An empty string lets the
 | environmentTags | string |  |  | Environment tags separated by ";" (optional). |
 | commandLineArguments | string |  |  | Custom command line arguments to pass to the browser on startup |
 | customFeatures | string |  | (empty) | Custom browser features (optional). |
-| screen | string |  |  | Screen: "auto", "real", or a screen token; a token the generated device does not offer may be rejected. |
+| screen | string |  |  | Screen: "auto", "real", or a screen token. A token from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected: a temporary instance has no profile of its own for checking values. |
 | cpu | string |  |  | Logical processor count: "auto", "real", or a number. |
 | memory | string |  |  | Approximated device memory: "auto", "real", or a number. |
 | locale | string |  |  | Locale: "auto", "real", or a locale such as "en-US". |
 | timeZone | string |  |  | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". |
-| languages | string |  |  | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru"; languages the generated device does not offer may be rejected. |
-| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor name (then gpuRenderer is required); a GPU the generated device does not offer may be rejected. |
+| languages | string |  |  | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru". Languages from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected by a temporary instance. |
+| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor name from [another profile's choices](../profile-management/get-fp2-profile-choices) (then gpuRenderer is required). That GPU may be rejected by a temporary instance. |
 | gpuRenderer | string |  |  | GPU renderer. Only together with a vendor name in gpuVendor. |
 | canvasNoise | string |  |  | Canvas noise: "auto", "on" or "off". |
 | clientRectsNoise | string |  |  | Client rects noise: "auto", "on" or "off". |

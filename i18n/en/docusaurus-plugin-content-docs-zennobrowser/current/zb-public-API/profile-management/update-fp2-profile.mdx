@@ -10,7 +10,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 **Description:** Changes only the supplied fp2 profile settings. An empty emulation setting keeps its current value.
 
-For manual `screen`, `languages`, and GPU values, first call `GET /v1/profiles/fp2/&#123;profileId&#125;/choices`. Empty `proxyServerId` and `presetId` remove the corresponding setting.
+For manual `screen`, `languages`, and GPU values, first call [GET fp2 profile choices](./get-fp2-profile-choices). Empty `proxyServerId` and `presetId` remove the corresponding setting.
 
 #### **Request parameters:**
 
@@ -25,14 +25,14 @@ For manual `screen`, `languages`, and GPU values, first call `GET /v1/profiles/f
 | commandLineArguments | string |  | (empty) | Custom command line arguments to pass to the browser on startup (optional). |
 | proxyServerId | string |  | (empty) | Proxy server ID configuration. Use null to keep unchanged, empty string to clear the proxy, or provide a valid GUID to set a new proxy server |
 | presetId | string |  | (empty) | Preset identifier to apply. Use null to keep unchanged, empty string to remove the preset, or a GUID to set a new preset. |
-| screen | string |  |  | Screen: "auto", "real", or a screen token from fp2/&#123;profileId&#125;/choices of this profile. Empty string means keep the current value. A token not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
+| screen | string |  |  | Screen: "auto", "real", or a screen token from [profile choices](./get-fp2-profile-choices) of this profile. Empty string means keep the current value. A token not offered by [profile choices](./get-fp2-profile-choices) may be rejected. |
 | cpu | string |  |  | Logical processor count: "auto", "real", or a number. Empty string means keep the current value. |
 | memory | string |  |  | Approximated device memory: "auto", "real", or a number. Empty string means keep the current value. |
 | locale | string |  |  | Locale: "auto", "real", or a locale such as "en-US". Empty string means keep the current value. |
 | timeZone | string |  |  | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". Empty string means keep the current value. |
-| languages | string |  |  | Languages: "auto", "real", or a list of languages from fp2/&#123;profileId&#125;/choices of this profile separated by ";" such as "en-US;ru". Empty string means keep the current value. Languages not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
-| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor from fp2/&#123;profileId&#125;/choices of this profile (then gpuRenderer is required). Empty string means keep the current value. A vendor not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
-| gpuRenderer | string |  |  | GPU renderer offered by fp2/&#123;profileId&#125;/choices of this profile for the vendor in gpuVendor. Only together with a vendor name in gpuVendor. A renderer not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
+| languages | string |  |  | Languages: "auto", "real", or a list of languages from [profile choices](./get-fp2-profile-choices) of this profile separated by ";" such as "en-US;ru". Empty string means keep the current value. Languages not offered by [profile choices](./get-fp2-profile-choices) may be rejected. |
+| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor from [profile choices](./get-fp2-profile-choices) of this profile (then gpuRenderer is required). Empty string means keep the current value. A vendor not offered by [profile choices](./get-fp2-profile-choices) may be rejected. |
+| gpuRenderer | string |  |  | GPU renderer offered by [profile choices](./get-fp2-profile-choices) of this profile for the vendor in gpuVendor. Only together with a vendor name in gpuVendor. A renderer not offered by [profile choices](./get-fp2-profile-choices) may be rejected. |
 | canvasNoise | string |  |  | Canvas noise: "auto", "on" or "off". Empty string means keep the current value. |
 | clientRectsNoise | string |  |  | Client rects noise: "auto", "on" or "off". Empty string means keep the current value. |
 | webRtc | string |  |  | WebRTC: "auto", "real" or "hide". Empty string means keep the current value. |

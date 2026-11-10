@@ -22,13 +22,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | environmentTags | string |  |  | Теги окружения, разделённые точкой с запятой. |
 | commandLineArguments | string |  |  | Дополнительные аргументы командной строки браузера. |
 | customFeatures | string |  | (пусто) | Дополнительные функции браузера. |
-| screen | string |  |  | Экран: `auto`, `real` или токен из `fp2/{profileId}/choices`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| screen | string |  |  | Экран: `auto`, `real` или токен. Токен из [списка допустимых значений другого профиля](../profile-management/get-fp2-profile-choices) может быть отклонён: у временного экземпляра нет собственного профиля для проверки значений. |
 | cpu | string |  |  | Количество логических процессоров: `auto`, `real` или число. |
 | memory | string |  |  | Объём памяти устройства: `auto`, `real` или число. |
 | locale | string |  |  | Локаль: `auto`, `real` или код, например `en-US`. |
 | timeZone | string |  |  | Часовой пояс: `auto`, `real` или идентификатор IANA, например `Europe/Berlin`. |
-| languages | string |  |  | Языки: `auto`, `real` или список через `;`, например `en-US;ru`. Значение, не поддерживаемое устройством, может быть отклонено. |
-| gpuVendor | string |  |  | Производитель GPU: `auto`, `real` или имя из `fp2/{profileId}/choices`; при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| languages | string |  |  | Языки: `auto`, `real` или список через `;`, например `en-US;ru`. Языки из [списка допустимых значений другого профиля](../profile-management/get-fp2-profile-choices) могут быть отклонены временным экземпляром. |
+| gpuVendor | string |  |  | Производитель GPU: `auto`, `real` или имя из [списка допустимых значений другого профиля](../profile-management/get-fp2-profile-choices); при имени требуется `gpuRenderer`. Такой GPU может быть отклонён временным экземпляром. |
 | gpuRenderer | string |  |  | Рендерер GPU; используется только вместе с именем производителя в `gpuVendor`. |
 | canvasNoise | string |  |  | Шум Canvas: `auto`, `on` или `off`. |
 | clientRectsNoise | string |  |  | Шум ClientRects: `auto`, `on` или `off`. |

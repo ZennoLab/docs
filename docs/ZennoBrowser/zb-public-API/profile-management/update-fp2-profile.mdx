@@ -10,7 +10,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 **Описание:** Изменяет только переданные параметры профиля fp2. Пустое значение параметра эмуляции сохраняет текущее значение.
 
-Для ручных значений `screen`, `languages` и GPU сначала получите допустимые значения через `GET /v1/profiles/fp2/{profileId}/choices`. Пустые `proxyServerId` и `presetId` снимают соответствующую настройку.
+Для ручных значений `screen`, `languages` и GPU сначала получите допустимые значения через [метод получения допустимых значений](./get-fp2-profile-choices). Пустые `proxyServerId` и `presetId` снимают соответствующую настройку.
 
 #### **Параметры запроса:**
 
@@ -25,13 +25,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | commandLineArguments | string |  | (пусто) | Дополнительные аргументы командной строки браузера. |
 | proxyServerId | string |  | (пусто) | Идентификатор прокси-сервера. Не передавайте параметр, чтобы сохранить значение; пустая строка удаляет настройку. |
 | presetId | string |  | (пусто) | Идентификатор пресета для начальной конфигурации профиля. Не передавайте параметр, чтобы сохранить значение; пустая строка удаляет настройку. |
-| screen | string |  |  | Экран: `auto`, `real` или токен из `fp2/{profileId}/choices`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| screen | string |  |  | Экран: `auto`, `real` или токен из [списка допустимых значений](./get-fp2-profile-choices). Значение, не поддерживаемое устройством, может быть отклонено. |
 | cpu | string |  |  | Количество логических процессоров: `auto`, `real` или число. |
 | memory | string |  |  | Объём памяти устройства: `auto`, `real` или число. |
 | locale | string |  |  | Локаль: `auto`, `real` или код, например `en-US`. |
 | timeZone | string |  |  | Часовой пояс: `auto`, `real` или идентификатор IANA, например `Europe/Berlin`. |
 | languages | string |  |  | Языки: `auto`, `real` или список через `;`, например `en-US;ru`. Значение, не поддерживаемое устройством, может быть отклонено. |
-| gpuVendor | string |  |  | Производитель GPU: `auto`, `real` или имя из `fp2/{profileId}/choices`; при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| gpuVendor | string |  |  | Производитель GPU: `auto`, `real` или имя из [списка допустимых значений](./get-fp2-profile-choices); при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
 | gpuRenderer | string |  |  | Рендерер GPU; используется только вместе с именем производителя в `gpuVendor`. |
 | canvasNoise | string |  |  | Шум Canvas: `auto`, `on` или `off`. |
 | clientRectsNoise | string |  |  | Шум ClientRects: `auto`, `on` или `off`. |
