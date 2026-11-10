@@ -1,0 +1,83 @@
+---
+sidebar_position: 33
+sidebar_label: Update fp2 Profile
+title: Update fp2 Profile
+description: Changes only the supplied fp2 profile settings. An empty emulation setting keeps its current value.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** Changes only the supplied fp2 profile settings. An empty emulation setting keeps its current value.
+
+For manual `screen`, `languages`, and GPU values, first call `GET /v1/profiles/fp2/&#123;profileId&#125;/choices`. Empty `proxyServerId` and `presetId` remove the corresponding setting.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| profileId | string | uuid | required | Unique identifier of the fp2 profile to update (required). |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the workspace currently selected in ZennoBrowser. |
+| folderId | string | uuid | (empty) | New profile folder (optional). |
+| name | string |  | (empty) | New profile name (optional). |
+| notes | string |  | (empty) | New profile notes (optional). |
+| tags | string |  | (empty) | New profile tags separated by spaces (optional). |
+| commandLineArguments | string |  | (empty) | Custom command line arguments to pass to the browser on startup (optional). |
+| proxyServerId | string |  | (empty) | Proxy server ID configuration. Use null to keep unchanged, empty string to clear the proxy, or provide a valid GUID to set a new proxy server |
+| presetId | string |  | (empty) | Preset identifier to apply. Use null to keep unchanged, empty string to remove the preset, or a GUID to set a new preset. |
+| screen | string |  |  | Screen: "auto", "real", or a screen token from fp2/&#123;profileId&#125;/choices of this profile. Empty string means keep the current value. A token not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
+| cpu | string |  |  | Logical processor count: "auto", "real", or a number. Empty string means keep the current value. |
+| memory | string |  |  | Approximated device memory: "auto", "real", or a number. Empty string means keep the current value. |
+| locale | string |  |  | Locale: "auto", "real", or a locale such as "en-US". Empty string means keep the current value. |
+| timeZone | string |  |  | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". Empty string means keep the current value. |
+| languages | string |  |  | Languages: "auto", "real", or a list of languages from fp2/&#123;profileId&#125;/choices of this profile separated by ";" such as "en-US;ru". Empty string means keep the current value. Languages not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
+| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor from fp2/&#123;profileId&#125;/choices of this profile (then gpuRenderer is required). Empty string means keep the current value. A vendor not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
+| gpuRenderer | string |  |  | GPU renderer offered by fp2/&#123;profileId&#125;/choices of this profile for the vendor in gpuVendor. Only together with a vendor name in gpuVendor. A renderer not offered by fp2/&#123;profileId&#125;/choices may be rejected. |
+| canvasNoise | string |  |  | Canvas noise: "auto", "on" or "off". Empty string means keep the current value. |
+| clientRectsNoise | string |  |  | Client rects noise: "auto", "on" or "off". Empty string means keep the current value. |
+| webRtc | string |  |  | WebRTC: "auto", "real" or "hide". Empty string means keep the current value. |
+| mediaDevices | string |  |  | Virtual media devices: "auto" or "real". Empty string means keep the current value. |
+| imagesVideosDownload | string |  |  | Images and videos download: "on" or "off". Empty string keeps the current value. |
+
+#### **Example request:**
+
+**PUT**
+
+**CURL:**
+
+```bash
+curl -X PUT 'http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http;
+var client = new HttpClient();
+using var request = new HttpRequestMessage(HttpMethod.Put, "http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1");
+request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
+using var response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+Console.WriteLine(await response.Content.ReadAsStringAsync());
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :--- | :--- |
+| `200` | OK |
+| `400` | Invalid emulation setting |
+| `401` | Unauthorized |
+| `403` | Forbidden |
+| `500` | Internal Server Error |
+
+For `400`, the `message` field identifies the invalid setting and allowed values.
+
+---

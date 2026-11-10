@@ -1,0 +1,91 @@
+---
+sidebar_position: 31
+sidebar_label: Массовое создание профилей fp2
+title: Массовое создание профилей fp2
+description: Создаёт несколько профилей fp2 с одинаковыми настройками. Значения `auto` определяются отдельно для каждого профиля.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Создаёт несколько профилей fp2 с одинаковыми настройками. Значения `auto` определяются отдельно для каждого профиля.
+
+Все параметры эмуляции необязательны и чувствительны к регистру. Пустая строка позволяет движку выбрать значение. Ручные значения экрана, языков или GPU могут быть отклонены, если созданное устройство их не поддерживает.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| count | integer | int32 | (пусто) | Количество создаваемых профилей. |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства; `-1` означает выбранное в ZennoBrowser рабочее пространство. |
+| folderId | string | uuid | (пусто) | Идентификатор папки профиля. |
+| tags | string |  |  | Теги профиля, разделённые пробелами. |
+| notes | string |  |  | Дополнительные заметки профиля. |
+| proxyServerId | string | uuid | (пусто) | Идентификатор прокси-сервера. |
+| presetId | string | uuid | (пусто) | Идентификатор пресета для начальной конфигурации профиля. |
+| commandLineArguments | string |  |  | Дополнительные аргументы командной строки браузера. |
+| osVersion | string |  |  | Версия ОС для отпечатка: `win10` или `win11`; пустое значение определяет ОС хоста автоматически. |
+| screen | string |  |  | Экран: `auto`, `real` или токен из `fp2/{profileId}/choices`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| cpu | string |  |  | Количество логических процессоров: `auto`, `real` или число. |
+| memory | string |  |  | Объём памяти устройства: `auto`, `real` или число. |
+| locale | string |  |  | Локаль: `auto`, `real` или код, например `en-US`. |
+| timeZone | string |  |  | Часовой пояс: `auto`, `real` или идентификатор IANA, например `Europe/Berlin`. |
+| languages | string |  |  | Языки: `auto`, `real` или список через `;`, например `en-US;ru`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| gpuVendor | string |  |  | Производитель GPU: `auto`, `real` или имя из `fp2/{profileId}/choices`; при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| gpuRenderer | string |  |  | Рендерер GPU; используется только вместе с именем производителя в `gpuVendor`. |
+| canvasNoise | string |  |  | Шум Canvas: `auto`, `on` или `off`. |
+| clientRectsNoise | string |  |  | Шум ClientRects: `auto`, `on` или `off`. |
+| webRtc | string |  |  | Режим WebRTC: `auto`, `real` или `hide`. |
+| mediaDevices | string |  |  | Виртуальные медиоустройства: `auto` или `real`. |
+| imagesVideosDownload | string |  |  | Загрузка изображений и видео: `on` или `off`. |
+
+#### **Пример запроса:**
+
+**POST**
+
+**CURL:**
+
+```bash
+curl -X POST 'http://localhost:8160/v1/profiles/fp2/create_bulk?workspaceId=-1&count=2' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http;
+var client = new HttpClient();
+using var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:8160/v1/profiles/fp2/create_bulk?workspaceId=-1&count=2");
+request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
+using var response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+Console.WriteLine(await response.Content.ReadAsStringAsync());
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/create_bulk?workspaceId=-1&count=2
+```
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :--- | :--- |
+| `200` | Успешно |
+| `400` | Недопустимое значение параметра эмуляции |
+| `401` | Не авторизован |
+| `403` | Доступ запрещён |
+| `500` | Внутренняя ошибка сервера |
+
+**Пример успешного ответа (200):**
+
+```json
+[
+  "123e4567-e89b-12d3-a456-426614174000"
+]
+```
+
+При коде `400` поле `message` указывает недопустимую настройку и разрешённые значения.
+
+---

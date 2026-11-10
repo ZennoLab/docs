@@ -1,0 +1,86 @@
+---
+sidebar_position: 32
+sidebar_label: Получение профиля fp2
+title: Получение профиля fp2
+description: Возвращает данные профиля fp2. Неустановленные параметры эмуляции возвращаются как `auto`; выбранные движком значения не возвращаются.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Возвращает данные профиля fp2. Неустановленные параметры эмуляции возвращаются как `auto`; выбранные движком значения не возвращаются.
+
+#### **Параметры запроса:**
+
+| Parameter | Type | Format | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| profileId | string | uuid | required | Уникальный идентификатор профиля (обязательный). |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства; `-1` означает выбранное в ZennoBrowser рабочее пространство. |
+
+#### **Пример запроса:**
+
+**GET**
+
+**CURL:**
+
+```bash
+curl -X GET 'http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http;
+var client = new HttpClient();
+using var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1");
+request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
+using var response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+Console.WriteLine(await response.Content.ReadAsStringAsync());
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1
+```
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :--- | :--- |
+| `200` | Успешно |
+| `401` | Не авторизован |
+| `403` | Доступ запрещён |
+| `500` | Внутренняя ошибка сервера |
+
+**Пример успешного ответа (200):**
+
+```json
+{
+  "#=z1AOYzQg=": "string",
+  "#=z1wk2g1pEDM7L": "string",
+  "#=z4h6xlV2lBzPH": "string",
+  "#=z5y$vY44=": "string",
+  "#=zB8NWAJE=": "123e4567-e89b-12d3-a456-426614174000",
+  "#=zBkckY2E=": "string",
+  "#=zDn7QO0g=": "string",
+  "#=zEmIdohI=": "string",
+  "#=zI6UCDLA=": "123e4567-e89b-12d3-a456-426614174000",
+  "#=zIPkob7c=": "string",
+  "#=zKsrzFPj6kJ7s": "string",
+  "#=zKwpGqammaEuS": "string",
+  "#=zNrwDhWDvss0T": "string",
+  "#=zQ8UFejgWP6wdtqEAWw==": "string",
+  "#=zY24XfJ4=": "string",
+  "#=zb4mvjGm43ZTX": "string",
+  "#=zd880n70=": [
+    {}
+  ],
+  "#=zdXBJlAI=": "string",
+  "#=zj4TjEI8OGk$s": "string"
+}
+```
+
+---

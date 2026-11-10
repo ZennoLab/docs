@@ -1,0 +1,89 @@
+---
+sidebar_position: 30
+sidebar_label: Create fp2 Profile
+title: Create fp2 Profile
+description: Creates an fp2 profile in the selected workspace and folder.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** Creates an fp2 profile in the selected workspace and folder.
+
+All emulation settings are optional and case-sensitive. An empty string lets the engine choose a value. Manual screen, language, or GPU values may be rejected if the generated device does not support them.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| name | string |  | (empty) | The profile name. |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the workspace currently selected in ZennoBrowser. |
+| folderId | string | uuid | (empty) | Folder identifier (optional). |
+| tags | string |  |  | Profile tags separated by spaces (optional). |
+| notes | string |  |  | Additional notes for the profile. |
+| proxyServerId | string | uuid | (empty) | Proxy server identifier (optional). |
+| presetId | string | uuid | (empty) | Optional preset identifier used to initialize the profile configuration. |
+| commandLineArguments | string |  |  | Custom command line arguments to pass to the browser on startup |
+| osVersion | string |  |  | OS version for fingerprint selection. Allowed values: "win10" or "win11". If empty, the server auto-detects the host OS. |
+| screen | string |  |  | Screen: "auto", "real", or a screen token from fp2/&#123;profileId&#125;/choices. Empty string means not specified: the engine picks a value. A token the generated device does not offer may be rejected; the reliable way is PUT fp2/&#123;profileId&#125; with a token from fp2/&#123;profileId&#125;/choices of this profile. |
+| cpu | string |  |  | Logical processor count: "auto", "real", or a number. Empty string means not specified: the engine picks a value. |
+| memory | string |  |  | Approximated device memory: "auto", "real", or a number. Empty string means not specified: the engine picks a value. |
+| locale | string |  |  | Locale: "auto", "real", or a locale such as "en-US". Empty string means not specified: the engine picks a value. |
+| timeZone | string |  |  | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". Empty string means not specified: the engine picks a value. |
+| languages | string |  |  | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru". Empty string means not specified: the engine picks a value. Languages the generated device does not offer may be rejected; the reliable way is PUT fp2/&#123;profileId&#125; with languages from fp2/&#123;profileId&#125;/choices of this profile. |
+| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor name (then gpuRenderer is required). Empty string means not specified: the engine picks a value. A GPU the generated device does not offer may be rejected; the reliable way is PUT fp2/&#123;profileId&#125; with a vendor and renderer from fp2/&#123;profileId&#125;/choices of this profile. |
+| gpuRenderer | string |  |  | GPU renderer. Only together with a vendor name in gpuVendor. |
+| canvasNoise | string |  |  | Canvas noise: "auto", "on" or "off". Empty string means not specified: the engine picks a value. |
+| clientRectsNoise | string |  |  | Client rects noise: "auto", "on" or "off". Empty string means not specified: the engine picks a value. |
+| webRtc | string |  |  | WebRTC: "auto", "real" or "hide". Empty string means not specified: the engine picks a value. |
+| mediaDevices | string |  |  | Virtual media devices: "auto" or "real". Empty string means not specified: the engine picks a value. |
+| imagesVideosDownload | string |  |  | Images and videos download: "on" or "off". Empty string means the default, "on". |
+
+#### **Example request:**
+
+**POST**
+
+**CURL:**
+
+```bash
+curl -X POST 'http://localhost:8160/v1/profiles/fp2/create?workspaceId=-1&name=Example' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http;
+var client = new HttpClient();
+using var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:8160/v1/profiles/fp2/create?workspaceId=-1&name=Example");
+request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
+using var response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+Console.WriteLine(await response.Content.ReadAsStringAsync());
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/create?workspaceId=-1&name=Example
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :--- | :--- |
+| `200` | OK |
+| `400` | Invalid emulation setting |
+| `401` | Unauthorized |
+| `403` | Forbidden |
+| `500` | Internal Server Error |
+
+**Success response example (200):**
+
+```json
+"123e4567-e89b-12d3-a456-426614174000"
+```
+
+For `400`, the `message` field identifies the invalid setting and allowed values.
+
+---

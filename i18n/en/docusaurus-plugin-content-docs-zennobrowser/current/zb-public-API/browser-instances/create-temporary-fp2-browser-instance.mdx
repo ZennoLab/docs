@@ -1,0 +1,90 @@
+---
+sidebar_position: 11
+sidebar_label: Create Temporary fp2 Browser Instance
+title: Create Temporary fp2 Browser Instance
+description: Creates a temporary browser instance with a one-time fp2 profile. The profile and its data are deleted when the browser closes.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** Creates a temporary browser instance with a one-time fp2 profile. The profile and its data are deleted when the browser closes.
+
+All emulation settings are optional and case-sensitive. An empty string lets the engine choose a value. Manual screen, language, or GPU values may be rejected if the generated device does not support them.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the workspace currently selected in ZennoBrowser. |
+| proxyServerId | string | uuid | (empty) | Proxy server identifier (optional). |
+| desktopName | string |  |  | Desktop to open the browser on (optional). |
+| environmentTags | string |  |  | Environment tags separated by ";" (optional). |
+| commandLineArguments | string |  |  | Custom command line arguments to pass to the browser on startup |
+| customFeatures | string |  | (empty) | Custom browser features (optional). |
+| screen | string |  |  | Screen: "auto", "real", or a screen token; a token the generated device does not offer may be rejected. |
+| cpu | string |  |  | Logical processor count: "auto", "real", or a number. |
+| memory | string |  |  | Approximated device memory: "auto", "real", or a number. |
+| locale | string |  |  | Locale: "auto", "real", or a locale such as "en-US". |
+| timeZone | string |  |  | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". |
+| languages | string |  |  | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru"; languages the generated device does not offer may be rejected. |
+| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor name (then gpuRenderer is required); a GPU the generated device does not offer may be rejected. |
+| gpuRenderer | string |  |  | GPU renderer. Only together with a vendor name in gpuVendor. |
+| canvasNoise | string |  |  | Canvas noise: "auto", "on" or "off". |
+| clientRectsNoise | string |  |  | Client rects noise: "auto", "on" or "off". |
+| webRtc | string |  |  | WebRTC: "auto", "real" or "hide". |
+| mediaDevices | string |  |  | Virtual media devices: "auto" or "real". |
+| imagesVideosDownload | string |  |  | Images and videos download: "on" or "off". Empty string means the default, "on". |
+
+#### **Example request:**
+
+**POST**
+
+**CURL:**
+
+```bash
+curl -X POST 'http://localhost:8160/v1/browser_instances/fp2/create_temporary?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http;
+var client = new HttpClient();
+using var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:8160/v1/browser_instances/fp2/create_temporary?workspaceId=-1");
+request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
+using var response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+Console.WriteLine(await response.Content.ReadAsStringAsync());
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/browser_instances/fp2/create_temporary?workspaceId=-1
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :--- | :--- |
+| `200` | OK |
+| `400` | Invalid emulation setting |
+| `401` | Unauthorized |
+| `403` | Forbidden |
+| `500` | Internal Server Error |
+
+**Success response example (200):**
+
+```json
+{
+  "#=zFO8lnp8=": 0,
+  "#=zG41EM9c=": "string",
+  "#=zkE8FYyg=": "123e4567-e89b-12d3-a456-426614174000"
+}
+```
+
+For `400`, the `message` field identifies the invalid setting and allowed values.
+
+---

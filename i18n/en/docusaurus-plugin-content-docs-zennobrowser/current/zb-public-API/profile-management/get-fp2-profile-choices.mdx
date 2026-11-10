@@ -1,0 +1,84 @@
+---
+sidebar_position: 34
+sidebar_label: Get fp2 Profile Choices
+title: Get fp2 Profile Choices
+description: Returns screen, language, and GPU values allowed for this profile. Use these values when updating the profile.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** Returns screen, language, and GPU values allowed for this profile. Use these values when updating the profile.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| profileId | string | uuid | required | The unique identifier of the fp2 profile |
+| workspaceId | integer | int64 | -1 | The identifier of the workspace. Defaults to -1 if not specified. |
+
+#### **Example request:**
+
+**GET**
+
+**CURL:**
+
+```bash
+curl -X GET 'http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000/choices?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Net.Http;
+var client = new HttpClient();
+using var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000/choices?workspaceId=-1");
+request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
+using var response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+Console.WriteLine(await response.Content.ReadAsStringAsync());
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000/choices?workspaceId=-1
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :--- | :--- |
+| `200` | OK |
+| `401` | Unauthorized |
+| `403` | Forbidden |
+| `500` | Internal Server Error |
+
+**Success response example (200):**
+
+```json
+{
+  "#=z4HZBQPxvXy4Z": [
+    {
+      "#=z5C4n$hE=": "string"
+    }
+  ],
+  "#=zAYLGc4VlICHlwdLrLg==": [
+    {
+      "#=zd5db81U=": "string",
+      "#=zk$e64kUtY1rH1Yhanw==": [
+        "string"
+      ]
+    }
+  ],
+  "#=zdXBJlAI=": [
+    {
+      "#=zA$ZvWpE=": "string",
+      "#=zY24XfJ4=": "string"
+    }
+  ]
+}
+```
+
+---
