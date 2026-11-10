@@ -13,9 +13,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # ZennoPoster MCP: Руководство по настройке для AI-ассистентов
 
 :::warning С версии 7.9.3 встроенные серверы недоступны внешним ассистентам
-MCP-серверы, которые ProjectMaker запускает сам (порты `6107`, `6108` и весь диапазон `6107`-`6113`), обслуживают только встроенный ИИ-чат. Внешний клиент получает ошибку `401`, а в лог продукта пишется `ingress refused`. Записи `BrowserMCP` (`6108`) и `ProjectMCP` (`6107`), добавленные в клиент раньше, больше не работают, их можно удалить.
+MCP-серверы, которые ProjectMaker запускает сам (диапазон портов `6107`-`6113`, включая `6107` и `6108`), обслуживают только встроенный ИИ-чат. Внешний клиент получает ошибку `401`, а в лог продукта пишется `ingress refused`. Записи `BrowserMCP` (`6108`) и `ProjectMCP` (`6107`), добавленные в клиент раньше, больше не работают, их можно удалить.
 
-Своего ассистента подключайте к собственной копии сервера, запущенной с вашим API-ключом. Она работает на публичных портах рядом со встроенными серверами и не мешает чату. Как ее запустить, описано ниже в разделе «Подготовка».
+Своего ассистента подключайте к собственной копии сервера, запущенной с вашим API-ключом. Она работает на портах публичных серверов рядом со встроенными серверами и не мешает чату. Как ее запустить, описано ниже в разделе «Подготовка».
 :::
 
 ---
@@ -25,7 +25,7 @@ MCP-серверы, которые ProjectMaker запускает сам (по�
 Делается один раз. Нужны два сервера:
 
 - **projectmaker** (управление проектом) → `http://localhost:6207`
-- **instance** (управление браузером ProjectMaker) → `http://localhost:6208`
+- **instance-pm** (управление браузером ProjectMaker) → `http://localhost:6208`
 
 ## Шаг 1. Выпустите API-ключ
 
@@ -73,7 +73,7 @@ MCP-серверы, которые ProjectMaker запускает сам (по�
       "type": "http",
       "url": "http://localhost:6207"
     },
-    "instance": {
+    "instance-pm": {
       "type": "http",
       "url": "http://localhost:6208"
     }
@@ -96,7 +96,7 @@ MCP-серверы, которые ProjectMaker запускает сам (по�
 
 ```sh
 claude mcp add projectmaker --transport http http://localhost:6207
-claude mcp add instance --transport http http://localhost:6208
+claude mcp add instance-pm --transport http http://localhost:6208
 ```
 
 4. Проверьте, что серверы зарегистрированы:
@@ -111,7 +111,7 @@ claude mcp list
 >
 > `claude mcp remove projectmaker`
 >
-> `claude mcp remove instance`
+> `claude mcp remove instance-pm`
 
 ---
 
@@ -125,7 +125,7 @@ claude mcp list
 
 ```sh
 codex mcp add projectmaker --url http://localhost:6207
-codex mcp add instance --url http://localhost:6208
+codex mcp add instance-pm --url http://localhost:6208
 ```
 
 4. Проверка:
@@ -149,7 +149,7 @@ codex mcp list
 {
   "mcpServers": {
     "projectmaker": { "url": "http://localhost:6207" },
-    "instance": { "url": "http://localhost:6208" }
+    "instance-pm": { "url": "http://localhost:6208" }
   }
 }
 ```
