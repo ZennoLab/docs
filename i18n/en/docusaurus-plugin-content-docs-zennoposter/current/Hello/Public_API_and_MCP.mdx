@@ -12,7 +12,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ZennoPoster and ProjectMaker 7.9.2 introduced a public HTTP API (PublicApi) and a suite of public MCP servers. You can control the product externally from your own scripts and applications or through an AI assistant, with access permissions defined by your API key.
 
 :::info Requirements
-ZennoPoster 7.9.2 or newer; ZennoDroid 2.6.1 or newer for Android workflows. Windows x64. ProjectMaker must be running with the required project open.
+ZennoPoster 7.9.3 or newer; ZennoDroid 2.6.1 or newer for Android workflows. Windows x64. ProjectMaker must be running with the required project open.
 :::
 
 _______________________________________________
@@ -43,13 +43,14 @@ This is the most important thing to understand before setup. There are two sets 
 |---|---|---|
 | **Ports** | `6107` ProjectMCP, `6108` BrowserMCP | `6207`-`6211` |
 | **Startup** | Automatically with ProjectMaker | Manually, downloaded separately |
-| **API key** | Not required | Required, with permissions defined by you |
+| **API key** | A service key issued by the product itself | Your own, with permissions defined by you |
 | **Coverage** | ProjectMaker project and browser | Project, browser, ZennoPoster tasks, ZennoDroid |
-| **Setup** | [Setup Guide for AI Assistants](./MCP_Setup.mdx) | This page |
+| **External assistants** | Not accepted since 7.9.3 | Supported, this is what they are for |
+| **Setup** | Not required | This page and the [Setup Guide for AI Assistants](./MCP_Setup.mdx) |
 
-The internal servers support the built-in AI chat. You can also connect an external assistant to them if you only need to work with the ProjectMaker project and browser without granular access control.
+The internal servers serve only the built-in AI chat. Since 7.9.3 they refuse requests from external clients: the client gets a `401` error, and the product log records `ingress refused`. If your assistant was connected to `6107` or `6108`, switch it to the public servers.
 
-The public servers are needed when you want to manage ZennoPoster tasks, work with ZennoDroid, or control exactly what the assistant is allowed to do.
+The public servers run next to the built-in ones and do not interfere with them. Your key defines what the assistant may do: from read-only access to the project up to managing ZennoPoster tasks and working with ZennoDroid.
 
 :::warning Do Not Use Ports 6107-6113
 The product’s internal infrastructure uses this port range. Do not run your own processes on these ports, or the built-in AI chat will stop working.
@@ -97,14 +98,14 @@ You do not need to install everything at once. If you are starting with a single
 
 ### Step 2. Download and Extract
 
-The archives are available on the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases) and follow a naming pattern such as `MCP.ProjectMaker-v0.2.0-win-x64.zip`. Extract the archive to a convenient folder, such as `C:\ZennoMCP\`. These are ready-to-use, self-contained builds, so you do not need to install .NET separately.
+The archives are available on the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases) and follow a naming pattern such as `MCP.ProjectMaker-v0.6.0-win-x64.zip`. Extract the archive to a convenient folder, such as `C:\ZennoMCP\`. These are ready-to-use, self-contained builds, so you do not need to install .NET separately.
 
 ### Step 3. Start the Server with Your Key
 
 Open the folder containing the extracted server, type `powershell` in the File Explorer address bar, and press Enter. Replace `zp_xxx` with your key.
 
 ```powershell title="ProjectMaker, port 6207"
-.\ZennoLab.AI.MCP.ProjectMaker.exe --NeuroBot:ApiKey=zp_xxx
+.\ZennoLab.AI.MCP.ProjectMaker.exe --ProjectMaker:ApiKey=zp_xxx
 ```
 
 ```powershell title="Browser in ProjectMaker, port 6208"
@@ -112,7 +113,7 @@ Open the folder containing the extracted server, type `powershell` in the File E
 ```
 
 ```powershell title="ZennoPoster tasks, port 6210"
-.\ZennoLab.AI.MCP.ZennoPoster.exe --ZennoPosterApi:ApiKey=zp_xxx
+.\ZennoLab.AI.MCP.ZennoPoster.exe --ZennoPoster:ApiKey=zp_xxx
 ```
 
 ```powershell title="Android, port 6211"
@@ -122,7 +123,7 @@ Open the folder containing the extracted server, type `powershell` in the File E
 The console window must remain open: if the server stops running, the assistant loses access.
 
 :::tip Starting Without Entering the Key
-Enter the key in the `ApiKey` field in the `appsettings.json` file next to the program, and you will be able to start the server by double-clicking the exe. You can also pass the key through an environment variable such as `NeuroBot__ApiKey`. The command-line argument takes precedence over the environment variable and the settings file.
+Enter the key in the `ApiKey` field in the `appsettings.json` file next to the program, and you will be able to start the server by double-clicking the exe. You can also pass the key through an environment variable such as `ProjectMaker__ApiKey`. The command-line argument takes precedence over the environment variable and the settings file.
 :::
 
 ### Browser Within ZennoPoster Tasks, Port 6209
@@ -261,6 +262,7 @@ _______________________________________________
 |---|---|---|
 | The client says no tools are available | The server is not running, or the configuration was added to the wrong program | Check the server window and restart the client; the configuration is loaded at startup |
 | `401` error | The key is invalid or was not passed correctly | Make sure the entire key is specified without extra spaces or quotation marks. If the key is lost, issue a new one |
+| `401` error on port `6107` or `6108` | The client is connected to a built-in server, which does not accept external clients since 7.9.3 | Start your own copy of the server and point the client to its port: `6207`, `6208`, `6209`, `6210` or `6211` |
 | `403` error | The key does not have the required permission or tier | The error message specifies exactly what is missing. Issue a key with the required scopes and a tier above `T0` |
 | `409` error when closing the project | The project has unsaved changes | Save the project or explicitly pass `discardUnsavedChanges: true` |
 | The server does not start because the port is in use | The port is being used by another copy of the server or a third-party program | Close the extra copy. Do not use the `6107`-`6113` range; it is reserved for internal services |
@@ -272,6 +274,6 @@ _______________________________________________
 ## Useful Links
 
 - [AI Assistant](./AI_Complete_Guide.mdx) — built-in chat in ProjectMaker.
-- [Setup Guide for AI Assistants](./MCP_Setup.mdx) — connecting to internal servers without keys.
+- [Setup Guide for AI Assistants](./MCP_Setup.mdx) — connecting GitHub Copilot, Claude Code, Codex CLI and LM Studio to the public servers.
 - [PublicApi and MCP Documentation](https://zennolab.github.io/zennoposter-mcp/) — operation reference and OpenAPI.
 - [Server Repository](https://github.com/ZennoLab/zennoposter-mcp) — source code and releases.

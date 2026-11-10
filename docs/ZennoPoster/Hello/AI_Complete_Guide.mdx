@@ -43,7 +43,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | **Project MCP** | `http://localhost:6107` | Читать структуру проекта, добавлять/редактировать кубики, управлять списками и переменными |
 | **Browser MCP** | `http://localhost:6108` | Управлять живым браузером внутри ProjectMaker: клики, заполнение форм, навигация, чтение DOM |
 
-> MCP-серверы запускаются автоматически вместе с ProjectMaker. Адреса портов нужны только если вы подключаете **внешний** AI-ассистент (см. [раздел 11](#11-подключение-внешних-ai-ассистентов-опционально)) – для встроенного чата ничего настраивать не нужно.
+> MCP-серверы запускаются автоматически вместе с ProjectMaker и обслуживают встроенный чат. С версии 7.9.3 внешним ассистентам они недоступны: им нужны свои копии серверов (см. [раздел 11](#11-подключение-внешних-ai-ассистентов-опционально)). Для встроенного чата ничего настраивать не нужно.
 
 ---
 
@@ -540,25 +540,27 @@ LLM формирует следующее действие или финальн
 
 ## 11. Подключение внешних AI-ассистентов (опционально)
 
-Встроенный чат в ProjectMaker работает "из коробки" – настраивать ничего не нужно. Но те же MCP-серверы (Project MCP и Browser MCP) можно подключить и к **внешним** AI-ассистентам, чтобы управлять проектом и браузером из своего редактора или терминала.
+Встроенный чат в ProjectMaker работает "из коробки" – настраивать ничего не нужно. Но управлять проектом и браузером можно и из **внешнего** AI-ассистента – из своего редактора или терминала.
 
-> **Это две разные вещи.** Встроенный чат и внешний ассистент – независимые точки входа к одним и тем же MCP-серверам. Если вам хватает встроенного чата – этот раздел можно пропустить.
+> **Это две разные вещи.** Встроенный чат работает на внутренних MCP-серверах (порты `6107`-`6113`), и с версии 7.9.3 они обслуживают только его: внешний клиент получает ошибку `401`. Внешнему ассистенту нужна **своя копия** публичных серверов, запущенная с вашим API-ключом. Если вам хватает встроенного чата – этот раздел можно пропустить.
 
-**Общее требование:** ProjectMaker должен быть **запущен** – MCP-серверы стартуют вместе с ним и слушают:
-- **BrowserMCP** → `http://localhost:6108`
-- **ProjectMCP** → `http://localhost:6107`
+**Общее требование:** запустите ProjectMaker и свои копии серверов:
+- **projectmaker** (управление проектом) → `http://localhost:6207`
+- **instance-pm** (управление браузером ProjectMaker) → `http://localhost:6208`
+
+Как выпустить API-ключ и запустить серверы – в [Руководстве по настройке для AI-ассистентов](./MCP_Setup.mdx), раздел «Подготовка». Ниже – только подключение клиентов.
 
 ### GitHub Copilot
 
-1. Убедитесь, что ProjectMaker запущен.
+1. Убедитесь, что ProjectMaker и ваши копии серверов запущены.
 2. Откройте папку профиля: `Win + R` → `%USERPROFILE%` → Enter.
 3. Создайте файл `.mcp.json` (например, `C:\Users\YourName\.mcp.json`) со следующим содержимым:
 
 ```json
 {
   "servers": {
-    "BrowserMCP": { "type": "http", "url": "http://localhost:6108" },
-    "ProjectMCP": { "type": "http", "url": "http://localhost:6107" }
+    "projectmaker": { "type": "http", "url": "http://localhost:6207" },
+    "instance-pm": { "type": "http", "url": "http://localhost:6208" }
   }
 }
 ```
@@ -568,18 +570,18 @@ LLM формирует следующее действие или финальн
 ### Claude Code (CLI)
 
 ```sh
-claude mcp add BrowserMCP --transport http http://localhost:6108
-claude mcp add ProjectMCP --transport http http://localhost:6107
+claude mcp add projectmaker --transport http http://localhost:6207
+claude mcp add instance-pm --transport http http://localhost:6208
 claude mcp list   # проверка
 ```
 
-Удалить позже: `claude mcp remove BrowserMCP` и `claude mcp remove ProjectMCP`.
+Удалить позже: `claude mcp remove projectmaker` и `claude mcp remove instance-pm`.
 
 ### OpenAI Codex (CLI)
 
 ```sh
-codex mcp add BrowserMCP --url http://localhost:6108
-codex mcp add ProjectMCP --url http://localhost:6107
+codex mcp add projectmaker --url http://localhost:6207
+codex mcp add instance-pm --url http://localhost:6208
 codex mcp list   # проверка
 ```
 

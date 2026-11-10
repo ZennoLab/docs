@@ -42,7 +42,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | **Project MCP** | `http://localhost:6117` | Читать структуру проекта, добавлять/редактировать кубики, управлять списками, таблицами и переменными |
 | **Android MCP** | `http://localhost:6118` | Читать состояние подключённого Android-устройства |
 
-> MCP-серверы запускаются автоматически вместе с ProjectMaker. Адреса портов нужны только если вы подключаете **внешний** AI-ассистент (см. [раздел 9](#9-подключение-внешних-ai-ассистентов-опционально)) – для встроенного чата ничего настраивать не нужно, кроме API-ключа модели.
+> MCP-серверы запускаются автоматически вместе с ProjectMaker и обслуживают встроенный чат. Внешним ассистентам они недоступны: им нужны свои копии серверов (см. [раздел 9](#9-подключение-внешних-ai-ассистентов-опционально)). Для встроенного чата ничего настраивать не нужно, кроме API-ключа модели.
 
 ### Главное отличие от ИИ-помощника в ZennoPoster
 
@@ -431,25 +431,27 @@ Agent имеет **полный доступ на чтение и запись �
 
 ## 9. Подключение внешних AI-ассистентов (опционально)
 
-Встроенный чат в ProjectMaker работает «из коробки» – кроме API-ключа модели настраивать ничего не нужно. Но те же MCP-серверы (Project MCP и Android MCP) можно подключить и к **внешним** AI-ассистентам, чтобы управлять проектом и читать устройство из своего редактора или терминала.
+Встроенный чат в ProjectMaker работает «из коробки» – кроме API-ключа модели настраивать ничего не нужно. Но управлять проектом и читать устройство можно и из **внешнего** AI-ассистента – из своего редактора или терминала.
 
-> **Это две разные вещи.** Встроенный чат и внешний ассистент – независимые точки входа к одним и тем же MCP-серверам. Если вам хватает встроенного чата – этот раздел можно пропустить.
+> **Это две разные вещи.** Встроенный чат работает на внутренних MCP-серверах (порты `6117`-`6123`), и они обслуживают только его: внешний клиент получает ошибку `401`. Внешнему ассистенту нужна **своя копия** публичных серверов, запущенная с вашим API-ключом. Если вам хватает встроенного чата – этот раздел можно пропустить.
 
-**Общее требование:** ProjectMaker ZennoDroid должен быть **запущен** – MCP-серверы стартуют вместе с ним и слушают:
-- **ProjectMCP** → `http://localhost:6117`
-- **AndroidMCP** → `http://localhost:6118`
+**Общее требование:** запустите ProjectMaker ZennoDroid и свои копии серверов:
+- **projectmaker-droid** (управление проектом) → `http://localhost:6217`
+- **android-pm** (инспекция Android-устройства) → `http://localhost:6211`
+
+Как выпустить API-ключ и запустить серверы – в статье [Настройка MCP для AI-ассистентов](./MCP_Setup), раздел «Подготовка». Ниже – только подключение клиентов.
 
 ### GitHub Copilot
 
-1. Убедитесь, что ProjectMaker запущен.
+1. Убедитесь, что ProjectMaker и ваши копии серверов запущены.
 2. Откройте папку профиля: `Win + R` → `%USERPROFILE%` → Enter.
 3. Создайте файл `.mcp.json` (например, `C:\Users\YourName\.mcp.json`) со следующим содержимым:
 
 ```json
 {
   "servers": {
-    "AndroidMCP": { "type": "http", "url": "http://localhost:6118" },
-    "ProjectMCP": { "type": "http", "url": "http://localhost:6117" }
+    "projectmaker-droid": { "type": "http", "url": "http://localhost:6217" },
+    "android-pm": { "type": "http", "url": "http://localhost:6211" }
   }
 }
 ```
@@ -459,18 +461,18 @@ Agent имеет **полный доступ на чтение и запись �
 ### Claude Code (CLI)
 
 ```sh
-claude mcp add AndroidMCP --transport http http://localhost:6118
-claude mcp add ProjectMCP --transport http http://localhost:6117
+claude mcp add projectmaker-droid --transport http http://localhost:6217
+claude mcp add android-pm --transport http http://localhost:6211
 claude mcp list   # проверка
 ```
 
-Удалить позже: `claude mcp remove AndroidMCP` и `claude mcp remove ProjectMCP`.
+Удалить позже: `claude mcp remove projectmaker-droid` и `claude mcp remove android-pm`.
 
 ### OpenAI Codex (CLI)
 
 ```sh
-codex mcp add AndroidMCP --url http://localhost:6118
-codex mcp add ProjectMCP --url http://localhost:6117
+codex mcp add projectmaker-droid --url http://localhost:6217
+codex mcp add android-pm --url http://localhost:6211
 codex mcp list   # проверка
 ```
 

@@ -10,16 +10,59 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-> **Prerequisites:** **ProjectMaker ZennoDroid** must be running before you connect any AI assistant. The MCP servers start automatically with it and listen on:
->
-> - **ProjectMCP** (project control) → `http://localhost:6117`
-> - **AndroidMCP** (Android device inspection) → `http://localhost:6118`
+:::warning The built-in servers do not accept external assistants
+The MCP servers that ProjectMaker ZennoDroid starts itself (ports `6117`, `6118` and the whole internal `6117`-`6123` range) serve only the built-in AI chat. An external client gets a `401` error, and the product log records `ingress refused`. The `ProjectMCP` (`6117`) and `AndroidMCP` (`6118`) entries added to your client earlier no longer work and can be removed.
+
+Connect your assistant to your own copy of the server, started with your API key. It runs on the public servers' ports next to the built-in servers and does not interfere with the chat:
+
+- **projectmaker-droid** (Project control) → `http://localhost:6217`
+- **android-pm** (Android device inspection) → `http://localhost:6211`
+
+See "Preparation" below for how to issue a key and start the servers.
+:::
 
 :::caution ZennoDroid ports differ from ZennoPoster by +10
-This is intentional: ZennoPoster and ZennoDroid are often installed on the same machine and may be running at the same time. That is why every port of the ZennoDroid AI stack is shifted by **+10** from its ZennoPoster counterpart — there is no conflict, and you can keep both products open and connect them to different sets of MCP servers.
+This is intentional: ZennoPoster and ZennoDroid are often installed on the same machine and may be running at the same time. That is why the shared ports of the ZennoDroid AI stack are shifted by **+10** from their ZennoPoster counterparts — there is no conflict, and you can keep both products open and connect them to different sets of MCP servers. The exception is the device servers, `MCP.Android`: they exist only in ZennoDroid and take `6211` and `6212`.
 
-If you copied the configuration from the [ZennoPoster MCP guide](/zennoposter/Hello/MCP_Setup) and specified `6107` / `6108`, your assistant will connect to **ZennoPoster**, not to ZennoDroid.
+If you copied the configuration from the [ZennoPoster MCP guide](/zennoposter/Hello/MCP_Setup) and specified `6207` / `6208`, your assistant will connect to **ZennoPoster**, not to ZennoDroid - ZennoDroid needs `6217` and `6211`.
 :::
+
+---
+
+# Preparation: API Key and Your Own Servers {#preparation-api-key-and-your-own-servers}
+
+You only do this once. ZennoDroid 2.6.1 or newer is required. You need two servers:
+
+- **projectmaker-droid** (Project control) → `http://localhost:6217`
+- **android-pm** (Android device inspection) → `http://localhost:6211`
+
+## Step 1. Issue an API Key {#step-1-issue-an-api-key}
+
+1. Start ProjectMaker ZennoDroid and open the project you need.
+2. Open **Settings → API Keys → Add**.
+3. Set a label, a tier and scopes. For read-only access to the project and the device, tier `T0` with the default scopes is enough. To let the assistant edit the project, add write scopes and raise the tier.
+4. Click **Generate API Key** and copy the key right away: it is shown only once.
+
+## Step 2. Download the Servers {#step-2-download-the-servers}
+
+On the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases), download the latest versions of two archives: `MCP.ProjectMaker-v…-win-x64.zip` and `MCP.Android-v…-win-x64.zip`. Extract each one to its own folder. You do not need to install .NET.
+
+## Step 3. Start the Servers with Your Key {#step-3-start-the-servers-with-your-key}
+
+Open the server folder, type `powershell` in the File Explorer address bar, and press Enter. Replace `zp_xxx` with your key.
+
+```powershell title="Project, port 6217"
+.\ZennoLab.AI.MCP.ProjectMaker.exe --urls http://localhost:6217 `
+  --ProjectMaker:BaseUrl=http://localhost:5309/api/v1 --ProjectMaker:ApiKey=zp_xxx
+```
+
+```powershell title="Device, port 6211"
+.\ZennoLab.AI.MCP.Android.exe --Android:ApiKey=zp_xxx
+```
+
+Keep both console windows open while you work with the assistant. To avoid entering the key every time, put it in the `ApiKey` field of the `appsettings.json` file next to the exe and start the server by double-clicking it.
+
+For ZennoDroid tasks (the runner) you need the `6220` (tasks and sessions) and `6212` (devices of running tasks) servers. Their commands and key permissions are described on the [Public API and MCP Servers](/zennoposter/Hello/public-api-mcp) page.
 
 ---
 
@@ -29,14 +72,14 @@ There are two differences, and the second one matters more than the first.
 
 | | ZennoPoster | ZennoDroid |
 |---|---|---|
-| Project MCP | `http://localhost:6107` | `http://localhost:6117` |
-| Second server | **BrowserMCP** `6108` — controls the browser | **AndroidMCP** `6118` — reads the state of the Android device |
+| Project server | **projectmaker** `6207` | **projectmaker-droid** `6217` |
+| Second server | **instance-pm** `6208` - controls the browser | **android-pm** `6211` - reads the state of the Android device |
 | Recording mode | used — browser actions are written into cubes | **not used** — no ZennoDroid action requires recording |
 | UI control from MCP | yes: clicks, text input, navigation | **no**: reading device state only |
 
-**The key difference.** BrowserMCP in ZennoPoster can *act* — click, type, navigate. AndroidMCP in ZennoDroid can only *look*: get the XML tree of the screen, the screen resolution, the list of apps, the device state.
+**The key difference.** The `instance-pm` server in ZennoPoster can *act* - click, type, navigate. The `android-pm` server in ZennoDroid can only *look*: get the XML tree of the screen, the screen resolution, the list of apps, the device state.
 
-Every action on the device in ZennoDroid is a **project cube**. The assistant adds cubes through ProjectMCP, and they run when the project is executed (F5). So "tap the button in the app" in ZennoDroid means "add a cube to the project that will tap this button", not "tap it right now".
+Every action on the device in ZennoDroid is a **project cube**. The assistant adds them through the project server (`projectmaker-droid`), and they run when the project is executed (F5). So "tap the button in the app" in ZennoDroid means "add a cube to the project that will tap this button", not "tap it right now".
 
 A practical consequence: an element that is not on the screen right now is not an obstacle. The cube is built from the element's name/text/attribute and fires while the project runs.
 
@@ -48,7 +91,7 @@ A practical consequence: an element that is not on the screen right now is not a
 
 ## Steps
 
-1. Make sure ProjectMaker ZennoDroid is running.
+1. Make sure ProjectMaker ZennoDroid and your server copies are running.
 2. Open your user profile folder: press `Win + R`, type `%USERPROFILE%`, press Enter.
 3. Create a file named `.mcp.json` in that folder
    (e.g. `C:\Users\YourName\.mcp.json`)
@@ -57,13 +100,13 @@ A practical consequence: an element that is not on the screen right now is not a
 ```json
 {
   "servers": {
-    "AndroidMCP": {
+    "projectmaker-droid": {
       "type": "http",
-      "url": "http://localhost:6118"
+      "url": "http://localhost:6217"
     },
-    "ProjectMCP": {
+    "android-pm": {
       "type": "http",
-      "url": "http://localhost:6117"
+      "url": "http://localhost:6211"
     }
   }
 }
@@ -78,10 +121,10 @@ You can keep all four servers in a single `.mcp.json` — the names must differ,
 ```json
 {
   "servers": {
-    "ProjectMCP_ZD": { "type": "http", "url": "http://localhost:6117" },
-    "AndroidMCP":    { "type": "http", "url": "http://localhost:6118" },
-    "ProjectMCP_ZP": { "type": "http", "url": "http://localhost:6107" },
-    "BrowserMCP":    { "type": "http", "url": "http://localhost:6108" }
+    "projectmaker-droid": { "type": "http", "url": "http://localhost:6217" },
+    "android-pm":         { "type": "http", "url": "http://localhost:6211" },
+    "projectmaker":       { "type": "http", "url": "http://localhost:6207" },
+    "instance-pm":        { "type": "http", "url": "http://localhost:6208" }
   }
 }
 ```
@@ -95,13 +138,13 @@ Keep in mind: the assistant will see the tools of both products at once and may 
 
 ## Steps
 
-1. Make sure ProjectMaker ZennoDroid is running.
+1. Make sure ProjectMaker ZennoDroid and your server copies are running.
 2. Open a terminal.
 3. Run the following commands:
 
 ```sh
-claude mcp add AndroidMCP --transport http http://localhost:6118
-claude mcp add ProjectMCP --transport http http://localhost:6117
+claude mcp add projectmaker-droid --transport http http://localhost:6217
+claude mcp add android-pm --transport http http://localhost:6211
 ```
 
 4. Verify the servers are registered:
@@ -114,9 +157,9 @@ claude mcp list
 
 > To remove them later:
 >
-> `claude mcp remove AndroidMCP`
+> `claude mcp remove projectmaker-droid`
 >
-> `claude mcp remove ProjectMCP`
+> `claude mcp remove android-pm`
 
 ---
 
@@ -124,13 +167,13 @@ claude mcp list
 
 ## Steps
 
-1. Make sure ProjectMaker ZennoDroid is running.
+1. Make sure ProjectMaker ZennoDroid and your server copies are running.
 2. Open a terminal.
 3. Run the following commands:
 
 ```sh
-codex mcp add AndroidMCP --url http://localhost:6118
-codex mcp add ProjectMCP --url http://localhost:6117
+codex mcp add projectmaker-droid --url http://localhost:6217
+codex mcp add android-pm --url http://localhost:6211
 ```
 
 4. Verify:
@@ -145,12 +188,12 @@ codex mcp list
 
 ## The assistant connected, but it sees the ZennoPoster project instead of ZennoDroid
 
-The most common mistake when coming from the ZennoPoster guide: the configuration specifies ports `6107` / `6108`. Those are the ZennoPoster ports. ZennoDroid needs **`6117` and `6118`**.
+The most common mistake when coming from the ZennoPoster guide: the configuration specifies ports `6207` / `6208`. Those are the ZennoPoster public servers. ZennoDroid needs **`6217` and `6211`**.
 
 To check who is listening on which port:
 
 ```powershell
-netstat -ano | findstr ":6107 :6108 :6117 :6118"
+netstat -ano | findstr ":6207 :6208 :6211 :6212 :6217 :6220"
 ```
 
 To map a PID to a process:
@@ -158,6 +201,10 @@ To map a PID to a process:
 ```powershell
 Get-Process -Id <PID>
 ```
+
+## The assistant gets a `401` error {#the-assistant-gets-a-401-error}
+
+The client is connected to a built-in server (`6117`-`6123`): it serves only the built-in AI chat and does not accept external clients. Start your own copy of the server and point the client to its port: `6217`, `6211`, `6212` or `6220`.
 
 ## Device-reading tools return an error or an empty result
 
@@ -350,5 +397,5 @@ and add a bottom-to-top swipe through the centre of the screen.
 ---
 
 :::note The built-in chat needs no setup
-Everything above is only needed for **external** assistants. The AI chat built into ProjectMaker ZennoDroid works with the same MCP servers out of the box — all it needs from you is a model API key. Details are in the [AI assistant in ZennoDroid](./ai-assistant) article.
+Everything above is only needed for **external** assistants. The AI chat built into ProjectMaker ZennoDroid works with the **internal** MCP servers out of the box - all it needs from you is a model API key. Details are in the [AI assistant in ZennoDroid](./ai-assistant) article.
 :::

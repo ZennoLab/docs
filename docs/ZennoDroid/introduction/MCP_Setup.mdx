@@ -10,16 +10,59 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-> **Требования:** перед подключением любого AI-ассистента должен быть запущен **ProjectMaker ZennoDroid**. MCP-серверы стартуют автоматически вместе с ним и работают по адресам:
->
-> - **ProjectMCP** (управление проектом) → `http://localhost:6117`
-> - **AndroidMCP** (инспекция Android-устройства) → `http://localhost:6118`
+:::warning Встроенные серверы недоступны внешним ассистентам
+MCP-серверы, которые ProjectMaker ZennoDroid запускает сам (порты `6117`, `6118` и весь внутренний диапазон `6117`-`6123`), обслуживают только встроенный ИИ-чат. Внешний клиент получает ошибку `401`, а в лог продукта пишется `ingress refused`. Записи `ProjectMCP` (`6117`) и `AndroidMCP` (`6118`), добавленные в клиент раньше, больше не работают, их можно удалить.
+
+Своего ассистента подключайте к собственной копии сервера, запущенной с вашим API-ключом. Она работает на портах публичных серверов рядом со встроенными серверами и не мешает чату:
+
+- **projectmaker-droid** (управление проектом) → `http://localhost:6217`
+- **android-pm** (инспекция Android-устройства) → `http://localhost:6211`
+
+Как выпустить ключ и запустить серверы — ниже, в разделе «Подготовка».
+:::
 
 :::caution Порты ZennoDroid отличаются от ZennoPoster на +10
-Это сделано специально: ZennoPoster и ZennoDroid часто установлены на одной машине и могут быть запущены одновременно. Поэтому каждый порт AI-стека ZennoDroid сдвинут на **+10** относительно порта ZennoPoster — конфликта не возникает, оба продукта можно держать открытыми и подключать к разным наборам MCP-серверов.
+Это сделано специально: ZennoPoster и ZennoDroid часто установлены на одной машине и могут быть запущены одновременно. Поэтому общие порты AI-стека ZennoDroid сдвинуты на **+10** относительно портов ZennoPoster — конфликта не возникает, оба продукта можно держать открытыми и подключать к разным наборам MCP-серверов. Исключение — серверы устройств `MCP.Android`: они есть только в ZennoDroid и занимают `6211` и `6212`.
 
-Если вы скопировали конфигурацию из [руководства по ZennoPoster MCP](/zennoposter/Hello/MCP_Setup) и указали `6107` / `6108`, ассистент будет подключаться к **ZennoPoster**, а не к ZennoDroid.
+Если вы скопировали конфигурацию из [руководства по ZennoPoster MCP](/zennoposter/Hello/MCP_Setup) и указали `6207` / `6208`, ассистент будет подключаться к **ZennoPoster**, а не к ZennoDroid — для ZennoDroid нужны `6217` и `6211`.
 :::
+
+---
+
+# Подготовка: ключ и свои серверы
+
+Делается один раз. Требуется ZennoDroid 2.6.1 или новее. Нужны два сервера:
+
+- **projectmaker-droid** (управление проектом) → `http://localhost:6217`
+- **android-pm** (инспекция Android-устройства) → `http://localhost:6211`
+
+## Шаг 1. Выпустите API-ключ
+
+1. Запустите ProjectMaker ZennoDroid и откройте нужный проект.
+2. Откройте **Settings → API Keys → Add**.
+3. Задайте метку, уровень (tier) и права (scopes). Чтобы ассистент только читал проект и устройство, хватит уровня `T0` и прав по умолчанию. Чтобы он правил проект, добавьте права на запись и поднимите уровень.
+4. Нажмите **Generate API Key** и сразу скопируйте ключ: второй раз его не покажут.
+
+## Шаг 2. Скачайте серверы
+
+На [странице релизов](https://github.com/ZennoLab/zennoposter-mcp/releases) скачайте последние версии двух архивов: `MCP.ProjectMaker-v…-win-x64.zip` и `MCP.Android-v…-win-x64.zip`. Распакуйте каждый в свою папку. Устанавливать .NET не нужно.
+
+## Шаг 3. Запустите серверы со своим ключом
+
+Откройте папку сервера, напишите в адресной строке проводника `powershell` и нажмите Enter. Подставьте свой ключ вместо `zp_xxx`.
+
+```powershell title="Проект, порт 6217"
+.\ZennoLab.AI.MCP.ProjectMaker.exe --urls http://localhost:6217 `
+  --ProjectMaker:BaseUrl=http://localhost:5309/api/v1 --ProjectMaker:ApiKey=zp_xxx
+```
+
+```powershell title="Устройство, порт 6211"
+.\ZennoLab.AI.MCP.Android.exe --Android:ApiKey=zp_xxx
+```
+
+Оба окна консоли держите открытыми, пока работаете с ассистентом. Чтобы не вводить ключ каждый раз, впишите его в поле `ApiKey` файла `appsettings.json` рядом с exe и запускайте сервер двойным кликом.
+
+Для задач ZennoDroid (раннер) нужны серверы `6220` (задачи и сессии) и `6212` (устройства выполняющихся задач). Их команды и описание прав ключа — на странице [Публичный API и MCP-серверы](/zennoposter/Hello/public-api-mcp).
 
 ---
 
@@ -29,14 +72,14 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 | | ZennoPoster | ZennoDroid |
 |---|---|---|
-| Project MCP | `http://localhost:6107` | `http://localhost:6117` |
-| Второй сервер | **BrowserMCP** `6108` — управляет браузером | **AndroidMCP** `6118` — читает состояние Android-устройства |
+| Сервер проекта | **projectmaker** `6207` | **projectmaker-droid** `6217` |
+| Второй сервер | **instance-pm** `6208` — управляет браузером | **android-pm** `6211` — читает состояние Android-устройства |
 | Режим записи (recording) | используется — действия в браузере пишутся в кубики | **не используется** — в ZennoDroid нет действий, требующих записи |
 | Управление UI из MCP | есть: клики, ввод текста, навигация | **нет**: только чтение состояния устройства |
 
-**Главное отличие.** BrowserMCP в ZennoPoster умеет *действовать* — кликать, вводить текст, переходить по ссылкам. AndroidMCP в ZennoDroid умеет только *смотреть*: получить XML-дерево экрана, разрешение экрана, список приложений, состояние устройства.
+**Главное отличие.** Сервер `instance-pm` в ZennoPoster умеет *действовать* — кликать, вводить текст, переходить по ссылкам. Сервер `android-pm` в ZennoDroid умеет только *смотреть*: получить XML-дерево экрана, разрешение экрана, список приложений, состояние устройства.
 
-Все действия на устройстве в ZennoDroid — это **кубики проекта**. Ассистент добавляет их через ProjectMCP, а выполняются они при запуске проекта (F5). Поэтому «нажми кнопку в приложении» в ZennoDroid означает «добавь в проект кубик, который нажмёт эту кнопку», а не «нажми её сейчас».
+Все действия на устройстве в ZennoDroid — это **кубики проекта**. Ассистент добавляет их через сервер проекта (`projectmaker-droid`), а выполняются они при запуске проекта (F5). Поэтому «нажми кнопку в приложении» в ZennoDroid означает «добавь в проект кубик, который нажмёт эту кнопку», а не «нажми её сейчас».
 
 Практическое следствие: элемент, которого нет на экране прямо сейчас, — не препятствие. Кубик собирается по имени/тексту/атрибуту элемента и срабатывает во время выполнения проекта.
 
@@ -48,7 +91,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Шаги
 
-1. Убедитесь, что ProjectMaker ZennoDroid запущен.
+1. Убедитесь, что ProjectMaker ZennoDroid и ваши копии серверов запущены.
 2. Откройте папку профиля пользователя: нажмите `Win + R`, введите `%USERPROFILE%`, нажмите Enter.
 3. Создайте в этой папке файл `.mcp.json`
    (пример: `C:\Users\YourName\.mcp.json`)
@@ -57,13 +100,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ```json
 {
   "servers": {
-    "AndroidMCP": {
+    "projectmaker-droid": {
       "type": "http",
-      "url": "http://localhost:6118"
+      "url": "http://localhost:6217"
     },
-    "ProjectMCP": {
+    "android-pm": {
       "type": "http",
-      "url": "http://localhost:6117"
+      "url": "http://localhost:6211"
     }
   }
 }
@@ -78,10 +121,10 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ```json
 {
   "servers": {
-    "ProjectMCP_ZD": { "type": "http", "url": "http://localhost:6117" },
-    "AndroidMCP":    { "type": "http", "url": "http://localhost:6118" },
-    "ProjectMCP_ZP": { "type": "http", "url": "http://localhost:6107" },
-    "BrowserMCP":    { "type": "http", "url": "http://localhost:6108" }
+    "projectmaker-droid": { "type": "http", "url": "http://localhost:6217" },
+    "android-pm":         { "type": "http", "url": "http://localhost:6211" },
+    "projectmaker":       { "type": "http", "url": "http://localhost:6207" },
+    "instance-pm":        { "type": "http", "url": "http://localhost:6208" }
   }
 }
 ```
@@ -95,13 +138,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ## Шаги
 
-1. Убедитесь, что ProjectMaker ZennoDroid запущен.
+1. Убедитесь, что ProjectMaker ZennoDroid и ваши копии серверов запущены.
 2. Откройте терминал.
 3. Выполните следующие команды:
 
 ```sh
-claude mcp add AndroidMCP --transport http http://localhost:6118
-claude mcp add ProjectMCP --transport http http://localhost:6117
+claude mcp add projectmaker-droid --transport http http://localhost:6217
+claude mcp add android-pm --transport http http://localhost:6211
 ```
 
 4. Проверьте, что серверы зарегистрированы:
@@ -114,9 +157,9 @@ claude mcp list
 
 > Чтобы удалить их позже:
 >
-> `claude mcp remove AndroidMCP`
+> `claude mcp remove projectmaker-droid`
 >
-> `claude mcp remove ProjectMCP`
+> `claude mcp remove android-pm`
 
 ---
 
@@ -124,13 +167,13 @@ claude mcp list
 
 ## Шаги
 
-1. Убедитесь, что ProjectMaker ZennoDroid запущен.
+1. Убедитесь, что ProjectMaker ZennoDroid и ваши копии серверов запущены.
 2. Откройте терминал.
 3. Выполните следующие команды:
 
 ```sh
-codex mcp add AndroidMCP --url http://localhost:6118
-codex mcp add ProjectMCP --url http://localhost:6117
+codex mcp add projectmaker-droid --url http://localhost:6217
+codex mcp add android-pm --url http://localhost:6211
 ```
 
 4. Проверка:
@@ -145,12 +188,12 @@ codex mcp list
 
 ## Ассистент подключился, но видит проект ZennoPoster, а не ZennoDroid
 
-Самая частая ошибка при переходе с руководства по ZennoPoster: в конфигурации указаны порты `6107` / `6108`. Это порты ZennoPoster. Для ZennoDroid нужны **`6117` и `6118`**.
+Самая частая ошибка при переходе с руководства по ZennoPoster: в конфигурации указаны порты `6207` / `6208`. Это публичные серверы ZennoPoster. Для ZennoDroid нужны **`6217` и `6211`**.
 
 Проверить, кто на каком порту слушает:
 
 ```powershell
-netstat -ano | findstr ":6107 :6108 :6117 :6118"
+netstat -ano | findstr ":6207 :6208 :6211 :6212 :6217 :6220"
 ```
 
 Сопоставить PID с процессом:
@@ -158,6 +201,10 @@ netstat -ano | findstr ":6107 :6108 :6117 :6118"
 ```powershell
 Get-Process -Id <PID>
 ```
+
+## Ассистент получает ошибку `401`
+
+Клиент подключён к встроенному серверу (`6117`-`6123`): он обслуживает только встроенный ИИ-чат и не принимает внешних клиентов. Запустите свою копию сервера и укажите в клиенте её порт: `6217`, `6211`, `6212` или `6220`.
 
 ## Инструменты чтения устройства возвращают ошибку или пустой результат
 
@@ -350,5 +397,5 @@ claude doctor
 ---
 
 :::note Встроенный чат настраивать не нужно
-Всё описанное выше нужно только для **внешних** ассистентов. Встроенный в ProjectMaker ZennoDroid ИИ-чат работает с теми же MCP-серверами «из коробки» — от вас требуется только API-ключ модели. Подробности — в статье [ИИ-помощник в ZennoDroid](./ai-assistant).
+Всё описанное выше нужно только для **внешних** ассистентов. Встроенный в ProjectMaker ZennoDroid ИИ-чат работает со **внутренними** MCP-серверами «из коробки» — от вас требуется только API-ключ модели. Подробности — в статье [ИИ-помощник в ZennoDroid](./ai-assistant).
 :::
