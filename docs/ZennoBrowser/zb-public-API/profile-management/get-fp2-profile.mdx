@@ -31,13 +31,23 @@ curl -X GET 'http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-42661
 **C#:**
 
 ```csharp
-using System.Net.Http;
+using System.Text;
 var client = new HttpClient();
-using var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1");
-request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
-using var response = await client.SendAsync(request);
-response.EnsureSuccessStatusCode();
-Console.WriteLine(await response.Content.ReadAsStringAsync());
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
 ```
 
 **Cube:**

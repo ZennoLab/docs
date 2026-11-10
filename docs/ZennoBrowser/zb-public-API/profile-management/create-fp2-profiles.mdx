@@ -53,13 +53,23 @@ curl -X POST 'http://localhost:8160/v1/profiles/fp2/create_bulk?workspaceId=-1&c
 **C#:**
 
 ```csharp
-using System.Net.Http;
+using System.Net.Http.Headers;
 var client = new HttpClient();
-using var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:8160/v1/profiles/fp2/create_bulk?workspaceId=-1&count=2");
-request.Headers.Add("Api-Token", "YOUR_SECRET_TOKEN");
-using var response = await client.SendAsync(request);
-response.EnsureSuccessStatusCode();
-Console.WriteLine(await response.Content.ReadAsStringAsync());
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/fp2/create_bulk?workspaceId=-1&count=2"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
 ```
 
 **Cube:**
