@@ -43,7 +43,7 @@ Under the hood, the assistant uses a language model (LLM) through Semantic Kerne
 | **Project MCP** | `http://localhost:6107` | Read the project structure, add/edit cubes, manage lists and variables |
 | **Browser MCP** | `http://localhost:6108` | Control a live browser inside ProjectMaker: clicks, form filling, navigation, DOM reading |
 
-> MCP servers start automatically together with ProjectMaker. The port addresses are only needed if you are connecting an **external** AI assistant (see [section 11](#11-connecting-external-ai-assistants-optional)) – nothing needs to be configured for the built-in chat.
+> MCP servers start automatically together with ProjectMaker and serve the built-in chat. Since 7.9.3 they are not available to external assistants: an external assistant needs its own copies of the servers (see [section 11](#11-connecting-external-ai-assistants-optional)). Nothing needs to be configured for the built-in chat.
 
 ---
 
@@ -540,25 +540,27 @@ Before adding a series of cubes, the agent must set the cursor to the right plac
 
 ## 11. Connecting external AI assistants (optional) {#11-connecting-external-ai-assistants-optional}
 
-The built-in chat in ProjectMaker works "out of the box" – nothing needs to be configured. But the same MCP servers (Project MCP and Browser MCP) can also be connected to **external** AI assistants so you can control the project and browser from your editor or terminal.
+The built-in chat in ProjectMaker works "out of the box" – nothing needs to be configured. But you can also control the project and browser from an **external** AI assistant - from your editor or terminal.
 
-> **These are two different things.** The built-in chat and an external assistant are independent entry points to the same MCP servers. If the built-in chat is enough for you, you can skip this section.
+> **These are two different things.** The built-in chat runs on the internal MCP servers (ports `6107`-`6113`), and since 7.9.3 they serve only it: an external client gets a `401` error. An external assistant needs its **own copy** of the public servers, started with your API key. If the built-in chat is enough for you, you can skip this section.
 
-**General requirement:** ProjectMaker must be **running** – the MCP servers start together with it and listen on:
-- **BrowserMCP** → `http://localhost:6108`
-- **ProjectMCP** → `http://localhost:6107`
+**General requirement:** start ProjectMaker and your own copies of the servers:
+- **projectmaker** (Project control) → `http://localhost:6207`
+- **instance-pm** (ProjectMaker browser control) → `http://localhost:6208`
+
+See the [Setup Guide for AI Assistants](./MCP_Setup.mdx), section "Preparation", for how to issue an API key and start the servers. Below are only the client-connection steps.
 
 ### GitHub Copilot {#github-copilot}
 
-1. Make sure ProjectMaker is running.
+1. Make sure ProjectMaker and your server copies are running.
 2. Open the profile folder: `Win + R` → `%USERPROFILE%` → Enter.
 3. Create the file `.mcp.json` (for example, `C:\Users\YourName\.mcp.json`) with the following contents:
 
 ```json
 {
   "servers": {
-    "BrowserMCP": { "type": "http", "url": "http://localhost:6108" },
-    "ProjectMCP": { "type": "http", "url": "http://localhost:6107" }
+    "projectmaker": { "type": "http", "url": "http://localhost:6207" },
+    "instance-pm": { "type": "http", "url": "http://localhost:6208" }
   }
 }
 ```
@@ -568,18 +570,18 @@ The built-in chat in ProjectMaker works "out of the box" – nothing needs to be
 ### Claude Code (CLI) {#claude-code-cli}
 
 ```sh
-claude mcp add BrowserMCP --transport http http://localhost:6108
-claude mcp add ProjectMCP --transport http http://localhost:6107
+claude mcp add projectmaker --transport http http://localhost:6207
+claude mcp add instance-pm --transport http http://localhost:6208
 claude mcp list   # check
 ```
 
-Remove later: `claude mcp remove BrowserMCP` and `claude mcp remove ProjectMCP`.
+Remove later: `claude mcp remove projectmaker` and `claude mcp remove instance-pm`.
 
 ### OpenAI Codex (CLI) {#openai-codex-cli}
 
 ```sh
-codex mcp add BrowserMCP --url http://localhost:6108
-codex mcp add ProjectMCP --url http://localhost:6107
+codex mcp add projectmaker --url http://localhost:6207
+codex mcp add instance-pm --url http://localhost:6208
 codex mcp list   # check
 ```
 
