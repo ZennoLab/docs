@@ -15,26 +15,26 @@ All emulation settings are optional and case-sensitive. An empty string lets the
 #### **Request parameters:**
 
 | Parameter | Type | Format | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| :-----: | :-----: | :-----: | :-----: | :----- |
 | workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the workspace currently selected in ZennoBrowser. |
 | proxyServerId | string | uuid | (empty) | Proxy server identifier (optional). |
-| desktopName | string |  |  | Desktop to open the browser on (optional). |
-| environmentTags | string |  |  | Environment tags separated by ";" (optional). |
-| commandLineArguments | string |  |  | Custom command line arguments to pass to the browser on startup |
+| desktopName | string |  | (empty) | Desktop to open the browser on (optional). |
+| environmentTags | string |  | (empty) | Environment tags separated by ";" (optional). |
+| commandLineArguments | string |  | (empty) | Custom command line arguments to pass to the browser on startup |
 | customFeatures | string |  | (empty) | Custom browser features (optional). |
-| screen | string |  |  | Screen: "auto", "real", or a screen token. A token from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected: a temporary instance has no profile of its own for checking values. |
-| cpu | string |  |  | Logical processor count: "auto", "real", or a number. |
-| memory | string |  |  | Approximated device memory: "auto", "real", or a number. |
-| locale | string |  |  | Locale: "auto", "real", or a locale such as "en-US". |
-| timeZone | string |  |  | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". |
-| languages | string |  |  | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru". Languages from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected by a temporary instance. |
-| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor name from [another profile's choices](../profile-management/get-fp2-profile-choices) (then gpuRenderer is required). That GPU may be rejected by a temporary instance. |
-| gpuRenderer | string |  |  | GPU renderer. Only together with a vendor name in gpuVendor. |
-| canvasNoise | string |  |  | Canvas noise: "auto", "on" or "off". |
-| clientRectsNoise | string |  |  | Client rects noise: "auto", "on" or "off". |
-| webRtc | string |  |  | WebRTC: "auto", "real" or "hide". |
-| mediaDevices | string |  |  | Virtual media devices: "auto" or "real". |
-| imagesVideosDownload | string |  |  | Images and videos download: "on" or "off". Empty string means the default, "on". |
+| screen | string |  | (empty) | Screen: "auto", "real", or a screen token. A token from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected: a temporary instance has no profile of its own for checking values. |
+| cpu | string |  | (empty) | Logical processor count: "auto", "real", or a number. |
+| memory | string |  | (empty) | Approximated device memory: "auto", "real", or a number. |
+| locale | string |  | (empty) | Locale: "auto", "real", or a locale such as "en-US". |
+| timeZone | string |  | (empty) | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". |
+| languages | string |  | (empty) | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru". Languages from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected by a temporary instance. |
+| gpuVendor | string |  | (empty) | GPU vendor: "auto", "real", or a vendor name from [another profile's choices](../profile-management/get-fp2-profile-choices) (then gpuRenderer is required). That GPU may be rejected by a temporary instance. |
+| gpuRenderer | string |  | (empty) | GPU renderer. Only together with a vendor name in gpuVendor. |
+| canvasNoise | string |  | (empty) | Canvas noise: "auto", "on" or "off". |
+| clientRectsNoise | string |  | (empty) | Client rects noise: "auto", "on" or "off". |
+| webRtc | string |  | (empty) | WebRTC: "auto", "real" or "hide". |
+| mediaDevices | string |  | (empty) | Virtual media devices: "auto" or "real". |
+| imagesVideosDownload | string |  | (empty) | Images and videos download: "on" or "off". Empty string means the default, "on". |
 
 #### **Example request:**
 

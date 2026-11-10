@@ -14,9 +14,9 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 #### **Параметры запроса:**
 
-| Parameter | Type | Format | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| profileId | string | uuid | required | Уникальный идентификатор профиля (обязательный). |
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Уникальный идентификатор профиля (обязательный). |
 | workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства; `-1` означает выбранное в ZennoBrowser рабочее пространство. |
 | folderId | string | uuid | (пусто) | Идентификатор папки профиля. |
 | name | string |  | (пусто) | Имя профиля. |
@@ -25,19 +25,19 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | commandLineArguments | string |  | (пусто) | Дополнительные аргументы командной строки браузера. |
 | proxyServerId | string |  | (пусто) | Идентификатор прокси-сервера. Не передавайте параметр, чтобы сохранить значение; пустая строка удаляет настройку. |
 | presetId | string |  | (пусто) | Идентификатор пресета для начальной конфигурации профиля. Не передавайте параметр, чтобы сохранить значение; пустая строка удаляет настройку. |
-| screen | string |  |  | Экран: `auto`, `real` или токен из [списка допустимых значений](./get-fp2-profile-choices). Значение, не поддерживаемое устройством, может быть отклонено. |
-| cpu | string |  |  | Количество логических процессоров: `auto`, `real` или число. |
-| memory | string |  |  | Объём памяти устройства: `auto`, `real` или число. |
-| locale | string |  |  | Локаль: `auto`, `real` или код, например `en-US`. |
-| timeZone | string |  |  | Часовой пояс: `auto`, `real` или идентификатор IANA, например `Europe/Berlin`. |
-| languages | string |  |  | Языки: `auto`, `real` или список из [допустимых значений этого профиля](./get-fp2-profile-choices), разделённых `;`, например `en-US;ru`. Пустая строка сохраняет текущее значение. Неподдерживаемые языки могут быть отклонены. |
-| gpuVendor | string |  |  | Производитель GPU: `auto`, `real` или имя из [списка допустимых значений](./get-fp2-profile-choices); при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
-| gpuRenderer | string |  |  | Рендерер GPU; используется только вместе с именем производителя в `gpuVendor`. |
-| canvasNoise | string |  |  | Шум Canvas: `auto`, `on` или `off`. |
-| clientRectsNoise | string |  |  | Шум ClientRects: `auto`, `on` или `off`. |
-| webRtc | string |  |  | Режим WebRTC: `auto`, `real` или `hide`. |
-| mediaDevices | string |  |  | Виртуальные медиоустройства: `auto` или `real`. |
-| imagesVideosDownload | string |  |  | Загрузка изображений и видео: `on` или `off`. |
+| screen | string |  | (пусто) | Экран: `auto`, `real` или токен из [списка допустимых значений](./get-fp2-profile-choices). Значение, не поддерживаемое устройством, может быть отклонено. |
+| cpu | string |  | (пусто) | Количество логических процессоров: `auto`, `real` или число. |
+| memory | string |  | (пусто) | Объём памяти устройства: `auto`, `real` или число. |
+| locale | string |  | (пусто) | Локаль: `auto`, `real` или код, например `en-US`. |
+| timeZone | string |  | (пусто) | Часовой пояс: `auto`, `real` или идентификатор IANA, например `Europe/Berlin`. |
+| languages | string |  | (пусто) | Языки: `auto`, `real` или список из [допустимых значений этого профиля](./get-fp2-profile-choices), разделённых `;`, например `en-US;ru`. Пустая строка сохраняет текущее значение. Неподдерживаемые языки могут быть отклонены. |
+| gpuVendor | string |  | (пусто) | Производитель GPU: `auto`, `real` или имя из [списка допустимых значений](./get-fp2-profile-choices); при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| gpuRenderer | string |  | (пусто) | Рендерер GPU; используется только вместе с именем производителя в `gpuVendor`. |
+| canvasNoise | string |  | (пусто) | Шум Canvas: `auto`, `on` или `off`. |
+| clientRectsNoise | string |  | (пусто) | Шум ClientRects: `auto`, `on` или `off`. |
+| webRtc | string |  | (пусто) | Режим WebRTC: `auto`, `real` или `hide`. |
+| mediaDevices | string |  | (пусто) | Виртуальные медиоустройства: `auto` или `real`. |
+| imagesVideosDownload | string |  | (пусто) | Загрузка изображений и видео: `on` или `off`. |
 
 #### **Пример запроса:**
 
