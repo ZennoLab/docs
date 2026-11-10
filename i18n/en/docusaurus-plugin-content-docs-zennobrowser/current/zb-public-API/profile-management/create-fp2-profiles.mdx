@@ -25,13 +25,13 @@ All emulation settings are optional and case-sensitive. An empty string lets the
 | presetId | string | uuid | (empty) | Optional preset identifier used to initialize the profile configuration. |
 | commandLineArguments | string |  |  | Custom command line arguments to pass to the browser on startup |
 | osVersion | string |  |  | OS version for fingerprint selection. Allowed values: "win10" or "win11". If empty, the server auto-detects the host OS. |
-| screen | string |  |  | Screen: "auto", "real", or a screen token from [profile choices](./get-fp2-profile-choices). Empty string means not specified: the engine picks a value. A token the generated device does not offer may be rejected; the reliable way is PUT fp2/&#123;profileId&#125; with a token from [profile choices](./get-fp2-profile-choices) of this profile. |
+| screen | string |  |  | Screen: "auto", "real", or a screen token. Empty string lets the engine pick a value. An unsupported token may be rejected; after creation, see each profile's [allowed choices](./get-fp2-profile-choices). |
 | cpu | string |  |  | Logical processor count: "auto", "real", or a number. Empty string means not specified: the engine picks a value. |
 | memory | string |  |  | Approximated device memory: "auto", "real", or a number. Empty string means not specified: the engine picks a value. |
 | locale | string |  |  | Locale: "auto", "real", or a locale such as "en-US". Empty string means not specified: the engine picks a value. |
 | timeZone | string |  |  | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". Empty string means not specified: the engine picks a value. |
-| languages | string |  |  | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru". Empty string means not specified: the engine picks a value. Languages the generated device does not offer may be rejected; the reliable way is PUT fp2/&#123;profileId&#125; with languages from [profile choices](./get-fp2-profile-choices) of this profile. |
-| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor name (then gpuRenderer is required). Empty string means not specified: the engine picks a value. A GPU the generated device does not offer may be rejected; the reliable way is PUT fp2/&#123;profileId&#125; with a vendor and renderer from [profile choices](./get-fp2-profile-choices) of this profile. |
+| languages | string |  |  | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru". Empty string lets the engine pick a value. Unsupported languages may be rejected; after creation, see each profile's [allowed choices](./get-fp2-profile-choices). |
+| gpuVendor | string |  |  | GPU vendor: "auto", "real", or a vendor name (then gpuRenderer is required). Empty string lets the engine pick a value. An unsupported GPU may be rejected; after creation, see each profile's [allowed choices](./get-fp2-profile-choices). |
 | gpuRenderer | string |  |  | GPU renderer. Only together with a vendor name in gpuVendor. |
 | canvasNoise | string |  |  | Canvas noise: "auto", "on" or "off". Empty string means not specified: the engine picks a value. |
 | clientRectsNoise | string |  |  | Client rects noise: "auto", "on" or "off". Empty string means not specified: the engine picks a value. |

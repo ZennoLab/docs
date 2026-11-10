@@ -30,7 +30,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | memory | string |  |  | Объём памяти устройства: `auto`, `real` или число. |
 | locale | string |  |  | Локаль: `auto`, `real` или код, например `en-US`. |
 | timeZone | string |  |  | Часовой пояс: `auto`, `real` или идентификатор IANA, например `Europe/Berlin`. |
-| languages | string |  |  | Языки: `auto`, `real` или список через `;`, например `en-US;ru`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| languages | string |  |  | Языки: `auto`, `real` или список через `;`, например `en-US;ru`. После создания каждого профиля его поддерживаемые языки можно посмотреть в [списке допустимых значений](./get-fp2-profile-choices). Указанное при создании неподдерживаемое значение может быть отклонено. |
 | gpuVendor | string |  |  | Производитель GPU: `auto`, `real` или имя из [списка допустимых значений](./get-fp2-profile-choices); при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
 | gpuRenderer | string |  |  | Рендерер GPU; используется только вместе с именем производителя в `gpuVendor`. |
 | canvasNoise | string |  |  | Шум Canvas: `auto`, `on` или `off`. |
