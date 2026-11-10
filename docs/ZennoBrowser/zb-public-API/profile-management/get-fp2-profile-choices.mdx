@@ -1,0 +1,68 @@
+---
+sidebar_position: 34
+sidebar_label: Допустимые значения профиля fp2
+title: Допустимые значения профиля fp2
+description: Возвращает допустимые для этого профиля значения экрана, языков и GPU. Используйте их при обновлении профиля.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Возвращает допустимые для этого профиля значения экрана, языков и GPU. Используйте их при обновлении профиля.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Уникальный идентификатор профиля (обязательный). |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства; `-1` означает выбранное в ZennoBrowser рабочее пространство. |
+
+#### **Пример запроса:**
+
+**GET**
+
+**CURL:**
+
+```bash
+curl -X GET 'http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000/choices?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000/choices?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000/choices?workspaceId=-1
+```
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :--- | :--- |
+| `200` | Успешно |
+| `401` | Не авторизован |
+| `403` | Доступ запрещён |
+| `500` | Внутренняя ошибка сервера |
+
+---

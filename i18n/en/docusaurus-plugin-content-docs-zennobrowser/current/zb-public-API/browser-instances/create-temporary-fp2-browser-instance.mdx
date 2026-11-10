@@ -1,0 +1,90 @@
+---
+sidebar_position: 11
+sidebar_label: Create Temporary fp2 Browser Instance
+title: Create Temporary fp2 Browser Instance
+description: Creates a temporary browser instance with a one-time fp2 profile. The profile and its data are deleted when the browser closes.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** Creates a temporary browser instance with a one-time fp2 profile. The profile and its data are deleted when the browser closes.
+
+All emulation settings are optional and case-sensitive. An empty string lets the engine choose a value. Manual screen, language, or GPU values may be rejected if the generated device does not support them.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| workspaceId | integer | int64 | -1 | Workspace identifier. -1 means the workspace currently selected in ZennoBrowser. |
+| proxyServerId | string | uuid | (empty) | Proxy server identifier (optional). |
+| desktopName | string |  | (empty) | Desktop to open the browser on (optional). |
+| environmentTags | string |  | (empty) | Environment tags separated by ";" (optional). |
+| commandLineArguments | string |  | (empty) | Custom command line arguments to pass to the browser on startup |
+| customFeatures | string |  | (empty) | Custom browser features (optional). |
+| screen | string |  | (empty) | Screen: "auto", "real", or a screen token. A token from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected: a temporary instance has no profile of its own for checking values. |
+| cpu | string |  | (empty) | Logical processor count: "auto", "real", or a number. |
+| memory | string |  | (empty) | Approximated device memory: "auto", "real", or a number. |
+| locale | string |  | (empty) | Locale: "auto", "real", or a locale such as "en-US". |
+| timeZone | string |  | (empty) | Time zone: "auto", "real", or an IANA time zone such as "Europe/Berlin". |
+| languages | string |  | (empty) | Languages: "auto", "real", or a list separated by ";" such as "en-US;ru". Languages from [another profile's choices](../profile-management/get-fp2-profile-choices) may be rejected by a temporary instance. |
+| gpuVendor | string |  | (empty) | GPU vendor: "auto", "real", or a vendor name from [another profile's choices](../profile-management/get-fp2-profile-choices) (then gpuRenderer is required). That GPU may be rejected by a temporary instance. |
+| gpuRenderer | string |  | (empty) | GPU renderer. Only together with a vendor name in gpuVendor. |
+| canvasNoise | string |  | (empty) | Canvas noise: "auto", "on" or "off". |
+| clientRectsNoise | string |  | (empty) | Client rects noise: "auto", "on" or "off". |
+| webRtc | string |  | (empty) | WebRTC: "auto", "real" or "hide". |
+| mediaDevices | string |  | (empty) | Virtual media devices: "auto" or "real". |
+| imagesVideosDownload | string |  | (empty) | Images and videos download: "on" or "off". Empty string means the default, "on". |
+
+#### **Example request:**
+
+**POST**
+
+**CURL:**
+
+```bash
+curl -X POST 'http://localhost:8160/v1/browser_instances/fp2/create_temporary?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    RequestUri = new Uri("http://localhost:8160/v1/browser_instances/fp2/create_temporary?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/browser_instances/fp2/create_temporary?workspaceId=-1
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :--- | :--- |
+| `200` | OK |
+| `400` | Invalid emulation setting |
+| `401` | Unauthorized |
+| `403` | Forbidden |
+| `500` | Internal Server Error |
+
+For `400`, the `message` field identifies the invalid setting and allowed values.
+
+---
