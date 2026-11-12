@@ -22,7 +22,7 @@ _______________________________________________
     Searches for an image by hash within the specified screen areas.
     
     **Parameters:**
-    - `imageHash` — hash of the image to compare against;
+    - `imageHash` — hash of the image to compare against: the image itself (PNG, JPEG or BMP) as Base64;
     - `rectangles` — array of `Rectangle` areas to search in;
     - `confidenceInterval` — match accuracy (0–100, higher means stricter match).
     
@@ -419,7 +419,7 @@ if (point.IsEmpty)
 ### RefreshScreen
 
 - **`void RefreshScreen()`**  
-    Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`).
+    Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`). In this mode the frame is updated only by `RefreshScreen()` and by every attempt of the `Find*` methods, and the screenshots (`ScreenshotAsArray`, `ScreenshotAsBase64String`) return the frame of the latest of those calls.
 
 #### Example  
 ```csharp
@@ -449,7 +449,7 @@ screen.ResetScreen(); // Restart the capture for the new resolution
 ### ScreenshotAsArray
 
 - **`byte[] ScreenshotAsArray()`**  
-    Takes a screenshot of the entire screen.
+    Takes a screenshot of the entire screen. With the manual capture (`"off"`) it is the frame of the latest update (`RefreshScreen()` or a `Find*` attempt): call `RefreshScreen()` before the screenshot.
     
     **Returns:**  
     Byte array of the image.
@@ -476,7 +476,7 @@ using (var bmp = new Bitmap(ms))
 ### ScreenshotAsBase64String
 
 - **`string ScreenshotAsBase64String()`**  
-    Takes a screenshot of the screen.
+    Takes a screenshot of the screen. With the manual capture (`"off"`) it is the frame of the latest update (`RefreshScreen()` or a `Find*` attempt): call `RefreshScreen()` before the screenshot.
     
     **Returns:**  
     A Base64 string.
