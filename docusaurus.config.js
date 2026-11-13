@@ -174,6 +174,9 @@ const config = {
             [`${actionsPath}Ftp/FTP_Connection`]: [`${staticPath}FTP_Settings`],
             [`${actionsPath}Custom_code/References_from_GAC`]: [`${staticPath}References_from_GAC`],
             [`${actionsPath}Custom_code/Using_Directives_and_Shared_Code`]: [`${staticPath}Using_Directives_and_Shared_Code`],
+            [`${actionsPath}Project/BotUI_Bot_Interface`]: [`${staticPath}Bot_Interface`],
+            [`${actionsPath}Project/Project_Encryption`]: [`${staticPath}Encryption`],
+            [`${actionsPath}Project/Input_settings`]: [`${staticPath}Project_Input_Settings`],
             '/zennoposter/category/settings-zennoposter-proxychecker': ['/zennoposter/category/zennoposter-settings'],
             '/zennoposter/category/actions-mail': ['/zennoposter/category/actions-send-mail', '/zennoposter/category/actions-mail-connection-settings'],
           };
