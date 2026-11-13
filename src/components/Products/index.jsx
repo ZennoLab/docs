@@ -1,3 +1,4 @@
+import useBrokenLinks from '@docusaurus/useBrokenLinks';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Heading from '@theme/Heading';
 import getLocaleStrings from '@site/src/locales';
@@ -111,6 +112,8 @@ const getItems = (locale, defaultLocale) => {
 
 export const Products = () => {
   const { i18n } = useDocusaurusContext();
+  const brokenLinks = useBrokenLinks();
+  brokenLinks.collectAnchor(AnchorId.PRODUCTS);
   const { currentLocale, defaultLocale } = i18n;
   const { productsTitle } = getLocaleStrings(currentLocale);
   const productsItems = getItems(currentLocale, defaultLocale);
