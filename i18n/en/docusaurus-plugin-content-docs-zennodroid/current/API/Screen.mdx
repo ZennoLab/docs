@@ -22,7 +22,7 @@ _______________________________________________
     Searches for an image by hash within the specified screen areas.
     
     **Parameters:**
-    - `imageHash` — hash of the image to compare against;
+    - `imageHash` — hash of the image to compare against: the image itself (PNG, JPEG or BMP) as Base64;
     - `rectangles` — array of `Rectangle` areas to search in;
     - `confidenceInterval` — match accuracy (0–100, higher means stricter match).
     
@@ -353,10 +353,73 @@ The value is cached per device. After a resolution change (e.g. with `wm size Wi
 
 ---
 
+### PercentToPoint
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`Point PercentToPoint(double x, double y)`**  
+    Converts a point given in percent of the screen into pixels by the same rule as [**coordinates in percent**](../Android/pro-lite/Touch_Emulation#coordinates-in-percent) in the actions: `0` is the first pixel, `50` the centre, `100` the last pixel.
+    
+    **Parameters:**
+    - `x` - percent of the screen width, from 0 to 100;
+    - `y` - percent of the screen height, from 0 to 100.
+    
+    **Returns:**  
+    `Point` - the point in screen pixels. On a 1080x2400 screen `PercentToPoint(50, 100)` returns (540, 2399).
+    
+    **Description:**  
+    Percent is counted from the resolution that [`GetScreenSize`](#getscreensize) returns, so after a resolution change call `ResetScreen()` first. A percent below 0, above 100 or `NaN` throws `ArgumentOutOfRangeException` with the name of the parameter.
+
+#### Example
+```csharp
+var screen = instance.DroidInstance.Screen;
+var input = instance.DroidInstance.Input;
+
+var center = screen.PercentToPoint(50, 50); // The centre of the screen at any resolution
+input.Tap(center.X, center.Y);
+
+var start = screen.PercentToPoint(50, 80); // Scroll down: from 80% of the screen height to 20%
+var end = screen.PercentToPoint(50, 20);
+input.Swipe(start.X, start.Y, end.X, end.Y, 500);
+```
+
+---
+
+### PercentToRectangle
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`Rectangle PercentToRectangle(double left, double top, double right, double bottom)`**  
+    Converts an area given in percent of the screen into pixels by the rule of [`PercentToPoint`](#percenttopoint). The right and bottom sides take their own pixel in, so `PercentToRectangle(0, 0, 100, 100)` is the whole screen, `PercentToRectangle(0, 50, 100, 100)` its lower half, and `PercentToRectangle(50, 50, 50, 50)` one pixel in the centre.
+    
+    **Parameters:**
+    - `left`, `top` - the left and top sides: percent of the screen width and height, from 0 to 100;
+    - `right`, `bottom` - the right and bottom sides, from 0 to 100.
+    
+    **Returns:**  
+    `Rectangle` - the area in screen pixels. If the right side is left of the left one, or the bottom side above the top one, the width or height of the area is 0.
+    
+    **Description:**  
+    A percent below 0, above 100 or `NaN` throws `ArgumentOutOfRangeException` with the name of the parameter.
+
+#### Example
+```csharp
+var screen = instance.DroidInstance.Screen;
+
+var lowerHalf = screen.PercentToRectangle(0, 50, 100, 100); // The lower half of the screen
+var point = screen.FindPixel("#FF0000", new[] { lowerHalf }, 10); // Look for a red pixel only there
+if (point.IsEmpty)
+	throw new Exception("Pixel not found");
+```
+
+---
+
 ### RefreshScreen
 
 - **`void RefreshScreen()`**  
-    Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`).
+    Refreshes the screen image. Used when a screen capture type is selected that requires manual refresh (`captureScreenMethod = "off"`). In this mode the frame is updated only by `RefreshScreen()` and by every attempt of the `Find*` methods, and the screenshots (`ScreenshotAsArray`, `ScreenshotAsBase64String`) return the frame of the latest of those calls.
 
 #### Example  
 ```csharp
@@ -386,7 +449,7 @@ screen.ResetScreen(); // Restart the capture for the new resolution
 ### ScreenshotAsArray
 
 - **`byte[] ScreenshotAsArray()`**  
-    Takes a screenshot of the entire screen.
+    Takes a screenshot of the entire screen. With the manual capture (`"off"`) it is the frame of the latest update (`RefreshScreen()` or a `Find*` attempt): call `RefreshScreen()` before the screenshot.
     
     **Returns:**  
     Byte array of the image.
@@ -413,7 +476,7 @@ using (var bmp = new Bitmap(ms))
 ### ScreenshotAsBase64String
 
 - **`string ScreenshotAsBase64String()`**  
-    Takes a screenshot of the screen.
+    Takes a screenshot of the screen. With the manual capture (`"off"`) it is the frame of the latest update (`RefreshScreen()` or a `Find*` attempt): call `RefreshScreen()` before the screenshot.
     
     **Returns:**  
     A Base64 string.

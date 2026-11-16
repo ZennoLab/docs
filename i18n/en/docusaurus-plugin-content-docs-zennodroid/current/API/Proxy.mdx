@@ -20,6 +20,8 @@ _______________________________________________
 
 - **`void ClearProxy()`**  
     Clears the proxy settings.
+    
+    On a phone in the modes through the computer's internet connection (Proxifier, ProxyBridge, and Redsocks or Clash with that checkbox) the tunnel through the computer stays: the phone shows a VPN icon, the traffic leaves from the computer's address, and after the device restarts the tunnel comes up again. To turn it off as well, use [**DisableProxy**](#disableproxy).
 
 #### Example  
 ```csharp
@@ -40,6 +42,25 @@ proxy.ClearProxy(); // Clear project proxy
 var proxy = instance.DroidInstance.Proxy;
 
 proxy.DisablePrivateDns(); // Disable private DNS
+```
+
+---
+
+### DisableProxy
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`void DisableProxy()`**  
+    Switches off any proxy on the device, whatever way it was set: removes the proxy, Clash and Redsocks and closes the tunnel through the computer, which [**ClearProxy**](#clearproxy) keeps. The device then goes online through its own connection, after a restart too, until a proxy is set again. Private DNS, turned off while the proxy worked, comes back.
+    
+    A `SetProxy(proxy)` call without settings then takes the proxying method from the ZennoDroid settings.
+
+#### Example  
+```csharp
+var proxy = instance.DroidInstance.Proxy;
+
+proxy.DisableProxy(); // Switch off any proxy on the device
 ```
 
 ---

@@ -31,6 +31,15 @@ A PID is a unique numeric ID given to each process by the operating system. It h
 A PID is only unique at a single point in time. When a process ends, its PID can be assigned to another process later on.
 :::
 _______________________________________________
+### ProxyBridge
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+An alternative to Proxifier: the emulator is proxied by the PID of its process in Windows as well, but its traffic is intercepted at the packet level. So UDP doesn't get past the proxy either: through a SOCKS5 proxy with UDP support it goes through the proxy, and through the others it is blocked. Behind a proxy without UDP the emulator's DNS requests go through the proxy over TCP. Works on MEmu, LDPlayer 9 and 14, and MuMu.
+
+HTTP and SOCKS5 proxies are supported, with or without authorization. SOCKS4 is set up only through Proxifier.
+
+The ZennoDroid installer puts everything needed in place: no separate program or Windows service is required. ProxyBridge needs administrator rights, and ProjectMaker and ZennoDroid already run with them.
+_______________________________________________
 ### Redsocks
 This tool lets you route network traffic through a proxy server without having to manually set up a proxy in every single app. It transparently redirects TCP/UDP connections to a proxy.
 

@@ -87,6 +87,18 @@ Format: use colons XX:XX:XX:XX:XX:XX, or just type it without colons XXXXXXXXXXX
 :::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
 ::: 
 _______________________________________________
+## Performance settings  
+The **Performance** item sets the number of CPU cores and the amount of RAM that apps and websites get. The phone itself doesn't change: only what apps learn about it does.  
+![Performance settings](../assets/setting/Android_Setting_pic37.png)  
+
+- *Processors*. The number of CPU cores, 1 or more.  
+- *RAM (Mb)*. The amount of RAM in MB, from 512 to 65,536: a value outside this range is replaced with the nearest limit. Apps get the memory in whole gigabytes: the value is rounded to the nearest one, and 512 MB gives 1 GB.  
+
+[**Device model**](#how-to-specify-the-device-model) and [**Generate a device**](#generate-a-device) set the cores and the memory themselves, from the phone model. This item replaces them with your own values: put it after them in the project, otherwise they bring the model's values back.  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
+_______________________________________________
 ## Bluetooth settings  
 Sets the MAC address of the device's Bluetooth adapter.  
 ![Bluetooth settings](../assets/setting/Android_Setting_pic31.png)  
@@ -217,7 +229,7 @@ You can view the codes and names of countries on the website [http://www.mcc-mnc
 For example, the manufacturer Xiaomi has the brands Poco and Redmi.  
 - **Model**. Required to identify a specific set of models.  
 Like, `Pixel [7|8]` means only Google Pixel 7 or 8.
-- **Android version**. To select specific versions of Android: `12|13|14|15`
+- **Android version**. To select specific versions of Android: `12|13|14|15|16`
 
 #### Tab «More»  
 ![Access to WebView](../assets/setting/Android_Setting_pic29.png)
@@ -256,6 +268,17 @@ Here you can set DNS server addresses. If you have several, separate them with a
 *Set the device's local IP address.*  
 
 If you make the last part of your address zero, for example, `192.168.20.0`, a random address from that subnet will be generated: `192.168.20.2-192.168.20.254`.
+
+### ProxyBridge.  
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+An alternative to Proxifier. The phone's traffic goes through the computer's internet connection and is proxied there as well, but it is intercepted at the packet level, so UDP doesn't get past the proxy either: through a SOCKS5 proxy with UDP support it goes through the proxy, and through the others it is blocked. The phone doesn't need root; while it works, the phone shows a VPN icon.
+
+***http*** and ***socks5*** proxies are supported, with or without authorization. A ***socks4*** proxy is set up only through Proxifier.
+
+The **DNS addresses** and **Local IP** fields are the same as for [Proxifier](#proxifier). ProxyBridge has no "Use the computer's Internet connection" checkbox: the traffic always goes through the computer. Changing the proxy restarts the tunnel, and the phone's open connections drop.
+
+A project with this proxying method runs in ZennoDroid 2.6.3.0 and later. More in [**Traffic proxying (Enterprise)**](../../Settings/Proxy_Traffic_Ent#proxybridge).
 
 ### Redsocks.  
 To proxy traffic, Redsocks2 is used — a transparent redirector of TCP/UDP connections to a proxy.  

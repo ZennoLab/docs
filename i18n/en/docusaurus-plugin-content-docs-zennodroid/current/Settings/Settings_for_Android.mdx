@@ -59,6 +59,11 @@ Allows clicks to happen with a slight offset from the set parameters. Used in th
 - [**Run Event**](../Android/pro-lite/RunEvent). If you choose **Center** as the tap coordinates, it'll click the element slightly off-center.
 
 _______________________________________________
+### Random click margin from the edge.
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+Keeps a tap with the **At random** offset in the [**Run Event**](../Android/pro-lite/RunEvent#coordinates-of-touch-point) action off the element's edges: the point is chosen no closer to each edge than the set percent of the element's width and height. 10% by default, from 0 to 50%. An element too small for that margin is tapped in its center. Each emulator type keeps its own value.
+_______________________________________________
 ### Random delay deviation when entering characters.
 Used in the [**Keyboard Emulation**](../Android/pro-lite/Keyboard) and [**Set Value**](../Android/pro-lite/SetValue) actions. Lets you set deviation for the input delay.
 
@@ -74,6 +79,7 @@ ZennoDroid lets you choose how to proxy traffic for the [**Set Proxy**](../Andro
 
 ![Traffic proxying](./assets/Settings_for_Android/Settings_for_Android_pic3.png)
 - **Proxifier** — the traffic of the emulator is routed to the computer and proxied there.
+- **Use ProxyBridge** (starting from 2.6.3.0) — packet-level interception of the emulator's traffic instead of Proxifier: SOCKS5 and HTTP proxies, and UDP goes through the proxy or is blocked when the proxy doesn't carry it. The checkbox turns off Proxifier, and on LDPlayer also Redsocks and Clash; if Redsocks or Clash is on together with it, they are the ones that work. Administrator rights are required, and ProjectMaker and ZennoDroid already run with them.
 - **Redsocks** — a transparent redirector of TCP/UDP connections into a proxy, on the device itself. Works on Android 7x64, 9 and 12 only.
 - **Clash** — rule-based proxying that wraps the whole of the UDP traffic.
 
@@ -100,6 +106,13 @@ _______________________________________________
 The **Patch the MuMu image: spoof android_id, the operator and the SIM** switch is there only when the MuMu emulator is chosen. Without it MuMu devices don't get the android_id, operator, IMSI and SIM serial number set for them.
 
 The patch changes the shared MuMu system image too: stop all MuMu devices before changing it, otherwise the message *It is necessary to stop all running devices* appears. A MuMu update replaces the image and removes the patch: the switch is then off again, and it has to be turned on once more. More about working with MuMu is in [**Installing MuMu**](../pro-lite/MuMu_Install).
+_______________________________________________  
+### Virtual camera from a file.
+The switch is there only when the LDPlayer emulator is chosen. It lets the device's camera be fed a picture or a video - with the action or with [**SetVideoForFakeCamera**](../API/App#setvideoforfakecamera). While it is off, or the device hasn't rebooted since it was turned on, the call fails with *Could not turn on the virtual camera*.
+
+The switch changes the shared system image of the LDPlayer installation, so stop every device of that installation before changing it, otherwise the message *It is necessary to stop all running devices* appears. Devices pick the change up at their next boot. It costs no disk space - there is one image for the whole installation - and it does not get in the way of devices whose camera is not being replaced. Turning it off puts the image back as it was.
+
+MEmu and MuMu have no such switch and need none: there the call itself turns the substitution on.
 _______________________________________________  
 ### Fix build.prop errors.
 In an emulator some of the device properties are left as `unknown`. With this setting on, ZennoDroid takes the manufacturer, the brand, the model, the board, the `hardware`, the baseband and the fingerprint from the emulator configuration before the first boot completes and writes them into `build.prop`, so that apps and sites do not see `unknown` among the device properties.

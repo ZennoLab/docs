@@ -27,6 +27,15 @@ It works kind of like a hotspot, but in the opposite direction. This comes in ha
 Gnirehtet works over USB or wirelessly, and doesn't need root access.
 :::
 __________________________________________
+### ProxyBridge
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+An alternative to Proxifier. The phone's traffic is tunneled into a VPN with Gnirehtet and passed to the PC as well, but there it is intercepted at the packet level. So UDP doesn't get past the proxy either: through a SOCKS5 proxy with UDP support it goes through the proxy, and through the others it is blocked.
+
+HTTP and SOCKS5 proxies are supported, with or without authorization. SOCKS4 is set up only through Proxifier. The phone doesn't need root.
+
+The ZennoDroid installer puts everything needed in place: no separate program or Windows service is required. ProxyBridge needs administrator rights, and ProjectMaker and ZennoDroid already run with them. Changing the proxy restarts the tunnel, and the phone's open connections drop.
+__________________________________________
 ### Redsocks
 This utility is used to redirect network traffic through a proxy server, so you don't have to manually set up a proxy for each app. It transparently redirects TCP/UDP connections to the proxy.
 
@@ -57,5 +66,11 @@ You can do it manually or by running the [Console Commands](../Android/pro-lite/
 - Turn off Wi-Fi: `svc wifi disable`
 - Turn off mobile data: `svc data disable`
 :::
+
+With Proxifier and ProxyBridge the phone's traffic always goes through the computer, without this checkbox.
+
+Starting from ZennoDroid 2.6.3.0, the phone's IPv6 traffic goes through the computer as well. By default it is proxied too: if the proxy can't reach an IPv6 address, the connection is refused in about 3 seconds and the app falls back to IPv4. IPv6 doesn't leave the tunnel with the phone's real address. Other behavior is set from C# with the [`Ipv6Mode`](../API/DroidProxySettings#droidipv6mode) property.
+
+With Proxifier and ProxyBridge the phone's DNS requests go over TCP through the proxy to the servers from the **DNS addresses** field, and Private DNS on the phone is turned off for that time and comes back once the proxy is removed. If the proxy doesn't let TCP connections through to the DNS server's port 53, DNS goes over UDP: through a SOCKS5 proxy with UDP support it goes through the proxy, and otherwise from the computer's address, past the proxy.
 _______________________________________________
 - [**How to Install Clash (Box for Root).**](../Android/Enterprise/Clash)

@@ -35,6 +35,30 @@ Basic proxy settings using a traffic proxying mechanism.
     **Description:**  
     Blocks UDP traffic that may bypass the proxy and expose the real IP.
 
+---
+
+- **`DroidIpv6Mode? Ipv6Mode { get; set; }`**  
+    What the phone's tunnel does with IPv6.
+    
+    **Description:**  
+    A value of the [`DroidIpv6Mode`](#droidipv6mode) enum. If not set, it comes from the ZennoDroid settings, `Tunnel` by default. Not used on emulators. Available starting from ZennoDroid 2.6.3.0.
+
+---
+
+- **`string Nat64Prefix { get; set; }`**  
+    The prefix of a NAT64 gateway.
+    
+    **Description:**  
+    `/96` only, for example `2a01:4f9:c010:3f02:64::/96`. For a proxy that works over IPv6 only and refuses IPv4 destinations: the phone's tunnel reaches them through the gateway. If not set, it comes from the ZennoDroid settings. A prefix of another length isn't applied, and an error is written to the log. Available starting from ZennoDroid 2.6.3.0.
+
+---
+
+- **`bool? DnsOverTcp { get; set; }`**  
+    How the phone's tunnel carries DNS requests.
+    
+    **Description:**  
+    `true` — over TCP through the proxy, which every proxy lets through; `false` — as UDP datagrams, which only a SOCKS5 proxy with UDP support carries. If not set, it comes from the ZennoDroid settings, `true` by default. Available starting from ZennoDroid 2.6.3.0.
+
 _______________________________________________
 
 ## DroidProxySettings.ProxifierViaPC
@@ -64,6 +88,80 @@ Extended proxy settings when using PC-based proxying.
     
     **Description:**  
     Used to bind the proxy to a specific PC network interface.
+
+---
+
+- **`string LocalIPv6Address { get; set; }`**  
+    The IPv6 address of the tunnel with its prefix length.
+    
+    **Description:**  
+    For example, `fdfe:dcba:0::1/126`. If not set, it comes from the ZennoDroid settings. Available starting from ZennoDroid 2.6.3.0.
+
+_______________________________________________
+
+## DroidProxySettings.ProxyBridge
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+Settings of the [**ProxyBridge**](../Settings/Proxy_Traffic_Ent#proxybridge) method, an alternative to Proxifier where UDP doesn't get past the proxy either. On a phone the traffic always goes through the computer's internet connection; on an emulator (MEmu, LDPlayer, MuMu) the emulator's process is proxied. The DNS, local address, IPv6 and NAT64 fields are used on a phone only. A property that isn't set comes from the ZennoDroid settings.
+
+- **`bool? BlockWebRtcLeak { get; set; }`**  
+    Protection against WebRTC leaks. `true` by default.
+
+---
+
+- **`bool? BlockUDPLeak { get; set; }`**  
+    When the proxy doesn't carry UDP, additionally cuts UDP traffic to port 443 (QUIC) on the device. `true` by default. UDP doesn't get past the proxy with `false` either.
+
+---
+
+- **`string DnsServers { get; set; }`**  
+    DNS servers, for example `8.8.8.8,8.8.4.4`. An IPv6 server address is accepted too.
+
+---
+
+- **`string LocalIPv4Address { get; set; }`**  
+    The phone's local IPv4 address. If the last number is zero (`192.168.10.0` by default), a random address of that subnet is picked.
+
+---
+
+- **`string LocalIPv6Address { get; set; }`**  
+    The IPv6 address of the tunnel with its prefix length, `fdfe:dcba:0::1/126` by default.
+
+---
+
+- **`DroidIpv6Mode? Ipv6Mode { get; set; }`**  
+    What the tunnel does with IPv6, `Tunnel` by default. The values are in [`DroidIpv6Mode`](#droidipv6mode).
+
+---
+
+- **`string Nat64Prefix { get; set; }`**  
+    The prefix of a NAT64 gateway (`/96` only) for a proxy that works over IPv6 only.
+
+---
+
+- **`bool? DnsOverTcp { get; set; }`**  
+    `true` (default) — the phone's DNS goes over TCP through the proxy; `false` — as UDP datagrams, which only a SOCKS5 proxy with UDP support carries.
+
+#### Example  
+```csharp
+var settings = new DroidProxySettings.ProxyBridge();
+settings.DnsServers = "8.8.8.8";
+instance.DroidInstance.Proxy.SetProxy("socks5://login:pass@1.2.3.4:1080", settings);
+```
+
+_______________________________________________
+
+## DroidIpv6Mode
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+What the phone's tunnel does with IPv6 in the Proxifier and ProxyBridge methods (the `Ipv6Mode` property):
+- `Tunnel` — IPv6 goes through the tunnel and the proxy. The default. If the proxy reaches an IPv6 address, the phone gets real IPv6; if not, the connection is refused within a few seconds, and the app falls back to IPv4. Nothing leaves past the tunnel.
+- `Block` — IPv6 is dropped in the tunnel. No leaks, but nothing answers the phone, so an app falls back to IPv4 only after its own timeout.
+- `Bypass` — IPv6 is left to Android: it goes past the tunnel, with the phone's real address.
 
 _______________________________________________
 

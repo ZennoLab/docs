@@ -823,6 +823,33 @@ app.RemoveAccount("mymail@gmail.com", "com.google"); // Remove the account from 
 
 ---
 
+### ResetAppSetId
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`void ResetAppSetId(string packageName)`**  
+    Resets the App Set ID of an app, the ID Google Play services gives the app. The old value is dropped, and the app gets a new one the next time it asks. Google Play services and the app itself are closed for this.
+    
+    Requires root and Google Play services on the device.
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+:::info **Apps of one developer can share an App Set ID.**
+Google Play services keeps a separate value for an app only when it can't tell which Google Play developer account published it. Apps of one developer installed from Google Play while a Google account was signed in on the device share one value, and resetting it for one of them resets it for all.
+:::
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+app.ResetAppSetId(packageName); // Reset the app's App Set ID
+```
+
+---
+
 ### ResetFakeCameraFraming
 
 :::info **Available starting from ZennoDroid 2.6.1.0.**
@@ -953,8 +980,13 @@ app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 0, true); // The whole video,
 
 ### SetVideoForFakeCamera
 
+Feeds a picture or a video to the camera: the app receives the frames as if they came from the device camera. Phones and emulators do it differently, so they are described separately: [**on phones**](#on-phones-zennodroid-enterprise) and [**on emulators**](#on-emulators-zennodroid-pro).
+
+#### On phones (ZennoDroid Enterprise).
 :::info **Available starting from ZennoDroid 2.6.1.0.**
 :::
+
+The camera is replaced by the **ZennoVCam** module for LSPosed: the substitution works only while the module is enabled for the app. How to do that is described in [**Enabling ZennoVCam**](#enabling-zennovcam).
 
 - **`void SetVideoForFakeCamera(string packageName, string videoSource)`**  
     Feeds a video file to the app's camera instead of the real sensor, so the app receives the video frames as if they came from the device camera. The video plays in a loop, without sound, and every frame lane stays virtual. Use the overload with playback options if the app also needs to save photos.
@@ -970,7 +1002,7 @@ app.SetFakeCameraFraming(packageName, 0.5, 0.5, 1, 0, true); // The whole video,
     
     The video can be replaced while the camera is running: a subsequent call switches playback without restarting the app or its camera session.
 
-#### Example  
+##### Example  
 ```csharp
 var app = instance.DroidInstance.App;
 
@@ -1002,7 +1034,7 @@ The package name of the default Camera app differs from device to device. To fin
     - `photo` — let a camera app finish saving a photo;
     - `synth` — hand the app the module's camera instead of intercepting the one the device opens. Off by default. It is for a device whose cameras are listed and answer questions about themselves but never deliver a frame: an emulated phone, or a handset with a broken camera.
 
-#### Example with every parameter  
+##### Example with every parameter  
 ```csharp
 var app = instance.DroidInstance.App;
 
@@ -1017,6 +1049,7 @@ app.SetVideoForFakeCamera(
 	true); // synth - the cameras are listed but never deliver a frame
 ```
 
+##### Enabling ZennoVCam
 The substitution starts working only once the **ZennoVCam** module is enabled in LSPosed and the target app is on its list. That is done through the [**LSPosed API**](./LSPosed) — here it is turned on for the default Camera app:
 ```csharp
 var packageName = "com.android.camera2"; // The default Camera app
@@ -1040,6 +1073,57 @@ The scope list is set **before** the module is enabled: with an empty list `Enab
 :::warning Important notes
 - `photo` is off by default because it is a trade rather than a strict improvement: to get the save through, the module hands the small helper frame lanes (metering, thumbnails) back to the real camera. Leave it `false` for a scanner or KYC app that reads frames through one of those lanes, since it would otherwise receive the real camera image.
 :::
+
+#### On emulators (ZennoDroid Pro).
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`void SetVideoForFakeCamera(string packageName, string videoSource)`**  
+- **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo)`**  
+- **`void SetVideoForFakeCamera(string packageName, string videoSource, bool loop, bool mute, bool photo, bool synth)`**  
+
+On MEmu, LDPlayer and MuMu ZennoDroid replaces the camera itself: neither the **ZennoVCam** module nor LSPosed is needed. The substitution covers the whole machine: every app on it sees the replaced camera.
+
+:::warning **On LDPlayer, turn on *Virtual camera from a file* first.**
+The switch is in the [**Android settings**](../Settings/Settings_for_Android#virtual-camera-from-a-file), and the device picks it up at its next boot. While the switch is off, or the device hasn't rebooted since it was turned on, the call fails with *Could not turn on the virtual camera*. MEmu and MuMu need nothing turned on.
+:::
+
+**Parameters:**
+- `packageName` — ignored, an empty string will do;
+- `videoSource` — path to a picture or a video: a local path on the PC (e.g. `c:\source.png`) or a path on the device that starts with `/` (e.g. `/sdcard/Download/source.mp4`). An empty string gives the machine its own camera back;
+- `loop` — restart the video when it ends. When `false`, the last frame remains on screen;
+- `mute` — ignored: a camera has no sound;
+- `photo` — show the video's first frame as a still picture instead of the video;
+- `synth` — ignored.
+
+The two-parameter overload works as `loop = true` and `photo = false`: the video plays in a loop.
+
+**Description:**  
+A picture (`.png`, `.jpg`, `.bmp`) or a video, such as `.mp4`, will do. The frame reaches the app turned the way the device's sensor would have turned it, and with black bars when the source's proportions differ from the camera frame. For a QR code or document scanner a picture is the better choice: it reaches the camera uncompressed.
+
+On LDPlayer and MuMu the video is transferred to the device before it is shown, so the first call with a long video takes longer, and a video longer than a few minutes is cut short. A second call with the same file does not transfer it again.
+
+The framing methods [**SetFakeCameraFraming**](#setfakecameraframing) and [**ResetFakeCameraFraming**](#resetfakecameraframing) don't work on emulators: the call fails with an error.
+
+##### Example with a picture  
+```csharp
+var app = instance.DroidInstance.App;
+
+// A picture from the PC: the machine's camera shows it as a still frame
+// The package name is ignored on emulators, so an empty string is passed
+app.SetVideoForFakeCamera("", @"c:\source.png");
+```
+
+##### Example with a video  
+```csharp
+var app = instance.DroidInstance.App;
+
+// A video from the PC: plays in a loop
+app.SetVideoForFakeCamera("", @"c:\source.mp4");
+
+// Give the machine its own camera back
+app.SetVideoForFakeCamera("", "");
+```
 
 ---
 

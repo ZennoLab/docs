@@ -115,11 +115,31 @@ For these functions to work right, also install these two Github modules: [**Uni
 Open the app's component list and check every one of them.
 :::
 
-While you're in Magisk settings, tap **Hide Magisk app** (some apps, like MirPay, can detect it easily in your app list). Enter any new name and tap *OK*. After all this, reboot your phone. Booting up might take a bit longer than usual.
+In Magisk 30 and earlier, while you're in Magisk settings, also tap **Hide Magisk app** (some apps, like MirPay, can detect it easily in your app list). Enter any new name and tap *OK*. Magisk 31 has no such option: the Magisk app can't be hidden, but once the grants are made it can be uninstalled - root for Shell and for the ZennoDroid module keeps working, after a reboot too. To change the grants, install the app again. After all this, reboot your phone. Booting up might take a bit longer than usual.
 
 ![Hide Magisk App](./assets/Root/Root_pic12.png)
 
 :::warning **Make sure to hide root from any app BEFORE you open that app for the first time!**
+:::
+_________________
+### Superuser Rights for ZennoDroid
+ZennoDroid gets root through **Shell**, the shell that runs adb commands. You grant it root in the Magisk app, on the **Superuser** tab.
+
+**Magisk 31 and later** shows no prompt: without a grant made in advance, root is refused, and the phone says nothing about it. So before you start the device in ZennoDroid for the first time, open Magisk, tap **+** on the **Superuser** tab and tick **Shell** (`com.android.shell`). After that, Shell is listed on the tab, where you can turn it off and on again.
+
+**Magisk 30 and earlier** shows a superuser request for Shell the first time the device starts: tap **Grant**.
+
+<details>
+<summary>**The Superuser tab and granting Shell in Magisk 31.**</summary>
+<!--All you need is a blank line-->
+
+![Superuser tab](./assets/Root/Root_pic13.png) ![Granting Shell](./assets/Root/Root_pic14.png)
+</details>
+
+If root is not granted, ZennoDroid reports that Magisk did not grant root. Such a phone can be started with [**Safe start**](../pm/Interface/DeviceWindow#safe-start): the screen is shown, and you can grant root as described above.
+
+:::warning **Rolling Magisk 31 back to 30.x wipes the whole Magisk database**
+All grants, settings and the DenyList are lost, and the grants have to be given again.
 :::
 _________________
 ## Useful Magisk Modules

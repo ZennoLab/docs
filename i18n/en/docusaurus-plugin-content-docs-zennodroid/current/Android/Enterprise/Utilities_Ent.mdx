@@ -62,9 +62,22 @@ This utility lets you spoof the device's location.
 - *Longitude*. Accepts values from -180 to 180.
 - *Height*. Height above sea level in meters.
 - *Direction*. Accepts values from 0 to 360.
-- *Speed*. How fast your phone is "moving" in km/h (pretend you're traveling).
+- *Speed*. How fast the device is "moving", in metres per second.
 You can use decimals, either with a [**.**] dot or [**,**] comma as a separator.
 For example, New York latitude and longitude: *40.7143* and *-74.006*
+Zero in all five parameters takes the mock off: the phone goes back to its own location.
+
+:::info **What the spoof needs**
+The point is set by a helper application ZennoDroid installs when the phone starts, so "Enable mock locations" has to
+be ticked in the Android settings. The device's own location switch is turned on by the action when it is off: with
+location off the system answers applications nothing, whatever point is set.
+:::
+
+:::warning **What the spoof does not change**
+The point replaces every location source on the device, Play Services included. Sites and applications, however, often
+work the location out from the IP address as well - that one comes from the proxy and not from this action, so take a
+proxy in the same country. For the same reason set the [**time zone**](./setting#setting-the-timezone) as well.
+:::
 _______________________________________________
 ### Get Structure of Elements (XML)
 ![XML](../assets/Utilities/Utilities_pic7.png)  
@@ -90,8 +103,11 @@ _______________________________________________
 
 Use this action to zoom in or out: **Zoom Out** (reduce) or **Zoom In** (increase).
 #### Available parameters:
-- *Coordinates*: the point relative to which scaling will happen. It must be on the screen, otherwise the action ends with the error *Point (...) is outside the device screen ...*
+- *Coordinates*: the point relative to which scaling will happen. It must be on the screen, otherwise the action ends with the error *Point (...) is outside the device screen ...* The point can be set in pixels or in percent of the screen by the rules of [**Touch Emulation**](./Touch_Emulation#coordinates-in-percent): for example, `50%` and `50%` is the centre of the screen at any resolution.
 - *Coefficient*: how much to shrink or enlarge
+
+:::info **Coordinates in percent are available starting with ZennoDroid 2.6.3.0.**
+:::
 _______________________________________________
 ### Send SMS to the Device
 ![SMS](../assets/Utilities/Utilities_pic17.png)  

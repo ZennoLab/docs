@@ -14,6 +14,46 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ## Methods
 
 
+### ResetGoogleAdvertId
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`void ResetGoogleAdvertId()`**  
+    Resets the Google advertising ID. On a phone, Google Play services gets a new ID in place of the old one, and the Google account stays on the device. On an emulator the method, like the *Reset Google Advert Id* utility, clears the data of Google Play services and the Google Play Store, so the device is signed out of the Google account.
+    
+    Requires root and Google Play services on the device.
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.ResetGoogleAdvertId(); // Reset the Google advertising ID
+```
+
+---
+
+### ResetGsfId
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`void ResetGsfId()`**  
+    Resets the Google Services Framework ID (GSF ID), the ID Google services know the device by. The method removes the old ID and starts the device's check-in with Google, and Google issues a new one. The Google account stays, app data isn't cleared, and no reboot is needed. Google Play services and the Google Play Store are closed during the reset.
+    
+    The method returns as soon as the check-in starts: the new ID arrives a few seconds later. Requires root and Google Play services on the device.
+    
+    It changes the device's real ID, not the value the [*Google Services Framework ID*](../Android/Enterprise/setting#google-services-framework-id) setting of the ZennoDroid module gives apps.
+
+#### Example  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.ResetGsfId(); // Reset the GSF ID
+```
+
+---
+
 ### SetBaseband
 
 - **`void SetBaseband(string version)`**  

@@ -81,7 +81,7 @@ The button shows the proxy set on the device, or **Without proxy**. Clicking it 
 ![The Set proxy window](./assets/DeviceWindowEmulator/DeviceWindowEmulator_pic8.png)
 
 - **Proxy address** — the proxy string, for example `255.255.255.255:8080` or `protocol://login:pass@IP:port`.
-- **Proxy type** — the proxying method: **Default** (as set in the [**settings**](../../Settings/Settings_for_Android#the-method-of-traffic-proxying)), **Proxifier**, **Redsocks** or **Clash**. How they differ is described in [**Traffic Proxying**](../../Settings/Proxy_Traffic).
+- **Proxy type** — the proxying method: **Default** (as set in the [**settings**](../../Settings/Settings_for_Android#the-method-of-traffic-proxying)), **Proxifier**, **ProxyBridge** (starting from ZennoDroid 2.6.3.0), **Redsocks** or **Clash**. How they differ is described in [**Traffic Proxying**](../../Settings/Proxy_Traffic).
 
 The **OK** button applies the proxy to the device.
 
@@ -91,8 +91,11 @@ _______________________________________________
 ### Mouse coordinates.
 ![Mouse coordinates](./assets/DeviceWindowEmulator/DeviceWindowEmulator_pic9.png)
 
-While the cursor is over the device screen, its current coordinates (X, Y) are shown here.  
-You can use them in the [**Swipe Emulation**](../../Android/pro-lite/Swipe) and [**Touch Emulation**](../../Android/pro-lite/Touch_Emulation) actions.
+While the cursor is over the device screen, its current coordinates (X, Y) are shown here in pixels, and in brackets the same coordinates in percent of the screen width and height, for example `665;1451 (61.6%;62%)`.  
+You can use them in the [**Swipe Emulation**](../../Android/pro-lite/Swipe) and [**Touch Emulation**](../../Android/pro-lite/Touch_Emulation) actions: the pixels as they are, the percent [**with the `%` sign**](../../Android/pro-lite/Touch_Emulation#coordinates-in-percent). The percent is rounded so that an action with it lands on the same pixel or the next one.
+
+:::info **Coordinates in percent are shown starting with ZennoDroid 2.6.3.0.**
+:::
 _______________________________________________
 ## Actions menu.
 :::info **The actions menu appeared in ZennoDroid 2.6.2.0.**

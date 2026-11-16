@@ -14,6 +14,46 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ## Методы
 
 
+### ResetGoogleAdvertId
+
+:::info **Доступно начиная с версии ZennoDroid 2.6.3.0.**
+:::
+
+- **`void ResetGoogleAdvertId()`**  
+    Сбрасывает рекламный идентификатор Google (Advertising ID). На телефоне сервисы Google Play получают новый идентификатор вместо прежнего, а аккаунт Google остаётся на устройстве. На эмуляторе метод, как и утилита *«Сбросить Google Advert Id»*, очищает данные сервисов Google Play и магазина Google Play, поэтому из аккаунта Google устройство выходит.
+    
+    Нужны root и сервисы Google Play на устройстве.
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.ResetGoogleAdvertId(); // Сбросить рекламный идентификатор Google
+```
+
+---
+
+### ResetGsfId
+
+:::info **Доступно начиная с версии ZennoDroid 2.6.3.0.**
+:::
+
+- **`void ResetGsfId()`**  
+    Сбрасывает Google Services Framework ID (GSF ID) - идентификатор, по которому устройство узнают сервисы Google. Метод удаляет прежний идентификатор и запускает регистрацию устройства в Google, и Google выдаёт новый. Аккаунт Google остаётся, данные приложений не очищаются, перезагрузка не нужна. На время сброса сервисы Google Play и магазин Google Play закрываются.
+    
+    Метод завершается сразу после запуска регистрации: новый идентификатор появляется через несколько секунд. Нужны root и сервисы Google Play на устройстве.
+    
+    Меняется настоящий идентификатор устройства, а не значение, которое приложениям подставляет настройка [*Google Services Framework ID*](../Android/Enterprise/setting#google-services-framework-id) модуля ZennoDroid.
+
+#### Пример.  
+```csharp
+var settings = instance.DroidInstance.Settings;
+
+settings.ResetGsfId(); // Сбросить GSF ID
+```
+
+---
+
 ### SetBaseband
 
 - **`void SetBaseband(string version)`**  

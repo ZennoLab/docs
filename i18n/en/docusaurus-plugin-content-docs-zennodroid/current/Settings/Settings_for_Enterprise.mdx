@@ -52,6 +52,11 @@ Lets you make clicks with a slight offset from the set coordinates. It's used in
 - [**Image search**](../pm/Creating/SearchByPic) — clicking on the screen will be a bit offset rather than exactly where you specified.
 - [**Perform event**](../Android/pro-lite/RunEvent) — if you pick **Center** for click coordinates, the tap on the element won't be 100% precise, it'll have a small random offset.
 _______________________________________________
+### Random click margin from the edge  
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+Keeps a tap with the **At random** offset in the [**Perform event**](../Android/Enterprise/RunEvent#coordinates-of-touch-point) action off the element's edges: the point is chosen no closer to each edge than the set percent of the element's width and height. 10% by default, from 0 to 50%. An element too small for that margin is tapped in its center.
+_______________________________________________
 ### Random delay deviation when entering characters  
 Used in [**Keyboard emulation**](../Android/pro-lite/Keyboard) and [**Set value**](../Android/pro-lite/SetValue) actions. Lets you set a variation in the delay from the specified value.
 
@@ -65,6 +70,7 @@ ZennoDroid lets you pick how to proxy traffic for the [**Set proxy**](../Android
 
 ![Traffic proxying](./assets/Settings_for_Android/Settings_for_Android_pic4.png)
 - **Proxifier** — the traffic is routed to the computer and proxied there.
+- **Use ProxyBridge** (starting from 2.6.3.0) — the phone's traffic goes through the computer too, but there it is intercepted at the packet level instead of by Proxifier: SOCKS5 and HTTP proxies, and UDP goes through the proxy or is blocked when the proxy doesn't carry it. The checkbox turns off Proxifier, Redsocks and Clash. Administrator rights are required, and ProjectMaker and ZennoDroid already run with them.
 - **Redsocks** — a transparent redirector of TCP/UDP connections into a proxy, on the device itself.
 - **Clash** — rule-based proxying that wraps the whole of the UDP traffic.
 
