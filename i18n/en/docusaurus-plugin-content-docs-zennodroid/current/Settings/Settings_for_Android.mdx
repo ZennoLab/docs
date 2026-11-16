@@ -108,7 +108,7 @@ The **Patch the MuMu image: spoof android_id, the operator and the SIM** switch 
 The patch changes the shared MuMu system image too: stop all MuMu devices before changing it, otherwise the message *It is necessary to stop all running devices* appears. A MuMu update replaces the image and removes the patch: the switch is then off again, and it has to be turned on once more. More about working with MuMu is in [**Installing MuMu**](../pro-lite/MuMu_Install).
 _______________________________________________  
 ### Virtual camera from a file.
-The switch is there only when the LDPlayer emulator is chosen. It lets the device's camera be fed a picture or a video - with the action or with [**SetVideoForFakeCamera**](../API/App#setvideoforfakecamera). While it is off the call goes through without an error, but the app still sees the emulator's own camera.
+The switch is there only when the LDPlayer emulator is chosen. It lets the device's camera be fed a picture or a video - with the action or with [**SetVideoForFakeCamera**](../API/App#setvideoforfakecamera). While it is off, or the device hasn't rebooted since it was turned on, the call fails with *Could not turn on the virtual camera*.
 
 The switch changes the shared system image of the LDPlayer installation, so stop every device of that installation before changing it, otherwise the message *It is necessary to stop all running devices* appears. Devices pick the change up at their next boot. It costs no disk space - there is one image for the whole installation - and it does not get in the way of devices whose camera is not being replaced. Turning it off puts the image back as it was.
 
