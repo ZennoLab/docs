@@ -1,0 +1,115 @@
+---
+sidebar_position: 91
+title: "ZennoDroid 2.6.2.0"
+description: ""
+date: "2026-10-30"
+converted: true
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+_______________________________________________  
+30.10.2026
+
+**Added:**
+
+[+] A **menu of frequently used actions** has been added to the "Device" window ([ZD Enterprise](../pm/Interface/DeviceWindow#actions-menu), [ZD Pro](../pm/Interface/DeviceWindowEmulator#actions-menu)):
+
+- managing device apps (install, open, clear data, etc.);
+- managing device files (push, pull, browse, and manage);
+- Drag'n'Drop is supported: dropping a file onto the "Device" window opens either the app installation menu or the file push menu, depending on the file extension;
+- **ZD ENTERPRISE.** Magisk: enabling, disabling, removing, and installing modules, quick installation of the built-in Busybox and LSPosed;
+- **ZD ENTERPRISE.** LSPosed: module configuration (selecting apps from a list), device generator with filters;
+- diagnostics: device info, log collection, clearing logcat;
+- start, stop, reboot (restart on an emulator), unlock the screen;
+- **ZD ENTERPRISE.** enabling adb over Wi-Fi;
+- checking the external IP, including via Chrome;
+- other actions: "Take a screenshot" (saves the device screen as PNG), "Cover part of image", "Zoom in", "Zoom out", and "Mouse movements record";
+- "Device" → "Change system language...";
+- "Active app" → "Get APK...";
+- **ZD ENTERPRISE.** "Magisk / LSPosed" → "Clear device profile";
+- "Run command..." — running an Adb Shell command.
+
+[+] Menu actions marked with a red dot **are recorded into the project**.
+
+[+] **ZD ENTERPRISE.** **Safe start** of the phone has been added to the ["Device"](../pm/Interface/DeviceWindow#safe-start) window menu: "Diagnostics" → "Safe start" → "H.264 capture" or "Manual refresh". It is used to connect to a device without a physical screen that has run into Root issues.
+
+[+] **ZD ENTERPRISE.** Project API: [`Action.Reboot()`](../API/Action#reboot) — **rebooting the phone**.
+
+[+] Project API: [`Proxy.GetExternalIp()`](../API/Proxy#getexternalip) and [`Proxy.GetExternalIpInBrowser()`](../API/Proxy#getexternalipinbrowser) — **checking the device's external IP**.
+
+[+] An **F9 pause** has been added to the "Follow the cursor" mode: element selection under the cursor freezes, so you can move the cursor to the "Element Tree" and "Element Properties" panels without losing the element. Press F9 again to resume.
+
+[+] Added a **search results panel** for the project: all matches in a single list showing where each was found (name, comment, parameters, code), clicking a row jumps to the action, filtering by action type, and searching across all open projects.
+
+[+] **ZD PRO.** Support for the [**MuMu Player**](https://www.mumuplayer.com/) emulator (Android 12 and Android 15). In addition to the emulator's own features:
+
+- ads disabled on boot and on the home screen;
+- changing the mobile carrier, IMSI, and SIM card serial number;
+- changing the Android ID for apps;
+- GPU spoofing and Canvas noise;
+- root access without enabling it in the emulator settings.
+
+How to install the emulator and connect it to ZennoDroid is described in [**Installing MuMu**](../pro-lite/MuMu_Install).
+
+[+] The proxy selection window now lets you choose the **proxying method** (Proxifier, Redsocks, Clash).
+
+[+] **ZD ENTERPRISE.** **LSPosed 2.2.1** is now bundled with ZennoDroid. It can be installed via the [actions menu](../Enterprise/LSPosed#installing-from-the-actions-menu-zennodroid-262). It is managed through its own CLI (enabled automatically; a one-time phone reboot is required).
+
+[+] **ZD ENTERPRISE.** Added an [**action for changing the CPU core count and memory size**](../Android/Enterprise/setting#performance-settings). It is needed for manual spoofing when you use your own device generator. With the built-in generator, the values are set automatically.
+
+[+] Apps installed via ZennoDroid are now detected as **installed from Google Play**.
+
+[+] **Taps and gestures** in the "Use improved taps" mode ([ZD Enterprise](../Settings/Settings_for_Enterprise#use-improved-taps), [ZD Pro](../Settings/Settings_for_Android#use-improved-taps)) are now even closer to real finger touches: contact size and speed change during a tap, and repeated taps always differ slightly from one another.
+
+[+] **ZD ENTERPRISE.** The **ZennoDroid** module has been updated to version 4.0.5. The module has been significantly reworked: after applying the parameters for the first time, **you need to reboot the phone once**; after that, spoofing works without a reboot.
+
+- Spoofing of the **CPU core count and memory size** in Chrome.
+- Numerous fixes and new hooks for **consistency of spoofed parameters**.
+- **ZennoKeyboard** is seen by apps as the system keyboard.
+- Improved **app hiding**.
+
+[+] **ZD ENTERPRISE.** The **ZennoVCam** module has been updated to version 4.0.0. The module has been significantly reworked for more stable operation, and known bugs have been fixed.
+
+**Fixed:**
+
+[\] Fixed **screen capture** in all modes (H.264, MJPEG, off), which caused projects to run unstably in multithreaded mode.
+
+[\] Fixed the delay before playback of **recorded mouse movements** [`Input.FreeMove`](../API/Input#freemove).
+
+[\] Fixed unstable **JavaScript execution** on a cold start of Chrome (failed to connect to websocket; websocket not found).
+
+[\] **ZD ENTERPRISE.** **LSPosed Helper** no longer shows a notification every time settings are applied.
+
+[\] Fixed failures during **app backup and restore**.
+
+[\] Fixed various failures when **requesting the element tree**.
+
+[\] Fixed a bug where the **element tree** could not be read on Android 12+ while a toast message was displayed on screen.
+
+[\] **ZD ENTERPRISE.** Fixed enabling **Clash via the computer's internet connection** on some phones.
+
+[\] Fixed a **DNS leak** when working through Clash, including when using DoH (`https://1.1.1.1/dns-query`) and DoT (`tls://1.1.1.1`).
+
+[\] Fixed Clash **app whitelists and blacklists** when app names were separated by spaces.
+
+[\] **ZD ENTERPRISE.** Fixed enabling and disabling **Clash via the computer's internet connection** when DoT was specified in the DNS servers (e.g., `tls://1.1.1.1`): a proxy startup error occurred.
+
+[\] **ZD ENTERPRISE.** Fixed **changing the system language** on some firmware versions (the region was not changing).
+
+[\] Fixed **device connection tracking** after the adb server changes (e.g., Android Studio).
+
+[\] Fixed sending **Cookies in HTTP requests**.
+
+[\] Fixed **manual variable mapping** in the "Project in Project" action.
+
+[\] Fixed applying **using directives** to shared code.
+
+[\] Fixed **"QuickWatch"** when debugging C#.
+
+[\] **ZD ENTERPRISE.** Fixed **thread execution hangs**.
+
+[\] **ZD ENTERPRISE.** Fixed **project search**: an action can now be found by its action ID.
+
+[\] **ZD PRO.** Fixed **MuMu screen capture** in the "Use improved taps" mode.
