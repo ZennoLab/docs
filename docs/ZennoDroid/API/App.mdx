@@ -823,6 +823,33 @@ app.RemoveAccount("mymail@gmail.com", "com.google"); // Удалить акка�
 
 ---
 
+### ResetAppSetId
+
+:::info **Доступно начиная с версии ZennoDroid 2.6.3.0.**
+:::
+
+- **`void ResetAppSetId(string packageName)`**  
+    Сбрасывает App Set ID приложения - идентификатор, который сервисы Google Play выдают приложению. Прежнее значение удаляется, и при следующем запросе приложение получает новое. Сервисы Google Play и само приложение при этом закрываются.
+    
+    Нужны root и сервисы Google Play на устройстве.
+    
+    **Параметры:**
+    - `packageName` — имя пакета.
+
+:::info **У приложений одного разработчика App Set ID может быть общим.**
+Отдельное значение для приложения сервисы Google Play хранят, только если не могут определить, каким аккаунтом разработчика оно опубликовано в Google Play. У приложений одного разработчика, установленных из Google Play, когда на устройстве был выполнен вход в аккаунт Google, значение общее, и сброс для одного из них сбрасывает его у всех.
+:::
+
+#### Пример.  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // Имя приложения
+app.ResetAppSetId(packageName); // Сбросить App Set ID приложения
+```
+
+---
+
 ### ResetFakeCameraFraming
 
 :::info **Доступно начиная с версии ZennoDroid 2.6.1.0.**

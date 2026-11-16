@@ -70,7 +70,7 @@ The button shows the proxy set on the device, or **Without proxy**. Clicking it 
 ![The Set proxy window](./assets/DeviceWindow/DeviceWindow_pic7.png)
 
 - **Proxy address** — the proxy string, for example `255.255.255.255:8080` or `protocol://login:pass@IP:port`.
-- **Proxy type** — the proxying method: **Default** (as set in the [**settings**](../../Settings/Proxy_Traffic_Ent)), **Proxifier**, **Redsocks** or **Clash**.
+- **Proxy type** — the proxying method: **Default** (as set in the [**settings**](../../Settings/Proxy_Traffic_Ent)), **Proxifier**, **ProxyBridge**, **Redsocks** or **Clash**. ProxyBridge is available starting from ZennoDroid 2.6.3.0, and it has no "Use the computer's Internet connection" checkbox: the phone's traffic always goes through the computer.
 - **Use the computer's Internet connection** — route the phone's traffic through the computer ([**more**](../../Settings/Proxy_Traffic_Ent#use-computers-internet-connection-gnirehtet)). The checkbox is there for Redsocks and Clash only.
 
 The **OK** button applies the proxy to the device.
@@ -297,6 +297,20 @@ The **Language** field lists the languages in the phone's firmware, with their c
 The **Apply** button changes the language right away, and the line above the buttons tells whether it is applied. The **Add to project** button adds the [**Device Settings → System language selection**](../../Android/Enterprise/setting#system-language-selection) action with the chosen language to the canvas, even if recording is off.
 
 On realme, OPPO and OnePlus phones the phone's region changes together with the language, and this needs root. Their list only has the languages of the regions present in the firmware.
+_______________________________________________
+### Traffic decryption.
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+![Traffic decryption](./assets/DeviceWindow/DeviceWindow_pic45.png)
+
+Items for decrypting content in the [**Traffic window**](./Traffic_Window#content-decryption):
+- **Import a certificate** — sets your own root certificate instead of the one that comes with ZennoDroid: a PKCS#12 file and its password.
+- **Install the certificate on the device** — puts the certificate into the phone's system store; root is required. The Traffic window installs it by itself on the first recording, and this item prepares a phone in advance. The certificate stays on the phone until it reboots.
+- **Disable certificate pinning** — gives the certificate to the ZennoDroid module, and apps that check their server's certificate accept it. The app has to be in the scope of the module (the [**LSPosed module**](#lsposed-module-settings) item) and restarted afterwards.
+- **Restore certificate pinning** — undoes the previous item. The app has to be restarted too.
+- **Certificate information** — who the certificate was issued to and by, its validity, thumbprint, where it was taken from and whether it is installed on the device.
+
+The items that need the phone are available while the device is running.
 _______________________________________________
 ### Diagnostics.
 ![Diagnostics](./assets/DeviceWindow/DeviceWindow_pic27.png)

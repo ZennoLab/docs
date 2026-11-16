@@ -823,6 +823,33 @@ app.RemoveAccount("mymail@gmail.com", "com.google"); // Remove the account from 
 
 ---
 
+### ResetAppSetId
+
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+
+- **`void ResetAppSetId(string packageName)`**  
+    Resets the App Set ID of an app, the ID Google Play services gives the app. The old value is dropped, and the app gets a new one the next time it asks. Google Play services and the app itself are closed for this.
+    
+    Requires root and Google Play services on the device.
+    
+    **Parameters:**
+    - `packageName` — package name.
+
+:::info **Apps of one developer can share an App Set ID.**
+Google Play services keeps a separate value for an app only when it can't tell which Google Play developer account published it. Apps of one developer installed from Google Play while a Google account was signed in on the device share one value, and resetting it for one of them resets it for all.
+:::
+
+#### Example  
+```csharp
+var app = instance.DroidInstance.App;
+
+var packageName = "com.android.chrome"; // App name
+app.ResetAppSetId(packageName); // Reset the app's App Set ID
+```
+
+---
+
 ### ResetFakeCameraFraming
 
 :::info **Available starting from ZennoDroid 2.6.1.0.**

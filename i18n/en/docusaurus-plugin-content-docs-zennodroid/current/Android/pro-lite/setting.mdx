@@ -218,6 +218,15 @@ A powerful and flexible program for rerouting internet traffic through a proxy s
 
 The emulator will be proxied by its PID in Windows. 
 
+### ProxyBridge
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+An alternative to Proxifier: the emulator is proxied by the PID of its process in Windows as well, but the traffic is intercepted at the packet level, so UDP doesn't get past the proxy either: through a SOCKS5 proxy with UDP support it goes through the proxy, and through the others it is blocked. Works on MEmu, LDPlayer 9 and 14, and MuMu.
+
+***http*** and ***socks5*** proxies are supported, with or without authorization. A ***socks4*** proxy is set up only through Proxifier. This method has no extra fields.
+
+A project with this proxying method runs in ZennoDroid 2.6.3.0 and later. More in [**Traffic proxying**](../../Settings/Proxy_Traffic#proxybridge).
+
 ### Redsocks
 Redsocks2 is used for proxying all TCP/UDP traffic transparently.
 

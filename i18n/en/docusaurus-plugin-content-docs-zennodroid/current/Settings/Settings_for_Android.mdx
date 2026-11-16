@@ -59,6 +59,11 @@ Allows clicks to happen with a slight offset from the set parameters. Used in th
 - [**Run Event**](../Android/pro-lite/RunEvent). If you choose **Center** as the tap coordinates, it'll click the element slightly off-center.
 
 _______________________________________________
+### Random click margin from the edge.
+:::info **Available starting from ZennoDroid 2.6.3.0.**
+:::
+Keeps a tap with the **At random** offset in the [**Run Event**](../Android/pro-lite/RunEvent#coordinates-of-touch-point) action off the element's edges: the point is chosen no closer to each edge than the set percent of the element's width and height. 10% by default, from 0 to 50%. An element too small for that margin is tapped in its center. Each emulator type keeps its own value.
+_______________________________________________
 ### Random delay deviation when entering characters.
 Used in the [**Keyboard Emulation**](../Android/pro-lite/Keyboard) and [**Set Value**](../Android/pro-lite/SetValue) actions. Lets you set deviation for the input delay.
 
@@ -74,6 +79,7 @@ ZennoDroid lets you choose how to proxy traffic for the [**Set Proxy**](../Andro
 
 ![Traffic proxying](./assets/Settings_for_Android/Settings_for_Android_pic3.png)
 - **Proxifier** — the traffic of the emulator is routed to the computer and proxied there.
+- **Use ProxyBridge** (starting from 2.6.3.0) — packet-level interception of the emulator's traffic instead of Proxifier: SOCKS5 and HTTP proxies, and UDP goes through the proxy or is blocked when the proxy doesn't carry it. The checkbox turns off Proxifier, and on LDPlayer also Redsocks and Clash; if Redsocks or Clash is on together with it, they are the ones that work. Administrator rights are required, and ProjectMaker and ZennoDroid already run with them.
 - **Redsocks** — a transparent redirector of TCP/UDP connections into a proxy, on the device itself. Works on Android 7x64, 9 and 12 only.
 - **Clash** — rule-based proxying that wraps the whole of the UDP traffic.
 
