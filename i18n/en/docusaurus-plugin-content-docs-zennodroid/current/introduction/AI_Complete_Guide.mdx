@@ -42,7 +42,7 @@ Under the hood, the assistant uses a language model (LLM) through Semantic Kerne
 | **Project MCP** | `http://localhost:6117` | Read the project structure, add/edit cubes, manage lists, tables and variables |
 | **Android MCP** | `http://localhost:6118` | Read the state of the connected Android device |
 
-> MCP servers start automatically together with ProjectMaker. The port addresses are only needed if you are connecting an **external** AI assistant (see [section 9](#9-connecting-external-ai-assistants-optional)) – for the built-in chat nothing needs to be configured beyond the model API key.
+> MCP servers start automatically together with ProjectMaker and serve the built-in chat. They are not available to external assistants: an external assistant needs its own copies of the servers (see [section 9](#9-connecting-external-ai-assistants-optional)). For the built-in chat nothing needs to be configured beyond the model API key.
 
 ### The key difference from the AI assistant in ZennoPoster {#the-key-difference-from-zennoposter}
 
@@ -431,25 +431,27 @@ Technically the agent only reads the device state, so the action conflict famili
 
 ## 9. Connecting external AI assistants (optional) {#9-connecting-external-ai-assistants-optional}
 
-The chat built into ProjectMaker works out of the box – nothing needs configuring beyond the model API key. But the same MCP servers (Project MCP and Android MCP) can also be connected to **external** AI assistants, so you can manage the project and read the device from your own editor or terminal.
+The chat built into ProjectMaker works out of the box – nothing needs configuring beyond the model API key. But you can also manage the project and read the device from an **external** AI assistant - from your own editor or terminal.
 
-> **These are two different things.** The built-in chat and an external assistant are independent entry points to the same MCP servers. If the built-in chat is enough for you, this section can be skipped.
+> **These are two different things.** The built-in chat runs on the internal MCP servers (ports `6117`-`6123`), and they serve only it: an external client gets a `401` error. An external assistant needs its **own copy** of the public servers, started with your API key. If the built-in chat is enough for you, this section can be skipped.
 
-**Common requirement:** ProjectMaker ZennoDroid must be **running** – the MCP servers start with it and listen on:
-- **ProjectMCP** → `http://localhost:6117`
-- **AndroidMCP** → `http://localhost:6118`
+**Common requirement:** start ProjectMaker ZennoDroid and your own copies of the servers:
+- **projectmaker-droid** (Project control) → `http://localhost:6217`
+- **android-pm** (Android device inspection) → `http://localhost:6211`
+
+See the [MCP setup for AI assistants](./MCP_Setup), section "Preparation", for how to issue an API key and start the servers. Below are only the client-connection steps.
 
 ### GitHub Copilot {#github-copilot}
 
-1. Make sure ProjectMaker is running.
+1. Make sure ProjectMaker and your server copies are running.
 2. Open your profile folder: `Win + R` → `%USERPROFILE%` → Enter.
 3. Create a `.mcp.json` file (for example, `C:\Users\YourName\.mcp.json`) with the following content:
 
 ```json
 {
   "servers": {
-    "AndroidMCP": { "type": "http", "url": "http://localhost:6118" },
-    "ProjectMCP": { "type": "http", "url": "http://localhost:6117" }
+    "projectmaker-droid": { "type": "http", "url": "http://localhost:6217" },
+    "android-pm": { "type": "http", "url": "http://localhost:6211" }
   }
 }
 ```
@@ -459,18 +461,18 @@ The chat built into ProjectMaker works out of the box – nothing needs configur
 ### Claude Code (CLI) {#claude-code-cli}
 
 ```sh
-claude mcp add AndroidMCP --transport http http://localhost:6118
-claude mcp add ProjectMCP --transport http http://localhost:6117
+claude mcp add projectmaker-droid --transport http http://localhost:6217
+claude mcp add android-pm --transport http http://localhost:6211
 claude mcp list   # verify
 ```
 
-To remove them later: `claude mcp remove AndroidMCP` and `claude mcp remove ProjectMCP`.
+To remove them later: `claude mcp remove projectmaker-droid` and `claude mcp remove android-pm`.
 
 ### OpenAI Codex (CLI) {#openai-codex-cli}
 
 ```sh
-codex mcp add AndroidMCP --url http://localhost:6118
-codex mcp add ProjectMCP --url http://localhost:6117
+codex mcp add projectmaker-droid --url http://localhost:6217
+codex mcp add android-pm --url http://localhost:6211
 codex mcp list   # verify
 ```
 

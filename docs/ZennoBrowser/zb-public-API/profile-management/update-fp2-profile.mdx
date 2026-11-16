@@ -1,0 +1,93 @@
+---
+sidebar_position: 33
+sidebar_label: Обновление профиля fp2
+title: Обновление профиля fp2
+description: Изменяет только переданные параметры профиля fp2. Пустое значение параметра эмуляции сохраняет текущее значение.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Описание:** Изменяет только переданные параметры профиля fp2. Пустое значение параметра эмуляции сохраняет текущее значение.
+
+Для ручных значений `screen`, `languages`, `gpuVendor` и `gpuRenderer` сначала получите допустимые значения через [метод получения допустимых значений](./get-fp2-profile-choices). Пустые `proxyServerId` и `presetId` снимают соответствующую настройку.
+
+#### **Параметры запроса:**
+
+| Параметр | Тип | Формат | Значение по умолчанию | Описание |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | Уникальный идентификатор профиля (обязательный). |
+| workspaceId | integer | int64 | -1 | Идентификатор рабочего пространства; `-1` означает выбранное в ZennoBrowser рабочее пространство. |
+| folderId | string | uuid | (empty) | Идентификатор папки профиля. |
+| name | string |  | (empty) | Имя профиля. |
+| notes | string |  | (empty) | Дополнительные заметки профиля. |
+| tags | string |  | (empty) | Теги профиля, разделённые пробелами. |
+| commandLineArguments | string |  | (empty) | Дополнительные аргументы командной строки браузера. |
+| proxyServerId | string |  | (empty) | Идентификатор прокси-сервера. Не передавайте параметр, чтобы сохранить значение; пустая строка удаляет настройку. |
+| presetId | string |  | (empty) | Идентификатор пресета для начальной конфигурации профиля. Не передавайте параметр, чтобы сохранить значение; пустая строка удаляет настройку. |
+| screen | string |  | (empty) | Экран: `auto`, `real` или токен из [списка допустимых значений](./get-fp2-profile-choices). Значение, не поддерживаемое устройством, может быть отклонено. |
+| cpu | string |  | (empty) | Количество логических процессоров: `auto`, `real` или число. |
+| memory | string |  | (empty) | Объём памяти устройства: `auto`, `real` или число. |
+| locale | string |  | (empty) | Локаль: `auto`, `real` или код, например `en-US`. |
+| timeZone | string |  | (empty) | Часовой пояс: `auto`, `real` или идентификатор IANA, например `Europe/Berlin`. |
+| languages | string |  | (empty) | Языки: `auto`, `real` или список из [допустимых значений этого профиля](./get-fp2-profile-choices), разделённых `;`, например `en-US;ru`. Пустая строка сохраняет текущее значение. Неподдерживаемые языки могут быть отклонены. |
+| gpuVendor | string |  | (empty) | Производитель GPU: `auto`, `real` или имя из [списка допустимых значений](./get-fp2-profile-choices); при имени требуется `gpuRenderer`. Значение, не поддерживаемое устройством, может быть отклонено. |
+| gpuRenderer | string |  | (empty) | Рендерер GPU; используется только вместе с именем производителя в `gpuVendor`. |
+| canvasNoise | string |  | (empty) | Шум Canvas: `auto`, `on` или `off`. |
+| clientRectsNoise | string |  | (empty) | Шум ClientRects: `auto`, `on` или `off`. |
+| webRtc | string |  | (empty) | Режим WebRTC: `auto`, `real` или `hide`. |
+| mediaDevices | string |  | (empty) | Виртуальные медиоустройства: `auto` или `real`. |
+| imagesVideosDownload | string |  | (empty) | Загрузка изображений и видео: `on` или `off`. |
+
+#### **Пример запроса:**
+
+**PUT**
+
+**CURL:**
+
+```bash
+curl -X PUT 'http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Put,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1
+```
+
+#### **Ответ API:**
+
+| Код ответа | Результат |
+| :--- | :--- |
+| `200` | Успешно |
+| `400` | Недопустимое значение параметра эмуляции |
+| `401` | Не авторизован |
+| `403` | Доступ запрещён |
+| `500` | Внутренняя ошибка сервера |
+
+При коде `400` поле `message` указывает недопустимую настройку и разрешённые значения.
+
+---

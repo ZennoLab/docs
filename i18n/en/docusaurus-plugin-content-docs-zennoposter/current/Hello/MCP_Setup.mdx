@@ -12,9 +12,47 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 # ZennoPoster MCP: Setup Guide for AI Assistants
 
-> **Prerequisites:** ProjectMaker must be running before connecting any AI assistant. The MCP servers start automatically with ProjectMaker and listen on:
-> - **BrowserMCP** (Browser control) → `http://localhost:6108`
-> - **ProjectMCP** (Project control) → `http://localhost:6107`
+:::warning Since 7.9.3, the built-in servers do not accept external assistants
+The MCP servers that ProjectMaker starts by itself (the `6107`-`6113` port range, including `6107` and `6108`) serve only the built-in AI chat. An external client gets a `401` error, and the product log records `ingress refused`. The `BrowserMCP` (`6108`) and `ProjectMCP` (`6107`) entries added to your client earlier no longer work and can be removed.
+
+Connect your assistant to your own copy of the server, started with your API key. It runs on the public servers' ports next to the built-in servers and does not interfere with the chat. How to start it is described below under "Preparation".
+:::
+
+---
+
+## Preparation: API Key and Your Own Servers
+
+You only do this once. You need two servers:
+
+- **projectmaker** (Project control) → `http://localhost:6207`
+- **instance-pm** (ProjectMaker browser control) → `http://localhost:6208`
+
+### Step 1. Issue an API Key
+
+1. Start ProjectMaker and open the project you need.
+2. Open **Settings → API Keys → Add**.
+3. Set a label, a tier and scopes. For read-only access to the project, tier `T0` with the default scopes is enough. To let the assistant edit the project and control the browser, add write scopes and raise the tier.
+4. Click **Generate API Key** and copy the key right away: it is shown only once.
+
+### Step 2. Download the Servers
+
+On the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases), download the latest versions of two archives: `MCP.ProjectMaker-v…-win-x64.zip` and `MCP.Instance-v…-win-x64.zip`. Extract each one to its own folder, such as `C:\ZennoMCP\ProjectMaker` and `C:\ZennoMCP\Instance`. You do not need to install .NET.
+
+### Step 3. Start the Servers with Your Key
+
+Open the server folder, type `powershell` in the File Explorer address bar, and press Enter. Replace `zp_xxx` with your key.
+
+```powershell title="Project, port 6207"
+.\ZennoLab.AI.MCP.ProjectMaker.exe --ProjectMaker:ApiKey=zp_xxx
+```
+
+```powershell title="Browser, port 6208"
+.\ZennoLab.AI.MCP.Instance.exe --Instance:ApiKey=zp_xxx
+```
+
+Keep both console windows open while you work with the assistant. To avoid entering the key every time, put it in the `ApiKey` field of the `appsettings.json` file next to the exe and start the server by double-clicking it.
+
+Key permissions and the other servers (ZennoPoster tasks, ZennoDroid) are described in [Public API and MCP Servers](./Public_API_and_MCP.mdx).
 
 ---
 
@@ -22,7 +60,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ### Steps
 
-1. Make sure ProjectMaker is running.
+1. Make sure ProjectMaker and your server copies are running.
 2. Open your user profile folder: press `Win + R`, type `%USERPROFILE%`, press Enter.
 3. Create a file named `.mcp.json` in that folder (e.g. `C:\Users\YourName\.mcp.json`).
 4. Paste the following content:
@@ -30,13 +68,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 ```json
 {
   "servers": {
-    "BrowserMCP": {
+    "projectmaker": {
       "type": "http",
-      "url": "http://localhost:6108"
+      "url": "http://localhost:6207"
     },
-    "ProjectMCP": {
+    "instance-pm": {
       "type": "http",
-      "url": "http://localhost:6107"
+      "url": "http://localhost:6208"
     }
   }
 }
@@ -51,13 +89,13 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 ### Steps
 
-1. Make sure ProjectMaker is running.
+1. Make sure ProjectMaker and your server copies are running.
 2. Open a terminal.
 3. Run the following two commands:
 
 ```sh
-claude mcp add BrowserMCP --transport http http://localhost:6108
-claude mcp add ProjectMCP --transport http http://localhost:6107
+claude mcp add projectmaker --transport http http://localhost:6207
+claude mcp add instance-pm --transport http http://localhost:6208
 ```
 
 4. Verify the servers are registered:
@@ -68,7 +106,7 @@ claude mcp list
 
 5. The MCP servers are now available globally in all Claude Code sessions.
 
-> To remove them later: `claude mcp remove BrowserMCP` and `claude mcp remove ProjectMCP`
+> To remove them later: `claude mcp remove projectmaker` and `claude mcp remove instance-pm`
 
 ---
 
@@ -76,13 +114,13 @@ claude mcp list
 
 ### Steps
 
-1. Make sure ProjectMaker is running.
+1. Make sure ProjectMaker and your server copies are running.
 2. Open a terminal.
 3. Run the following two commands:
 
 ```sh
-codex mcp add BrowserMCP --url http://localhost:6108
-codex mcp add ProjectMCP --url http://localhost:6107
+codex mcp add projectmaker --url http://localhost:6207
+codex mcp add instance-pm --url http://localhost:6208
 ```
 
 4. Verify:
@@ -90,6 +128,28 @@ codex mcp add ProjectMCP --url http://localhost:6107
 ```sh
 codex mcp list
 ```
+
+---
+
+## 4. LM Studio
+
+### Steps
+
+1. Make sure ProjectMaker and your server copies are running.
+2. You need LM Studio 0.3.17 or newer and a model that supports tool use. Without it, the model cannot run commands.
+3. In the right-hand sidebar of LM Studio, open the **Program** tab and click **Install → Edit mcp.json**.
+4. Add the servers to the `mcpServers` section and save the file:
+
+```json
+{
+  "mcpServers": {
+    "projectmaker": { "url": "http://localhost:6207" },
+    "instance-pm": { "url": "http://localhost:6208" }
+  }
+}
+```
+
+> Local models are weaker than cloud ones: they are good enough for reading and explaining a project, but complex edits work better with a cloud model.
 
 ---
 

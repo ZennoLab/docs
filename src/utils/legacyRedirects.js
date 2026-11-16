@@ -1,0 +1,38 @@
+// Legacy URL redirects: old path -> current path.
+// Single source of truth: consumed by docusaurus.config.js (static redirect
+// pages via @docusaurus/plugin-client-redirects) and by the NotFound wrapper
+// (client-side redirect on hosts that serve the SPA shell for every path).
+export const LEGACY_REDIRECTS = {
+  '/zennodroid/get-started/MCP_Setup': '/zennodroid/introduction/MCP_Setup',
+  '/zennodroid/get-started/ai-assistant': '/zennodroid/introduction/ai-assistant',
+  '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/Connection_settings/Google.com': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Google.com',
+  '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/Connection_settings/Mail.ru': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail.ru',
+  '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/Connection_settings/Yandex.ru': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Yandex.ru',
+  '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/PM_Editor_Actions_SendMail': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/PM_Editor_Actions_SendMail',
+  '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/Send_mail': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/PM_Editor_Actions_SendMail',
+  '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Send_mail': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/PM_Editor_Actions_SendMail',
+  '/zennoposter/ProjectMaker/Project-editor/Static_blocks/Bot_Interface': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Project/BotUI_Bot_Interface',
+  '/zennoposter/ProjectMaker/Project-editor/Static_blocks/Encryption': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Project/Project_Encryption',
+  '/zennoposter/ProjectMaker/Project-editor/Static_blocks/FTP_Settings': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Ftp/FTP_Connection',
+  '/zennoposter/ProjectMaker/Project-editor/Static_blocks/Project_Input_Settings': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Project/Input_settings',
+  '/zennoposter/ProjectMaker/Project-editor/Static_blocks/References_from_GAC': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Custom_code/References_from_GAC',
+  '/zennoposter/ProjectMaker/Project-editor/Static_blocks/Using_Directives_and_Shared_Code': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Custom_code/Using_Directives_and_Shared_Code',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Captchas': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Captchas',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Content_Creation_Modules': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Content_Creation_Modules',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Google_Sheets': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Google_Sheets',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Instance_Settings': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Instance_Settings',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Mail': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Mail',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Other_ZennoPoster_Settings': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Other_ZennoPoster_Settings',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Plugin_Settings': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Plugin_Settings',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Poster_Thread_Settings': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Poster_Thread_Settings',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Project_Execution_Settings': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Project_Execution_Settings',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/Proxy_Services': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Proxy_Services',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/SMS_Services': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/SMS_Services',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/ZennoPoster_Hotkeys': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/ZennoPoster_Hotkeys',
+  '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/Settings_ZennoPoster/ZennoPoster_Translators': '/zennoposter/ZennoPoster/Settings_ZP_and_ProxyChecker/ZennoPoster_Translators',
+  '/zennoposter/category/actions-mail-connection-settings': '/zennoposter/category/actions-mail',
+  '/zennoposter/category/actions-send-mail': '/zennoposter/category/actions-mail',
+  '/zennoposter/category/zennoposter-settings': '/zennoposter/category/settings-zennoposter-proxychecker',
+  '/zennoproxy/basics/getting-started': '/zennoproxy/getting-started',
+  '/zennoproxy/intro': '/zennoproxy/getting-started',
+};

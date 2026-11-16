@@ -23,6 +23,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 | tags | string |  | (empty) | Profile tags separated by spaces. (e.g. `1 2 3 4`) |
 | tagOperator | string |  | (empty) | Specifies the logical operator for tag filtering: "or" returns profiles with at least one matching tag, "and" returns profiles with all specified tags. Defaults to "or". |
 | sorting | string |  | (empty) | Sorting parameters (optional). Id, ContainerId, Name, CreationTime, User.Sex, User.Name, User.Surname, User.Age, User.Country, OperationSystem.Name, OperationSystem.Version, Brand.Name, Brand.Version, Proxy, Proxy.Name, ProfileState.DisplayStatus, ProfileState.Description, Status, OperationalState.OperationStatus, OperationalState.CanChangeOperationStatus, UsedTime, LastStartTime, LastErrorMessage, Tags, Tags.Id, Notes. |
+| engine | string |  | (empty) | Optional fingerprint engine filter: `Fp1` or `Fp2`. |
 
 #### **Example request:**
 

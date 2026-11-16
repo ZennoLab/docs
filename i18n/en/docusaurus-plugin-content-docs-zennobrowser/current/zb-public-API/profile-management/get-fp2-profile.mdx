@@ -1,0 +1,68 @@
+---
+sidebar_position: 32
+sidebar_label: Get fp2 Profile
+title: Get fp2 Profile
+description: Returns an fp2 profile. Unset emulation settings are returned as `auto`; the values resolved by the engine are not returned.
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+<DisclaimerNotice />
+
+**Description:** Returns an fp2 profile. Unset emulation settings are returned as `auto`; the values resolved by the engine are not returned.
+
+#### **Request parameters:**
+
+| Parameter | Type | Format | Default | Description |
+| :-----: | :-----: | :-----: | :-----: | :----- |
+| profileId | string | uuid | (required) | The unique identifier of the fp2 profile to retrieve |
+| workspaceId | integer | int64 | -1 | The identifier of the workspace. Defaults to -1 if not specified. |
+
+#### **Example request:**
+
+**GET**
+
+**CURL:**
+
+```bash
+curl -X GET 'http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1' \
+  --header 'Api-Token: YOUR_SECRET_TOKEN'
+```
+
+**C#:**
+
+```csharp
+using System.Text;
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Get,
+    RequestUri = new Uri("http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1"),
+    Headers =
+    {
+        { "Api-Token", "YOUR_SECRET_TOKEN" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+```
+
+**Cube:**
+
+```
+http://localhost:8160/v1/profiles/fp2/123e4567-e89b-12d3-a456-426614174000?workspaceId=-1
+```
+
+#### **API response:**
+
+| Response code | Result |
+| :--- | :--- |
+| `200` | OK |
+| `401` | Unauthorized |
+| `403` | Forbidden |
+| `500` | Internal Server Error |
+
+---
