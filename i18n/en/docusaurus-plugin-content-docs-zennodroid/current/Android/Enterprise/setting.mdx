@@ -87,6 +87,18 @@ Format: use colons XX:XX:XX:XX:XX:XX, or just type it without colons XXXXXXXXXXX
 :::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
 ::: 
 _______________________________________________
+## Performance settings  
+The **Performance** item sets the number of CPU cores and the amount of RAM that apps and websites get. The phone itself doesn't change: only what apps learn about it does.  
+{/* SCREENSHOT: the Performance item of the Device settings action on a phone - ../assets/setting/Android_Setting_pic37.png */}
+
+- *Processors*. The number of CPU cores, 1 or more.  
+- *RAM (Mb)*. The amount of RAM in MB, from 512 to 65,536: a value outside this range is replaced with the nearest limit. Apps get the memory in whole gigabytes: the value is rounded to the nearest one, and 512 MB gives 1 GB.  
+
+[**Device model**](#how-to-specify-the-device-model) and [**Generate a device**](#generate-a-device) set the cores and the memory themselves, from the phone model. This item replaces them with your own values: put it after them in the project, otherwise they bring the model's values back.  
+
+:::warning **You need to have the [*ZennoDroid module for LSPosed*](../../Enterprise/LSPosed#installing-the-zennodroid-module) installed.**
+:::
+_______________________________________________
 ## Bluetooth settings  
 Sets the MAC address of the device's Bluetooth adapter.  
 ![Bluetooth settings](../assets/setting/Android_Setting_pic31.png)  
