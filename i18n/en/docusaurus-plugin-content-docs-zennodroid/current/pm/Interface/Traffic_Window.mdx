@@ -33,7 +33,7 @@ _______________________________________________
 The phone's incoming connections, adb debugging over Wi-Fi for one, stay out of the window, and the proxy password is hidden in the phone's rows.
 _______________________________________________
 ## Rows and window settings.
-Besides the status, type, address, proxy and time, the phone's rows have the **Application** column, the package the traffic came from, and **Bytes**.
+Besides the status, type, address, proxy and time, the phone's rows have the **Application** column, the package the traffic came from, and **Bytes**. When the app can't be determined, the cell is empty.
 
 - **Group by application** — the rows are gathered by app, so you see at once who went online.
 - **Requests only** — hides the connections and leaves the requests.
@@ -48,7 +48,9 @@ App requests other than Chrome's are encrypted. ZennoDroid decrypts them on the 
 - the phone is rooted: ZennoDroid installs its own root certificate on it, which apps trust like the system ones;
 - the proxy isn't given as an IPv6 address.
 
-Without a proxy and without the connection through the computer there is no content: traffic can only be decrypted on its way through the computer or Clash. The phone's external IP doesn't change during the recording: the traffic still leaves through the proxy.
+Without a proxy and without the connection through the computer there is no content: traffic can only be decrypted on its way through the computer or Clash. The phone's external IP doesn't change during the recording: the traffic still leaves through the proxy. The apps' fingerprint doesn't change either.
+
+Some requests, those of Google Play services for one, aren't decrypted even then: only their connections show in the window.
 
 Decryption starts a few seconds after the window opens: what the phone sent before stays without content. If you change the proxy or stop the device during the recording, decryption stops: close the Traffic window and open it again.
 
