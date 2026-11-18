@@ -9,6 +9,12 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 # Окно трафика
 <DisclaimerNotice />
 
+export const VideoSample = ({source}) => (
+  <video controls playsInline muted preload="auto" className='docsVideo'>
+    <source src={source} type="video/mp4" />
+</video>
+);
+
 :::info **Доступно начиная с версии ZennoDroid 2.6.3.0.**
 :::
 
@@ -24,6 +30,10 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 _______________________________________________
 ## Как открыть.
 В верхнем меню **Окно → Трафик**. Трафик записывается, пока окно открыто: если его закрыть, запись останавливается.
+
+Пример включения мониторинга:
+
+<VideoSample source={require("./assets/Traffic_Window/Traffic_Window_Monitoring.mp4").default}/>
 _______________________________________________
 ## Что попадает в окно.
 - **Запросы Chrome** - целиком: адрес, метод, заголовки, cookie, тела запроса и ответа.  
