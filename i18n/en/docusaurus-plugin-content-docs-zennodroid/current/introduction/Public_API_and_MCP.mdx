@@ -1,0 +1,304 @@
+---
+sidebar_position: 6
+sidebar_label: Public API and MCP servers
+title: "Public API and MCP Servers | ZennoDroid Documentation | ZennoLab"
+description: "The ZennoDroid and ProjectMaker public API, API keys with permissions, and public MCP servers for external AI assistants: ports, startup, and client setup."
+slug: public-api-mcp
+---
+import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
+
+# Public API and MCP Servers
+
+<DisclaimerNotice />
+
+ZennoDroid and ProjectMaker 2.6.1 introduced a public HTTP API (PublicApi) and a suite of public MCP servers. You can control the product externally from your own scripts and applications or through an AI assistant. Access permissions are defined by your API key.
+
+:::info Requirements
+ZennoDroid 2.6.1 or newer, Windows x64. Which server versions match your ZennoDroid version is shown in the [compatibility table](https://zennolab.github.io/zennoposter-mcp/compatibility.html). To work with a project, ProjectMaker must be running with the project open; to work with tasks, ZennoDroid must be running.
+:::
+
+_______________________________________________
+
+## 1. What's New in 2.6.1 {#1-whats-new-in-261}
+
+**Public REST API (PublicApi)** — more than 100 operations under a unified contract:
+
+- working with a project in ProjectMaker: action tree, variables, lists, tables, and static data;
+- managing tasks and execution sessions in ZennoDroid;
+- device information: the element tree of the screen and installed applications.
+
+The contract is described in OpenAPI, and you can generate a client for any language from the specification.
+
+**API keys with flexible permissions.** Keys are issued in ProjectMaker. Each key has its own set of permissions and a maximum operation tier, ranging from strictly read-only access to full control.
+
+**Public MCP servers** built on top of this API: download them, enter your key, and connect them to your AI client. The assistant's permissions are determined by your key, and connections are accepted only from the local machine.
+
+The product's built-in AI chat runs on the same infrastructure: the same API and the same permission model, with no hidden privileged channels. To learn more about the chat itself, see [AI Assistant](./ai-assistant).
+
+_______________________________________________
+
+## 2. Two Sets of MCP Servers {#2-two-sets-of-mcp-servers}
+
+This is the most important thing to understand before setup. There are two sets of servers, and they serve different purposes.
+
+| | Internal servers | Public servers |
+|---|---|---|
+| **Ports** | `6117` ProjectMCP, `6118` AndroidMCP | `6211`, `6212`, `6217`, `6220` |
+| **Startup** | Automatically with ProjectMaker | Manually, downloaded separately |
+| **API key** | A service key issued by the product itself | Your own, with permissions defined by you |
+| **Coverage** | ProjectMaker project and device | ProjectMaker project and device, ZennoDroid tasks and their devices |
+| **External assistants** | Not accepted since 2.6.2 | Supported, this is what they are for |
+| **Setup** | Not required | This page and the [MCP setup guide for AI assistants](./MCP_Setup) |
+
+The internal servers serve only the built-in AI chat. Since 2.6.2 they refuse requests from external clients: the client gets a `401` error, and the product log records `ingress refused`. If your assistant was connected to `6117` or `6118`, switch it to the public servers.
+
+The public servers run next to the built-in ones and do not interfere with them. Your key defines what the assistant may do: from read-only access to the project up to managing ZennoDroid tasks.
+
+ZennoDroid ports are shifted by +10 from ZennoPoster, so the servers of both products run on the same machine at the same time. The exception is MCP.Android: only ZennoDroid has it, and it takes `6211` and `6212`.
+
+:::warning Do Not Use Ports 6117-6123
+The product's internal infrastructure uses this port range. Do not run your own processes on these ports, or the built-in AI chat will stop working.
+:::
+
+_______________________________________________
+
+## 3. API Keys: Permissions and Tiers {#3-api-keys-permissions-and-tiers}
+
+Keys are issued in ProjectMaker under **Edit → Settings → Api-Keys → Add new API key**. In the dialog, specify:
+
+- **Label** — a name that will help you identify who the key was issued to.
+- **Max tier** — the highest operation severity level allowed. `T0` permits read-only access, while higher tiers enable changes.
+- **Expires** — in how many days the key stops working; `0` means never.
+- **Scopes** — a set of access areas. By default, only read scopes are ticked.
+
+The key is created with the **Generate API Key** button.
+
+:::caution The Key Is Shown Only Once
+Copy and save the key as soon as you create it. You cannot view it again; if you lose it, the easiest solution is to delete it and issue a new one.
+:::
+
+If a key does not have sufficient permissions, the API returns an error specifying the exact scope or tier that is missing.
+
+**Recommended workflow:**
+
+1. Issue a key with the `T0` tier and read-only scopes.
+2. Make sure the assistant can see the project and answer questions about it.
+3. Issue a second key with write scopes and use it when changes are needed.
+
+Using a separate key for each client and machine makes revocation easier: if something goes wrong, you will know exactly which key to delete.
+
+_______________________________________________
+
+## 4. Installing Public Servers {#4-installing-public-servers}
+
+### Step 1. Choose the Servers You Need {#step-1-choose-the-servers-you-need}
+
+| Task | Server | Port |
+|---|---|---|
+| Read and edit the project: cubes, connections, variables, lists, tables | MCP.ProjectMaker | `6217` |
+| Start the ProjectMaker device and look at its screen, elements, and apps | MCP.Android | `6211` |
+| Create and manage tasks: start, threads, stop, logs | MCP.ZennoPoster | `6220` |
+| Look at the devices of running tasks | MCP.Android, second copy | `6212` |
+
+You do not need to install everything at once. If you are starting with a single server, choose **MCP.ProjectMaker**.
+
+### Step 2. Download and Extract {#step-2-download-and-extract}
+
+The archives are available on the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases) and follow a naming pattern such as `MCP.ProjectMaker-v0.6.0-win-x64.zip`. Extract each archive to its own folder, such as `C:\ZennoMCP\ProjectMaker`. These are ready-to-use, self-contained builds, so you do not need to install .NET separately.
+
+### Step 3. Start the Server with Your Key {#step-3-start-the-server-with-your-key}
+
+Open the folder containing the extracted server, type `powershell` in the File Explorer address bar, and press Enter. Replace `zp_xxx` with your key. Without arguments MCP.ProjectMaker and MCP.ZennoPoster start for ZennoPoster, so the ZennoDroid commands specify the port and the address of the product.
+
+```powershell title="ProjectMaker, port 6217"
+.\ZennoLab.AI.MCP.ProjectMaker.exe --urls http://localhost:6217 `
+  --ProjectMaker:BaseUrl=http://localhost:5309/api/v1 --ProjectMaker:ApiKey=zp_xxx
+```
+
+```powershell title="Device in ProjectMaker, port 6211"
+.\ZennoLab.AI.MCP.Android.exe --Android:ApiKey=zp_xxx
+```
+
+```powershell title="ZennoDroid tasks, port 6220"
+.\ZennoLab.AI.MCP.ZennoPoster.exe --urls http://localhost:6220 `
+  --ZennoPoster:BaseUrl=http://localhost:5310/api/v1 --ZennoPoster:ApiKey=zp_xxx
+```
+
+The console window must remain open: without a running server, the assistant loses access.
+
+:::tip Starting Without Entering the Key
+You can put the values from the command into the `appsettings.json` file next to the program, and then the server starts with a double-click on the exe. MCP.Android needs only the key in the `ApiKey` field; for MCP.ProjectMaker and MCP.ZennoPoster, also enter the port and the address of the product. For example, for MCP.ProjectMaker:
+
+```json
+{
+  "Urls": "http://localhost:6217",
+  "ProjectMaker": {
+    "BaseUrl": "http://localhost:5309/api/v1",
+    "ApiKey": "zp_xxx"
+  }
+}
+```
+
+You can also pass the key through an environment variable such as `ProjectMaker__ApiKey`. The command-line argument takes precedence over the environment variable and the settings file.
+:::
+
+### Devices of Running Tasks, Port 6212 {#devices-of-running-tasks-port-6212}
+
+This is a second copy of the MCP.Android server with different parameters. Extract the archive into a second folder and start it as follows:
+
+```powershell
+.\ZennoLab.AI.MCP.Android.exe --urls http://localhost:6212 `
+  --Android:Target=zennoposter --Android:BaseUrl=http://localhost:5310/api/v1 `
+  --Android:ApiKey=zp_xxx
+```
+
+_______________________________________________
+
+## 5. Connecting an AI Client {#5-connecting-an-ai-client}
+
+Ready-made installation buttons for Cursor and VS Code, along with commands for Claude Code, are available on the [installation page](https://zennolab.github.io/zennoposter-mcp/install.html); the ZennoDroid servers have their own table there. The same steps are shown manually below. Keep only the lines for the servers you started.
+
+### Claude Code
+
+```sh
+claude mcp add --scope user --transport http projectmaker-droid http://localhost:6217
+claude mcp add --scope user --transport http android-pm http://localhost:6211
+claude mcp add --scope user --transport http zennodroid http://localhost:6220
+claude mcp add --scope user --transport http android-zd http://localhost:6212
+claude mcp list
+```
+
+With `--scope user` the servers are available in every folder; without it, only in the current one.
+
+### GitHub Copilot, Cursor, VS Code
+
+In Cursor and VS Code, the easiest way to add the servers is the buttons on the [installation page](https://zennolab.github.io/zennoposter-mcp/install.html). For GitHub Copilot in Visual Studio, add the following to the `.mcp.json` file in your profile folder (`Win + R` → `%USERPROFILE%`):
+
+```json
+{
+  "servers": {
+    "projectmaker-droid": { "type": "http", "url": "http://localhost:6217" },
+    "android-pm": { "type": "http", "url": "http://localhost:6211" },
+    "zennodroid": { "type": "http", "url": "http://localhost:6220" },
+    "android-zd": { "type": "http", "url": "http://localhost:6212" }
+  }
+}
+```
+
+Restart the client after editing the file: the configuration is loaded at startup.
+
+### LM Studio, Local Model
+
+You need LM Studio 0.3.17 or newer; earlier versions do not support MCP. Choose a model that supports tool use, otherwise it will not be able to execute commands. Add the block to the `mcp.json` file using the editor inside the program (**Program → Install → Edit mcp.json**); the relevant section has a different name there:
+
+```json
+{
+  "mcpServers": {
+    "projectmaker-droid": { "url": "http://localhost:6217" }
+  }
+}
+```
+
+:::note
+Local models are less capable than cloud-based ones: they are more likely to get lost in large projects and sometimes call the wrong tools. They are sufficient for reading and explaining a project, but a cloud model is better for complex changes.
+:::
+
+### Testing the Connection
+
+Ask the assistant:
+
+```text
+Which ZennoDroid tools are available to you? List them.
+```
+
+If it lists the available tools, everything is working.
+
+_______________________________________________
+
+## 6. What an External Assistant Can Do {#6-what-an-external-assistant-can-do}
+
+### Project
+
+- Reads the project as a graph: which cubes it has, how they are connected, and where the error branches go. Builds a path between two cubes and shows all connections of the selected cube. This lets the assistant answer questions such as "how does execution reach this cube?" and "what will break if this branch is removed?"
+- Adds, changes, and deletes cubes, and works with the project's variables, lists, tables, and static data.
+- Saves the project and confirms that the file on disk was updated. The assistant does not close a project with unsaved changes, so your work is not silently lost: it closes the project without saving only if you ask for it directly.
+
+### Device
+
+- Starts the ProjectMaker device, gets the screen resolution, reads the elements of the current screen and the list of installed applications. The same reading is available for the devices of running tasks.
+- The server cannot tap or type on the device. Actions on the device are project cubes: the assistant adds them through the project server, and they run when the project runs. See the [MCP setup guide for AI assistants](./MCP_Setup#1-how-zennodroid-mcp-differs-from-zennoposter-mcp) for details.
+
+### Tasks
+
+- ZennoDroid tasks: starting, threads, stopping, statuses, and logs.
+- "Waiting for user actions" windows: the assistant sees the open windows and can close them.
+
+The complete operation reference, error codes, and versioning policy are available in the [PublicApi documentation](https://zennolab.github.io/zennoposter-mcp/).
+
+_______________________________________________
+
+## 7. Example Prompts {#7-example-prompts}
+
+Start with read-only requests: this lets you see how well the assistant understands the project without risking any changes.
+
+**Understand the project:**
+
+```text
+Describe step by step what the open project does. Where can it fail?
+
+Build a path from the start cube to the cube that launches the app.
+
+Show all incoming and outgoing connections of the selected cube and where the error branches go.
+```
+
+**Build a step from the device screen:**
+
+```text
+Read the structure of the current screen, find the phone input field,
+and add a cube to the project that types {-Variable.phone-} into it.
+```
+
+**Edit and debug:**
+
+```text
+Find cubes that have no OnError branch filled in, and suggest what to put there.
+
+Save the project and confirm that the file on disk was updated.
+```
+
+**Run and investigate failures:**
+
+```text
+Run this task with 3 threads, wait for it to finish, and show which cube
+it failed on and what the variable values were at that moment.
+```
+
+:::tip
+Before making changes through the assistant, save a copy of the project: changes can arrive quickly and in batches.
+:::
+
+_______________________________________________
+
+## 8. Troubleshooting {#8-troubleshooting}
+
+| Symptom | Cause | What to Do |
+|---|---|---|
+| The client says no tools are available | The server is not running, or the configuration was added to the wrong program | Check the server window and restart the client; the configuration is loaded at startup |
+| `401` error | The key is invalid or was not passed correctly | Make sure the entire key is specified without extra spaces or quotation marks. If the key is lost, issue a new one |
+| `401` error on port `6117` or `6118` | The client is connected to a built-in server, which does not accept external clients since 2.6.2 | Start your own copy of the server and point the client to its port: `6211`, `6212`, `6217` or `6220` |
+| `403` error | The key does not have the required scope or tier | The error message specifies exactly what is missing. Issue a key with the required scopes and a tier above `T0` |
+| `409` error when closing the project | The project has unsaved changes | Save the project or ask the assistant directly to close it without saving |
+| The assistant sees a ZennoPoster project instead of ZennoDroid | The client is connected to a ZennoPoster port (`6207`-`6210`) | Point the client to the ZennoDroid port and start the server with the command from step 3 |
+| The server does not start because the port is in use | The port is being used by another copy of the server or a third-party program | Close the extra copy. Do not use the `6117`-`6123` range; it is reserved for internal services |
+| The assistant cannot see the project | ProjectMaker is closed or no project is open in it | Start ProjectMaker, open the project, and try again |
+| Device tools return an error | The device is not running | Ask the assistant to start the device first |
+| The archive cannot be downloaded from GitHub | Your provider imposes restrictions in your region | Try a different connection. If that does not work, contact support and they will send you the file directly |
+
+_______________________________________________
+
+## Useful Links {#useful-links}
+
+- [AI Assistant](./ai-assistant) — built-in chat in ProjectMaker.
+- [MCP setup guide for AI assistants](./MCP_Setup) — connecting GitHub Copilot, Claude Code, Codex CLI and LM Studio to the public servers.
+- [PublicApi and MCP documentation](https://zennolab.github.io/zennoposter-mcp/) — operation reference and version compatibility.
+- [Server repository](https://github.com/ZennoLab/zennoposter-mcp) — releases and connection guide.

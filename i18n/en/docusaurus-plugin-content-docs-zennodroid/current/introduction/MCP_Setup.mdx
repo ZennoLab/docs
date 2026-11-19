@@ -2,7 +2,7 @@
 sidebar_position: 5
 sidebar_label: MCP setup for AI assistants
 title: "ZennoDroid MCP — Setup Guide for AI Assistants | ZennoDroid Documentation | ZennoLab"
-description: "How to connect external AI assistants (GitHub Copilot, Claude Code, OpenAI Codex) to the ZennoDroid MCP servers: ports, differences from ZennoPoster, and troubleshooting."
+description: "How to connect external AI assistants (GitHub Copilot, Claude Code, OpenAI Codex, LM Studio) to the ZennoDroid MCP servers: ports, differences from ZennoPoster, and troubleshooting."
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -10,7 +10,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-:::warning The built-in servers do not accept external assistants
+:::warning Since 2.6.2, the built-in servers do not accept external assistants
 The MCP servers that ProjectMaker ZennoDroid starts itself (ports `6117`, `6118` and the whole internal `6117`-`6123` range) serve only the built-in AI chat. An external client gets a `401` error, and the product log records `ingress refused`. The `ProjectMCP` (`6117`) and `AndroidMCP` (`6118`) entries added to your client earlier no longer work and can be removed.
 
 Connect your assistant to your own copy of the server, started with your API key. It runs on the public servers' ports next to the built-in servers and does not interfere with the chat:
@@ -39,13 +39,13 @@ You only do this once. ZennoDroid 2.6.1 or newer is required. You need two serve
 ## Step 1. Issue an API Key {#step-1-issue-an-api-key}
 
 1. Start ProjectMaker ZennoDroid and open the project you need.
-2. Open **Settings → API Keys → Add**.
-3. Set a label, a tier and scopes. For read-only access to the project and the device, tier `T0` with the default scopes is enough. To let the assistant edit the project, add write scopes and raise the tier.
+2. Open **Edit → Settings → Api-Keys** and click **Add new API key**.
+3. Fill in **Label**, choose **Max tier** and tick the **Scopes**. For read-only access to the project and the device, tier `T0` with the default scopes is enough. To let the assistant edit the project, tick write scopes and raise the tier.
 4. Click **Generate API Key** and copy the key right away: it is shown only once.
 
 ## Step 2. Download the Servers {#step-2-download-the-servers}
 
-On the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases), download the latest versions of two archives: `MCP.ProjectMaker-v…-win-x64.zip` and `MCP.Android-v…-win-x64.zip`. Extract each one to its own folder. You do not need to install .NET.
+On the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases), download the latest versions of two archives: `MCP.ProjectMaker-v…-win-x64.zip` and `MCP.Android-v…-win-x64.zip`. For ZennoDroid 2.6.1, pick the versions from the [compatibility table](https://zennolab.github.io/zennoposter-mcp/compatibility.html). Extract each archive to its own folder, such as `C:\ZennoMCP\ProjectMaker` and `C:\ZennoMCP\Android`. You do not need to install .NET.
 
 ## Step 3. Start the Servers with Your Key {#step-3-start-the-servers-with-your-key}
 
@@ -60,13 +60,13 @@ Open the server folder, type `powershell` in the File Explorer address bar, and 
 .\ZennoLab.AI.MCP.Android.exe --Android:ApiKey=zp_xxx
 ```
 
-Keep both console windows open while you work with the assistant. To avoid entering the key every time, put it in the `ApiKey` field of the `appsettings.json` file next to the exe and start the server by double-clicking it.
+Keep both console windows open while you work with the assistant. To avoid entering the key every time, put it in the `ApiKey` field of the `appsettings.json` file next to the exe and start the server by double-clicking it. Without arguments MCP.ProjectMaker starts for ZennoPoster, so also put the port and the address of the ZennoDroid ProjectMaker into its file, as shown on the [Public API and MCP Servers](./public-api-mcp#step-3-start-the-server-with-your-key) page.
 
-For ZennoDroid tasks (the runner) you need the `6220` (tasks and sessions) and `6212` (devices of running tasks) servers. Their commands and key permissions are described on the [Public API and MCP Servers](/zennoposter/Hello/public-api-mcp) page.
+For ZennoDroid tasks (the runner) you need the `6220` (tasks and sessions) and `6212` (devices of running tasks) servers. Their commands and key permissions are described on the [Public API and MCP Servers](./public-api-mcp) page.
 
 ---
 
-# 1. How ZennoDroid MCP differs from ZennoPoster MCP {#1-how-zennodroid-mcp-differs-from-zennoposter-mcp}
+## 1. How ZennoDroid MCP differs from ZennoPoster MCP {#1-how-zennodroid-mcp-differs-from-zennoposter-mcp}
 
 There are two differences, and the second one matters more than the first.
 
@@ -143,8 +143,8 @@ Keep in mind: the assistant will see the tools of both products at once and may 
 3. Run the following commands:
 
 ```sh
-claude mcp add projectmaker-droid --transport http http://localhost:6217
-claude mcp add android-pm --transport http http://localhost:6211
+claude mcp add --scope user projectmaker-droid --transport http http://localhost:6217
+claude mcp add --scope user android-pm --transport http http://localhost:6211
 ```
 
 4. Verify the servers are registered:
@@ -181,6 +181,28 @@ codex mcp add android-pm --url http://localhost:6211
 ```sh
 codex mcp list
 ```
+
+---
+
+# 5. LM Studio {#5-lm-studio}
+
+## Steps
+
+1. Make sure ProjectMaker ZennoDroid and your server copies are running.
+2. You need LM Studio 0.3.17 or newer and a model that supports tool use. Without it, the model cannot run commands.
+3. In the right-hand sidebar of LM Studio, open the **Program** tab and click **Install → Edit mcp.json**.
+4. Add the servers to the `mcpServers` section and save the file:
+
+```json
+{
+  "mcpServers": {
+    "projectmaker-droid": { "url": "http://localhost:6217" },
+    "android-pm": { "url": "http://localhost:6211" }
+  }
+}
+```
+
+> Local models are weaker than cloud ones: they are good enough for reading and explaining a project, but complex edits work better with a cloud model.
 
 ---
 
