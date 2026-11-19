@@ -2,7 +2,7 @@
 sidebar_position: 5
 sidebar_label: Настройка MCP для AI-ассистентов
 title: "ZennoDroid MCP — руководство по настройке для AI-ассистентов | Документация ZennoDroid | ZennoLab"
-description: "Как подключить внешние AI-ассистенты (GitHub Copilot, Claude Code, OpenAI Codex) к MCP-серверам ZennoDroid: порты, отличия от ZennoPoster, устранение неполадок."
+description: "Как подключить внешние AI-ассистенты (GitHub Copilot, Claude Code, OpenAI Codex, LM Studio) к MCP-серверам ZennoDroid: порты, отличия от ZennoPoster, устранение неполадок."
 ---
 import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
@@ -10,7 +10,7 @@ import DisclaimerNotice from '@site/src/components/DisclaimerNotice';
 
 <DisclaimerNotice />
 
-:::warning Встроенные серверы недоступны внешним ассистентам
+:::warning С версии 2.6.2 встроенные серверы недоступны внешним ассистентам
 MCP-серверы, которые ProjectMaker ZennoDroid запускает сам (порты `6117`, `6118` и весь внутренний диапазон `6117`-`6123`), обслуживают только встроенный ИИ-чат. Внешний клиент получает ошибку `401`, а в лог продукта пишется `ingress refused`. Записи `ProjectMCP` (`6117`) и `AndroidMCP` (`6118`), добавленные в клиент раньше, больше не работают, их можно удалить.
 
 Своего ассистента подключайте к собственной копии сервера, запущенной с вашим API-ключом. Она работает на портах публичных серверов рядом со встроенными серверами и не мешает чату:
@@ -39,13 +39,13 @@ MCP-серверы, которые ProjectMaker ZennoDroid запускает с
 ## Шаг 1. Выпустите API-ключ
 
 1. Запустите ProjectMaker ZennoDroid и откройте нужный проект.
-2. Откройте **Settings → API Keys → Add**.
-3. Задайте метку, уровень (tier) и права (scopes). Чтобы ассистент только читал проект и устройство, хватит уровня `T0` и прав по умолчанию. Чтобы он правил проект, добавьте права на запись и поднимите уровень.
-4. Нажмите **Generate API Key** и сразу скопируйте ключ: второй раз его не покажут.
+2. Откройте **Редактирование → Настройки → API-ключи** и нажмите **Добавить новый API-ключ**.
+3. Заполните **Название**, выберите **Макс. уровень** и отметьте **Разрешения**. Чтобы ассистент только читал проект и устройство, хватит уровня `T0` и разрешений по умолчанию. Чтобы он правил проект, отметьте разрешения на запись и поднимите уровень.
+4. Нажмите **Сгенерировать ключ** и сразу скопируйте ключ: второй раз его не покажут.
 
 ## Шаг 2. Скачайте серверы
 
-На [странице релизов](https://github.com/ZennoLab/zennoposter-mcp/releases) скачайте последние версии двух архивов: `MCP.ProjectMaker-v…-win-x64.zip` и `MCP.Android-v…-win-x64.zip`. Распакуйте каждый в свою папку. Устанавливать .NET не нужно.
+На [странице релизов](https://github.com/ZennoLab/zennoposter-mcp/releases) скачайте последние версии двух архивов: `MCP.ProjectMaker-v…-win-x64.zip` и `MCP.Android-v…-win-x64.zip`. Для ZennoDroid 2.6.1 подберите версии по [таблице совместимости](https://zennolab.github.io/zennoposter-mcp/ru/compatibility.html). Распакуйте каждый архив в свою папку, например `C:\ZennoMCP\ProjectMaker` и `C:\ZennoMCP\Android`. Устанавливать .NET не нужно.
 
 ## Шаг 3. Запустите серверы со своим ключом
 
@@ -60,9 +60,9 @@ MCP-серверы, которые ProjectMaker ZennoDroid запускает с
 .\ZennoLab.AI.MCP.Android.exe --Android:ApiKey=zp_xxx
 ```
 
-Оба окна консоли держите открытыми, пока работаете с ассистентом. Чтобы не вводить ключ каждый раз, впишите его в поле `ApiKey` файла `appsettings.json` рядом с exe и запускайте сервер двойным кликом.
+Оба окна консоли держите открытыми, пока работаете с ассистентом. Чтобы не вводить ключ каждый раз, впишите его в поле `ApiKey` файла `appsettings.json` рядом с exe и запускайте сервер двойным кликом. MCP.ProjectMaker без аргументов запускается для ZennoPoster, поэтому в его файл впишите ещё порт и адрес ProjectMaker ZennoDroid, как показано на странице [Публичный API и MCP-серверы](./public-api-mcp#шаг-3-запустите-сервер-со-своим-ключом).
 
-Для задач ZennoDroid (раннер) нужны серверы `6220` (задачи и сессии) и `6212` (устройства выполняющихся задач). Их команды и описание прав ключа — на странице [Публичный API и MCP-серверы](/zennoposter/Hello/public-api-mcp).
+Для задач ZennoDroid (раннер) нужны серверы `6220` (задачи и сессии) и `6212` (устройства выполняющихся задач). Их команды и описание прав ключа — на странице [Публичный API и MCP-серверы](./public-api-mcp).
 
 ---
 
@@ -143,8 +143,8 @@ MCP-серверы, которые ProjectMaker ZennoDroid запускает с
 3. Выполните следующие команды:
 
 ```sh
-claude mcp add projectmaker-droid --transport http http://localhost:6217
-claude mcp add android-pm --transport http http://localhost:6211
+claude mcp add --scope user projectmaker-droid --transport http http://localhost:6217
+claude mcp add --scope user android-pm --transport http http://localhost:6211
 ```
 
 4. Проверьте, что серверы зарегистрированы:
@@ -181,6 +181,28 @@ codex mcp add android-pm --url http://localhost:6211
 ```sh
 codex mcp list
 ```
+
+---
+
+# 5. LM Studio
+
+## Шаги
+
+1. Убедитесь, что ProjectMaker ZennoDroid и ваши копии серверов запущены.
+2. Нужна LM Studio 0.3.17 или новее и модель с поддержкой вызова инструментов (tool use). Без нее модель не сможет выполнять команды.
+3. В правой панели LM Studio откройте вкладку **Program**, нажмите **Install → Edit mcp.json**.
+4. Добавьте серверы в раздел `mcpServers` и сохраните файл:
+
+```json
+{
+  "mcpServers": {
+    "projectmaker-droid": { "url": "http://localhost:6217" },
+    "android-pm": { "url": "http://localhost:6211" }
+  }
+}
+```
+
+> Локальные модели слабее облачных: для чтения и объяснения проекта их хватает, для сложных правок лучше облачная модель.
 
 ---
 
