@@ -44,6 +44,15 @@ settings.ResetGoogleAdvertId(); // Сбросить рекламный иден�
     Метод завершается сразу после запуска регистрации: новый идентификатор появляется через несколько секунд. Нужны root и сервисы Google Play на устройстве.
     
     Меняется настоящий идентификатор устройства, а не значение, которое приложениям подставляет настройка [*Google Services Framework ID*](../Android/Enterprise/setting#google-services-framework-id) модуля ZennoDroid.
+    
+    В актуальных версиях Android этот идентификатор приложениям недоступен. Посмотреть его можно на экране *FCM Diagnostics* сервисов Google Play. Откройте экран командой `am start -n com.google.android.gms/.gcm.GcmDiagnostics`, например пунктом **Выполнить команду...** в меню действий окна устройства, и включите в меню экрана (три точки) пункт *Advanced view*: GSF ID - это строка `DeviceID`.
+
+<details>
+<summary>**Экран FCM Diagnostics: GSF ID в строке DeviceID.**</summary>
+<!--All you need is a blank line-->
+
+![Экран FCM Diagnostics](./assets/Settings/Settings_pic1.png)
+</details>
 
 #### Пример.  
 ```csharp

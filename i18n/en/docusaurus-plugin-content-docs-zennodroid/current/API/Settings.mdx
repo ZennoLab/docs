@@ -44,6 +44,15 @@ settings.ResetGoogleAdvertId(); // Reset the Google advertising ID
     The method returns as soon as the check-in starts: the new ID arrives a few seconds later. Requires root and Google Play services on the device.
     
     It changes the device's real ID, not the value the [*Google Services Framework ID*](../Android/Enterprise/setting#google-services-framework-id) setting of the ZennoDroid module gives apps.
+    
+    In current Android versions apps can't read this ID. You can see it on the *FCM Diagnostics* screen of Google Play services. Open the screen with the `am start -n com.google.android.gms/.gcm.GcmDiagnostics` command, with the **Run command...** item of the device window's actions menu for one, and turn on *Advanced view* in the screen's menu (three dots): the GSF ID is the `DeviceID` line.
+
+<details>
+<summary>**The FCM Diagnostics screen: the GSF ID is in the DeviceID line.**</summary>
+<!--All you need is a blank line-->
+
+![The FCM Diagnostics screen](./assets/Settings/Settings_pic1.png)
+</details>
 
 #### Example  
 ```csharp
