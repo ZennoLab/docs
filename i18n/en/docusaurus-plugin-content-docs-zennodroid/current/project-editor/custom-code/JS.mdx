@@ -59,11 +59,11 @@ _______________________________________________
 ### Connecting JavaScript libraries  
 You can also embed a library that wasn’t on the page originally. For example, you can add jQuery with code like this:
 
-```JS  
-int value1 = Convert.ToInt32(project.Variables["value1"].Value);
-int value2 = Convert.ToInt32(project.Variables["value2"].Value);
-int value3 = value1 + value2 // or value1 - value2 or value1 * value2, etc.
-return value3.ToString(); // sum of two numbers  
+```javascript
+var s = document.createElement('script');
+s.type = 'text/javascript';
+s.src = 'https://code.jquery.com/jquery-1.10.2.min.js';
+document.body.appendChild(s);
 ```  
 _______________________________________________
 ## Useful links  

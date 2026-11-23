@@ -27,7 +27,7 @@ ZennoDroid has [**environment variables**](../pm/Creating/Variables). For exampl
 When you turn on this setting, ProjectMaker will automatically insert the **project directory macro** wherever possible while creating a project. For example, in other settings or actions. The chosen path should either be in the same folder as the project file, or in one of its subfolders.
 _______________________________________________
 ## Record actions by coordinates
-This setting controls whether all clicks inside the [**Emulator Window**](../pm/Interface/DeviceWindow) get recorded along with their coordinates when recording your project. The project will include [**touch emulation actions**](../Android/pro-lite/Touch_Emulation) with the click coordinates filled in automatically.
+This setting controls whether all clicks inside the [**Device Window**](../pm/Interface/DeviceWindow) get recorded along with their coordinates when recording your project. The project will include [**touch emulation actions**](../Android/pro-lite/Touch_Emulation) with the click coordinates filled in automatically.
 :::warning If coordinates are recorded in pixels, the emulator's resolution must be the same when creating and running your project!
 To make the project work on devices with different resolutions, turn on [**coordinates in percent of the screen**](#coordinates-in-percent-of-the-screen).
 :::
@@ -46,7 +46,7 @@ The setting does not depend on **Record actions by coordinates**: that one decid
 A project recorded this way runs on devices with a different resolution without editing the coordinates. The limitations are the same as for [**coordinates in percent**](../Android/pro-lite/Touch_Emulation#coordinates-in-percent) in the actions: screen rotation is not taken into account, and a button may be in a different place on a screen with a different aspect ratio.
 _______________________________________________
 ## Click recording through search
-When you turn on this option, every click inside the [**Emulator Window**](../pm/Interface/DeviceWindow) will be saved to your project as a [**touch action**](../Android/pro-lite/RunEvent) using [**Image Search**](../pm/Creating/SearchByPic).
+When you turn on this option, every click inside the [**Device Window**](../pm/Interface/DeviceWindow) will be saved to your project as a [**touch action**](../Android/pro-lite/RunEvent) using [**Image Search**](../pm/Creating/SearchByPic).
 ### Color mode
 Image search will use one of the following modes by default:
 - **RGB**. Search by colored image.

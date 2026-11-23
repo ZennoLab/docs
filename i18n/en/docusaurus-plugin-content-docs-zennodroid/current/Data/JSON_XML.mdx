@@ -173,13 +173,13 @@ _______________________________________________
 In C#, JSON and XML are stored in the *project* object as *dynamic* types. Because of this, the code editor can't fully show auto-complete hints.
 
 ### Example 1  
-```c  
+```csharp
 project.Xml.FromString(project.Variables["XmlText"].Value);
 return project.Xml.PurchaseOrder.Address[0]["Type"];
 ```  
 
 ### Example 2  
-```c  
+```csharp
 var list = new List<string>();
 for(int i = 0; i < project.Xml.PurchaseOrder.Address.Count; i++)
 {
@@ -189,7 +189,7 @@ return string.Join(", ", list);
 ```  
 
 ### Example 3  
-```c  
+```csharp
 var list = new List<string>();
 foreach(dynamic i in project.Xml.PurchaseOrder.Address)
 {

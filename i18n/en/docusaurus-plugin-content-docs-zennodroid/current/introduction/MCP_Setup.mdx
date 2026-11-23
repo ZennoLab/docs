@@ -29,25 +29,25 @@ If you copied the configuration from the [ZennoPoster MCP guide](/zennoposter/He
 
 ---
 
-# Preparation: API Key and Your Own Servers {#preparation-api-key-and-your-own-servers}
+## Preparation: API Key and Your Own Servers {#preparation-api-key-and-your-own-servers}
 
 You only do this once. ZennoDroid 2.6.1 or newer is required. You need two servers:
 
 - **projectmaker-droid** (Project control) → `http://localhost:6217`
 - **android-pm** (Android device inspection) → `http://localhost:6211`
 
-## Step 1. Issue an API Key {#step-1-issue-an-api-key}
+### Step 1. Issue an API Key {#step-1-issue-an-api-key}
 
 1. Start ProjectMaker ZennoDroid and open the project you need.
 2. Open **Edit → Settings → Api-Keys** and click **Add new API key**.
 3. Fill in **Label**, choose **Max tier** and tick the **Scopes**. For read-only access to the project and the device, tier `T0` with the default scopes is enough. To let the assistant edit the project, tick write scopes and raise the tier.
 4. Click **Generate API Key** and copy the key right away: it is shown only once.
 
-## Step 2. Download the Servers {#step-2-download-the-servers}
+### Step 2. Download the Servers {#step-2-download-the-servers}
 
 On the [releases page](https://github.com/ZennoLab/zennoposter-mcp/releases), download the latest versions of two archives: `MCP.ProjectMaker-v…-win-x64.zip` and `MCP.Android-v…-win-x64.zip`. For ZennoDroid 2.6.1, pick the versions from the [compatibility table](https://zennolab.github.io/zennoposter-mcp/compatibility.html). Extract each archive to its own folder, such as `C:\ZennoMCP\ProjectMaker` and `C:\ZennoMCP\Android`. You do not need to install .NET.
 
-## Step 3. Start the Servers with Your Key {#step-3-start-the-servers-with-your-key}
+### Step 3. Start the Servers with Your Key {#step-3-start-the-servers-with-your-key}
 
 Open the server folder, type `powershell` in the File Explorer address bar, and press Enter. Replace `zp_xxx` with your key.
 
@@ -87,9 +87,9 @@ A practical consequence: an element that is not on the screen right now is not a
 
 ---
 
-# 2. GitHub Copilot {#2-github-copilot}
+## 2. GitHub Copilot {#2-github-copilot}
 
-## Steps
+### Steps
 
 1. Make sure ProjectMaker ZennoDroid and your server copies are running.
 2. Open your user profile folder: press `Win + R`, type `%USERPROFILE%`, press Enter.
@@ -134,9 +134,9 @@ Keep in mind: the assistant will see the tools of both products at once and may 
 
 ---
 
-# 3. Claude Code (CLI) {#3-claude-code-cli}
+## 3. Claude Code (CLI) {#3-claude-code-cli}
 
-## Steps
+### Steps
 
 1. Make sure ProjectMaker ZennoDroid and your server copies are running.
 2. Open a terminal.
@@ -163,9 +163,9 @@ claude mcp list
 
 ---
 
-# 4. OpenAI Codex CLI {#4-openai-codex-cli}
+## 4. OpenAI Codex CLI {#4-openai-codex-cli}
 
-## Steps
+### Steps
 
 1. Make sure ProjectMaker ZennoDroid and your server copies are running.
 2. Open a terminal.
@@ -184,9 +184,9 @@ codex mcp list
 
 ---
 
-# 5. LM Studio {#5-lm-studio}
+## 5. LM Studio {#5-lm-studio}
 
-## Steps
+### Steps
 
 1. Make sure ProjectMaker ZennoDroid and your server copies are running.
 2. You need LM Studio 0.3.17 or newer and a model that supports tool use. Without it, the model cannot run commands.
@@ -206,9 +206,9 @@ codex mcp list
 
 ---
 
-# Troubleshooting {#troubleshooting}
+## Troubleshooting {#troubleshooting}
 
-## The assistant connected, but it sees the ZennoPoster project instead of ZennoDroid
+### The assistant connected, but it sees the ZennoPoster project instead of ZennoDroid
 
 The most common mistake when coming from the ZennoPoster guide: the configuration specifies ports `6207` / `6208`. Those are the ZennoPoster public servers. ZennoDroid needs **`6217` and `6211`**.
 
@@ -224,16 +224,16 @@ To map a PID to a process:
 Get-Process -Id <PID>
 ```
 
-## The assistant gets a `401` error {#the-assistant-gets-a-401-error}
+### The assistant gets a `401` error {#the-assistant-gets-a-401-error}
 
 The client is connected to a built-in server (`6117`-`6123`): it serves only the built-in AI chat and does not accept external clients. Start your own copy of the server and point the client to its port: `6217`, `6211`, `6212` or `6220`.
 
-## Device-reading tools return an error or an empty result
+### Device-reading tools return an error or an empty result
 
 - **The device is not running.** Reading the screen, the list of apps and the resolution all require the device to be up. Ask the assistant to bring the device up first — that tool is idempotent and will not do anything extra.
 - **No device is selected.** For a real phone it must be connected and visible to ZennoDroid (see [connecting a device](../Enterprise/Connection)).
 
-## The `claude` or `codex` command is not recognized
+### The `claude` or `codex` command is not recognized
 
 If the terminal shows an error like:
 
@@ -256,7 +256,7 @@ function, script file, or operable program.
 > automatically. So "installed from the website but the command is not recognized"
 > is the most common case. Step 2 below fixes it.
 
-### Step 1. Find where the CLI is installed
+#### Step 1. Find where the CLI is installed
 
 The location of the executable depends on the install method.
 
@@ -296,7 +296,7 @@ Test-Path "$env:USERPROFILE\.local\bin\claude.exe"
 
 If the file is in none of those folders, the CLI is not installed. Install it using one of the methods from the tables above (npm requires [Node.js](https://nodejs.org/)).
 
-### Step 2. Add the folder you found to `PATH`
+#### Step 2. Add the folder you found to `PATH`
 
 Substitute the path from Step 1 (for example `%USERPROFILE%\.local\bin` for the Claude website install,
 or `%APPDATA%\npm` for an npm install).
@@ -321,7 +321,7 @@ $p = [Environment]::GetEnvironmentVariable('PATH', 'User')
 > ⚠️ Replace the path with the one that applies to your case.
 > Do not run the command several times in a row, or you will duplicate entries in `PATH`.
 
-### Step 3. Restart the terminal and check
+#### Step 3. Restart the terminal and check
 
 `PATH` changes only take effect in **new** terminal windows. Close and reopen PowerShell / CMD (or Visual Studio), then check:
 
@@ -338,7 +338,7 @@ claude doctor
 
 If the versions are displayed, the commands are recognized correctly and you can go back to the MCP setup steps above.
 
-### Common causes if that did not help
+#### Common causes if that did not help
 
 - **The terminal was not restarted.** `PATH` changes only apply in newly opened windows.
 - **Several installs at once** (npm + native) conflict. Keep one and remove the rest.
@@ -346,9 +346,9 @@ If the versions are displayed, the commands are recognized correctly and you can
 
 ---
 
-# Example requests {#example-requests}
+## Example requests {#example-requests}
 
-## Device inspection
+### Device inspection
 
 ```
 Bring the device up and show information about it.
@@ -370,7 +370,7 @@ and find the exact package name for Chrome.
 
 ---
 
-## Building the project
+### Building the project
 
 ```
 Show the structure of the current project,
@@ -399,7 +399,7 @@ and tell me whether there are any errors.
 
 ---
 
-## Combining device reads with project building
+### Combining device reads with project building
 
 ```
 Read the screen structure, find the phone input field,
