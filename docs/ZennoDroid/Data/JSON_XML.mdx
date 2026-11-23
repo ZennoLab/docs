@@ -173,13 +173,13 @@ _______________________________________________
 В коде С# JSON и XML находятся в объекте *project* и имеют тип *dynamic*. Из-за этого редактор кода не может полноценно показывать выпадающие подсказки.  
 
 ### Пример 1.  
-```c  
+```csharp
 project.Xml.FromString(project.Variables["XmlText"].Value);
 return project.Xml.PurchaseOrder.Address[0]["Type"];
 ```  
 
 ### Пример 2.  
-```c  
+```csharp
 var list = new List<string>();
 for(int i = 0; i < project.Xml.PurchaseOrder.Address.Count; i++)
 {
@@ -189,7 +189,7 @@ return string.Join(", ", list);
 ```  
 
 ### Пример 3.  
-```c  
+```csharp
 var list = new List<string>();
 foreach(dynamic i in project.Xml.PurchaseOrder.Address)
 {

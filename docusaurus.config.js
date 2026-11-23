@@ -229,15 +229,15 @@ const config = {
             items: [
               {
                 label: 'Основные понятия',
-                to: '/zennodroid/get-started/BasicTerms',
+                to: '/zennodroid/basicterms',
               },
               {
                 label: 'Подключение реального устройства (ZDE)',
-                to: '/zennodroid/get-started/Connection',
+                to: '/zennodroid/Enterprise/Connection',
               },
               {
                 label: 'Интерфейс ProjectMaker',
-                to: '/zennodroid/category/интерфейс',
+                to: '/zennodroid/pm/interface',
               },
             ],
           },

@@ -5,6 +5,8 @@
 export const LEGACY_REDIRECTS = {
   '/zennodroid/get-started/MCP_Setup': '/zennodroid/introduction/MCP_Setup',
   '/zennodroid/get-started/ai-assistant': '/zennodroid/introduction/ai-assistant',
+  '/zennodroid/get-started/BasicTerms': '/zennodroid/basicterms',
+  '/zennodroid/get-started/Connection': '/zennodroid/Enterprise/Connection',
   '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/Connection_settings/Google.com': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Google.com',
   '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/Connection_settings/Mail.ru': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail.ru',
   '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Mail_send/Connection_settings/Yandex.ru': '/zennoposter/ProjectMaker/Project-editor/Actions-in-ProjectMaker-Actions-Blocks/Mail/Yandex.ru',
