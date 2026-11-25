@@ -14,7 +14,7 @@ For example, you can get data using **GET requests**:
 - *request search engine results*,  
 - *download files*,  
 - *parse data*,  
-- *run templates without a browser*,  
+- *work with websites without a device*,  
 - *work with API of web services and apps*.  
 _______________________________________________ 
 ### How to add it to a project?  
@@ -125,7 +125,7 @@ The variable will have the path to the downloaded file.
 
 :::info **By default, files are downloaded to the `Trash` folder in the program directory.**  
 The path may look like this:  
-`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`  
+`C:\Program Files\ZennoLab\EN\ZennoDroid Pro\2.6.3.0\Progs\Trash\googlelogo_color_92x30dp.png`  
 
 You can change this in the settings, but only globally for all projects. 
 :::  
@@ -183,17 +183,17 @@ Lets you specify each header manually, following these rules:
 - You can set *static values*, *your variables*, or *profile variables*.  
 _______________________________________________ 
 ### Use CookieContainer.  
-This option lets you sync cookies with the whole browser or between separate requests. You don't have to parse or insert them manually.  
+With this option, cookies are saved and passed between separate requests automatically. You don't have to parse or insert them manually.  
 
 <details>
 <summary>**Example usage.**</summary>
 <!--All you need is a blank line-->
 
-   Imagine your project works with a site using requests. You need to be logged in. The login process is too complicated to repeat through requests. So, you log in using browser mode.  
+   Imagine your project works with a site through requests, and you need to be logged in. First you log in with a POST request, then keep working with GET requests.  
 
-   Then you ***turn off the browser*** and start working with requests. With **Use CookieContainer** turned on, cookies will sync automatically between browser and requests, no need to paste them by hand.    
+   With **Use CookieContainer** turned on, the cookies you get when logging in are passed to the following requests automatically, no need to set them by hand.    
 
-    If the site sends new cookies in some request, they will be synced with the browser automatically and used afterwards.
+    If the site sends new cookies in some request, they are saved and used afterwards.
 </details>  
 _______________________________________________ 
 ### Cookie.  

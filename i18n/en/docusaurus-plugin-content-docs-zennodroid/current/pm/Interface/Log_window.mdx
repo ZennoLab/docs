@@ -105,7 +105,7 @@ PM and ZD also save all logs on your computer in the program folder.
 Here's how the path looks: `C:\Program Files\ZennoLab\RU\ZennoDroid Pro\2.3.8.0\Progs\Logs`  
 
 By default, all project logs are written to one file. You can change this with some C# code at the start of your template:
-```js 
+```csharp
 // Send the log for this template to a separate file.
 project.LogOptions.LogFile = @"D:\log.txt";
 // Each thread will get its own log file.
@@ -221,18 +221,18 @@ There are four methods for outputting messages to the log:
 - ***`project.SendToLog`*** — lets you set the message color  
 
 #### First option:  
-```js 
+```csharp
 // Arguments:
 // 1st - string that goes in the "Message" column
-// 2nd - bool, if the message should be logged in ZennoPoster
+// 2nd - bool, if the message should be logged in ZennoDroid
 project.SendInfoToLog("Message", true);  
 ```
 #### Second option: 
-```js
+```csharp
 // Arguments:
 // 1st - string for the "Message" column
 // 2nd - string, this will show up in the unnamed column.
-// 3rd - bool, if the message should be logged in ZennoPoster
+// 3rd - bool, if the message should be logged in ZennoDroid
 project.SendInfoToLog("Message", "Way", true);
 ```
 #### Result:  

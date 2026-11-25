@@ -18,7 +18,7 @@ In this article, we're not talking about a specific action, but about the search
 - [**Triggering an event**](../../Android/pro-lite/RunEvent)  
 _______________________________________________
 ## Classic Search  
-The search is done by the HTML element's parameters: tag, attribute, and its value.  
+The search is done by the element's attributes and their values.  
 
 ![Classic search](./assets/ElementSearch/ElementSearch_pic1.png)  
 
@@ -31,15 +31,15 @@ If no element is found using the highest priority, the search moves to the next 
 
 You can add several conditions with the same priority, and then they'll be used at the same time.  
 
-**2. Attribute**. Here you specify the HTML tag's attribute to search by.  
+**2. Attribute**. Here you specify the element attribute to search by.  
 **3. Search type**:  
     - *text*. Search for a full or partial text match  
     - *notext*. Looks for elements that don't have the specified text  
     - *regexp*. Search using [**regular expressions**](../../Tools/RegEx_Tester)  
     *By default, the last search type is case-sensitive.  
-    To make it case-insensitive, add `(?-i)` to the start of the expression*  
+    To make it case-insensitive, add `(?i)` to the start of the expression*  
     
-**4. Value**. Enter the value of the relevant HTML tag attribute here.  
+**4. Value**. Enter the value of the selected attribute here.  
 **5. Match number**. The ordinal number of the found element, starting from zero! Here you can use [**Ranges**](./Value_Ranges) and [**Variable macros**](./Variables).  
 
 :::info **We recommend setting up your search conditions in such a way**  

@@ -13,7 +13,7 @@ ZennoDroid lets you send data in **POST requests**. With this action you can:
 - *send info to register on a website*,
 - *upload files to a server*,
 - *quickly send data*,
-- *run templates without a browser*,
+- *work with websites without a device*,
 - *work with the API of web services and apps*.
 _______________________________________________
 ### How do you add it to a project?
@@ -82,7 +82,7 @@ The variable will hold the path to the downloaded file.
 
 :::info **By default, files are downloaded to the `Trash` folder in the program directory.**
 The path may look like this:
-`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`
+`C:\Program Files\ZennoLab\EN\ZennoDroid Pro\2.6.3.0\Progs\Trash\googlelogo_color_92x30dp.png`
 
 You can change this in the settings, but only globally for all projects.
 :::
@@ -140,17 +140,17 @@ Lets you specify each header field yourself, following these rules:
 - You can use *static values*, *your variables*, or *profile variables*.
 _______________________________________________
 ### Use CookieContainer.
-This option syncs cookies with the entire browser or between individual requests. You won't have to parse and use them manually.
+With this option, cookies are saved and passed between individual requests automatically. You won't have to parse and use them manually.
 
 <details>
 <summary>**Usage example.**</summary>
 <!--All you need is a blank line-->
 
-   Let's say your project works with a site using requests. You need to be logged in to work. Logging in through requests is really complicated. So you log in using browser mode.
+   Let's say your project works with a site through requests, and you need to be logged in. First you log in with a POST request, then keep working with GET requests.
 
-   After logging in, ***turn off the browser*** and start working with requests. With **Use CookieContainer** enabled, cookies are auto-synced between the browser and requests, no need to set them manually.
+   With **Use CookieContainer** enabled, the cookies you get when logging in are passed to the following requests automatically, no need to set them manually.
 
-    If any request gets new cookies from the site, they'll be auto-synced to the browser and used from then on.
+    If any request gets new cookies from the site, they are saved and used from then on.
 </details>
 _______________________________________________
 ### Cookie.
@@ -209,7 +209,7 @@ Suppose you need to send a ReCaptchaV2 answer to a site to solve a captcha.
 4. Send the request to the target site.
 5. The captcha is solved.
 
-Working without a browser saves time and resources that'd normally be spent solving the captcha in a tab window.
+The captcha is passed without using the device, which saves time and resources.
 _______________________________________________
 ## Useful links.
 - [**Variables window**](../../pm/Interface/Variables)

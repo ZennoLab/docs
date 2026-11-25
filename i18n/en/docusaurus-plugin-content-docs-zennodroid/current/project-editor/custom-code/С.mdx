@@ -155,7 +155,7 @@ _______________________________________________
 Learning C# programming is outside the scope of this documentation. But we can offer a few tips and show some practical examples that ZennoDroid users often use when working with C#.
 _______________________________________________
 ### Arithmetic with integers.
-```C
+```csharp
 int value1 = Convert.ToInt32(project.Variables["value1"].Value);
 int value2 = Convert.ToInt32(project.Variables["value2"].Value);
 int value3 = value1 + value2; //or value1 - value2 or value1 * value2 etc.
@@ -163,7 +163,7 @@ return value3.ToString(); //sum of two numbers
 ```
 _______________________________________________
 ### Rounding division results.
-```C
+```csharp
 float value1 = Convert.ToSingle(project.Variables["value1"].Value);
 float value2 = Convert.ToSingle(project.Variables["value2"].Value);
 return Math.Ceiling(value1/value2); // round up
@@ -176,7 +176,7 @@ _______________________________________________
 It’s just an alias, and the actual type gets determined by the C# compiler.
 :::
 
-```C
+```csharp
 var list = project.Lists["numbers"];//we access the project list entity by name
 list.Clear();//clear the list before filling it
 int value;//declare an integer variable
@@ -196,7 +196,7 @@ _______________________________________________
 ### Getting a random line from a file with account credentials and splitting into login and password.
 The **null** keyword is a literal representing an empty reference that doesn’t point to any object. And you can use the `return` operator to return **null**. In this case, the C# action will exit along the red line, which can be convenient for setting relationships with other blocks.
 
-```C
+```csharp
 IZennoList list = project.Lists["accounts"];//get the list attached to a TXT file with lines like login:password
 if (list.Count== 0) return null;//If the list is empty, exit the block via the red line
 Random rnd = new Random();//create a random number generator
@@ -210,7 +210,7 @@ In this example we show a warning when there are no account entries, and fill th
 You can do the same thing using this method: `project.SendInfoToLog("Empty list", true);`.
 _______________________________________________
 ### Working with files: getting image resolution (width x height).
-```C
+```csharp
 Image img = Image.FromFile(project.Directory + @"/temp.jpg");//get image from file
 int width = img.Width;//get width
 int height = img.Height;//and height
@@ -223,7 +223,7 @@ _______________________________________________
 ### Working with OwnCode and images: adding a semi-transparent watermark in the center.
 In practice, it’s often useful to offload some functions to C# and access them from different actions. That’s where ***OwnCode (custom code)*** helps. You can put a function in this class and call it from blocks. It can take arguments (parameters) and return values.
 
-```C
+```csharp
 Image original = Image.FromFile(project.Directory + @"/image.jpg");//original image to watermark
 
 int w = original.Width;//get original dimensions
@@ -250,7 +250,7 @@ This example creates a `SetImageOpacity` function. It takes an image and a value
 
 Next, use the `SetImageOpacity` function, which you need to add to the `OwnCode.CommonCode` class.
 
-```C
+```csharp
 using System.Drawing.Imaging;
 public static Image SetImageOpacity(Image image, float opacity)
 {
@@ -286,14 +286,14 @@ With regular expressions in C# you can:
 - *clean up text from junk*
 
 In the example below, we’ll remove all HTML tags from an element’s content.
-```C
+```csharp
 string html = project.Variables["value1"].Value;//get variable where the source code is stored
 return Regex.Replace(html, @"<.*?>", String.Empty);//replace HTML tags with nothing and return result
 ```
 _______________________________________________
 ### Working with Macros.
 Using the `Macros` object you get access to lots of functions for working with the file system or processing text. For example, in C# you can handle `Spintax` the same way as with a block.
-```C
+```csharp
 return Macros.TextProcessing.Spintax("{0|1|2}");//randomly returns one of three values
 ```
 _______________________________________________

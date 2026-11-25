@@ -21,18 +21,7 @@ _________________
 - Almost all Huawei smartphones use their own processors—**Kirin**.
 
 ### Choosing a Smartphone for Enterprise Use
-|   Device Name  | Samsung Galaxy S8 | Xiaomi Mi 9T Pro | Redmi 4X 3/32 |
-| :-------- | :-------: | :-------: | :-------: |
-| **Firmware**  | LineageOS 20-20231226-UNOFFICIAL-dreamlte    | Custom: XTB UI 14.1.1.0 (Android 12) | Android 13 (unofficial, like SparkOS) |
-| **Install Method** | TWRP     | OrangeFox | TWRP |
-| **Custom Recovery** | TWRP 3.5.0_9.0     | OrangeFox/Twrp | TWRP 3.1.1-0 |
-| **Magisk**    |  TWRP    | Magisk 26.4 | Not required |
-| **BusyBox**    | Not required   | Pre-installed | Not required |
-| **Useful Info**    | We recommend installing LineageOS for more stability    | If the connection drops, block background launch of all emulation-related apps (Zennodroid, Appium, etc.) |  Use Mi Unlock 5.5.224.55 to unlock the bootloader |
-| **Price on Avito**    | About 2,000 RUB   | From 7,000 RUB | Around 1,000 RUB |
-| **Overall rating**    | Reliable and easy to flash, no big issues    | Excellent for everyday use. Durable, fast and bezel-less. | These devices work 24/7 without a battery, no ADB disconnects. Best value for money |  
-
-:::tip **Other good options:**
+:::tip **Good options include:**
 **Samsung**: S8–S21 series (including ultra and note) with Exynos chips.  
 **Xiaomi**: MI8 and MI9 (SE, Lite, Pro), Redmi 8 and 9 (Note, T, Pro), Redmi Note 7 and 10.  
 **Poco**: Poco X3 (Pro), Poco M3 (Pro), Poco M4 (X4, Pro, 5G), Poco F1 and F3.  
@@ -40,7 +29,7 @@ _________________
 :::
 _________________
 ## Tips for installation and setup
-- The Enterprise version works via ADB, so **you can use any emulators**. But you'll have to handle setting them up yourself.
+- The Enterprise version works via ADB, so **emulators are only partially supported**: an emulator must already be running and visible via adb, and the [**Actions with Device**](../Android/Enterprise/action) group (create, start, stop, etc.) does not work with it.
 ### Removing packages
 **Android can be slimmed down** by removing certain packages (including system ones) using the command `pm uninstall --user 0 package.path.name`. This works for both physical devices and virtual machines (at the very least for ad packages).
 

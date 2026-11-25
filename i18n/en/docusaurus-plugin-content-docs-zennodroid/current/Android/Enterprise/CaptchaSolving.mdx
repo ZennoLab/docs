@@ -33,10 +33,10 @@ There are also other types of captchas, where you not only need to type in symbo
 _______________________________________________  
 ## How to add to your project?  
 There are two ways:  
-### Through the emulator/device window.  
+### Through the device window.  
 **Right-click the captcha image → "This is a CAPTCHA!"**
 
-![Via emulator window](../assets/CaptchaSolving/CaptchaSolving_pic6.png)  
+![Via device window](../assets/CaptchaSolving/CaptchaSolving_pic6.png)  
 
 ### Through the context menu.  
 **Add action → Android → Recognize captcha.**
@@ -53,7 +53,7 @@ The window looks different depending on how you open it:
 
 | !["Basic" tab](../assets/CaptchaSolving/CaptchaSolving_pic12.png) | !["Basic" tab](../assets/CaptchaSolving/CaptchaSolving_pic8.png) |
 | :--------: | :-------: |
-| **When opened through the emulator/device window** | **Through context menu** |   
+| **When opened through the device window** | **Through context menu** |   
 
 #### Recognition Module  
 Choose the service from the dropdown menu to send your captcha for solving. **We recommend CapMonster Cloud** as it's the most reliable and stable.
@@ -67,7 +67,7 @@ This module is for manually solving captchas. No automatic solving service will 
 #### Element Search  
 There are two ways to search for elements on a page:  
 - **Classic**  
-By HTML element parameters: tag, attribute, and its value.
+By element attributes and their values.
 - **xPath**  
 Using [**XPath expressions**](../../Tools/JSON_Tester), which lets you create more flexible and layout-proof data searches.
 
@@ -83,7 +83,7 @@ _______________________________________________
 ### "More" tab  
 | !["Advanced" tab](../assets/CaptchaSolving/CaptchaSolving_pic13.png) | !["Advanced" tab](../assets/CaptchaSolving/CaptchaSolving_pic10.png) |
 | :--------: | :-------: |
-| **When opened through the emulator/device window** | **Through context menu** |  
+| **When opened through the device window** | **Through context menu** |  
 
 #### Waiting  
 - **Wait before execution**  
@@ -182,7 +182,7 @@ For this example, we're using a test page with this HTML code:
 ```html  
 ...html sample omitted...
 ```
-Here, each character is a separate HTML element.
+Here, each character is a separate element.
 
 1. Right-click the first image and choose **This is a captcha!**  
 2. Turn on **Stitch captchas** in the action settings.  

@@ -58,11 +58,11 @@ _______________________________________________
 ### Подключение JavaScript библиотек.  
 Можно также встроить на страницу библиотеку, которой изначально не было. Например, с помощью кода добавить jQuery:  
 
-```JS  
-int value1 = Convert.ToInt32(project.Variables["value1"].Value);
-int value2 = Convert.ToInt32(project.Variables["value2"].Value);
-int value3 = value1 + value2; //или value1 - value2 или value1 * value2 и т. д.
-return value3.ToString(); //сумма двух чисел  
+```javascript
+var s = document.createElement('script');
+s.type = 'text/javascript';
+s.src = 'https://code.jquery.com/jquery-1.10.2.min.js';
+document.body.appendChild(s);
 ```  
 _______________________________________________
 ## Полезные ссылки.  

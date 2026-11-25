@@ -89,7 +89,7 @@ The variable will get the path to the downloaded file.
 
 :::info By default, files are saved to the `Trash` folder inside the program’s directory.
 The path might look like this:
-`C:\Program Files\ZennoLab\RU\ZennoPoster Pro V7\7.4.0.0\Progs\Trash\googlelogo_color_92x30dp.png`
+`C:\Program Files\ZennoLab\EN\ZennoDroid Pro\2.6.3.0\Progs\Trash\googlelogo_color_92x30dp.png`
 
 You can change this in the settings, but only for all projects at once.
 :::
@@ -146,16 +146,16 @@ You can set each header yourself, following these rules:
 - You can use *static values*, *your own variables*, or *profile variables*.
 _______________________________________________
 ### Use CookieContainer.
-With this option, you can sync cookies with the whole browser or between separate requests. You won’t have to parse and insert them manually.
+With this option, cookies are saved and passed between separate requests automatically. You won’t have to parse and insert them manually.
 
 <details>
 <summary>**Example of use.**</summary>
 
-   Let’s say your project works with a site using requests. To work, you need to be logged in. But the login process is too hard to repeat via requests. So you use browser mode to log in.
+   Let’s say your project works with a site through requests, and you need to be logged in. First you log in with a POST request, then keep working with GET requests.
 
-   After you’re logged in, ***turn off the browser*** and start working with requests. If **Use CookieContainer** is enabled, cookies will sync automatically between browser and requests — you don’t have to insert them yourself.
+   With **Use CookieContainer** enabled, the cookies you get when logging in are passed to the following requests automatically — you don’t have to insert them yourself.
 
-   If one of your requests gets new cookies, they’ll be synced automatically with the browser and used in the future.
+   If one of your requests gets new cookies, they are saved and used in the future.
 </details>
 _______________________________________________
 ### Cookie.
@@ -205,5 +205,4 @@ You can do this through **Settings → Execution → Use alternative method for 
 _______________________________________________
 ## Useful links.
 - [**HTTP Basics**](https://habr.com/ru/articles/813395/)
-- [**How to use cURL with a proxy**](https://blog.capmonster.cloud/ru/blog/bypass-captcha/how-to-use-curl-with-proxy)
 - [**What is web scraping and why do you need it?**](https://blog.capmonster.cloud/ru/blog/sel-1/what-is-website-parsing-and-why-do-you-need-it).

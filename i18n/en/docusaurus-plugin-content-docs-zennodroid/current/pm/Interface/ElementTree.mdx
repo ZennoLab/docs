@@ -17,7 +17,7 @@ In this article, we'll take a closer look at the window called "Element Tree". T
 You can get the page's structure as an XML string using the  
 [**Get element structure (XML)**](../../Android/pro-lite/Utilities#get-structure-of-elements-xml) action, which you'll find in Utilities.
 
-:::info **If you select an element in the Tree, it'll also get highlighted in the Emulator Window**  
+:::info **If you select an element in the Tree, it'll also get highlighted in the Device Window**  
 ![Selected](./assets/ElementTree/ElementTree_pic2.png)  
 :::
 
@@ -44,17 +44,9 @@ _______________________________________________
 Shows only elements that are currently in the visible area.  
 _______________________________________________   
 ### Auto-refresh.  
-:::warning **When this feature is on, mouse swipe stops working in the emulator window.** 
-But scrolling with the mouse wheel will still work.  
-:::   
+While recording in the **By element tree** mode, the tree refreshes itself before every tap in the device window, and the elements of the current screen get into the project. Mouse swipes in the device window work with it.  
 
-![AutoRefresh](./assets/ElementTree/ElementTree_pic6.png)  
-
-This always works when auto-recording actions is on. That means right before every action is recorded in your project, the structure will be updated to the latest version.
-:::warning **Make sure.**
-For Auto-refresh to work correctly, make sure you turn off  
-[**Recording clicks by searching for images**](../../Settings/Record_and_InputMethods#click-recording-through-search) in the Recording tab.
-:::   
+Starting from ZennoDroid 2.6.3.0, auto-refresh is on by default and is switched not on this panel but on the [**Recording**](../../Settings/Record_and_InputMethods#auto-refresh-the-element-tree) tab of the settings and in the [**device window header**](./DeviceWindow#recording-mode).  
 _______________________________________________  
 ### Collapse.  
 ![Collapse](./assets/ElementTree/ElementTree_pic7.gif)  

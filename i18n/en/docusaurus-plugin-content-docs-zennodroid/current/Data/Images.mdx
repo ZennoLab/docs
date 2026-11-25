@@ -24,7 +24,7 @@ _______________________________________________
 ![Add to project](./assets/Images/Images_pic2.png)  
 
 ### Instance Screenshot  
-Takes a screenshot of the currently active emulator/device window.
+Takes a screenshot of the currently active device window.
 
 ### File  
 Processes the selected file you set the path for. You can use macros here.
@@ -131,4 +131,4 @@ Now add a [**BadEnd**](../project-editor/logic/BadEnd) action and link it to **I
 
 **File path:** `{-Project.Directory-}{-Variable.thread-}\App_screenshot.jpg`.
 
-You can also save the page code `{-Page.Dom-}` using the [**Write to file**](../Android/pro-lite/Files) action. This helps troubleshoot bugs that come up while working with the browser.
+You can also save the screen's element structure: get it with the [**Get structure of elements (XML)**](../Android/pro-lite/Utilities#get-structure-of-elements-xml) action and save it with the [**Write to file**](../Android/pro-lite/Files) action. This helps troubleshoot bugs that come up while working with the app.

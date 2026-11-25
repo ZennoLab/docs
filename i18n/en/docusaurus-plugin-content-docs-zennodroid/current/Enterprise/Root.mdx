@@ -104,13 +104,15 @@ Once you have your backups, flash the Magisk installer zip just like any other a
 _________________
 ### Setting Up Magisk
 <details>
-<summary>On your device, open Magisk settings and turn on both: **Zygisk** and **DenyList**.</summary>
+<summary>On your device, open Magisk settings and turn on both **Zygisk** and **Enforce DenyList**.</summary>
 <!--All you need is a blank line-->
 
 ![Magisk Settings](./assets/Root/Root_pic11.png)
 </details>
 
-For these functions to work right, also install these two Github modules: [**Universal SafetyNet**](https://github.com/kdrag0n/safetynet-fix) and [**Shamiko**](https://github.com/LSPosed/LSPosed.github.io/releases). Now, go to **DenyList settings** and check the apps you want to hide root from (like banking apps).
+If you use a third-party Zygisk such as Zygisk Next instead of the built-in one, keep both options off: the built-in Zygisk is turned off as described in [**LSPosed Setup**](./LSPosed#enabling-a-third-party-zygisk), and Zygisk Next hides root by itself.  
+
+Then open **Configure DenyList** and check the apps you want to hide root from (like banking apps).
 :::info **If this doesn't work for some apps**
 Open the app's component list and check every one of them.
 :::
@@ -145,7 +147,6 @@ _________________
 ## Useful Magisk Modules
 - ***Busybox*** — Gives apps access to Magisk's built-in busybox. It's a compact program bundling several command-line utilities (like ls, cp, mv, rm, etc.) into a single executable, handy on resource-limited systems.
 - ***No Storage Restricts*** — Removes folder selection limits in file managers.
-- ***LuckyPatcher*** — Lets you move apps to the system partition.
 - ***Move Certificates*** — Moves user certificates into the system partition.
 - ***NFC Screen Off*** — Lets NFC work even when the screen is off.
 ________________
