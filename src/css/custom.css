@@ -279,7 +279,9 @@ img[alt*="-eighty"] { width: 80%; }
 }
 
 .bonus-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   height: 32px;
   line-height: 32px;
   padding: 0 14px;
@@ -295,13 +297,13 @@ img[alt*="-eighty"] { width: 80%; }
 
 .bonus-link:hover,
 .bonus-link:focus {
-  background: #67f5a9;
+  background: #04a582;
   color: white !important;
   text-decoration: none;
 }
 
 .bonus-link:active {
-  background: #06c79a;
+  background: #039675;
 }
 
 .lk-link svg {

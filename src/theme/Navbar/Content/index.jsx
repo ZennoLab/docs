@@ -9,6 +9,7 @@ import styles from './styles.module.css';
 import { getMenuItems } from '../menuItems';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import getLocaleStrings from '@site/src/locales';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function NavbarItems({ items = [] }) {
   return (
@@ -36,16 +37,16 @@ function getVideoCourseUrl(pathname) {
   return null;
 }
 
-const BONUS_URL = 'https://zenno.club/discussion/threads/bonus-na-balans-za-otzyv.130640/';
-
-function BonusButton({label}) {
+function BonusButton({label, href}) {
+  const bonusGiftIcon = useBaseUrl('/img/icons/bonus-gift.svg');
   return (
     <div className="navbar__item bonus-link-container">
       <Link
-        href={BONUS_URL}
+        href={href}
         className="navbar__link bonus-link"
         target="_blank"
         rel="noopener noreferrer">
+        <img src={bonusGiftIcon} alt="" width={16} height={16} />
         {label}
       </Link>
     </div>
@@ -83,9 +84,9 @@ export default function NavbarContent() {
         </div>
         <div className={clsx('navbar__items', styles.searchItems)}>
           <NavbarItems items={searchItems} />
+          <BonusButton label={localeStrings.bonusLink} href={localeStrings.bonusLinkUrl} />
         </div>
         <div className={clsx('navbar__items', styles.productItems)}>
-          <BonusButton label={localeStrings.bonusLink} />
           <VideoCourseLink
             to={videoCourseUrl}
             label={localeStrings.videoCourseLink}
