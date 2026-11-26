@@ -36,6 +36,22 @@ function getVideoCourseUrl(pathname) {
   return null;
 }
 
+const BONUS_URL = 'https://zenno.club/discussion/threads/bonus-na-balans-za-otzyv.130640/';
+
+function BonusButton({label}) {
+  return (
+    <div className="navbar__item bonus-link-container">
+      <Link
+        href={BONUS_URL}
+        className="navbar__link bonus-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        {label}
+      </Link>
+    </div>
+  );
+}
+
 function VideoCourseLink({to, label}) {
   if (!to) {
     return null;
@@ -69,6 +85,7 @@ export default function NavbarContent() {
           <NavbarItems items={searchItems} />
         </div>
         <div className={clsx('navbar__items', styles.productItems)}>
+          <BonusButton label={localeStrings.bonusLink} />
           <VideoCourseLink
             to={videoCourseUrl}
             label={localeStrings.videoCourseLink}

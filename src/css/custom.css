@@ -270,6 +270,40 @@ img[alt*="-eighty"] { width: 80%; }
   color: #67f5a9 !important;
 }
 
+/* Стили для кнопки «Получить бонус» */
+.bonus-link-container {
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.bonus-link {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 14px;
+  background: #06c79a;
+  color: white !important;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.bonus-link:hover,
+.bonus-link:focus {
+  background: #67f5a9;
+  color: white !important;
+  text-decoration: none;
+}
+
+.bonus-link:active {
+  background: #06c79a;
+}
+
 .lk-link svg {
   display: none;
 }
