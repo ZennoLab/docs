@@ -258,7 +258,7 @@ img[alt*="-eighty"] { width: 80%; }
 }
 
 .video-course-link:hover {
-  color: #67f5a9 !important;
+  color: #04a582 !important;
   text-decoration: none;
 }
 
@@ -267,7 +267,7 @@ img[alt*="-eighty"] { width: 80%; }
 }
 
 [data-theme='dark'] .video-course-link:hover {
-  color: #67f5a9 !important;
+  color: #3cbfa3 !important;
 }
 
 /* Стили для кнопки «Получить бонус» */

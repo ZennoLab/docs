@@ -61,6 +61,19 @@ function VideoCourseLink({to, label}) {
   return (
     <div className="navbar__item video-course-link-container">
       <Link to={to} className="navbar__link video-course-link">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M10 9l5 3l-5 3z" />
+        </svg>
         {label}
       </Link>
     </div>
