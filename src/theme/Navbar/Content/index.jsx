@@ -9,6 +9,7 @@ import styles from './styles.module.css';
 import { getMenuItems } from '../menuItems';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import getLocaleStrings from '@site/src/locales';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function NavbarItems({ items = [] }) {
   return (
@@ -36,6 +37,22 @@ function getVideoCourseUrl(pathname) {
   return null;
 }
 
+function BonusButton({label, href}) {
+  const bonusGiftIcon = useBaseUrl('/img/icons/bonus-gift.svg');
+  return (
+    <div className="navbar__item bonus-link-container">
+      <Link
+        href={href}
+        className="navbar__link bonus-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        <img src={bonusGiftIcon} alt="" width={16} height={16} />
+        {label}
+      </Link>
+    </div>
+  );
+}
+
 function VideoCourseLink({to, label}) {
   if (!to) {
     return null;
@@ -44,6 +61,19 @@ function VideoCourseLink({to, label}) {
   return (
     <div className="navbar__item video-course-link-container">
       <Link to={to} className="navbar__link video-course-link">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M10 9l5 3l-5 3z" />
+        </svg>
         {label}
       </Link>
     </div>
@@ -67,6 +97,7 @@ export default function NavbarContent() {
         </div>
         <div className={clsx('navbar__items', styles.searchItems)}>
           <NavbarItems items={searchItems} />
+          <BonusButton label={localeStrings.bonusLink} href={localeStrings.bonusLinkUrl} />
         </div>
         <div className={clsx('navbar__items', styles.productItems)}>
           <VideoCourseLink
